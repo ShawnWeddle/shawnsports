@@ -1,16 +1,16 @@
 import type { ConstructorNameType } from "./F1data"
 
 export const F1styleData: {
-  [Key in ConstructorNameType]: {twStyle: string, primary: string, textColor: string};
+  [Key in ConstructorNameType]: {primary: string, secondary: string, primaryBGstyle: string, primaryTextStyle: string, secondaryTextStyle: string};
 } = {
-  "Alfa Romeo": {twStyle: "bg-[#A51D2F] text-[#FFFFFF]", primary: "#A51D2F", textColor: "#FFFFFF"},
-  AlphaTauri: {twStyle: "bg-[#01102F] text-[#FFFFFF]", primary: "#01102F", textColor: "#FFFFFF"},
-  Alpine: {twStyle: "bg-[#FF99C4] text-[#FFFFFF]", primary: "#FF99C4", textColor: "#FFFFFF"},
-  "Aston Martin": {twStyle: "bg-[#00594F] text-[#FFFFFF]", primary: "#00594F", textColor: "#FFFFFF"},
-  Ferrari: {twStyle: "bg-[#E0001A] text-[#FFEC01]", primary: "#E0001A", textColor: "#FFFFFF"},
-  Haas: {twStyle: "bg-[#ED1A3B] text-[#FFFFFF]", primary: "#ED1A3B", textColor: "#FFFFFF"},
-  McLaren: {twStyle: "bg-[#FF9700] text-[#FFFFFF]", primary: "#FF9700", textColor: "#FFFFFF"},
-  Mercedes: {twStyle: "bg-[#009994] text-[#FFFFFF]", primary: "#009994", textColor: "#FFFFFF"},
-  "Red Bull": {twStyle: "bg-[#0F1C2C] text-[#EA1D2C]", primary: "#0F1C2C", textColor: "#FFFFFF"},
-  Williams: {twStyle: "bg-[#121C66] text-[#FFFFFF]", primary: "#121C66", textColor: "#FFFFFF"},
+  "Alfa Romeo": { primary: "#A51D2F", secondary: "#FFFFFF", primaryBGstyle: "bg-[#A51D2F]", primaryTextStyle: "text-[#A51D2F]", secondaryTextStyle: "text-[#FFFFFF]"},
+  AlphaTauri: { primary: "#01102F", secondary: "#FFFFFF", primaryBGstyle: "bg-[#01102F]", primaryTextStyle: "text-[#01102F]", secondaryTextStyle: "text-[#FFFFFF]"},
+  Alpine: { primary: "#FF99C4", secondary: "#FFFFFF", primaryBGstyle: "bg-[#FF99C4]", primaryTextStyle: "text-[#FF99C4]", secondaryTextStyle: "text-[#FFFFFF]"},
+  "Aston Martin": { primary: "#00594F", secondary: "#FFFFFF", primaryBGstyle: "bg-[#00594F]", primaryTextStyle: "text-[#00594F]", secondaryTextStyle: "text-[#FFFFFF]"},
+  Ferrari: { primary: "#E0001A", secondary: "#FFEC01", primaryBGstyle: "bg-[#E0001A]", primaryTextStyle: "text-[#E0001A]", secondaryTextStyle: "text-[#FFEC01]"},
+  Haas: { primary: "#ED1A3B", secondary: "#FFFFFF", primaryBGstyle: "bg-[#ED1A3B]", primaryTextStyle: "text-[#ED1A3B]", secondaryTextStyle: "text-[#FFFFFF]"},
+  McLaren: { primary: "#FF9700", secondary: "#FFFFFF", primaryBGstyle: "bg-[#FF9700]", primaryTextStyle: "text-[#FF9700]", secondaryTextStyle: "text-[#FFFFFF]"},
+  Mercedes: { primary: "#009994", secondary: "#FFFFFF", primaryBGstyle: "bg-[#009994]", primaryTextStyle: "text-[#009994]", secondaryTextStyle: "text-[#FFFFFF]"},
+  "Red Bull": { primary: "#0F1C2C", secondary: "#EA1D2C", primaryBGstyle: "bg-[#0F1C2C]", primaryTextStyle: "text-[#0F1C2C]", secondaryTextStyle: "text-[#EA1D2C]"},
+  Williams: { primary: "#121C66", secondary: "#FFFFFF", primaryBGstyle: "bg-[#121C66]", primaryTextStyle: "text-[#121C66]", secondaryTextStyle: "text-[#FFFFFF]"},
 };

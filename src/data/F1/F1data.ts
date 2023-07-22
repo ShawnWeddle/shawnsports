@@ -35,8 +35,6 @@ export type DriverCodeType = typeof driverCodes[number];
 export type ConstructorNameType = typeof constructorNames[number];
 export type RaceLocationType = typeof raceLocations[number];
 
-export type FullDriverCodeType = DriverCodeType | undefined;
-
 export const driverToConstructor = (driver: DriverCodeType) : ConstructorNameType => {
   switch(driver){
     case "GAS":
@@ -73,27 +71,65 @@ export const driverToConstructor = (driver: DriverCodeType) : ConstructorNameTyp
   }
 }
 
-export const driverTcamColors: { [Key in DriverCodeType] : "Black" | "Yellow" | "New"} = {
+export const constructorToDrivers = (constructor: ConstructorNameType) : DriverCodeType[] => {
+  switch(constructor){
+    case "Alfa Romeo":
+      return ["BOT", "ZHO"];
+    case "AlphaTauri":
+      return ["DEV", "TSU", "RIC"];
+    case "Alpine":
+      return ["GAS", "OCO"];
+    case "Aston Martin":
+      return ["ALO", "STR"];
+    case "Ferrari":
+      return ["LEC", "SAI"];
+    case "Haas":
+      return ["HUL", "MAG"];
+    case "McLaren":
+      return ["NOR", "PIA"];
+    case "Mercedes":
+      return ["HAM", "RUS"];
+    case "Red Bull":
+      return ["PER", "VER"];
+    case "Williams":
+      return ["ALB", "SAR"];
+  }
+
+}
+
+export const driverTcamColors: { [Key in DriverCodeType] : "Black" | "Yellow"} = {
   ALB: "Black", ALO: "Yellow", BOT: "Black", DEV: "Black", GAS: "Yellow",
   HAM: "Yellow", HUL: "Yellow", LEC: "Black", MAG: "Black", NOR: "Yellow", 
-  OCO: "Black", PIA: "Black", PER: "Yellow", RIC: "New", RUS: "Black",
+  OCO: "Black", PIA: "Black", PER: "Yellow", RIC: "Black", RUS: "Black",
   SAI: "Yellow", SAR: "Yellow", STR: "Black", TSU: "Yellow", VER: "Black", 
   ZHO: "Yellow", 
 }
 
-/* 
+export const calculatePoints = (place: number, sprint: boolean, fastestLap: boolean) => {
+  if(sprint) {
+    const sprintPointsArray = [8, 7, 6, 5, 4, 3, 2, 1];
+      const points = sprintPointsArray[place];
+      if (points){
+        return points;
+      } else {
+        return 0;
+      }
+  } else {
+    const grandPrixPointsArray = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
+      let points = grandPrixPointsArray[place];
+      if (points){
+        if(fastestLap){
+          points += 1;
+        }
+        return points;
+      } else {
+        return 0;
+      }
+  }
+}
 
-  {
-    location: ,
-    finalOrder: [
-      
-    ],
-    DNFs: [
-      
-    ],
-    fastestLap: ,
-    polePosition: ,
-    sprint: false,
-  },
-  
-  */
+export interface RaceModeProps {
+  raceMode: RaceModeType;
+}
+
+export type RaceModeType = "Both Grands Prix and Sprint Races" | "Grands Prix Only" | "Sprint Races Only";

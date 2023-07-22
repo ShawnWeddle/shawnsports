@@ -36,7 +36,7 @@ export const FormulaOneRaceResults : {
   {
     location: "Australia",
     finalOrder: [
-      "VER", "HAM", "ALO", "STR", "PER", "NOR", "HUL", "PIA", "ZHO", "TSU", "BOT", "SAI", "GAS", "OCO", "RIC", "SAR", "MAG",
+      "VER", "HAM", "ALO", "STR", "PER", "NOR", "HUL", "PIA", "ZHO", "TSU", "BOT", "SAI", "GAS", "OCO", "DEV", "SAR", "MAG",
     ],
     DNFs: [
       "RUS", "ALB", "LEC",
@@ -134,7 +134,7 @@ export const FormulaOneRaceResults : {
       "HUL",
     ],
     fastestLap: "VER",
-    polePosition: "ALB",
+    polePosition: "VER",
     sprint: false,
   },
   {
@@ -146,10 +146,26 @@ export const FormulaOneRaceResults : {
       "MAG", "OCO",
     ],
     fastestLap: "VER",
-    polePosition: "ALB",
+    polePosition: "VER",
     sprint: false,
   },
 ]
 
-
 export type RaceResultsType = typeof FormulaOneRaceResults;
+
+/* 
+
+  {
+    location: ,
+    finalOrder: [
+      
+    ],
+    DNFs: [
+      
+    ],
+    fastestLap: ,
+    polePosition: ,
+    sprint: false,
+  },
+  
+  */

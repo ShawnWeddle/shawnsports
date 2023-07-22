@@ -26,7 +26,7 @@ const NBApickTable: React.FC = () => {
       return (
         <td
           key={`cell-${rowIndex}-${cellIndex}`}
-          className="text-center align-top"
+          className="py-1 text-center align-top last:pr-1"
         >
           {activePicks.length > 0 && (
             <div className="flex flex-col">{activePicks}</div>
@@ -35,10 +35,17 @@ const NBApickTable: React.FC = () => {
       );
     });
     return (
-      <tr key={`row-${rowIndex}`} className="odd:bg-white/20 even:bg-white/10">
-        <td className="px-1 text-white">
+      <tr
+        key={`row-${rowIndex}`}
+        className="odd:bg-blue-800/20 even:bg-blue-800/10"
+      >
+        <td className="hidden px-2 sm:block">
           {NBAteamData[activeTeamCode].location}{" "}
           {NBAteamData[activeTeamCode].name}
+        </td>
+        <td className="px-2 sm:hidden">
+          {NBAteamData[activeTeamCode].nickName ??
+            NBAteamData[activeTeamCode].name}
         </td>
         {NBAcells}
       </tr>
@@ -46,9 +53,9 @@ const NBApickTable: React.FC = () => {
   });
   return (
     <>
-      <table>
+      <table className="w-full bg-blue-100 sm:w-auto">
         <thead>
-          <tr className="text-xl text-white">
+          <tr className="sm:text-xl">
             <th>Team</th>
             <th>2024</th>
             <th>2025</th>
@@ -56,12 +63,11 @@ const NBApickTable: React.FC = () => {
             <th>2027</th>
             <th>2028</th>
             <th>2029</th>
-            <th>2030</th>
+            <th className="pr-1">2030</th>
           </tr>
         </thead>
-        <tbody>{NBArows}</tbody>
+        <tbody className="text-sm sm:text-base">{NBArows}</tbody>
       </table>
-      <dialog>NEW TEXT</dialog>
     </>
   );
 };

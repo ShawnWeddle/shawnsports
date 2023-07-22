@@ -1,4 +1,7 @@
-import type { DriverCodeType, FullDriverCodeType } from "./F1data"
+import { cn } from "~/utils/cn";
+import type { DriverCodeType } from "./F1data"
+import { driverTcamColors, driverToConstructor } from "./F1data";
+import { F1styleData } from "./F1styleData";
 
 export const driverActivation: {[Key in DriverCodeType] : {active: boolean, teammateActive: boolean}} = {
   ALB : {active: false, teammateActive: false},
@@ -50,22 +53,17 @@ export const driverTeammates: {[Key in DriverCodeType] : DriverCodeType[]} = {
   ZHO : ["BOT"],
 }
 
-export const handleActivate = (driver: FullDriverCodeType, activeDrivers: ActiveDriversType) => {
-  if (driver) {
-    const newActiveDrivers = { ...activeDrivers };
-    newActiveDrivers[driver].active = !newActiveDrivers[driver].active;
+export const handleActivate = (driver: DriverCodeType, activeDrivers: ActiveDriversType) => {
+  const newActiveDrivers = { ...activeDrivers };
+  newActiveDrivers[driver].active = !newActiveDrivers[driver].active;
 
-    const teamDrivers: DriverCodeType[] = [driver, ...driverTeammates[driver]];
+  const teamDrivers: DriverCodeType[] = [driver, ...driverTeammates[driver]];
 
-    const teamCheck = teamDrivers.map((activeDriver) => {
-      const teammateIsActive = [...driverTeammates[activeDriver]].map((otherDriver) => {
-        return newActiveDrivers[otherDriver].active
-      }).includes(true);
-      newActiveDrivers[activeDriver].teammateActive = teammateIsActive;
-    });
-    console.log(newActiveDrivers);
-    return newActiveDrivers;
-  } else {
-    return activeDrivers;
-  }
+  const teamCheck = teamDrivers.map((activeDriver) => {
+    const teammateIsActive = [...driverTeammates[activeDriver]].map((otherDriver) => {
+      return newActiveDrivers[otherDriver].active
+    }).includes(true);
+    newActiveDrivers[activeDriver].teammateActive = teammateIsActive;
+  });
+  return newActiveDrivers;
 };

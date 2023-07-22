@@ -1,46 +1,102 @@
 import { useState } from "react";
-import { sortResultsByPlace } from "~/data/F1/F1converters";
-import { driverToConstructor } from "~/data/F1/F1data";
+import { cn } from "~/utils/cn";
+import { resultsSortedByPlace } from "~/data/F1/F1converters";
+import { driverTcamColors, driverToConstructor } from "~/data/F1/F1data";
 import { FormulaOneRaceResults } from "~/data/F1/raceResults";
 import { driverActivation, handleActivate } from "~/data/F1/HandleActivation";
 import { F1styleData } from "~/data/F1/F1styleData";
-import { cn } from "~/utils/cn";
-import { twCombine } from "~/data/twCombine";
+import type { RaceModeProps } from "~/data/F1/F1data";
 
-export const RaceResultTable: React.FC = () => {
+export const RaceResultTable: React.FC<RaceModeProps> = (
+  props: RaceModeProps
+) => {
+  const { raceMode } = props;
+
   const [activeDrivers, setActiveDrivers] = useState(driverActivation);
 
-  const { headers, results, DNFs } = sortResultsByPlace(FormulaOneRaceResults);
+  const { headers, fullResults, DNFs } = resultsSortedByPlace(
+    FormulaOneRaceResults
+  );
   const tableHeaders = headers.map((header, index) => {
     return (
       <th key={index}>
-        <div className="w-0 -rotate-[30deg] transform whitespace-nowrap text-red-500">
+        <div className="w-0 -rotate-[30deg] transform whitespace-nowrap px-4">
           {header}
         </div>
       </th>
     );
   });
-  const tableRows = results.map((result, rowIndex) => {
+  const tableRows = fullResults.map((result, rowIndex) => {
     const tableCells = result.map((driver, cellIndex) => {
-      const isDriver = driver !== undefined && activeDrivers[driver].active;
-      const activeStyle = isDriver
-        ? F1styleData[driverToConstructor(driver)].twStyle
-        : "";
-      return (
-        <td
-          key={`c-${cellIndex}`}
-          onClick={() => {
-            setActiveDrivers(handleActivate(driver, activeDrivers));
-          }}
-        >
-          <div className={cn("px-1 font-mono", { [activeStyle]: isDriver })}>
-            {driver}
-          </div>
-        </td>
-      );
+      const { driverName, sprint, finishPosition, polePosition, fastestLap } =
+        driver;
+      const isDriver =
+        driverName !== undefined && activeDrivers[driverName].active;
+      if (driverName) {
+        const activeStyleGuide = F1styleData[driverToConstructor(driverName)];
+        const Tcam = driverTcamColors[driverName];
+        const outlineColor =
+          activeDrivers[driverName].teammateActive && Tcam === "Black"
+            ? "bg-[#33424d]" //black
+            : "bg-[#d9ff00]"; //yellow
+        const activeBg = activeStyleGuide.primaryBGstyle;
+        const activeTextColor = activeStyleGuide.secondaryTextStyle;
+        return (
+          <td
+            key={`c-${cellIndex}`}
+            onClick={() => {
+              setActiveDrivers(handleActivate(driverName, activeDrivers));
+            }}
+            className={cn(
+              {
+                "bg-teal-200": sprint,
+                "border-b-2 border-black": !sprint && finishPosition === 9,
+              },
+              {
+                [outlineColor]:
+                  activeDrivers[driverName].teammateActive && isDriver,
+              },
+              { hidden: sprint && raceMode === "Grands Prix Only" },
+              { hidden: !sprint && raceMode === "Sprint Races Only" }
+            )}
+          >
+            <div
+              className={cn("relative mx-0.5 rounded-full px-1 font-mono", {
+                [activeTextColor]: isDriver,
+                [activeBg]: isDriver,
+              })}
+            >
+              {driverName}
+              {polePosition && (
+                <span className="absolute -right-1 -top-1 text-sm text-black">
+                  P
+                </span>
+              )}
+              {fastestLap && (
+                <span className="absolute -bottom-1 -right-1 text-sm text-black">
+                  F
+                </span>
+              )}
+            </div>
+          </td>
+        );
+      } else {
+        return (
+          <td
+            key={`c-${cellIndex}`}
+            className={cn(
+              {
+                "bg-teal-200": sprint,
+              },
+              { hidden: sprint && raceMode === "Grands Prix Only" },
+              { hidden: !sprint && raceMode === "Sprint Races Only" }
+            )}
+          ></td>
+        );
+      }
     });
     return (
-      <tr key={`r-${rowIndex}`} className="odd:bg-white/50">
+      <tr key={`r-${rowIndex}`} className="border-b-2 border-white font-mono">
         <td className="text-center">{rowIndex + 1}</td>
         {tableCells}
       </tr>
@@ -48,21 +104,59 @@ export const RaceResultTable: React.FC = () => {
   });
   const DNFRows = DNFs.map((dnf, rowIndex) => {
     const DNFCells = dnf.map((driver, cellIndex) => {
-      const className =
-        driver && activeDrivers[driver].active
-          ? twCombine([
-              "font-mono px-1",
-              F1styleData[driverToConstructor(driver)].twStyle,
-            ])
-          : "font-mono px-1";
-      return (
-        <td key={`c-${cellIndex}`}>
-          <div className={className}>{driver}</div>
-        </td>
-      );
+      const { driverName, sprint } = driver;
+      const isDriver =
+        driverName !== undefined && activeDrivers[driverName].active;
+      if (driverName) {
+        const activeStyleGuide = F1styleData[driverToConstructor(driverName)];
+        const Tcam = driverTcamColors[driverName];
+        const outlineColor =
+          activeDrivers[driverName].teammateActive && Tcam === "Black"
+            ? "bg-[#33424d]" //black
+            : "bg-[#d9ff00]"; //yellow
+        const activeBg = activeStyleGuide.primaryBGstyle;
+        const activeTextColor = activeStyleGuide.secondaryTextStyle;
+        return (
+          <td
+            key={`c-${cellIndex}`}
+            className={cn(
+              {
+                [outlineColor]:
+                  activeDrivers[driverName].teammateActive && isDriver,
+              },
+              { hidden: sprint && raceMode === "Grands Prix Only" },
+              { hidden: !sprint && raceMode === "Sprint Races Only" }
+            )}
+          >
+            <div
+              className={cn(
+                "relative mx-0.5 rounded-full px-1",
+                {
+                  [activeTextColor]: isDriver,
+                },
+                {
+                  [activeBg]: isDriver,
+                }
+              )}
+            >
+              {driverName}
+            </div>
+          </td>
+        );
+      } else {
+        return (
+          <td
+            key={`c-${cellIndex}`}
+            className={cn(
+              { hidden: sprint && raceMode === "Grands Prix Only" },
+              { hidden: !sprint && raceMode === "Sprint Races Only" }
+            )}
+          ></td>
+        );
+      }
     });
     return (
-      <tr key={`r-${rowIndex}`} className="bg-red-500/30">
+      <tr key={`r-${rowIndex}`} className="bg-red-500/30 font-mono">
         <td>{rowIndex === 0 ? "DNF" : ""}</td>
         {DNFCells}
       </tr>
@@ -75,6 +169,14 @@ export const RaceResultTable: React.FC = () => {
   });
 
   return (
+    <>
+      {tableRows}
+      {DNFRows}
+    </>
+  );
+};
+
+/*return (
     <div className="bg-blue-100 pt-16">
       <table>
         <thead>
@@ -88,7 +190,5 @@ export const RaceResultTable: React.FC = () => {
           {DNFRows}
         </tbody>
       </table>
-      {false && activeDriverMap}
     </div>
-  );
-};
+  ); */

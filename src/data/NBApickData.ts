@@ -25,6 +25,7 @@ export const NBAteamData: {
     fullStyle: string;
     location: string;
     name: string;
+    nickName?: string;
   }
 } = {
   ATL:{
@@ -73,6 +74,7 @@ export const NBAteamData: {
     fullStyle: "bg-[#860038] border-[#FDBB30] text-white",  
     location: "Cleveland",
     name: "Cavaliers",
+    nickName: "Cavs",
   },
   
   DAL:{
@@ -169,6 +171,7 @@ export const NBAteamData: {
     fullStyle: "bg-[#0C2340] border-[#78BE20] text-white",  
     location: "Minnesota",
     name: "Timberwolves",
+    nickName: "T-wolves",
   },
   
   NOP:{
@@ -225,6 +228,7 @@ export const NBAteamData: {
     fullStyle: "bg-[#E03A3E] border-[#000000] text-white",  
     location: "Portland",
     name: "Trailblazers",
+    nickName: "Blazers"
   },
   
   SAC:{

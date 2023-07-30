@@ -149,6 +149,28 @@ export const FormulaOneRaceResults : {
     polePosition: "VER",
     sprint: false,
   },
+  {
+    location: "Hungary",
+    finalOrder: [
+      "VER", "NOR", "PER", "HAM", "PIA", "RUS", "LEC", "SAI", "ALO", "STR", "ALB", "BOT", "RIC", "HUL", "TSU", "ZHO", "MAG", "SAR",
+    ],
+    DNFs: [
+      "OCO", "GAS",
+    ],
+    fastestLap: "VER",
+    polePosition: "HAM",
+    sprint: false,
+  },
+  {
+    location: "Belgium",
+    finalOrder: [
+      "VER", "PIA", "GAS", "SAI", "LEC", "NOR", "HAM", "RUS", "OCO", "RIC", "STR", "ALB", "BOT", "MAG", "ZHO", "SAR", "HUL", "TSU",
+    ],
+    DNFs: [
+      "PER", "ALO",
+    ],
+    sprint: true,
+  },
 ]
 
 export type RaceResultsType = typeof FormulaOneRaceResults;

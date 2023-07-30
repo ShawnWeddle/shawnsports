@@ -14,6 +14,7 @@ const FormulaOne: NextPage = () => {
       <main className="flex min-h-screen flex-col items-center bg-blue-800">
         <div className="text-2xl text-white"></div>
         <FormulaOneTable />
+        <DriverStandings />
       </main>
     </>
   );

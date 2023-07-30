@@ -29,6 +29,18 @@ export const raceLocations = [
   "Canada",
   "Austria",
   "Great Britain",
+  "Hungary",
+  "Belgium",
+  "Netherlands",
+  "Italy",
+  "Singapore",
+  "Japan",
+  "Qatar",
+  "Austin",
+  "Mexico",
+  "Brazil",
+  "Las Vegas",
+  "Abu Dhabi",
 ] as const;
 
 export type DriverCodeType = typeof driverCodes[number];

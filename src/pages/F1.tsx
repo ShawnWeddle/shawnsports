@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useNavContext } from "~/hooks/useNavContext";
 import NavBar from "~/components/Nav/NavBar";
 import FormulaOneTable from "~/components/F1/FullTable";
-import DriverStandings from "~/components/F1/DriverStandings";
+import Standings from "~/components/F1/Standings";
 import LineChart from "~/components/F1/LineChart";
 
 const FormulaOne: NextPage = () => {
@@ -21,7 +21,7 @@ const FormulaOne: NextPage = () => {
         <NavBar />
         <div className="m-auto flex min-h-max w-full flex-col items-start overflow-auto bg-white sm:m-0 sm:max-w-screen-sm sm:items-center md:max-w-screen-md lg:max-w-screen-lg">
           {underPageMode === "Tables" && <FormulaOneTable />}
-          {underPageMode === "Standings" && <DriverStandings />}
+          {underPageMode === "Standings" && <Standings />}
           {underPageMode === "Charts" && <LineChart />}
         </div>
       </main>

@@ -1,15 +1,14 @@
 import { cn } from "~/utils/cn";
-import { driverToConstructor, driverNames } from "~/data/F1/F1data";
 import { F1styleData } from "~/data/F1/F1styleData";
 import { FormulaOneRaceResults } from "~/data/F1/raceResults";
 import { createStandings } from "~/data/F1/F1converters";
 
-export const DriverStandings: React.FC = () => {
-  const { driverStandings, driverOrder } = createStandings(
+export const ConstructorStandings: React.FC = () => {
+  const { constructorStandings, constructorOrder } = createStandings(
     FormulaOneRaceResults
   );
 
-  const driverPointsPairs = driverOrder.map((driver, index) => {
+  const constructorPointsPairs = constructorOrder.map((constructor, index) => {
     return (
       <tr
         key={index}
@@ -17,13 +16,15 @@ export const DriverStandings: React.FC = () => {
       >
         <td
           className={cn("px-3", {
-            [F1styleData[driverToConstructor(driver)].primaryBGstyle]: true,
-            [F1styleData[driverToConstructor(driver)].secondaryTextStyle]: true,
+            [F1styleData[constructor].primaryBGstyle]: true,
+            [F1styleData[constructor].secondaryTextStyle]: true,
           })}
         >
-          {driverNames[driver].first} {driverNames[driver].last}
+          {constructor}
         </td>
-        <td className="px-3 text-center">{driverStandings[driver].total}</td>
+        <td className="px-3 text-center">
+          {constructorStandings[constructor].total}
+        </td>
       </tr>
     );
   });
@@ -31,13 +32,13 @@ export const DriverStandings: React.FC = () => {
   return (
     <div className="rounded-xl sm:m-4 sm:border-2">
       <h1 className="mx-2 my-4 text-center text-2xl font-semibold lg:text-4xl">
-        Driver Standings
+        Constructor Standings
       </h1>
       <table className="mb-2 flex justify-center">
-        <tbody>{driverPointsPairs}</tbody>
+        <tbody>{constructorPointsPairs}</tbody>
       </table>
     </div>
   );
 };
 
-export default DriverStandings;
+export default ConstructorStandings;

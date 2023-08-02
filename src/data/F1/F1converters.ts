@@ -1,6 +1,7 @@
-import { driverCodes, constructorNames, driverToConstructor, calculatePoints } from "~/data/F1/F1data";
+import { driverCodes, constructorNames, driverToConstructor, calculatePoints, constructorToDrivers } from "~/data/F1/F1data";
 import type { DriverCodeType, ConstructorNameType } from "~/data/F1/F1data";
 import type { RaceResultsType } from "~/data/F1/raceResults";
+import { flip2DArrays } from "~/utils/cuA";
 
 type FullDriverType = {
   driverName: DriverCodeType | undefined;
@@ -158,26 +159,25 @@ export const createStandings = (results: RaceResultsType) => {
     ZHO : 21,
   }
 
-  const constructorStandings: {[Key in ConstructorNameType] : number} = {
-    "Alfa Romeo" : 0,
-    AlphaTauri : 0,
-    Alpine : 0,
-    "Aston Martin" : 0,
-    Haas : 0,
-    Ferrari : 0,
-    McLaren : 0,
-    Mercedes : 0,
-    "Red Bull" : 0,
-    Williams : 0,
+  const constructorStandings: {[Key in ConstructorNameType] : {total: number, runTotal: number[]}} = {
+    "Alfa Romeo" : {total: 0, runTotal: [0]},
+    AlphaTauri : {total: 0, runTotal: [0]},
+    Alpine : {total: 0, runTotal: [0]},
+    "Aston Martin" : {total: 0, runTotal: [0]},
+    Haas : {total: 0, runTotal: [0]},
+    Ferrari : {total: 0, runTotal: [0]},
+    McLaren : {total: 0, runTotal: [0]},
+    Mercedes : {total: 0, runTotal: [0]},
+    "Red Bull" : {total: 0, runTotal: [0]},
+    Williams : {total: 0, runTotal: [0]},
   }
-
 
   const standings = results.map((result) => {
     const { finalOrder, sprint, fastestLap } = result;
     const addPoints = finalOrder.map((driver, index) => {
       const addition = calculatePoints(index, sprint, driver === fastestLap);
       driverStandings[driver].total += addition;
-        constructorStandings[driverToConstructor(driver)] += addition;
+        constructorStandings[driverToConstructor(driver)].total += addition;
       if(index + 1 < driverBestFinish[driver]){
         driverBestFinish[driver] = index + 1;
       }
@@ -190,7 +190,7 @@ export const createStandings = (results: RaceResultsType) => {
   }).sort((a,b) => b[1] - a[1] || a[2] - b[2]);
 
   const constructorStandingsArray = constructorNames.map((constructor) => {
-    const constructorTuple: [ConstructorNameType, number] = [constructor, constructorStandings[constructor]];
+    const constructorTuple: [ConstructorNameType, number] = [constructor, constructorStandings[constructor].total];
     return constructorTuple;
   }).sort((a,b) => b[1] - a[1]);
 
@@ -200,22 +200,6 @@ export const createStandings = (results: RaceResultsType) => {
   
   const constructorOrder = constructorStandingsArray.map((constructor) => {
     return constructor[0];
-  })
-
-  return {
-    driverStandings: driverStandings, 
-    constructorStandings: constructorStandings, 
-    driverStandingsArray: driverStandingsArray,
-    constructorStandingsArray: constructorStandingsArray,
-    driverOrder: driverOrder,
-    constructorOrder: constructorOrder,
-    driverBestFinish: driverBestFinish,
-  };
-}
-
-export const runningTotal = (results: RaceResultsType, order: DriverCodeType[]) => {
-  const headers = results.map((result) => {
-    return result.sprint ? result.location + " Sprint" : result.location;
   })
 
   const findPlaceArray = (driver: DriverCodeType) => {
@@ -246,8 +230,10 @@ export const runningTotal = (results: RaceResultsType, order: DriverCodeType[]) 
     }));
   }
 
-  const fullResults = order.map((driver) => {
-    return cumulativeArray(findPlaceArray(driver).map((place) => {
+  const fullRunningDriverResults = driverOrder.map((driver) => {
+
+    const fullRunningArray =  cumulativeArray(findPlaceArray(driver).map((place) => {
+
       const pointTotal: FullDriverType = {
         driverName: place.driverName,
         points: place.points,
@@ -256,9 +242,36 @@ export const runningTotal = (results: RaceResultsType, order: DriverCodeType[]) 
         fastestLap: place.fastestLap,
         polePosition: place.polePosition,
       }
-      return pointTotal;
-    })
-  )});
 
-  return { headers: headers, fullResults: fullResults, driverOrder: order }
+      return pointTotal;
+
+    }))
+
+    driverStandings[driver].runTotal = fullRunningArray.map((place) => { return place.points});
+    return fullRunningArray;
+  });
+
+  const fullRunningConstructorResults = constructorOrder.map((constructor)=>{
+    const driverPoints = constructorToDrivers(constructor).map((driver) => {
+      const driverRunArray = driverStandings[driver].runTotal;
+      return driverRunArray;
+    });
+    const constructorRunningArray = flip2DArrays(driverPoints).map((pointsArray) => {return pointsArray.reduce((total, num) => total + num)});
+    constructorStandings[constructor].runTotal = constructorRunningArray;
+    return constructorRunningArray;
+  })
+
+
+
+  return {
+    driverStandings: driverStandings, 
+    constructorStandings: constructorStandings, 
+    driverStandingsArray: driverStandingsArray,
+    constructorStandingsArray: constructorStandingsArray,
+    driverOrder: driverOrder,
+    constructorOrder: constructorOrder,
+    driverBestFinish: driverBestFinish,
+    runningDriverResults: fullRunningDriverResults,
+    runningConstructorResults: fullRunningConstructorResults,
+  };
 }

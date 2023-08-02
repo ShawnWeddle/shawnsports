@@ -9,7 +9,9 @@ type TableModeType = "DriverSort" | "PlaceSort" | "RunningTotal";
 
 const FormulaOneTable: React.FC = () => {
   const [tableMode, setTableMode] = useState<TableModeType>("PlaceSort");
-  const [raceMode, setRaceMode] = useState<RaceModeType>("Sprint Races Only");
+  const [raceMode, setRaceMode] = useState<RaceModeType>(
+    "Both Grands Prix and Sprint Races"
+  );
 
   const TableModeInputs: React.FC = () => {
     return (

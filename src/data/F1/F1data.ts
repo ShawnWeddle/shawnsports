@@ -47,38 +47,50 @@ export type DriverCodeType = typeof driverCodes[number];
 export type ConstructorNameType = typeof constructorNames[number];
 export type RaceLocationType = typeof raceLocations[number];
 
-export const driverToConstructor = (driver: DriverCodeType) : ConstructorNameType => {
+export const driverToConstructor = (driver: DriverCodeType | ConstructorNameType ) : ConstructorNameType => {
   switch(driver){
     case "GAS":
     case "OCO":
+    case "Alpine":
       return "Alpine";
     case "DEV":
     case 'RIC':
     case "TSU":
+    case "AlphaTauri":
       return "AlphaTauri";
     case "BOT":
     case "ZHO":
+    case "Alfa Romeo":
       return "Alfa Romeo";
     case "ALO":
     case "STR":
+    case "Aston Martin":
       return "Aston Martin";
     case "LEC":
     case "SAI":
+    case "Ferrari":
       return "Ferrari";
     case "HUL":
     case "MAG":
+    case "Haas":
       return "Haas";
     case "NOR":
     case "PIA":
+    case "McLaren":
       return "McLaren";
     case "HAM":
     case "RUS":
+    case "Mercedes":
       return "Mercedes";
     case "PER":
     case "VER":
+    case "Red Bull":
       return "Red Bull";
     case "ALB":
     case "SAR":
+    case "Williams":
+      return "Williams";
+    default:
       return "Williams";
   }
 }
@@ -107,6 +119,30 @@ export const constructorToDrivers = (constructor: ConstructorNameType) : DriverC
       return ["ALB", "SAR"];
   }
 
+}
+
+export const driverNames: { [Key in DriverCodeType] : { first: string, last: string}} = {
+  ALB : { first: "", last: ""},
+  ALO : { first: "", last: ""},
+  BOT : { first: "", last: ""},
+  DEV : { first: "", last: ""},
+  GAS : { first: "", last: ""},
+  HAM : { first: "", last: ""},
+  HUL : { first: "", last: ""},
+  LEC : { first: "", last: ""},
+  MAG : { first: "", last: ""},
+  NOR : { first: "", last: ""},
+  OCO : { first: "", last: ""},
+  PER : { first: "", last: ""},
+  PIA : { first: "", last: ""},
+  RIC : { first: "", last: ""},
+  RUS : { first: "", last: ""},
+  SAI : { first: "", last: ""},
+  SAR : { first: "", last: ""},
+  STR : { first: "", last: ""},
+  TSU : { first: "", last: ""},
+  VER : { first: "", last: ""},
+  ZHO : { first: "", last: ""},
 }
 
 export const driverTcamColors: { [Key in DriverCodeType] : "Black" | "Yellow"} = {

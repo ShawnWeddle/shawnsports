@@ -4,7 +4,7 @@ export const F1styleData: {
   [Key in ConstructorNameType]: {primary: string, secondary: string, primaryBGstyle: string, primaryTextStyle: string, secondaryTextStyle: string};
 } = {
   "Alfa Romeo": { primary: "#A51D2F", secondary: "#FFFFFF", primaryBGstyle: "bg-[#A51D2F]", primaryTextStyle: "text-[#A51D2F]", secondaryTextStyle: "text-[#FFFFFF]"},
-  AlphaTauri: { primary: "#01102F", secondary: "#FFFFFF", primaryBGstyle: "bg-[#01102F]", primaryTextStyle: "text-[#01102F]", secondaryTextStyle: "text-[#FFFFFF]"},
+  AlphaTauri: { primary: "#002841", secondary: "#FFFFFF", primaryBGstyle: "bg-[#002841]", primaryTextStyle: "text-[#002841]", secondaryTextStyle: "text-[#FFFFFF]"},
   Alpine: { primary: "#FF99C4", secondary: "#FFFFFF", primaryBGstyle: "bg-[#FF99C4]", primaryTextStyle: "text-[#FF99C4]", secondaryTextStyle: "text-[#FFFFFF]"},
   "Aston Martin": { primary: "#00594F", secondary: "#FFFFFF", primaryBGstyle: "bg-[#00594F]", primaryTextStyle: "text-[#00594F]", secondaryTextStyle: "text-[#FFFFFF]"},
   Ferrari: { primary: "#E0001A", secondary: "#FFEC01", primaryBGstyle: "bg-[#E0001A]", primaryTextStyle: "text-[#E0001A]", secondaryTextStyle: "text-[#FFEC01]"},

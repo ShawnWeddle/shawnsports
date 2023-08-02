@@ -67,3 +67,8 @@ export const handleActivate = (driver: DriverCodeType, activeDrivers: ActiveDriv
   });
   return newActiveDrivers;
 };
+
+export const handleActivationOnChart = (drivers: DriverCodeType[]) => {
+  const newActiveDrivers = [...drivers];
+  
+}

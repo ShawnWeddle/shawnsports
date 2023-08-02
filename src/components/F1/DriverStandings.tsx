@@ -14,7 +14,7 @@ export const DriverStandings: React.FC = () => {
   );
   const work = constructorNames.map((constructor, index) => {
     const play = constructorToDrivers(constructor)
-      .map((driver, index) => {
+      .map((driver) => {
         const driverTuple: [DriverCodeType, number] = [
           driver,
           driverStandings[driver].total,

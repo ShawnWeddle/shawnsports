@@ -86,17 +86,3 @@ export const DriverResultTable: React.FC<RaceModeProps> = (
 
   return <>{tableRows}</>;
 };
-
-/*return (
-    <div className="bg-blue-100 pt-16">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            {tableHeaders}
-          </tr>
-        </thead>
-        <tbody>{tableRows}</tbody>
-      </table>
-    </div>
-  ); */

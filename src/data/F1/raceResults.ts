@@ -171,6 +171,18 @@ export const FormulaOneRaceResults : {
     ],
     sprint: true,
   },
+  {
+    location: "Belgium",
+    finalOrder: [
+      "VER", "PER", "LEC", "HAM", "ALO", "RUS", "NOR", "OCO", "STR", "TSU", "GAS", "BOT", "ZHO", "ALB", "MAG", "RIC", "SAR", "HUL",
+    ],
+    DNFs: [
+      "SAI", "PIA",
+    ],
+    fastestLap: "HAM",
+    polePosition: "LEC",
+    sprint: false,
+  },
 ]
 
 export type RaceResultsType = typeof FormulaOneRaceResults;

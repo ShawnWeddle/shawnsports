@@ -2,6 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import FormulaOneTable from "~/components/F1/FullTable";
 import DriverStandings from "~/components/F1/DriverStandings";
+import { LineChart } from "~/components/F1/Chart";
 
 const FormulaOne: NextPage = () => {
   return (
@@ -13,8 +14,8 @@ const FormulaOne: NextPage = () => {
       </Head>
       <main className="flex min-h-screen flex-col items-center bg-blue-800">
         <div className="text-2xl text-white"></div>
+        <LineChart />
         <FormulaOneTable />
-        <DriverStandings />
       </main>
     </>
   );

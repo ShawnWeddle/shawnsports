@@ -1,23 +1,19 @@
 import { cn } from "~/utils/cn";
-import {
-  resultsSortedByDriver,
-  createStandings,
-  runningTotal,
-} from "~/data/F1/F1converters";
+import { createStandings } from "~/data/F1/F1converters";
 import { FormulaOneRaceResults } from "~/data/F1/raceResults";
 import { F1styleData } from "~/data/F1/F1styleData";
-import { driverToConstructor, driverCodes } from "~/data/F1/F1data";
+import { driverToConstructor } from "~/data/F1/F1data";
 import type { RaceModeProps } from "~/data/F1/F1data";
 
 export const RunningResultTable: React.FC<RaceModeProps> = (
   props: RaceModeProps
 ) => {
   const { raceMode } = props;
-  const { driverOrder } = createStandings(FormulaOneRaceResults);
+  const { driverOrder, runningDriverResults } = createStandings(
+    FormulaOneRaceResults
+  );
 
-  const { fullResults } = runningTotal(FormulaOneRaceResults, driverOrder);
-
-  const tableRows = fullResults.map((result, index) => {
+  const tableRows = runningDriverResults.map((result, index) => {
     const tableCells = result.map((place, Cindex) => {
       const { sprint, points } = place;
       return (
@@ -58,17 +54,3 @@ export const RunningResultTable: React.FC<RaceModeProps> = (
 
   return <>{tableRows}</>;
 };
-
-/*return (
-    <div className="bg-blue-100 pt-16">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            {tableHeaders}
-          </tr>
-        </thead>
-        <tbody>{tableRows}</tbody>
-      </table>
-    </div>
-  ); */

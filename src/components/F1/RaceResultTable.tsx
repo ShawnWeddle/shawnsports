@@ -14,18 +14,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
 
   const [activeDrivers, setActiveDrivers] = useState(driverActivation);
 
-  const { headers, fullResults, DNFs } = resultsSortedByPlace(
-    FormulaOneRaceResults
-  );
-  const tableHeaders = headers.map((header, index) => {
-    return (
-      <th key={index}>
-        <div className="w-0 -rotate-[30deg] transform whitespace-nowrap px-4">
-          {header}
-        </div>
-      </th>
-    );
-  });
+  const { fullResults, DNFs } = resultsSortedByPlace(FormulaOneRaceResults);
   const tableRows = fullResults.map((result, rowIndex) => {
     const tableCells = result.map((driver, cellIndex) => {
       const { driverName, sprint, finishPosition, polePosition, fastestLap } =
@@ -37,8 +26,8 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
         const Tcam = driverTcamColors[driverName];
         const outlineColor =
           activeDrivers[driverName].teammateActive && Tcam === "Black"
-            ? "bg-[#33424d]" //black
-            : "bg-[#d9ff00]"; //yellow
+            ? "bg-[#33424d]"
+            : "bg-[#d9ff00]";
         const activeBg = activeStyleGuide.primaryBGstyle;
         const activeTextColor = activeStyleGuide.secondaryTextStyle;
         return (
@@ -49,7 +38,16 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
             }}
             className={cn(
               {
-                "bg-teal-200": sprint,
+                "bg-teal-100": sprint,
+              },
+              {
+                "bg-teal-200":
+                  sprint &&
+                  finishPosition !== "DNF" &&
+                  finishPosition !== "DNR" &&
+                  finishPosition < 8,
+              },
+              {
                 "border-b-2 border-black": !sprint && finishPosition === 9,
               },
               {
@@ -86,7 +84,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
             key={`c-${cellIndex}`}
             className={cn(
               {
-                "bg-teal-200": sprint,
+                "bg-teal-100": sprint,
               },
               { hidden: sprint && raceMode === "Grands Prix Only" },
               { hidden: !sprint && raceMode === "Sprint Races Only" }
@@ -96,8 +94,32 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
       }
     });
     return (
-      <tr key={`r-${rowIndex}`} className="border-b-2 border-white font-mono">
-        <td className="text-center">{rowIndex + 1}</td>
+      <tr
+        key={`r-${rowIndex}`}
+        className="border-b-2 border-gray-200 font-mono"
+      >
+        <td
+          className={cn(
+            "text-center",
+            {
+              "bg-yellow-200/60": rowIndex === 0,
+            },
+            {
+              "bg-gray-400/60": rowIndex === 1,
+            },
+            {
+              "bg-amber-600/60": rowIndex === 2,
+            },
+            {
+              "bg-emerald-100": rowIndex > 2 && rowIndex < 10,
+            },
+            {
+              "border-b-2 border-black": rowIndex === 9,
+            }
+          )}
+        >
+          {rowIndex + 1}
+        </td>
         {tableCells}
       </tr>
     );
@@ -161,11 +183,6 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
         {DNFCells}
       </tr>
     );
-  });
-
-  const activeDriverMap = Object.entries(activeDrivers).map((driver, index) => {
-    const [name, bool] = driver;
-    return <div key={index}>{bool && name}</div>;
   });
 
   return (

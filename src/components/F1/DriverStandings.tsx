@@ -25,7 +25,8 @@ export const DriverStandings: React.FC = () => {
       .sort((a, b) => a[1] - b[1])
       .map((driver, index) => {
         const percentage = Math.round(
-          (driver[1] / constructorStandings[driverToConstructor(driver[0])]) *
+          (driver[1] /
+            constructorStandings[driverToConstructor(driver[0])].total) *
             100
         );
         const classWidth = `w-[${percentage}%]`;

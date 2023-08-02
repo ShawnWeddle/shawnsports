@@ -22,7 +22,7 @@ export const RunningResultTable: React.FC<RaceModeProps> = (
           className={cn(
             "w-8 px-2 text-center",
             {
-              "bg-teal-200": sprint,
+              "bg-teal-100": sprint,
             },
             { hidden: sprint && raceMode === "Grands Prix Only" },
             { hidden: !sprint && raceMode === "Sprint Races Only" }
@@ -38,9 +38,9 @@ export const RunningResultTable: React.FC<RaceModeProps> = (
     const driverBg =
       F1styleData[driverToConstructor(activeDriver)].primaryBGstyle;
     return (
-      <tr key={`r-${index}`} className="border-b-2 border-white font-mono">
+      <tr key={`r-${index}`} className="border-b-2 border-gray-200 font-mono">
         <td
-          className={cn("rounded-br-xl rounded-tl-xl px-2 text-center", {
+          className={cn("px-2 text-center", {
             [driverTextColor]: true,
             [driverBg]: true,
           })}

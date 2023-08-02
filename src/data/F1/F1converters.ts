@@ -178,7 +178,7 @@ export const createStandings = (results: RaceResultsType) => {
       const addition = calculatePoints(index, sprint, driver === fastestLap);
       driverStandings[driver].total += addition;
         constructorStandings[driverToConstructor(driver)].total += addition;
-      if(index + 1 < driverBestFinish[driver]){
+      if(!sprint && index + 1 < driverBestFinish[driver]){
         driverBestFinish[driver] = index + 1;
       }
     })
@@ -231,9 +231,7 @@ export const createStandings = (results: RaceResultsType) => {
   }
 
   const fullRunningDriverResults = driverOrder.map((driver) => {
-
     const fullRunningArray =  cumulativeArray(findPlaceArray(driver).map((place) => {
-
       const pointTotal: FullDriverType = {
         driverName: place.driverName,
         points: place.points,
@@ -242,9 +240,7 @@ export const createStandings = (results: RaceResultsType) => {
         fastestLap: place.fastestLap,
         polePosition: place.polePosition,
       }
-
       return pointTotal;
-
     }))
 
     driverStandings[driver].runTotal = fullRunningArray.map((place) => { return place.points});
@@ -260,8 +256,6 @@ export const createStandings = (results: RaceResultsType) => {
     constructorStandings[constructor].runTotal = constructorRunningArray;
     return constructorRunningArray;
   })
-
-
 
   return {
     driverStandings: driverStandings, 

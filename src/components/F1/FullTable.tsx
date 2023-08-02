@@ -15,24 +15,8 @@ const FormulaOneTable: React.FC = () => {
 
   const TableModeInputs: React.FC = () => {
     return (
-      <fieldset className="">
+      <fieldset className="rounded-xl border p-2">
         <div className="flex justify-start">
-          <label htmlFor="Driver" className="px-1">
-            Driver
-          </label>
-          <input
-            type="radio"
-            id="Driver"
-            checked={tableMode === "DriverSort"}
-            onChange={() => {
-              setTableMode("DriverSort");
-            }}
-          />
-        </div>
-        <div className="flex justify-start">
-          <label htmlFor="Place" className="px-1">
-            Place
-          </label>
           <input
             type="radio"
             id="Place"
@@ -41,11 +25,24 @@ const FormulaOneTable: React.FC = () => {
               setTableMode("PlaceSort");
             }}
           />
+          <label htmlFor="Place" className="px-1">
+            Sorted by place
+          </label>
         </div>
         <div className="flex justify-start">
-          <label htmlFor="Running" className="px-1">
-            Running
+          <input
+            type="radio"
+            id="Driver"
+            checked={tableMode === "DriverSort"}
+            onChange={() => {
+              setTableMode("DriverSort");
+            }}
+          />
+          <label htmlFor="Driver" className="px-1">
+            Sorted by driver
           </label>
+        </div>
+        <div className="flex justify-start">
           <input
             type="radio"
             id="Running"
@@ -54,6 +51,9 @@ const FormulaOneTable: React.FC = () => {
               setTableMode("RunningTotal");
             }}
           />
+          <label htmlFor="Running" className="px-1">
+            Cumulative points
+          </label>
         </div>
       </fieldset>
     );
@@ -61,11 +61,8 @@ const FormulaOneTable: React.FC = () => {
 
   const RaceModeInputs: React.FC = () => {
     return (
-      <fieldset className="">
+      <fieldset className="rounded-xl border p-2">
         <div className="flex justify-start">
-          <label htmlFor="All" className="px-1">
-            Both Grands Prix and Sprint Races
-          </label>
           <input
             type="radio"
             id="All"
@@ -74,11 +71,11 @@ const FormulaOneTable: React.FC = () => {
               setRaceMode("Both Grands Prix and Sprint Races");
             }}
           />
+          <label htmlFor="All" className="px-1">
+            Both
+          </label>
         </div>
         <div className="flex justify-start">
-          <label htmlFor="GPonly" className="px-1">
-            Grands Prix Only
-          </label>
           <input
             type="radio"
             id="GPonly"
@@ -87,11 +84,11 @@ const FormulaOneTable: React.FC = () => {
               setRaceMode("Grands Prix Only");
             }}
           />
+          <label htmlFor="GPonly" className="px-1">
+            Grands Prix Only
+          </label>
         </div>
         <div className="flex justify-start">
-          <label htmlFor="SRonly" className="px-1">
-            Sprint Races Only
-          </label>
           <input
             type="radio"
             id="SRonly"
@@ -100,15 +97,25 @@ const FormulaOneTable: React.FC = () => {
               setRaceMode("Sprint Races Only");
             }}
           />
+          <label htmlFor="SRonly" className="px-1">
+            Sprint Races Only
+          </label>
         </div>
       </fieldset>
     );
   };
 
   return (
-    <div className="bg-blue-100">
-      <TableModeInputs />
-      <RaceModeInputs />
+    <>
+      <div className="flex w-full justify-center">
+        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+          2023 Formula One Season
+        </h1>
+      </div>
+      <div className="flex w-full justify-center gap-4">
+        <TableModeInputs />
+        <RaceModeInputs />
+      </div>
       <table>
         <thead>
           <tr>
@@ -126,7 +133,7 @@ const FormulaOneTable: React.FC = () => {
           )}
         </tbody>
       </table>
-    </div>
+    </>
   );
 };
 

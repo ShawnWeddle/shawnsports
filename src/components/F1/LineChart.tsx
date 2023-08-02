@@ -92,7 +92,7 @@ const doc = (
   }
 };
 
-export const LineChart: React.FC = () => {
+const LineChart: React.FC = () => {
   const [pointsHolder1, setPointsHolder1] = useState<PointsHolderType>(
     doc("VER")
   );
@@ -137,8 +137,6 @@ export const LineChart: React.FC = () => {
         return {
           label: pointsHolder.name,
           data: [0],
-          borderColor: "#FFFFFF",
-          backgroundColor: "#FFFFFF",
         };
       }
     });
@@ -155,19 +153,25 @@ export const LineChart: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex min-h-screen w-full max-w-screen-md flex-col justify-center bg-blue-200">
+    <div className="flex min-h-max w-full max-w-screen-md flex-col items-start sm:items-center">
       <Line data={data} />
-      <div className="flex justify-around">
+      <div className="flex flex-wrap justify-center gap-2">
         <div
-          className={cn("flex justify-center gap-2 p-2", {
-            [F1styleData[
-              driverToConstructor(
-                pointsHolder1.name !== "No Selection"
-                  ? pointsHolder1.name
-                  : "ALB"
-              )
-            ].primaryBGstyle]: pointsHolder1.name !== "No Selection",
-          })}
+          className={cn(
+            "flex justify-center gap-2 rounded-md p-2",
+            {
+              [F1styleData[
+                driverToConstructor(
+                  pointsHolder1.name !== "No Selection"
+                    ? pointsHolder1.name
+                    : "ALB"
+                )
+              ].primaryBGstyle]: pointsHolder1.name !== "No Selection",
+            },
+            {
+              "bg-gray-300": pointsHolder1.name === "No Selection",
+            }
+          )}
         >
           <div
             className={cn(
@@ -205,15 +209,21 @@ export const LineChart: React.FC = () => {
         </div>
 
         <div
-          className={cn("flex justify-center gap-2 p-2", {
-            [F1styleData[
-              driverToConstructor(
-                pointsHolder2.name !== "No Selection"
-                  ? pointsHolder2.name
-                  : "ALB"
-              )
-            ].primaryBGstyle]: pointsHolder2.name !== "No Selection",
-          })}
+          className={cn(
+            "flex justify-center gap-2 rounded-md p-2",
+            {
+              [F1styleData[
+                driverToConstructor(
+                  pointsHolder2.name !== "No Selection"
+                    ? pointsHolder2.name
+                    : "ALB"
+                )
+              ].primaryBGstyle]: pointsHolder2.name !== "No Selection",
+            },
+            {
+              "bg-gray-300": pointsHolder2.name === "No Selection",
+            }
+          )}
         >
           <div
             className={cn(
@@ -230,6 +240,9 @@ export const LineChart: React.FC = () => {
               },
               {
                 "bg-white": pointsHolder2.constructor,
+              },
+              {
+                "bg-gray-300": pointsHolder2.name === "No Selection",
               }
             )}
           ></div>
@@ -252,15 +265,21 @@ export const LineChart: React.FC = () => {
         </div>
 
         <div
-          className={cn("flex justify-center gap-2 p-2", {
-            [F1styleData[
-              driverToConstructor(
-                pointsHolder3.name !== "No Selection"
-                  ? pointsHolder3.name
-                  : "ALB"
-              )
-            ].primaryBGstyle]: pointsHolder3.name !== "No Selection",
-          })}
+          className={cn(
+            "flex justify-center gap-2 rounded-md p-2",
+            {
+              [F1styleData[
+                driverToConstructor(
+                  pointsHolder3.name !== "No Selection"
+                    ? pointsHolder3.name
+                    : "ALB"
+                )
+              ].primaryBGstyle]: pointsHolder3.name !== "No Selection",
+            },
+            {
+              "bg-gray-300": pointsHolder3.name === "No Selection",
+            }
+          )}
         >
           <div
             className={cn(
@@ -277,6 +296,9 @@ export const LineChart: React.FC = () => {
               },
               {
                 "bg-white": pointsHolder3.constructor,
+              },
+              {
+                "bg-gray-300": pointsHolder3.name === "No Selection",
               }
             )}
           ></div>
@@ -299,15 +321,21 @@ export const LineChart: React.FC = () => {
         </div>
 
         <div
-          className={cn("flex justify-center gap-2 p-2", {
-            [F1styleData[
-              driverToConstructor(
-                pointsHolder4.name !== "No Selection"
-                  ? pointsHolder4.name
-                  : "ALB"
-              )
-            ].primaryBGstyle]: pointsHolder4.name !== "No Selection",
-          })}
+          className={cn(
+            "flex justify-center gap-2 rounded-md p-2",
+            {
+              [F1styleData[
+                driverToConstructor(
+                  pointsHolder4.name !== "No Selection"
+                    ? pointsHolder4.name
+                    : "ALB"
+                )
+              ].primaryBGstyle]: pointsHolder4.name !== "No Selection",
+            },
+            {
+              "bg-gray-300": pointsHolder4.name === "No Selection",
+            }
+          )}
         >
           <div
             className={cn(
@@ -324,6 +352,9 @@ export const LineChart: React.FC = () => {
               },
               {
                 "bg-white": pointsHolder4.constructor,
+              },
+              {
+                "bg-gray-300": pointsHolder4.name === "No Selection",
               }
             )}
           ></div>
@@ -348,3 +379,5 @@ export const LineChart: React.FC = () => {
     </div>
   );
 };
+
+export default LineChart;

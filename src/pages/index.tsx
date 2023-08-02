@@ -11,8 +11,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col bg-gradient-to-b from-emerald-600 to-emerald-700">
-        <NavBar position="s" />
-        <div>G</div>
+        <NavBar />
       </main>
     </>
   );

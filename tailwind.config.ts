@@ -14,9 +14,9 @@ export default {
       fontFamily: {"CG": "CriqueGrotesk-BlackItalic"},
       colors: {
         formulaOne: "#E10600",
-        home: "#0600A8",
-        nba: "#00A806", 
-        nfl: "#E07800", 
+        home: "#00A806",
+        nba: "#E07800", 
+        nfl: "#0600A8", 
       }
     },
   },

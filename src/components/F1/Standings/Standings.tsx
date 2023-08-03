@@ -1,5 +1,5 @@
-import DriverStandings from "~/components/F1/DriverStandings";
-import ConstructorStandings from "~/components/F1/ConstructorStandings";
+import DriverStandings from "~/components/F1/Standings/DriverStandings";
+import ConstructorStandings from "~/components/F1/Standings/ConstructorStandings";
 
 const Standings: React.FC = () => {
   return (

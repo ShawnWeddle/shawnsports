@@ -1,11 +1,13 @@
-export const teams: string[] = [
+export const nflTeams = [
   "KC", "PHI", "SF", "CIN", "BUF", "DAL", "NYG", "JAX", 
   "MIN", "BAL", "LAC", "MIA", "SEA", "TB", "DET", "PIT", 
   "WAS", "GB", "NE", "NYJ", "CLE", "TEN", "NO", "CAR", 
   "ATL", "LV", "LAR", "DEN", "IND", "ARI", "HOU", "CHI"
-];
+] as const;
 
-export const teamColors: { [key: string] : {primary: string, secondary: string}} = {
+export type NFLTeamType = typeof nflTeams[number];
+
+export const teamColors: { [Key in NFLTeamType] : {primary: string, secondary: string}} = {
   "ARI":{
     primary: "#97233F",
     secondary: "#FFB612"
@@ -138,7 +140,7 @@ export const teamColors: { [key: string] : {primary: string, secondary: string}}
 
 export type teamInfoType = {rank: number, code: string, location: string, name: string };
 
-export const teamInfo: { [key: string] : teamInfoType} = {
+export const teamInfo: { [Key in NFLTeamType] : teamInfoType} = {
   "ARI":{
     code: "ARI",
     rank: 29,

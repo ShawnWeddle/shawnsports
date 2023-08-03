@@ -125,7 +125,7 @@ export const driverNames: { [Key in DriverCodeType] : { first: string, last: str
   ALB : { first: "Alex", last: "Albon"},
   ALO : { first: "Fernando", last: "Alonso"},
   BOT : { first: "Valterri", last: "Bottas"},
-  DEV : { first: "Nyck", last: "Devries"},
+  DEV : { first: "Nyck", last: "de Vries"},
   GAS : { first: "Pierre", last: "Gasly"},
   HAM : { first: "Lewis", last: "Hamilton"},
   HUL : { first: "Nico", last: "Hulkenberg"},

@@ -1,4 +1,4 @@
-export const allNavHeads = {"Home": ["Top",], "NBA": ["Top",], "NFL": ["Top",], "F1": ["Tables", "Standings", "Charts"]} as const;
+export const allNavHeads = {"Home": ["Top",], "NBA": ["Future Picks",], "NFL": ["Rank",], "F1": ["Tables", "Standings", "Charts"]} as const;
 export const pageHeads = ["Home", "NBA", "NFL", "F1",] as const;
 export type NavHeadsType = typeof allNavHeads;
 export type PageHeadsType = keyof NavHeadsType;
@@ -27,10 +27,10 @@ export const underPageDefault = (page: PageHeadsType) : UnderPageHeadsType => {
       return "Top"
     }
     case "NBA": {
-      return "Top"
+      return "Future Picks"
     }
     case "NFL": {
-      return "Top"
+      return "Rank"
     }
     case "F1": {
       return "Tables"

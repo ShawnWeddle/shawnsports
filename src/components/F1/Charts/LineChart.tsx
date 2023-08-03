@@ -153,9 +153,14 @@ const LineChart: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex min-h-max w-full max-w-screen-md flex-col items-start sm:items-center">
+    <div className="flex w-full max-w-screen-md flex-col items-start sm:items-center">
+      <div className="flex w-full justify-center">
+        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+          Compare Drivers and Constructors
+        </h1>
+      </div>
       <Line data={data} />
-      <div className="flex flex-wrap justify-center gap-2">
+      <div className="mb-4 flex flex-wrap justify-center gap-2">
         <div
           className={cn(
             "flex justify-center gap-2 rounded-md p-2",

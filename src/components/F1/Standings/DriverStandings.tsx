@@ -33,7 +33,7 @@ export const DriverStandings: React.FC = () => {
       <h1 className="mx-2 my-4 text-center text-2xl font-semibold lg:text-4xl">
         Driver Standings
       </h1>
-      <table className="mb-2 flex justify-center">
+      <table className="mb-4 flex justify-center">
         <tbody>{driverPointsPairs}</tbody>
       </table>
     </div>

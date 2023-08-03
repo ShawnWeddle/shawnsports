@@ -9,6 +9,14 @@ const NBApickTable: React.FC = () => {
 
   const [activePick, setActivePick] = useState<PickType | null>(null);
 
+  const activePickNotes = activePick?.notes.map((note, index) => {
+    return (
+      <p key={index} className="mt-2">
+        {note}
+      </p>
+    );
+  });
+
   const NBArows = Object.entries(AllNBAPicks).map((teamPicks, rowIndex) => {
     const activeTeamCode = TeamNameEnum.parse(teamPicks[0]);
     const activeTeamPicks = teamPicks[1];
@@ -45,10 +53,7 @@ const NBApickTable: React.FC = () => {
       );
     });
     return (
-      <tr
-        key={`row-${rowIndex}`}
-        className="odd:bg-blue-800/20 even:bg-blue-800/10"
-      >
+      <tr key={`row-${rowIndex}`} className="even:bg-nba/10">
         <td className="hidden px-2 sm:block">
           {NBAteamData[activeTeamCode].location}{" "}
           {NBAteamData[activeTeamCode].name}
@@ -86,16 +91,20 @@ const NBApickTable: React.FC = () => {
               onClick={() => {
                 dialog.current?.close();
               }}
+              className="font-semibold"
             >
-              X
+              ✕
             </button>
           </div>
-          <p className="mt-2">{activePick?.notes}</p>
+          {activePickNotes}
         </div>
       </dialog>
-      <table className="w-full bg-blue-100 sm:w-auto">
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        Future NBA First Round Picks
+      </h1>
+      <table className="w-full sm:w-auto">
         <thead>
-          <tr className="sm:text-xl">
+          <tr className="bg-nba text-white sm:text-xl">
             <th>Team</th>
             <th>2024</th>
             <th>2025</th>
@@ -103,7 +112,7 @@ const NBApickTable: React.FC = () => {
             <th>2027</th>
             <th>2028</th>
             <th>2029</th>
-            <th className="pr-1">2030</th>
+            <th>2030</th>
           </tr>
         </thead>
         <tbody className="text-sm sm:text-base">{NBArows}</tbody>

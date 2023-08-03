@@ -34,7 +34,7 @@ export const ConstructorStandings: React.FC = () => {
       <h1 className="mx-2 my-4 text-center text-2xl font-semibold lg:text-4xl">
         Constructor Standings
       </h1>
-      <table className="mb-2 flex justify-center">
+      <table className="mb-4 flex justify-center">
         <tbody>{constructorPointsPairs}</tbody>
       </table>
     </div>

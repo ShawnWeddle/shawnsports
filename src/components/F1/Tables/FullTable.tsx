@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { TableHeaders } from "./TableHeaders";
-import { RaceResultTable } from "~/components/F1/RaceResultTable";
-import { DriverResultTable } from "~/components/F1/DriverResultTable";
-import { RunningResultTable } from "~/components/F1/RunningTotalsTable";
+import { RaceResultTable } from "~/components/F1/Tables/RaceResultTable";
+import { DriverResultTable } from "~/components/F1/Tables/DriverResultTable";
+import { RunningResultTable } from "~/components/F1/Tables/RunningTotalsTable";
 import type { RaceModeType } from "~/data/F1/F1data";
 
 type TableModeType = "DriverSort" | "PlaceSort" | "RunningTotal";

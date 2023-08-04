@@ -1,6 +1,6 @@
 import type { NFLTeamType } from "./NFLdata"
 
-export const nflStyleData: { [Key in NFLTeamType] : {
+export const NFLstyleData: { [Key in NFLTeamType] : {
   primary: string, 
   secondary: string, 
   primaryBGstyle: string,

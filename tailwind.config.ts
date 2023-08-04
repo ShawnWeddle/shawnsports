@@ -5,10 +5,9 @@ export default {
   theme: {
     extend: {
       width: {
-        "all":"45rem",
+        "22":"5.5rem",
       },
       height: {
-        "all":"45rem",
         "22":"5.5rem",
       },
       fontFamily: {"CG": "CriqueGrotesk-BlackItalic"},

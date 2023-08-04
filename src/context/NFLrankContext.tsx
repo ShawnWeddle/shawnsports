@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
 import type { NFLTeamType } from "~/data/NFL/NFLdata";
-import { nflTeams, teamInfo, nullArray32 } from "~/data/NFL/NFLdata";
+import { nflTeams, NFLteamData, nullArray32 } from "~/data/NFL/NFLdata";
 
 export const NFLRankContext = createContext<ContextType | null>(null);
 
@@ -41,7 +41,7 @@ export const nflRankReducer = (
       if (newRank > -1 && newRank < 32 && team !== null) {
         // Remove from Unranked
         const newUnRankedTeams = [...unRankedTeams];
-        newUnRankedTeams[teamInfo[team].rank] = null;
+        newUnRankedTeams[NFLteamData[team].rank] = null;
 
         // Add to Ranked
         const newRankedTeams = [...rankedTeams];
@@ -90,7 +90,7 @@ export const nflRankReducer = (
 
         // Add to Unranked
         const newUnRankedTeams = [...unRankedTeams];
-        newUnRankedTeams[teamInfo[team].rank] = team;
+        newUnRankedTeams[NFLteamData[team].rank] = team;
 
         const newState = {
           unRankedTeams: newUnRankedTeams,
@@ -141,7 +141,6 @@ export const nflRankReducer = (
           unRankedTeams: [...unRankedTeams],
           rankedTeams: newRankedTeams,
         };
-        console.log(newState);
         return newState;
       } else {
         return {
@@ -164,7 +163,6 @@ export const nflRankReducer = (
           unRankedTeams: [...unRankedTeams],
           rankedTeams: newRankedTeams,
         };
-        console.log(newState);
         return newState;
       } else {
         return {
@@ -187,7 +185,6 @@ export const nflRankReducer = (
           unRankedTeams: [...unRankedTeams],
           rankedTeams: newRankedTeams,
         };
-        console.log(newState);
         return newState;
       } else {
         return {

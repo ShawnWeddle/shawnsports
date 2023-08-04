@@ -7,13 +7,14 @@ import {
 } from "react-icons/fa";
 import { BsChevronCompactUp, BsChevronCompactDown } from "react-icons/bs";
 import { cn } from "~/utils/cn";
-import { useNFLRankContext } from "~/hooks/useNFLRanker";
-import type { NFLTeamType } from "~/data/NFL/NFLdata";
-import { NFLteamData } from "~/data/NFL/NFLdata";
-import { NFLstyleData } from "~/data/NFL/NFLstyleData";
+import { useNBARankContext } from "~/hooks/useNBARanker";
+import type { NBATeamType } from "~/data/NBApickData";
+import { NBAteamData } from "~/data/NBApickData";
+import { NBAstyleData } from "~/data/NBA/NBAstyleData";
+
 interface RankerRowProps {
-  unRankedTeam: NFLTeamType | null;
-  rankedTeam: NFLTeamType | null;
+  unRankedTeam: NBATeamType | null;
+  rankedTeam: NBATeamType | null;
   index: number;
 }
 
@@ -21,7 +22,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   const { unRankedTeam, rankedTeam, index } = props;
   const [newRank, setNewRank] = useState<string>("");
   const [reRank, setReRank] = useState<string>("");
-  const { nflRankDispatch } = useNFLRankContext();
+
+  const { nbaRankDispatch } = useNBARankContext();
 
   return (
     <tr className="border-b-2 border-gray-200 font-semibold last:border-0">
@@ -29,27 +31,27 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
         <>
           <td
             className={cn("-pr-2 hidden w-52 pl-2 sm:block", {
-              [NFLstyleData[unRankedTeam].primaryBGstyle]: true,
-              [NFLstyleData[unRankedTeam].textColorStyle]: true,
+              [NBAstyleData[unRankedTeam].primaryBGstyle]: true,
+              [NBAstyleData[unRankedTeam].secondaryTextStyle]: true,
             })}
           >
-            {NFLteamData[unRankedTeam].location}{" "}
-            {NFLteamData[unRankedTeam].name}
+            {NBAteamData[unRankedTeam].location}{" "}
+            {NBAteamData[unRankedTeam].name}
           </td>
           <td
             className={cn("-pr-2 w-24 pl-2 sm:hidden", {
-              [NFLstyleData[unRankedTeam].primaryBGstyle]: true,
-              [NFLstyleData[unRankedTeam].textColorStyle]: true,
+              [NBAstyleData[unRankedTeam].primaryBGstyle]: true,
+              [NBAstyleData[unRankedTeam].secondaryTextStyle]: true,
             })}
           >
-            {NFLteamData[unRankedTeam].name}
+            {NBAteamData[unRankedTeam].name}
           </td>
         </>
       ) : (
-        <td className={cn("w-24 bg-nfl/30 sm:w-52")}></td>
+        <td className={cn("w-24 bg-nba/30 sm:w-52")}></td>
       )}
       <td>
-        <div className="flex justify-center overflow-hidden rounded bg-nfl">
+        <div className="flex justify-center overflow-hidden rounded bg-nba">
           <input
             type="number"
             min={1}
@@ -64,7 +66,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="px-1 py-0.5 text-white"
             onClick={() => {
-              nflRankDispatch({
+              nbaRankDispatch({
                 type: "RANK_TEAM",
                 payload: {
                   team: unRankedTeam,
@@ -81,9 +83,9 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
       <td>
         <div className="flex justify-between">
           <button
-            className="rounded px-1 py-0.5 text-nfl"
+            className="rounded px-1 py-0.5 text-nba"
             onClick={() => {
-              nflRankDispatch({
+              nbaRankDispatch({
                 type: "UNRANK_TEAM",
                 payload: {
                   team: rankedTeam,
@@ -94,35 +96,33 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           >
             <FaArrowLeft />
           </button>
-          <span className="px-1 text-center text-sm font-bold">
-            {index + 1}
-          </span>
+          <span className="px-1 text-center font-bold">{index + 1}</span>
         </div>
       </td>
       {rankedTeam ? (
         <>
           <td
             className={cn("-pr-2 hidden w-52 pl-2 sm:block", {
-              [NFLstyleData[rankedTeam].primaryBGstyle]: true,
-              [NFLstyleData[rankedTeam].textColorStyle]: true,
+              [NBAstyleData[rankedTeam].primaryBGstyle]: true,
+              [NBAstyleData[rankedTeam].secondaryTextStyle]: true,
             })}
           >
-            {NFLteamData[rankedTeam].location} {NFLteamData[rankedTeam].name}
+            {NBAteamData[rankedTeam].location} {NBAteamData[rankedTeam].name}
           </td>
           <td
             className={cn("-pr-2 w-24 pl-2 sm:hidden", {
-              [NFLstyleData[rankedTeam].primaryBGstyle]: true,
-              [NFLstyleData[rankedTeam].textColorStyle]: true,
+              [NBAstyleData[rankedTeam].primaryBGstyle]: true,
+              [NBAstyleData[rankedTeam].secondaryTextStyle]: true,
             })}
           >
-            {NFLteamData[rankedTeam].name}
+            {NBAteamData[rankedTeam].name}
           </td>
         </>
       ) : (
-        <td className={cn("w-24 bg-nfl/30 sm:w-52")}></td>
+        <td className={cn("w-24 bg-nba/30 sm:w-52")}></td>
       )}
       <td>
-        <div className="flex justify-center overflow-hidden rounded bg-nfl">
+        <div className="flex justify-center overflow-hidden rounded bg-nba">
           <input
             type="number"
             min={1}
@@ -137,7 +137,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="px-1 py-0.5 text-white"
             onClick={() => {
-              nflRankDispatch({
+              nbaRankDispatch({
                 type: "RERANK_TEAM",
                 payload: {
                   team: rankedTeam,
@@ -155,7 +155,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-3 px-0.5 text-sm text-white disabled:bg-white/50"
               disabled={index === 0}
               onClick={() => {
-                nflRankDispatch({
+                nbaRankDispatch({
                   type: "MOVE_UP",
                   payload: {
                     team: rankedTeam,
@@ -168,9 +168,9 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             </button>
             <button
               className="h-3 px-0.5 text-sm text-white disabled:bg-white/50"
-              disabled={index === 31}
+              disabled={index === 29}
               onClick={() => {
-                nflRankDispatch({
+                nbaRankDispatch({
                   type: "MOVE_DOWN",
                   payload: {
                     team: rankedTeam,
@@ -187,7 +187,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-6 px-0.5 text-sm text-white disabled:bg-white/50"
               disabled={index === 0}
               onClick={() => {
-                nflRankDispatch({
+                nbaRankDispatch({
                   type: "MOVE_UP",
                   payload: {
                     team: rankedTeam,
@@ -202,7 +202,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-6 px-0.5 text-sm text-white disabled:bg-white/50"
               disabled={index === 31}
               onClick={() => {
-                nflRankDispatch({
+                nbaRankDispatch({
                   type: "MOVE_DOWN",
                   payload: {
                     team: rankedTeam,
@@ -220,12 +220,12 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   );
 };
 
-const NFLRanker: React.FC = () => {
-  const { nflRankState } = useNFLRankContext();
-  const { unRankedTeams, rankedTeams } = nflRankState;
+const NBARanker: React.FC = () => {
+  const { nbaRankState } = useNBARankContext();
+  const { unRankedTeams, rankedTeams } = nbaRankState;
 
-  const nflRows = unRankedTeams.map((unRankedTeam, index) => {
-    const rankedTeam: NFLTeamType | null = rankedTeams[index] ?? null;
+  const nbaRows = unRankedTeams.map((unRankedTeam, index) => {
+    const rankedTeam: NBATeamType | null = rankedTeams[index] ?? null;
 
     return (
       <RankerRow
@@ -240,13 +240,13 @@ const NFLRanker: React.FC = () => {
   return (
     <>
       <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-        Rank NFL Teams
+        Rank NBA Teams
       </h1>
       <table className="text-xs sm:text-base">
-        <tbody>{nflRows}</tbody>
+        <tbody>{nbaRows}</tbody>
       </table>
     </>
   );
 };
 
-export default NFLRanker;
+export default NBARanker;

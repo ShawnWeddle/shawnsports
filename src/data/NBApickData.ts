@@ -34,44 +34,44 @@ export const NBAteamData: {
   }
 } = {
   ATL:{  
-    rank: 0,
+    rank: 14,
     location: "Atlanta",
     name: "Hawks",
   },
   
   BOS:{  
-    rank: 0,
+    rank: 3,
     location: "Boston",
     name: "Celtics",
   },
   
   BRK:{  
-    rank: 0,
+    rank: 20,
     location: "Brooklyn",
     name: "Nets",
   },
   
   CHI:{  
-    rank: 0,
+    rank: 15,
     location: "Chicago",
     name: "Bulls",
   },
   
   CHO:{  
-    rank: 0,
+    rank: 26,
     location: "Charlotte",
     name: "Hornets",
   },
   
   CLE:{  
-    rank: 0,
+    rank: 10,
     location: "Cleveland",
     name: "Cavaliers",
     nickName: "Cavs",
   },
   
   DAL:{  
-    rank: 0,
+    rank: 16,
     location: "Dallas",
     name: "Mavericks",
   },
@@ -83,140 +83,140 @@ export const NBAteamData: {
   },
   
   DET:{  
-    rank: 0,
+    rank: 27,
     location: "Detroit",
     name: "Pistons",
   },
   
   GSW:{  
-    rank: 0,
+    rank: 7,
     location: "Golden State",
     name: "Warriors",
   },
   
   HOU:{  
-    rank: 0,
+    rank: 29,
     location: "Houston",
     name: "Rockets",
   },
   
   IND:{  
-    rank: 0,
+    rank: 19,
     location: "Indiana",
     name: "Pacers",
   },
   
   LAC:{  
-    rank: 0,
+    rank: 11,
     location: "Los Angeles",
     name: "Clippers",
   },
   
   LAL:{ 
-    rank: 0,
+    rank: 5,
     location: "Los Angeles",
     name: "Lakers",
   },
   
   MEM:{  
-    rank: 0,
+    rank: 4,
     location: "Memphis",
     name: "Grizzlies",
   },
   
   MIA:{  
-    rank: 0,
+    rank: 8,
     location: "Miami",
     name: "Heat",
   },
   
   MIL:{  
-    rank: 0,
+    rank: 1,
     location: "Milwaukee",
     name: "Bucks",
   },
   
   MIN:{  
-    rank: 0,
+    rank: 17,
     location: "Minnesota",
     name: "Timberwolves",
     nickName: "T-wolves",
   },
   
   NOP:{  
-    rank: 0,
+    rank: 18,
     location: "New Orleans",
     name: "Pelicans",
   },
   
   NYK:{  
-    rank: 0,
+    rank: 13,
     location: "New York",
     name: "Knicks",
   },
   
   OKC:{  
-    rank: 0,
+    rank: 12,
     location: "Oklahoma City",
     name: "Thunder",
   },
   
   ORL:{  
-    rank: 0,
+    rank: 22,
     location: "Orlando",
     name: "Magic",
   },
   
   PHI:{  
-    rank: 0,
+    rank: 6,
     location: "Philadelphia",
     name: "76ers",
   },
   
   PHO:{  
-    rank: 0,
+    rank: 2,
     location: "Phoenix",
     name: "Suns",
   },
   
   POR:{  
-    rank: 0,
+    rank: 28,
     location: "Portland",
     name: "Trailblazers",
     nickName: "Blazers"
   },
   
   SAC:{  
-    rank: 0,
+    rank: 9,
     location: "Sacramento",
     name: "Kings",
   },
   
   SAS:{  
-    rank: 0,
+    rank: 24,
     location: "San Antonio",
     name: "Spurs",
   },
   
   TOR:{  
-    rank: 0,
+    rank: 23,
     location: "Toronto",
     name: "Raptors",
   },
   
   UTA:{  
-    rank: 0,
+    rank: 21,
     location: "Utah",
     name: "Jazz",
   },
   
   WAS:{  
-    rank: 0,
+    rank: 29,
     location: "Washington",
     name: "Wizards",
   },
 
-} as const;
+};
 
 export const NBApickData: {
   [Key in NBATeamType] : PickCodeType[][]
@@ -282,9 +282,9 @@ export const NBApickData: {
   WAS:[[], ["WAS-2025"], ["WAS-2026"], ["WAS-2027"], ["WAS-2028"], ["WAS-2029"], ["WAS-2030"]],
 };
 
-export const nullArray32 = [
+export const nullArray30 = [
   null, null, null, null, null, null, null, null, 
   null, null, null, null, null, null, null, null, 
   null, null, null, null, null, null, null, null, 
-  null, null, null, null, null, null, null, null, 
+  null, null, null, null, null, null, 
 ]

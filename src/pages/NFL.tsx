@@ -1,10 +1,13 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import { useNavContext } from "~/hooks/useNavContext";
 import NavBar from "~/components/Nav/NavBar";
-import Ranker from "~/components/NFL/NFLRanker";
 import { NFLRankContextProvider } from "~/context/NFLrankContext";
+import NFLRanker from "~/components/NFL/NFLRanker";
 
 const NFL: NextPage = () => {
+  const { navState } = useNavContext();
+  const { underPageMode } = navState;
   return (
     <>
       <Head>
@@ -14,10 +17,12 @@ const NFL: NextPage = () => {
       </Head>
       <main className="flex min-h-screen flex-col bg-gradient-to-r from-nfl/50 via-white to-nfl/50 sm:items-center">
         <NavBar />
-        <div className="mx-auto flex flex-col items-start bg-white sm:m-0 sm:max-w-screen-sm sm:items-center">
-          <NFLRankContextProvider>
-            <Ranker />
-          </NFLRankContextProvider>
+        <div className="mx-auto flex w-full flex-col items-center bg-white sm:m-0 sm:max-w-screen-sm">
+          {underPageMode === "Rank" && (
+            <NFLRankContextProvider>
+              <NFLRanker />
+            </NFLRankContextProvider>
+          )}
         </div>
       </main>
     </>

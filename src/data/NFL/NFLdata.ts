@@ -140,7 +140,7 @@ export const teamColors: { [Key in NFLTeamType] : {primary: string, secondary: s
 
 export type teamInfoType = {rank: number, code: string, location: string, name: string };
 
-export const teamInfo: { [Key in NFLTeamType] : teamInfoType} = {
+export const NFLteamData: { [Key in NFLTeamType] : teamInfoType} = {
   "ARI":{
     code: "ARI",
     rank: 29,

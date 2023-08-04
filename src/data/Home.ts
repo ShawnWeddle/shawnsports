@@ -1,4 +1,4 @@
-export const allNavHeads = {"Home": ["Top",], "NBA": ["Future Picks",], "NFL": ["Rank",], "F1": ["Tables", "Standings", "Charts"]} as const;
+export const allNavHeads = {"Home": ["Top",], "NBA": ["Future Picks", "Rank",], "NFL": ["Rank",], "F1": ["Tables", "Standings", "Charts", "Rank"]} as const;
 export const pageHeads = ["Home", "NBA", "NFL", "F1",] as const;
 export type NavHeadsType = typeof allNavHeads;
 export type PageHeadsType = keyof NavHeadsType;

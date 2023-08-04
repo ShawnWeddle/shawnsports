@@ -11,7 +11,7 @@ export const nflStyleData: { [Key in NFLTeamType] : {
     secondary: "#FFB612",
     primaryBGstyle: "bg-[#97233F]",
     textColorStyle: "text-white",
-  },
+  }, 
   "ATL":{
     primary: "#A71930",
     secondary: "#000000",

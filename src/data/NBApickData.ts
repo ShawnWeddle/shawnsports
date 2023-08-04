@@ -1,272 +1,217 @@
 import { z } from "zod";
 
-export const teamNames = [
+export const nbaTeams = [
   "ATL", "BOS", "BRK", "CHI", "CHO", "CLE", "DAL", "DEN",
   "DET", "GSW", "HOU", "IND", "LAC", "LAL", "MEM", "MIA",
   "MIL", "MIN", "NOP", "NYK", "OKC", "ORL", "PHI", "PHO",
   "POR", "SAC", "SAS", "TOR", "UTA", "WAS"
 ] as const;
 
+export const nbaTeamsRanked: NBATeamType[] = [
+  "DEN", "MIL", "PHO", "BOS", "MEM", "LAL", "PHI", "GSW",
+  "MIA", "SAC", "CLE", "LAC", "OKC", "NYK", "ATL", "CHI",
+  "DAL", "MIN", "NOP", "IND", "BRK", "UTA", "ORL", "TOR",
+  "SAS", "CHO", "DET", "POR", "HOU", "WAS",
+];
+
 export const years = [
   "2024", "2025", "2026", "2027", "2028", "2029", "2030"
 ] as const;
 
-export type TeamNameType = typeof teamNames[number];
+export type NBATeamType = typeof nbaTeams[number];
 export type PickYearType = typeof years[number];
-export type PickCodeType = `${TeamNameType}-${PickYearType}`;
+export type PickCodeType = `${NBATeamType}-${PickYearType}`;
 
-export const TeamNameEnum = z.enum(teamNames);
+export const TeamNameEnum = z.enum(nbaTeams);
 export const YearEnum = z.enum(years);
 
 export const NBAteamData: {
-  [Key in TeamNameType] : {
-    backgroundColor: string;
-    color: string;
-    fullStyle: string;
+  [Key in NBATeamType] : {
+    rank: number,
     location: string;
     name: string;
     nickName?: string;
   }
 } = {
-  ATL:{
-    backgroundColor: "#E03A3E",
-    color: "#C1D32F",
-    fullStyle: "bg-[#E03A3E] border-[#C1D32F] text-white",  
+  ATL:{  
+    rank: 0,
     location: "Atlanta",
     name: "Hawks",
   },
   
-  BOS:{
-    backgroundColor: "#007A33",
-    color: "#BA9653",
-    fullStyle: "bg-[#007A33] border-[#BA9653] text-white",  
+  BOS:{  
+    rank: 0,
     location: "Boston",
     name: "Celtics",
   },
   
-  BRK:{
-    backgroundColor: "#000000",
-    color: "#FFFFFF",
-    fullStyle: "bg-[#000000] border-[#FFFFFF] text-white",  
+  BRK:{  
+    rank: 0,
     location: "Brooklyn",
     name: "Nets",
   },
   
-  CHI:{
-    backgroundColor: "#CE1141",
-    color: "#000000",
-    fullStyle: "bg-[#CE1141] border-[#000000] text-white",  
+  CHI:{  
+    rank: 0,
     location: "Chicago",
     name: "Bulls",
   },
   
-  CHO:{
-    backgroundColor: "#1D1160",
-    color: "#00788C",
-    fullStyle: "bg-[#1D1160] border-[#00788C] text-white",  
+  CHO:{  
+    rank: 0,
     location: "Charlotte",
     name: "Hornets",
   },
   
-  CLE:{
-    backgroundColor: "#860038",
-    color: "#FDBB30",
-    fullStyle: "bg-[#860038] border-[#FDBB30] text-white",  
+  CLE:{  
+    rank: 0,
     location: "Cleveland",
     name: "Cavaliers",
     nickName: "Cavs",
   },
   
-  DAL:{
-    backgroundColor: "#00538C",
-    color: "#B8C4CA",
-    fullStyle: "bg-[#00538C] border-[#B8C4CA] text-white",  
+  DAL:{  
+    rank: 0,
     location: "Dallas",
     name: "Mavericks",
   },
   
-  DEN:{
-    backgroundColor: "#0E2240",
-    color: "#FEC524",
-    fullStyle: "bg-[#0E2240] border-[#FEC524] text-white",  
+  DEN:{  
+    rank: 0,
     location: "Denver",
     name: "Nuggets",
   },
   
-  DET:{
-    backgroundColor: "#1D42BA",
-    color: "#C8102E",
-    fullStyle: "bg-[#1D42BA] border-[#C8102E] text-white",  
+  DET:{  
+    rank: 0,
     location: "Detroit",
     name: "Pistons",
   },
   
-  GSW:{
-    backgroundColor: "#FFC72C",
-    color: "#1D428A",
-    fullStyle: "bg-[#FFC72C] border-[#1D428A] text-white",  
+  GSW:{  
+    rank: 0,
     location: "Golden State",
     name: "Warriors",
   },
   
-  HOU:{
-    backgroundColor: "#CE1141",
-    color: "#C4CED4",
-    fullStyle: "bg-[#CE1141] border-[#C4CED4] text-white",  
+  HOU:{  
+    rank: 0,
     location: "Houston",
     name: "Rockets",
   },
   
-  IND:{
-    backgroundColor: "#002D62",
-    color: "#FDBB30",
-    fullStyle: "bg-[#002D62] border-[#FDBB30] text-white",  
+  IND:{  
+    rank: 0,
     location: "Indiana",
     name: "Pacers",
   },
   
-  LAC:{
-    backgroundColor: "#C8102E",
-    color: "#1D428A",
-    fullStyle: "bg-[#C8102E] border-[#1D428A] text-white",  
+  LAC:{  
+    rank: 0,
     location: "Los Angeles",
     name: "Clippers",
   },
   
-  LAL:{
-    backgroundColor: "#FDB927",
-    color: "#552583",
-    fullStyle: "bg-[#FDB927] border-[#552583] text-[#552583]", 
+  LAL:{ 
+    rank: 0,
     location: "Los Angeles",
     name: "Lakers",
   },
   
-  MEM:{
-    backgroundColor: "#5D76A9",
-    color: "#12173F",
-    fullStyle: "bg-[#5D76A9] border-[#12173F] text-white",  
+  MEM:{  
+    rank: 0,
     location: "Memphis",
     name: "Grizzlies",
   },
   
-  MIA:{
-    backgroundColor: "#98002E",
-    color: "#F9A01B",
-    fullStyle: "bg-[#98002E] border-[#F9A01B] text-white",  
+  MIA:{  
+    rank: 0,
     location: "Miami",
     name: "Heat",
   },
   
-  MIL:{
-    backgroundColor: "#00471B",
-    color: "#EEE1C6",
-    fullStyle: "bg-[#00471B] border-[#EEE1C6] text-white",  
+  MIL:{  
+    rank: 0,
     location: "Milwaukee",
     name: "Bucks",
   },
   
-  MIN:{
-    backgroundColor: "#0C2340",
-    color: "#78BE20",
-    fullStyle: "bg-[#0C2340] border-[#78BE20] text-white",  
+  MIN:{  
+    rank: 0,
     location: "Minnesota",
     name: "Timberwolves",
     nickName: "T-wolves",
   },
   
-  NOP:{
-    backgroundColor: "#0C2340",
-    color: "#85714D",
-    fullStyle: "bg-[#0C2340] border-[#85714D] text-white",  
+  NOP:{  
+    rank: 0,
     location: "New Orleans",
     name: "Pelicans",
   },
   
-  NYK:{
-    backgroundColor: "#F58426",
-    color: "#006BB6",
-    fullStyle: "bg-[#F58426] border-[#006BB6] text-white",  
+  NYK:{  
+    rank: 0,
     location: "New York",
     name: "Knicks",
   },
   
-  OKC:{
-    backgroundColor: "#007AC1",
-    color: "#EF3B24",
-    fullStyle: "bg-[#007AC1] border-[#EF3B24] text-white",  
+  OKC:{  
+    rank: 0,
     location: "Oklahoma City",
     name: "Thunder",
   },
   
-  ORL:{
-    backgroundColor: "#0077C0",
-    color: "#C4CED4",
-    fullStyle: "bg-[#0077C0] border-[#C4CED4] text-white",  
+  ORL:{  
+    rank: 0,
     location: "Orlando",
     name: "Magic",
   },
   
-  PHI:{
-    backgroundColor: "#006BB6",
-    color: "#ED174C",
-    fullStyle: "bg-[#006BB6] border-[#ED174C] text-white",  
+  PHI:{  
+    rank: 0,
     location: "Philadelphia",
     name: "76ers",
   },
   
-  PHO:{
-    backgroundColor: "#E56020",
-    color: "#1D1160",
-    fullStyle: "bg-[#E56020] border-[#1D1160] text-white",  
+  PHO:{  
+    rank: 0,
     location: "Phoenix",
     name: "Suns",
   },
   
-  POR:{
-    backgroundColor: "#E03A3E",
-    color: "#000000",
-    fullStyle: "bg-[#E03A3E] border-[#000000] text-white",  
+  POR:{  
+    rank: 0,
     location: "Portland",
     name: "Trailblazers",
     nickName: "Blazers"
   },
   
-  SAC:{
-    backgroundColor: "#5A2D81",
-    color: "#63727A",
-    fullStyle: "bg-[#5A2D81] border-[#63727A] text-white",  
+  SAC:{  
+    rank: 0,
     location: "Sacramento",
     name: "Kings",
   },
   
-  SAS:{
-    backgroundColor: "#C4CED4",
-    color: "#000000",
-    fullStyle: "bg-[#C4CED4] border-[#000000] text-black",  
+  SAS:{  
+    rank: 0,
     location: "San Antonio",
     name: "Spurs",
   },
   
-  TOR:{
-    backgroundColor: "#CE1141",
-    color: "#000000",
-    fullStyle: "bg-[#CE1141] border-[#000000] text-white",  
+  TOR:{  
+    rank: 0,
     location: "Toronto",
     name: "Raptors",
   },
   
-  UTA:{
-    backgroundColor: "#00471B",
-    color: "#F9A01B",
-    fullStyle: "bg-[#00471B] border-[#F9A01B] text-white",  
+  UTA:{  
+    rank: 0,
     location: "Utah",
     name: "Jazz",
   },
   
-  WAS:{
-    backgroundColor: "#002B5C",
-    color: "#E31837",
-    fullStyle: "bg-[#002B5C] border-[#E31837] text-white",  
+  WAS:{  
+    rank: 0,
     location: "Washington",
     name: "Wizards",
   },
@@ -274,7 +219,7 @@ export const NBAteamData: {
 } as const;
 
 export const NBApickData: {
-  [Key in TeamNameType] : PickCodeType[][]
+  [Key in NBATeamType] : PickCodeType[][]
 } = {
   ATL:[["ATL-2024", "SAC-2024"], [], ["ATL-2026"], [], ["ATL-2028"], ["ATL-2029"], ["ATL-2030"]],
 
@@ -336,3 +281,10 @@ export const NBApickData: {
   
   WAS:[[], ["WAS-2025"], ["WAS-2026"], ["WAS-2027"], ["WAS-2028"], ["WAS-2029"], ["WAS-2030"]],
 };
+
+export const nullArray32 = [
+  null, null, null, null, null, null, null, null, 
+  null, null, null, null, null, null, null, null, 
+  null, null, null, null, null, null, null, null, 
+  null, null, null, null, null, null, null, null, 
+]

@@ -1,7 +1,8 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import NavBar from "~/components/Nav/NavBar";
-import Ranker from "~/components/Rank/Ranker";
+import Ranker from "~/components/NFL/NFLRanker";
+import { NFLRankContextProvider } from "~/context/NFLrankContext";
 
 const NFL: NextPage = () => {
   return (
@@ -14,7 +15,9 @@ const NFL: NextPage = () => {
       <main className="flex min-h-screen flex-col bg-gradient-to-r from-nfl/50 via-white to-nfl/50 sm:items-center">
         <NavBar />
         <div className="mx-auto flex flex-col items-start bg-white sm:m-0 sm:max-w-screen-sm sm:items-center">
-          <Ranker />
+          <NFLRankContextProvider>
+            <Ranker />
+          </NFLRankContextProvider>
         </div>
       </main>
     </>

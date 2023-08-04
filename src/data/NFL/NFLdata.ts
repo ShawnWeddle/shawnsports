@@ -503,3 +503,10 @@ export const teamColorStyles: { [key: string] : {primary: string}} = {
     primary: "bg-[#5A1414] text-white w-48"
   }
 }
+
+export const nullArray32 = [
+  null, null, null, null, null, null, null, null, 
+  null, null, null, null, null, null, null, null, 
+  null, null, null, null, null, null, null, null, 
+  null, null, null, null, null, null, null, null, 
+]

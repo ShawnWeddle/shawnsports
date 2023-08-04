@@ -1,11 +1,11 @@
-import type { TeamNameType, PickYearType, PickCodeType } from "./NBApickData";
+import type { NBATeamType, PickYearType, PickCodeType } from "./NBApickData";
 
 type ProtectionValueType = "N/A"; //"UP" | "P - FU" | "P - FS" | 
 type SwapRightType = "positive" | "negative" | "neutral";
 
-export type PickType = { nativeTeam: TeamNameType, pickCode: PickCodeType, year: number, notes: string[], protection?: ProtectionValueType, swap?: SwapRightType};
+export type PickType = { nativeTeam: NBATeamType, pickCode: PickCodeType, year: number, notes: string[], protection?: ProtectionValueType, swap?: SwapRightType};
 
-export const AllNBAPicks: {[Key in TeamNameType] : {[Key in PickYearType] : PickType[]}} = {
+export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickType[]}} = {
 "ATL":{
   "2024":[{
     nativeTeam: "ATL",
@@ -1040,7 +1040,7 @@ export const AllNBAPicks: {[Key in TeamNameType] : {[Key in PickYearType] : Pick
     nativeTeam: "PHO",
     pickCode: "PHO-2028",
     year: 2028,
-    notes: ["Phoenix will receive the lesser of ( the lesser of their native pick and Brooklyn's pick) and Washington's pick."],
+    notes: ["Phoenix will receive the lesser of (the lesser of their native pick and Brooklyn's pick) and Washington's pick."],
     swap: "negative",
   },],
   "2029":[],
@@ -1342,7 +1342,7 @@ export const AllNBAPicks: {[Key in TeamNameType] : {[Key in PickYearType] : Pick
     nativeTeam: "WAS",
     pickCode: "WAS-2028",
     year: 2028,
-    notes: ["Washington will receive the greater of their native pick and Phoenix's pick."],
+    notes: ["Washington will receive the greater of their native pick and (the lesser of Brooklyn's pick and Phoenix's pick)."],
     swap: "positive",
   },],
   "2029":[{

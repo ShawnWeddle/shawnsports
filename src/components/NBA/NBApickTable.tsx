@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { NBAteamData, TeamNameEnum } from "~/data/NBApickData";
+import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { AllNBAPicks } from "~/data/AllNBApicks";
 import type { PickType } from "~/data/AllNBApicks";
 import { cn } from "~/utils/cn";
@@ -27,7 +28,7 @@ const NBApickTable: React.FC = () => {
             key={`pick-${rowIndex}-${cellIndex}-${pickIndex}`}
             className={cn(
               "border-x-2 first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2",
-              NBAteamData[pick.nativeTeam].fullStyle
+              NBAstyleData[pick.nativeTeam].fullStyle
             )}
             onClick={() => {
               setActivePick(pick);

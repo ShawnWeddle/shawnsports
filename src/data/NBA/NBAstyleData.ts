@@ -1,0 +1,222 @@
+import type { NBATeamType } from "~/data/NBApickData";
+
+export const NBAstyleData: {
+  [Key in NBATeamType] : {
+    primary: string;
+    secondary: string;
+    fullStyle: string;
+    primaryBGstyle: string;
+    secondaryTextStyle: string;
+  }
+} = {
+  ATL:{
+    primary: "#E03A3E",
+    secondary: "#C1D32F",  
+    fullStyle: "bg-[#E03A3E] border-[#C1D32F] text-white",  
+    primaryBGstyle: "bg-[#E03A3E]",
+    secondaryTextStyle: "text-white",
+  },
+  BOS:{
+    primary: "#007A33",
+    secondary: "#BA9653",  
+    fullStyle: "bg-[#007A33] border-[#BA9653] text-white",  
+    primaryBGstyle: "bg-[#007A33]",
+    secondaryTextStyle: "text-white",
+  },
+  BRK:{
+    primary: "#000000",
+    secondary: "#FFFFFF",  
+    fullStyle: "bg-[#000000] border-[#FFFFFF] text-white",  
+    primaryBGstyle: "bg-[#000000]",
+    secondaryTextStyle: "text-white",
+  },
+  CHI:{
+    primary: "#CE1141",
+    secondary: "#000000",  
+    fullStyle: "bg-[#CE1141] border-[#000000] text-white",  
+    primaryBGstyle: "bg-[#CE1141]",
+    secondaryTextStyle: "text-white",
+  },
+  CHO:{
+    primary: "#1D1160",
+    secondary: "#00788C",  
+    fullStyle: "bg-[#1D1160] border-[#00788C] text-white",  
+    primaryBGstyle: "bg-[#1D1160]",
+    secondaryTextStyle: "text-white",
+  },
+  CLE:{
+    primary: "#860038",
+    secondary: "#FDBB30",  
+    fullStyle: "bg-[#860038] border-[#FDBB30] text-white",  
+    primaryBGstyle: "bg-[#860038]",
+    secondaryTextStyle: "text-white",
+  },
+  DAL:{
+    primary: "#00538C",
+    secondary: "#B8C4CA",  
+    fullStyle: "bg-[#00538C] border-[#B8C4CA] text-white",  
+    primaryBGstyle: "bg-[#00538C]",
+    secondaryTextStyle: "text-white",
+  },
+  DEN:{
+    primary: "#0E2240",
+    secondary: "#FEC524",  
+    fullStyle: "bg-[#0E2240] border-[#FEC524] text-white",  
+    primaryBGstyle: "bg-[#0E2240]",
+    secondaryTextStyle: "text-white",
+  },
+  DET:{
+    primary: "#1D42BA",
+    secondary: "#C8102E",  
+    fullStyle: "bg-[#1D42BA] border-[#C8102E] text-white",  
+    primaryBGstyle: "bg-[#1D42BA]",
+    secondaryTextStyle: "text-white",
+  },
+  GSW:{
+    primary: "#FFC72C",
+    secondary: "#1D428A",  
+    fullStyle: "bg-[#FFC72C] border-[#1D428A] text-white",  
+    primaryBGstyle: "bg-[#FFC72C]",
+    secondaryTextStyle: "text-white",
+  },
+  HOU:{
+    primary: "#CE1141",
+    secondary: "#C4CED4",  
+    fullStyle: "bg-[#CE1141] border-[#C4CED4] text-white",  
+    primaryBGstyle: "bg-[#CE1141]",
+    secondaryTextStyle: "text-white",
+  },
+  IND:{
+    primary: "#002D62",
+    secondary: "#FDBB30",  
+    fullStyle: "bg-[#002D62] border-[#FDBB30] text-white",  
+    primaryBGstyle: "bg-[#002D62]",
+    secondaryTextStyle: "text-white",
+  },
+  LAC:{
+    primary: "#C8102E",
+    secondary: "#1D428A",  
+    fullStyle: "bg-[#C8102E] border-[#1D428A] text-white",  
+    primaryBGstyle: "bg-[#C8102E]",
+    secondaryTextStyle: "text-white",
+  },
+  LAL:{
+    primary: "#FDB927",
+    secondary: "#552583",  
+    fullStyle: "bg-[#FDB927] border-[#552583] text-[#552583]", 
+    primaryBGstyle: "bg-[#FDB927]",
+    secondaryTextStyle: "text-[#552583]",
+  },
+  MEM:{
+    primary: "#5D76A9",
+    secondary: "#12173F",  
+    fullStyle: "bg-[#5D76A9] border-[#12173F] text-white",  
+    primaryBGstyle: "bg-[#5D76A9]",
+    secondaryTextStyle: "text-white",
+  },
+  MIA:{
+    primary: "#98002E",
+    secondary: "#F9A01B",  
+    fullStyle: "bg-[#98002E] border-[#F9A01B] text-white",  
+    primaryBGstyle: "bg-[#98002E]",
+    secondaryTextStyle: "text-white",
+  },
+  MIL:{
+    primary: "#00471B",
+    secondary: "#EEE1C6",  
+    fullStyle: "bg-[#00471B] border-[#EEE1C6] text-white",  
+    primaryBGstyle: "bg-[#00471B]",
+    secondaryTextStyle: "text-white",
+  },
+  MIN:{
+    primary: "#0C2340",
+    secondary: "#78BE20",  
+    fullStyle: "bg-[#0C2340] border-[#78BE20] text-white",  
+    primaryBGstyle: "bg-[#0C2340]",
+    secondaryTextStyle: "text-white",
+  },
+  NOP:{
+    primary: "#0C2340",
+    secondary: "#85714D",  
+    fullStyle: "bg-[#0C2340] border-[#85714D] text-white",  
+    primaryBGstyle: "bg-[#0C2340]",
+    secondaryTextStyle: "text-white",
+  },
+  NYK:{
+    primary: "#F58426",
+    secondary: "#006BB6",  
+    fullStyle: "bg-[#F58426] border-[#006BB6] text-white",  
+    primaryBGstyle: "bg-[#F58426]",
+    secondaryTextStyle: "text-white",
+  },
+  OKC:{
+    primary: "#007AC1",
+    secondary: "#EF3B24",  
+    fullStyle: "bg-[#007AC1] border-[#EF3B24] text-white",  
+    primaryBGstyle: "bg-[#007AC1]",
+    secondaryTextStyle: "text-white",
+  },
+  ORL:{
+    primary: "#0077C0",
+    secondary: "#C4CED4",  
+    fullStyle: "bg-[#0077C0] border-[#C4CED4] text-white",  
+    primaryBGstyle: "bg-[#0077C0]",
+    secondaryTextStyle: "text-white",
+  },
+  PHI:{
+    primary: "#006BB6",
+    secondary: "#ED174C",  
+    fullStyle: "bg-[#006BB6] border-[#ED174C] text-white",  
+    primaryBGstyle: "bg-[#006BB6]",
+    secondaryTextStyle: "text-white",
+  },
+  PHO:{
+    primary: "#E56020",
+    secondary: "#1D1160",  
+    fullStyle: "bg-[#E56020] border-[#1D1160] text-white",  
+    primaryBGstyle: "bg-[#E56020]",
+    secondaryTextStyle: "text-white",
+  },
+  POR:{
+    primary: "#E03A3E",
+    secondary: "#000000",  
+    fullStyle: "bg-[#E03A3E] border-[#000000] text-white",
+    primaryBGstyle: "bg-[#E03A3E]",
+    secondaryTextStyle: "text-white",
+  },
+  SAC:{
+    primary: "#5A2D81",
+    secondary: "#63727A",  
+    fullStyle: "bg-[#5A2D81] border-[#63727A] text-white",  
+    primaryBGstyle: "bg-[#5A2D81]",
+    secondaryTextStyle: "text-white",
+  },
+  SAS:{
+    primary: "#C4CED4",
+    secondary: "#000000",  
+    fullStyle: "bg-[#C4CED4] border-[#000000] text-black",  
+    primaryBGstyle: "bg-[#C4CED4]",
+    secondaryTextStyle: "text-black",
+  },
+  TOR:{
+    primary: "#CE1141",
+    secondary: "#000000",  
+    fullStyle: "bg-[#CE1141] border-[#000000] text-white",  
+    primaryBGstyle: "bg-[#CE1141]",
+    secondaryTextStyle: "text-white",
+  },
+  UTA:{
+    primary: "#00471B",
+    secondary: "#F9A01B",  
+    fullStyle: "bg-[#00471B] border-[#F9A01B] text-white",  
+    primaryBGstyle: "bg-[#00471B]",
+    secondaryTextStyle: "text-white",
+  },
+  WAS:{
+    primary: "#002B5C",
+    secondary: "#E31837",  
+    fullStyle: "bg-[#002B5C] border-[#E31837] text-white",  
+    primaryBGstyle: "bg-[#002B5C]",
+    secondaryTextStyle: "text-white",
+  }
+};

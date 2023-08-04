@@ -13,4 +13,4 @@ export const F1styleData: {
   Mercedes: { primary: "#009994", secondary: "#FFFFFF", primaryBGstyle: "bg-[#009994]", primaryTextStyle: "text-[#009994]", secondaryTextStyle: "text-[#FFFFFF]"},
   "Red Bull": { primary: "#0F1C2C", secondary: "#EA1D2C", primaryBGstyle: "bg-[#0F1C2C]", primaryTextStyle: "text-[#0F1C2C]", secondaryTextStyle: "text-[#EA1D2C]"},
   Williams: { primary: "#121C66", secondary: "#FFFFFF", primaryBGstyle: "bg-[#121C66]", primaryTextStyle: "text-[#121C66]", secondaryTextStyle: "text-[#FFFFFF]"},
-};
+}; 

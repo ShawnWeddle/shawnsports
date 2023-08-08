@@ -16,6 +16,17 @@ const Home: NextPage = () => {
         <div className="mx-auto flex w-full grow flex-col items-start bg-white sm:m-0 sm:max-w-screen-sm sm:items-center md:max-w-screen-md lg:max-w-screen-lg">
           <HomeComp />
         </div>
+        <div className="w-full bg-home p-2 text-center text-white">
+          Developed by{" "}
+          <a
+            className="hover:underline"
+            href="https://shawnweddle.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Shawn Weddle
+          </a>
+        </div>
       </main>
     </>
   );

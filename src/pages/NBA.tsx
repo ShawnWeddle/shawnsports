@@ -26,6 +26,17 @@ const NBA: NextPage = () => {
             </NBARankContextProvider>
           )}
         </div>
+        <div className="w-full bg-nba p-2 text-center text-white">
+          Developed by{" "}
+          <a
+            className="hover:underline"
+            href="https://shawnweddle.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Shawn Weddle
+          </a>
+        </div>
       </main>
     </>
   );

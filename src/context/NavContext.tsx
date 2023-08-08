@@ -50,7 +50,7 @@ export const navReducer = (
 export const NavContextProvider = ({ children }: NavContextProviderProps) => {
   const [navState, navDispatch] = useReducer(navReducer, {
     pageMode: "Home",
-    underPageMode: "Top",
+    underPageMode: "Home",
   });
 
   return (

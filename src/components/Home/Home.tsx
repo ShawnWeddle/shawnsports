@@ -3,7 +3,11 @@ interface HomeProps {
 }
 
 const HomeComp: React.FC<HomeProps> = () => {
-  return <div className="bg-white">YOU</div>;
+  return (
+    <div className="bg-white">
+      <p></p>
+    </div>
+  );
 };
 
 export default HomeComp;

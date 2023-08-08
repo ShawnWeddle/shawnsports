@@ -17,7 +17,6 @@ interface NavProps {
 const NavBar: React.FC<NavProps> = (props: NavProps) => {
   const { pageMode, underPageMode } = props;
   const { navState, navDispatch } = useNavContext();
-  const { underPageMode: PPK } = navState;
 
   const router = useRouter();
 

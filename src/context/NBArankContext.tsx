@@ -38,7 +38,7 @@ export const nbaRankReducer = (
       const { unRankedTeams, rankedTeams } = state;
       const { team, rank } = action.payload;
       const newRank = rank - 1;
-      if (newRank > -1 && newRank < 32 && team !== null) {
+      if (newRank > -1 && newRank < 30 && team !== null) {
         // Remove from Unranked
         const newUnRankedTeams = [...unRankedTeams];
         newUnRankedTeams[NBAteamData[team].rank] = null;
@@ -52,7 +52,7 @@ export const nbaRankReducer = (
               break;
             }
           }
-          if (endIndex === 32) {
+          if (endIndex === 30) {
             let startIndex = newRank;
             for (true; startIndex > 0; startIndex--) {
               if (newRankedTeams[startIndex] === null) {
@@ -83,7 +83,7 @@ export const nbaRankReducer = (
     case "UNRANK_TEAM": {
       const { unRankedTeams, rankedTeams } = state;
       const { team, rank } = action.payload;
-      if (rank > -1 && rank < 32 && team !== null) {
+      if (rank > -1 && rank < 30 && team !== null) {
         // Remove from Ranked
         const newRankedTeams = [...rankedTeams];
         newRankedTeams[rank] = null;
@@ -108,7 +108,7 @@ export const nbaRankReducer = (
       const { unRankedTeams, rankedTeams } = state;
       const { team, rank, prevRank } = action.payload;
       const newRank = rank - 1;
-      if (newRank > -1 && newRank < 32 && team !== null && prevRank) {
+      if (newRank > -1 && newRank < 30 && team !== null && prevRank) {
         // Remove from Ranked
         const newRankedTeams = [...rankedTeams];
         newRankedTeams[prevRank] = null;
@@ -121,7 +121,7 @@ export const nbaRankReducer = (
               break;
             }
           }
-          if (endIndex === 32) {
+          if (endIndex === 30) {
             let startIndex = newRank;
             for (true; startIndex > 0; startIndex--) {
               if (newRankedTeams[startIndex] === null) {
@@ -152,7 +152,7 @@ export const nbaRankReducer = (
     case "MOVE_UP": {
       const { unRankedTeams, rankedTeams } = state;
       const { team, rank } = action.payload;
-      if (rank > -1 && rank < 32 && team !== null) {
+      if (rank > -1 && rank < 30 && team !== null) {
         const newRankedTeams = [...rankedTeams];
         const team1 = newRankedTeams[rank];
         const team2 = newRankedTeams[rank - 1];
@@ -174,7 +174,7 @@ export const nbaRankReducer = (
     case "MOVE_DOWN": {
       const { unRankedTeams, rankedTeams } = state;
       const { team, rank } = action.payload;
-      if (rank > -1 && rank < 32 && team !== null) {
+      if (rank > -1 && rank < 30 && team !== null) {
         const newRankedTeams = [...rankedTeams];
         const team1 = newRankedTeams[rank];
         const team2 = newRankedTeams[rank + 1];

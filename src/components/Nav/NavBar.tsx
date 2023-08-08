@@ -1,23 +1,35 @@
+import { useEffect } from "react";
 import { cn } from "~/utils/cn";
 import { useRouter } from "next/router";
 import { useNavContext } from "~/hooks/useNavContext";
-import {
-  allNavHeads,
-  pageHeads,
-  pageRouter,
-  underPageDefault,
-} from "~/data/Home";
+import { allNavHeads, pageHeads, pageRouter } from "~/data/Home";
 import type {
   NavHeadsType,
   PageHeadsType,
   UnderPageHeadsType,
 } from "~/data/Home";
 
-const NavBar: React.FC = () => {
+interface NavProps {
+  pageMode: PageHeadsType;
+  underPageMode: UnderPageHeadsType;
+}
+
+const NavBar: React.FC<NavProps> = (props: NavProps) => {
+  const { pageMode, underPageMode } = props;
   const { navState, navDispatch } = useNavContext();
-  const { pageMode, underPageMode } = navState;
+  const { underPageMode: PPK } = navState;
 
   const router = useRouter();
+
+  useEffect(() => {
+    navDispatch({
+      type: "CHANGE_PAGE",
+      payload: {
+        pageMode: pageMode,
+        underPageMode: underPageMode,
+      },
+    });
+  }, []);
 
   const navPageButtons = pageHeads.map((page, index) => {
     return (
@@ -27,14 +39,45 @@ const NavBar: React.FC = () => {
           "text-2xl md:text-3xl": pageMode === page,
         })}
         onClick={() => {
-          navDispatch({
-            type: "CHANGE_PAGE",
-            payload: { pageMode: page, underPageMode: underPageDefault(page) },
-          });
           void router.push(pageRouter(page));
         }}
       >
         {page}
+      </button>
+    );
+  });
+
+  const navUnderPageButtons = allNavHeads[pageMode].map((underPage, index) => {
+    return (
+      <button
+        key={index}
+        className={cn(
+          "text-md m-1 p-1 md:text-lg",
+          {
+            "text-home": pageMode === "Home",
+            "text-nba": pageMode === "NBA",
+            "text-nfl": pageMode === "NFL",
+            "text-formulaOne": pageMode === "F1",
+          },
+          {
+            "rounded-xl bg-home text-white":
+              navState.underPageMode === underPage && pageMode === "Home",
+            "rounded-xl bg-nba text-white":
+              navState.underPageMode === underPage && pageMode === "NBA",
+            "rounded-xl bg-nfl text-white":
+              navState.underPageMode === underPage && pageMode === "NFL",
+            "rounded-xl bg-formulaOne text-white":
+              navState.underPageMode === underPage && pageMode === "F1",
+          }
+        )}
+        onClick={() => {
+          navDispatch({
+            type: "CHANGE_UNDERPAGE",
+            payload: { pageMode: pageMode, underPageMode: underPage },
+          });
+        }}
+      >
+        {underPage}
       </button>
     );
   });
@@ -52,56 +95,12 @@ const NavBar: React.FC = () => {
         >
           {navPageButtons}
         </nav>
-        <F1MiniNavBar />
+        <nav className={cn("flex justify-center gap-4 bg-white")}>
+          {navUnderPageButtons}
+        </nav>
       </div>
       <div className="h-22 md:h-24"></div>
     </>
-  );
-};
-
-const F1MiniNavBar: React.FC = () => {
-  const { navState, navDispatch } = useNavContext();
-  const { pageMode, underPageMode } = navState;
-
-  const navUnderPageButtons = allNavHeads[pageMode].map((underPage, index) => {
-    return (
-      <button
-        key={index}
-        className={cn(
-          "text-md m-1 p-1 md:text-lg",
-          {
-            "text-home": pageMode === "Home",
-            "text-nba": pageMode === "NBA",
-            "text-nfl": pageMode === "NFL",
-            "text-formulaOne": pageMode === "F1",
-          },
-          {
-            "rounded-xl bg-home text-white":
-              underPageMode === underPage && pageMode === "Home",
-            "rounded-xl bg-nba text-white":
-              underPageMode === underPage && pageMode === "NBA",
-            "rounded-xl bg-nfl text-white":
-              underPageMode === underPage && pageMode === "NFL",
-            "rounded-xl bg-formulaOne text-white":
-              underPageMode === underPage && pageMode === "F1",
-          }
-        )}
-        onClick={() => {
-          navDispatch({
-            type: "CHANGE_UNDERPAGE",
-            payload: { pageMode: pageMode, underPageMode: underPage },
-          });
-        }}
-      >
-        {underPage}
-      </button>
-    );
-  });
-
-  return (
-    <nav className={cn("flex justify-center gap-4 bg-white")}>
-      {navUnderPageButtons}
-    </nav>
   );
 };
 

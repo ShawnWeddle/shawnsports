@@ -7,51 +7,61 @@ import {
 } from "react-icons/fa";
 import { BsChevronCompactUp, BsChevronCompactDown } from "react-icons/bs";
 import { cn } from "~/utils/cn";
-import { useNBARankContext } from "~/hooks/useNBARanker";
-import type { NBATeamType } from "~/data/NBApickData";
-import { NBAteamData } from "~/data/NBApickData";
-import { NBAstyleData } from "~/data/NBA/NBAstyleData";
+import { useF1RankContext } from "~/hooks/useF1Ranker";
+import {
+  type DriverCodeType,
+  driverToConstructor,
+  driverNames,
+} from "~/data/F1/F1data";
+
+import { F1styleData } from "~/data/F1/F1styleData";
 
 interface RankerRowProps {
-  unRankedTeam: NBATeamType | null;
-  rankedTeam: NBATeamType | null;
+  unRankedDriver: DriverCodeType | null;
+  rankedDriver: DriverCodeType | null;
   index: number;
 }
 
 const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
-  const { unRankedTeam, rankedTeam, index } = props;
+  const { unRankedDriver, rankedDriver, index } = props;
   const [newRank, setNewRank] = useState<string>("");
   const [reRank, setReRank] = useState<string>("");
 
-  const { nbaRankDispatch } = useNBARankContext();
+  const { f1RankDispatch } = useF1RankContext();
 
   return (
     <tr className="border-b-2 border-gray-200 font-semibold last:border-0">
-      {unRankedTeam ? (
+      {unRankedDriver ? (
         <>
           <td
             className={cn("-pr-2 hidden w-52 pl-2 sm:block", {
-              [NBAstyleData[unRankedTeam].primaryBGstyle]: true,
-              [NBAstyleData[unRankedTeam].secondaryTextStyle]: true,
+              [F1styleData[driverToConstructor(unRankedDriver)].primaryBGstyle]:
+                true,
+              [F1styleData[driverToConstructor(unRankedDriver)]
+                .secondaryTextStyle]: true,
             })}
           >
-            {NBAteamData[unRankedTeam].location}{" "}
-            {NBAteamData[unRankedTeam].name}
+            {driverNames[unRankedDriver].first}{" "}
+            {driverNames[unRankedDriver].last}
           </td>
           <td
             className={cn("-pr-2 w-24 pl-2 sm:hidden", {
-              [NBAstyleData[unRankedTeam].primaryBGstyle]: true,
-              [NBAstyleData[unRankedTeam].secondaryTextStyle]: true,
+              [F1styleData[driverToConstructor(unRankedDriver)].primaryBGstyle]:
+                true,
+              [F1styleData[driverToConstructor(unRankedDriver)]
+                .secondaryTextStyle]: true,
             })}
           >
-            {NBAteamData[unRankedTeam].name}
+            {unRankedDriver !== "ZHO"
+              ? driverNames[unRankedDriver].last
+              : driverNames[unRankedDriver].first}
           </td>
         </>
       ) : (
-        <td className={cn("w-24 bg-nba/30 sm:w-52")}></td>
+        <td className={cn("w-24 bg-formulaOne/30 sm:w-52")}></td>
       )}
       <td>
-        <div className="flex justify-center overflow-hidden rounded bg-nba">
+        <div className="flex justify-center overflow-hidden rounded bg-formulaOne">
           <input
             type="number"
             min={1}
@@ -66,10 +76,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="px-1 py-0.5 text-white"
             onClick={() => {
-              nbaRankDispatch({
-                type: "RANK_TEAM",
+              f1RankDispatch({
+                type: "RANK_DRIVER",
                 payload: {
-                  team: unRankedTeam,
+                  driver: unRankedDriver,
                   rank: parseInt(newRank),
                 },
               });
@@ -83,12 +93,12 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
       <td>
         <div className="flex justify-between">
           <button
-            className="rounded px-1 py-0.5 text-nba"
+            className="rounded px-1 py-0.5 text-formulaOne"
             onClick={() => {
-              nbaRankDispatch({
-                type: "UNRANK_TEAM",
+              f1RankDispatch({
+                type: "UNRANK_DRIVER",
                 payload: {
-                  team: rankedTeam,
+                  driver: rankedDriver,
                   rank: index,
                 },
               });
@@ -99,30 +109,36 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <span className="px-1 text-center font-bold">{index + 1}</span>
         </div>
       </td>
-      {rankedTeam ? (
+      {rankedDriver ? (
         <>
           <td
             className={cn("-pr-2 hidden w-52 pl-2 sm:block", {
-              [NBAstyleData[rankedTeam].primaryBGstyle]: true,
-              [NBAstyleData[rankedTeam].secondaryTextStyle]: true,
+              [F1styleData[driverToConstructor(rankedDriver)].primaryBGstyle]:
+                true,
+              [F1styleData[driverToConstructor(rankedDriver)]
+                .secondaryTextStyle]: true,
             })}
           >
-            {NBAteamData[rankedTeam].location} {NBAteamData[rankedTeam].name}
+            {driverNames[rankedDriver].first} {driverNames[rankedDriver].last}
           </td>
           <td
             className={cn("-pr-2 w-24 pl-2 sm:hidden", {
-              [NBAstyleData[rankedTeam].primaryBGstyle]: true,
-              [NBAstyleData[rankedTeam].secondaryTextStyle]: true,
+              [F1styleData[driverToConstructor(rankedDriver)].primaryBGstyle]:
+                true,
+              [F1styleData[driverToConstructor(rankedDriver)]
+                .secondaryTextStyle]: true,
             })}
           >
-            {NBAteamData[rankedTeam].name}
+            {rankedDriver !== "ZHO"
+              ? driverNames[rankedDriver].last
+              : driverNames[rankedDriver].first}
           </td>
         </>
       ) : (
-        <td className={cn("w-24 bg-nba/30 sm:w-52")}></td>
+        <td className={cn("w-24 bg-formulaOne/30 sm:w-52")}></td>
       )}
       <td>
-        <div className="flex justify-center overflow-hidden rounded bg-nba">
+        <div className="flex justify-center overflow-hidden rounded bg-formulaOne">
           <input
             type="number"
             min={1}
@@ -137,10 +153,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="px-1 py-0.5 text-white"
             onClick={() => {
-              nbaRankDispatch({
-                type: "RERANK_TEAM",
+              f1RankDispatch({
+                type: "RERANK_DRIVER",
                 payload: {
-                  team: rankedTeam,
+                  driver: rankedDriver,
                   rank: parseInt(reRank),
                   prevRank: index,
                 },
@@ -155,10 +171,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-3 px-0.5 text-sm text-white disabled:bg-white/50"
               disabled={index === 0}
               onClick={() => {
-                nbaRankDispatch({
+                f1RankDispatch({
                   type: "MOVE_UP",
                   payload: {
-                    team: rankedTeam,
+                    driver: rankedDriver,
                     rank: index,
                   },
                 });
@@ -170,10 +186,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-3 px-0.5 text-sm text-white disabled:bg-white/50"
               disabled={index === 29}
               onClick={() => {
-                nbaRankDispatch({
+                f1RankDispatch({
                   type: "MOVE_DOWN",
                   payload: {
-                    team: rankedTeam,
+                    driver: rankedDriver,
                     rank: index,
                   },
                 });
@@ -187,10 +203,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-6 px-0.5 text-sm text-white disabled:bg-white/50"
               disabled={index === 0}
               onClick={() => {
-                nbaRankDispatch({
+                f1RankDispatch({
                   type: "MOVE_UP",
                   payload: {
-                    team: rankedTeam,
+                    driver: rankedDriver,
                     rank: index,
                   },
                 });
@@ -202,10 +218,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-6 px-0.5 text-sm text-white disabled:bg-white/50"
               disabled={index === 31}
               onClick={() => {
-                nbaRankDispatch({
+                f1RankDispatch({
                   type: "MOVE_DOWN",
                   payload: {
-                    team: rankedTeam,
+                    driver: rankedDriver,
                     rank: index,
                   },
                 });
@@ -220,17 +236,17 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   );
 };
 
-const NBARanker: React.FC = () => {
-  const { nbaRankState } = useNBARankContext();
-  const { unRankedTeams, rankedTeams } = nbaRankState;
+const F1Ranker: React.FC = () => {
+  const { f1RankState } = useF1RankContext();
+  const { unRankedDrivers, rankedDrivers } = f1RankState;
 
-  const nbaRows = unRankedTeams.map((unRankedTeam, index) => {
-    const rankedTeam: NBATeamType | null = rankedTeams[index] ?? null;
+  const f1Rows = unRankedDrivers.map((unRankedDriver, index) => {
+    const rankedDriver: DriverCodeType | null = rankedDrivers[index] ?? null;
 
     return (
       <RankerRow
-        unRankedTeam={unRankedTeam}
-        rankedTeam={rankedTeam}
+        unRankedDriver={unRankedDriver}
+        rankedDriver={rankedDriver}
         index={index}
         key={index}
       />
@@ -239,14 +255,16 @@ const NBARanker: React.FC = () => {
 
   return (
     <>
-      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-        Rank NBA Teams
-      </h1>
+      <div className="flex w-full justify-center">
+        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+          Rank F1 Drivers
+        </h1>
+      </div>
       <table className="text-xs sm:text-base">
-        <tbody>{nbaRows}</tbody>
+        <tbody>{f1Rows}</tbody>
       </table>
     </>
   );
 };
 
-export default NBARanker;
+export default F1Ranker;

@@ -116,23 +116,27 @@ const FormulaOneTable: React.FC = () => {
         <TableModeInputs />
         <RaceModeInputs />
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <TableHeaders raceMode={raceMode} />
-          </tr>
-        </thead>
-        <tbody>
-          {tableMode === "PlaceSort" && <RaceResultTable raceMode={raceMode} />}
-          {tableMode === "DriverSort" && (
-            <DriverResultTable raceMode={raceMode} />
-          )}
-          {tableMode === "RunningTotal" && (
-            <RunningResultTable raceMode={raceMode} />
-          )}
-        </tbody>
-      </table>
+      <div className="flex w-full justify-start overflow-auto sm:justify-center">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <TableHeaders raceMode={raceMode} />
+            </tr>
+          </thead>
+          <tbody>
+            {tableMode === "PlaceSort" && (
+              <RaceResultTable raceMode={raceMode} />
+            )}
+            {tableMode === "DriverSort" && (
+              <DriverResultTable raceMode={raceMode} />
+            )}
+            {tableMode === "RunningTotal" && (
+              <RunningResultTable raceMode={raceMode} />
+            )}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };

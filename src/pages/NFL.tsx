@@ -4,7 +4,6 @@ import { useNavContext } from "~/hooks/useNavContext";
 import NavBar from "~/components/Nav/NavBar";
 import { NFLRankContextProvider } from "~/context/NFLrankContext";
 import NFLRanker from "~/components/NFL/NFLRanker";
-
 const NFL: NextPage = () => {
   const { navState } = useNavContext();
   const { underPageMode } = navState;
@@ -16,8 +15,8 @@ const NFL: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col bg-gradient-to-r from-nfl/50 via-white to-nfl/50 sm:items-center">
-        <NavBar />
-        <div className="mx-auto flex w-full flex-col items-center bg-white sm:m-0 sm:max-w-screen-sm">
+        <NavBar pageMode="NFL" underPageMode="Rank" />
+        <div className="mx-auto flex w-full grow flex-col items-start bg-white sm:m-0 sm:max-w-screen-sm sm:items-center md:max-w-screen-md lg:max-w-screen-lg">
           {underPageMode === "Rank" && (
             <NFLRankContextProvider>
               <NFLRanker />

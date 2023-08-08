@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import NavBar from "../components/Nav/NavBar";
+import HomeComp from "~/components/Home/Home";
 
 const Home: NextPage = () => {
   return (
@@ -11,8 +12,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col bg-gradient-to-r from-home/50 via-white to-home/50 sm:items-center">
-        <NavBar />
-        <div className="mx-auto flex w-full flex-col items-start overflow-auto bg-white sm:m-0 sm:max-w-screen-sm sm:items-center md:max-w-screen-md lg:max-w-screen-lg"></div>
+        <NavBar pageMode="Home" underPageMode="Home" />
+        <div className="mx-auto flex w-full grow flex-col items-start bg-white sm:m-0 sm:max-w-screen-sm sm:items-center md:max-w-screen-md lg:max-w-screen-lg">
+          <HomeComp />
+        </div>
       </main>
     </>
   );

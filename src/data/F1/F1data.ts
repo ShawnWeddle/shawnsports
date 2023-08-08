@@ -14,7 +14,7 @@ export const constructorNames = [
 export const driverCodes = [
   "ALB", "ALO", "BOT", "DEV", "GAS",
   "HAM", "HUL", "LEC", "MAG", "NOR", 
-  "OCO", "PIA", "PER", "RIC", "RUS", "SAI",
+  "OCO", "PER", "PIA", "RIC", "RUS", "SAI",
   "SAR", "STR", "TSU", "VER", "ZHO", 
 ] as const;
 
@@ -121,28 +121,28 @@ export const constructorToDrivers = (constructor: ConstructorNameType) : DriverC
 
 }
 
-export const driverNames: { [Key in DriverCodeType] : { first: string, last: string}} = {
-  ALB : { first: "Alex", last: "Albon"},
-  ALO : { first: "Fernando", last: "Alonso"},
-  BOT : { first: "Valterri", last: "Bottas"},
-  DEV : { first: "Nyck", last: "de Vries"},
-  GAS : { first: "Pierre", last: "Gasly"},
-  HAM : { first: "Lewis", last: "Hamilton"},
-  HUL : { first: "Nico", last: "Hulkenberg"},
-  LEC : { first: "Charles", last: "Leclerc"},
-  MAG : { first: "Kevin", last: "Magnussen"},
-  NOR : { first: "Lando", last: "Norris"},
-  OCO : { first: "Esteban", last: "Ocon"},
-  PER : { first: "Sergio", last: "Perez"},
-  PIA : { first: "Oscar", last: "Piastri"},
-  RIC : { first: "Daniel", last: "Ricciardo"},
-  RUS : { first: "George", last: "Russell"},
-  SAI : { first: "Carlos", last: "Sainz"},
-  SAR : { first: "Logan", last: "Sargeant"},
-  STR : { first: "Lance", last: "Stroll"},
-  TSU : { first: "Yuki", last: "Tsunoda"},
-  VER : { first: "Max", last: "Verstappen"},
-  ZHO : { first: "Zhou", last: "Guanyu"},
+export const driverNames: { [Key in DriverCodeType] : { alphabeticOrder: number, first: string, last: string}} = {
+  ALB : { alphabeticOrder: 0, first: "Alex", last: "Albon"},
+  ALO : { alphabeticOrder: 1, first: "Fernando", last: "Alonso"},
+  BOT : { alphabeticOrder: 2, first: "Valterri", last: "Bottas"},
+  DEV : { alphabeticOrder: 3, first: "Nyck", last: "de Vries"},
+  GAS : { alphabeticOrder: 4, first: "Pierre", last: "Gasly"},
+  HAM : { alphabeticOrder: 5, first: "Lewis", last: "Hamilton"},
+  HUL : { alphabeticOrder: 6, first: "Nico", last: "Hulkenberg"},
+  LEC : { alphabeticOrder: 7, first: "Charles", last: "Leclerc"},
+  MAG : { alphabeticOrder: 8, first: "Kevin", last: "Magnussen"},
+  NOR : { alphabeticOrder: 9, first: "Lando", last: "Norris"},
+  OCO : { alphabeticOrder: 10, first: "Esteban", last: "Ocon"},
+  PER : { alphabeticOrder: 11, first: "Sergio", last: "Perez"},
+  PIA : { alphabeticOrder: 12, first: "Oscar", last: "Piastri"},
+  RIC : { alphabeticOrder: 13, first: "Daniel", last: "Ricciardo"},
+  RUS : { alphabeticOrder: 14, first: "George", last: "Russell"},
+  SAI : { alphabeticOrder: 15, first: "Carlos", last: "Sainz"},
+  SAR : { alphabeticOrder: 16, first: "Logan", last: "Sargeant"},
+  STR : { alphabeticOrder: 17, first: "Lance", last: "Stroll"},
+  TSU : { alphabeticOrder: 18, first: "Yuki", last: "Tsunoda"},
+  VER : { alphabeticOrder: 19, first: "Max", last: "Verstappen"},
+  ZHO : { alphabeticOrder: 20, first: "Zhou", last: "Guanyu"},
 }
 
 export const driverTcamColors: { [Key in DriverCodeType] : "Black" | "Yellow"} = {
@@ -181,3 +181,10 @@ export interface RaceModeProps {
 }
 
 export type RaceModeType = "Both Grands Prix and Sprint Races" | "Grands Prix Only" | "Sprint Races Only";
+
+export const nullArray21 = [
+  null, null, null, null, null, 
+  null, null, null, null, null, 
+  null, null, null, null, null, 
+  null, null, null, null, null, null, 
+]

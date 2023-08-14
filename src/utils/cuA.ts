@@ -24,12 +24,3 @@ export const flip2DArrays = (fullArray: number[][]) : number[][] => {
   }
   return combinedArray;
 }
-
-/**
-
-  const lengths = fullArray.map((insideArray, insideArrayIndex) => { // Length 2 or 3
-    const heights = insideArray.map((points, pointsIndex) => { // Length 15
-     
-    })
-    return heights;
-  }); */

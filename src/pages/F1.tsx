@@ -24,7 +24,7 @@ const FormulaOne: NextPage = () => {
         <div className="mx-auto flex w-full grow flex-col items-start bg-white sm:m-0 sm:max-w-screen-sm sm:items-center md:max-w-screen-md lg:max-w-screen-lg">
           {underPageMode === "Tables" && <FormulaOneTable />}
           {underPageMode === "Standings" && <Standings />}
-          {underPageMode === "Charts" && <LineChart />}
+          {underPageMode === "Compare" && <LineChart />}
           {underPageMode === "Rank" && (
             <F1RankContextProvider>
               <F1Ranker />

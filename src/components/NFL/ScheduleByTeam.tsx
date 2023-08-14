@@ -1,7 +1,14 @@
 import { cn } from "~/utils/cn";
+import { useNFLScheduleContext } from "~/hooks/useNFLSchedule";
 import { NFLscheduleData, type GameType } from "~/data/NFL/NFLscheduleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { type NFLTeamType, NFLteamData, nullArray18 } from "~/data/NFL/NFLdata";
+import {
+  FaArrowRight,
+  FaArrowLeft,
+  FaArrowUp,
+  FaArrowDown,
+} from "react-icons/fa";
 
 interface ScheduleForTeamProps {
   team: NFLTeamType;
@@ -18,41 +25,86 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
     allGames[game.Week - 1] = game;
   });
 
-  console.log(allGames);
+  const { nflScheduleState, nflScheduleDispatch } = useNFLScheduleContext();
 
   const schedule = allGames.map((game, gameIndex) => {
     if (game) {
+      const winnerBGstyle = game.Winner
+        ? NFLstyleData[game.Winner].primaryBGstyle
+        : "bg-nfl/50";
+      const winnerTextStyle = game.Winner
+        ? NFLstyleData[game.Winner].secondaryTextStyle
+        : "text-white";
       return (
-        <tr key={gameIndex}>
-          <td className="px-1">Week {game.Week}</td>
+        <tr
+          key={gameIndex}
+          className="border-b-2 border-gray-200 last:border-0"
+        >
+          <td className="hidden px-1 sm:inline-block">Week {game.Week}</td>
+          <td className="px-1 sm:hidden">W{game.Week}</td>
 
           <td
-            className={cn("w-28 border-2 px-1 text-center", {
+            className={cn({
               [NFLstyleData[game.Away].primaryBGstyle]: true,
               [NFLstyleData[game.Away].secondaryTextStyle]: true,
             })}
           >
-            {NFLteamData[game.Away].name}
+            <button
+              className="w-24 px-1 text-center sm:w-28"
+              onClick={() => {
+                nflScheduleDispatch({
+                  type: "PICK",
+                  payload: [{ Code: game.Code, Winner: game.Away }],
+                });
+              }}
+            >
+              {NFLteamData[game.Away].name}
+            </button>
           </td>
           <td> @ </td>
           <td
-            className={cn("w-28 border-2 px-1 text-center", {
+            className={cn({
               [NFLstyleData[game.Home].primaryBGstyle]: true,
               [NFLstyleData[game.Home].secondaryTextStyle]: true,
             })}
           >
-            {NFLteamData[game.Home].name}
+            <button
+              className="w-24 px-1 text-center sm:w-28"
+              onClick={() => {
+                nflScheduleDispatch({
+                  type: "PICK",
+                  payload: [{ Code: game.Code, Winner: game.Home }],
+                });
+              }}
+            >
+              {NFLteamData[game.Home].name}
+            </button>
           </td>
-          <td> : : </td>
-          <td className={cn("w-28 border-2 bg-nfl/50 px-1 text-center")}></td>
+          <td> ::: </td>
+          <td>
+            <button
+              className={cn("w-24 px-1 text-center sm:w-28", {
+                [winnerBGstyle]: true,
+                [winnerTextStyle]: true,
+              })}
+              onClick={() => {
+                nflScheduleDispatch({
+                  type: "PICK",
+                  payload: [{ Code: game.Code, Winner: undefined }],
+                });
+              }}
+            >
+              {game.Winner ? NFLteamData[game.Winner].name : "/"}
+            </button>
+          </td>
         </tr>
       );
     } else {
       return (
         <tr key={gameIndex}>
-          <td className="px-1">Week {gameIndex + 1}</td>
-
-          <td className="text-center"></td>
+          <td className="hidden px-1 sm:inline-block">Week {gameIndex + 1}</td>
+          <td className="px-1 sm:hidden">W{gameIndex + 1}</td>
+          <td></td>
           <td></td>
           <td className="text-center">BYE</td>
         </tr>
@@ -60,7 +112,7 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
     }
   });
   return (
-    <div>
+    <div className="flex w-full justify-start overflow-auto sm:justify-center">
       <table>
         <thead>
           <tr>
@@ -72,7 +124,7 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
             <th>Winner</th>
           </tr>
         </thead>
-        <tbody>{schedule}</tbody>
+        <tbody className="text-sm sm:text-base">{schedule}</tbody>
       </table>
     </div>
   );

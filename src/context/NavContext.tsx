@@ -1,9 +1,5 @@
 import { createContext, useReducer, useEffect } from "react";
-import type {
-  NavHeadsType,
-  PageHeadsType,
-  UnderPageHeadsType,
-} from "~/data/Home";
+import type { PageHeadsType, UnderPageHeadsType } from "~/data/Home";
 
 export const NavContext = createContext<ContextType | null>(null);
 

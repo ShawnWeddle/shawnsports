@@ -4,6 +4,7 @@ import { useNavContext } from "~/hooks/useNavContext";
 import NavBar from "~/components/Nav/NavBar";
 import { NFLRankContextProvider } from "~/context/NFLrankContext";
 import NFLRanker from "~/components/NFL/NFLRanker";
+import { NFLScheduleContextProvider } from "~/context/NFLscheduleContext";
 import NFLSchedule from "~/components/NFL/Schedule";
 
 const NFL: NextPage = () => {
@@ -19,7 +20,11 @@ const NFL: NextPage = () => {
       <main className="flex min-h-screen flex-col bg-gradient-to-r from-nfl/50 via-white to-nfl/50 sm:items-center">
         <NavBar pageMode="NFL" underPageMode="Schedule" />
         <div className="mx-auto flex w-full grow flex-col items-start bg-white sm:m-0 sm:max-w-screen-sm sm:items-center md:max-w-screen-md lg:max-w-screen-lg">
-          {underPageMode === "Schedule" && <NFLSchedule />}
+          {underPageMode === "Schedule" && (
+            <NFLScheduleContextProvider>
+              <NFLSchedule />
+            </NFLScheduleContextProvider>
+          )}
           {underPageMode === "Rank" && (
             <NFLRankContextProvider>
               <NFLRanker />

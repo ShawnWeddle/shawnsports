@@ -3,11 +3,7 @@ import { cn } from "~/utils/cn";
 import { useRouter } from "next/router";
 import { useNavContext } from "~/hooks/useNavContext";
 import { allNavHeads, pageHeads, pageRouter } from "~/data/Home";
-import type {
-  NavHeadsType,
-  PageHeadsType,
-  UnderPageHeadsType,
-} from "~/data/Home";
+import type { PageHeadsType, UnderPageHeadsType } from "~/data/Home";
 
 interface NavProps {
   pageMode: PageHeadsType;

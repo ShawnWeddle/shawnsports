@@ -1,7 +1,6 @@
 import { createContext, useReducer } from "react";
 import type { DriverCodeType } from "~/data/F1/F1data";
 import { driverCodes, driverNames, nullArray21 } from "~/data/F1/F1data";
-import { F1styleData } from "~/data/F1/F1styleData";
 
 export const F1RankContext = createContext<ContextType | null>(null);
 

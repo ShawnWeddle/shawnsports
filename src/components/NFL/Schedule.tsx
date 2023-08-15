@@ -1,5 +1,5 @@
 import { cn } from "~/utils/cn";
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import { useNFLScheduleContext } from "~/hooks/useNFLSchedule";
 import {
   nflDivisions,
@@ -12,9 +12,9 @@ import { recordForTeam } from "~/data/NFL/NFLscheduleRecord";
 
 const NFLSchedule: React.FC = () => {
   const [scheduleMode, setScheduleMode] = useState<"Menu" | "Team">("Menu");
-  const [activeTeam, setActiveTeam] = useState<NFLTeamType>("KAN");
+  const [activeTeam, setActiveTeam] = useState<NFLTeamType | "NFL">("NFL");
 
-  const { nflScheduleState, nflScheduleDispatch } = useNFLScheduleContext();
+  const { nflScheduleState } = useNFLScheduleContext();
 
   const NFLTeams = Object.entries(nflDivisions).map(
     (conference, conferenceIndex) => {
@@ -28,61 +28,85 @@ const NFLSchedule: React.FC = () => {
             );
             const { wins, losses } = recordForTeam(team, games);
             return (
-              <div
-                key={teamIndex}
-                className="flex w-full flex-col justify-center sm:flex-row "
-              >
-                <button
+              <tr key={team + teamIndex.toString()}>
+                <td>
+                  <div className="flex w-full flex-col justify-center p-0.5 sm:p-0">
+                    <button
+                      className={cn(
+                        "grow rounded-t-lg px-1 text-center text-sm sm:m-0.5 sm:rounded-b-lg sm:border-2 sm:text-base",
+                        {
+                          [NFLstyleData[team].primaryBGstyle]: true,
+                          [NFLstyleData[team].secondaryBorderStyle]: true,
+                          [NFLstyleData[team].primaryPlainText]: true,
+                        }
+                      )}
+                      onClick={() => {
+                        setScheduleMode("Team");
+                        setActiveTeam(team);
+                      }}
+                    >
+                      {team === "WAS" ? "D.C." : NFLteamData[team].location}{" "}
+                      {NFLteamData[team].name}
+                    </button>
+                    <p
+                      className={cn(
+                        "rounded-b-lg text-center text-sm sm:hidden",
+                        {
+                          [NFLstyleData[team].secondaryBGstyle]: true,
+                          [NFLstyleData[team].secondaryPlainText]: true,
+                        }
+                      )}
+                    >
+                      2023 Record: {wins}-{losses}
+                    </p>
+                  </div>
+                </td>
+                <td
                   className={cn(
-                    "m-0.5 grow rounded-lg border-2 px-1 text-center text-sm sm:text-base",
+                    "hidden text-center font-semibold sm:table-cell",
                     {
-                      [NFLstyleData[team].primaryBGstyle]: true,
-                      [NFLstyleData[team].secondaryBorderStyle]: true,
-                      [NFLstyleData[team].textColorStyle]: true,
+                      "bg-nfl/40": wins + losses === 17,
                     }
                   )}
-                  onClick={() => {
-                    setScheduleMode("Team");
-                    setActiveTeam(team);
-                  }}
                 >
-                  {team === "WAS" ? "D.C." : NFLteamData[team].location}{" "}
-                  {NFLteamData[team].name}
-                </button>
-                <div>
-                  <p className="px-1 font-semibold">
-                    {wins}-{losses}
-                  </p>
-                </div>
-              </div>
+                  {wins}-{losses}
+                </td>
+              </tr>
             );
           });
           return (
-            <div key={divisionIndex} className="flex flex-col">
-              <p className="text-center font-semibold">
-                {conferenceName} {divisionName}
-              </p>
+            <Fragment key={"Division" + divisionIndex.toString()}>
+              <tr>
+                <td className="text-center font-semibold">
+                  {conferenceName} {divisionName}
+                </td>
+              </tr>
               {teamButtons}
-            </div>
+            </Fragment>
           );
         }
       );
-      return <div key={conferenceIndex}>{conferenceList}</div>;
+      return (
+        <table key={conferenceIndex}>
+          <tbody>{conferenceList}</tbody>
+        </table>
+      );
     }
   );
 
   return (
-    <div className="w-full sm:max-w-screen-sm">
+    <div className="w-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100 sm:max-w-screen-sm">
       <div className="flex w-full justify-center">
         <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          2023 NFL Schedule
+          2023 {activeTeam} Schedule
         </h1>
       </div>
       {scheduleMode === "Team" && (
         <div className="flex w-full justify-center">
           <button
-            className="text-lg font-semibold sm:text-xl"
+            className="text-sm font-semibold sm:text-base"
             onClick={() => {
+              setActiveTeam("NFL");
               setScheduleMode("Menu");
             }}
           >
@@ -93,7 +117,9 @@ const NFLSchedule: React.FC = () => {
       {scheduleMode === "Menu" && (
         <div className="grid grid-cols-2 p-2">{NFLTeams}</div>
       )}
-      {scheduleMode === "Team" && <ScheduleForTeam team={activeTeam} />}
+      {scheduleMode === "Team" && (
+        <ScheduleForTeam team={activeTeam === "NFL" ? "KAN" : activeTeam} />
+      )}
     </div>
   );
 };

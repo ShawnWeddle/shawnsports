@@ -61,7 +61,7 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
               {NFLteamData[game.Away].name}
             </button>
           </td>
-          <td> @ </td>
+          <td className="w-4 text-center"> @ </td>
           <td
             className={cn({
               [NFLstyleData[game.Home].primaryBGstyle]: true,
@@ -80,7 +80,7 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
               {NFLteamData[game.Home].name}
             </button>
           </td>
-          <td> ::: </td>
+          <td className="w-4 text-center"> :: </td>
           <td>
             <button
               className={cn("w-24 px-1 text-center sm:w-28", {

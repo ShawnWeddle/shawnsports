@@ -30,7 +30,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <td
             className={cn("-pr-2 hidden w-52 pl-2 sm:block", {
               [NFLstyleData[unRankedTeam].primaryBGstyle]: true,
-              [NFLstyleData[unRankedTeam].textColorStyle]: true,
+              [NFLstyleData[unRankedTeam].primaryPlainText]: true,
             })}
           >
             {NFLteamData[unRankedTeam].location}{" "}
@@ -39,7 +39,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <td
             className={cn("-pr-2 w-24 pl-2 sm:hidden", {
               [NFLstyleData[unRankedTeam].primaryBGstyle]: true,
-              [NFLstyleData[unRankedTeam].textColorStyle]: true,
+              [NFLstyleData[unRankedTeam].primaryPlainText]: true,
             })}
           >
             {NFLteamData[unRankedTeam].name}
@@ -104,7 +104,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <td
             className={cn("-pr-2 hidden w-52 pl-2 sm:block", {
               [NFLstyleData[rankedTeam].primaryBGstyle]: true,
-              [NFLstyleData[rankedTeam].textColorStyle]: true,
+              [NFLstyleData[rankedTeam].primaryPlainText]: true,
             })}
           >
             {NFLteamData[rankedTeam].location} {NFLteamData[rankedTeam].name}
@@ -112,7 +112,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <td
             className={cn("-pr-2 w-24 pl-2 sm:hidden", {
               [NFLstyleData[rankedTeam].primaryBGstyle]: true,
-              [NFLstyleData[rankedTeam].textColorStyle]: true,
+              [NFLstyleData[rankedTeam].primaryPlainText]: true,
             })}
           >
             {NFLteamData[rankedTeam].name}

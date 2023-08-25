@@ -24,7 +24,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
         underPageMode: underPageMode,
       },
     });
-  }, []);
+  }, [navDispatch, pageMode, underPageMode]);
 
   const navPageButtons = pageHeads.map((page, index) => {
     return (
@@ -52,15 +52,16 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             "text-home": pageMode === "Home",
             "text-nba": pageMode === "NBA",
             "text-nfl": pageMode === "NFL",
+            "text-nhl": pageMode === "NHL",
             "text-formulaOne": pageMode === "F1",
           },
           {
-            "rounded-xl bg-home text-white":
-              navState.underPageMode === underPage && pageMode === "Home",
             "rounded-xl bg-nba text-white":
               navState.underPageMode === underPage && pageMode === "NBA",
             "rounded-xl bg-nfl text-white":
               navState.underPageMode === underPage && pageMode === "NFL",
+            "rounded-xl bg-nhl text-white":
+              navState.underPageMode === underPage && pageMode === "NHL",
             "rounded-xl bg-formulaOne text-white":
               navState.underPageMode === underPage && pageMode === "F1",
           }
@@ -85,13 +86,19 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             "bg-home": pageMode === "Home",
             "bg-nba": pageMode === "NBA",
             "bg-nfl": pageMode === "NFL",
+            "bg-nhl": pageMode === "NHL",
             "bg-formulaOne": pageMode === "F1",
           })}
         >
           {navPageButtons}
         </nav>
         <nav className={cn("flex justify-center gap-4 bg-white")}>
-          {navUnderPageButtons}
+          {pageMode !== "Home" && navUnderPageButtons}
+          {pageMode === "Home" && (
+            <button className={cn("text-md m-1 p-1 text-home md:text-lg")}>
+              Sign In
+            </button>
+          )}
         </nav>
       </div>
       <div className="h-22 md:h-24"></div>

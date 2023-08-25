@@ -9,13 +9,15 @@ export default {
       },
       height: {
         "22":"5.5rem",
+        "13":"3.25rem",
       },
       fontFamily: {"CG": "CriqueGrotesk-BlackItalic"},
       colors: {
         formulaOne: "#E10600",
         home: "#00A806",
         nba: "#E07800", 
-        nfl: "#0600A8", 
+        nfl: "#0600A8",
+        nhl: "#1A1A1A", 
       }
     },
   },

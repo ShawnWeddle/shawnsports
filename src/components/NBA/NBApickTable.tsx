@@ -102,9 +102,11 @@ const NBApickTable: React.FC = () => {
           {activePickNotes}
         </div>
       </dialog>
-      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-        Future NBA First Round Picks
-      </h1>
+      <div className="flex w-full justify-center">
+        <h1 className="mx-2 my-4 text-center text-2xl font-semibold sm:text-4xl">
+          Future NBA First Round Picks
+        </h1>
+      </div>
       <table className="w-full sm:w-auto">
         <thead>
           <tr className="bg-nba text-white sm:text-xl">

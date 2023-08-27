@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { cn } from "~/utils/cn";
 import { useRouter } from "next/router";
 import { useNavContext } from "~/hooks/useNavContext";
 import { allNavHeads, pageHeads, pageRouter } from "~/data/Home";
 import type { PageHeadsType, UnderPageHeadsType } from "~/data/Home";
+import SignIn from "../SignIn";
 
 interface NavProps {
   pageMode: PageHeadsType;
@@ -15,6 +16,8 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
   const { navState, navDispatch } = useNavContext();
 
   const router = useRouter();
+
+  const dialog = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     navDispatch({
@@ -64,6 +67,16 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
               navState.underPageMode === underPage && pageMode === "NHL",
             "rounded-xl bg-formulaOne text-white":
               navState.underPageMode === underPage && pageMode === "F1",
+          },
+          {
+            "rounded-xl hover:bg-nba/50 hover:text-white":
+              navState.underPageMode !== underPage && pageMode === "NBA",
+            "rounded-xl hover:bg-nfl/50 hover:text-white":
+              navState.underPageMode !== underPage && pageMode === "NFL",
+            "rounded-xl hover:bg-nhl/50 hover:text-white":
+              navState.underPageMode !== underPage && pageMode === "NHL",
+            "rounded-xl hover:bg-formulaOne/50 hover:text-white":
+              navState.underPageMode !== underPage && pageMode === "F1",
           }
         )}
         onClick={() => {
@@ -95,13 +108,36 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
         <nav className={cn("flex justify-center gap-4 bg-white")}>
           {pageMode !== "Home" && navUnderPageButtons}
           {pageMode === "Home" && (
-            <button className={cn("text-md m-1 p-1 text-home md:text-lg")}>
+            <button
+              className={cn(
+                "text-md m-1 rounded-xl p-1 text-home hover:bg-home/60 hover:text-white md:text-lg"
+              )}
+              onClick={() => {
+                dialog.current?.showModal();
+              }}
+            >
               Sign In
             </button>
           )}
         </nav>
       </div>
       <div className="h-22 md:h-24"></div>
+      <dialog
+        ref={dialog}
+        className="mx-auto my-auto w-full max-w-screen-sm rounded-xl align-middle backdrop:bg-gray-500/50"
+      >
+        <div className="flex justify-end">
+          <button
+            onClick={() => {
+              dialog.current?.close();
+            }}
+            className="text-lg font-semibold"
+          >
+            ✕
+          </button>
+        </div>
+        <SignIn />
+      </dialog>
     </>
   );
 };

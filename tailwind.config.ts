@@ -17,7 +17,7 @@ export default {
         home: "#00A806",
         nba: "#E07800", 
         nfl: "#0600A8",
-        nhl: "#1A1A1A", 
+        nhl: "#008080", 
       }
     },
   },

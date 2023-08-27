@@ -183,6 +183,18 @@ export const FormulaOneRaceResults : {
     polePosition: "LEC",
     sprint: false,
   },
+  {
+    location: "Netherlands",
+    finalOrder: [
+      "VER", "ALO", "GAS", "PER", "SAI", "HAM", "NOR", "ALB", "PIA", "OCO", "STR", "HUL", "LAW", "BOT", "TSU", "MAG", "RUS",
+    ],
+    DNFs: [
+      "ZHO", "LEC", "SAR"
+    ],
+    fastestLap: "ALO",
+    polePosition: "VER",
+    sprint: false,
+  },
 ]
 
 export type RaceResultsType = typeof FormulaOneRaceResults;

@@ -1,14 +1,12 @@
-import type { NHLTeamType } from "./NHLdata"
+import type { AllNHLTeamType } from "./NHLdata"
 
-export const NHLstyleData: { [Key in NHLTeamType] : {
+export const NHLstyleData: { [Key in AllNHLTeamType] : {
   primary: string, 
   secondary: string, 
   primaryBGstyle: string,
-  // secondaryBGstyle: string,
   secondaryTextStyle: string,
   secondaryBorderStyle: string,
   primaryPlainText: string,
-  // secondaryPlainText: string,
 }} = {
   "ANA": {
     primary: "#000000",
@@ -114,6 +112,20 @@ export const NHLstyleData: { [Key in NHLTeamType] : {
     primaryBGstyle: "bg-[#154734]",
     secondaryTextStyle: "text-[#A6192E]",
     secondaryBorderStyle: "border-[#A6192E]",
+    primaryPlainText: "text-white",
+  }, "MMR": {
+    primary: "#7B0424",
+    secondary: "#FFFFFF",
+    primaryBGstyle: "bg-[#7B0424]",
+    secondaryTextStyle: "text-[#FFFFFF]",
+    secondaryBorderStyle: "border-[#FFFFFF]",
+    primaryPlainText: "text-white",
+  }, "MNS": {
+    primary: "#007A33",
+    secondary: "#C69214",
+    primaryBGstyle: "bg-[#007A33]",
+    secondaryTextStyle: "text-[#C69214]",
+    secondaryBorderStyle: "border-[#C69214]",
     primaryPlainText: "text-white",
   }, "MTL": {
     primary: "#AF1E2D",

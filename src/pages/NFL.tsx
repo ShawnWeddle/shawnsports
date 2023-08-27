@@ -6,6 +6,7 @@ import { NFLRankContextProvider } from "~/context/NFLrankContext";
 import NFLRanker from "~/components/NFL/NFLRanker";
 import { NFLScheduleContextProvider } from "~/context/NFLscheduleContext";
 import NFLSchedule from "~/components/NFL/Schedule";
+import SuperBowlList from "~/components/NFL/SuperBowlList";
 
 const NFL: NextPage = () => {
   const { navState } = useNavContext();
@@ -25,6 +26,7 @@ const NFL: NextPage = () => {
               <NFLSchedule />
             </NFLScheduleContextProvider>
           )}
+          {underPageMode === "Super Bowls" && <SuperBowlList />}
           {underPageMode === "Rank" && (
             <NFLRankContextProvider>
               <NFLRanker />

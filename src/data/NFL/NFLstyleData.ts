@@ -1,6 +1,6 @@
-import type { NFLTeamType } from "./NFLdata"
+import type { AllNFLTeamType } from "./NFLdata"
 
-export const NFLstyleData: { [Key in NFLTeamType] : {
+export const NFLstyleData: { [Key in AllNFLTeamType] : {
   primary: string, 
   secondary: string, 
   primaryBGstyle: string,
@@ -39,6 +39,16 @@ export const NFLstyleData: { [Key in NFLTeamType] : {
     secondaryBorderStyle: "border-[#9E7C0C]",
     primaryPlainText: "text-white",
     secondaryPlainText: "text-white",
+  },
+  "BCS":{
+    primary: "#002C5F",
+    secondary: "#FFFFFF",
+    primaryBGstyle: "bg-[#002C5F]",
+    secondaryBGstyle: "bg-[#FFFFFF]",
+    secondaryTextStyle: "text-[#FFFFFF]",
+    secondaryBorderStyle: "border-[#FFFFFF]",
+    primaryPlainText: "text-white",
+    secondaryPlainText: "text-black",
   },
   "BUF":{
     primary: "#00338D",
@@ -190,6 +200,16 @@ export const NFLstyleData: { [Key in NFLTeamType] : {
     primaryPlainText: "text-white",
     secondaryPlainText: "text-white",
   },
+  "LRD":{
+    primary: "#000000",
+    secondary: "#A5ACAF",
+    primaryBGstyle: "bg-[#000000]",
+    secondaryBGstyle: "bg-[#A5ACAF]",
+    secondaryTextStyle: "text-[#A5ACAF]",
+    secondaryBorderStyle: "border-[#A5ACAF]",
+    primaryPlainText: "text-white",
+    secondaryPlainText: "text-black",
+  },
   "LVR":{
     primary: "#000000",
     secondary: "#A5ACAF",
@@ -260,6 +280,16 @@ export const NFLstyleData: { [Key in NFLTeamType] : {
     primaryPlainText: "text-white",
     secondaryPlainText: "text-black",
   },
+  "OAK":{
+    primary: "#000000",
+    secondary: "#A5ACAF",
+    primaryBGstyle: "bg-[#000000]",
+    secondaryBGstyle: "bg-[#A5ACAF]",
+    secondaryTextStyle: "text-[#A5ACAF]",
+    secondaryBorderStyle: "border-[#A5ACAF]",
+    primaryPlainText: "text-white",
+    secondaryPlainText: "text-black",
+  },
   "PHI":{
     primary: "#004C54",
     secondary: "#A5ACAF",
@@ -290,6 +320,16 @@ export const NFLstyleData: { [Key in NFLTeamType] : {
     primaryPlainText: "text-white",
     secondaryPlainText: "text-white",
   },
+  "SDC":{
+    primary: "#0080C6",
+    secondary: "#FFC20E",
+    primaryBGstyle: "bg-[#0080C6]",
+    secondaryBGstyle: "bg-[#FFC20E]",
+    secondaryTextStyle: "text-[#FFC20E]",
+    secondaryBorderStyle: "border-[#FFC20E]",
+    primaryPlainText: "text-white",
+    secondaryPlainText: "text-white",
+  },
   "SFO":{
     primary: "#AA0000",
     secondary: "#B3995D",
@@ -297,6 +337,16 @@ export const NFLstyleData: { [Key in NFLTeamType] : {
     secondaryBGstyle: "bg-[#B3995D]",
     secondaryTextStyle: "text-[#B3995D]",
     secondaryBorderStyle: "border-[#B3995D]",
+    primaryPlainText: "text-white",
+    secondaryPlainText: "text-white",
+  },
+  "STL":{
+    primary: "#003594",
+    secondary: "#FFA300",
+    primaryBGstyle: "bg-[#003594]",
+    secondaryBGstyle: "bg-[#FFA300]",
+    secondaryTextStyle: "text-[#FFA300]",
+    secondaryBorderStyle: "border-[#FFA300]",
     primaryPlainText: "text-white",
     secondaryPlainText: "text-white",
   },
@@ -321,6 +371,16 @@ export const NFLstyleData: { [Key in NFLTeamType] : {
     secondaryPlainText: "text-white",
   },
   "WAS":{
+    primary: "#5A1414",
+    secondary: "#FFB612",
+    primaryBGstyle: "bg-[#5A1414]",
+    secondaryBGstyle: "bg-[#FFB612]",
+    secondaryTextStyle: "text-[#FFB612]",
+    secondaryBorderStyle: "border-[#FFB612]",
+    primaryPlainText: "text-white",
+    secondaryPlainText: "text-white",
+  },
+  "WRS":{
     primary: "#5A1414",
     secondary: "#FFB612",
     primaryBGstyle: "bg-[#5A1414]",

@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
 import type { NHLTeamType } from "~/data/NHL/NHLdata";
-import { nhlTeams, NHLteamData, nullArray32 } from "~/data/NHL/NHLdata";
+import { activeNHLTeams, NHLteamData, nullArray32 } from "~/data/NHL/NHLdata";
 
 export const NHLRankContext = createContext<ContextType | null>(null);
 
@@ -202,7 +202,7 @@ export const NHLRankContextProvider = ({
   children,
 }: NHLRankContextProviderProps) => {
   const [nhlRankState, nhlRankDispatch] = useReducer(nhlRankReducer, {
-    unRankedTeams: [...nhlTeams],
+    unRankedTeams: [...activeNHLTeams],
     rankedTeams: [...nullArray32],
   });
 

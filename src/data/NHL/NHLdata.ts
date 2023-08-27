@@ -1,15 +1,17 @@
-export const nhlTeams = [
+export const activeNHLTeams = [
   "VEG", "FLA", "CAR", "DAL", "BOS", "COL", "NJD", "TOR", 
   "EDM", "NYR", "LAK", "MIN", "SEA", "TBL", "WIN", "NYI", 
   "CGY", "NSH", "PIT", "BUF", "OTT", "VAN", "STL", "DET", 
   "WAS", "PHI", "ARI", "MTL", "SJS", "CBJ", "ANA", "CHI", 
 ] as const;
 
-export type NHLTeamType = typeof nhlTeams[number];
+export type NHLTeamType = typeof activeNHLTeams[number];
+
+export type AllNHLTeamType = NHLTeamType | "MMR" | "MNS";
 
 export type teamInfoType = {rank: number, code: string, location: string, name: string };
 
-export const NHLteamData: { [Key in NHLTeamType] : teamInfoType} = {
+export const NHLteamData: { [Key in AllNHLTeamType] : teamInfoType} = {
   "ANA": {
     rank: 30,
     code: "ANA",
@@ -85,6 +87,16 @@ export const NHLteamData: { [Key in NHLTeamType] : teamInfoType} = {
     code: "MIN",
     location: "Minnesota",
     name: "Wild",
+  }, "MMR": {
+    rank: 99,
+    code: "MMR",
+    location: "Montreal",
+    name: "Maroons",
+  }, "MNS": {
+    rank: 69,
+    code: "MNS",
+    location: "Minnesota",
+    name: "North Stars",
   }, "MTL": {
     rank: 0,
     code: "MTL",
@@ -163,8 +175,8 @@ export const NHLteamData: { [Key in NHLTeamType] : teamInfoType} = {
   }, "WAS": {
     rank: 0,
     code: "WAS",
-    location: "Washington Capitals",
-    name: "",
+    location: "Washington",
+    name: "Capitals",
   }, "WIN": {
     rank: 0,
     code: "WIN",

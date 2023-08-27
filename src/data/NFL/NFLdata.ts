@@ -7,9 +7,11 @@ export const nflTeams = [
 
 export type NFLTeamType = typeof nflTeams[number];
 
+export type AllNFLTeamType = NFLTeamType | "WRS" | "OAK" | "LRD" | "STL" | "BCS" | "SDC";
+
 export type teamInfoType = {rank: number, code: string, location: string, name: string };
 
-export const NFLteamData: { [Key in NFLTeamType] : teamInfoType} = {
+export const NFLteamData: { [Key in AllNFLTeamType] : teamInfoType} = {
   "ARI":{
     code: "ARI",
     rank: 29,
@@ -27,6 +29,12 @@ export const NFLteamData: { [Key in NFLTeamType] : teamInfoType} = {
     rank: 9,
     location: "Baltimore",
     name: "Ravens"
+  },
+  "BCS":{
+    code: "BCS",
+    rank: 100,
+    location: "Baltimore",
+    name: "Colts"
   },
   "BUF":{
     code: "BUF",
@@ -118,6 +126,12 @@ export const NFLteamData: { [Key in NFLTeamType] : teamInfoType} = {
     location: "Los Angeles",
     name: "Rams"
   },
+  "LRD": {
+    code: "LRD",
+    rank: 100,
+    location: "Los Angeles",
+    name: "Raiders"
+  },
   "LVR":{
     code:  "LV",
     rank: 25,
@@ -160,6 +174,12 @@ export const NFLteamData: { [Key in NFLTeamType] : teamInfoType} = {
     location: "New York",
     name: "Jets"
   },
+  "OAK": {
+    code: "OAK",
+    rank: 100,
+    location: "Oakland",
+    name: "Raiders"
+  },
   "PHI":{
     code: "PHI",
     rank: 1,
@@ -178,11 +198,23 @@ export const NFLteamData: { [Key in NFLTeamType] : teamInfoType} = {
     location: "Seattle",
     name: "Seahawks"
   },
+  "SDC":{
+    code: "SDC",
+    rank: 100,
+    location: "San Diego",
+    name: "Chargers"
+  },
   "SFO":{
     code:  "SF",
     rank: 2,
     location: "San Francisco",
     name: "49ers"
+  },
+  "STL":{
+    code: "STL",
+    rank: 100,
+    location: "St. Louis",
+    name: "Rams"
   },
   "TAM":{
     code:  "TB",
@@ -201,6 +233,12 @@ export const NFLteamData: { [Key in NFLTeamType] : teamInfoType} = {
     rank: 16,
     location: "Washington",
     name: "Commanders"
+  },
+  "WRS": {
+    code: "WRS",
+    rank: 100,
+    location: "Washington",
+    name: "Redskins"
   }
 }
 

@@ -19,6 +19,7 @@ export const years = [
 ] as const;
 
 export type NBATeamType = typeof nbaTeams[number];
+export type AllNBATeamType = NBATeamType | "SEA" | "WSB" | "STL" | "PHW" | "SYR" | "MNL" | "ROC" | "BAL" | "NJN" | "SFW" | "FWP" | "WSC" | "CHS"
 export type PickYearType = typeof years[number];
 export type PickCodeType = `${NBATeamType}-${PickYearType}`;
 
@@ -26,7 +27,7 @@ export const TeamNameEnum = z.enum(nbaTeams);
 export const YearEnum = z.enum(years);
 
 export const NBAteamData: {
-  [Key in NBATeamType] : {
+  [Key in AllNBATeamType] : {
     rank: number,
     location: string;
     name: string;
@@ -216,6 +217,71 @@ export const NBAteamData: {
     name: "Wizards",
   },
 
+  BAL:{  
+    rank: 100,
+    location: "Baltimore",
+    name: "Bullets",
+  },
+  CHS:{  
+    rank: 100,
+    location: "Chicago",
+    name: "Stags",
+  },
+  FWP:{  
+    rank: 100,
+    location: "Fort Wayne",
+    name: "Pistons",
+  },
+  MNL:{  
+    rank: 100,
+    location: "Minneapolis",
+    name: "Lakers",
+  },
+  NJN:{  
+    rank: 100,
+    location: "New Jersey",
+    name: "Nets",
+  },
+  PHW:{  
+    rank: 100,
+    location: "Philadelphia",
+    name: "Warriors",
+  },
+  ROC:{  
+    rank: 100,
+    location: "Rochester",
+    name: "Royals",
+  },
+  SEA:{  
+    rank: 100,
+    location: "Seattle",
+    name: "Supersonics",
+  },
+  SFW:{  
+    rank: 100,
+    location: "San Francisco",
+    name: "Warriors",
+  },
+  STL:{  
+    rank: 100,
+    location: "St Louis",
+    name: "Hawks",
+  },
+  SYR:{  
+    rank: 100,
+    location: "Syracuse",
+    name: "Nationals",
+  },
+  WSC:{  
+    rank: 100,
+    location: "Washington",
+    name: "Capitols",
+  },
+  WSB:{  
+    rank: 100,
+    location: "Washington",
+    name: "Bullets",
+  },
 };
 
 export const NBApickData: {

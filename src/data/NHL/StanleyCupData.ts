@@ -1,4 +1,4 @@
-import { type StanleyCupSeriesType } from "~/types/StanleyCupSeriesType"
+import { type StanleyCupSeriesType } from "~/types/ChampTypes"
 
 export const StanleyCupData: StanleyCupSeriesType[] = [
   {

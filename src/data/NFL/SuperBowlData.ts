@@ -1,4 +1,4 @@
-import { type SuperBowlType } from "~/types/SuperBowlType"
+import { type SuperBowlType } from "~/types/ChampTypes";
 
 export const SuperBowlData: SuperBowlType[] = [
   {

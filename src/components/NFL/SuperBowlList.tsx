@@ -75,10 +75,12 @@ const SuperBowlList: React.FC = () => {
       </div>
       <table className="w-full sm:w-auto">
         <thead className="bg-nfl text-white">
-          <th></th>
-          <th>Winning Team</th>
-          <th>Games</th>
-          <th>Losing Team</th>
+          <tr>
+            <th></th>
+            <th>Winning Team</th>
+            <th>Games</th>
+            <th>Losing Team</th>
+          </tr>
         </thead>
         <tbody>{superBowls}</tbody>
       </table>

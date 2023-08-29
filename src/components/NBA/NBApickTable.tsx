@@ -29,7 +29,7 @@ const NBApickTable: React.FC = () => {
             className={cn(
               "border-x-2 first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2",
               NBAstyleData[pick.nativeTeam].primaryBGstyle,
-              NBAstyleData[pick.nativeTeam].plainTextStyle,
+              NBAstyleData[pick.nativeTeam].primaryPlainText,
               NBAstyleData[pick.nativeTeam].secondaryBorderStyle
             )}
             onClick={() => {

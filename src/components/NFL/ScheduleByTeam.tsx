@@ -19,9 +19,14 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
 ) => {
   const { team } = props;
   const allGames: (GameType | null)[] = [...nullArray18];
-  NFLscheduleData.filter(
-    (game) => game.Away === team || game.Home === team
-  ).forEach((game) => {
+
+  const allGamesNoBye = NFLscheduleData.filter((game) => {
+    if (game.Away === team || game.Home === team) {
+      return game;
+    }
+  });
+
+  allGamesNoBye.forEach((game) => {
     allGames[game.Week - 1] = game;
   });
 
@@ -112,21 +117,37 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
     }
   });
   return (
-    <div className="flex w-full justify-start overflow-auto sm:justify-center">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Away</th>
-            <th></th>
-            <th>Home</th>
-            <th></th>
-            <th>Winner</th>
-          </tr>
-        </thead>
-        <tbody className="text-sm sm:text-base">{schedule}</tbody>
-      </table>
-    </div>
+    <>
+      <div className="flex w-full justify-start overflow-auto sm:justify-center">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Away</th>
+              <th></th>
+              <th>Home</th>
+              <th></th>
+              <th>Winner</th>
+            </tr>
+          </thead>
+          <tbody className="text-sm sm:text-base">{schedule}</tbody>
+        </table>
+      </div>
+      <div className="flex justify-center">
+        <button
+          className="p-1 hover:underline"
+          onClick={() => {
+            const clearAllTeamGames = allGamesNoBye.map((game) => {
+              const clearGame = { Code: game.Code, Winner: undefined };
+              return clearGame;
+            });
+            nflScheduleDispatch({ type: "PICK", payload: clearAllTeamGames });
+          }}
+        >
+          Clear {team} Selections
+        </button>
+      </div>
+    </>
   );
 };
 

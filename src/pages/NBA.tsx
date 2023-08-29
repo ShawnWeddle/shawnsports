@@ -5,6 +5,7 @@ import NavBar from "~/components/Nav/NavBar";
 import { NBARankContextProvider } from "~/context/NBArankContext";
 import NBARanker from "~/components/NBA/NBARanker";
 import NBApickTable from "~/components/NBA/NBApickTable";
+import NBAFinalsList from "~/components/NBA/NBAFinalsList";
 
 const NBA: NextPage = () => {
   const { navState } = useNavContext();
@@ -20,6 +21,7 @@ const NBA: NextPage = () => {
         <NavBar pageMode="NBA" underPageMode="Future Picks" />
         <div className="mx-auto flex w-full grow flex-col items-start bg-white sm:m-0 sm:max-w-screen-sm sm:items-center md:max-w-screen-md lg:max-w-screen-lg">
           {underPageMode === "Future Picks" && <NBApickTable />}
+          {underPageMode === "Finals" && <NBAFinalsList />}
           {underPageMode === "Rank" && (
             <NBARankContextProvider>
               <NBARanker />

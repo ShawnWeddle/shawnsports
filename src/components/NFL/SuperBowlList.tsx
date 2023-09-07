@@ -35,7 +35,9 @@ const SuperBowlList: React.FC = () => {
             {NFLteamData[winningTeam].name}
           </button>
         </td>
-        <td className="text-center font-semibold">{score}</td>
+        <td className="whitespace-nowrap px-1 text-center font-semibold">
+          {score}
+        </td>
         <td>
           <button
             className={cn(
@@ -78,7 +80,7 @@ const SuperBowlList: React.FC = () => {
           <tr>
             <th></th>
             <th>Winning Team</th>
-            <th>Games</th>
+            <th>Score</th>
             <th>Losing Team</th>
           </tr>
         </thead>

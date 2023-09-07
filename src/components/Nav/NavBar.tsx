@@ -5,6 +5,7 @@ import { useNavContext } from "~/hooks/useNavContext";
 import { allNavHeads, pageHeads, pageRouter } from "~/data/Home";
 import type { PageHeadsType, UnderPageHeadsType } from "~/data/Home";
 import SignIn from "../SignIn";
+import { MdAccountCircle } from "react-icons/md";
 
 interface NavProps {
   pageMode: PageHeadsType;
@@ -33,7 +34,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
     return (
       <button
         key={index}
-        className={cn("p-2 text-xl text-white md:text-2xl", {
+        className={cn("py-2 text-xl text-white md:text-2xl", {
           "text-2xl md:text-3xl": pageMode === page,
         })}
         onClick={() => {
@@ -104,6 +105,14 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
           })}
         >
           {navPageButtons}
+          <button
+            className="py-2 text-xl text-white md:text-2xl"
+            onClick={() => {
+              dialog.current?.showModal();
+            }}
+          >
+            <MdAccountCircle />
+          </button>
         </nav>
         <nav className={cn("flex justify-center gap-4 bg-white")}>
           {pageMode !== "Home" && navUnderPageButtons}

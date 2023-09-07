@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { api } from "~/utils/api";
+import { createUserSchema } from "~/server/api/auth/schema";
 
 const SignIn: React.FC = () => {
   const [signInMode, setSignInMode] = useState<"LOG-IN" | "SIGN-UP">("LOG-IN");
@@ -10,6 +12,38 @@ const SignIn: React.FC = () => {
   const [isSignedUp, setIsSignedUp] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [signUpErrors, setSignUpErrors] = useState<string[]>([]);
+
+  const registerUser = api.user.registerUser.useMutation();
+
+  const handleRegister = () => {
+    const validation = createUserSchema.safeParse({
+      username: username,
+      email: email,
+      password: password,
+      passwordConfirm: passwordConfirmation,
+    });
+    console.log(validation);
+    if (validation.success) {
+      registerUser.mutate(
+        {
+          username: username,
+          email: email,
+          password: password,
+          passwordConfirm: passwordConfirmation,
+        },
+        {
+          onSuccess() {
+            setSignUpErrors([]);
+            setIsSignedUp(true);
+          },
+          onError(error) {
+            console.log(error);
+          },
+        }
+      );
+    }
+  };
+
   return (
     <div>
       <div className="m-2 flex flex-col items-center">
@@ -22,7 +56,7 @@ const SignIn: React.FC = () => {
           </label>
           <input
             id="add-username"
-            className="my-1 w-64 rounded border-2 border-home pl-1"
+            className="my-1 w-64 rounded border-2 border-home pl-1 focus:bg-ylo/20"
             type="text"
             placeholder="Enter Username"
             onChange={(e) => setUsername(e.target.value)}
@@ -36,7 +70,7 @@ const SignIn: React.FC = () => {
             </label>
             <input
               id="add-email"
-              className="my-1 w-64 rounded border-2 border-home pl-1"
+              className="my-1 w-64 rounded border-2 border-home pl-1 focus:bg-ylo/20"
               type="text"
               placeholder="Enter Email"
               onChange={(e) => setEmail(e.target.value)}
@@ -50,7 +84,7 @@ const SignIn: React.FC = () => {
           </label>
           <input
             id="add-password"
-            className="my-1 w-64 rounded border-2 border-home pl-1"
+            className="my-1 w-64 rounded border-2 border-home pl-1 focus:bg-ylo/20"
             type={showPassword ? "text" : "password"}
             placeholder="Enter password"
             onChange={(e) => setPassword(e.target.value)}
@@ -64,7 +98,7 @@ const SignIn: React.FC = () => {
             </label>
             <input
               id="add-password-confirm"
-              className="my-1 w-64 rounded border-2 border-home pl-1"
+              className="my-1 w-64 rounded border-2 border-home pl-1 focus:bg-ylo/20"
               type={showPassword ? "text" : "password"}
               placeholder="Confirm password "
               onChange={(e) => setPasswordConfirmation(e.target.value)}
@@ -91,7 +125,10 @@ const SignIn: React.FC = () => {
           </label>
         </div>
         {signInMode === "SIGN-UP" && (
-          <button className="m-2 rounded bg-home p-1 text-xl text-white hover:bg-home/80">
+          <button
+            className="m-2 rounded bg-home p-1 text-xl text-white hover:bg-home/80"
+            onClick={handleRegister}
+          >
             Sign Up
           </button>
         )}

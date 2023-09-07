@@ -5,6 +5,7 @@ import { useNavContext } from "~/hooks/useNavContext";
 import { allNavHeads, pageHeads, pageRouter } from "~/data/Home";
 import type { PageHeadsType, UnderPageHeadsType } from "~/data/Home";
 import SignIn from "../SignIn";
+import { SmallSMWLogo, LargeSMWLogo, MobileResponsiveSMWLogo } from "../Logo";
 import { MdAccountCircle } from "react-icons/md";
 
 interface NavProps {
@@ -34,9 +35,12 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
     return (
       <button
         key={index}
-        className={cn("py-2 text-xl text-white md:text-2xl", {
-          "text-2xl md:text-3xl": pageMode === page,
-        })}
+        className={cn(
+          "py-2 text-xl text-white hover:text-gray-200 md:text-2xl",
+          {
+            "text-2xl hover:text-white md:text-3xl": pageMode === page,
+          }
+        )}
         onClick={() => {
           void router.push(pageRouter(page));
         }}
@@ -104,9 +108,17 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             "bg-formulaOne": pageMode === "F1",
           })}
         >
+          <button
+            className="py-2 text-3xl text-white hover:text-gray-200 md:text-4xl"
+            onClick={() => {
+              void router.push("/");
+            }}
+          >
+            <MobileResponsiveSMWLogo />
+          </button>
           {navPageButtons}
           <button
-            className="py-2 text-xl text-white md:text-2xl"
+            className="py-2 text-xl text-white hover:text-gray-200 md:text-2xl"
             onClick={() => {
               dialog.current?.showModal();
             }}

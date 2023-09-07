@@ -70,7 +70,7 @@ const NBAFinalsList: React.FC = () => {
     <>
       <div className="flex w-full justify-center">
         <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          Stanley Cup Champions
+          NBA Champions
         </h1>
       </div>
       <table className="w-full sm:w-auto">

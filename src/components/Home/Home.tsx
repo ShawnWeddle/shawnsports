@@ -1,11 +1,5 @@
-import SignIn from "../SignIn";
-
-interface HomeProps {
-  stray?: string;
-}
-
-const HomeComp: React.FC<HomeProps> = () => {
-  return <div className="bg-white"></div>;
+const HomeComp: React.FC = () => {
+  return <div className="bg-white">Welcome to sportsmegaworld.com</div>;
 };
 
 export default HomeComp;

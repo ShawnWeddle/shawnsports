@@ -5,7 +5,7 @@ import { useNavContext } from "~/hooks/useNavContext";
 import { allNavHeads, pageHeads, pageRouter } from "~/data/Home";
 import type { PageHeadsType, UnderPageHeadsType } from "~/data/Home";
 import SignIn from "../SignIn";
-import { SmallSMWLogo, LargeSMWLogo, MobileResponsiveSMWLogo } from "../Logo";
+import { MobileResponsiveSMWLogo } from "../Logo";
 import { MdAccountCircle } from "react-icons/md";
 
 interface NavProps {

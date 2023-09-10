@@ -1,20 +1,17 @@
 import type { AllNBATeamType } from "~/data/NBApickData";
 
-export const NBAstyleData: {
-  [Key in AllNBATeamType] : {
-    primary: string;
-    secondary: string;
-    fullStyle: string;
-    primaryBGstyle: string;
-    primaryPlainText: string;
-    secondaryTextStyle: string;
-    secondaryBorderStyle: string;
+export const NBAstyleData: {[Key in AllNBATeamType] : {
+  primary: string;
+  secondary: string;
+  primaryBGstyle: string;
+  primaryPlainText: string;
+  secondaryTextStyle: string;
+  secondaryBorderStyle: string;
   }
 } = {
   ATL:{
     primary: "#E03A3E",
     secondary: "#C1D32F",  
-    fullStyle: "bg-[#E03A3E] border-[#C1D32F] text-white",  
     primaryBGstyle: "bg-[#E03A3E]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#C1D32F]",
@@ -23,7 +20,6 @@ export const NBAstyleData: {
   BOS:{
     primary: "#007A33",
     secondary: "#BA9653",  
-    fullStyle: "bg-[#007A33] border-[#BA9653] text-white",  
     primaryBGstyle: "bg-[#007A33]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -32,7 +28,6 @@ export const NBAstyleData: {
   BRK:{
     primary: "#000000",
     secondary: "#FFFFFF",  
-    fullStyle: "bg-[#000000] border-[#FFFFFF] text-white",  
     primaryBGstyle: "bg-[#000000]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -41,7 +36,6 @@ export const NBAstyleData: {
   CHI:{
     primary: "#CE1141",
     secondary: "#000000",  
-    fullStyle: "bg-[#CE1141] border-[#000000] text-white",  
     primaryBGstyle: "bg-[#CE1141]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#000000]",
@@ -50,7 +44,6 @@ export const NBAstyleData: {
   CHO:{
     primary: "#1D1160",
     secondary: "#00788C",  
-    fullStyle: "bg-[#1D1160] border-[#00788C] text-white",  
     primaryBGstyle: "bg-[#1D1160]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#00788C]",
@@ -59,7 +52,6 @@ export const NBAstyleData: {
   CLE:{
     primary: "#860038",
     secondary: "#FDBB30",  
-    fullStyle: "bg-[#860038] border-[#FDBB30] text-white",  
     primaryBGstyle: "bg-[#860038]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#FDBB30]",
@@ -68,7 +60,6 @@ export const NBAstyleData: {
   DAL:{
     primary: "#00538C",
     secondary: "#B8C4CA",  
-    fullStyle: "bg-[#00538C] border-[#B8C4CA] text-white",  
     primaryBGstyle: "bg-[#00538C]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#B8C4CA]",
@@ -77,7 +68,6 @@ export const NBAstyleData: {
   DEN:{
     primary: "#0E2240",
     secondary: "#FEC524",  
-    fullStyle: "bg-[#0E2240] border-[#FEC524] text-white",  
     primaryBGstyle: "bg-[#0E2240]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#FEC524]",
@@ -86,7 +76,6 @@ export const NBAstyleData: {
   DET:{
     primary: "#1D42BA",
     secondary: "#C8102E",  
-    fullStyle: "bg-[#1D42BA] border-[#C8102E] text-white",  
     primaryBGstyle: "bg-[#1D42BA]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -95,7 +84,6 @@ export const NBAstyleData: {
   GSW:{
     primary: "#FFC72C",
     secondary: "#1D428A",  
-    fullStyle: "bg-[#FFC72C] border-[#1D428A] text-white",  
     primaryBGstyle: "bg-[#FFC72C]",
     primaryPlainText: "text-black",
     secondaryTextStyle: "text-[#1D428A]",
@@ -104,7 +92,6 @@ export const NBAstyleData: {
   HOU:{
     primary: "#CE1141",
     secondary: "#C4CED4",  
-    fullStyle: "bg-[#CE1141] border-[#C4CED4] text-white",  
     primaryBGstyle: "bg-[#CE1141]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -113,7 +100,6 @@ export const NBAstyleData: {
   IND:{
     primary: "#002D62",
     secondary: "#FDBB30",  
-    fullStyle: "bg-[#002D62] border-[#FDBB30] text-white",  
     primaryBGstyle: "bg-[#002D62]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#FDBB30]",
@@ -122,7 +108,6 @@ export const NBAstyleData: {
   LAC:{
     primary: "#C8102E",
     secondary: "#1D428A",  
-    fullStyle: "bg-[#C8102E] border-[#1D428A] text-white",  
     primaryBGstyle: "bg-[#C8102E]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -131,7 +116,6 @@ export const NBAstyleData: {
   LAL:{
     primary: "#FDB927",
     secondary: "#552583",  
-    fullStyle: "bg-[#FDB927] border-[#552583] text-white", 
     primaryBGstyle: "bg-[#FDB927]",
     primaryPlainText: "text-[#552583]",
     secondaryTextStyle: "text-[#552583]",
@@ -140,7 +124,6 @@ export const NBAstyleData: {
   MEM:{
     primary: "#5D76A9",
     secondary: "#12173F",  
-    fullStyle: "bg-[#5D76A9] border-[#12173F] text-white",  
     primaryBGstyle: "bg-[#5D76A9]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#12173F]",
@@ -149,7 +132,6 @@ export const NBAstyleData: {
   MIA:{
     primary: "#98002E",
     secondary: "#F9A01B",  
-    fullStyle: "bg-[#98002E] border-[#F9A01B] text-white",  
     primaryBGstyle: "bg-[#98002E]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#F9A01B]",
@@ -158,7 +140,6 @@ export const NBAstyleData: {
   MIL:{
     primary: "#00471B",
     secondary: "#EEE1C6",  
-    fullStyle: "bg-[#00471B] border-[#EEE1C6] text-white",  
     primaryBGstyle: "bg-[#00471B]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#EEE1C6]",
@@ -167,7 +148,6 @@ export const NBAstyleData: {
   MIN:{
     primary: "#0C2340",
     secondary: "#78BE20",  
-    fullStyle: "bg-[#0C2340] border-[#78BE20] text-white",  
     primaryBGstyle: "bg-[#0C2340]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#78BE20]",
@@ -176,7 +156,6 @@ export const NBAstyleData: {
   NOP:{
     primary: "#0C2340",
     secondary: "#85714D",  
-    fullStyle: "bg-[#0C2340] border-[#85714D] text-white",  
     primaryBGstyle: "bg-[#0C2340]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#85714D]",
@@ -185,7 +164,6 @@ export const NBAstyleData: {
   NYK:{
     primary: "#F58426",
     secondary: "#006BB6",  
-    fullStyle: "bg-[#F58426] border-[#006BB6] text-white",  
     primaryBGstyle: "bg-[#F58426]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#006BB6]",
@@ -194,7 +172,6 @@ export const NBAstyleData: {
   OKC:{
     primary: "#007AC1",
     secondary: "#EF3B24",  
-    fullStyle: "bg-[#007AC1] border-[#EF3B24] text-white",  
     primaryBGstyle: "bg-[#007AC1]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -203,7 +180,6 @@ export const NBAstyleData: {
   ORL:{
     primary: "#0077C0",
     secondary: "#C4CED4",  
-    fullStyle: "bg-[#0077C0] border-[#C4CED4] text-white",  
     primaryBGstyle: "bg-[#0077C0]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -212,7 +188,6 @@ export const NBAstyleData: {
   PHI:{
     primary: "#006BB6",
     secondary: "#ED174C",  
-    fullStyle: "bg-[#006BB6] border-[#ED174C] text-white",  
     primaryBGstyle: "bg-[#006BB6]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -221,7 +196,6 @@ export const NBAstyleData: {
   PHO:{
     primary: "#E56020",
     secondary: "#1D1160",  
-    fullStyle: "bg-[#E56020] border-[#1D1160] text-white",  
     primaryBGstyle: "bg-[#E56020]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#1D1160]",
@@ -230,8 +204,7 @@ export const NBAstyleData: {
   POR:{
     primary: "#E03A3E",
     secondary: "#000000",  
-    fullStyle: "bg-[#E03A3E] border-[#000000] text-white",
-    primaryBGstyle: "bg-[#E03A3E]",
+  primaryBGstyle: "bg-[#E03A3E]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
     secondaryBorderStyle: "border-[#000000]",
@@ -239,7 +212,6 @@ export const NBAstyleData: {
   SAC:{
     primary: "#5A2D81",
     secondary: "#63727A",  
-    fullStyle: "bg-[#5A2D81] border-[#63727A] text-white",  
     primaryBGstyle: "bg-[#5A2D81]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -248,7 +220,6 @@ export const NBAstyleData: {
   SAS:{
     primary: "#C4CED4",
     secondary: "#000000",  
-    fullStyle: "bg-[#C4CED4] border-[#000000] text-black",  
     primaryBGstyle: "bg-[#C4CED4]",
     primaryPlainText: "text-black",
     secondaryTextStyle: "text-black",
@@ -257,7 +228,6 @@ export const NBAstyleData: {
   TOR:{
     primary: "#CE1141",
     secondary: "#000000",  
-    fullStyle: "bg-[#CE1141] border-[#000000] text-white",  
     primaryBGstyle: "bg-[#CE1141]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -266,7 +236,6 @@ export const NBAstyleData: {
   UTA:{
     primary: "#00471B",
     secondary: "#F9A01B",  
-    fullStyle: "bg-[#00471B] border-[#F9A01B] text-white",  
     primaryBGstyle: "bg-[#00471B]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#F9A01B]",
@@ -275,7 +244,6 @@ export const NBAstyleData: {
   WAS:{
     primary: "#002B5C",
     secondary: "#E31837",  
-    fullStyle: "bg-[#002B5C] border-[#E31837] text-white",  
     primaryBGstyle: "bg-[#002B5C]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#E31837]",
@@ -284,7 +252,6 @@ export const NBAstyleData: {
   BAL:{
     primary: "#002B5C",
     secondary: "#E31837",  
-    fullStyle: "bg-[#002B5C] border-[#E31837] text-white",  
     primaryBGstyle: "bg-[#002B5C]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#E31837]",
@@ -293,7 +260,6 @@ export const NBAstyleData: {
   CHS:{
     primary: "#002F70",
     secondary: "#EC0028",  
-    fullStyle: "bg-[#002F70] border-[#EC0028] text-white",  
     primaryBGstyle: "bg-[#002F70]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -302,7 +268,6 @@ export const NBAstyleData: {
   FWP:{
     primary: "#1D42BA",
     secondary: "#C8102E",  
-    fullStyle: "bg-[#1D42BA] border-[#C8102E] text-white",  
     primaryBGstyle: "bg-[#1D42BA]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -311,7 +276,6 @@ export const NBAstyleData: {
   MNL:{
     primary: "#FDB927",
     secondary: "#552583",  
-    fullStyle: "bg-[#FDB927] border-[#552583] text-white", 
     primaryBGstyle: "bg-[#FDB927]",
     primaryPlainText: "text-[#552583]",
     secondaryTextStyle: "text-[#552583]",
@@ -320,7 +284,6 @@ export const NBAstyleData: {
   NJN:{
     primary: "#000000",
     secondary: "#FFFFFF",  
-    fullStyle: "bg-[#000000] border-[#FFFFFF] text-white",  
     primaryBGstyle: "bg-[#000000]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -329,7 +292,6 @@ export const NBAstyleData: {
   PHW:{
     primary: "#FFC72C",
     secondary: "#1D428A",  
-    fullStyle: "bg-[#FFC72C] border-[#1D428A] text-white",  
     primaryBGstyle: "bg-[#FFC72C]",
     primaryPlainText: "text-black",
     secondaryTextStyle: "text-[#1D428A]",
@@ -338,7 +300,6 @@ export const NBAstyleData: {
   ROC:{
     primary: "#5A2D81",
     secondary: "#63727A",  
-    fullStyle: "bg-[#5A2D81] border-[#63727A] text-white",  
     primaryBGstyle: "bg-[#5A2D81]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -347,7 +308,6 @@ export const NBAstyleData: {
   SEA:{
     primary: "#00653A",
     secondary: "#FFC200",  
-    fullStyle: "bg-[#00653A] border-[#FFC200] text-white",  
     primaryBGstyle: "bg-[#00653A]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -356,7 +316,6 @@ export const NBAstyleData: {
   SFW:{
     primary: "#FFC72C",
     secondary: "#1D428A",  
-    fullStyle: "bg-[#FFC72C] border-[#1D428A] text-white",  
     primaryBGstyle: "bg-[#FFC72C]",
     primaryPlainText: "text-black",
     secondaryTextStyle: "text-[#1D428A]",
@@ -365,7 +324,6 @@ export const NBAstyleData: {
   STL:{
     primary: "#E03A3E",
     secondary: "#C1D32F",  
-    fullStyle: "bg-[#E03A3E] border-[#C1D32F] text-white",  
     primaryBGstyle: "bg-[#E03A3E]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#C1D32F]",
@@ -374,7 +332,6 @@ export const NBAstyleData: {
   SYR:{
     primary: "#006BB6",
     secondary: "#ED174C",  
-    fullStyle: "bg-[#006BB6] border-[#ED174C] text-white",  
     primaryBGstyle: "bg-[#006BB6]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -383,7 +340,6 @@ export const NBAstyleData: {
   WSC:{
     primary: "#008348",
     secondary: "#FFFFFF",  
-    fullStyle: "bg-[#008348] border-[#FFFFFF] text-white",  
     primaryBGstyle: "bg-[#008348]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
@@ -392,7 +348,6 @@ export const NBAstyleData: {
   WSB:{
     primary: "#002B5C",
     secondary: "#E31837",  
-    fullStyle: "bg-[#002B5C] border-[#E31837] text-white",  
     primaryBGstyle: "bg-[#002B5C]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-[#E31837]",

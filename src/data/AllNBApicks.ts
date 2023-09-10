@@ -408,12 +408,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     year: 2029,
     notes: ["Golden State has not yet traded this pick."],
   },],
-  "2030":[{
-    nativeTeam: "GSW",
-    pickCode: "GSW-2030",
-    year: 2030,
-    notes: ["Golden State has not yet traded this pick."],
-  },],
+  "2030":[],
 },
 "HOU":{
   "2024":[{
@@ -1357,6 +1352,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     year: 2030,
     notes: ["Washington will receive the greater of their native pick and Phoenix's pick."],
     swap: "positive",
+  },{
+    nativeTeam: "GSW",
+    pickCode: "GSW-2030",
+    year: 2030,
+    notes: ["Traded from Golden State to Washington."],
   },],
 },
 };

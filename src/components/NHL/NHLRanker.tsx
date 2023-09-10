@@ -42,7 +42,9 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               [NHLstyleData[unRankedTeam].secondaryTextStyle]: true,
             })}
           >
-            {NHLteamData[unRankedTeam].name}
+            {unRankedTeam === "VEG"
+              ? "Knights"
+              : NHLteamData[unRankedTeam].name}
           </td>
         </>
       ) : (
@@ -115,7 +117,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               [NHLstyleData[rankedTeam].secondaryTextStyle]: true,
             })}
           >
-            {NHLteamData[rankedTeam].name}
+            {rankedTeam === "VEG" ? "Knights" : NHLteamData[rankedTeam].name}
           </td>
         </>
       ) : (

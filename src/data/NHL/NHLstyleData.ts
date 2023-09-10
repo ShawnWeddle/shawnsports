@@ -68,14 +68,14 @@ export const NHLstyleData: { [Key in AllNHLTeamType] : {
     primary: "#6F263D",
     secondary: "#236192",
     primaryBGstyle: "bg-[#6F263D]",
-    secondaryTextStyle: "text-[#236192]",
+    secondaryTextStyle: "text-white",
     secondaryBorderStyle: "border-[#236192]",
     primaryPlainText: "text-white",
   }, "DAL": {
     primary: "#006847",
     secondary: "#8F8F8C",
     primaryBGstyle: "bg-[#006847]",
-    secondaryTextStyle: "text-[#8F8F8C]",
+    secondaryTextStyle: "text-white",
     secondaryBorderStyle: "border-[#8F8F8C]",
     primaryPlainText: "text-white",
   }, "DET": {
@@ -110,7 +110,7 @@ export const NHLstyleData: { [Key in AllNHLTeamType] : {
     primary: "#154734",
     secondary: "#A6192E",
     primaryBGstyle: "bg-[#154734]",
-    secondaryTextStyle: "text-[#A6192E]",
+    secondaryTextStyle: "text-white",
     secondaryBorderStyle: "border-[#A6192E]",
     primaryPlainText: "text-white",
   }, "MMR": {
@@ -131,7 +131,7 @@ export const NHLstyleData: { [Key in AllNHLTeamType] : {
     primary: "#AF1E2D",
     secondary: "#192168",
     primaryBGstyle: "bg-[#AF1E2D]",
-    secondaryTextStyle: "text-[#192168]",
+    secondaryTextStyle: "text-white",
     secondaryBorderStyle: "border-[#192168]",
     primaryPlainText: "text-white",
   }, "NJD": {
@@ -159,7 +159,7 @@ export const NHLstyleData: { [Key in AllNHLTeamType] : {
     primary: "#0038A8",
     secondary: "#CE1126",
     primaryBGstyle: "bg-[#0038A8]",
-    secondaryTextStyle: "text-[#CE1126]",
+    secondaryTextStyle: "text-white",
     secondaryBorderStyle: "border-[#CE1126]",
     primaryPlainText: "text-white",
   }, "OTT": {
@@ -222,7 +222,7 @@ export const NHLstyleData: { [Key in AllNHLTeamType] : {
     primary: "#00205B",
     secondary: "#00843D",
     primaryBGstyle: "bg-[#00205B]",
-    secondaryTextStyle: "text-[#00843D]",
+    secondaryTextStyle: "text-white",
     secondaryBorderStyle: "border-[#00843D]",
     primaryPlainText: "text-white",
   }, "VEG": {

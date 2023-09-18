@@ -4,9 +4,10 @@ import { useRouter } from "next/router";
 import { useNavContext } from "~/hooks/useNavContext";
 import { allNavHeads, pageHeads, pageRouter } from "~/data/Home";
 import type { PageHeadsType, UnderPageHeadsType } from "~/data/Home";
-import SignIn from "../SignIn";
+import SignIn from "~/components/SignIn";
 import { MobileResponsiveSMWLogo } from "../Logo";
 import { MdAccountCircle } from "react-icons/md";
+import { useAuthContext } from "~/hooks/useAuthContext";
 
 interface NavProps {
   pageMode: PageHeadsType;
@@ -16,6 +17,9 @@ interface NavProps {
 const NavBar: React.FC<NavProps> = (props: NavProps) => {
   const { pageMode, underPageMode } = props;
   const { navState, navDispatch } = useNavContext();
+
+  const { authDispatch, authState } = useAuthContext();
+  const { user } = authState;
 
   const router = useRouter();
 
@@ -157,7 +161,16 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             ✕
           </button>
         </div>
-        <SignIn />
+        {!user && <SignIn />}
+        {user && (
+          <button
+            onClick={() => {
+              void router.push(`/profile/${user.username}`);
+            }}
+          >
+            {user.username}
+          </button>
+        )}
       </dialog>
     </>
   );

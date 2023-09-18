@@ -1,6 +1,7 @@
 import { type AppType } from "next/app";
 import { type Session } from "next-auth";
 import { NavContextProvider } from "~/context/NavContext";
+import { AuthContextProvider } from "~/context/AuthContext";
 
 import { api } from "~/utils/api";
 
@@ -11,9 +12,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
   pageProps: { session, ...pageProps },
 }) => {
   return (
-    <NavContextProvider>
-      <Component {...pageProps} />
-    </NavContextProvider>
+    <AuthContextProvider>
+      <NavContextProvider>
+        <Component {...pageProps} />
+      </NavContextProvider>
+    </AuthContextProvider>
   );
 };
 

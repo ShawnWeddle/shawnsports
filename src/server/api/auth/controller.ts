@@ -51,7 +51,7 @@ export const loginHandler = async ({
   input: LoginUserInput
 }) => {
   try {
-    const user = await findUser({ email: input.email.toLowerCase() });
+    const user = await findUser({ username: input.username.toLowerCase() });
 
     if (!user || !(await bcrypt.compare(input.password, user.password))) {
       throw new TRPCError({

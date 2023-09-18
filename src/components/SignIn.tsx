@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { api } from "~/utils/api";
-import { createUserSchema } from "~/server/api/auth/schema";
+import { createUserSchema, logInUserSchema } from "~/server/api/auth/schema";
+import { useAuthContext } from "~/hooks/useAuthContext";
 
 const SignIn: React.FC = () => {
   const [signInMode, setSignInMode] = useState<"LOG-IN" | "SIGN-UP">("LOG-IN");
@@ -12,8 +13,12 @@ const SignIn: React.FC = () => {
   const [isSignedUp, setIsSignedUp] = useState<boolean>(false);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [signUpErrors, setSignUpErrors] = useState<string[]>([]);
+  const [logInErrors, setLogInErrors] = useState<string[]>([]);
+
+  const { authState, authDispatch } = useAuthContext();
 
   const registerUser = api.user.registerUser.useMutation();
+  const logInUser = api.user.logInUser.useMutation();
 
   const handleRegister = () => {
     const validation = createUserSchema.safeParse({
@@ -35,6 +40,41 @@ const SignIn: React.FC = () => {
           onSuccess() {
             setSignUpErrors([]);
             setIsSignedUp(true);
+          },
+          onError(error) {
+            console.log(error);
+          },
+        }
+      );
+    }
+  };
+
+  const handleLogin = () => {
+    const validation = logInUserSchema.safeParse({
+      username: username,
+      password: password,
+    });
+    console.log(validation);
+    if (validation.success) {
+      logInUser.mutate(
+        {
+          username: username,
+          password: password,
+        },
+        {
+          onSuccess(data) {
+            const { token, user } = data;
+            authDispatch({
+              type: "LOGIN",
+              payload: {
+                token: token,
+                userId: user.userId,
+                username: user.username,
+                email: user.email,
+              },
+            });
+            setLogInErrors([]);
+            setIsLoggedIn(true);
           },
           onError(error) {
             console.log(error);
@@ -133,7 +173,10 @@ const SignIn: React.FC = () => {
           </button>
         )}
         {signInMode === "LOG-IN" && (
-          <button className="m-2 rounded bg-home p-1 text-xl text-white hover:bg-home/80">
+          <button
+            className="m-2 rounded bg-home p-1 text-xl text-white hover:bg-home/80"
+            onClick={handleLogin}
+          >
             Log In
           </button>
         )}
@@ -144,7 +187,7 @@ const SignIn: React.FC = () => {
             <button
               className="hover:underline"
               onClick={() => {
-                setShowPassword(true);
+                setShowPassword(false);
                 setSignInMode("LOG-IN");
               }}
             >
@@ -158,7 +201,7 @@ const SignIn: React.FC = () => {
             <button
               className="hover:underline"
               onClick={() => {
-                setShowPassword(false);
+                setShowPassword(true);
                 setSignInMode("SIGN-UP");
               }}
             >

@@ -207,6 +207,18 @@ export const FormulaOneRaceResults : {
     polePosition: "SAI",
     sprint: false,
   },
+  {
+    location: "Singapore",
+    finalOrder: [
+      "SAI", "NOR", "HAM", "LEC", "VER", "GAS", "PIA", "PER", "LAW", "MAG", "ALB", "ZHO", "HUL", "SAR", "ALO", "RUS",
+    ],
+    DNFs: [
+      "BOT", "OCO", "TSU",
+    ],
+    fastestLap: "HAM",
+    polePosition: "SAI",
+    sprint: false,
+  },
 ]
 
 export type RaceResultsType = typeof FormulaOneRaceResults;

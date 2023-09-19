@@ -5,6 +5,8 @@ import NavBar from "~/components/Nav/NavBar";
 import Footer from "~/components/Footer";
 import { NBARankContextProvider } from "~/context/NBArankContext";
 import NBARanker from "~/components/NBA/NBARanker";
+import { NBALotteryContextProvider } from "~/context/NBAlotteryContext";
+import NBALotteryRanker from "~/components/NBA/NBALottery";
 import NBApickTable from "~/components/NBA/NBApickTable";
 import NBAFinalsList from "~/components/NBA/NBAFinalsList";
 
@@ -27,6 +29,11 @@ const NBA: NextPage = () => {
             <NBARankContextProvider>
               <NBARanker />
             </NBARankContextProvider>
+          )}
+          {underPageMode === "Lottery" && (
+            <NBALotteryContextProvider>
+              <NBALotteryRanker />
+            </NBALotteryContextProvider>
           )}
           <Footer />
         </div>

@@ -7,23 +7,26 @@ import {
 } from "react-icons/fa";
 import { BsChevronCompactUp, BsChevronCompactDown } from "react-icons/bs";
 import { cn } from "~/utils/cn";
-import { useNBARankContext } from "~/hooks/useNBARanker";
+import { useNBALotteryContext } from "~/hooks/useNBALottery";
 import type { NBATeamType } from "~/data/NBApickData";
 import { NBAteamData } from "~/data/NBApickData";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 
 interface RankerRowProps {
   unRankedTeam: NBATeamType | null;
+  index: number;
+}
+
+interface LotteryRowProps {
   rankedTeam: NBATeamType | null;
   index: number;
 }
 
 const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
-  const { unRankedTeam, rankedTeam, index } = props;
+  const { unRankedTeam } = props;
   const [newRank, setNewRank] = useState<string>("");
-  const [reRank, setReRank] = useState<string>("");
 
-  const { nbaRankDispatch } = useNBARankContext();
+  const { nbaLotteryDispatch } = useNBALotteryContext();
 
   return (
     <tr className="border-b-2 border-gray-200 font-semibold last:border-0">
@@ -66,7 +69,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="px-1 py-0.5 text-white"
             onClick={() => {
-              nbaRankDispatch({
+              nbaLotteryDispatch({
                 type: "RANK_TEAM",
                 payload: {
                   team: unRankedTeam,
@@ -80,12 +83,23 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </button>
         </div>
       </td>
+    </tr>
+  );
+};
+
+const LotteryRow: React.FC<LotteryRowProps> = (props: LotteryRowProps) => {
+  const { rankedTeam, index } = props;
+  const [reRank, setReRank] = useState<string>("");
+
+  const { nbaLotteryDispatch } = useNBALotteryContext();
+  return (
+    <tr className="border-b-2 border-gray-200 font-semibold last:border-0">
       <td>
         <div className="flex justify-between">
           <button
             className="rounded px-1 py-0.5 text-nba"
             onClick={() => {
-              nbaRankDispatch({
+              nbaLotteryDispatch({
                 type: "UNRANK_TEAM",
                 payload: {
                   team: rankedTeam,
@@ -137,7 +151,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="px-1 py-0.5 text-white"
             onClick={() => {
-              nbaRankDispatch({
+              nbaLotteryDispatch({
                 type: "RERANK_TEAM",
                 payload: {
                   team: rankedTeam,
@@ -155,7 +169,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-3 px-0.5 text-sm text-white disabled:bg-white/50"
               disabled={index === 0}
               onClick={() => {
-                nbaRankDispatch({
+                nbaLotteryDispatch({
                   type: "MOVE_UP",
                   payload: {
                     team: rankedTeam,
@@ -168,9 +182,9 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             </button>
             <button
               className="h-3 px-0.5 text-sm text-white disabled:bg-white/50"
-              disabled={index === 29}
+              disabled={index === 13}
               onClick={() => {
-                nbaRankDispatch({
+                nbaLotteryDispatch({
                   type: "MOVE_DOWN",
                   payload: {
                     team: rankedTeam,
@@ -187,7 +201,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-6 px-0.5 text-sm text-white disabled:bg-white/50"
               disabled={index === 0}
               onClick={() => {
-                nbaRankDispatch({
+                nbaLotteryDispatch({
                   type: "MOVE_UP",
                   payload: {
                     team: rankedTeam,
@@ -200,9 +214,9 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             </button>
             <button
               className="h-6 px-0.5 text-sm text-white disabled:bg-white/50"
-              disabled={index === 29}
+              disabled={index === 13}
               onClick={() => {
-                nbaRankDispatch({
+                nbaLotteryDispatch({
                   type: "MOVE_DOWN",
                   payload: {
                     team: rankedTeam,
@@ -220,35 +234,41 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   );
 };
 
-const NBARanker: React.FC = () => {
-  const { nbaRankState } = useNBARankContext();
-  const { unRankedTeams, rankedTeams } = nbaRankState;
+const NBALotteryRanker: React.FC = () => {
+  const { nbaLotteryState } = useNBALotteryContext();
+  const { unRankedTeams, rankedTeams } = nbaLotteryState;
 
   const nbaRows = unRankedTeams.map((unRankedTeam, index) => {
-    const rankedTeam: NBATeamType | null = rankedTeams[index] ?? null;
-
-    return (
-      <RankerRow
-        unRankedTeam={unRankedTeam}
-        rankedTeam={rankedTeam}
-        index={index}
-        key={index}
-      />
-    );
+    return <RankerRow unRankedTeam={unRankedTeam} index={index} key={index} />;
   });
+
+  const lotteryRows = rankedTeams.map((rankedTeam, index) => {
+    return <LotteryRow rankedTeam={rankedTeam} index={index} key={index} />;
+  });
+
+  console.log();
 
   return (
     <>
       <div className="flex w-full justify-center">
         <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          Rank NBA Teams
+          NBA Lottery
         </h1>
       </div>
-      <table className="text-xs sm:text-base">
-        <tbody>{nbaRows}</tbody>
-      </table>
+      <div className="flex justify-center">
+        <div>
+          <table className="text-xs sm:text-base">
+            <tbody>{nbaRows}</tbody>
+          </table>
+        </div>
+        <div>
+          <table className="text-xs sm:text-base">
+            <tbody>{lotteryRows}</tbody>
+          </table>
+        </div>
+      </div>
     </>
   );
 };
 
-export default NBARanker;
+export default NBALotteryRanker;

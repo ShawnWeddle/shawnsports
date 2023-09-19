@@ -62,14 +62,15 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
           "text-md m-1 p-1 md:text-lg",
           {
             "text-home": pageMode === "Home",
-            "text-nba": pageMode === "NBA",
+            "text-nba": pageMode === "NBA" || pageMode === "WNBA",
             "text-nfl": pageMode === "NFL",
             "text-nhl": pageMode === "NHL",
             "text-formulaOne": pageMode === "F1",
           },
           {
             "rounded-xl bg-nba text-white":
-              navState.underPageMode === underPage && pageMode === "NBA",
+              navState.underPageMode === underPage &&
+              (pageMode === "NBA" || pageMode === "WNBA"),
             "rounded-xl bg-nfl text-white":
               navState.underPageMode === underPage && pageMode === "NFL",
             "rounded-xl bg-nhl text-white":
@@ -79,7 +80,8 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
           },
           {
             "rounded-xl hover:bg-nba/50 hover:text-white":
-              navState.underPageMode !== underPage && pageMode === "NBA",
+              navState.underPageMode !== underPage &&
+              (pageMode === "NBA" || pageMode === "WNBA"),
             "rounded-xl hover:bg-nfl/50 hover:text-white":
               navState.underPageMode !== underPage && pageMode === "NFL",
             "rounded-xl hover:bg-nhl/50 hover:text-white":
@@ -106,7 +108,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
         <nav
           className={cn("flex justify-center gap-4", {
             "bg-home": pageMode === "Home",
-            "bg-nba": pageMode === "NBA",
+            "bg-nba": pageMode === "NBA" || pageMode === "WNBA",
             "bg-nfl": pageMode === "NFL",
             "bg-nhl": pageMode === "NHL",
             "bg-formulaOne": pageMode === "F1",
@@ -163,13 +165,25 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
         </div>
         {!user && <SignIn />}
         {user && (
-          <button
-            onClick={() => {
-              void router.push(`/profile/${user.username}`);
-            }}
-          >
-            {user.username}
-          </button>
+          <>
+            <button
+              onClick={() => {
+                void router.push(`/profile/${user.username}`);
+              }}
+            >
+              {user.username}
+            </button>
+            <button
+              onClick={() => {
+                authDispatch({
+                  type: "LOGOUT",
+                  payload: null,
+                });
+              }}
+            >
+              Log Out
+            </button>
+          </>
         )}
       </dialog>
     </>

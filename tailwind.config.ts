@@ -20,6 +20,9 @@ export default {
         nhl: "#008080",
         mlb: "#A80000",
         ylo: "#E0E000",
+      },
+      spacing: {
+        "13":"3.25rem",
       }
     },
   },

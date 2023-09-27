@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { cn } from "~/utils/cn";
 import { useRouter } from "next/router";
 import { useNavContext } from "~/hooks/useNavContext";
@@ -8,6 +8,7 @@ import SignIn from "~/components/SignIn";
 import { MobileResponsiveSMWLogo } from "../Logo";
 import { MdAccountCircle } from "react-icons/md";
 import { useAuthContext } from "~/hooks/useAuthContext";
+import { FaCaretDown } from "react-icons/fa";
 
 interface NavProps {
   pageMode: PageHeadsType;
@@ -21,7 +22,12 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
   const { authDispatch, authState } = useAuthContext();
   const { user } = authState;
 
+  const [showDropDown, setShowDropDown] = useState<boolean>(false);
+
   const router = useRouter();
+
+  const majorSports = pageHeads.slice(0, 3);
+  const minorSports = pageHeads.slice(3, 6);
 
   const dialog = useRef<HTMLDialogElement>(null);
 
@@ -35,7 +41,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
     });
   }, [navDispatch, pageMode, underPageMode]);
 
-  const navPageButtons = pageHeads.map((page, index) => {
+  const navPageButtons = majorSports.map((page, index) => {
     return (
       <button
         key={index}
@@ -53,6 +59,53 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
       </button>
     );
   });
+
+  const NavDropDown: React.FC = () => {
+    const minorButtons = minorSports.map((page, index) => {
+      return (
+        <div
+          key={index}
+          className="p-1 text-xl hover:bg-gray-200"
+          onClick={() => {
+            void router.push(pageRouter(page));
+          }}
+        >
+          <button>{page}</button>
+        </div>
+      );
+    });
+
+    return (
+      <div className={cn("relative flex flex-col justify-center")}>
+        <button
+          className="py-2 text-2xl text-white hover:text-gray-200"
+          onClick={() => {
+            setShowDropDown(!showDropDown);
+          }}
+        >
+          <FaCaretDown />
+        </button>
+        <div
+          className={cn(
+            "absolute left-0 top-13 rounded-b border-2 bg-white sm:top-14",
+            {
+              "text-home ": pageMode === "Home",
+              "text-nba ": pageMode === "NBA" || pageMode === "WNBA",
+              "text-nfl ": pageMode === "NFL",
+              "text-nhl ": pageMode === "NHL",
+              "text-mlb ": pageMode === "MLB",
+              "text-formulaOne ": pageMode === "F1",
+            },
+            {
+              hidden: !showDropDown,
+            }
+          )}
+        >
+          {minorButtons}
+        </div>
+      </div>
+    );
+  };
 
   const navUnderPageButtons = allNavHeads[pageMode].map((underPage, index) => {
     return (
@@ -129,6 +182,19 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             <MobileResponsiveSMWLogo />
           </button>
           {navPageButtons}
+          {pageMode !== "Home" && minorSports.includes(pageMode) && (
+            <button
+              className={cn(
+                "py-2 text-2xl text-white hover:text-white md:text-3xl"
+              )}
+              onClick={() => {
+                void router.push(pageRouter(pageMode));
+              }}
+            >
+              {pageMode}
+            </button>
+          )}
+          <NavDropDown />
           <button
             className="py-2 text-xl text-white hover:text-gray-200 md:text-2xl"
             onClick={() => {

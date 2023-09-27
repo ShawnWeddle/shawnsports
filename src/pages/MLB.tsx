@@ -15,7 +15,7 @@ const MLB: NextPage = () => {
       <Head>
         <title>MLB - Sports Mega World</title>
         <meta name="description" content="MLB SportsMegaWorld" />
-        <link rel="icon" href="/nbafavicon.ico" />
+        <link rel="icon" href="/f1favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col bg-gradient-to-r from-mlb/50 via-white to-mlb/50 sm:items-center">
         <NavBar pageMode="MLB" underPageMode="World Series" />

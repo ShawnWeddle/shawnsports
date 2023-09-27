@@ -5,6 +5,7 @@ import NavBar from "~/components/Nav/NavBar";
 import Footer from "~/components/Footer";
 import { WNBARankContextProvider } from "~/context/WNBArankContext";
 import WNBARanker from "~/components/WNBA/WNBARanker";
+import WNBAFinalsList from "~/components/WNBA/WNBAFinalsList";
 
 const WNBA: NextPage = () => {
   const { navState } = useNavContext();
@@ -17,14 +18,14 @@ const WNBA: NextPage = () => {
         <link rel="icon" href="/nbafavicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col bg-gradient-to-r from-nba/50 via-white to-nba/50 sm:items-center">
-        <NavBar pageMode="WNBA" underPageMode="Rank" />
+        <NavBar pageMode="WNBA" underPageMode="Finals" />
         <div className="mx-auto flex w-full grow flex-col items-start justify-between bg-white sm:m-0 sm:max-w-screen-sm sm:items-center md:max-w-screen-md lg:max-w-screen-lg">
           {underPageMode === "Rank" && (
             <WNBARankContextProvider>
               <WNBARanker />
             </WNBARankContextProvider>
           )}
-
+          {underPageMode === "Finals" && <WNBAFinalsList />}
           <Footer />
         </div>
       </main>

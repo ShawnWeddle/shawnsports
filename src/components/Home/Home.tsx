@@ -23,8 +23,18 @@ const HomeComp: React.FC = () => {
         </button>
       </div>
       <div>
+        <button className="text-xl font-semibold text-mlb hover:underline">
+          Major League Baseball
+        </button>
+      </div>
+      <div>
         <button className="text-xl font-semibold text-nhl hover:underline">
           National Hockey League
+        </button>
+      </div>
+      <div>
+        <button className="text-xl font-semibold text-nba hover:underline">
+          Women&apos;s National Basketball Association
         </button>
       </div>
     </div>

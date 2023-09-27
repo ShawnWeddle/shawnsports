@@ -1,14 +1,19 @@
-export const allWNBAteams = [
-  "ATL", "CHI", "CON", "DAL", "IND", "LVA",
-  "LAS", "MIN", "NYL", "PHO", "SEA", "WAS",
-] as const;
-
 export const wnbaTeamsRanked: WNBATeamType[] = [
   "LVA", "NYL", "CON", "DAL", "ATL", "MIN",
   "WAS", "CHI", "LAS", "IND", "SEA", "PHO",
 ];
 
-export type WNBATeamType = typeof allWNBAteams[number];
+export const activeWNBAteams = [
+  "ATL", "CHI", "CON", "DAL", "IND", "LVA",
+  "LAS", "MIN", "NYL", "PHO", "SEA", "WAS",
+] as const;
+
+export const inactiveWNBAteams = [
+  "CHO", "DET", "HOU", "SAC", "SAS", 
+] as const;
+
+export type WNBATeamType = typeof activeWNBAteams[number];
+export type AllWNBATeamType = typeof activeWNBAteams[number] | typeof inactiveWNBAteams[number];
 
 export const nullArray12 = [
   null, null, null, null, null, null, 
@@ -16,7 +21,7 @@ export const nullArray12 = [
 ];
 
 export const WNBAteamData : {
-  [Key in WNBATeamType] : {
+  [Key in AllWNBATeamType] : {
     rank: number,
     location: string;
     name: string;
@@ -81,5 +86,30 @@ export const WNBAteamData : {
     rank: 6,
     location: "Washington",
     name: "Mystics",
+  },
+  CHO:{
+    rank: 0,
+    location: "Charlotte",
+    name: "Sting",
+  },
+  DET:{
+    rank: 0,
+    location: "Detroit",
+    name: "Shock",
+  },
+  HOU:{
+    rank: 0,
+    location: "Houston",
+    name: "Comets",
+  },
+  SAC:{
+    rank: 0,
+    location: "Sacramento",
+    name: "Monarchs",
+  },
+  SAS:{
+    rank: 0,
+    location: "San Antonio",
+    name: "Stars",
   },
 }

@@ -52,6 +52,17 @@ const Footer: React.FC = () => {
         <p>•</p>
         <p>
           <button
+            className="font-semibold text-mlb hover:underline"
+            onClick={() => {
+              void router.push("/MLB");
+            }}
+          >
+            MLB
+          </button>
+        </p>
+        <p>•</p>
+        <p>
+          <button
             className="font-semibold text-nhl hover:underline"
             onClick={() => {
               void router.push("/NHL");

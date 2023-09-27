@@ -204,7 +204,7 @@ export const NBAstyleData: {[Key in AllNBATeamType] : {
   POR:{
     primary: "#E03A3E",
     secondary: "#000000",  
-  primaryBGstyle: "bg-[#E03A3E]",
+    primaryBGstyle: "bg-[#E03A3E]",
     primaryPlainText: "text-white",
     secondaryTextStyle: "text-white",
     secondaryBorderStyle: "border-[#000000]",

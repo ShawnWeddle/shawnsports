@@ -1,5 +1,5 @@
-export const allNavHeads = {"Home": ["Home",], "NBA": ["Future Picks", "Lottery", "Finals", "Rank",], "NFL": ["Schedule", "Super Bowls", "Rank"], "F1": ["Tables", "Standings", "Compare", "Rank"], "NHL": ["Stanley Cups", "Rank"], "WNBA": ["Rank", ]} as const;
-export const pageHeads = ["F1", "NFL", "NBA", "NHL", "WNBA",] as const;
+export const allNavHeads = {"Home": ["Home",], "NBA": ["Future Picks", "Lottery", "Finals", "Rank",], "NFL": ["Schedule", "Super Bowls", "Rank"], "F1": ["Tables", "Standings", "Compare", "Rank"], "MLB": ["World Series", "Rank", ], "NHL": ["Stanley Cups", "Rank"], "WNBA": ["Rank", ]} as const;
+export const pageHeads = ["F1", "NFL", "NBA", "MLB", "NHL", "WNBA",] as const;
 export type NavHeadsType = typeof allNavHeads;
 export type PageHeadsType = keyof NavHeadsType;
 export type UnderPageHeadsType = typeof allNavHeads[PageHeadsType][number];
@@ -15,6 +15,9 @@ export const pageRouter = (page: PageHeadsType) : string => {
     case "NFL": {
       return "/NFL"
     }
+    case "MLB": {
+      return "/MLB"
+    } 
     case "NHL": {
       return "/NHL"
     }

@@ -16,9 +16,10 @@ export default {
         formulaOne: "#E10600",
         home: "#00A806",
         nba: "#E07800", 
-        nfl: "#0600A8",
+        nfl: "#0000A8",
         nhl: "#008080",
-        ylo: "#E0E000", 
+        mlb: "#A80000",
+        ylo: "#E0E000",
       }
     },
   },

@@ -65,6 +65,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             "text-nba": pageMode === "NBA" || pageMode === "WNBA",
             "text-nfl": pageMode === "NFL",
             "text-nhl": pageMode === "NHL",
+            "text-mlb": pageMode === "MLB",
             "text-formulaOne": pageMode === "F1",
           },
           {
@@ -75,6 +76,8 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
               navState.underPageMode === underPage && pageMode === "NFL",
             "rounded-xl bg-nhl text-white":
               navState.underPageMode === underPage && pageMode === "NHL",
+            "rounded-xl bg-mlb text-white":
+              navState.underPageMode === underPage && pageMode === "MLB",
             "rounded-xl bg-formulaOne text-white":
               navState.underPageMode === underPage && pageMode === "F1",
           },
@@ -86,6 +89,8 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
               navState.underPageMode !== underPage && pageMode === "NFL",
             "rounded-xl hover:bg-nhl/50 hover:text-white":
               navState.underPageMode !== underPage && pageMode === "NHL",
+            "rounded-xl hover:bg-mlb/50 hover:text-white":
+              navState.underPageMode !== underPage && pageMode === "MLB",
             "rounded-xl hover:bg-formulaOne/50 hover:text-white":
               navState.underPageMode !== underPage && pageMode === "F1",
           }
@@ -111,6 +116,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             "bg-nba": pageMode === "NBA" || pageMode === "WNBA",
             "bg-nfl": pageMode === "NFL",
             "bg-nhl": pageMode === "NHL",
+            "bg-mlb": pageMode === "MLB",
             "bg-formulaOne": pageMode === "F1",
           })}
         >

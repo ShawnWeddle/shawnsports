@@ -9,12 +9,12 @@ export const NHLstyleData: { [Key in AllNHLTeamType] : {
   primaryPlainText: string,
 }} = {
   "ANA": {
-    primary: "#000000",
-    secondary: "#B9975B",
-    primaryBGstyle: "bg-[#000000]",
-    secondaryTextStyle: "text-[#B9975B]",
-    secondaryBorderStyle: "border-[#B9975B]",
-    primaryPlainText: "text-white",
+    primary: "#B9975B",
+    secondary: "#000000",
+    primaryBGstyle: "bg-[#B9975B]",
+    secondaryTextStyle: "text-[#000000]",
+    secondaryBorderStyle: "border-[#000000]",
+    primaryPlainText: "text-black",
   }, "ARI": {
     primary: "#8C2633",
     secondary: "#E2D6B5",

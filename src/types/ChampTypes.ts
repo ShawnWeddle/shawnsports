@@ -1,6 +1,7 @@
 import { type AllNFLTeamType } from "~/data/NFL/NFLdata";
 import { type AllNHLTeamType } from "~/data/NHL/NHLdata";
 import { type AllNBATeamType } from "~/data/NBApickData";
+import { type AllMLBTeamType } from "~/data/MLB/MLBdata";
 
 export type StanleyCupSeriesType = {
   winningTeam: AllNHLTeamType;
@@ -12,6 +13,13 @@ export type StanleyCupSeriesType = {
 export type NBAFinalsSeriesType = {
   winningTeam: AllNBATeamType;
   losingTeam: AllNBATeamType;
+  splits: string;
+  year: number;
+}
+
+export type WorldSeriesType = {
+  winningTeam: AllMLBTeamType;
+  losingTeam: AllMLBTeamType;
   splits: string;
   year: number;
 }

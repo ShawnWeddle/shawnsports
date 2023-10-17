@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
           <button
             className="font-semibold text-formulaOne hover:underline"
             onClick={() => {
-              void router.push("/F1");
+              void router.push("/f1/tables");
             }}
           >
             F1
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
           <button
             className="font-semibold text-nfl hover:underline"
             onClick={() => {
-              void router.push("/NFL");
+              void router.push("/nfl/schedule");
             }}
           >
             NFL
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
           <button
             className="font-semibold text-nba hover:underline"
             onClick={() => {
-              void router.push("/NBA");
+              void router.push("/nba/future-picks");
             }}
           >
             NBA
@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
           <button
             className="font-semibold text-mlb hover:underline"
             onClick={() => {
-              void router.push("/MLB");
+              void router.push("/mlb/world-series");
             }}
           >
             MLB
@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
           <button
             className="font-semibold text-nhl hover:underline"
             onClick={() => {
-              void router.push("/NHL");
+              void router.push("/nhl/stanley-cups");
             }}
           >
             NHL
@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
           <button
             className="font-semibold text-nba hover:underline"
             onClick={() => {
-              void router.push("/WNBA");
+              void router.push("/wnba/finals");
             }}
           >
             WNBA

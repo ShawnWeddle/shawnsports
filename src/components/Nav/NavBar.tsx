@@ -2,9 +2,15 @@ import { useRef, useState, useEffect } from "react";
 import { cn } from "~/utils/cn";
 import { useRouter } from "next/router";
 import { useNavContext } from "~/hooks/useNavContext";
-import { allNavHeads, pageHeads, pageRouter } from "~/data/Home";
-import type { PageHeadsType, UnderPageHeadsType } from "~/data/Home";
+import {
+  allNavHeads,
+  pageHeads,
+  pageRouter,
+  underPageData,
+} from "~/data/SiteData";
+import type { PageHeadsType, UnderPageHeadsType } from "~/data/SiteData";
 import SignIn from "~/components/SignIn";
+import SignOut from "~/components/SignOut";
 import { MobileResponsiveSMWLogo } from "../Logo";
 import { MdAccountCircle } from "react-icons/md";
 import { useAuthContext } from "~/hooks/useAuthContext";
@@ -149,13 +155,10 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
           }
         )}
         onClick={() => {
-          navDispatch({
-            type: "CHANGE_UNDERPAGE",
-            payload: { pageMode: pageMode, underPageMode: underPage },
-          });
+          void router.push(`/${underPageData[underPage].urlName}`);
         }}
       >
-        {underPage}
+        {underPageData[underPage].navTitle}
       </button>
     );
   });
@@ -206,7 +209,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
         </nav>
         <nav className={cn("flex justify-center gap-4 bg-white")}>
           {pageMode !== "Home" && navUnderPageButtons}
-          {pageMode === "Home" && (
+          {pageMode === "Home" && !user && (
             <button
               className={cn(
                 "text-md m-1 rounded-xl p-1 text-home hover:bg-home/60 hover:text-white md:text-lg"
@@ -216,6 +219,18 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
               }}
             >
               Sign In
+            </button>
+          )}
+          {pageMode === "Home" && user && (
+            <button
+              className={cn(
+                "text-md m-1 rounded-xl p-1 text-home hover:bg-home/60 hover:text-white md:text-lg"
+              )}
+              onClick={() => {
+                void router.push(`/profile/${user.username}`);
+              }}
+            >
+              My Profile
             </button>
           )}
         </nav>
@@ -236,27 +251,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
           </button>
         </div>
         {!user && <SignIn />}
-        {user && (
-          <>
-            <button
-              onClick={() => {
-                void router.push(`/profile/${user.username}`);
-              }}
-            >
-              {user.username}
-            </button>
-            <button
-              onClick={() => {
-                authDispatch({
-                  type: "LOGOUT",
-                  payload: null,
-                });
-              }}
-            >
-              Log Out
-            </button>
-          </>
-        )}
+        {user && <SignOut />}
       </dialog>
     </>
   );

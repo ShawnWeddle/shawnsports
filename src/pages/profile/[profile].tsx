@@ -5,6 +5,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import NavBar from "~/components/Nav/NavBar";
 import Footer from "~/components/Footer";
+import SignOut from "~/components/SignOut";
 
 const ProfilePage: NextPage = () => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const ProfilePage: NextPage = () => {
       <main className="flex min-h-screen flex-col bg-gradient-to-r from-home/50 via-white to-home/50 sm:items-center">
         <NavBar pageMode="Home" underPageMode="Home" />
         <div className="mx-auto flex w-full grow flex-col items-start justify-between bg-white sm:m-0 sm:max-w-screen-sm sm:items-center md:max-w-screen-md lg:max-w-screen-lg">
-          <div>{pageUsername}</div>
+          <SignOut />
           <Footer />
         </div>
       </main>

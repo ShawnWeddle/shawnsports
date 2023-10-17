@@ -7,7 +7,7 @@ export const activeMLBTeams = [
 ] as const;
 
 export const inactiveMLBTeams = [
-  "BOB", "BKD", "BKR", "CLI", "FLA", "MLB", "NYG", "PHA", "SLB", "WAS",
+  "BOB", "BKD", "BKR", "CLI", "FLA", "MLB", "NYG", "PHA", "SLB", "WAS", "HXU",
 ] as const;
 
 export const mlbTeamsRanked: MLBTeamType[] = [
@@ -204,6 +204,11 @@ export const MLBteamData: { [Key in AllMLBTeamType] : teamInfoType} = {
     rank: 0,
     location: "Florida",
     name: "Marlins",
+  },
+  HXU:{
+    rank: 100,
+    location: "Houston",
+    name: "Astros*",
   },
   NYG:{
     rank: 0,

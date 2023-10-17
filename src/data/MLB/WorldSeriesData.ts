@@ -32,7 +32,7 @@ export const WorldSeriesData: WorldSeriesType[] = [
       "year": 2018,
   },
   {
-      "winningTeam": "HOU",
+      "winningTeam": "HXU",
       "losingTeam": "LAD",
       "splits": "4-3",
       "year": 2017,

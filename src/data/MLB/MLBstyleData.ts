@@ -288,6 +288,14 @@ export const MLBstyleData: { [Key in AllMLBTeamType] : {
     secondaryBorderStyle: "border-[#8A8D8F]",
     primaryPlainText: "text-black",
   },
+  HXU:{
+    primary: "#EB6E1F",
+    secondary: "#002D62",
+    primaryBGstyle: "bg-[#EB6E1F]",
+    secondaryTextStyle: "text-[#002D62]",
+    secondaryBorderStyle: "border-[#002D62]",
+    primaryPlainText: "text-black",
+  },
   MLB:{
     primary: "#13274F",
     secondary: "#CE1141",

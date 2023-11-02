@@ -38,6 +38,7 @@ export const DriverResultTable: React.FC<RaceModeProps> = (
                 !sprint &&
                 finishPosition !== "DNF" &&
                 finishPosition !== "DNR" &&
+                finishPosition !== "DQ" &&
                 finishPosition < 11 &&
                 finishPosition > 3,
             },
@@ -46,6 +47,7 @@ export const DriverResultTable: React.FC<RaceModeProps> = (
                 sprint &&
                 finishPosition !== "DNF" &&
                 finishPosition !== "DNR" &&
+                finishPosition !== "DQ" &&
                 finishPosition < 9,
             },
             {
@@ -53,9 +55,11 @@ export const DriverResultTable: React.FC<RaceModeProps> = (
                 sprint &&
                 (finishPosition === "DNF" ||
                   finishPosition === "DNR" ||
+                  finishPosition === "DQ" ||
                   finishPosition > 8),
             },
             { "text-red-500": finishPosition === "DNF" },
+            { "bg-black text-white": finishPosition === "DQ" },
             { hidden: sprint && raceMode === "Grands Prix Only" },
             { hidden: !sprint && raceMode === "Sprint Races Only" }
           )}

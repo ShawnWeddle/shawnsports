@@ -1,11 +1,6 @@
 import { createContext, useReducer } from "react";
 import type { NBATeamType } from "~/data/NBApickData";
-import {
-  nbaTeamsRanked,
-  NBAteamData,
-  nullArray30,
-  nullArray14,
-} from "~/data/NBApickData";
+import { nbaTeamsRanked, NBAteamData, nullArray14 } from "~/data/NBApickData";
 
 export const NBALotteryContext = createContext<ContextType | null>(null);
 
@@ -30,7 +25,7 @@ type NBALotteryPayloadType = {
 };
 
 type NBALotteryReducerAction = {
-  type: "RANK_TEAM" | "UNRANK_TEAM" | "RERANK_TEAM" | "MOVE_UP" | "MOVE_DOWN";
+  type: "RANK_TEAM" | "UNRANK_TEAM";
   payload: NBALotteryPayloadType;
 };
 
@@ -109,7 +104,28 @@ export const nbaLotteryReducer = (
         };
       }
     }
-    case "RERANK_TEAM": {
+    default:
+      return state;
+  }
+};
+
+export const NBALotteryContextProvider = ({
+  children,
+}: NBALotteryContextProviderProps) => {
+  const [nbaLotteryState, nbaLotteryDispatch] = useReducer(nbaLotteryReducer, {
+    unRankedTeams: [...nbaTeamsRanked].reverse(),
+    rankedTeams: [...nullArray14],
+  });
+
+  return (
+    <NBALotteryContext.Provider value={{ nbaLotteryState, nbaLotteryDispatch }}>
+      {children}
+    </NBALotteryContext.Provider>
+  );
+};
+
+/*
+case "RERANK_TEAM": {
       const { unRankedTeams, rankedTeams } = state;
       const { team, rank, prevRank } = action.payload;
       const newRank = rank - 1;
@@ -154,7 +170,7 @@ export const nbaLotteryReducer = (
         };
       }
     }
-    case "MOVE_UP": {
+case "MOVE_UP": {
       const { unRankedTeams, rankedTeams } = state;
       const { team, rank } = action.payload;
       if (rank > -1 && rank < 14 && team !== null) {
@@ -198,22 +214,4 @@ export const nbaLotteryReducer = (
         };
       }
     }
-    default:
-      return state;
-  }
-};
-
-export const NBALotteryContextProvider = ({
-  children,
-}: NBALotteryContextProviderProps) => {
-  const [nbaLotteryState, nbaLotteryDispatch] = useReducer(nbaLotteryReducer, {
-    unRankedTeams: [...nbaTeamsRanked].reverse(),
-    rankedTeams: [...nullArray14],
-  });
-
-  return (
-    <NBALotteryContext.Provider value={{ nbaLotteryState, nbaLotteryDispatch }}>
-      {children}
-    </NBALotteryContext.Provider>
-  );
-};
+*/

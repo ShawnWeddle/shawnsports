@@ -5,7 +5,7 @@ import { flip2DArrays } from "~/utils/cuA";
 
 type FullDriverType = {
   driverName: DriverCodeType | undefined;
-  finishPosition: number | "DNF" | "DNR";
+  finishPosition: number | "DNF" | "DNR" | "DQ";
   sprint: boolean;
   fastestLap: boolean;
   polePosition: boolean;
@@ -54,7 +54,7 @@ export const resultsSortedByPlace = (results: RaceResultsType) => {
         const fullDriver: FullDriverType = {
           driverName: driver,
           sprint: sprint,
-          fastestLap: driver === fastestLap,
+          fastestLap: false,
           polePosition: driver === polePosition,
           finishPosition: "DNF",
           points: 0,
@@ -62,6 +62,23 @@ export const resultsSortedByPlace = (results: RaceResultsType) => {
         return fullDriver;
   })
   return placeArray;
+  }
+
+  const findDQArray = (place: number) => {
+    const placeArray: FullDriverType[] = results.map((result) => {
+      const {DQs, sprint, fastestLap, polePosition} = result;
+      const driver = DQs ? DQs[place] : undefined;
+      const fullDriver: FullDriverType = {
+        driverName: driver,
+        sprint: sprint,
+        fastestLap: false,
+        polePosition: driver === polePosition,
+          finishPosition: "DQ",
+          points: 0,
+      }
+      return fullDriver;
+    })
+    return placeArray;
   }
 
   const fullFinishOrder = () => {
@@ -80,7 +97,15 @@ export const resultsSortedByPlace = (results: RaceResultsType) => {
     return fullArray;
   }
 
-  return {headers: headers, fullResults: fullFinishOrder(), DNFs: fullDNFOrder() };
+  const fullDQOrder = () => {
+    const fullArray: FullDriverType[][] = [];
+    for (let i=0; i<2; i++){
+      fullArray[i] = findDQArray(i);
+    }
+    return fullArray;
+  }
+
+  return {headers: headers, fullResults: fullFinishOrder(), DNFs: fullDNFOrder(), DQs: fullDQOrder() };
 }
 
 // Results Sorted By Driver * Results Sorted By Driver * Results Sorted By Driver //
@@ -88,13 +113,13 @@ export const resultsSortedByPlace = (results: RaceResultsType) => {
 export const resultsSortedByDriver = (results: RaceResultsType, order: DriverCodeType[]) => {
   const findPlaceArray = (driver: DriverCodeType) => {
     const driverArray: FullDriverType[] = results.map((result) => {
-      const { finalOrder, DNFs, sprint, fastestLap, polePosition } = result;
+      const { finalOrder, DNFs, DQs, sprint, fastestLap, polePosition } = result;
       return{
         driverName: (finalOrder.includes(driver) || DNFs.includes(driver)) ? driver : undefined,
         sprint: sprint,
         fastestLap: driver === fastestLap,
         polePosition: driver === polePosition,
-        finishPosition: finalOrder.includes(driver) ? finalOrder.indexOf(driver) + 1 : DNFs.includes(driver) ? "DNF" : "DNR",
+        finishPosition: finalOrder.includes(driver) ? finalOrder.indexOf(driver) + 1 : DNFs.includes(driver) ? "DNF" : DQs?.includes(driver) ? "DQ" : "DNR",
         points: 0,
       }
     })

@@ -8,10 +8,17 @@ export const nbaTeams = [
 ] as const;
 
 export const nbaTeamsRanked: NBATeamType[] = [
-  "DEN", "MIL", "PHO", "BOS", "MEM", "LAL", "PHI", "GSW",
-  "MIA", "SAC", "CLE", "LAC", "OKC", "NYK", "ATL", "CHI",
-  "DAL", "MIN", "NOP", "IND", "BRK", "UTA", "ORL", "TOR",
-  "SAS", "CHO", "DET", "POR", "HOU", "WAS",
+  "DEN", "MIL", "PHO", "BOS", "MEM", "LAL", "PHI", "GSW", 
+  "MIA", "SAC", "CLE", "LAC", "OKC", "NYK", "ATL", "CHI", 
+  "DAL", "MIN", "NOP", "IND", "BRK", "UTA", "ORL", "TOR", 
+  "SAS", "CHO", "DET", "POR", "HOU", "WAS"
+];
+
+export const nbaTeamsRankedWorst: NBATeamType[] = [
+  "WAS", "HOU", "POR", "DET", "CHO", "SAS", "TOR", "ORL", 
+  "UTA", "BRK", "IND", "NOP", "MIN", "DAL", "CHI", "ATL", 
+  "NYK", "OKC", "LAC", "CLE", "SAC", "MIA", "GSW", "PHI", 
+  "LAL", "MEM", "BOS", "PHO", "MIL", "DEN"
 ];
 
 export const years = [

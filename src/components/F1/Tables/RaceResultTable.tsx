@@ -14,7 +14,9 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
 
   const [activeDrivers, setActiveDrivers] = useState(driverActivation);
 
-  const { fullResults, DNFs } = resultsSortedByPlace(FormulaOneRaceResults);
+  const { fullResults, DNFs, DQs } = resultsSortedByPlace(
+    FormulaOneRaceResults
+  );
   const tableRows = fullResults.map((result, rowIndex) => {
     const tableCells = result.map((driver, cellIndex) => {
       const { driverName, sprint, finishPosition, polePosition, fastestLap } =
@@ -45,6 +47,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
                   sprint &&
                   finishPosition !== "DNF" &&
                   finishPosition !== "DNR" &&
+                  finishPosition !== "DQ" &&
                   finishPosition < 8,
               },
               {
@@ -184,11 +187,72 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
       </tr>
     );
   });
+  const DQRows = DQs.map((dq, rowIndex) => {
+    const DQCells = dq.map((driver, cellIndex) => {
+      const { driverName, sprint } = driver;
+      const isDriver =
+        driverName !== undefined && activeDrivers[driverName].active;
+      if (driverName) {
+        const activeStyleGuide = F1styleData[driverToConstructor(driverName)];
+        const Tcam = driverTcamColors[driverName];
+        const outlineColor =
+          activeDrivers[driverName].teammateActive && Tcam === "Black"
+            ? "bg-[#33424d]" //black
+            : "bg-[#d9ff00]"; //yellow
+        const activeBg = activeStyleGuide.primaryBGstyle;
+        const activeTextColor = activeStyleGuide.secondaryTextStyle;
+        return (
+          <td
+            key={`c-${cellIndex}`}
+            className={cn(
+              {
+                [outlineColor]:
+                  activeDrivers[driverName].teammateActive && isDriver,
+              },
+              { hidden: sprint && raceMode === "Grands Prix Only" },
+              { hidden: !sprint && raceMode === "Sprint Races Only" }
+            )}
+          >
+            <div
+              className={cn(
+                "relative mx-0.5 rounded-full px-1",
+                {
+                  [activeTextColor]: isDriver,
+                },
+                {
+                  [activeBg]: isDriver,
+                }
+              )}
+            >
+              {driverName}
+            </div>
+          </td>
+        );
+      } else {
+        return (
+          <td
+            key={`c-${cellIndex}`}
+            className={cn(
+              { hidden: sprint && raceMode === "Grands Prix Only" },
+              { hidden: !sprint && raceMode === "Sprint Races Only" }
+            )}
+          ></td>
+        );
+      }
+    });
+    return (
+      <tr key={`r-${rowIndex}`} className="bg-black/40 font-mono text-white">
+        <td>{rowIndex === 0 ? "DQ" : ""}</td>
+        {DQCells}
+      </tr>
+    );
+  });
 
   return (
     <>
       {tableRows}
       {DNFRows}
+      {DQRows}
     </>
   );
 };

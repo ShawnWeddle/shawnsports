@@ -5,6 +5,7 @@ export const FormulaOneRaceResults : {
   finalOrder: DriverCodeType[],
   DNFs: DriverCodeType[],
   sprint: boolean,
+  DQs?: DriverCodeType[],
   fastestLap?: DriverCodeType,
   polePosition?: DriverCodeType,
 
@@ -251,6 +252,43 @@ export const FormulaOneRaceResults : {
     ],
     fastestLap: "VER",
     polePosition: "VER",
+    sprint: false,
+  },
+  {
+    location: "Austin",
+    finalOrder: [
+      "VER", "HAM", "LEC", "NOR", "PER", "SAI", "GAS", "RUS", "ALB", "PIA", "OCO", "RIC", "ALO", "TSU", "HUL", "BOT", "ZHO", "MAG", "SAR",
+    ],
+    DNFs: [
+      "STR",
+    ],
+    sprint: true,
+  },
+  {
+    location: "Austin",
+    finalOrder: [
+     "VER", "NOR", "SAI", "PER", "RUS", "GAS", "STR", "TSU", "ALB", "SAR", "HUL", "BOT", "ZHO", "MAG", "RIC" 
+    ],
+    DNFs: [
+      "ALO", "PIA", "OCO", 
+    ],
+    DQs: [
+      "HAM", "LEC",
+    ],
+    fastestLap: "TSU",
+    polePosition: "LEC",
+    sprint: false,
+  },
+  {
+    location: "Mexico",
+    finalOrder: [
+      "VER", "HAM", "LEC", "SAI", "NOR", "RUS", "RIC", "PIA", "ALB", "OCO", "GAS", "TSU", "HUL", "ZHO", "BOT", "SAR", "STR",
+    ],
+    DNFs: [
+      "ALO", "MAG", "PER",
+    ],
+    fastestLap: "HAM",
+    polePosition: "LEC",
     sprint: false,
   },
 ]

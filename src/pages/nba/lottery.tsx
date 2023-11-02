@@ -1,6 +1,8 @@
 import MainPage from "~/components/Page/MainPage";
 import { NBALotteryContextProvider } from "~/context/NBAlotteryContext";
-import NBALotteryRanker from "~/components/NBA/NBALottery";
+import NBALottery2 from "~/components/NBA/Lottery/NBALottery2";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 const Lottery = () => {
   return (
@@ -11,9 +13,11 @@ const Lottery = () => {
       pageMode="NBA"
       underPageMode="NBA_Lottery"
     >
-      <NBALotteryContextProvider>
-        <NBALotteryRanker />
-      </NBALotteryContextProvider>
+      <DndProvider backend={HTML5Backend}>
+        <NBALotteryContextProvider>
+          <NBALottery2 />
+        </NBALotteryContextProvider>
+      </DndProvider>
     </MainPage>
   );
 };

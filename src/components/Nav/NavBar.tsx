@@ -155,7 +155,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
           }
         )}
         onClick={() => {
-          void router.push(`/${underPageData[underPage].urlName}`);
+          void router.push(`${underPageData[underPage].urlName}`);
         }}
       >
         {underPageData[underPage].navTitle}

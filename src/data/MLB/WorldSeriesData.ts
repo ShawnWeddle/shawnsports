@@ -2,6 +2,12 @@ import { type WorldSeriesType } from "~/types/ChampTypes"
 
 export const WorldSeriesData: WorldSeriesType[] = [
   {
+    "winningTeam": "TEX",
+    "losingTeam": "ARI",
+    "splits": "4-1",
+    "year": 2023,
+},
+  {
       "winningTeam": "HOU",
       "losingTeam": "PHI",
       "splits": "4-2",

@@ -22,7 +22,7 @@ const HomeHero: React.FC<HomeHeroProps> = (props: HomeHeroProps) => {
   ).map((key, index) => {
     const newKey = TitlesEnum.parse(key);
     return (
-      <div key={index}>
+      <div key={index} className="rounded-b px-2 hover:bg-gray-200">
         <button
           className="font-semibold"
           onClick={() => {
@@ -40,9 +40,17 @@ const HomeHero: React.FC<HomeHeroProps> = (props: HomeHeroProps) => {
   });
 
   return (
-    <div className="mx-1 my-2">
+    <div
+      className={cn("rounded-xl border-8", {
+        "border-nba": sportMode === "NBA" || sportMode === "WNBA",
+        "border-nfl": sportMode === "NFL",
+        "border-nhl": sportMode === "NHL",
+        "border-mlb": sportMode === "MLB",
+        "border-formulaOne": sportMode === "F1",
+      })}
+    >
       <div
-        className={cn("rounded-t-lg px-2 text-xl font-semibold text-white", {
+        className={cn("text-center text-2xl font-semibold text-white", {
           "bg-nba": sportMode === "NBA" || sportMode === "WNBA",
           "bg-nfl": sportMode === "NFL",
           "bg-nhl": sportMode === "NHL",
@@ -50,9 +58,25 @@ const HomeHero: React.FC<HomeHeroProps> = (props: HomeHeroProps) => {
           "bg-formulaOne": sportMode === "F1",
         })}
       >
-        {leagueNames[sportMode]}
+        {sportMode === "F1" ? "Formula 1" : sportMode}
       </div>
-      <div
+      <div>{pageLinks}</div>
+    </div>
+  );
+};
+
+export default HomeHero;
+
+/*
+
+className={cn("rounded-b-lg border-2 px-2", {
+          "bg-nba/10": sportMode === "NBA" || sportMode === "WNBA",
+          "bg-nfl/10": sportMode === "NFL",
+          "bg-nhl/10": sportMode === "NHL",
+          "bg-mlb/10": sportMode === "MLB",
+          "bg-formulaOne/10": sportMode === "F1",
+        })}
+
         className={cn("rounded-b-lg border-2 px-2", {
           "bg-nba/10": sportMode === "NBA" || sportMode === "WNBA",
           "bg-nfl/10": sportMode === "NFL",
@@ -60,11 +84,5 @@ const HomeHero: React.FC<HomeHeroProps> = (props: HomeHeroProps) => {
           "bg-mlb/10": sportMode === "MLB",
           "bg-formulaOne/10": sportMode === "F1",
         })}
-      >
-        {pageLinks}
-      </div>
-    </div>
-  );
-};
 
-export default HomeHero;
+*/

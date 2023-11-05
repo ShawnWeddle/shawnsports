@@ -1,7 +1,10 @@
 import { useRouter } from "next/router";
+import { useAuthContext } from "~/hooks/useAuthContext";
 
 const Footer: React.FC = () => {
   const router = useRouter();
+  const { authState } = useAuthContext();
+  const { user } = authState;
   return (
     <div className="flex w-full flex-col justify-center p-2 sm:flex-row">
       <div className="flex flex-wrap justify-center gap-2">
@@ -80,17 +83,6 @@ const Footer: React.FC = () => {
             }}
           >
             WNBA
-          </button>
-        </p>
-        <p>•</p>
-        <p>
-          <button
-            className="whitespace-nowrap hover:underline"
-            onClick={() => {
-              void router.push("/NHL");
-            }}
-          >
-            Sign In
           </button>
         </p>
       </div>

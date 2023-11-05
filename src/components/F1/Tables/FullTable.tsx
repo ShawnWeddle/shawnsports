@@ -116,7 +116,7 @@ const FormulaOneTable: React.FC = () => {
         <TableModeInputs />
         <RaceModeInputs />
       </div>
-      <div className="flex w-full justify-start overflow-auto lg:justify-center">
+      <div className="flex w-full justify-start overflow-auto">
         <table>
           <thead>
             <tr>

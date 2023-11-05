@@ -48,7 +48,7 @@ export const rankedTeamVerification = (teams: (NBATeamType | null)[]):{success: 
   if(newTeams.length === 14){
     return {success: true, newTeams};
   } else {
-    return {success:  false, newTeams: []};
+    return {success: false, newTeams: []};
   }
 }
 
@@ -77,9 +77,17 @@ export const Lotterizer = (teams: NBATeamType[]) => {
 
   const newWinners: NBATeamType[] = winners.flatMap(team => team ? [team] : []);
   const losers: NBATeamType[] = newTeams.filter(team => !winners.includes(team));
-  const fullArray: NBATeamType[] = [...newWinners, ...losers]
+  const teamArray: NBATeamType[] = [...newWinners, ...losers];
+
+  const Final = teamArray.map((team, index) => {
+    return {
+      nativeTeam: team,
+      newTeam: "F",
+      rank: index + 1,
+    }
+  })
   
-  return fullArray;
+  return Final;
 }
 
 /*

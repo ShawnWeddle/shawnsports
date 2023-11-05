@@ -291,6 +291,16 @@ export const FormulaOneRaceResults : {
     polePosition: "LEC",
     sprint: false,
   },
+  {
+    location: "Brazil",
+    finalOrder: [
+      "VER", "NOR", "PER", "RUS", "LEC", "TSU", "HAM", "SAI", "RIC", "PIA", "ALO", "STR", "GAS", "OCO", "ALB", "MAG", "HUL", "ZHO", "BOT", "SAR",
+    ],
+    DNFs: [
+      
+    ],
+    sprint: true,
+  },
 ]
 
 export type RaceResultsType = typeof FormulaOneRaceResults;

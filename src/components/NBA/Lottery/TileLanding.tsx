@@ -7,10 +7,13 @@ import { type NBATeamType } from "~/data/NBApickData";
 interface TileLandingProps {
   place: number;
   team: NBATeamType | null;
+  activeTeam: NBATeamType | null;
+  setActiveTeam: React.Dispatch<React.SetStateAction<NBATeamType | null>>;
+  isActive: boolean;
 }
 
 const TileLanding: React.FC<TileLandingProps> = (props: TileLandingProps) => {
-  const { place, team } = props;
+  const { place, team, activeTeam, setActiveTeam, isActive } = props;
 
   const { nbaLotteryDispatch } = useNBALotteryContext();
 
@@ -24,6 +27,7 @@ const TileLanding: React.FC<TileLandingProps> = (props: TileLandingProps) => {
         type: "RANK_TEAM",
         payload: { team: item.team, rank: place },
       });
+      setActiveTeam(null);
     },
   }));
 
@@ -48,6 +52,7 @@ const TileLanding: React.FC<TileLandingProps> = (props: TileLandingProps) => {
               type: "UNRANK_TEAM",
               payload: { team: team, rank: place - 1 },
             });
+            setActiveTeam(null);
           }}
           className={cn(
             "my-1 mr-1 flex h-12 w-16 flex-col items-center justify-center rounded-r-lg bg-gray-200 text-gray-600",
@@ -60,11 +65,20 @@ const TileLanding: React.FC<TileLandingProps> = (props: TileLandingProps) => {
           {team}
         </button>
       ) : (
-        <div
+        <button
+          disabled={!isActive}
+          onClick={() => {
+            nbaLotteryDispatch({
+              type: "RANK_TEAM",
+              payload: { team: activeTeam, rank: place },
+            });
+            setActiveTeam(null);
+          }}
           className={cn(
-            "my-1 mr-1 flex h-12 w-16 flex-col items-center justify-center rounded-r-lg bg-gray-200 text-gray-600"
+            "my-1 mr-1 flex h-12 w-16 flex-col items-center justify-center rounded-r-lg bg-gray-200 text-gray-600",
+            { "bg-gray-400 hover:bg-gray-600": isActive }
           )}
-        ></div>
+        ></button>
       )}
     </div>
   );

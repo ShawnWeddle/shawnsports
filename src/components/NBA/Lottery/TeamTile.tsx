@@ -7,10 +7,12 @@ import { useNBALotteryContext } from "~/hooks/useNBALottery";
 
 interface NBATeamTileProps {
   team: NBATeamType;
+  activeTeam: NBATeamType | null;
+  setActiveTeam: React.Dispatch<React.SetStateAction<NBATeamType | null>>;
 }
 
 const NBATeamTile: React.FC<NBATeamTileProps> = (props: NBATeamTileProps) => {
-  const { team } = props;
+  const { team, activeTeam, setActiveTeam } = props;
   const { location, name } = NBAteamData[team];
   const { primaryPlainText, primaryBGstyle, secondaryBorderStyle } =
     NBAstyleData[team];
@@ -26,7 +28,10 @@ const NBATeamTile: React.FC<NBATeamTileProps> = (props: NBATeamTileProps) => {
   const isColored = !rankedTeams.includes(team);
 
   return isColored ? (
-    <div
+    <button
+      onClick={() => {
+        setActiveTeam(team === activeTeam ? null : team);
+      }}
       ref={drag}
       className={cn(
         "m-1 flex h-16 w-28 flex-col items-center justify-center border-2",
@@ -39,7 +44,7 @@ const NBATeamTile: React.FC<NBATeamTileProps> = (props: NBATeamTileProps) => {
     >
       <p className="whitespace-nowrap">{location}</p>
       <p>{name}</p>
-    </div>
+    </button>
   ) : (
     <div
       className={cn(

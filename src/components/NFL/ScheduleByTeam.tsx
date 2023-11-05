@@ -36,7 +36,7 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
     if (game) {
       const winnerBGstyle = game.Winner
         ? NFLstyleData[game.Winner].primaryBGstyle
-        : "bg-nfl/50";
+        : "bg-nfl50";
       const winnerTextStyle = game.Winner
         ? NFLstyleData[game.Winner].secondaryTextStyle
         : "text-white";
@@ -56,6 +56,7 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
           >
             <button
               className="w-24 px-1 text-center sm:w-28"
+              disabled={game.readOnly}
               onClick={() => {
                 nflScheduleDispatch({
                   type: "PICK",
@@ -66,7 +67,14 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
               {NFLteamData[game.Away].name}
             </button>
           </td>
-          <td className="w-4 text-center"> @ </td>
+          <td
+            className={cn("w-4 text-center", {
+              "bg-gray-800 text-white": game.readOnly,
+            })}
+          >
+            {" "}
+            @{" "}
+          </td>
           <td
             className={cn({
               [NFLstyleData[game.Home].primaryBGstyle]: true,
@@ -75,6 +83,7 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
           >
             <button
               className="w-24 px-1 text-center sm:w-28"
+              disabled={game.readOnly}
               onClick={() => {
                 nflScheduleDispatch({
                   type: "PICK",
@@ -85,13 +94,25 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
               {NFLteamData[game.Home].name}
             </button>
           </td>
-          <td className="w-4 text-center"> :: </td>
-          <td>
+          <td
+            className={cn("w-4 text-center", {
+              "bg-gray-800 text-white": game.readOnly,
+            })}
+          >
+            {" "}
+            ::{" "}
+          </td>
+          <td
+            className={cn({
+              "bg-gray-800 text-white": game.readOnly,
+            })}
+          >
             <button
               className={cn("w-24 px-1 text-center sm:w-28", {
                 [winnerBGstyle]: true,
                 [winnerTextStyle]: true,
               })}
+              disabled={game.readOnly}
               onClick={() => {
                 nflScheduleDispatch({
                   type: "PICK",
@@ -112,6 +133,8 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
           <td></td>
           <td></td>
           <td className="text-center">BYE</td>
+          <td></td>
+          <td></td>
         </tr>
       );
     }

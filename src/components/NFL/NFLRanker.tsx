@@ -238,16 +238,14 @@ const NFLRanker: React.FC = () => {
   });
 
   return (
-    <>
-      <div className="flex w-full justify-center">
-        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          Rank NFL Teams
-        </h1>
-      </div>
+    <div className="flex w-full flex-col items-center justify-center">
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        Rank NFL Teams
+      </h1>
       <table className="text-xs sm:text-base">
         <tbody>{nflRows}</tbody>
       </table>
-    </>
+    </div>
   );
 };
 

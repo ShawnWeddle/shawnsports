@@ -27,7 +27,7 @@ const MainPage: NextPage<PageProps> = (props: PageProps) => {
       </Head>
       <main
         className={cn(
-          "flex min-h-screen flex-col bg-gradient-to-r via-white sm:items-center",
+          "flex min-h-screen flex-col items-center bg-gradient-to-r via-white",
           {
             "from-home/50 to-home/50": pageMode === "Home",
             "from-formulaOne/50 to-formulaOne/50": pageMode === "F1",
@@ -39,7 +39,8 @@ const MainPage: NextPage<PageProps> = (props: PageProps) => {
         )}
       >
         <NavBar pageMode={pageMode} underPageMode={underPageMode} />
-        <div className="mx-auto flex w-full grow flex-col items-start justify-between bg-white sm:m-0 sm:max-w-screen-sm sm:items-center md:max-w-screen-md lg:max-w-screen-lg">
+
+        <div className="mx-auto flex w-full grow flex-col items-center justify-between bg-white sm:m-0 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg">
           {children}
           <Footer />
         </div>

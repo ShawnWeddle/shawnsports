@@ -95,7 +95,7 @@ export const FormulaOneRaceResults : {
   {
     location: "Spain",
     finalOrder: [
-      "VER", "HAM", 'RUS', "PER", "SAI", "STR", "ALO", "OCO", "ZHO", "GAS", "LEC", "TSU", "PIA", "DEV", "HUL", "ALB", "NOR", "MAG", "BOT", "SAR",
+      "VER", "HAM", "RUS", "PER", "SAI", "STR", "ALO", "OCO", "ZHO", "GAS", "LEC", "TSU", "PIA", "DEV", "HUL", "ALB", "NOR", "MAG", "BOT", "SAR",
     ],
     DNFs: [
       
@@ -245,7 +245,7 @@ export const FormulaOneRaceResults : {
   {
     location: "Qatar",
     finalOrder: [
-      "VER", "PIA", "NOR", "RUS", "LEC", 'ALO', "OCO", "BOT", "ZHO", "PER", "STR", "GAS", "ALB", "MAG", "TSU", "HUL", "LAW"
+      "VER", "PIA", "NOR", "RUS", "LEC", "ALO", "OCO", "BOT", "ZHO", "PER", "STR", "GAS", "ALB", "MAG", "TSU", "HUL", "LAW"
     ],
     DNFs: [
       "SAR", "HAM",
@@ -300,6 +300,18 @@ export const FormulaOneRaceResults : {
       
     ],
     sprint: true,
+  },
+   {
+    location: "Brazil",
+    finalOrder: [
+      "VER", "NOR", "ALO", "PER", "STR", "SAI", "GAS", "HAM", "TSU", "OCO", "SAR", "HUL", "RIC", "PIA",
+    ],
+    DNFs: [
+      "RUS", "BOT", "ZHO", "MAG", "ALB", "LEC",
+    ],
+    fastestLap: "NOR",
+    polePosition: "VER",
+    sprint: false,
   },
 ]
 

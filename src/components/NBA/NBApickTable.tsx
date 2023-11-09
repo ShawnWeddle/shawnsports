@@ -120,7 +120,7 @@ const NBApickTable: React.FC = () => {
             <th>2030</th>
           </tr>
         </thead>
-        <tbody className="text-sm sm:text-base">{NBArows}</tbody>
+        <tbody className="text-xs sm:text-base">{NBArows}</tbody>
       </table>
     </>
   );

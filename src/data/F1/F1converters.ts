@@ -91,7 +91,7 @@ export const resultsSortedByPlace = (results: RaceResultsType) => {
 
   const fullDNFOrder = () => {
     const fullArray: FullDriverType[][] = [];
-    for (let i=0; i<5; i++){
+    for (let i=0; i<6; i++){
       fullArray[i] = findDNFArray(i);
     }
     return fullArray;

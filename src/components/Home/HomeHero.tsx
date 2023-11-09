@@ -22,20 +22,18 @@ const HomeHero: React.FC<HomeHeroProps> = (props: HomeHeroProps) => {
   ).map((key, index) => {
     const newKey = TitlesEnum.parse(key);
     return (
-      <div key={index} className="rounded-b px-2 hover:bg-gray-200">
-        <button
-          className="font-semibold"
-          onClick={() => {
-            void router.push(underPageData[newKey].urlName);
-          }}
-        >
-          •{" "}
-          <span className="hover:underline">
-            {underPageData[newKey].navTitle}
-          </span>
-        </button>
+      <button
+        key={index}
+        className="w-full rounded-b px-2 text-left hover:bg-gray-200"
+        onClick={() => {
+          void router.push(underPageData[newKey].urlName);
+        }}
+      >
+        <p className="font-semibold">
+          • <span>{underPageData[newKey].navTitle}</span>
+        </p>
         <p className="px-4">{sportData[key]}</p>
-      </div>
+      </button>
     );
   });
 
@@ -66,23 +64,3 @@ const HomeHero: React.FC<HomeHeroProps> = (props: HomeHeroProps) => {
 };
 
 export default HomeHero;
-
-/*
-
-className={cn("rounded-b-lg border-2 px-2", {
-          "bg-nba/10": sportMode === "NBA" || sportMode === "WNBA",
-          "bg-nfl/10": sportMode === "NFL",
-          "bg-nhl/10": sportMode === "NHL",
-          "bg-mlb/10": sportMode === "MLB",
-          "bg-formulaOne/10": sportMode === "F1",
-        })}
-
-        className={cn("rounded-b-lg border-2 px-2", {
-          "bg-nba/10": sportMode === "NBA" || sportMode === "WNBA",
-          "bg-nfl/10": sportMode === "NFL",
-          "bg-nhl/10": sportMode === "NHL",
-          "bg-mlb/10": sportMode === "MLB",
-          "bg-formulaOne/10": sportMode === "F1",
-        })}
-
-*/

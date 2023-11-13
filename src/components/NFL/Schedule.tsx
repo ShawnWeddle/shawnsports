@@ -6,6 +6,7 @@ import {
   type NFLTeamType,
   NFLteamData,
 } from "~/data/NFL/NFLdata";
+import { NFLscheduleData } from "~/data/NFL/NFLscheduleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import ScheduleForTeam from "./ScheduleByTeam";
 import { recordForTeam } from "~/data/NFL/NFLscheduleRecord";
@@ -26,7 +27,7 @@ const NFLSchedule: React.FC = () => {
         (division, divisionIndex) => {
           const [divisionName, newDivision] = division;
           const teamButtons = newDivision.map((team, teamIndex) => {
-            const games = [...nflScheduleState].filter(
+            const games = [...nflScheduleState.schedule].filter(
               (game) => game.Away === team || game.Home === team
             );
             const { wins, losses } = recordForTeam(team, games);
@@ -119,12 +120,12 @@ const NFLSchedule: React.FC = () => {
         <div className="flex justify-center gap-2">
           <button
             onClick={() => {
+              console.log(NFLscheduleData);
               nflScheduleDispatch({
                 type: "PICK",
-                payload: nflScheduleState.map((game) => {
-                  return { Code: game.Code, Winner: undefined };
-                }),
+                payload: [...NFLscheduleData.schedule],
               });
+              console.log(NFLscheduleData);
               dialog.current?.close();
             }}
             className="rounded-lg bg-red-500 p-1 font-semibold text-white"

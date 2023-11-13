@@ -20,7 +20,7 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
   const { team } = props;
   const allGames: (GameType | null)[] = [...nullArray18];
 
-  const allGamesNoBye = NFLscheduleData.filter((game) => {
+  const allGamesNoBye = NFLscheduleData.schedule.filter((game) => {
     if (game.Away === team || game.Home === team) {
       return game;
     }
@@ -28,6 +28,12 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
 
   allGamesNoBye.forEach((game) => {
     allGames[game.Week - 1] = game;
+  });
+
+  const allVariableGames = allGamesNoBye.filter((game) => {
+    if (game && !game.readOnly) {
+      return game;
+    }
   });
 
   const { nflScheduleState, nflScheduleDispatch } = useNFLScheduleContext();
@@ -160,7 +166,7 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
         <button
           className="p-1 hover:underline"
           onClick={() => {
-            const clearAllTeamGames = allGamesNoBye.map((game) => {
+            const clearAllTeamGames = allVariableGames.map((game) => {
               const clearGame = { Code: game.Code, Winner: undefined };
               return clearGame;
             });

@@ -2,13 +2,14 @@ import { createContext, useReducer, useEffect } from "react";
 import {
   type GameType,
   type GameWinner,
+  type NFLScheduleType,
   NFLscheduleData,
 } from "~/data/NFL/NFLscheduleData";
 
 export const NFLScheduleContext = createContext<ContextType | null>(null);
 
 type ContextType = {
-  nflScheduleState: GameType[];
+  nflScheduleState: NFLScheduleType;
   nflScheduleDispatch: React.Dispatch<NFLScheduleReducerAction>;
 };
 
@@ -22,16 +23,21 @@ type NFLScheduleReducerAction = {
 };
 
 export const nflScheduleReducer = (
-  state: GameType[],
+  state: NFLScheduleType,
   action: NFLScheduleReducerAction
 ) => {
   switch (action.type) {
     case "PICK": {
-      const newState = [...state];
+      const newState = {
+        weeksCompleted: state.weeksCompleted,
+        schedule: [...state.schedule],
+      };
       action.payload.forEach((winner) => {
         const { Code, Winner } = winner;
-        const foundIndex = newState.findIndex((game) => game.Code === Code);
-        const newGame = newState[foundIndex];
+        const foundIndex = newState.schedule.findIndex(
+          (game) => game.Code === Code
+        );
+        const newGame = newState.schedule[foundIndex];
         if (newGame) {
           newGame.Winner = Winner;
         }
@@ -50,20 +56,25 @@ export const NFLScheduleContextProvider = ({
 }: NFLScheduleContextProviderProps) => {
   const [nflScheduleState, nflScheduleDispatch] = useReducer(
     nflScheduleReducer,
-    [...NFLscheduleData]
+    {
+      weeksCompleted: NFLscheduleData.weeksCompleted,
+      schedule: [...NFLscheduleData.schedule],
+    }
   );
 
   useEffect(() => {
     const scheduleCheck: string | null = localStorage.getItem("schedule");
-    const schedule: GameType[] | null = scheduleCheck //eslint-disable-line
+    const schedule: NFLScheduleType | null = scheduleCheck //eslint-disable-line
       ? JSON.parse(scheduleCheck) //eslint-disable-line
       : null; //eslint-disable-line
 
     if (schedule) {
-      nflScheduleDispatch({
-        type: "PICK",
-        payload: [...schedule],
-      });
+      if (schedule.weeksCompleted === NFLscheduleData.weeksCompleted) {
+        nflScheduleDispatch({
+          type: "PICK",
+          payload: [...schedule.schedule],
+        });
+      }
     }
   }, []);
 

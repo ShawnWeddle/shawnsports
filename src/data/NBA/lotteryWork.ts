@@ -1,4 +1,4 @@
-import { type NBATeamType } from "../NBApickData";
+import { type NBATeamType, nbaTeams } from "../NBApickData";
 
 type NBATeamOrNullType = NBATeamType | null;
 
@@ -43,6 +43,15 @@ const teamDraftPlaces: { [Key in NBATeamType] : number} = {
   WAS: 0,
 }
 
+export type FinishOrderType = [
+  NBATeamType, NBATeamType, NBATeamType, NBATeamType, NBATeamType, 
+  NBATeamType, NBATeamType, NBATeamType, NBATeamType, NBATeamType, 
+  NBATeamType, NBATeamType, NBATeamType, NBATeamType, NBATeamType, 
+  NBATeamType, NBATeamType, NBATeamType, NBATeamType, NBATeamType, 
+  NBATeamType, NBATeamType, NBATeamType, NBATeamType, NBATeamType, 
+  NBATeamType, NBATeamType, NBATeamType, NBATeamType, NBATeamType, 
+];
+
 export const rankedTeamVerification = (teams: (NBATeamType | null)[]):{success: boolean, newTeams: NBATeamType[]} => {
   const newTeams: NBATeamType[] = teams.flatMap(team => team ? [team] : []);
   if(newTeams.length === 14){
@@ -77,25 +86,22 @@ export const Lotterizer = (teams: NBATeamType[]) => {
 
   const newWinners: NBATeamType[] = winners.flatMap(team => team ? [team] : []);
   const losers: NBATeamType[] = newTeams.filter(team => !winners.includes(team));
-  const teamArray: NBATeamType[] = [...newWinners, ...losers];
+  const lotteryArray: NBATeamType[] = [...newWinners, ...losers];
+  const playoffTeams: NBATeamType[] = nbaTeams.filter(team => !lotteryArray.includes(team));
+  const fullOrder: NBATeamType[] = [...lotteryArray, ...playoffTeams];
 
-  const Final = teamArray.map((team, index) => {
-    return {
-      nativeTeam: team,
-      newTeam: "F",
-      rank: index + 1,
-    }
-  })
-  
-  return Final;
+  const finishOrder: FinishOrderType = [
+    fullOrder[0] ?? "ATL", fullOrder[1] ?? "ATL", fullOrder[2] ?? "ATL", 
+    fullOrder[3] ?? "ATL", fullOrder[4] ?? "ATL", fullOrder[5] ?? "ATL", 
+    fullOrder[6] ?? "ATL", fullOrder[7] ?? "ATL", fullOrder[8] ?? "ATL", 
+    fullOrder[9] ?? "ATL", fullOrder[10] ?? "ATL", fullOrder[11] ?? "ATL", 
+    fullOrder[12] ?? "ATL", fullOrder[13] ?? "ATL", fullOrder[14] ?? "ATL", 
+    fullOrder[15] ?? "ATL", fullOrder[16] ?? "ATL", fullOrder[17] ?? "ATL", 
+    fullOrder[18] ?? "ATL", fullOrder[19] ?? "ATL", fullOrder[20] ?? "ATL", 
+    fullOrder[21] ?? "ATL", fullOrder[22] ?? "ATL", fullOrder[23] ?? "ATL", 
+    fullOrder[24] ?? "ATL", fullOrder[25] ?? "ATL", fullOrder[26] ?? "ATL", 
+    fullOrder[27] ?? "ATL", fullOrder[28] ?? "ATL", fullOrder[29] ?? "ATL", 
+  ];
+
+  return finishOrder;
 }
-
-/*
-const odds = [
-  28, 56, 84, 
-  109, 130, 148, 
-  163, 175, 184, 
-  190, 194, 197, 
-  199, 200, 
-]; 
-*/

@@ -8,6 +8,7 @@ import {
 } from "~/data/NBApickData";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { rankedTeamVerification, Lotterizer } from "~/data/NBA/lotteryWork";
+import { type PickType, lotterySwaps } from "~/data/NBA/lotterySwaps";
 
 import NBATeamTile from "~/components/NBA/Lottery/TeamTile";
 import TileLanding from "~/components/NBA/Lottery/TileLanding";
@@ -17,7 +18,7 @@ const NBALottery2: React.FC = () => {
 
   const [activeTeam, setActiveTeam] = useState<NBATeamType | null>(null);
 
-  const [lotteryResults, setLotteryResults] = useState<NBATeamType[]>([]);
+  const [lotteryResults, setLotteryResults] = useState<PickType[]>([]);
 
   const activeTeamStyleData = activeTeam
     ? NBAstyleData[activeTeam]
@@ -54,8 +55,43 @@ const NBALottery2: React.FC = () => {
     );
   });
 
+  const lotteryResultOrder = lotteryResults
+    .filter((pick) => pick.index < 14)
+    .map((pick, index) => {
+      const { newTeam, nativeTeam } = pick;
+      return (
+        <p key={index} className="border-b border-nba">
+          <span className="font-semibold">
+            {pick.index + 1}
+            {". "}
+          </span>
+          <span
+            className={cn("font-bold", {
+              [NBAstyleData[newTeam].primaryTextStyle]: true,
+            })}
+          >
+            {NBAteamData[newTeam].location}
+          </span>
+          {newTeam === nativeTeam ? (
+            ""
+          ) : (
+            <span>
+              {" (via "}
+              {NBAteamData[nativeTeam].location}
+              {")"}
+            </span>
+          )}
+        </p>
+      );
+    });
+
   return (
     <div className="mt-2 flex w-full flex-col items-center">
+      <div className="flex w-full justify-center">
+        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+          NBA Lottery
+        </h1>
+      </div>
       <div className="flex w-full flex-col items-center justify-around sm:flex-row">
         <div className="flex w-fit flex-col justify-center">
           <div className="grid grid-cols-3">{tileLandings}</div>
@@ -68,8 +104,13 @@ const NBALottery2: React.FC = () => {
                 "rounded-b-lg bg-gray-300 px-2 py-1 text-xl font-semibold text-red-600 hover:bg-gray-200 disabled:text-gray-400 disabled:hover:bg-gray-300"
               )}
               onClick={() => {
-                Lotterizer(
-                  rankedTeamVerification(nbaLotteryState.rankedTeams).newTeams
+                setLotteryResults(
+                  lotterySwaps(
+                    Lotterizer(
+                      rankedTeamVerification(nbaLotteryState.rankedTeams)
+                        .newTeams
+                    )
+                  )
                 );
               }}
             >
@@ -78,7 +119,7 @@ const NBALottery2: React.FC = () => {
           </div>
         </div>
 
-        <div className="">F</div>
+        <div>{lotteryResultOrder}</div>
       </div>
 
       <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8">
@@ -108,7 +149,7 @@ const NBALottery2: React.FC = () => {
 export default NBALottery2;
 
 /*[
-"WAS", "HOU", "POR", "DET", "CHO", "SAS", "TOR", "ORL", 
-  "UTA", "BRK", "IND", "NOP", "MIN", "DAL",
+"WAS", "HOU", "POR", "DET", "CHO", "SAS", "TOR", 
+"ORL", "UTA", "BRK", "IND", "NOP", "MIN", "DAL",
 ]
 */

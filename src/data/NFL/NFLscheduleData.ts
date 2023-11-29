@@ -1,3 +1,4 @@
+import { LargeSMWLogo } from "~/components/Logo";
 import type { NFLTeamType } from "./NFLdata";
 
 export type GameType = {
@@ -14,7 +15,7 @@ export type GameWinner = Pick<GameType, "Code" | "Winner">
 export type NFLScheduleType = typeof NFLscheduleData;
 
 export const NFLscheduleData: {weeksCompleted: number, schedule: GameType[]} = {
-  weeksCompleted: 10, 
+  weeksCompleted: 12, 
   schedule: [
   {
     Away: "DET", Home: "KAN", Week: 1, Code: "DET-KAN-001", Winner: "DET", readOnly: true,
@@ -317,65 +318,65 @@ export const NFLscheduleData: {weeksCompleted: number, schedule: GameType[]} = {
   },{
     Away: "DEN", Home: "BUF", Week: 10, Code: "DEN-BUF-010", Winner: "BUF", readOnly: true,
   },{
-    Away: "CIN", Home: "BAL", Week: 11, Code: "CIN-BAL-011", Winner: undefined, readOnly: false,
+    Away: "CIN", Home: "BAL", Week: 11, Code: "CIN-BAL-011", Winner: "BAL", readOnly: true,
   },{
-    Away: "PIT", Home: "CLE", Week: 11, Code: "PIT-CLE-011", Winner: undefined, readOnly: false,
+    Away: "PIT", Home: "CLE", Week: 11, Code: "PIT-CLE-011", Winner: "CLE", readOnly: true,
   },{
-    Away: "CHI", Home: "DET", Week: 11, Code: "CHI-DET-011", Winner: undefined, readOnly: false,
+    Away: "CHI", Home: "DET", Week: 11, Code: "CHI-DET-011", Winner: "DET", readOnly: true,
   },{
-    Away: "LAC", Home: "GNB", Week: 11, Code: "LAC-GNB-011", Winner: undefined, readOnly: false,
+    Away: "LAC", Home: "GNB", Week: 11, Code: "LAC-GNB-011", Winner: "GNB", readOnly: true,
   },{
-    Away: "LVR", Home: "MIA", Week: 11, Code: "LVR-MIA-011", Winner: undefined, readOnly: false,
+    Away: "LVR", Home: "MIA", Week: 11, Code: "LVR-MIA-011", Winner: "MIA", readOnly: true,
   },{
-    Away: "NYG", Home: "WAS", Week: 11, Code: "NYG-WAS-011", Winner: undefined, readOnly: false,
+    Away: "NYG", Home: "WAS", Week: 11, Code: "NYG-WAS-011", Winner: "NYG", readOnly: true,
   },{
-    Away: "DAL", Home: "CAR", Week: 11, Code: "DAL-CAR-011", Winner: undefined, readOnly: false,
+    Away: "DAL", Home: "CAR", Week: 11, Code: "DAL-CAR-011", Winner: "DAL", readOnly: true,
   },{
-    Away: "TEN", Home: "JAX", Week: 11, Code: "TEN-JAX-011", Winner: undefined, readOnly: false,
+    Away: "TEN", Home: "JAX", Week: 11, Code: "TEN-JAX-011", Winner: "JAX", readOnly: true,
   },{
-    Away: "ARI", Home: "HOU", Week: 11, Code: "ARI-HOU-011", Winner: undefined, readOnly: false,
+    Away: "ARI", Home: "HOU", Week: 11, Code: "ARI-HOU-011", Winner: "HOU", readOnly: true,
   },{
-    Away: "TAM", Home: "SFO", Week: 11, Code: "TAM-SFO-011", Winner: undefined, readOnly: false,
+    Away: "TAM", Home: "SFO", Week: 11, Code: "TAM-SFO-011", Winner: "SFO", readOnly: true,
   },{
-    Away: "NYJ", Home: "BUF", Week: 11, Code: "NYJ-BUF-011", Winner: undefined, readOnly: false,
+    Away: "NYJ", Home: "BUF", Week: 11, Code: "NYJ-BUF-011", Winner: "BUF", readOnly: true,
   },{
-    Away: "SEA", Home: "LAR", Week: 11, Code: "SEA-LAR-011", Winner: undefined, readOnly: false,
+    Away: "SEA", Home: "LAR", Week: 11, Code: "SEA-LAR-011", Winner: "LAR", readOnly: true,
   },{
-    Away: "MIN", Home: "DEN", Week: 11, Code: "MIN-DEN-011", Winner: undefined, readOnly: false,
+    Away: "MIN", Home: "DEN", Week: 11, Code: "MIN-DEN-011", Winner: "DEN", readOnly: true,
   },{
-    Away: "PHI", Home: "KAN", Week: 11, Code: "PHI-KAN-011", Winner: undefined, readOnly: false,
+    Away: "PHI", Home: "KAN", Week: 11, Code: "PHI-KAN-011", Winner: "PHI", readOnly: true,
   },{
-    Away: "GNB", Home: "DET", Week: 12, Code: "GNB-DET-012", Winner: undefined, readOnly: false,
+    Away: "GNB", Home: "DET", Week: 12, Code: "GNB-DET-012", Winner: "GNB", readOnly: true,
   },{
-    Away: "WAS", Home: "DAL", Week: 12, Code: "WAS-DAL-012", Winner: undefined, readOnly: false,
+    Away: "WAS", Home: "DAL", Week: 12, Code: "WAS-DAL-012", Winner: "DAL", readOnly: true,
   },{
-    Away: "SFO", Home: "SEA", Week: 12, Code: "SFO-SEA-012", Winner: undefined, readOnly: false,
+    Away: "SFO", Home: "SEA", Week: 12, Code: "SFO-SEA-012", Winner: "SFO", readOnly: true,
   },{
-    Away: "MIA", Home: "NYJ", Week: 12, Code: "MIA-NYJ-012", Winner: undefined, readOnly: false,
+    Away: "MIA", Home: "NYJ", Week: 12, Code: "MIA-NYJ-012", Winner: "MIA", readOnly: true,
   },{
-    Away: "NOR", Home: "ATL", Week: 12, Code: "NOR-ATL-012", Winner: undefined, readOnly: false,
+    Away: "NOR", Home: "ATL", Week: 12, Code: "NOR-ATL-012", Winner: "ATL", readOnly: true,
   },{
-    Away: "PIT", Home: "CIN", Week: 12, Code: "PIT-CIN-012", Winner: undefined, readOnly: false,
+    Away: "PIT", Home: "CIN", Week: 12, Code: "PIT-CIN-012", Winner: "PIT", readOnly: true,
   },{
-    Away: "CAR", Home: "TEN", Week: 12, Code: "CAR-TEN-012", Winner: undefined, readOnly: false,
+    Away: "CAR", Home: "TEN", Week: 12, Code: "CAR-TEN-012", Winner: "TEN", readOnly: true,
   },{
-    Away: "TAM", Home: "IND", Week: 12, Code: "TAM-IND-012", Winner: undefined, readOnly: false,
+    Away: "TAM", Home: "IND", Week: 12, Code: "TAM-IND-012", Winner: "IND", readOnly: true,
   },{
-    Away: "NWE", Home: "NYG", Week: 12, Code: "NWE-NYG-012", Winner: undefined, readOnly: false,
+    Away: "NWE", Home: "NYG", Week: 12, Code: "NWE-NYG-012", Winner: "NYG", readOnly: true,
   },{
-    Away: "JAX", Home: "HOU", Week: 12, Code: "JAX-HOU-012", Winner: undefined, readOnly: false,
+    Away: "JAX", Home: "HOU", Week: 12, Code: "JAX-HOU-012", Winner: "JAX", readOnly: true,
   },{
-    Away: "CLE", Home: "DEN", Week: 12, Code: "CLE-DEN-012", Winner: undefined, readOnly: false,
+    Away: "CLE", Home: "DEN", Week: 12, Code: "CLE-DEN-012", Winner: "DEN", readOnly: true,
   },{
-    Away: "LAR", Home: "ARI", Week: 12, Code: "LAR-ARI-012", Winner: undefined, readOnly: false,
+    Away: "LAR", Home: "ARI", Week: 12, Code: "LAR-ARI-012", Winner: "LAR", readOnly: true,
   },{
-    Away: "KAN", Home: "LVR", Week: 12, Code: "KAN-LVR-012", Winner: undefined, readOnly: false,
+    Away: "KAN", Home: "LVR", Week: 12, Code: "KAN-LVR-012", Winner: "KAN", readOnly: true,
   },{
-    Away: "BUF", Home: "PHI", Week: 12, Code: "BUF-PHI-012", Winner: undefined, readOnly: false,
+    Away: "BUF", Home: "PHI", Week: 12, Code: "BUF-PHI-012", Winner: "PHI", readOnly: true,
   },{
-    Away: "BAL", Home: "LAC", Week: 12, Code: "BAL-LAC-012", Winner: undefined, readOnly: false,
+    Away: "BAL", Home: "LAC", Week: 12, Code: "BAL-LAC-012", Winner: "BAL", readOnly: true,
   },{
-    Away: "CHI", Home: "MIN", Week: 12, Code: "CHI-MIN-012", Winner: undefined, readOnly: false,
+    Away: "CHI", Home: "MIN", Week: 12, Code: "CHI-MIN-012", Winner: "CHI", readOnly: true,
   },{
     Away: "SEA", Home: "DAL", Week: 13, Code: "SEA-DAL-013", Winner: undefined, readOnly: false,
   },{

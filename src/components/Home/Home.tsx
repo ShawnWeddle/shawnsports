@@ -25,15 +25,19 @@ const HomeComp: React.FC = () => {
       <h1 className="text-center text-xl font-semibold">
         Note from the developer
       </h1>
-      <h1 className="py-4 text-center">
-        Hello, I&apos;m{" "}
-        <span className="text-home">
-          <span className="text-2xl font-semibold">S</span>hawn
-          <span className="text-2xl font-semibold">M</span>arlin
-          <span className="text-2xl font-semibold">W</span>eddle
-        </span>
-        . I built this website.
-      </h1>
+      <div className="flex w-full justify-center">
+        <p className="p-4 md:max-w-screen-md">
+          {"Hello, I'm "}
+          <span className="text-home">
+            <span className="text-2xl font-semibold">S</span>hawn
+            <span className="text-2xl font-semibold">M</span>arlin
+            <span className="text-2xl font-semibold">W</span>eddle
+          </span>
+          {
+            ", the developer of this website. Thanks for checking out SportsMegaWorld. I'm a lifelong sports fan and I created this website to put together these sports resources I couldn't find anywhere else."
+          }
+        </p>
+      </div>
     </div>
   );
 };

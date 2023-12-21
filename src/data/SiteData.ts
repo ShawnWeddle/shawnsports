@@ -33,7 +33,7 @@ export const F1TitlesDesc: {[Key in F1TitlesType] : string} = {
   "F1_Rank": "Rank all 22 drivers from the 2023 season",
 };
 export const NFLTitlesDesc: {[Key in NFLTitlesType] : string} = {
-  "NFL_Schedule": "Check out every team's schedule for the 2023 NFL season",
+  "NFL_Schedule": "See every team's schedule for the 2023 NFL season",
   "NFL_Super_Bowls": "See all 57 Super Bowl matchups",
   "NFL_Rank": "Rank all 32 NFL teams",
 };

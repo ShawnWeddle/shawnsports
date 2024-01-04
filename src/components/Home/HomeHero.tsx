@@ -2,7 +2,6 @@ import { cn } from "~/utils/cn";
 import {
   type PageHeadsType,
   TitlesEnum,
-  leagueNames,
   homePageData,
   underPageData,
 } from "~/data/SiteData";
@@ -22,44 +21,53 @@ const HomeHero: React.FC<HomeHeroProps> = (props: HomeHeroProps) => {
   ).map((key, index) => {
     const newKey = TitlesEnum.parse(key);
     return (
-      <button
+      <tr
         key={index}
-        className="w-full rounded-b px-2 text-left hover:bg-gray-200"
-        onClick={() => {
-          void router.push(underPageData[newKey].urlName);
-        }}
+        className={cn("", {
+          "even:bg-nba/20 hover:text-nba":
+            sportMode === "NBA" || sportMode === "WNBA",
+          "even:bg-nfl/20 hover:text-nfl": sportMode === "NFL",
+          "even:bg-nhl/20 hover:text-nhl": sportMode === "NHL",
+          "even:bg-mlb/20 hover:text-mlb": sportMode === "MLB",
+          "even:bg-formulaOne/20 hover:text-formulaOne": sportMode === "F1",
+        })}
       >
-        <p className="font-semibold">
-          • <span>{underPageData[newKey].navTitle}</span>
-        </p>
-        <p className="px-4">{sportData[key]}</p>
-      </button>
+        <td>
+          <button
+            className="whitespace-nowrap text-center font-semibold"
+            onClick={() => {
+              void router.push(underPageData[newKey].urlName);
+            }}
+          >
+            {underPageData[newKey].navTitle}
+          </button>
+        </td>
+        <td className="">{sportData[key]}</td>
+      </tr>
     );
   });
 
   return (
-    <div
-      className={cn("rounded-xl border-8", {
-        "border-nba": sportMode === "NBA" || sportMode === "WNBA",
-        "border-nfl": sportMode === "NFL",
-        "border-nhl": sportMode === "NHL",
-        "border-mlb": sportMode === "MLB",
-        "border-formulaOne": sportMode === "F1",
-      })}
-    >
-      <div
-        className={cn("text-center text-2xl font-semibold text-white", {
-          "bg-nba": sportMode === "NBA" || sportMode === "WNBA",
-          "bg-nfl": sportMode === "NFL",
-          "bg-nhl": sportMode === "NHL",
-          "bg-mlb": sportMode === "MLB",
-          "bg-formulaOne": sportMode === "F1",
-        })}
+    <>
+      <h1
+        className={cn(
+          "rounded-b rounded-t-xl border py-1 text-center text-2xl font-semibold text-white hover:transition",
+          {
+            "bg-nba": sportMode === "NBA" || sportMode === "WNBA",
+            "bg-nfl": sportMode === "NFL",
+            "bg-nhl": sportMode === "NHL",
+            "bg-mlb": sportMode === "MLB",
+            "bg-formulaOne": sportMode === "F1",
+          }
+        )}
       >
-        {sportMode === "F1" ? "Formula 1" : sportMode}
-      </div>
-      <div>{pageLinks}</div>
-    </div>
+        {sportMode === "F1" ? "Formula One" : sportMode}
+      </h1>
+
+      <table className="mx-4 w-full">
+        <tbody>{pageLinks}</tbody>
+      </table>
+    </>
   );
 };
 

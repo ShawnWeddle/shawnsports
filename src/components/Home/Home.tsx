@@ -1,4 +1,4 @@
-import HomeHero from "./HomeHero";
+import HomeNav from "./HomeNav";
 
 const HomeComp: React.FC = () => {
   return (
@@ -12,17 +12,8 @@ const HomeComp: React.FC = () => {
         </span>{" "}
         - a collection of resources for different sports leagues.
       </h1>
-      <hr />
-      <div className="m-6 grid gap-6 sm:grid-cols-2">
-        <HomeHero sportMode="F1" />
-        <HomeHero sportMode="NFL" />
-        <HomeHero sportMode="NBA" />
-        <HomeHero sportMode="MLB" />
-        <HomeHero sportMode="NHL" />
-        <HomeHero sportMode="WNBA" />
-      </div>
-      <hr />
-      <h1 className="text-center text-xl font-semibold">
+      <HomeNav />
+      <h1 className="mt-2 rounded bg-home text-center text-xl font-semibold text-white">
         Note from the developer
       </h1>
       <div className="flex w-full justify-center">

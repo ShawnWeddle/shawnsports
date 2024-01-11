@@ -33,16 +33,18 @@ const HomeHero: React.FC<HomeHeroProps> = (props: HomeHeroProps) => {
         })}
       >
         <td>
-          <button
-            className="whitespace-nowrap text-center font-semibold"
-            onClick={() => {
-              void router.push(underPageData[newKey].urlName);
-            }}
-          >
-            {underPageData[newKey].navTitle}
-          </button>
+          <div className="flex w-full justify-center bg-pink-500">
+            <button
+              className="whitespace-nowrap text-center font-semibold"
+              onClick={() => {
+                void router.push(underPageData[newKey].urlName);
+              }}
+            >
+              {underPageData[newKey].navTitle}
+            </button>
+          </div>
         </td>
-        <td className="">{sportData[key]}</td>
+        <td>{sportData[key]}</td>
       </tr>
     );
   });

@@ -186,6 +186,44 @@ export const createStandings = (results: RaceResultsType) => {
     ZHO : 21,
   }
 
+  const podiumGenerator = (results: RaceResultsType) => {
+    const driverPodiums: {[Key in DriverCodeType] : number} = {
+      ALB : 0,
+      ALO : 0,
+      BOT : 0,
+      DEV : 0,
+      GAS : 0,
+      HAM : 0,
+      HUL : 0,
+      LAW : 0,
+      LEC : 0,
+      MAG : 0,
+      NOR : 0,
+      OCO : 0,
+      PER : 0,
+      PIA : 0,
+      RIC : 0,
+      RUS : 0,
+      SAI : 0,
+      SAR : 0,
+      STR : 0,
+      TSU : 0,
+      VER : 0,
+      ZHO : 0,
+    }
+
+    results.forEach((result) => {
+      const gold = result.finalOrder[0];
+      const silver = result.finalOrder[1];
+      const bronze = result.finalOrder[2];
+      if(gold) driverPodiums[gold] += 1;
+      if(silver) driverPodiums[silver] += 1;
+      if(bronze) driverPodiums[bronze] += 1;
+    })
+
+    return driverPodiums;
+  }
+
   const constructorStandings: {[Key in ConstructorNameType] : {total: number, runTotal: number[]}} = {
     "Alfa Romeo" : {total: 0, runTotal: [0]},
     AlphaTauri : {total: 0, runTotal: [0]},

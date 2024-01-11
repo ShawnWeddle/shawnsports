@@ -29,16 +29,29 @@ const HomeNav: React.FC = () => {
           })}
         >
           <td>
-            <button
-              className="px-2 text-center font-semibold"
-              onClick={() => {
-                void router.push(underPageData[newKey].urlName);
-              }}
-            >
-              {underPageData[newKey].navTitle}
-            </button>
+            <div className="flex justify-center">
+              <button
+                className="w-full text-center font-semibold"
+                onClick={() => {
+                  void router.push(underPageData[newKey].urlName);
+                }}
+              >
+                {underPageData[newKey].navTitle}
+              </button>
+            </div>
           </td>
-          <td className="">{sportData[key]}</td>
+          <td>
+            <div className="flex justify-start">
+              <button
+                className="w-full text-start"
+                onClick={() => {
+                  void router.push(underPageData[newKey].urlName);
+                }}
+              >
+                {sportData[key]}
+              </button>
+            </div>
+          </td>
         </tr>
       );
     });

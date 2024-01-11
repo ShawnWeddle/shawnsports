@@ -1044,7 +1044,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     nativeTeam: "GSW",
     pickCode: "GSW-2024",
     year: 2024,
-    notes: ["Traded from Golden State to Memphis to Boston."],
+    notes: ["Traded from Golden State to Memphis to Boston to Portland."],
   },],
   "2025":[{
     nativeTeam: "POR",

@@ -38,3 +38,9 @@ export type SuperBowlType = {
   score: string,
   romanNumeral: string,
 }
+
+export type SuperLoserType = {
+  firstName: string,
+  lastName: string,
+  losses: number[],
+}

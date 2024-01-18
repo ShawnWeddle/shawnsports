@@ -447,29 +447,14 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   },],
 },
 "IND":{
-  "2024":[{
-    nativeTeam: "IND",
-    pickCode: "IND-2024",
-    year: 2024,
-    notes: ["Indiana has not yet traded this pick."],
-  },{
-    nativeTeam: "OKC",
-    pickCode: "OKC-2024",
-    year: 2024,
-    notes: ["Traded from Oklahoma City to Indiana.", "Indiana will receive the least valuable of Oklahoma City's 2024 picks."],
-  },],
+  "2024":[],
   "2025":[{
     nativeTeam: "IND",
     pickCode: "IND-2025",
     year: 2025,
     notes: ["Indiana has not yet traded this pick."],
   },],
-  "2026":[{
-    nativeTeam: "IND",
-    pickCode: "IND-2026",
-    year: 2026,
-    notes: ["Indiana has not yet traded this pick."],
-  },],
+  "2026":[],
   "2027":[{
     nativeTeam: "IND",
     pickCode: "IND-2027",
@@ -1207,7 +1192,17 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   },],
 },
 "TOR":{
-  "2024":[],
+  "2024":[{
+    nativeTeam: "IND",
+    pickCode: "IND-2024",
+    year: 2024,
+    notes: ["Traded from Indiana to Toronto."],
+  },{
+    nativeTeam: "OKC",
+    pickCode: "OKC-2024",
+    year: 2024,
+    notes: ["Traded from Oklahoma City to Indiana to Toronto.", "Toronto will receive the least valuable of Oklahoma City's 2024 picks."],
+  },],
   "2025":[{
     nativeTeam: "TOR",
     pickCode: "TOR-2025",
@@ -1219,6 +1214,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "TOR-2026",
     year: 2026,
     notes: ["Toronto has not yet traded this pick."],
+  },{
+    nativeTeam: "IND",
+    pickCode: "IND-2026",
+    year: 2026,
+    notes: ["Traded from Indiana to Toronto."],
   },],
   "2027":[{
     nativeTeam: "TOR",

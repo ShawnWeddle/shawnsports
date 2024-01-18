@@ -2,6 +2,12 @@ import { type SuperBowlType } from "~/types/ChampTypes";
 
 export const SuperBowlData: SuperBowlType[] = [
   {
+    "winningTeam": "BAL",
+    "losingTeam": "DET",
+    "score": "42 - 21",
+    "romanNumeral": "LVIII"
+  },
+  {
       "winningTeam": "KAN",
       "losingTeam": "PHI",
       "score": "38 - 35",

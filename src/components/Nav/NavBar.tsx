@@ -118,7 +118,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
       <button
         key={index}
         className={cn(
-          "text-md m-1 p-1 md:text-lg",
+          "text-md m-1 whitespace-nowrap p-1 md:text-lg",
           {
             "text-home": pageMode === "Home",
             "text-nba": pageMode === "NBA" || pageMode === "WNBA",

@@ -207,7 +207,11 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             <MdAccountCircle />
           </button>
         </nav>
-        <nav className={cn("flex justify-center gap-4 bg-white")}>
+        <nav
+          className={cn(
+            "flex justify-around bg-white sm:justify-center sm:gap-4"
+          )}
+        >
           {pageMode !== "Home" && navUnderPageButtons}
           {pageMode === "Home" && !user && (
             <button

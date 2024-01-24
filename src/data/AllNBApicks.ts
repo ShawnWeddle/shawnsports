@@ -212,6 +212,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "CHO-2027",
     year: 2027,
     notes: ["Charlotte has not yet traded this pick."],
+  },{
+    nativeTeam: "MIA",
+    pickCode: "MIA-2027",
+    year: 2027,
+    notes: ["Traded from Miami to Charlotte."],
   },],
   "2028":[{
     nativeTeam: "CHO",
@@ -606,12 +611,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     year: 2026,
     notes: ["Miami has not yet traded this pick."],
   },],
-  "2027":[{
-    nativeTeam: "MIA",
-    pickCode: "MIA-2027",
-    year: 2027,
-    notes: ["Miami has not yet traded this pick."],
-  },],
+  "2027":[],
   "2028":[{
     nativeTeam: "MIA",
     pickCode: "MIA-2028",

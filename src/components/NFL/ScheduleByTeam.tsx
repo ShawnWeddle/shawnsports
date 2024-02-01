@@ -164,7 +164,8 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
       </div>
       <div className="flex justify-center">
         <button
-          className="p-1 hover:underline"
+          disabled
+          className="p-1 line-through"
           onClick={() => {
             const clearAllTeamGames = allVariableGames.map((game) => {
               const clearGame = { Code: game.Code, Winner: undefined };

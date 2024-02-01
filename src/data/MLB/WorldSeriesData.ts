@@ -2,10 +2,10 @@ import { type WorldSeriesType } from "~/types/ChampTypes"
 
 export const WorldSeriesData: WorldSeriesType[] = [
   {
-    "winningTeam": "TEX",
-    "losingTeam": "ARI",
-    "splits": "4-1",
-    "year": 2023,
+      "winningTeam": "TEX",
+      "losingTeam": "ARI",
+      "splits": "4-1",
+      "year": 2023,
 },
   {
       "winningTeam": "HOU",
@@ -38,7 +38,7 @@ export const WorldSeriesData: WorldSeriesType[] = [
       "year": 2018,
   },
   {
-      "winningTeam": "HXU",
+      "winningTeam": "HOU",
       "losingTeam": "LAD",
       "splits": "4-3",
       "year": 2017,
@@ -174,6 +174,12 @@ export const WorldSeriesData: WorldSeriesType[] = [
       "losingTeam": "CLI",
       "splits": "4-2",
       "year": 1995,
+  },
+  {
+      "winningTeam": "SEA",
+      "losingTeam": "SEA",
+      "splits": "0-0",
+      "year": 1994,
   },
   {
       "winningTeam": "TOR",

@@ -35,12 +35,13 @@ export type WorldSeriesType = {
 export type SuperBowlType = {
   winningTeam: AllNFLTeamType;
   losingTeam: AllNFLTeamType;
-  score: string,
-  romanNumeral: string,
+  score: string;
+  romanNumeral: string;
+  year: number;
 }
 
 export type SuperLoserType = {
-  firstName: string,
-  lastName: string,
-  losses: number[],
+  firstName: string;
+  lastName: string;
+  losses: number[];
 }

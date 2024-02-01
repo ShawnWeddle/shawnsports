@@ -170,7 +170,8 @@ const NFLSchedule: React.FC = () => {
             <div className="grid grid-cols-2 p-2">{NFLTeams}</div>
             <div className="flex justify-center">
               <button
-                className="p-2 hover:underline"
+                disabled
+                className="p-2 line-through"
                 onClick={() => {
                   dialog.current?.showModal();
                 }}

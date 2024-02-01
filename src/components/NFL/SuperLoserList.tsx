@@ -69,8 +69,6 @@ const SuperLoserList: React.FC = () => {
       return didPlay;
     });
 
-    console.log(activeLosers);
-
     const activeTable = activeLosers.map((player, index) => {
       const { firstName, lastName, losses } = player;
       const lossList = losses.map((loss, lIndex) => {
@@ -152,6 +150,12 @@ const SuperLoserList: React.FC = () => {
         <p className="mb-4 w-96 text-center italic">
           *** Super Losers are players who have not won a Super Bowl, but have
           played in and lost Super Bowls with more than one team. ***
+        </p>
+      </div>
+      <div>
+        <p className="mb-4 w-96 text-center italic">
+          *** Either Richie James of the Chiefs or Javon Hargrave of the 49ers
+          will join this list after Super Bowl LVIII ***
         </p>
       </div>
       <table className="w-full sm:w-auto">

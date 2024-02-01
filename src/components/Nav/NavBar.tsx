@@ -25,7 +25,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
   const { pageMode, underPageMode } = props;
   const { navState, navDispatch } = useNavContext();
 
-  const { authDispatch, authState } = useAuthContext();
+  const { authState } = useAuthContext();
   const { user } = authState;
 
   const [showDropDown, setShowDropDown] = useState<boolean>(false);

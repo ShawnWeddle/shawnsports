@@ -110,6 +110,12 @@ export const StanleyCupData: StanleyCupSeriesType[] = [
       "year": 2006
   },
   {
+      "winningTeam": "SEA",
+      "losingTeam": "SEA",
+      "splits": "0-0",
+      "year": 2005
+  },
+  {
       "winningTeam": "TBL",
       "losingTeam": "CGY",
       "splits": "4-3",

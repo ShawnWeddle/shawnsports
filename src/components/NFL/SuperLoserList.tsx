@@ -154,8 +154,7 @@ const SuperLoserList: React.FC = () => {
       </div>
       <div>
         <p className="mb-4 w-96 text-center italic">
-          *** Either Richie James of the Chiefs or Javon Hargrave of the 49ers
-          will join this list after Super Bowl LVIII ***
+          *** This list is possibly incomplete. ***
         </p>
       </div>
       <table className="w-full sm:w-auto">

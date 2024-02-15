@@ -1,4 +1,3 @@
-import { negate } from "lodash";
 import type { NBATeamType, PickYearType, PickCodeType } from "./NBApickData";
 
 type ProtectionValueType = "N/A"; //"UP" | "P - FU" | "P - FS" | 
@@ -571,7 +570,8 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     nativeTeam: "MEM",
     pickCode: "MEM-2026",
     year: 2026,
-    notes: ["Memphis has not yet traded this pick."],
+    notes: ["Memphis will receive the greater of their native pick and (the lesser of (the lesser of Phoenix's pick and Washington's pick) and Orlando's pick)"],
+    swap: "positive",
   },],
   "2027":[{
     nativeTeam: "MEM",
@@ -873,7 +873,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     nativeTeam: "OKC",
     pickCode: "OKC-2028",
     year: 2028,
-    notes: ["Oklahoma City will receive the greater of their native and Dallas's first round pick."],
+    notes: ["Oklahoma City will receive the greater of their native and Dallas's pick."],
     swap: "positive",
   },],
   "2029":[{
@@ -1002,7 +1002,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     nativeTeam: "PHO",
     pickCode: "PHO-2026",
     year: 2026,
-    notes: ["Phoenix will receive the lesser of (the lesser of their native pick and Washington's pick) and Orlando's pick."],
+    notes: ["Phoenix will receive the lesser of (the lesser of (the lesser of their native pick and Washington's pick) and Orlando's pick) and Memphis's pick."],
     swap: "negative",
   },],
   "2027":[],

@@ -145,6 +145,13 @@ export const lotterySwaps: (finishOrder : FinishOrderType) => PickType[] = (fini
     }
   }
 
+  if(teamDraftOrder["IND"] > 11){
+    const activePick = fullOrder[teamDraftOrder["IND"]];
+    if(!!activePick){
+      activePick.newTeam = "TOR";
+    }
+  }
+
   //Pick Swaps
 
   if(teamDraftOrder["NOP"] > teamDraftOrder["MIL"]){
@@ -183,14 +190,14 @@ export const lotterySwaps: (finishOrder : FinishOrderType) => PickType[] = (fini
     }
   }
 
-  //OKC worst pick to IND
+  //OKC worst pick to UTA
 
   const Last_OKC_Pick = [...fullOrder].filter(pick => pick.newTeam === "OKC").pop();
   if(!!Last_OKC_Pick){
     const activeTeam = Last_OKC_Pick.nativeTeam;
     const OKC_Pick = fullOrder[teamDraftOrder[activeTeam]];
     if(!!OKC_Pick){
-      OKC_Pick.newTeam = "IND";
+      OKC_Pick.newTeam = "UTA";
     }
   }
 

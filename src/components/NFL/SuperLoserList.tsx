@@ -13,63 +13,22 @@ const SuperLoserList: React.FC = () => {
     null
   );
 
-  const superLosers = SuperLoserData.map((player, index) => {
-    const { firstName, lastName, losses } = player;
-    const lossList = losses.map((loss, lIndex) => {
-      const game = SuperBowlData[SuperBowlData.length - loss];
+  const superLosers = (game: SuperBowlType | null, inModal: boolean) =>
+    SuperLoserData.filter((player) => {
       if (!game) {
-        return <></>;
+        return true;
       }
-      const { losingTeam, romanNumeral } = game;
-      return (
-        <button
-          key={lIndex}
-          onClick={() => {
-            setActiveSuperBowl(game);
-            dialog.current?.showModal();
-          }}
-          className={cn(
-            "w-full border-x-2 px-1 text-center font-semibold first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2 sm:m-0.5 sm:rounded-lg sm:border-y-2",
-            {
-              [NFLstyleData[losingTeam].primaryBGstyle]: true,
-              [NFLstyleData[losingTeam].secondaryBorderStyle]: true,
-              [NFLstyleData[losingTeam].primaryPlainText]: true,
-            }
-          )}
-        >
-          {romanNumeral} - {NFLteamData[losingTeam].name}
-        </button>
-      );
-    });
-    return (
-      <tr key={index} className="even:bg-nfl/10">
-        <td className="px-1 text-center font-semibold">
-          {firstName} {lastName}
-        </td>
-        <td>
-          <div className="m-1 sm:m-0 sm:grid sm:grid-cols-3 sm:gap-1">
-            {lossList}
-          </div>
-        </td>
-      </tr>
-    );
-  });
-
-  const singleGameLosersTable = (game: SuperBowlType) => {
-    const activeLosers = SuperLoserData.filter((player) => {
       let didPlay = false;
       player.losses.forEach((loss) => {
         if (
-          game.romanNumeral ===
+          game?.romanNumeral ===
           SuperBowlData[SuperBowlData.length - loss]?.romanNumeral
         ) {
           didPlay = true;
         }
       });
       return didPlay;
-    });
-
-    const activeTable = activeLosers.map((player, index) => {
+    }).map((player, index) => {
       const { firstName, lastName, losses } = player;
       const lossList = losses.map((loss, lIndex) => {
         const game = SuperBowlData[SuperBowlData.length - loss];
@@ -80,6 +39,10 @@ const SuperLoserList: React.FC = () => {
         return (
           <button
             key={lIndex}
+            onClick={() => {
+              setActiveSuperBowl(game);
+              dialog.current?.showModal();
+            }}
             className={cn(
               "w-full border-x-2 px-1 text-center font-semibold first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2 sm:m-0.5 sm:rounded-lg sm:border-y-2",
               {
@@ -93,20 +56,23 @@ const SuperLoserList: React.FC = () => {
           </button>
         );
       });
-
       return (
         <tr key={index} className="even:bg-nfl/10">
           <td className="px-1 text-center font-semibold">
             {firstName} {lastName}
           </td>
           <td>
-            <div className="m-1">{lossList}</div>
+            <div
+              className={cn("m-1", {
+                "sm:m-0 sm:grid sm:grid-cols-3 sm:gap-1": !inModal,
+              })}
+            >
+              {lossList}
+            </div>
           </td>
         </tr>
       );
     });
-    return activeTable;
-  };
 
   return (
     <>
@@ -135,7 +101,7 @@ const SuperLoserList: React.FC = () => {
               {NFLteamData[activeSuperBowl.losingTeam].name}
             </p>
             <table>
-              <tbody>{singleGameLosersTable(activeSuperBowl)}</tbody>
+              <tbody>{superLosers(activeSuperBowl, true)}</tbody>
             </table>
           </div>
         )}
@@ -164,7 +130,7 @@ const SuperLoserList: React.FC = () => {
             <th>Losses</th>
           </tr>
         </thead>
-        <tbody>{superLosers}</tbody>
+        <tbody>{superLosers(null, false)}</tbody>
       </table>
     </>
   );

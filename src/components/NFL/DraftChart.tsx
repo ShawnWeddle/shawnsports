@@ -105,7 +105,7 @@ const DraftChart: React.FC = () => {
     }
   };
 
-  const createRow = (local: number) => {
+  const createRow = (local: number, width: "FULL" | "TOP" | "BOTTOM") => {
     const round1 = NFLpickOrderByRound[0];
     const round2 = NFLpickOrderByRound[1];
     const round3 = NFLpickOrderByRound[2];
@@ -113,6 +113,28 @@ const DraftChart: React.FC = () => {
     const round5 = NFLpickOrderByRound[4];
     const round6 = NFLpickOrderByRound[5];
     const round7 = NFLpickOrderByRound[6];
+
+    if (width === "TOP") {
+      return (
+        <tr key={local}>
+          {round1 && createCell(round1[local])}
+          {round2 && createCell(round2[local])}
+          {round3 && createCell(round3[local])}
+          {round4 && createCell(round4[local])}
+        </tr>
+      );
+    }
+
+    if (width === "BOTTOM") {
+      return (
+        <tr key={local}>
+          {round5 && createCell(round5[local])}
+          {round6 && createCell(round6[local])}
+          {round7 && createCell(round7[local])}
+        </tr>
+      );
+    }
+
     return (
       <tr key={local}>
         {round1 && createCell(round1[local])}
@@ -126,10 +148,98 @@ const DraftChart: React.FC = () => {
     );
   };
 
-  const allRows = [];
+  const fullRows = [];
   for (let i = 0; i < 44; i++) {
-    allRows.push(createRow(i));
+    fullRows.push(createRow(i, "FULL"));
   }
+
+  const topRows = [];
+  for (let i = 0; i < 44; i++) {
+    topRows.push(createRow(i, "TOP"));
+  }
+
+  const bottomRows = [];
+  for (let i = 0; i < 44; i++) {
+    bottomRows.push(createRow(i, "BOTTOM"));
+  }
+
+  const tableHead = (width: "FULL" | "TOP" | "BOTTOM") => {
+    const cellHead = (
+      <>
+        <th>#</th>
+        <th>T</th>
+        <th>V</th>
+      </>
+    );
+    switch (width) {
+      case "TOP":
+        return (
+          <tr>
+            {cellHead}
+            {cellHead}
+            {cellHead}
+            {cellHead}
+          </tr>
+        );
+      case "BOTTOM":
+        return (
+          <tr>
+            {cellHead}
+            {cellHead}
+            {cellHead}
+          </tr>
+        );
+      case "FULL":
+        return (
+          <tr>
+            {cellHead}
+            {cellHead}
+            {cellHead}
+            {cellHead}
+            {cellHead}
+            {cellHead}
+            {cellHead}
+          </tr>
+        );
+    }
+  };
+
+  const teamActivePick = (team: NFLTeamType | null, num: number) => {
+    if (team) {
+      const pointsTotal = (team: NFLTeamType) => {
+        return NFLpickOrderByRound.flat()
+          .filter((pick) => {
+            const { nativeTeam, tradedTeam } = pick;
+            const activeTeam = tradedTeam ?? nativeTeam;
+            return activeTeam === team;
+          })
+          .map((pick) => {
+            return pick.value;
+          })
+          .reduce((a, c) => a + c);
+      };
+      return (
+        <div className="text-center">
+          <p
+            className={cn("border p-1", {
+              [NFLstyleData[team].primaryBGstyle]: true,
+              [NFLstyleData[team].secondaryBorderStyle]: true,
+              [NFLstyleData[team].primaryPlainText]: true,
+            })}
+          >
+            {NFLteamData[team].location} {NFLteamData[team].name}
+          </p>
+          <p>Total points: {pointsTotal(team)}</p>
+        </div>
+      );
+    } else {
+      return (
+        <div className="text-center">
+          <p className="border p-1">Team {num} Not Selected</p>
+        </div>
+      );
+    }
+  };
 
   return (
     <>
@@ -138,33 +248,23 @@ const DraftChart: React.FC = () => {
           NFL Draft Pick Value Chart
         </h1>
       </div>
-      <table className="w-full font-mono text-sm sm:w-auto">
-        <thead className="bg-nfl text-white">
-          <tr>
-            <th>#</th>
-            <th>T</th>
-            <th>V</th>
-            <th>#</th>
-            <th>T</th>
-            <th>V</th>
-            <th>#</th>
-            <th>T</th>
-            <th>V</th>
-            <th>#</th>
-            <th>T</th>
-            <th>V</th>
-            <th>#</th>
-            <th>T</th>
-            <th>V</th>
-            <th>#</th>
-            <th>T</th>
-            <th>V</th>
-            <th>#</th>
-            <th>T</th>
-            <th>V</th>
-          </tr>
-        </thead>
-        <tbody>{allRows}</tbody>
+      <div className="flex w-full max-w-screen-sm justify-center">
+        <div className="grid w-full grid-cols-2">
+          {teamActivePick(activeTeams[0], 1)}
+          {teamActivePick(activeTeams[1], 2)}
+        </div>
+      </div>
+      <table className="hidden w-auto font-mono text-sm sm:table">
+        <thead className="bg-nfl text-white">{tableHead("FULL")}</thead>
+        <tbody>{fullRows}</tbody>
+      </table>
+      <table className="table w-auto font-mono text-sm sm:hidden">
+        <thead className="bg-nfl text-white">{tableHead("TOP")}</thead>
+        <tbody>{topRows}</tbody>
+      </table>
+      <table className="table w-auto font-mono text-sm sm:hidden">
+        <thead className="bg-nfl text-white">{tableHead("BOTTOM")}</thead>
+        <tbody>{bottomRows}</tbody>
       </table>
     </>
   );

@@ -155,13 +155,13 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "CHI-2024",
     year: 2024,
     notes: ["Chicago has not yet traded this pick."],
-  },{
-    nativeTeam: "POR",
-    pickCode: "POR-2024",
-    year: 2024,
-    notes: ["Traded from Portland to Chicago."],
   },],
-  "2025":[],
+  "2025":[{
+    nativeTeam: "POR",
+    pickCode: "POR-2025",
+    year: 2025,
+    notes: ["Traded from Portland to Chicago.", "Unlikely to convey in 2024."],
+  },],
   "2026":[{
     nativeTeam: "CHI",
     pickCode: "CHI-2026",
@@ -194,13 +194,13 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   },],
 },
 "CHO":{
-  "2024":[],
-  "2025":[{
+  "2024":[{
     nativeTeam: "CHO",
-    pickCode: "CHO-2025",
-    year: 2025,
-    notes: ["Charlotte has not yet traded this pick."],
+    pickCode: "CHO-2024",
+    year: 2024,
+    notes: ["Traded from Charlotte to New York to Atlanta to San Antonio.", "Unlikely to convey in 2024."],
   },],
+  "2025":[],
   "2026":[{
     nativeTeam: "CHO",
     pickCode: "CHO-2026",
@@ -334,13 +334,13 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   },],
 },
 "DET":{
-  "2024":[],
-  "2025":[{
+  "2024":[{
     nativeTeam: "DET",
-    pickCode: "DET-2025",
-    year: 2025,
-    notes: ["Detroit has not yet traded this pick."],
+    pickCode: "DET-2024",
+    year: 2024,
+    notes: ["Traded from Detroit to Houston to Oklahoma City to New York.", "Unlikely to convey in 2024."],
   },],
+  "2025":[],
   "2026":[{
     nativeTeam: "DET",
     pickCode: "DET-2026",
@@ -763,16 +763,6 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "DAL-2024",
     year: 2024,
     notes: ["Traded from Dallas to New York."],
-  },{
-    nativeTeam: "DET",
-    pickCode: "DET-2024",
-    year: 2024,
-    notes: ["Traded from Detroit to Houston to Oklahoma City to New York."],
-  },{
-    nativeTeam: "WAS",
-    pickCode: "WAS-2024",
-    year: 2024,
-    notes: ["Traded from Washington to Houston to Oklahoma City to New York."],
   },],
   "2025":[{
     nativeTeam: "NYK",
@@ -780,10 +770,20 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     year: 2025,
     notes: ["New York has not yet traded this pick."],
   },{
+    nativeTeam: "DET",
+    pickCode: "DET-2025",
+    year: 2025,
+    notes: ["Traded from Detroit to Houston to Oklahoma City to New York.", "Unlikely to convey in 2024."],
+  },{
     nativeTeam: "MIL",
     pickCode: "MIL-2025",
     year: 2025,
     notes: ["Traded from Milwaukee to New Orleans to Portland to Detroit to New York."],
+  },{
+    nativeTeam: "WAS",
+    pickCode: "WAS-2025",
+    year: 2025,
+    notes: ["Traded from Washington to Houston to Oklahoma City to New York.", "Unlikely to convey in 2024."],
   },],
   "2026":[{
     nativeTeam: "NYK",
@@ -1024,17 +1024,17 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
 },
 "POR":{
   "2024":[{
+    nativeTeam: "POR",
+    pickCode: "POR-2024",
+    year: 2024,
+    notes: ["Traded from Portland to Chicago.", "Unlikely to convey in 2024."],
+  },{
     nativeTeam: "GSW",
     pickCode: "GSW-2024",
     year: 2024,
     notes: ["Traded from Golden State to Memphis to Boston to Portland."],
   },],
-  "2025":[{
-    nativeTeam: "POR",
-    pickCode: "POR-2025",
-    year: 2025,
-    notes: ["Portland has not yet traded this pick."],
-  },],
+  "2025":[],
   "2026":[{
     nativeTeam: "POR",
     pickCode: "POR-2026",
@@ -1060,15 +1060,15 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     year: 2029,
     notes: ["Portland has not yet traded this pick."],
   },{
-    nativeTeam: "MIL",
-    pickCode: "MIL-2029",
-    year: 2029,
-    notes: ["Traded from Milwaukee to Portland."],
-  },{
     nativeTeam: "BOS",
     pickCode: "BOS-2029",
     year: 2029,
     notes: ["Traded from Boston to Portland."],
+  },{
+    nativeTeam: "MIL",
+    pickCode: "MIL-2029",
+    year: 2029,
+    notes: ["Traded from Milwaukee to Portland."],
   },],
   "2030":[{
     nativeTeam: "POR",
@@ -1124,11 +1124,6 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     year: 2024,
     notes: ["San Antonio has not yet traded this pick."],
   },{
-    nativeTeam: "CHO",
-    pickCode: "CHO-2024",
-    year: 2024,
-    notes: ["Traded from Charlotte to Atlanta to San Antonio."],
-  },{
     nativeTeam: "TOR",
     pickCode: "TOR-2024",
     year: 2024,
@@ -1149,6 +1144,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "CHI-2025",
     year: 2025,
     notes: ["Traded from Chicago to San Antonio."],
+  },{
+    nativeTeam: "CHO",
+    pickCode: "CHO-2025",
+    year: 2025,
+    notes: ["Traded from Charlotte to New York to Atlanta to San Antonio.", "Unlikely to convey in 2024."],
   },],
   "2026":[{
     nativeTeam: "SAS",
@@ -1321,17 +1321,17 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
 },
 "WAS":{
   "2024":[{
+    nativeTeam: "WAS",
+    pickCode: "WAS-2024",
+    year: 2024,
+    notes: ["Traded from Washington to Houston to Oklahoma City to New York.", "Unlikely to convey in 2024."],
+  },{
     nativeTeam: "LAC",
     pickCode: "LAC-2024",
     year: 2024,
     notes: ["Traded from Los Angeles Clippers to Oklahoma City to Dallas to Washington.", "Washington will receive the second least valuable of Oklahoma City's 2024 picks."],
   },],
-  "2025":[{
-    nativeTeam: "WAS",
-    pickCode: "WAS-2025",
-    year: 2025,
-    notes: ["Washington has not yet traded this pick."],
-  },],
+  "2025":[],
   "2026":[{
     nativeTeam: "WAS",
     pickCode: "WAS-2026",

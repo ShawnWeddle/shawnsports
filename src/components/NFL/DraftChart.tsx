@@ -1,107 +1,80 @@
-import { cn } from "~/utils/cn";
 import { useRef, useState, Fragment } from "react";
+import { cn } from "~/utils/cn";
 import { NFLteamData, type NFLTeamType } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { type NFLPickType, NFLpickOrderByRound } from "~/data/NFL/NFL2024picks";
+import DraftChartModal from "./DraftChartModal";
+
+type ActiveTeamType = NFLTeamType | undefined;
 
 const DraftChart: React.FC = () => {
-  const [activeTeams, setActiveTeams] = useState<
-    [NFLTeamType | null, NFLTeamType | null]
-  >([null, null]);
+  const dialog = useRef<HTMLDialogElement>(null);
 
-  const handleSet = (team: NFLTeamType) => {
-    if (activeTeams[0] === team) {
-      setActiveTeams([activeTeams[1], null]);
-    } else if (activeTeams[1] === team) {
-      setActiveTeams([activeTeams[0], null]);
-    } else {
-      if (activeTeams[0]) {
-        setActiveTeams([activeTeams[0], team]);
+  const [activeTeams, setActiveTeams] = useState<
+    [ActiveTeamType, ActiveTeamType]
+  >([undefined, undefined]);
+
+  const handleSet = (pick: NFLPickType) => {
+    const { pickNum, nativeTeam, round, local, value, tradedTeam } = pick;
+    const activeTeam = tradedTeam ?? nativeTeam;
+
+    if (!activeTeams[0]) {
+      setActiveTeams([activeTeam, undefined]);
+      return;
+    }
+
+    if (activeTeam === activeTeams[0]) {
+      if (activeTeams[1]) {
+        setActiveTeams([activeTeams[1], undefined]);
+        return;
       } else {
-        setActiveTeams([team, null]);
+        setActiveTeams([undefined, undefined]);
+        return;
       }
     }
+
+    if (!activeTeams[1]) {
+      setActiveTeams([activeTeams[0], activeTeam]);
+      dialog.current?.showModal();
+      return;
+    }
+
+    if (activeTeam === activeTeams[1]) {
+      setActiveTeams([activeTeams[0], undefined]);
+      return;
+    }
+
+    return;
   };
 
   const createCell = (pick: NFLPickType | undefined) => {
     if (pick) {
       const { pickNum, nativeTeam, round, local, value, tradedTeam } = pick;
       const activeTeam = tradedTeam ?? nativeTeam;
+
       return (
-        <Fragment key={pickNum}>
-          <td
-            className={cn(
-              "border-y border-l border-black text-center font-semibold",
-              {
-                [NFLstyleData[activeTeam].primaryBGstyle]:
-                  activeTeams.includes(activeTeam),
-                [NFLstyleData[activeTeam].primaryPlainText]:
-                  activeTeams.includes(activeTeam),
-              }
-            )}
-          >
-            <button
-              disabled={
-                !activeTeams.includes(null) && !activeTeams.includes(activeTeam)
-              }
-              onClick={() => {
-                handleSet(activeTeam);
-              }}
-            >
-              {pickNum}
-            </button>
-          </td>
-          <td
-            className={cn("border-y border-black px-0.5", {
-              [NFLstyleData[activeTeam].primaryBGstyle]:
-                activeTeams.includes(activeTeam),
-              [NFLstyleData[activeTeam].secondaryTextStyle]:
-                activeTeams.includes(activeTeam),
+        <td key={pickNum} className="border border-black p-0">
+          <button
+            className={cn("flex justify-start", {
+              [NFLstyleData[activeTeam].primaryBGstyle]: [
+                activeTeams[0],
+                activeTeams[1],
+              ].includes(activeTeam),
+              [NFLstyleData[activeTeam].secondaryTextStyle]: [
+                activeTeams[0],
+                activeTeams[1],
+              ].includes(activeTeam),
             })}
+            onClick={() => handleSet(pick)}
           >
-            <button
-              disabled={
-                !activeTeams.includes(null) && !activeTeams.includes(activeTeam)
-              }
-              onClick={() => {
-                handleSet(activeTeam);
-              }}
-            >
-              {activeTeam}
-            </button>
-          </td>
-          <td
-            className={cn(
-              "border-y border-r border-black bg-nfl/30 px-0.5 text-center",
-              {
-                [NFLstyleData[activeTeam].primaryBGstyle]:
-                  activeTeams.includes(activeTeam),
-                [NFLstyleData[activeTeam].primaryPlainText]:
-                  activeTeams.includes(activeTeam),
-              }
-            )}
-          >
-            <button
-              disabled={
-                !activeTeams.includes(null) && !activeTeams.includes(activeTeam)
-              }
-              onClick={() => {
-                handleSet(activeTeam);
-              }}
-            >
-              {value}
-            </button>
-          </td>
-        </Fragment>
+            <div className="w-6 text-center font-semibold">{pickNum}</div>
+            <div className="w-8 text-center">{activeTeam}</div>
+            <div className="w-8 text-center">{value}</div>
+          </button>
+        </td>
       );
     } else {
-      return (
-        <Fragment key={Math.random()}>
-          <td></td>
-          <td></td>
-          <td></td>
-        </Fragment>
-      );
+      return <td key={Math.random()}></td>;
     }
   };
 
@@ -163,48 +136,207 @@ const DraftChart: React.FC = () => {
     bottomRows.push(createRow(i, "BOTTOM"));
   }
 
-  const tableHead = (width: "FULL" | "TOP" | "BOTTOM") => {
-    const cellHead = (
-      <>
-        <th>#</th>
-        <th>T</th>
-        <th>V</th>
-      </>
+  const tableHead = (width: number) => {
+    const cellHead = (round: number) => (
+      <th key={round}>
+        <p className="inline-block w-6 text-center">#</p>
+        <p className="inline-block w-8 text-center">T</p>
+        <p className="inline-block w-8 text-center">V</p>
+      </th>
     );
-    switch (width) {
-      case "TOP":
-        return (
-          <tr>
-            {cellHead}
-            {cellHead}
-            {cellHead}
-            {cellHead}
-          </tr>
-        );
-      case "BOTTOM":
-        return (
-          <tr>
-            {cellHead}
-            {cellHead}
-            {cellHead}
-          </tr>
-        );
-      case "FULL":
-        return (
-          <tr>
-            {cellHead}
-            {cellHead}
-            {cellHead}
-            {cellHead}
-            {cellHead}
-            {cellHead}
-            {cellHead}
-          </tr>
-        );
+    const rowHead: JSX.Element[] = [];
+    for (let i = 0; i < width; i++) {
+      rowHead.push(cellHead(i + 1));
     }
+    return <tr className="border border-nfl">{rowHead}</tr>;
   };
 
-  const teamActivePick = (team: NFLTeamType | null, num: number) => {
+  const team0 = activeTeams[0];
+  const team1 = activeTeams[1];
+
+  return (
+    <>
+      <dialog
+        ref={dialog}
+        className="m-auto w-full max-w-screen-sm items-center rounded-xl align-middle backdrop:bg-gray-500/50"
+      >
+        <div className="flex w-full justify-end">
+          <button
+            onClick={() => {
+              dialog.current?.close();
+            }}
+            className="font-semibold"
+          >
+            ✕
+          </button>
+        </div>
+        {team0 && team1 && <DraftChartModal teams={[team0, team1]} />}
+      </dialog>
+
+      <div className="flex w-full justify-center">
+        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+          NFL Draft Pick Value Chart
+        </h1>
+      </div>
+      <table className="hidden w-auto font-mono text-sm sm:table">
+        <thead className="bg-nfl text-white">{tableHead(7)}</thead>
+        <tbody>{fullRows}</tbody>
+      </table>
+      <table className="table w-auto font-mono text-sm sm:hidden">
+        <thead className="bg-nfl text-white">{tableHead(4)}</thead>
+        <tbody>{topRows}</tbody>
+      </table>
+      <table className="table w-auto font-mono text-sm sm:hidden">
+        <thead className="bg-nfl text-white">{tableHead(3)}</thead>
+        <tbody>{bottomRows}</tbody>
+      </table>
+    </>
+  );
+};
+
+export default DraftChart;
+
+/*
+const teamFullPicks = (
+        <div className="text-center">
+          <div
+            className={cn("border-2", {
+              [NFLstyleData[team].primaryBGstyle]: [
+                activeTeams[0],
+                activeTeams[1],
+              ].includes(team),
+              [NFLstyleData[team].secondaryBorderStyle]: [
+                activeTeams[0],
+                activeTeams[1],
+              ].includes(team),
+              [NFLstyleData[team].primaryPlainText]: [
+                activeTeams[0],
+                activeTeams[1],
+              ].includes(team),
+            })}
+          >
+            <div>
+              <span>{NFLteamData[team].location}</span>{" "}
+              <span>{NFLteamData[team].name}</span>
+            </div>
+            <div className="text-2xl">0</div>
+          </div>
+          {teamPickList}
+        </div>
+      );
+ */
+
+/*
+<div className="flex w-full max-w-screen-sm justify-center">
+        <div className="grid w-full grid-cols-2">
+          {teamActivePick(activeTeams[0]?.team, 1)}
+          {teamActivePick(activeTeams[1]?.team, 2)}
+        </div>
+      </div>
+*/
+
+/*
+const handleSet = (pick: NFLPickType) => {
+    const { pickNum, nativeTeam, round, local, value, tradedTeam } = pick;
+    const activeTeam = tradedTeam ?? nativeTeam;
+
+    if (!activeTeams[0]) {
+      setActiveTeams([
+        {
+          team: activeTeam,
+          picks: [pick],
+        },
+        undefined,
+      ]);
+      return;
+    }
+
+    if (activeTeam === activeTeams[0]?.team) {
+      if (activeTeams[0].picks.includes(pick)) {
+        if (activeTeams[0].picks.length > 1) {
+          const newPicks = [...activeTeams[0].picks];
+          const deleteIndex = newPicks.findIndex(
+            (apick) => apick.pickNum === pickNum
+          );
+          if (deleteIndex > -1) {
+            newPicks.splice(deleteIndex, 1);
+          }
+          setActiveTeams([
+            { ...activeTeams[0], picks: newPicks },
+            activeTeams[1],
+          ]);
+          return;
+        } else {
+          if (activeTeams[1]) {
+            setActiveTeams([activeTeams[1], undefined]);
+            return;
+          } else {
+            setActiveTeams([undefined, undefined]);
+            return;
+          }
+        }
+      } else {
+        setActiveTeams([
+          { ...activeTeams[0], picks: [...activeTeams[0].picks, pick] },
+          activeTeams[1],
+        ]);
+        return;
+      }
+    }
+
+    if (!activeTeams[1]) {
+      setActiveTeams([
+        activeTeams[0],
+        {
+          team: activeTeam,
+          picks: [pick],
+        },
+      ]);
+      return;
+    }
+
+    if (activeTeam === activeTeams[1]?.team) {
+      if (activeTeams[1].picks.includes(pick)) {
+        if (activeTeams[1].picks.length > 1) {
+          const newPicks = [...activeTeams[1].picks];
+          const deleteIndex = newPicks.findIndex(
+            (apick) => apick.pickNum === pickNum
+          );
+          if (deleteIndex > -1) {
+            newPicks.splice(deleteIndex, 1);
+          }
+          setActiveTeams([
+            activeTeams[0],
+            { ...activeTeams[1], picks: newPicks },
+          ]);
+          return;
+        } else {
+          setActiveTeams([activeTeams[0], undefined]);
+          return;
+        }
+      } else {
+        setActiveTeams([
+          activeTeams[0],
+          { ...activeTeams[1], picks: [...activeTeams[1].picks, pick] },
+        ]);
+        return;
+      }
+    }
+
+    return;
+  };
+
+        const newPicks = activeTeams[num - 1]?.picks.map((apick, index) => {
+        return (
+          <p key={index}>
+            {apick.pickNum} - {apick.value}
+          </p>
+        );
+      });
+*/
+
+/*
+  const teamActivePick = (team: NFLTeamType | undefined, num: number) => {
     if (team) {
       const pointsTotal = (team: NFLTeamType) => {
         return NFLpickOrderByRound.flat()
@@ -218,17 +350,18 @@ const DraftChart: React.FC = () => {
           })
           .reduce((a, c) => a + c);
       };
+
       return (
         <div className="text-center">
-          <p
-            className={cn("border p-1", {
+          <button
+            className={cn("w-full border p-1", {
               [NFLstyleData[team].primaryBGstyle]: true,
               [NFLstyleData[team].secondaryBorderStyle]: true,
               [NFLstyleData[team].primaryPlainText]: true,
             })}
           >
             {NFLteamData[team].location} {NFLteamData[team].name}
-          </p>
+          </button>
           <p>Total points: {pointsTotal(team)}</p>
         </div>
       );
@@ -240,34 +373,4 @@ const DraftChart: React.FC = () => {
       );
     }
   };
-
-  return (
-    <>
-      <div className="flex w-full justify-center">
-        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          NFL Draft Pick Value Chart
-        </h1>
-      </div>
-      <div className="flex w-full max-w-screen-sm justify-center">
-        <div className="grid w-full grid-cols-2">
-          {teamActivePick(activeTeams[0], 1)}
-          {teamActivePick(activeTeams[1], 2)}
-        </div>
-      </div>
-      <table className="hidden w-auto font-mono text-sm sm:table">
-        <thead className="bg-nfl text-white">{tableHead("FULL")}</thead>
-        <tbody>{fullRows}</tbody>
-      </table>
-      <table className="table w-auto font-mono text-sm sm:hidden">
-        <thead className="bg-nfl text-white">{tableHead("TOP")}</thead>
-        <tbody>{topRows}</tbody>
-      </table>
-      <table className="table w-auto font-mono text-sm sm:hidden">
-        <thead className="bg-nfl text-white">{tableHead("BOTTOM")}</thead>
-        <tbody>{bottomRows}</tbody>
-      </table>
-    </>
-  );
-};
-
-export default DraftChart;
+*/

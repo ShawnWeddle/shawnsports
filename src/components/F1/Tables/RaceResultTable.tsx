@@ -2,7 +2,7 @@ import { useState } from "react";
 import { cn } from "~/utils/cn";
 import { resultsSortedByPlace } from "~/data/F1/F1converters";
 import { driverTcamColors, driverToConstructor } from "~/data/F1/F1data";
-import { FormulaOneRaceResults } from "~/data/F1/raceResults";
+import { FormulaOneRaceResults } from "~/data/F1/raceResults2023";
 import { driverActivation, handleActivate } from "~/data/F1/HandleActivation";
 import { F1styleData } from "~/data/F1/F1styleData";
 import type { RaceModeProps } from "~/data/F1/F1data";

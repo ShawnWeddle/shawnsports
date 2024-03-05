@@ -1,6 +1,6 @@
 import { cn } from "~/utils/cn";
 import { locationHeaders } from "~/data/F1/F1converters";
-import { FormulaOneRaceResults } from "~/data/F1/raceResults";
+import { FormulaOneRaceResults } from "~/data/F1/raceResults2023";
 import type { RaceModeProps } from "~/data/F1/F1data";
 
 const { headers } = locationHeaders(FormulaOneRaceResults);

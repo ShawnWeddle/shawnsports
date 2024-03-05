@@ -10,6 +10,17 @@ export type NFLPickType = {
   compensatory?: true;
 };
 
+export type NFLActivePickType = {
+  active: boolean;
+  pickNum: number;
+  nativeTeam: NFLTeamType;
+  round: number;
+  local: number;
+  value: number;
+  tradedTeam?: NFLTeamType;
+  compensatory?: true;
+};
+
 export const NFLpickOrderByRound: NFLPickType[][] = [
 [
   {

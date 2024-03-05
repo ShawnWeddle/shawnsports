@@ -1,6 +1,6 @@
 import { driverCodes, constructorNames, driverToConstructor, calculatePoints, constructorToDrivers } from "~/data/F1/F1data";
 import type { DriverCodeType, ConstructorNameType } from "~/data/F1/F1data";
-import type { RaceResultsType } from "~/data/F1/raceResults";
+import type { RaceResultsType } from "~/data/F1/raceResults2023";
 import { flip2DArrays } from "~/utils/cuA";
 
 type FullDriverType = {

@@ -1,6 +1,6 @@
 import { cn } from "~/utils/cn";
 import { F1styleData } from "~/data/F1/F1styleData";
-import { FormulaOneRaceResults } from "~/data/F1/raceResults";
+import { FormulaOneRaceResults } from "~/data/F1/raceResults2023";
 import { createStandings } from "~/data/F1/F1converters";
 
 export const ConstructorStandings: React.FC = () => {

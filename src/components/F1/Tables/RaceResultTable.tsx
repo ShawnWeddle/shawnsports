@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { cn } from "~/utils/cn";
-import { resultsSortedByPlace } from "~/data/F1/F1converters";
-import { driverTcamColors, driverToConstructor } from "~/data/F1/F1data";
-import { FormulaOneRaceResults } from "~/data/F1/raceResults2023";
-import { driverActivation, handleActivate } from "~/data/F1/HandleActivation";
-import { F1styleData } from "~/data/F1/F1styleData";
-import type { RaceModeProps } from "~/data/F1/F1data";
+import { resultsSortedByPlace } from "~/data/F1/2024/F1converters24";
+import {
+  driverTcamColors2024,
+  driverToConstructor2024,
+} from "~/data/F1/2024/F1data24";
+import { FormulaOneRaceResults } from "~/data/F1/2024/raceResults2024";
+import { driverActivation } from "~/data/F1/2024/HandleActivation24";
+import { F1styleData } from "~/data/F1/2024/F1styleData24";
+import type { RaceModeProps } from "~/data/F1/2024/F1data24";
 
 export const RaceResultTable: React.FC<RaceModeProps> = (
   props: RaceModeProps
@@ -24,8 +27,9 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
       const isDriver =
         driverName !== undefined && activeDrivers[driverName].active;
       if (driverName) {
-        const activeStyleGuide = F1styleData[driverToConstructor(driverName)];
-        const Tcam = driverTcamColors[driverName];
+        const activeStyleGuide =
+          F1styleData[driverToConstructor2024(driverName)];
+        const Tcam = driverTcamColors2024[driverName];
         const outlineColor =
           activeDrivers[driverName].teammateActive && Tcam === "Black"
             ? "bg-[#33424d]"
@@ -35,9 +39,6 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
         return (
           <td
             key={`c-${cellIndex}`}
-            onClick={() => {
-              setActiveDrivers(handleActivate(driverName, activeDrivers));
-            }}
             className={cn(
               {
                 "bg-teal-100": sprint,
@@ -133,8 +134,9 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
       const isDriver =
         driverName !== undefined && activeDrivers[driverName].active;
       if (driverName) {
-        const activeStyleGuide = F1styleData[driverToConstructor(driverName)];
-        const Tcam = driverTcamColors[driverName];
+        const activeStyleGuide =
+          F1styleData[driverToConstructor2024(driverName)];
+        const Tcam = driverTcamColors2024[driverName];
         const outlineColor =
           activeDrivers[driverName].teammateActive && Tcam === "Black"
             ? "bg-[#33424d]" //black
@@ -193,8 +195,9 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
       const isDriver =
         driverName !== undefined && activeDrivers[driverName].active;
       if (driverName) {
-        const activeStyleGuide = F1styleData[driverToConstructor(driverName)];
-        const Tcam = driverTcamColors[driverName];
+        const activeStyleGuide =
+          F1styleData[driverToConstructor2024(driverName)];
+        const Tcam = driverTcamColors2024[driverName];
         const outlineColor =
           activeDrivers[driverName].teammateActive && Tcam === "Black"
             ? "bg-[#33424d]" //black

@@ -1,13 +1,13 @@
-import type {RaceLocationType, DriverCodeType } from "~/data/F1/F1data";
+import type {RaceLocation23Type, DriverCode23Type } from "~/data/F1/2023/F1data23";
 
 export const FormulaOneRaceResults : {
-  location: RaceLocationType,
-  finalOrder: DriverCodeType[],
-  DNFs: DriverCodeType[],
+  location: RaceLocation23Type,
+  finalOrder: DriverCode23Type[],
+  DNFs: DriverCode23Type[],
   sprint: boolean,
-  DQs?: DriverCodeType[],
-  fastestLap?: DriverCodeType,
-  polePosition?: DriverCodeType,
+  DQs?: DriverCode23Type[],
+  fastestLap?: DriverCode23Type,
+  polePosition?: DriverCode23Type,
 
 } [] = [
   {

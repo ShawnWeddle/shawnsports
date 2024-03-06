@@ -1,9 +1,9 @@
 import { cn } from "~/utils/cn";
-import { createStandings } from "~/data/F1/F1converters";
-import { FormulaOneRaceResults } from "~/data/F1/raceResults2023";
-import { F1styleData } from "~/data/F1/F1styleData";
-import { driverToConstructor } from "~/data/F1/F1data";
-import type { RaceModeProps } from "~/data/F1/F1data";
+import { createStandings } from "~/data/F1/2024/F1converters24";
+import { FormulaOneRaceResults } from "~/data/F1/2024/raceResults2024";
+import { F1styleData } from "~/data/F1/2024/F1styleData24";
+import { driverToConstructor2024 } from "~/data/F1/2024/F1data24";
+import type { RaceModeProps } from "~/data/F1/2024/F1data24";
 
 export const RunningResultTable: React.FC<RaceModeProps> = (
   props: RaceModeProps
@@ -34,9 +34,9 @@ export const RunningResultTable: React.FC<RaceModeProps> = (
     });
     const activeDriver = driverOrder[index] ?? "ALB";
     const driverTextColor =
-      F1styleData[driverToConstructor(activeDriver)].secondaryTextStyle;
+      F1styleData[driverToConstructor2024(activeDriver)].secondaryTextStyle;
     const driverBg =
-      F1styleData[driverToConstructor(activeDriver)].primaryBGstyle;
+      F1styleData[driverToConstructor2024(activeDriver)].primaryBGstyle;
     return (
       <tr key={`r-${index}`} className="border-b-2 border-gray-200 font-mono">
         <td

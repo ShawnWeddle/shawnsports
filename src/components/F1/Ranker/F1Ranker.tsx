@@ -9,16 +9,16 @@ import { BsChevronCompactUp, BsChevronCompactDown } from "react-icons/bs";
 import { cn } from "~/utils/cn";
 import { useF1RankContext } from "~/hooks/useF1Ranker";
 import {
-  type DriverCodeType,
-  driverToConstructor,
-  driverNames,
-} from "~/data/F1/F1data";
+  type DriverCode24Type,
+  driverToConstructor2024,
+  driverNames2024,
+} from "~/data/F1/2024/F1data24";
 
-import { F1styleData } from "~/data/F1/F1styleData";
+import { F1styleData } from "~/data/F1/2024/F1styleData24";
 
 interface RankerRowProps {
-  unRankedDriver: DriverCodeType | null;
-  rankedDriver: DriverCodeType | null;
+  unRankedDriver: DriverCode24Type | null;
+  rankedDriver: DriverCode24Type | null;
   index: number;
 }
 
@@ -35,26 +35,26 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
         <>
           <td
             className={cn("-pr-2 hidden w-52 pl-2 sm:block", {
-              [F1styleData[driverToConstructor(unRankedDriver)].primaryBGstyle]:
-                true,
-              [F1styleData[driverToConstructor(unRankedDriver)]
+              [F1styleData[driverToConstructor2024(unRankedDriver)]
+                .primaryBGstyle]: true,
+              [F1styleData[driverToConstructor2024(unRankedDriver)]
                 .secondaryTextStyle]: true,
             })}
           >
-            {driverNames[unRankedDriver].first}{" "}
-            {driverNames[unRankedDriver].last}
+            {driverNames2024[unRankedDriver].first}{" "}
+            {driverNames2024[unRankedDriver].last}
           </td>
           <td
             className={cn("-pr-2 w-24 pl-2 sm:hidden", {
-              [F1styleData[driverToConstructor(unRankedDriver)].primaryBGstyle]:
-                true,
-              [F1styleData[driverToConstructor(unRankedDriver)]
+              [F1styleData[driverToConstructor2024(unRankedDriver)]
+                .primaryBGstyle]: true,
+              [F1styleData[driverToConstructor2024(unRankedDriver)]
                 .secondaryTextStyle]: true,
             })}
           >
             {unRankedDriver !== "ZHO"
-              ? driverNames[unRankedDriver].last
-              : driverNames[unRankedDriver].first}
+              ? driverNames2024[unRankedDriver].last
+              : driverNames2024[unRankedDriver].first}
           </td>
         </>
       ) : (
@@ -113,25 +113,26 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
         <>
           <td
             className={cn("-pr-2 hidden w-52 pl-2 sm:block", {
-              [F1styleData[driverToConstructor(rankedDriver)].primaryBGstyle]:
-                true,
-              [F1styleData[driverToConstructor(rankedDriver)]
+              [F1styleData[driverToConstructor2024(rankedDriver)]
+                .primaryBGstyle]: true,
+              [F1styleData[driverToConstructor2024(rankedDriver)]
                 .secondaryTextStyle]: true,
             })}
           >
-            {driverNames[rankedDriver].first} {driverNames[rankedDriver].last}
+            {driverNames2024[rankedDriver].first}{" "}
+            {driverNames2024[rankedDriver].last}
           </td>
           <td
             className={cn("-pr-2 w-24 pl-2 sm:hidden", {
-              [F1styleData[driverToConstructor(rankedDriver)].primaryBGstyle]:
-                true,
-              [F1styleData[driverToConstructor(rankedDriver)]
+              [F1styleData[driverToConstructor2024(rankedDriver)]
+                .primaryBGstyle]: true,
+              [F1styleData[driverToConstructor2024(rankedDriver)]
                 .secondaryTextStyle]: true,
             })}
           >
             {rankedDriver !== "ZHO"
-              ? driverNames[rankedDriver].last
-              : driverNames[rankedDriver].first}
+              ? driverNames2024[rankedDriver].last
+              : driverNames2024[rankedDriver].first}
           </td>
         </>
       ) : (
@@ -241,7 +242,7 @@ const F1Ranker: React.FC = () => {
   const { unRankedDrivers, rankedDrivers } = f1RankState;
 
   const f1Rows = unRankedDrivers.map((unRankedDriver, index) => {
-    const rankedDriver: DriverCodeType | null = rankedDrivers[index] ?? null;
+    const rankedDriver: DriverCode24Type | null = rankedDrivers[index] ?? null;
 
     return (
       <RankerRow

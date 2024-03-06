@@ -3,7 +3,7 @@ import { TableHeaders } from "./TableHeaders";
 import { RaceResultTable } from "~/components/F1/Tables/RaceResultTable";
 import { DriverResultTable } from "~/components/F1/Tables/DriverResultTable";
 import { RunningResultTable } from "~/components/F1/Tables/RunningTotalsTable";
-import type { RaceModeType } from "~/data/F1/F1data";
+import type { RaceModeType } from "~/data/F1/2023/F1data23";
 
 type TableModeType = "DriverSort" | "PlaceSort" | "RunningTotal";
 
@@ -109,7 +109,7 @@ const FormulaOneTable: React.FC = () => {
     <>
       <div className="flex w-full justify-center">
         <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          2023 Formula One Season
+          2024 Formula One Season
         </h1>
       </div>
       <div className="flex w-full justify-center gap-4">

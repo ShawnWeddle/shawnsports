@@ -1,7 +1,7 @@
-import type { ConstructorNameType } from "./F1data"
+import type { ConstructorName23Type } from "./F1data23"
 
 export const F1styleData: {
-  [Key in ConstructorNameType]: {primary: string, secondary: string, primaryBGstyle: string, primaryTextStyle: string, secondaryTextStyle: string};
+  [Key in ConstructorName23Type]: {primary: string, secondary: string, primaryBGstyle: string, primaryTextStyle: string, secondaryTextStyle: string};
 } = {
   "Alfa Romeo": { primary: "#A51D2F", secondary: "#FFFFFF", primaryBGstyle: "bg-[#A51D2F]", primaryTextStyle: "text-[#A51D2F]", secondaryTextStyle: "text-[#FFFFFF]"},
   AlphaTauri: { primary: "#002841", secondary: "#FFFFFF", primaryBGstyle: "bg-[#002841]", primaryTextStyle: "text-[#002841]", secondaryTextStyle: "text-[#FFFFFF]"},

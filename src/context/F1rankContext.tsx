@@ -1,6 +1,10 @@
 import { createContext, useReducer } from "react";
-import type { DriverCodeType } from "~/data/F1/F1data";
-import { driverCodes, driverNames, nullArray22 } from "~/data/F1/F1data";
+import type { DriverCode24Type } from "~/data/F1/2024/F1data24";
+import {
+  driverCodes2024,
+  driverNames2024,
+  nullArray20,
+} from "~/data/F1/2024/F1data24";
 
 export const F1RankContext = createContext<ContextType | null>(null);
 
@@ -14,12 +18,12 @@ type F1RankContextProviderProps = {
 };
 
 type F1RankReducerState = {
-  unRankedDrivers: (DriverCodeType | null)[];
-  rankedDrivers: (DriverCodeType | null)[];
+  unRankedDrivers: (DriverCode24Type | null)[];
+  rankedDrivers: (DriverCode24Type | null)[];
 };
 
 type F1RankPayloadType = {
-  driver: DriverCodeType | null;
+  driver: DriverCode24Type | null;
   rank: number;
   prevRank?: number;
 };
@@ -43,10 +47,10 @@ export const F1RankReducer = (
       const { unRankedDrivers, rankedDrivers } = state;
       const { driver, rank } = action.payload;
       const newRank = rank - 1;
-      if (newRank > -1 && newRank < 22 && driver !== null) {
+      if (newRank > -1 && newRank < 20 && driver !== null) {
         // Remove from Unranked
         const newUnRankedDrivers = [...unRankedDrivers];
-        newUnRankedDrivers[driverNames[driver].alphabeticOrder] = null;
+        newUnRankedDrivers[driverNames2024[driver].alphabeticOrder] = null;
 
         // Add to Ranked
         const newRankedDrivers = [...rankedDrivers];
@@ -57,7 +61,7 @@ export const F1RankReducer = (
               break;
             }
           }
-          if (endIndex === 22) {
+          if (endIndex === 20) {
             let startIndex = newRank;
             for (true; startIndex > 0; startIndex--) {
               if (newRankedDrivers[startIndex] === null) {
@@ -88,14 +92,14 @@ export const F1RankReducer = (
     case "UNRANK_DRIVER": {
       const { unRankedDrivers, rankedDrivers } = state;
       const { driver, rank } = action.payload;
-      if (rank > -1 && rank < 22 && driver !== null) {
+      if (rank > -1 && rank < 20 && driver !== null) {
         // Remove from Ranked
         const newRankedDrivers = [...rankedDrivers];
         newRankedDrivers[rank] = null;
 
         // Add to Unranked
         const newUnRankedDrivers = [...unRankedDrivers];
-        newUnRankedDrivers[driverNames[driver].alphabeticOrder] = driver;
+        newUnRankedDrivers[driverNames2024[driver].alphabeticOrder] = driver;
 
         const newState = {
           unRankedDrivers: newUnRankedDrivers,
@@ -113,7 +117,7 @@ export const F1RankReducer = (
       const { unRankedDrivers, rankedDrivers } = state;
       const { driver, rank, prevRank } = action.payload;
       const newRank = rank - 1;
-      if (newRank > -1 && newRank < 22 && driver !== null && prevRank) {
+      if (newRank > -1 && newRank < 20 && driver !== null && prevRank) {
         // Remove from Ranked
         const newRankedDrivers = [...rankedDrivers];
         newRankedDrivers[prevRank] = null;
@@ -126,7 +130,7 @@ export const F1RankReducer = (
               break;
             }
           }
-          if (endIndex === 22) {
+          if (endIndex === 20) {
             let startIndex = newRank;
             for (true; startIndex > 0; startIndex--) {
               if (newRankedDrivers[startIndex] === null) {
@@ -157,7 +161,7 @@ export const F1RankReducer = (
     case "MOVE_UP": {
       const { unRankedDrivers, rankedDrivers } = state;
       const { driver, rank } = action.payload;
-      if (rank > -1 && rank < 22 && driver !== null) {
+      if (rank > -1 && rank < 20 && driver !== null) {
         const newRankedDrivers = [...rankedDrivers];
         const driver1 = newRankedDrivers[rank];
         const driver2 = newRankedDrivers[rank - 1];
@@ -179,7 +183,7 @@ export const F1RankReducer = (
     case "MOVE_DOWN": {
       const { unRankedDrivers, rankedDrivers } = state;
       const { driver, rank } = action.payload;
-      if (rank > -1 && rank < 22 && driver !== null) {
+      if (rank > -1 && rank < 20 && driver !== null) {
         const newRankedDrivers = [...rankedDrivers];
         const driver1 = newRankedDrivers[rank];
         const driver2 = newRankedDrivers[rank + 1];
@@ -207,8 +211,8 @@ export const F1RankContextProvider = ({
   children,
 }: F1RankContextProviderProps) => {
   const [f1RankState, f1RankDispatch] = useReducer(F1RankReducer, {
-    unRankedDrivers: [...driverCodes],
-    rankedDrivers: [...nullArray22],
+    unRankedDrivers: [...driverCodes2024],
+    rankedDrivers: [...nullArray20],
   });
 
   return (

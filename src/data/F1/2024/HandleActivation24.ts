@@ -1,14 +1,12 @@
-import type { DriverCodeType } from "./F1data"
+import type { DriverCode24Type } from "./F1data24"
 
-export const driverActivation: {[Key in DriverCodeType] : {active: boolean, teammateActive: boolean}} = {
+export const driverActivation: {[Key in DriverCode24Type] : {active: boolean, teammateActive: boolean}} = {
   ALB : {active: false, teammateActive: false},
   ALO : {active: false, teammateActive: false},
   BOT : {active: false, teammateActive: false},
-  DEV : {active: false, teammateActive: false},
   GAS : {active: false, teammateActive: false},
   HAM : {active: false, teammateActive: false},
   HUL : {active: false, teammateActive: false},
-  LAW : {active: false, teammateActive: false},
   LEC : {active: false, teammateActive: false},
   MAG : {active: false, teammateActive: false},
   NOR : {active: false, teammateActive: false},
@@ -27,42 +25,40 @@ export const driverActivation: {[Key in DriverCodeType] : {active: boolean, team
 
 type ActiveDriversType = typeof driverActivation;
 
-export const driverTeammates: {[Key in DriverCodeType] : DriverCodeType[]} = {
+export const driverTeammates: {[Key in DriverCode24Type] : DriverCode24Type[]} = {
   ALB : ["SAR"],
   ALO : ["STR"],
   BOT : ["ZHO"],
-  DEV : ["LAW", "RIC", "TSU"],
   GAS : ["OCO"],
   HAM : ["RUS"],
   HUL : ["MAG"],
-  LAW : ["DEV", "RIC", "TSU"],
   LEC : ["SAI"],
   MAG : ["HUL"],
   NOR : ["PIA"],
   OCO : ["GAS"],
   PER : ["VER"],
   PIA : ["NOR"],
-  RIC : ["DEV", "LAW", "TSU"],
+  RIC : ["TSU"],
   RUS : ["HAM"],
   SAI : ["LEC"],
   SAR : ["ALB"],
   STR : ["ALO"],
-  TSU : ["DEV", "LAW", "RIC"],
+  TSU : ["RIC"],
   VER : ["PER"],
   ZHO : ["BOT"],
 }
 
-export const handleActivate = (driver: DriverCodeType, activeDrivers: ActiveDriversType) => {
-  const newActiveDrivers = { ...activeDrivers };
-  newActiveDrivers[driver].active = !newActiveDrivers[driver].active;
+// export const handleActivate = (driver: DriverCode23Type, activeDrivers: ActiveDriversType) => {
+//   const newActiveDrivers = { ...activeDrivers };
+//   newActiveDrivers[driver].active = !newActiveDrivers[driver].active;
 
-  const teamDrivers: DriverCodeType[] = [driver, ...driverTeammates[driver]];
+//   const teamDrivers: DriverCode23Type[] = [driver, ...driverTeammates[driver]];
 
-  teamDrivers.forEach((activeDriver) => {
-    const teammateIsActive = [...driverTeammates[activeDriver]].map((otherDriver) => {
-      return newActiveDrivers[otherDriver].active
-    }).includes(true);
-    newActiveDrivers[activeDriver].teammateActive = teammateIsActive;
-  });
-  return newActiveDrivers;
-};
+//   teamDrivers.forEach((activeDriver) => {
+//     const teammateIsActive = [...driverTeammates[activeDriver]].map((otherDriver) => {
+//       return newActiveDrivers[otherDriver].active
+//     }).includes(true);
+//     newActiveDrivers[activeDriver].teammateActive = teammateIsActive;
+//   });
+//   return newActiveDrivers;
+// };

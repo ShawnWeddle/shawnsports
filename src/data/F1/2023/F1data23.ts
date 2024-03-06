@@ -1,4 +1,4 @@
-export const constructorNames = [
+export const constructorNames2023 = [
   "Alfa Romeo",
   "AlphaTauri",
   "Alpine",
@@ -11,14 +11,14 @@ export const constructorNames = [
   "Williams",
 ] as const;
 
-export const driverCodes = [
+export const driverCodes2023 = [
   "ALB", "ALO", "BOT", "DEV", "GAS",
   "HAM", "HUL", "LAW" ,"LEC", "MAG", "NOR", 
   "OCO", "PER", "PIA", "RIC", "RUS", "SAI",
   "SAR", "STR", "TSU", "VER", "ZHO", 
 ] as const;
 
-export const raceLocations = [
+export const raceLocations2023 = [
   "Bahrain",
   "Saudi Arabia",
   "Australia",
@@ -43,11 +43,11 @@ export const raceLocations = [
   "Abu Dhabi",
 ] as const;
 
-export type DriverCodeType = typeof driverCodes[number];
-export type ConstructorNameType = typeof constructorNames[number];
-export type RaceLocationType = typeof raceLocations[number];
+export type DriverCode23Type = typeof driverCodes2023[number];
+export type ConstructorName23Type = typeof constructorNames2023[number];
+export type RaceLocation23Type = typeof raceLocations2023[number];
 
-export const driverToConstructor = (driver: DriverCodeType | ConstructorNameType ) : ConstructorNameType => {
+export const driverToConstructor2023 = (driver: DriverCode23Type | ConstructorName23Type ) : ConstructorName23Type => {
   switch(driver){
     case "GAS":
     case "OCO":
@@ -96,7 +96,7 @@ export const driverToConstructor = (driver: DriverCodeType | ConstructorNameType
   }
 }
 
-export const constructorToDrivers = (constructor: ConstructorNameType) : DriverCodeType[] => {
+export const constructorToDrivers2023 = (constructor: ConstructorName23Type) : DriverCode23Type[] => {
   switch(constructor){
     case "Alfa Romeo":
       return ["BOT", "ZHO"];
@@ -122,7 +122,7 @@ export const constructorToDrivers = (constructor: ConstructorNameType) : DriverC
 
 }
 
-export const driverNames: { [Key in DriverCodeType] : { alphabeticOrder: number, first: string, last: string}} = {
+export const driverNames2023: { [Key in DriverCode23Type] : { alphabeticOrder: number, first: string, last: string}} = {
   ALB : { alphabeticOrder: 0, first: "Alex", last: "Albon"},
   ALO : { alphabeticOrder: 1, first: "Fernando", last: "Alonso"},
   BOT : { alphabeticOrder: 2, first: "Valterri", last: "Bottas"},
@@ -147,7 +147,7 @@ export const driverNames: { [Key in DriverCodeType] : { alphabeticOrder: number,
   ZHO : { alphabeticOrder: 21, first: "Zhou", last: "Guanyu"},
 }
 
-export const driverTcamColors: { [Key in DriverCodeType] : "Black" | "Yellow"} = {
+export const driverTcamColors2023: { [Key in DriverCode23Type] : "Black" | "Yellow"} = {
   ALB: "Black", ALO: "Yellow", BOT: "Black", DEV: "Black", GAS: "Yellow",
   HAM: "Yellow", HUL: "Yellow", LAW: "Black", LEC: "Black", MAG: "Black", NOR: "Yellow", 
   OCO: "Black", PIA: "Black", PER: "Yellow", RIC: "Black", RUS: "Black",

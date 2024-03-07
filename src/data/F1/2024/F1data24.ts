@@ -86,6 +86,53 @@ export const driverToConstructor2024 = (driver: DriverCode24Type ) : Constructor
   }
 }
 
+export const allToConstructor2024 = (input: DriverCode24Type | ConstructorName24Type ) : ConstructorName24Type => {
+  switch(input){
+    case "GAS":
+    case "OCO":
+    case "Alpine":
+      return "Alpine";
+    case "ALO":
+    case "STR":
+    case "Aston Martin":
+      return "Aston Martin";
+    case "LEC":
+    case "SAI":
+    case "Ferrari":
+      return "Ferrari";
+    case "HUL":
+    case "MAG":
+    case "Haas":
+      return "Haas";
+    case "NOR":
+    case "PIA":
+    case "McLaren":
+      return "McLaren";
+    case "HAM":
+    case "RUS":
+    case "Mercedes":
+      return "Mercedes";
+    case "RIC":
+    case "TSU":
+    case "RB":
+      return "RB";
+    case "PER":
+    case "VER":
+    case "Red Bull":
+      return "Red Bull";
+    case "BOT":
+    case "ZHO":
+    case "Sauber":
+      return "Sauber";
+    case "ALB":
+    case "SAR":
+    case "Williams":
+      return "Williams";
+    default:
+      return "Williams";
+  }
+}
+
 export const constructorToDrivers2024 = (constructor: ConstructorName24Type) : DriverCode24Type[] => {
   switch(constructor){
 

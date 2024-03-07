@@ -2,7 +2,7 @@ import { driverCodes2024, constructorNames2024, driverToConstructor2024, calcula
 import type { DriverCode24Type, ConstructorName24Type } from "~/data/F1/2024/F1data24";
 import type { RaceResultsType, F1RaceType } from "~/data/F1/2024/raceResults2024";
 import { flip2DArrays } from "~/utils/cuA";
-import { type DriverSortType, type ConstructorSortType, driverSort, constructorSort } from "~/utils/sorting";
+import { dcSort } from "~/utils/sorting";
 
 type FullDriverResultType = {
   driverName: DriverCode24Type | undefined;
@@ -235,16 +235,16 @@ export const createStandings = (results: RaceResultsType) => {
       places: driverPlaces[driver] ?? [],
     }
     return driverT;
-  }).sort((a,b) => driverSort(a,b));
+  }).sort((a,b) => dcSort(a,b));
 
   const constructorStandingsArray = constructorNames2024.map((constructor) => {
-    const constructorT: ConstructorSortType = {
+    const constructorT = {
       name: constructor,
       points: constructorStandings[constructor].total,
       places: constructorPlaces[constructor] ?? [],
     }
     return constructorT;
-  }).sort((a,b) => constructorSort(a,b));
+  }).sort((a,b) => dcSort(a,b));
 
   const driverOrder = driverStandingsArray.map((driver) => {
     return driver.name;

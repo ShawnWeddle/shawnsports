@@ -5,6 +5,7 @@ export const FormulaOneRaceResults : {
   finalOrder: DriverCode23Type[],
   DNFs: DriverCode23Type[],
   sprint: boolean,
+  completed: boolean,
   DQs?: DriverCode23Type[],
   fastestLap?: DriverCode23Type,
   polePosition?: DriverCode23Type,
@@ -21,6 +22,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "ZHO",
     polePosition: "VER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Saudi Arabia",
@@ -33,6 +35,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "VER",
     polePosition: "PER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Australia",
@@ -45,6 +48,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "PER",
     polePosition: "VER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Azerbaijan",
@@ -55,6 +59,7 @@ export const FormulaOneRaceResults : {
       "TSU",
     ],
     sprint: true,
+    completed: true,
   },
   {
     location: "Azerbaijan",
@@ -67,6 +72,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "RUS",
     polePosition: "LEC",
     sprint: false,
+    completed: true,
   },
   {
     location: "Miami",
@@ -79,6 +85,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "VER",
     polePosition: "PER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Monaco",
@@ -91,6 +98,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "HAM",
     polePosition: "VER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Spain",
@@ -103,6 +111,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "VER",
     polePosition: "VER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Canada",
@@ -115,6 +124,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "PER",
     polePosition: "VER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Austria",
@@ -125,6 +135,7 @@ export const FormulaOneRaceResults : {
       
     ],
     sprint: true,
+    completed: true,
   },
   {
     location: "Austria",
@@ -137,6 +148,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "VER",
     polePosition: "VER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Great Britain",
@@ -149,6 +161,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "VER",
     polePosition: "VER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Hungary",
@@ -161,6 +174,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "VER",
     polePosition: "HAM",
     sprint: false,
+    completed: true,
   },
   {
     location: "Belgium",
@@ -171,6 +185,7 @@ export const FormulaOneRaceResults : {
       "PER", "ALO",
     ],
     sprint: true,
+    completed: true,
   },
   {
     location: "Belgium",
@@ -183,6 +198,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "HAM",
     polePosition: "LEC",
     sprint: false,
+    completed: true,
   },
   {
     location: "Netherlands",
@@ -195,6 +211,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "ALO",
     polePosition: "VER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Italy",
@@ -207,6 +224,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "PIA",
     polePosition: "SAI",
     sprint: false,
+    completed: true,
   },
   {
     location: "Singapore",
@@ -219,6 +237,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "HAM",
     polePosition: "SAI",
     sprint: false,
+    completed: true,
   },
   {
     location: "Japan",
@@ -231,6 +250,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "VER",
     polePosition: "VER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Qatar",
@@ -241,6 +261,7 @@ export const FormulaOneRaceResults : {
       "HUL", "OCO", "PER", "SAR", "LAW",
     ],
     sprint: true,
+    completed: true,
   },
   {
     location: "Qatar",
@@ -253,6 +274,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "VER",
     polePosition: "VER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Austin",
@@ -263,6 +285,7 @@ export const FormulaOneRaceResults : {
       "STR",
     ],
     sprint: true,
+    completed: true,
   },
   {
     location: "Austin",
@@ -278,6 +301,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "TSU",
     polePosition: "LEC",
     sprint: false,
+    completed: true,
   },
   {
     location: "Mexico",
@@ -290,6 +314,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "HAM",
     polePosition: "LEC",
     sprint: false,
+    completed: true,
   },
   {
     location: "Brazil",
@@ -300,8 +325,9 @@ export const FormulaOneRaceResults : {
       
     ],
     sprint: true,
+    completed: true,
   },
-   {
+  {
     location: "Brazil",
     finalOrder: [
       "VER", "NOR", "ALO", "PER", "STR", "SAI", "GAS", "HAM", "TSU", "OCO", "SAR", "HUL", "RIC", "PIA",
@@ -312,6 +338,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "NOR",
     polePosition: "VER",
     sprint: false,
+    completed: true,
   },
   {
     location: "Las Vegas",
@@ -324,6 +351,7 @@ export const FormulaOneRaceResults : {
     fastestLap: "PIA",
     polePosition: "LEC",
     sprint: false,
+    completed: true,
   },
   {
     location: "Abu Dhabi",
@@ -336,24 +364,8 @@ export const FormulaOneRaceResults : {
     fastestLap: "VER",
     polePosition: "VER",
     sprint: false,
+    completed: true,
   },
 ]
 
 export type RaceResultsType = typeof FormulaOneRaceResults;
-
-/* 
-
-  {
-    location: ,
-    finalOrder: [
-      
-    ],
-    DNFs: [
-      
-    ],
-    fastestLap: ,
-    polePosition: ,
-    sprint: false,
-  },
-  
-  */

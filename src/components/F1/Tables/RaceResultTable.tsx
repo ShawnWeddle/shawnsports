@@ -6,7 +6,10 @@ import {
   driverToConstructor2024,
 } from "~/data/F1/2024/F1data24";
 import { FormulaOneRaceResults } from "~/data/F1/2024/raceResults2024";
-import { driverActivation } from "~/data/F1/2024/HandleActivation24";
+import {
+  driverActivation2024,
+  handleActivate2024,
+} from "~/data/F1/2024/HandleActivation24";
 import { F1styleData } from "~/data/F1/2024/F1styleData24";
 import type { RaceModeProps } from "~/data/F1/2024/F1data24";
 
@@ -15,7 +18,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
 ) => {
   const { raceMode } = props;
 
-  const [activeDrivers, setActiveDrivers] = useState(driverActivation);
+  const [activeDrivers, setActiveDrivers] = useState(driverActivation2024);
 
   const { fullResults, DNFs, DQs } = resultsSortedByPlace(
     FormulaOneRaceResults
@@ -24,14 +27,14 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
     const tableCells = result.map((driver, cellIndex) => {
       const { driverName, sprint, finishPosition, polePosition, fastestLap } =
         driver;
-      const isDriver =
-        driverName !== undefined && activeDrivers[driverName].active;
+      const isDriver = !!driverName && !!activeDrivers[driverName];
       if (driverName) {
         const activeStyleGuide =
           F1styleData[driverToConstructor2024(driverName)];
         const Tcam = driverTcamColors2024[driverName];
+        const newActiveDriver = activeDrivers[driverName];
         const outlineColor =
-          activeDrivers[driverName].teammateActive && Tcam === "Black"
+          newActiveDriver && newActiveDriver.teammateActive && Tcam === "Black"
             ? "bg-[#33424d]"
             : "bg-[#d9ff00]";
         const activeBg = activeStyleGuide.primaryBGstyle;
@@ -56,13 +59,16 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
               },
               {
                 [outlineColor]:
-                  activeDrivers[driverName].teammateActive && isDriver,
+                  newActiveDriver && newActiveDriver.teammateActive && isDriver,
               },
               { hidden: sprint && raceMode === "Grands Prix Only" },
               { hidden: !sprint && raceMode === "Sprint Races Only" }
             )}
           >
-            <div
+            <button
+              onClick={() => {
+                setActiveDrivers(handleActivate2024(driverName, activeDrivers));
+              }}
               className={cn("relative mx-0.5 rounded-full px-1 font-mono", {
                 [activeTextColor]: isDriver,
                 [activeBg]: isDriver,
@@ -79,7 +85,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
                   F
                 </span>
               )}
-            </div>
+            </button>
           </td>
         );
       } else {
@@ -131,14 +137,14 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
   const DNFRows = DNFs.map((dnf, rowIndex) => {
     const DNFCells = dnf.map((driver, cellIndex) => {
       const { driverName, sprint } = driver;
-      const isDriver =
-        driverName !== undefined && activeDrivers[driverName].active;
+      const isDriver = !!driverName && !!activeDrivers[driverName];
       if (driverName) {
         const activeStyleGuide =
           F1styleData[driverToConstructor2024(driverName)];
         const Tcam = driverTcamColors2024[driverName];
+        const newActiveDriver = activeDrivers[driverName];
         const outlineColor =
-          activeDrivers[driverName].teammateActive && Tcam === "Black"
+          newActiveDriver && newActiveDriver.teammateActive && Tcam === "Black"
             ? "bg-[#33424d]" //black
             : "bg-[#d9ff00]"; //yellow
         const activeBg = activeStyleGuide.primaryBGstyle;
@@ -149,13 +155,13 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
             className={cn(
               {
                 [outlineColor]:
-                  activeDrivers[driverName].teammateActive && isDriver,
+                  newActiveDriver && newActiveDriver.teammateActive && isDriver,
               },
               { hidden: sprint && raceMode === "Grands Prix Only" },
               { hidden: !sprint && raceMode === "Sprint Races Only" }
             )}
           >
-            <div
+            <button
               className={cn(
                 "relative mx-0.5 rounded-full px-1",
                 {
@@ -167,7 +173,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
               )}
             >
               {driverName}
-            </div>
+            </button>
           </td>
         );
       } else {
@@ -192,14 +198,14 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
   const DQRows = DQs.map((dq, rowIndex) => {
     const DQCells = dq.map((driver, cellIndex) => {
       const { driverName, sprint } = driver;
-      const isDriver =
-        driverName !== undefined && activeDrivers[driverName].active;
+      const isDriver = !!driverName && !!activeDrivers[driverName];
       if (driverName) {
         const activeStyleGuide =
           F1styleData[driverToConstructor2024(driverName)];
         const Tcam = driverTcamColors2024[driverName];
+        const newActiveDriver = activeDrivers[driverName];
         const outlineColor =
-          activeDrivers[driverName].teammateActive && Tcam === "Black"
+          newActiveDriver && newActiveDriver.teammateActive && Tcam === "Black"
             ? "bg-[#33424d]" //black
             : "bg-[#d9ff00]"; //yellow
         const activeBg = activeStyleGuide.primaryBGstyle;
@@ -210,13 +216,13 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
             className={cn(
               {
                 [outlineColor]:
-                  activeDrivers[driverName].teammateActive && isDriver,
+                  newActiveDriver && newActiveDriver.teammateActive && isDriver,
               },
               { hidden: sprint && raceMode === "Grands Prix Only" },
               { hidden: !sprint && raceMode === "Sprint Races Only" }
             )}
           >
-            <div
+            <button
               className={cn(
                 "relative mx-0.5 rounded-full px-1",
                 {
@@ -228,7 +234,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
               )}
             >
               {driverName}
-            </div>
+            </button>
           </td>
         );
       } else {

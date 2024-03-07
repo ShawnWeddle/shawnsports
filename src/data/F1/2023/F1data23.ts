@@ -47,7 +47,47 @@ export type DriverCode23Type = typeof driverCodes2023[number];
 export type ConstructorName23Type = typeof constructorNames2023[number];
 export type RaceLocation23Type = typeof raceLocations2023[number];
 
-export const driverToConstructor2023 = (driver: DriverCode23Type | ConstructorName23Type ) : ConstructorName23Type => {
+export const driverToConstructor2023 = (driver: DriverCode23Type ) : ConstructorName23Type => {
+  switch(driver){
+    case "GAS":
+    case "OCO":
+      return "Alpine";
+    case "DEV":
+    case "LAW":
+    case 'RIC':
+    case "TSU":
+      return "AlphaTauri";
+    case "BOT":
+    case "ZHO":
+      return "Alfa Romeo";
+    case "ALO":
+    case "STR":
+      return "Aston Martin";
+    case "LEC":
+    case "SAI":
+      return "Ferrari";
+    case "HUL":
+    case "MAG":
+      return "Haas";
+    case "NOR":
+    case "PIA":
+      return "McLaren";
+    case "HAM":
+    case "RUS":
+      return "Mercedes";
+    case "PER":
+    case "VER":
+      return "Red Bull";
+    case "ALB":
+    case "SAR":
+      return "Williams";
+    default:
+      return "Williams";
+  }
+}
+
+
+export const allToConstructor2023 = (driver: DriverCode23Type | ConstructorName23Type ) : ConstructorName23Type => {
   switch(driver){
     case "GAS":
     case "OCO":

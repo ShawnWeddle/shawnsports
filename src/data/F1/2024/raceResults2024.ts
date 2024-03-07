@@ -9,7 +9,6 @@ export type F1RaceType = {
   DQs?: DriverCode24Type[],
   fastestLap?: DriverCode24Type,
   polePosition?: DriverCode24Type,
-
 };
 
 export const FormulaOneRaceResults : F1RaceType[] = [

@@ -23,6 +23,7 @@ import {
   constructorNames2024,
   driverTcamColors2024,
   driverToConstructor2024,
+  allToConstructor2024,
 } from "~/data/F1/2024/F1data24";
 import { cn } from "~/utils/cn";
 
@@ -169,7 +170,7 @@ const LineChart: React.FC = () => {
             "flex justify-center gap-2 rounded-md p-2",
             {
               [F1styleData[
-                driverToConstructor2024(
+                allToConstructor2024(
                   pointsHolder1.name !== "No Selection"
                     ? pointsHolder1.name
                     : "ALB"
@@ -221,7 +222,7 @@ const LineChart: React.FC = () => {
             "flex justify-center gap-2 rounded-md p-2",
             {
               [F1styleData[
-                driverToConstructor2024(
+                allToConstructor2024(
                   pointsHolder2.name !== "No Selection"
                     ? pointsHolder2.name
                     : "ALB"
@@ -277,7 +278,7 @@ const LineChart: React.FC = () => {
             "flex justify-center gap-2 rounded-md p-2",
             {
               [F1styleData[
-                driverToConstructor2024(
+                allToConstructor2024(
                   pointsHolder3.name !== "No Selection"
                     ? pointsHolder3.name
                     : "ALB"
@@ -333,7 +334,7 @@ const LineChart: React.FC = () => {
             "flex justify-center gap-2 rounded-md p-2",
             {
               [F1styleData[
-                driverToConstructor2024(
+                allToConstructor2024(
                   pointsHolder4.name !== "No Selection"
                     ? pointsHolder4.name
                     : "ALB"

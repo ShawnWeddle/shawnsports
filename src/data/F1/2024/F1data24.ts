@@ -16,6 +16,7 @@ export const driverCodes2024 = [
   "HUL", "LEC", "MAG", "NOR", "OCO", 
   "PER", "PIA", "RIC", "RUS", "SAI",
   "SAR", "STR", "TSU", "VER", "ZHO", 
+  "BEA",
 ] as const;
 
 export const raceLocations2024 = [
@@ -57,6 +58,7 @@ export const driverToConstructor2024 = (driver: DriverCode24Type ) : Constructor
     case "ALO":
     case "STR":
       return "Aston Martin";
+    case "BEA":
     case "LEC":
     case "SAI":
       return "Ferrari";
@@ -96,6 +98,7 @@ export const allToConstructor2024 = (input: DriverCode24Type | ConstructorName24
     case "STR":
     case "Aston Martin":
       return "Aston Martin";
+    case "BEA":
     case "LEC":
     case "SAI":
     case "Ferrari":
@@ -141,7 +144,7 @@ export const constructorToDrivers2024 = (constructor: ConstructorName24Type) : D
     case "Aston Martin":
       return ["ALO", "STR"];
     case "Ferrari":
-      return ["LEC", "SAI"];
+      return ["BEA", "LEC", "SAI"];
     case "Haas":
       return ["HUL", "MAG"];
     case "McLaren":
@@ -163,24 +166,25 @@ export const constructorToDrivers2024 = (constructor: ConstructorName24Type) : D
 export const driverNames2024: { [Key in DriverCode24Type] : { alphabeticOrder: number, first: string, last: string}} = {
   ALB : { alphabeticOrder: 0, first: "Alex", last: "Albon"},
   ALO : { alphabeticOrder: 1, first: "Fernando", last: "Alonso"},
-  BOT : { alphabeticOrder: 2, first: "Valterri", last: "Bottas"},
-  GAS : { alphabeticOrder: 3, first: "Pierre", last: "Gasly"},
-  HAM : { alphabeticOrder: 4, first: "Lewis", last: "Hamilton"},
-  HUL : { alphabeticOrder: 5, first: "Nico", last: "Hulkenberg"},
-  LEC : { alphabeticOrder: 6, first: "Charles", last: "Leclerc"},
-  MAG : { alphabeticOrder: 7, first: "Kevin", last: "Magnussen"},
-  NOR : { alphabeticOrder: 8, first: "Lando", last: "Norris"},
-  OCO : { alphabeticOrder: 9, first: "Esteban", last: "Ocon"},
-  PER : { alphabeticOrder: 10, first: "Sergio", last: "Perez"},
-  PIA : { alphabeticOrder: 11, first: "Oscar", last: "Piastri"},
-  RIC : { alphabeticOrder: 12, first: "Daniel", last: "Ricciardo"},
-  RUS : { alphabeticOrder: 13, first: "George", last: "Russell"},
-  SAI : { alphabeticOrder: 14, first: "Carlos", last: "Sainz"},
-  SAR : { alphabeticOrder: 15, first: "Logan", last: "Sargeant"},
-  STR : { alphabeticOrder: 16, first: "Lance", last: "Stroll"},
-  TSU : { alphabeticOrder: 17, first: "Yuki", last: "Tsunoda"},
-  VER : { alphabeticOrder: 18, first: "Max", last: "Verstappen"},
-  ZHO : { alphabeticOrder: 19, first: "Zhou", last: "Guanyu"},
+  BEA : { alphabeticOrder: 2, first: "Oliver", last: "Bearman"},
+  BOT : { alphabeticOrder: 3, first: "Valterri", last: "Bottas"},
+  GAS : { alphabeticOrder: 4, first: "Pierre", last: "Gasly"},
+  HAM : { alphabeticOrder: 5, first: "Lewis", last: "Hamilton"},
+  HUL : { alphabeticOrder: 6, first: "Nico", last: "Hulkenberg"},
+  LEC : { alphabeticOrder: 7, first: "Charles", last: "Leclerc"},
+  MAG : { alphabeticOrder: 8, first: "Kevin", last: "Magnussen"},
+  NOR : { alphabeticOrder: 9, first: "Lando", last: "Norris"},
+  OCO : { alphabeticOrder: 10, first: "Esteban", last: "Ocon"},
+  PER : { alphabeticOrder: 11, first: "Sergio", last: "Perez"},
+  PIA : { alphabeticOrder: 12, first: "Oscar", last: "Piastri"},
+  RIC : { alphabeticOrder: 13, first: "Daniel", last: "Ricciardo"},
+  RUS : { alphabeticOrder: 14, first: "George", last: "Russell"},
+  SAI : { alphabeticOrder: 15, first: "Carlos", last: "Sainz"},
+  SAR : { alphabeticOrder: 16, first: "Logan", last: "Sargeant"},
+  STR : { alphabeticOrder: 17, first: "Lance", last: "Stroll"},
+  TSU : { alphabeticOrder: 18, first: "Yuki", last: "Tsunoda"},
+  VER : { alphabeticOrder: 19, first: "Max", last: "Verstappen"},
+  ZHO : { alphabeticOrder: 20, first: "Zhou", last: "Guanyu"},
 }
 
 export const driverTcamColors2024: { [Key in DriverCode24Type] : "Black" | "Yellow"} = {
@@ -188,6 +192,7 @@ export const driverTcamColors2024: { [Key in DriverCode24Type] : "Black" | "Yell
   HUL: "Yellow", LEC: "Black", MAG: "Black", NOR: "Yellow", OCO: "Black", 
   PIA: "Black", PER: "Yellow", RIC: "Black", RUS: "Black", SAI: "Yellow", 
   SAR: "Yellow", STR: "Black", TSU: "Yellow", VER: "Black", ZHO: "Yellow", 
+  BEA: "Yellow",
 }
 
 export const calculatePoints = (place: number, sprint: boolean, fastestLap: boolean) => {

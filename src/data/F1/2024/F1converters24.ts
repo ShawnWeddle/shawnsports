@@ -147,6 +147,7 @@ export const createStandings = (results: RaceResultsType) => {
   const driverStandings: {[Key in DriverCode24Type] : {total: number, runTotal: number[]}} = {
     ALB : {total: 0, runTotal: [0]}, 
     ALO : {total: 0, runTotal: [0]}, 
+    BEA : {total: 0, runTotal: [0]},
     BOT : {total: 0, runTotal: [0]}, 
     GAS : {total: 0, runTotal: [0]}, 
     HAM : {total: 0, runTotal: [0]}, 

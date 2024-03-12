@@ -31,10 +31,10 @@ export const FormulaOneRaceResults : F1RaceType[] = [
     DNFs: [
       "STR", "GAS",
     ],
-    fastestLap: "VER",
+    fastestLap: "LEC",
     polePosition: "VER",
     sprint: false,
-    completed: false,
+    completed: true,
   },
   {
     location: "Australia",

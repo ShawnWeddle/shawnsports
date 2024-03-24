@@ -184,7 +184,7 @@ export const NFLpickOrderByRound: NFLPickType[][] = [
     round: 1,
     local: 23,
     value: 245,
-    tradedTeam: "HOU"
+    tradedTeam: "MIN"
   },
   {
     pickNum: 24,
@@ -322,7 +322,8 @@ export const NFLpickOrderByRound: NFLPickType[][] = [
     nativeTeam: "MIN",
     round: 2,
     local: 10,
-    value: 142
+    value: 142,
+    tradedTeam: "HOU",
   },
   {
     pickNum: 43,
@@ -580,7 +581,8 @@ export const NFLpickOrderByRound: NFLPickType[][] = [
     nativeTeam: "SEA",
     round: 3,
     local: 14,
-    value: 59
+    value: 59,
+    tradedTeam: "WAS",
   },
   {
     pickNum: 79,
@@ -761,7 +763,8 @@ export const NFLpickOrderByRound: NFLPickType[][] = [
     nativeTeam: "WAS",
     round: 4,
     local: 2,
-    value: 34
+    value: 34,
+    tradedTeam: "SEA",
   },
   {
     pickNum: 103,
@@ -817,7 +820,8 @@ export const NFLpickOrderByRound: NFLPickType[][] = [
     nativeTeam: "CHI",
     round: 4,
     local: 10,
-    value: 29
+    value: 29,
+    tradedTeam: "LAC",
   },
   {
     pickNum: 111,
@@ -1128,7 +1132,8 @@ export const NFLpickOrderByRound: NFLPickType[][] = [
     nativeTeam: "SEA",
     round: 5,
     local: 17,
-    value: 12
+    value: 12,
+    tradedTeam: "WAS",
   },
   {
     pickNum: 153,
@@ -1338,7 +1343,8 @@ export const NFLpickOrderByRound: NFLPickType[][] = [
     nativeTeam: "WAS",
     round: 6,
     local: 3,
-    value: 6
+    value: 6,
+    tradedTeam: "SEA",
   },
   {
     pickNum: 180,

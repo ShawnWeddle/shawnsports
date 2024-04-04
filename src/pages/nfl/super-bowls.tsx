@@ -1,5 +1,7 @@
 import MainPage from "~/components/Page/MainPage";
 import SuperBowlList from "~/components/NFL/SuperBowlList";
+import NFCChampList from "~/components/NFL/NFCChampList";
+import AFCChampList from "~/components/NFL/AFCChampList";
 
 const SuperBowls = () => {
   return (

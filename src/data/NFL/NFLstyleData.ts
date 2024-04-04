@@ -154,6 +154,17 @@ export const NFLstyleData: { [Key in AllNFLTeamType] : {
     primaryPlainText: "text-white",
     secondaryPlainText: "text-white",
   },
+  "HOL":{
+    primary: "#0C2340",
+    secondary: "#4B92DB",
+    primaryBGstyle: "bg-[#0C2340]",
+    primaryBGfadeHover: "hover:bg-[#0C2340]/50",
+    secondaryBGstyle: "bg-[#4B92DB]",
+    secondaryTextStyle: "text-[#4B92DB]",
+    secondaryBorderStyle: "border-[#4B92DB]",
+    primaryPlainText: "text-white",
+    secondaryPlainText: "text-white",
+  },
   "HOU":{
     primary: "#03202F",
     secondary: "#A71930",

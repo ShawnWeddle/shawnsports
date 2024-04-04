@@ -822,11 +822,6 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "HOU-2024",
     year: 2024,
     notes: ["Traded from Houston to Oklahoma City."],
-  },{
-    nativeTeam: "UTA",
-    pickCode: "UTA-2024",
-    year: 2024,
-    notes: ["Traded from Utah to Oklahoma City."],
   },],
   "2025":[{
     nativeTeam: "OKC",
@@ -844,6 +839,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "PHI-2025",
     year: 2025,
     notes: ["Traded from Philadelphia to Oklahoma City."],
+  },{
+    nativeTeam: "UTA",
+    pickCode: "UTA-2025",
+    year: 2025,
+    notes: ["Traded from Utah to Oklahoma City.", "Unlikely to convey in 2024."],
   },],
   "2026":[{
     nativeTeam: "HOU",
@@ -1240,17 +1240,17 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
 },
 "UTA":{
   "2024":[{
+    nativeTeam: "UTA",
+    pickCode: "UTA-2024",
+    year: 2024,
+    notes: ["Traded from Utah to Oklahoma City.", "Unlikely to convey in 2024."],
+  },{
     nativeTeam: "OKC",
     pickCode: "OKC-2024",
     year: 2024,
     notes: ["Traded from Oklahoma City to Indiana to Toronto to Utah.", "Utah will receive the least valuable of Oklahoma City's 2024 picks."],
   },],
   "2025":[{
-    nativeTeam: "UTA",
-    pickCode: "UTA-2025",
-    year: 2025,
-    notes: ["Utah has not yet traded this pick."],
-  },{
     nativeTeam: "CLE",
     pickCode: "CLE-2025",
     year: 2025,

@@ -187,12 +187,12 @@ export const driverNames2024: { [Key in DriverCode24Type] : { alphabeticOrder: n
   ZHO : { alphabeticOrder: 20, first: "Zhou", last: "Guanyu"},
 }
 
-export const driverTcamColors2024: { [Key in DriverCode24Type] : "Black" | "Yellow"} = {
+export const driverTcamColors2024: { [Key in DriverCode24Type] : "Black" | "Yellow" | "Cyan"} = {
   ALB: "Black", ALO: "Yellow", BOT: "Black", GAS: "Yellow", HAM: "Yellow", 
   HUL: "Yellow", LEC: "Black", MAG: "Black", NOR: "Yellow", OCO: "Black", 
   PIA: "Black", PER: "Yellow", RIC: "Black", RUS: "Black", SAI: "Yellow", 
   SAR: "Yellow", STR: "Black", TSU: "Yellow", VER: "Black", ZHO: "Yellow", 
-  BEA: "Yellow",
+  BEA: "Cyan",
 }
 
 export const calculatePoints = (place: number, sprint: boolean, fastestLap: boolean) => {

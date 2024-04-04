@@ -36,7 +36,9 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
         const outlineColor =
           newActiveDriver && newActiveDriver.teammateActive && Tcam === "Black"
             ? "bg-[#33424d]"
-            : "bg-[#d9ff00]";
+            : Tcam === "Yellow"
+            ? "bg-[#d9ff00]"
+            : "bg-[#00ffd9]";
         const activeBg = activeStyleGuide.primaryBGstyle;
         const activeTextColor = activeStyleGuide.secondaryTextStyle;
         return (

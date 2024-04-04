@@ -127,7 +127,11 @@ const LineChart: React.FC = () => {
           data: driverStandings[driver].runTotal,
           borderColor: F1styleData[driverToConstructor2024(driver)].primary,
           backgroundColor:
-            driverTcamColors2024[driver] === "Black" ? "#33424d" : "#d9ff00",
+            driverTcamColors2024[driver] === "Black"
+              ? "#33424d"
+              : driverTcamColors2024[driver] === "Yellow"
+              ? "#d9ff00"
+              : "#00ffd9",
         };
       } else if (pointsHolder.type === "Constructor") {
         const constructor = constructorEnum.parse(pointsHolder.name);
@@ -196,6 +200,11 @@ const LineChart: React.FC = () => {
                   driverTcamColors2024[pointsHolder1.driver] === "Yellow",
               },
               {
+                "bg-[#00ffd9]":
+                  pointsHolder1.driver &&
+                  driverTcamColors2024[pointsHolder1.driver] === "Cyan",
+              },
+              {
                 "bg-white": pointsHolder1.constructor,
               }
             )}
@@ -246,6 +255,11 @@ const LineChart: React.FC = () => {
                 "bg-[#d9ff00]":
                   pointsHolder2.driver &&
                   driverTcamColors2024[pointsHolder2.driver] === "Yellow",
+              },
+              {
+                "bg-[#00ffd9]":
+                  pointsHolder2.driver &&
+                  driverTcamColors2024[pointsHolder2.driver] === "Cyan",
               },
               {
                 "bg-white": pointsHolder2.constructor,
@@ -304,6 +318,11 @@ const LineChart: React.FC = () => {
                   driverTcamColors2024[pointsHolder3.driver] === "Yellow",
               },
               {
+                "bg-[#00ffd9]":
+                  pointsHolder3.driver &&
+                  driverTcamColors2024[pointsHolder3.driver] === "Cyan",
+              },
+              {
                 "bg-white": pointsHolder3.constructor,
               },
               {
@@ -358,6 +377,11 @@ const LineChart: React.FC = () => {
                 "bg-[#d9ff00]":
                   pointsHolder4.driver &&
                   driverTcamColors2024[pointsHolder4.driver] === "Yellow",
+              },
+              {
+                "bg-[#00ffd9]":
+                  pointsHolder4.driver &&
+                  driverTcamColors2024[pointsHolder4.driver] === "Cyan",
               },
               {
                 "bg-white": pointsHolder4.constructor,

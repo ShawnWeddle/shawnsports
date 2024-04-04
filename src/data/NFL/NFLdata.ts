@@ -7,7 +7,7 @@ export const nflTeams = [
 
 export type NFLTeamType = typeof nflTeams[number];
 
-export type AllNFLTeamType = NFLTeamType | "WRS" | "OAK" | "LRD" | "STL" | "BCS" | "SDC";
+export type AllNFLTeamType = NFLTeamType | "WRS" | "OAK" | "LRD" | "STL" | "BCS" | "SDC" | "HOL";
 
 export type teamInfoType = {rank: number, code: string, location: string, name: string };
 
@@ -89,6 +89,12 @@ export const NFLteamData: { [Key in AllNFLTeamType] : teamInfoType} = {
     rank: 17,
     location: "Green Bay",
     name: "Packers"
+  },
+  "HOL":{
+    code: "HOL",
+    rank: 100,
+    location: "Houston",
+    name: "Oilers"
   },
   "HOU":{
     code: "HOU",

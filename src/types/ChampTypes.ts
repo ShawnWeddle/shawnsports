@@ -40,6 +40,14 @@ export type SuperBowlType = {
   year: number;
 }
 
+export type ConChampType = {
+  winningTeam: AllNFLTeamType;
+  losingTeam: AllNFLTeamType;
+  score: string;
+  wonSB: boolean;
+  year: number;
+}
+
 export type SuperLoserType = {
   firstName: string;
   lastName: string;

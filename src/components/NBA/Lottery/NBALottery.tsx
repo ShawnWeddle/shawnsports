@@ -13,7 +13,7 @@ import { type PickType, lotterySwaps } from "~/data/NBA/lotterySwaps";
 import NBATeamTile from "~/components/NBA/Lottery/TeamTile";
 import TileLanding from "~/components/NBA/Lottery/TileLanding";
 
-const NBALottery2: React.FC = () => {
+const NBALottery: React.FC = () => {
   const { nbaLotteryState, nbaLotteryDispatch } = useNBALotteryContext();
 
   const [activeTeam, setActiveTeam] = useState<NBATeamType | null>(null);
@@ -146,7 +146,7 @@ const NBALottery2: React.FC = () => {
   );
 };
 
-export default NBALottery2;
+export default NBALottery;
 
 /*[
 "WAS", "HOU", "POR", "DET", "CHO", "SAS", "TOR", 

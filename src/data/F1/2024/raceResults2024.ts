@@ -64,35 +64,51 @@ export const FormulaOneRaceResults : F1RaceType[] = [
   },
   {
     location: "China",
-    finalOrder: [],
-    DNFs: [],
+    finalOrder: [
+      "VER", "HAM", "PER", "LEC", "SAI", "NOR", "PIA", "RUS", "ZHO", "MAG", "RIC", "BOT", "OCO", "STR", "GAS", "TSU", "ALB", "SAR", "HUL",
+    ],
+    DNFs: [
+      "ALO",
+    ],
     sprint: true,
-    completed: false,
+    completed: true,
   },
   {
     location: "China",
-    finalOrder: [],
-    DNFs: [],
-    fastestLap: "VER",
+    finalOrder: [
+      "VER", "NOR", "PER", "LEC", "SAI", "RUS", "ALO", "PIA", "HAM", "HUL", "OCO", "ALB", "GAS", "ZHO", "STR", "MAG", "SAR",
+    ],
+    DNFs: [
+      "RIC", "TSU", "BOT",
+    ],
+    fastestLap: "ALO",
     polePosition: "VER",
     sprint: false,
-    completed: false,
+    completed: true,
   },
   {
     location: "Miami",
-    finalOrder: [],
-    DNFs: [],
+    finalOrder: [
+      "VER", "LEC", "PER", "RIC", "SAI", "PIA", "HUL", "TSU", "GAS", "SAR", "ZHO", "RUS", "ALB", "BOT", "OCO", "HAM", "ALO", "MAG",
+    ],
+    DNFs: [
+      "STR", "NOR",
+    ],
     sprint: true,
-    completed: false,
+    completed: true,
   },
   {
     location: "Miami",
-    finalOrder: [],
-    DNFs: [],
-    fastestLap: "VER",
+    finalOrder: [
+      "NOR", "VER", "LEC", "PER", "SAI", "HAM", "TSU", "RUS", "ALO", "OCO", "HUL", "GAS", "PIA", "ZHO", "RIC", "BOT", "STR", "ALB", "MAG",
+    ],
+    DNFs: [
+      "SAR",
+    ],
+    fastestLap: "PIA",
     polePosition: "VER",
     sprint: false,
-    completed: false,
+    completed: true,
   },
   {
     location: "Imola",

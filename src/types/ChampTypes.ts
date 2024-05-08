@@ -3,6 +3,7 @@ import { type AllNHLTeamType } from "~/data/NHL/NHLdata";
 import { type AllNBATeamType } from "~/data/NBApickData";
 import { type AllWNBATeamType } from "~/data/WNBA/WNBAdata";
 import { type AllMLBTeamType } from "~/data/MLB/MLBdata";
+import { type AllCFLTeamType } from "~/data/CFL/CFLdata";
 
 export type StanleyCupSeriesType = {
   winningTeam: AllNHLTeamType;
@@ -45,6 +46,13 @@ export type ConChampType = {
   losingTeam: AllNFLTeamType;
   score: string;
   wonSB: boolean;
+  year: number;
+}
+
+export type GreyCupType = {
+  winningTeam: AllCFLTeamType;
+  losingTeam: AllCFLTeamType;
+  score: string;
   year: number;
 }
 

@@ -20,6 +20,7 @@ export default {
         nfl50: "#8080FF",
         nhl: "#008080",
         mlb: "#A80000",
+        cfl: "#7000A8",
         ylo: "#E0E000",
       },
       spacing: {

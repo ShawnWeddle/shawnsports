@@ -26,6 +26,7 @@ const HomeNav: React.FC = () => {
             "hover:bg-nhl/10": sportMode === "NHL",
             "hover:bg-mlb/10": sportMode === "MLB",
             "hover:bg-formulaOne/10": sportMode === "F1",
+            "hover:bg-cfl/10": sportMode === "CFL",
           })}
         >
           <td>
@@ -69,6 +70,7 @@ const HomeNav: React.FC = () => {
                   "bg-nhl": sportMode === "NHL",
                   "bg-mlb": sportMode === "MLB",
                   "bg-formulaOne": sportMode === "F1",
+                  "bg-cfl": sportMode === "CFL",
                 }
               )}
             >
@@ -82,7 +84,7 @@ const HomeNav: React.FC = () => {
   };
 
   return (
-    <div className="hover:bg/ce-ter/10 flex justify-center">
+    <div className="flex justify-center">
       <table>
         <tbody>
           {pageHeads.map((sport) => {

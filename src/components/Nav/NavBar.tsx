@@ -33,7 +33,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
   const router = useRouter();
 
   const majorSports = pageHeads.slice(0, 3);
-  const minorSports = pageHeads.slice(3, 6);
+  const minorSports = pageHeads.slice(3, 7);
 
   const dialog = useRef<HTMLDialogElement>(null);
 
@@ -101,6 +101,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
               "text-nhl ": pageMode === "NHL",
               "text-mlb ": pageMode === "MLB",
               "text-formulaOne ": pageMode === "F1",
+              "text-cfl": pageMode === "CFL",
             },
             {
               hidden: !showDropDown,
@@ -126,6 +127,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             "text-nhl": pageMode === "NHL",
             "text-mlb": pageMode === "MLB",
             "text-formulaOne": pageMode === "F1",
+            "text-cfl": pageMode === "CFL",
           },
           {
             "rounded-xl bg-nba text-white":
@@ -139,6 +141,8 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
               navState.underPageMode === underPage && pageMode === "MLB",
             "rounded-xl bg-formulaOne text-white":
               navState.underPageMode === underPage && pageMode === "F1",
+            "rounded-xl bg-cfl text-white":
+              navState.underPageMode === underPage && pageMode === "CFL",
           },
           {
             "rounded-xl hover:bg-nba/50 hover:text-white":
@@ -152,6 +156,8 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
               navState.underPageMode !== underPage && pageMode === "MLB",
             "rounded-xl hover:bg-formulaOne/50 hover:text-white":
               navState.underPageMode !== underPage && pageMode === "F1",
+            "rounded-xl hover:bg-cfl/50 hover:text-white":
+              navState.underPageMode !== underPage && pageMode === "CFL",
           }
         )}
         onClick={() => {
@@ -174,6 +180,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             "bg-nhl": pageMode === "NHL",
             "bg-mlb": pageMode === "MLB",
             "bg-formulaOne": pageMode === "F1",
+            "bg-cfl": pageMode === "CFL",
           })}
         >
           <button

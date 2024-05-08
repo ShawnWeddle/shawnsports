@@ -1,6 +1,6 @@
 import MainPage from "~/components/Page/MainPage";
 import { NBALotteryContextProvider } from "~/context/NBAlotteryContext";
-import NBALottery2 from "~/components/NBA/Lottery/NBALottery2";
+import NBALottery from "~/components/NBA/Lottery/NBALottery";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
@@ -15,7 +15,7 @@ const Lottery = () => {
     >
       <DndProvider backend={HTML5Backend}>
         <NBALotteryContextProvider>
-          <NBALottery2 />
+          <NBALottery />
         </NBALotteryContextProvider>
       </DndProvider>
     </MainPage>

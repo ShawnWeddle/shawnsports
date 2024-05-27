@@ -112,21 +112,29 @@ export const FormulaOneRaceResults : F1RaceType[] = [
   },
   {
     location: "Imola",
-    finalOrder: [],
-    DNFs: [],
-    fastestLap: "VER",
+    finalOrder: [
+      "VER", "NOR", "LEC", "PIA", "SAI", "HAM", "RUS", "PER", "STR", "TSU", "HUL", "MAG", "RIC", "OCO", "ZHO", "GAS", "SAR", "BOT", "ALO",
+    ],
+    DNFs: [
+      "ALB",
+    ],
+    fastestLap: "RUS",
     polePosition: "VER",
     sprint: false,
-    completed: false,
+    completed: true,
   },
   {
     location: "Monaco",
-    finalOrder: [],
-    DNFs: [],
-    fastestLap: "VER",
-    polePosition: "VER",
+    finalOrder: [
+      "LEC", "PIA", "SAI", "NOR", "RUS", "VER", "HAM", "TSU", "ALB", "GAS", "ALO", "RIC", "BOT", "STR", "SAR", "ZHO", 
+    ],
+    DNFs: [
+      "OCO", "PER", "HUL", "MAG", 
+    ],
+    fastestLap: "HAM",
+    polePosition: "LEC",
     sprint: false,
-    completed: false,
+    completed: true,
   },
   {
     location: "Canada",

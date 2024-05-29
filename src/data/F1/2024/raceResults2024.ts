@@ -134,7 +134,7 @@ export const FormulaOneRaceResults : F1RaceType[] = [
     fastestLap: "HAM",
     polePosition: "LEC",
     sprint: false,
-    completed: true,
+    completed: true, 
   },
   {
     location: "Canada",

@@ -37,17 +37,18 @@ export type SuperBowlType = {
   winningTeam: AllNFLTeamType;
   losingTeam: AllNFLTeamType;
   score: string;
-  romanNumeral: string;
   year: number;
+  romanNumeral?: string;
+  wonSB?: boolean;
 }
 
-export type ConChampType = {
-  winningTeam: AllNFLTeamType;
-  losingTeam: AllNFLTeamType;
-  score: string;
-  wonSB: boolean;
-  year: number;
-}
+// export type ConChampType = {
+//   winningTeam: AllNFLTeamType;
+//   losingTeam: AllNFLTeamType;
+//   score: string;
+//   wonSB?: boolean;
+//   year: number;
+// }
 
 export type GreyCupType = {
   winningTeam: AllCFLTeamType;

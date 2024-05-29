@@ -1,6 +1,6 @@
-import { type ConChampType } from "~/types/ChampTypes";
+import { type SuperBowlType } from "~/types/ChampTypes";
 
-export const AFCChampData: ConChampType[] = [
+export const AFCChampData: SuperBowlType[] = [
   {
     winningTeam: "KAN",
     losingTeam: "BAL",
@@ -381,7 +381,7 @@ export const AFCChampData: ConChampType[] = [
   }
 ]
 
-export const NFCChampData: ConChampType[] = [
+export const NFCChampData: SuperBowlType[] = [
   {
     winningTeam: "SFO",
     losingTeam: "DET",

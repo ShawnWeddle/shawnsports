@@ -138,12 +138,14 @@ export const FormulaOneRaceResults : F1RaceType[] = [
   },
   {
     location: "Canada",
-    finalOrder: [],
+    finalOrder: [
+      "VER", "NOR", "RUS", "HAM", "PIA", "ALO", "STR", "RIC", "GAS", "OCO", "HUL", "MAG", "BOT", "TSU", "ZHO", "SAI", "ALB", "PER", "LEC", "SAR",
+    ],
     DNFs: [],
-    fastestLap: "VER",
-    polePosition: "VER",
+    fastestLap: "HAM",
+    polePosition: "RUS",
     sprint: false,
-    completed: false,
+    completed: true,
   },
   {
     location: "Spain",

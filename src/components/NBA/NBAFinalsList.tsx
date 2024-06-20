@@ -3,155 +3,229 @@ import { cn } from "~/utils/cn";
 import { NBAteamData, type AllNBATeamType } from "~/data/NBApickData";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { NBAFinalsData } from "~/data/NBA/NBAFinalsData";
+import {
+  EasternChampData,
+  WesternChampData,
+} from "~/data/NBA/ConferenceChampData";
+
+type TableModeType = "Finals" | "Eastern" | "Western";
 
 const NBAFinalsList: React.FC = () => {
   const dialog = useRef<HTMLDialogElement>(null);
 
   const [activeTeam, setActiveTeam] = useState<AllNBATeamType | null>(null);
+  const [tableMode, setTableMode] = useState<TableModeType>("Finals");
+
+  const activeData = (input: TableModeType) => {
+    switch (input) {
+      case "Finals":
+        return NBAFinalsData;
+      case "Eastern":
+        return EasternChampData;
+      case "Western":
+        return WesternChampData;
+    }
+  };
+
+  const TableModeInputs: React.FC = () => {
+    return (
+      <fieldset className="rounded-xl border p-2">
+        <div className="flex justify-start">
+          <input
+            type="radio"
+            id="finals"
+            checked={tableMode === "Finals"}
+            onChange={() => {
+              setTableMode("Finals");
+            }}
+          />
+          <label htmlFor="finals" className="px-1">
+            NBA Finals
+          </label>
+        </div>
+        <div className="flex justify-start">
+          <input
+            type="radio"
+            id="Eastern"
+            checked={tableMode === "Eastern"}
+            onChange={() => {
+              setTableMode("Eastern");
+            }}
+          />
+          <label htmlFor="Eastern" className="px-1">
+            Eastern Finals
+          </label>
+        </div>
+        <div className="flex justify-start">
+          <input
+            type="radio"
+            id="Western"
+            checked={tableMode === "Western"}
+            onChange={() => {
+              setTableMode("Western");
+            }}
+          />
+          <label htmlFor="Western" className="px-1">
+            Western Finals
+          </label>
+        </div>
+      </fieldset>
+    );
+  };
 
   const nbaFinals = (team: AllNBATeamType | null) =>
-    NBAFinalsData.filter((game) => {
-      if (!team) return true;
-      let isTeam = false;
-      if ([game.losingTeam, game.winningTeam].includes(team)) {
-        isTeam = true;
-      }
-      if (
-        (team === "LAL" &&
-          [game.losingTeam, game.winningTeam].includes("MNL")) ||
-        (team === "MNL" && [game.losingTeam, game.winningTeam].includes("LAL"))
-      ) {
-        isTeam = true;
-      }
-      if (
-        (team === "PHI" &&
-          [game.losingTeam, game.winningTeam].includes("SYR")) ||
-        (team === "SYR" && [game.losingTeam, game.winningTeam].includes("PHI"))
-      ) {
-        isTeam = true;
-      }
-      if (
-        (team === "DET" &&
-          [game.losingTeam, game.winningTeam].includes("FWP")) ||
-        (team === "FWP" && [game.losingTeam, game.winningTeam].includes("DET"))
-      ) {
-        isTeam = true;
-      }
-      if (
-        (team === "ATL" &&
-          [game.losingTeam, game.winningTeam].includes("STL")) ||
-        (team === "STL" && [game.losingTeam, game.winningTeam].includes("ATL"))
-      ) {
-        isTeam = true;
-      }
-      if (
-        (team === "OKC" &&
-          [game.losingTeam, game.winningTeam].includes("SEA")) ||
-        (team === "SEA" && [game.losingTeam, game.winningTeam].includes("OKC"))
-      ) {
-        isTeam = true;
-      }
-      if (
-        (team === "WSB" &&
-          [game.losingTeam, game.winningTeam].includes("BAL")) ||
-        (team === "BAL" && [game.losingTeam, game.winningTeam].includes("WSB"))
-      ) {
-        isTeam = true;
-      }
-      if (
-        (team === "GSW" &&
-          [game.losingTeam, game.winningTeam].includes("PHW")) ||
-        (team === "PHW" &&
-          [game.losingTeam, game.winningTeam].includes("SFW")) ||
-        (team === "SFW" &&
-          [game.losingTeam, game.winningTeam].includes("GSW")) ||
-        (team === "GSW" &&
-          [game.losingTeam, game.winningTeam].includes("SFW")) ||
-        (team === "PHW" &&
-          [game.losingTeam, game.winningTeam].includes("GSW")) ||
-        (team === "SFW" && [game.losingTeam, game.winningTeam].includes("PHW"))
-      ) {
-        isTeam = true;
-      }
-      return isTeam;
-    }).map((series, index) => {
-      const { year, splits, winningTeam, losingTeam } = series;
-      return (
-        <tr key={index} className="even:bg-nba/10">
-          <td className="px-1 text-center font-semibold">{year}</td>
-          <td>
-            <button
-              onClick={() => {
-                setActiveTeam(winningTeam);
-                dialog.current?.showModal();
-              }}
-              className={cn(
-                "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
-                {
-                  [NBAstyleData[winningTeam].primaryBGstyle]: true,
-                  [NBAstyleData[winningTeam].secondaryBorderStyle]: true,
-                  [NBAstyleData[winningTeam].primaryPlainText]: true,
-                }
-              )}
-            >
-              {NBAteamData[winningTeam].location}{" "}
-              {NBAteamData[winningTeam].name}
-            </button>
-            <button
-              onClick={() => {
-                setActiveTeam(winningTeam);
-                dialog.current?.showModal();
-              }}
-              className={cn(
-                "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                {
-                  [NBAstyleData[winningTeam].primaryBGstyle]: true,
-                  [NBAstyleData[winningTeam].secondaryBorderStyle]: true,
-                  [NBAstyleData[winningTeam].primaryPlainText]: true,
-                }
-              )}
-            >
-              {NBAteamData[winningTeam].name}
-            </button>
-          </td>
-          <td className="px-1 text-center font-semibold">{splits}</td>
-          <td>
-            <button
-              onClick={() => {
-                setActiveTeam(losingTeam);
-                dialog.current?.showModal();
-              }}
-              className={cn(
-                "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
-                {
-                  [NBAstyleData[losingTeam].primaryBGstyle]: true,
-                  [NBAstyleData[losingTeam].secondaryBorderStyle]: true,
-                  [NBAstyleData[losingTeam].primaryPlainText]: true,
-                }
-              )}
-            >
-              {NBAteamData[losingTeam].location} {NBAteamData[losingTeam].name}
-            </button>
-            <button
-              onClick={() => {
-                setActiveTeam(losingTeam);
-                dialog.current?.showModal();
-              }}
-              className={cn(
-                "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                {
-                  [NBAstyleData[losingTeam].primaryBGstyle]: true,
-                  [NBAstyleData[losingTeam].secondaryBorderStyle]: true,
-                  [NBAstyleData[losingTeam].primaryPlainText]: true,
-                }
-              )}
-            >
-              {NBAteamData[losingTeam].name}
-            </button>
-          </td>
-        </tr>
-      );
-    });
+    activeData(tableMode)
+      .filter((game) => {
+        if (!team) return true;
+        let isTeam = false;
+        if ([game.losingTeam, game.winningTeam].includes(team)) {
+          isTeam = true;
+        }
+        if (
+          (team === "LAL" &&
+            [game.losingTeam, game.winningTeam].includes("MNL")) ||
+          (team === "MNL" &&
+            [game.losingTeam, game.winningTeam].includes("LAL"))
+        ) {
+          isTeam = true;
+        }
+        if (
+          (team === "PHI" &&
+            [game.losingTeam, game.winningTeam].includes("SYR")) ||
+          (team === "SYR" &&
+            [game.losingTeam, game.winningTeam].includes("PHI"))
+        ) {
+          isTeam = true;
+        }
+        if (
+          (team === "DET" &&
+            [game.losingTeam, game.winningTeam].includes("FWP")) ||
+          (team === "FWP" &&
+            [game.losingTeam, game.winningTeam].includes("DET"))
+        ) {
+          isTeam = true;
+        }
+        if (
+          (team === "ATL" &&
+            [game.losingTeam, game.winningTeam].includes("STL")) ||
+          (team === "STL" &&
+            [game.losingTeam, game.winningTeam].includes("ATL"))
+        ) {
+          isTeam = true;
+        }
+        if (
+          (team === "OKC" &&
+            [game.losingTeam, game.winningTeam].includes("SEA")) ||
+          (team === "SEA" &&
+            [game.losingTeam, game.winningTeam].includes("OKC"))
+        ) {
+          isTeam = true;
+        }
+        if (
+          (team === "WSB" &&
+            [game.losingTeam, game.winningTeam].includes("BAL")) ||
+          (team === "BAL" &&
+            [game.losingTeam, game.winningTeam].includes("WSB"))
+        ) {
+          isTeam = true;
+        }
+        if (
+          (team === "GSW" &&
+            [game.losingTeam, game.winningTeam].includes("PHW")) ||
+          (team === "PHW" &&
+            [game.losingTeam, game.winningTeam].includes("SFW")) ||
+          (team === "SFW" &&
+            [game.losingTeam, game.winningTeam].includes("GSW")) ||
+          (team === "GSW" &&
+            [game.losingTeam, game.winningTeam].includes("SFW")) ||
+          (team === "PHW" &&
+            [game.losingTeam, game.winningTeam].includes("GSW")) ||
+          (team === "SFW" &&
+            [game.losingTeam, game.winningTeam].includes("PHW"))
+        ) {
+          isTeam = true;
+        }
+        return isTeam;
+      })
+      .map((series, index) => {
+        const { year, splits, winningTeam, losingTeam } = series;
+        return (
+          <tr key={index} className="even:bg-nba/10">
+            <td className="px-1 text-center font-semibold">{year}</td>
+            <td>
+              <button
+                onClick={() => {
+                  setActiveTeam(winningTeam);
+                  dialog.current?.showModal();
+                }}
+                className={cn(
+                  "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                  {
+                    [NBAstyleData[winningTeam].primaryBGstyle]: true,
+                    [NBAstyleData[winningTeam].secondaryBorderStyle]: true,
+                    [NBAstyleData[winningTeam].primaryPlainText]: true,
+                  }
+                )}
+              >
+                {NBAteamData[winningTeam].location}{" "}
+                {NBAteamData[winningTeam].name}
+              </button>
+              <button
+                onClick={() => {
+                  setActiveTeam(winningTeam);
+                  dialog.current?.showModal();
+                }}
+                className={cn(
+                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
+                  {
+                    [NBAstyleData[winningTeam].primaryBGstyle]: true,
+                    [NBAstyleData[winningTeam].secondaryBorderStyle]: true,
+                    [NBAstyleData[winningTeam].primaryPlainText]: true,
+                  }
+                )}
+              >
+                {NBAteamData[winningTeam].name}
+              </button>
+            </td>
+            <td className="px-1 text-center font-semibold">{splits}</td>
+            <td>
+              <button
+                onClick={() => {
+                  setActiveTeam(losingTeam);
+                  dialog.current?.showModal();
+                }}
+                className={cn(
+                  "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                  {
+                    [NBAstyleData[losingTeam].primaryBGstyle]: true,
+                    [NBAstyleData[losingTeam].secondaryBorderStyle]: true,
+                    [NBAstyleData[losingTeam].primaryPlainText]: true,
+                  }
+                )}
+              >
+                {NBAteamData[losingTeam].location}{" "}
+                {NBAteamData[losingTeam].name}
+              </button>
+              <button
+                onClick={() => {
+                  setActiveTeam(losingTeam);
+                  dialog.current?.showModal();
+                }}
+                className={cn(
+                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
+                  {
+                    [NBAstyleData[losingTeam].primaryBGstyle]: true,
+                    [NBAstyleData[losingTeam].secondaryBorderStyle]: true,
+                    [NBAstyleData[losingTeam].primaryPlainText]: true,
+                  }
+                )}
+              >
+                {NBAteamData[losingTeam].name}
+              </button>
+            </td>
+          </tr>
+        );
+      });
 
   return (
     <>
@@ -176,7 +250,7 @@ const NBAFinalsList: React.FC = () => {
               {["PHI", "SYR"].includes(activeTeam) && "76ers"}
               {!["OKC", "SEA", "PHI", "SYR"].includes(activeTeam) &&
                 NBAteamData[activeTeam].name}{" "}
-              Finals
+              {tableMode === "Finals" ? "" : tableMode} Finals
             </h1>
             <table>
               <tbody>{nbaFinals(activeTeam)}</tbody>
@@ -188,6 +262,9 @@ const NBAFinalsList: React.FC = () => {
         <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
           NBA Champions
         </h1>
+      </div>
+      <div className="my-2 flex w-full justify-center">
+        <TableModeInputs />
       </div>
       <table className="w-full sm:w-auto">
         <thead className="bg-nba text-white">

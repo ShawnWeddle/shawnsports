@@ -518,13 +518,13 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   },],
 },
 "LAL":{
-  "2024":[],
-  "2025":[{
+  "2024":[{
     nativeTeam: "LAL",
-    pickCode: "LAL-2025",
-    year: 2025,
-    notes: ["New Orleans can choose to receive either the Lakers' 2024 or 2025 picks."],
+    pickCode: "LAL-2024",
+    year: 2024,
+    notes: ["Los Angeles has not yet traded this pick."],
   },],
+  "2025":[],
   "2026":[{
     nativeTeam: "LAL",
     pickCode: "LAL-2026",
@@ -702,17 +702,18 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     year: 2024,
     notes: ["New Orleans will receive the greater of their native pick and Milwaukee's pick."],
     swap: "positive",
-  },{
-    nativeTeam: "LAL",
-    pickCode: "LAL-2024",
-    year: 2024,
-    notes: ["Traded from Los Angeles to New Orleans. New Orleans can choose to receive either the Los Angeles Lakers' 2024 or 2025 pick."],
   },],
   "2025":[{
     nativeTeam: "NOP",
     pickCode: "NOP-2025",
     year: 2025,
     notes: ["New Orleans has not yet traded this pick."],
+  },
+  {
+    nativeTeam: "LAL",
+    pickCode: "LAL-2025",
+    year: 2025,
+    notes: ["Traded from Los Angeles to New Orleans."],
   },],
   "2026":[{
     nativeTeam: "NOP",

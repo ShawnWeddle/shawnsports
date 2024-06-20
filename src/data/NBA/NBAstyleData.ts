@@ -307,6 +307,15 @@ export const NBAstyleData: {[Key in AllNBATeamType] : {
     secondaryTextStyle: "text-white",
     secondaryBorderStyle: "border-[#C8102E]",
   },
+  KCK:{
+    primary: "#5A2D81",
+    secondary: "#63727A",  
+    primaryBGstyle: "bg-[#5A2D81]",
+    primaryPlainText: "text-white",
+    primaryTextStyle: "text-[#5A2D81]",
+    secondaryTextStyle: "text-white",
+    secondaryBorderStyle: "border-[#63727A]",
+  },
   MNL:{
     primary: "#FDB927",
     secondary: "#552583",  

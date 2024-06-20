@@ -3,8 +3,7 @@ import { cn } from "~/utils/cn";
 import { NFLteamData, type AllNFLTeamType } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";
-import { AFCChampData } from "~/data/NFL/ConferenceChampData";
-import { NFCChampData } from "~/data/NFL/ConferenceChampData";
+import { AFCChampData, NFCChampData } from "~/data/NFL/ConferenceChampData";
 import { nameMatcher } from "~/utils/nfl";
 
 type TableModeType = "Super Bowls" | "AFC" | "NFC";

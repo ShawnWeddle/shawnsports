@@ -26,7 +26,7 @@ export const years = [
 ] as const;
 
 export type NBATeamType = typeof nbaTeams[number];
-export type AllNBATeamType = NBATeamType | "SEA" | "WSB" | "STL" | "PHW" | "SYR" | "MNL" | "ROC" | "BAL" | "NJN" | "SFW" | "FWP" | "WSC" | "CHS"
+export type AllNBATeamType = NBATeamType | "SEA" | "WSB" | "STL" | "PHW" | "SYR" | "MNL" | "ROC" | "BAL" | "NJN" | "SFW" | "FWP" | "WSC" | "CHS" | "KCK";
 export type PickYearType = typeof years[number];
 export type PickCodeType = `${NBATeamType}-${PickYearType}`;
 
@@ -238,6 +238,11 @@ export const NBAteamData: {
     rank: 100,
     location: "Fort Wayne",
     name: "Pistons",
+  },
+  KCK: {
+    rank: 100,
+    location: "Kansas City",
+    name: "Kings",
   },
   MNL:{  
     rank: 100,

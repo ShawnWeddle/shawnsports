@@ -111,13 +111,13 @@ const NBApickTable: React.FC = () => {
         <thead>
           <tr className="bg-nba text-white sm:text-xl">
             <th>Team</th>
-            <th>2024</th>
             <th>2025</th>
             <th>2026</th>
             <th>2027</th>
             <th>2028</th>
             <th>2029</th>
             <th>2030</th>
+            <th>2031</th>
           </tr>
         </thead>
         <tbody className="text-xs sm:text-base">{NBArows}</tbody>

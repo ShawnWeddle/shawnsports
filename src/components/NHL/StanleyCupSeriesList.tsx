@@ -28,7 +28,7 @@ const StanleyCupSeriesList: React.FC = () => {
       const { year, splits, winningTeam, losingTeam } = series;
       if (year === 2005) {
         return (
-          <tr key={index} className="even:bg-mlb/10">
+          <tr key={index} className="even:bg-nhl/10">
             <td className="px-1 text-center font-semibold">{year}</td>
             <td colSpan={3} className="py-1 text-center font-semibold">
               No 2004-05 NHL season

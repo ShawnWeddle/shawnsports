@@ -27,8 +27,8 @@ const SuperBowlList: React.FC = () => {
 
   const TableModeInputs: React.FC = () => {
     return (
-      <fieldset className="rounded-xl border p-2">
-        <div className="flex justify-start">
+      <fieldset className="rounded-xl border p-2 sm:flex sm:gap-1">
+        <div className="flex justify-start sm:border-r">
           <input
             type="radio"
             id="superbowl"
@@ -41,7 +41,7 @@ const SuperBowlList: React.FC = () => {
             Super Bowls
           </label>
         </div>
-        <div className="flex justify-start">
+        <div className="flex justify-start sm:border-r">
           <input
             type="radio"
             id="AFC"

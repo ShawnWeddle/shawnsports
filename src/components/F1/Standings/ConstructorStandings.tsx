@@ -15,6 +15,7 @@ export const ConstructorStandings: React.FC = () => {
         key={index}
         className="border-b-2 border-gray-200 font-semibold last:border-0"
       >
+        <td className="px-1 text-center"> {index + 1} </td>
         <td
           className={cn("px-3", {
             [F1styleData[constructor].primaryBGstyle]: true,
@@ -39,6 +40,7 @@ export const ConstructorStandings: React.FC = () => {
       <table className="sm:mx-4 sm:mb-4">
         <thead>
           <tr>
+            <td></td>
             <td></td>
             <td>
               <p className="text-center text-sm font-bold text-gray-500">P</p>

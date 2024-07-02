@@ -149,28 +149,34 @@ export const FormulaOneRaceResults : F1RaceType[] = [
   },
   {
     location: "Spain",
-    finalOrder: [],
+    finalOrder: [
+      "VER", "NOR", "HAM", "RUS", "LEC", "SAI", "PIA", "PER", "GAS", "OCO", "HUL", "ALO", "ZHO", "STR", "RIC", "BOT", "MAG", "ALB", "TSU", "SAR"
+    ],
     DNFs: [],
-    fastestLap: "VER",
-    polePosition: "VER",
+    fastestLap: "NOR",
+    polePosition: "NOR",
     sprint: false,
-    completed: false,
+    completed: true,
   },
   {
     location: "Austria",
-    finalOrder: [],
+    finalOrder: [
+      "VER", "PIA", "NOR", "RUS", "SAI", "HAM", "LEC", "PER", "MAG", "STR", "OCO", "GAS", "TSU", "RIC", "ALO", "SAR", "ALB", "BOT", "HUL", "ZHO"
+    ],
     DNFs: [],
     sprint: true,
-    completed: false,
+    completed: true,
   },
   {
     location: "Austria",
-    finalOrder: [],
+    finalOrder: [
+      "RUS", "PIA", "SAI", "HAM", "VER", "HUL", "PER", "MAG", "RIC", "GAS", "LEC", "OCO", "STR", "TSU", "ALB", "BOT", "ZHO", "ALO", "SAR", "NOR"
+    ],
     DNFs: [],
-    fastestLap: "VER",
+    fastestLap: "ALO",
     polePosition: "VER",
     sprint: false,
-    completed: false,
+    completed: true,
   },
   {
     location: "Great Britain",

@@ -218,6 +218,35 @@ export const calculatePoints = (place: number, sprint: boolean, fastestLap: bool
   }
 }
 
+export const beatTeammate = (driver: DriverCode24Type, teammates: DriverCode24Type[], results: DriverCode24Type[]) : boolean | undefined => {
+  const driverFinish = results.indexOf(driver);
+
+  if(driverFinish === -1) return undefined;
+
+  const teammate1 = teammates[0];
+  const teammate2 = teammates[1];
+
+  let returnValue: boolean | undefined = undefined;
+
+  if(teammate1){
+    const teammateFinish = results.indexOf(teammate1);
+
+    if(teammateFinish !== -1){
+      returnValue = driverFinish < teammateFinish;
+    }
+  }
+
+  if(teammate2){
+    const teammateFinish = results.indexOf(teammate2);
+
+    if(teammateFinish !== -1){
+      returnValue = driverFinish < teammateFinish;
+    }
+  }
+
+  return returnValue;
+}
+
 export interface RaceModeProps {
   raceMode: RaceModeType;
 }

@@ -1,12 +1,14 @@
-import { driverCodes2024, constructorNames2024, driverToConstructor2024, calculatePoints, constructorToDrivers2024 } from "~/data/F1/2024/F1data24";
+import { driverCodes2024, constructorNames2024, driverToConstructor2024, calculatePoints, constructorToDrivers2024, beatTeammate } from "~/data/F1/2024/F1data24";
 import type { DriverCode24Type, ConstructorName24Type } from "~/data/F1/2024/F1data24";
 import type { RaceResultsType, F1RaceType } from "~/data/F1/2024/raceResults2024";
+import { driverTeammates2024 } from "./HandleActivation24";
 import { flip2DArrays } from "~/utils/cuA";
 import { dcSort } from "~/utils/sorting";
 
 type FullDriverResultType = {
   driverName: DriverCode24Type | undefined;
   finishPosition: number | "DNF" | "DNR" | "DQ";
+  beatTeammate: boolean | undefined;
   sprint: boolean;
   fastestLap: boolean;
   polePosition: boolean;
@@ -42,6 +44,7 @@ export const resultsSortedByPlace = (results: RaceResultsType) => {
           fastestLap: driver === fastestLap,
           polePosition: driver === polePosition,
           finishPosition: place,
+          beatTeammate: undefined,
           points: 1,
           completed,
         }
@@ -60,6 +63,7 @@ export const resultsSortedByPlace = (results: RaceResultsType) => {
           fastestLap: false,
           polePosition: driver === polePosition,
           finishPosition: "DNF",
+          beatTeammate: undefined,
           points: 0,
           completed
         }
@@ -78,6 +82,7 @@ export const resultsSortedByPlace = (results: RaceResultsType) => {
         fastestLap: false,
         polePosition: driver === polePosition,
         finishPosition: "DQ",
+        beatTeammate: undefined,
         points: 0,
         completed,
       }
@@ -112,7 +117,7 @@ export const resultsSortedByPlace = (results: RaceResultsType) => {
     return fullArray;
   }
 
-  return {headers: headers, fullResults: fullFinishOrder(), DNFs: fullDNFOrder(), DQs: fullDQOrder() };
+  return {headers, fullResults: fullFinishOrder(), DNFs: fullDNFOrder(), DQs: fullDQOrder() };
 }
 
 // Results Sorted By Driver * Results Sorted By Driver * Results Sorted By Driver //
@@ -121,12 +126,14 @@ export const resultsSortedByDriver = (results: RaceResultsType, order: DriverCod
   const findPlaceArray = (driver: DriverCode24Type) => {
     const driverArray: FullDriverResultType[] = results.map((result) => {
       const { finalOrder, DNFs, DQs, sprint, fastestLap, polePosition, completed } = result;
-      return{
+
+      return {
         driverName: (finalOrder.includes(driver) || DNFs.includes(driver)) ? driver : undefined,
         sprint: sprint,
         fastestLap: driver === fastestLap,
         polePosition: driver === polePosition,
         finishPosition: finalOrder.includes(driver) ? finalOrder.indexOf(driver) + 1 : DNFs.includes(driver) ? "DNF" : DQs?.includes(driver) ? "DQ" : "DNR",
+        beatTeammate: beatTeammate(driver, driverTeammates2024[driver], finalOrder),
         points: 0,
         completed,
       }
@@ -138,7 +145,7 @@ export const resultsSortedByDriver = (results: RaceResultsType, order: DriverCod
     return findPlaceArray(driver);
   })
 
-  return { fullResults: fullResults }
+  return { fullResults }
 }
 
 // Create Driver and Constructor Standings * Create Driver and Constructor Standings //
@@ -229,22 +236,24 @@ export const createStandings = (results: RaceResultsType) => {
     })
   });
 
-  const driverStandingsArray = driverCodes2024.map((driver) => {
-    const driverT = {
-      name: driver,
-      points: driverStandings[driver].total,
-      places: driverPlaces[driver] ?? [],
-    }
-    return driverT;
-  }).sort((a,b) => dcSort(a,b));
+  
 
   const constructorStandingsArray = constructorNames2024.map((constructor) => {
-    const constructorT = {
+    const constructorInfo = {
       name: constructor,
       points: constructorStandings[constructor].total,
       places: constructorPlaces[constructor] ?? [],
     }
-    return constructorT;
+    return constructorInfo;
+  }).sort((a,b) => dcSort(a,b));
+
+  const driverStandingsArray = driverCodes2024.map((driver) => {
+    const driverInfo = {
+      name: driver,
+      points: driverStandings[driver].total,
+      places: driverPlaces[driver] ?? [],
+    }
+    return driverInfo;
   }).sort((a,b) => dcSort(a,b));
 
   const driverOrder = driverStandingsArray.map((driver) => {
@@ -254,6 +263,20 @@ export const createStandings = (results: RaceResultsType) => {
   const constructorOrder = constructorStandingsArray.map((constructor) => {
     return constructor.name;
   })
+
+  const driverByConstructorOrder = constructorOrder.map((constructor) => {
+    const drivers = constructorToDrivers2024(constructor).map((driver) => {
+      const driverInfo = {
+        name: driver,
+        points: driverStandings[driver].total,
+        places: driverPlaces[driver] ?? [],
+      }
+      return driverInfo;
+    }).sort((a,b) => dcSort(a,b)).map((driver) => {
+      return driver.name
+    })
+    return drivers
+  }).flat();
 
   const findPlaceArray = (driver: DriverCode24Type) => {
     const driverArray: FullDriverResultType[] = results.map((result) => {
@@ -266,6 +289,7 @@ export const createStandings = (results: RaceResultsType) => {
         fastestLap: driver === fastestLap,
         polePosition: driver === polePosition,
         finishPosition: place !== -1 ? place : "DNF",
+        beatTeammate: undefined,
         points,
         completed,
       }
@@ -290,6 +314,7 @@ export const createStandings = (results: RaceResultsType) => {
         driverName: place.driverName,
         points: place.points,
         finishPosition: place.finishPosition,
+        beatTeammate: undefined,
         sprint: place.sprint,
         fastestLap: place.fastestLap,
         polePosition: place.polePosition,
@@ -319,6 +344,7 @@ export const createStandings = (results: RaceResultsType) => {
     constructorStandingsArray,
     driverOrder,
     constructorOrder,
+    driverByConstructorOrder,
     driverPlaces,
     constructorPlaces,
     driverPodiums,

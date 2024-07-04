@@ -3,9 +3,14 @@ import { TableHeaders } from "./TableHeaders";
 import { RaceResultTable } from "~/components/F1/Tables/RaceResultTable";
 import { DriverResultTable } from "~/components/F1/Tables/DriverResultTable";
 import { RunningResultTable } from "~/components/F1/Tables/RunningTotalsTable";
+import { TeammateBattleTable } from "./TeammateBattleTable";
 import type { RaceModeType } from "~/data/F1/2023/F1data23";
 
-type TableModeType = "DriverSort" | "PlaceSort" | "RunningTotal";
+type TableModeType =
+  | "DriverSort"
+  | "PlaceSort"
+  | "RunningTotal"
+  | "TeammateBattle";
 
 const FormulaOneTable: React.FC = () => {
   const [tableMode, setTableMode] = useState<TableModeType>("PlaceSort");
@@ -26,7 +31,7 @@ const FormulaOneTable: React.FC = () => {
             }}
           />
           <label htmlFor="Place" className="px-1">
-            Sorted by place
+            Sorted by Place
           </label>
         </div>
         <div className="flex justify-start">
@@ -39,7 +44,7 @@ const FormulaOneTable: React.FC = () => {
             }}
           />
           <label htmlFor="Driver" className="px-1">
-            Sorted by driver
+            Sorted by Driver
           </label>
         </div>
         <div className="flex justify-start">
@@ -52,7 +57,20 @@ const FormulaOneTable: React.FC = () => {
             }}
           />
           <label htmlFor="Running" className="px-1">
-            Cumulative points
+            Cumulative Points
+          </label>
+        </div>
+        <div className="flex justify-start">
+          <input
+            type="radio"
+            id="Teammate"
+            checked={tableMode === "TeammateBattle"}
+            onChange={() => {
+              setTableMode("TeammateBattle");
+            }}
+          />
+          <label htmlFor="Teammate" className="px-1">
+            Teammate Battle
           </label>
         </div>
       </fieldset>
@@ -133,6 +151,9 @@ const FormulaOneTable: React.FC = () => {
             )}
             {tableMode === "RunningTotal" && (
               <RunningResultTable raceMode={raceMode} />
+            )}
+            {tableMode === "TeammateBattle" && (
+              <TeammateBattleTable raceMode={raceMode} />
             )}
           </tbody>
         </table>

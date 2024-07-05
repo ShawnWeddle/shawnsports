@@ -183,6 +183,13 @@ export const NHLstyleData: { [Key in AllNHLTeamType] : {
     secondaryTextStyle: "text-[#CFC493]",
     secondaryBorderStyle: "border-[#CFC493]",
     primaryPlainText: "text-white",
+  }, "QUE": {
+    primary: "#DA291C",
+    secondary: "#005EB8",
+    primaryBGstyle: "bg-[#DA291C]",
+    secondaryTextStyle: "text-[#005EB8]",
+    secondaryBorderStyle: "border-[#005EB8]",
+    primaryPlainText: "text-white",
   }, "SEA": {
     primary: "#001628",
     secondary: "#99D9D9",

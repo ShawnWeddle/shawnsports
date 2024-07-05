@@ -288,12 +288,12 @@ export const MLBstyleData: { [Key in AllMLBTeamType] : {
     secondaryBorderStyle: "border-[#8A8D8F]",
     primaryPlainText: "text-black",
   },
-  HXU:{
-    primary: "#EB6E1F",
-    secondary: "#002D62",
-    primaryBGstyle: "bg-[#EB6E1F]",
-    secondaryTextStyle: "text-[#002D62]",
-    secondaryBorderStyle: "border-[#002D62]",
+  XXX:{
+    primary: "#FFFFFF",
+    secondary: "#000000",
+    primaryBGstyle: "bg-[#FFFFFF]",
+    secondaryTextStyle: "text-[#000000]",
+    secondaryBorderStyle: "border-[#000000]",
     primaryPlainText: "text-black",
   },
   MLB:{
@@ -302,6 +302,14 @@ export const MLBstyleData: { [Key in AllMLBTeamType] : {
     primaryBGstyle: "bg-[#13274F]",
     secondaryTextStyle: "text-[#CE1141]",
     secondaryBorderStyle: "border-[#CE1141]",
+    primaryPlainText: "text-white",
+  },
+  MTL:{
+    primary: "#003087",
+    secondary: "#E4002B",
+    primaryBGstyle: "bg-[#003087]",
+    secondaryTextStyle: "text-[#E4002B]",
+    secondaryBorderStyle: "border-[#E4002B]",
     primaryPlainText: "text-white",
   },
   NYG:{

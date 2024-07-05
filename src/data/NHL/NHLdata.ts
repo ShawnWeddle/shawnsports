@@ -7,7 +7,7 @@ export const activeNHLTeams = [
 
 export type NHLTeamType = typeof activeNHLTeams[number];
 
-export type AllNHLTeamType = NHLTeamType | "MMR" | "MNS";
+export type AllNHLTeamType = NHLTeamType | "MMR" | "MNS" | "QUE";
 
 export type teamInfoType = {rank: number, code: string, location: string, name: string };
 
@@ -137,6 +137,11 @@ export const NHLteamData: { [Key in AllNHLTeamType] : teamInfoType} = {
     code: "PIT",
     location: "Pittsburgh",
     name: "Penguins",
+  }, "QUE": {
+    rank: 66,
+    code: "QUE",
+    location: "Quebec",
+    name: "Nordiques",
   }, "SEA": {
     rank: 12,
     code: "SEA",

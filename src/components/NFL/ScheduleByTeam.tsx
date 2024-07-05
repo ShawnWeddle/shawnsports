@@ -1,6 +1,6 @@
 import { cn } from "~/utils/cn";
 import { useNFLScheduleContext } from "~/hooks/useNFLSchedule";
-import { NFLscheduleData, type GameType } from "~/data/NFL/NFLscheduleData";
+import { NFLscheduleData, type GameType } from "~/data/NFL/NFLScheduleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { type NFLTeamType, NFLteamData, nullArray18 } from "~/data/NFL/NFLdata";
 import {
@@ -164,8 +164,7 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
       </div>
       <div className="flex justify-center">
         <button
-          disabled
-          className="p-1 line-through"
+          className="p-1 hover:font-semibold"
           onClick={() => {
             const clearAllTeamGames = allVariableGames.map((game) => {
               const clearGame = { Code: game.Code, Winner: undefined };

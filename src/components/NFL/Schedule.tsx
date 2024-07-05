@@ -6,7 +6,7 @@ import {
   type NFLTeamType,
   NFLteamData,
 } from "~/data/NFL/NFLdata";
-import { NFLscheduleData } from "~/data/NFL/NFLscheduleData";
+import { NFLscheduleData } from "~/data/NFL/NFLScheduleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import ScheduleForTeam from "./ScheduleByTeam";
 import { recordForTeam } from "~/data/NFL/NFLscheduleRecord";
@@ -158,7 +158,7 @@ const NFLSchedule: React.FC = () => {
                 setScheduleMode("Menu");
               }}
             >
-              <div className="flex items-center justify-center text-sm">
+              <div className="flex items-center justify-center text-sm hover:font-bold">
                 <FaArrowLeft />
                 <span className="px-1 text-base"> Back to Menu</span>
               </div>
@@ -170,8 +170,7 @@ const NFLSchedule: React.FC = () => {
             <div className="grid grid-cols-2 p-2">{NFLTeams}</div>
             <div className="flex justify-center">
               <button
-                disabled
-                className="p-2 line-through"
+                className="p-2 hover:font-semibold"
                 onClick={() => {
                   dialog.current?.showModal();
                 }}
@@ -192,7 +191,7 @@ const NFLSchedule: React.FC = () => {
                   setScheduleMode("Menu");
                 }}
               >
-                <div className="flex items-center justify-center text-sm">
+                <div className="flex items-center justify-center text-sm hover:font-bold">
                   <FaArrowLeft />
                   <span className="mb-2 px-1 text-base"> Back to Menu</span>
                 </div>

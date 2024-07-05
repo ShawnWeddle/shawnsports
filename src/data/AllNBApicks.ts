@@ -8,15 +8,15 @@ export type PickType = { nativeTeam: NBATeamType, pickCode: PickCodeType, year: 
 export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickType[]}} = {
 "ATL":{
   "2025":[{
-    nativeTeam: "SAC",
-    pickCode: "SAC-2025",
-    year: 2025,
-    notes: ["Traded from Sacramento to Atlanta."],
-  },{
     nativeTeam: "LAL",
     pickCode: "LAL-2025",
     year: 2025,
     notes: ["Traded from Los Angeles to New Orleans to Atlanta."],
+  },{
+    nativeTeam: "SAC",
+    pickCode: "SAC-2025",
+    year: 2025,
+    notes: ["Traded from Sacramento to Atlanta."],
   },],
   "2026":[{
     nativeTeam: "ATL",

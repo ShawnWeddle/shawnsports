@@ -1,5 +1,5 @@
 import { type NFLTeamType } from "./NFLdata";
-import { type GameType } from "./NFLScheduleData";
+import { type GameType } from "./NFLscheduleData";
 
 export const recordForTeam = (team: NFLTeamType, games: GameType[]) : {wins: number, losses: number, unpicked: number} => {
   let wins = 0;

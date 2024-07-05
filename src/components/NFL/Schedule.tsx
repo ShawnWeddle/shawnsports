@@ -6,7 +6,7 @@ import {
   type NFLTeamType,
   NFLteamData,
 } from "~/data/NFL/NFLdata";
-import { NFLscheduleData } from "~/data/NFL/NFLScheduleData";
+import { NFLscheduleData } from "~/data/NFL/NFLscheduleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import ScheduleForTeam from "./ScheduleByTeam";
 import { recordForTeam } from "~/data/NFL/NFLscheduleRecord";

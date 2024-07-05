@@ -4,7 +4,7 @@ import {
   type GameWinner,
   type NFLScheduleType,
   NFLscheduleData,
-} from "~/data/NFL/NFLScheduleData";
+} from "~/data/NFL/NFLscheduleData";
 
 export const NFLScheduleContext = createContext<ContextType | null>(null);
 

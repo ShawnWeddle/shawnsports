@@ -230,6 +230,29 @@ const StanleyCupSeriesList: React.FC = () => {
         </thead>
         <tbody>{stanleyCups(null)}</tbody>
       </table>
+      {tableMode === "Eastern" && (
+        <div className="flex w-full justify-center">
+          <p className="mb-4 w-96 text-center italic">
+            The Eastern Conference was called the Prince of Wales Conference
+            from 1982-93
+          </p>
+        </div>
+      )}
+      {tableMode === "Western" && (
+        <div className="flex w-full justify-center">
+          <p className="mb-4 w-96 text-center italic">
+            The Western Conference was called the Clarence Campbell Conference
+            from 1982-93
+          </p>
+        </div>
+      )}
+      {tableMode !== "Stanley Cups" && (
+        <div className="flex w-full justify-center">
+          <p className="mb-4 w-96 text-center italic">
+            The 2021 playoffs were not separated by conference
+          </p>
+        </div>
+      )}
     </>
   );
 };

@@ -7,6 +7,12 @@ import {
   underPageData,
 } from "~/data/SiteData";
 import { useRouter } from "next/router";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "~/components/ui/accordion";
 
 const HomeNav: React.FC = () => {
   const router = useRouter();
@@ -18,9 +24,12 @@ const HomeNav: React.FC = () => {
     ).map((key, index) => {
       const newKey = TitlesEnum.parse(key);
       return (
-        <tr
+        <button
           key={index}
-          className={cn("border-b", {
+          onClick={() => {
+            void router.push(underPageData[newKey].urlName);
+          }}
+          className={cn("flex flex-col border-t", {
             "hover:bg-nba/10": sportMode === "NBA" || sportMode === "WNBA",
             "hover:bg-nfl/10": sportMode === "NFL",
             "hover:bg-nhl/10": sportMode === "NHL",
@@ -29,69 +38,49 @@ const HomeNav: React.FC = () => {
             "hover:bg-cfl/10": sportMode === "CFL",
           })}
         >
-          <td>
-            <div className="flex justify-center">
-              <button
-                className="w-full text-center font-semibold"
-                onClick={() => {
-                  void router.push(underPageData[newKey].urlName);
-                }}
-              >
-                {underPageData[newKey].navTitle}
-              </button>
-            </div>
-          </td>
-          <td>
-            <div className="flex justify-start">
-              <button
-                className="w-full text-start"
-                onClick={() => {
-                  void router.push(underPageData[newKey].urlName);
-                }}
-              >
-                {sportData[key]}
-              </button>
-            </div>
-          </td>
-        </tr>
+          <p className="pl-4 text-lg font-semibold">
+            {underPageData[newKey].navTitle}
+          </p>
+          <p className="pl-12 text-lg">{sportData[key]}</p>
+        </button>
       );
     });
 
     return (
       <>
-        <tr>
-          <td colSpan={2}>
-            <div
+        <Accordion className="w-full" type="single" collapsible>
+          <AccordionItem value="item-1">
+            <AccordionTrigger
               className={cn(
-                "rounded text-center text-2xl font-semibold text-white hover:transition",
+                "rounded px-12 text-center text-2xl font-semibold text-white",
                 {
-                  "bg-nba": sportMode === "NBA" || sportMode === "WNBA",
-                  "bg-nfl": sportMode === "NFL",
-                  "bg-nhl": sportMode === "NHL",
-                  "bg-mlb": sportMode === "MLB",
-                  "bg-formulaOne": sportMode === "F1",
-                  "bg-cfl": sportMode === "CFL",
+                  "text-nba hover:bg-nba hover:text-white":
+                    sportMode === "NBA" || sportMode === "WNBA",
+                  "text-nfl hover:bg-nfl hover:text-white": sportMode === "NFL",
+                  "text-nhl hover:bg-nhl hover:text-white": sportMode === "NHL",
+                  "text-mlb hover:bg-mlb hover:text-white": sportMode === "MLB",
+                  "text-formulaOne hover:bg-formulaOne hover:text-white":
+                    sportMode === "F1",
+                  "text-cfl hover:bg-cfl hover:text-white": sportMode === "CFL",
                 }
               )}
             >
               {sportMode === "F1" ? "Formula One" : sportMode}
-            </div>
-          </td>
-        </tr>
-        {pageLinks}
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="flex flex-col">{pageLinks}</div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </>
     );
   };
 
   return (
-    <div className="flex justify-center">
-      <table>
-        <tbody>
-          {pageHeads.map((sport) => {
-            return sportMenu(sport);
-          })}
-        </tbody>
-      </table>
+    <div className="flex w-full flex-col justify-center lg:px-8">
+      {pageHeads.map((sport) => {
+        return sportMenu(sport);
+      })}
     </div>
   );
 };

@@ -18,12 +18,31 @@ const config = {
       },
     },
     extend: {
+      width: {
+        "22":"5.5rem"
+      },
+      height: {
+        "22":"5.5rem",
+        "13":"3.25rem",
+      },
+      spacing: {
+        "13":"3.25rem",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        formulaOne: "#E10600",
+        home: "#00A806",
+        nba: "#E07800", 
+        nfl: "#0000A8",
+        nfl50: "#8080FF",
+        nhl: "#008080",
+        mlb: "#A80000",
+        cfl: "#7000A8",
+        ylo: "#E0E000",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

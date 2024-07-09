@@ -180,16 +180,12 @@ export const FormulaOneRaceResults : F1RaceType[] = [
   },
   {
     location: "Great Britain",
-    finalOrder: [
-      "HAM", "VER", "NOR", "PIA", "SAI", "HUL", "STR", "ALO", "ALB", "TSU", "SAR", "MAG", "RIC", "LEC", "BOT", "OCO", "PER", "ZHO"
-    ],
-    DNFs: [
-      "RUS", "GAS"
-    ],
+    finalOrder: [],
+    DNFs: [],
     fastestLap: "VER",
     polePosition: "VER",
     sprint: false,
-    completed: true,
+    completed: false,
   },
   {
     location: "Hungary",

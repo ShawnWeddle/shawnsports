@@ -22,7 +22,7 @@ const HomeComp: React.FC = () => {
         </CardHeader>
       </Card>
       <HomeNav />
-      <Card className="m-1">
+      <Card className="m-4 border border-home">
         <CardHeader>
           <CardTitle>Note from the developer</CardTitle>
         </CardHeader>

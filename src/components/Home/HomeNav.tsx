@@ -13,6 +13,35 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "~/components/ui/accordion";
+import {
+  FaBaseball,
+  FaBasketball,
+  FaFootball,
+  FaTrophy,
+  FaHockeyPuck,
+} from "react-icons/fa6";
+import { BsArrowReturnRight } from "react-icons/bs";
+
+const Icon = (sport: PageHeadsType) => {
+  switch (sport) {
+    case "Home":
+      return <></>;
+    case "NBA":
+      return <FaBasketball />;
+    case "NFL":
+      return <FaFootball />;
+    case "F1":
+      return <FaTrophy />;
+    case "MLB":
+      return <FaBaseball />;
+    case "NHL":
+      return <FaHockeyPuck />;
+    case "WNBA":
+      return <FaBasketball />;
+    case "CFL":
+      return <FaFootball />;
+  }
+};
 
 const HomeNav: React.FC = () => {
   const router = useRouter();
@@ -38,10 +67,18 @@ const HomeNav: React.FC = () => {
             "hover:bg-cfl/10": sportMode === "CFL",
           })}
         >
-          <p className="pl-4 text-lg font-semibold">
+          <p className="pl-12 text-lg font-semibold">
             {underPageData[newKey].navTitle}
           </p>
-          <p className="pl-12 text-lg">{sportData[key]}</p>
+          <p className="pl-16 text-lg">
+            <div className="flex gap-1">
+              <div className="pt-1">
+                <BsArrowReturnRight />
+              </div>
+              {"  "}
+              {sportData[key]}
+            </div>
+          </p>
         </button>
       );
     });
@@ -65,7 +102,10 @@ const HomeNav: React.FC = () => {
                 }
               )}
             >
-              {sportMode === "F1" ? "Formula One" : sportMode}
+              <div className="flex gap-4">
+                {sportMode === "F1" ? "Formula One" : sportMode}{" "}
+                <div className="pt-1">{Icon(sportMode)}</div>
+              </div>
             </AccordionTrigger>
             <AccordionContent>
               <div className="flex flex-col">{pageLinks}</div>

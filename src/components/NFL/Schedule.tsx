@@ -1,5 +1,5 @@
 import { cn } from "~/utils/cn";
-import { useState, useRef, Fragment } from "react";
+import { useState, Fragment } from "react";
 import { useNFLScheduleContext } from "~/hooks/useNFLSchedule";
 import {
   nflDivisions,
@@ -11,14 +11,24 @@ import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import ScheduleForTeam from "./ScheduleByTeam";
 import { recordForTeam } from "~/data/NFL/NFLscheduleRecord";
 import { FaArrowLeft } from "react-icons/fa";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "../ui/alert-dialog";
+import DialogModalContent from "../Page/DialogModal";
 
 const NFLSchedule: React.FC = () => {
   const [scheduleMode, setScheduleMode] = useState<"Menu" | "Team">("Menu");
   const [activeTeam, setActiveTeam] = useState<NFLTeamType | "NFL">("NFL");
 
   const { nflScheduleState, nflScheduleDispatch } = useNFLScheduleContext();
-
-  const dialog = useRef<HTMLDialogElement>(null);
 
   const NFLTeams = Object.entries(nflDivisions).map(
     (conference, conferenceIndex) => {
@@ -61,7 +71,7 @@ const NFLSchedule: React.FC = () => {
                         }
                       )}
                     >
-                      2023 Record: {wins}-{losses}
+                      2024 Record: {wins}-{losses}
                     </p>
                   </div>
                 </td>
@@ -100,53 +110,10 @@ const NFLSchedule: React.FC = () => {
 
   return (
     <>
-      <dialog
-        ref={dialog}
-        className="mx-auto my-auto w-full max-w-screen-sm rounded-xl align-middle backdrop:bg-gray-500/50"
-      >
-        <div className="flex justify-end">
-          <button
-            onClick={() => {
-              dialog.current?.close();
-            }}
-            className="font-semibold"
-          >
-            ✕
-          </button>
-        </div>
-        <p className="text-center">
-          Are you sure you want to clear all selections?
-        </p>
-        <div className="flex justify-center gap-2">
-          <button
-            onClick={() => {
-              console.log(NFLscheduleData);
-              nflScheduleDispatch({
-                type: "PICK",
-                payload: [...NFLscheduleData.schedule],
-              });
-              console.log(NFLscheduleData);
-              dialog.current?.close();
-            }}
-            className="rounded-lg bg-red-500 p-1 font-semibold text-white"
-          >
-            Clear
-          </button>
-          <button
-            onClick={() => {
-              dialog.current?.close();
-            }}
-            className="rounded-lg bg-gray-500 p-1 text-white"
-          >
-            Cancel
-          </button>
-        </div>
-      </dialog>
-
       <div className="w-full bg-nfl/10 sm:max-w-screen-sm">
         <div className="flex w-full justify-center">
           <h1 className="mx-2 mt-4 text-2xl font-semibold sm:text-4xl">
-            2023 {activeTeam} Schedule
+            2024 {activeTeam} Schedule
           </h1>
         </div>
         {scheduleMode === "Team" && (
@@ -169,14 +136,40 @@ const NFLSchedule: React.FC = () => {
           <>
             <div className="grid grid-cols-2 p-2">{NFLTeams}</div>
             <div className="flex justify-center">
-              <button
-                className="p-2 hover:font-semibold"
-                onClick={() => {
-                  dialog.current?.showModal();
-                }}
-              >
-                Clear All Selections
-              </button>
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <button className="p-2 hover:font-semibold">
+                    Clear All Selections
+                  </button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>
+                      Are you sure you want to clear all selections?
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action can not be undone.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel asChild>
+                      <button>Cancel</button>
+                    </AlertDialogCancel>
+                    <AlertDialogAction asChild>
+                      <button
+                        onClick={() => {
+                          nflScheduleDispatch({
+                            type: "PICK",
+                            payload: [...NFLscheduleData.schedule],
+                          });
+                        }}
+                      >
+                        Clear
+                      </button>
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             </div>
           </>
         )}

@@ -1,5 +1,7 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { cn } from "~/utils/cn";
+import { Dialog } from "../ui/dialog";
+import DialogModalContent from "../Page/DialogModal";
 import { NFLteamData, type AllNFLTeamType } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";
@@ -9,8 +11,7 @@ import { nameMatcher } from "~/utils/nfl";
 type TableModeType = "Super Bowls" | "AFC" | "NFC";
 
 const SuperBowlList: React.FC = () => {
-  const dialog = useRef<HTMLDialogElement>(null);
-
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [activeTeam, setActiveTeam] = useState<AllNFLTeamType | null>(null);
   const [tableMode, setTableMode] = useState<TableModeType>("Super Bowls");
 
@@ -71,7 +72,7 @@ const SuperBowlList: React.FC = () => {
     );
   };
 
-  const superBowls = (team: AllNFLTeamType | null) =>
+  const superBowls = (team: AllNFLTeamType | null, inModal: boolean) =>
     activeData(tableMode)
       .filter((game) => {
         if (!team) return true;
@@ -84,32 +85,50 @@ const SuperBowlList: React.FC = () => {
         return (
           <tr key={index} className="even:bg-nfl/10">
             <td className="px-1 text-center font-semibold">
-              {romanNumeral}
-              {wonSB ? (
-                team ? (
-                  nameMatcher(team, winningTeam) ? (
-                    <p className="text-amber-400">★</p>
+              <div className="flex flex-col">
+                <div>
+                  {romanNumeral}
+                  {wonSB ? (
+                    team ? (
+                      nameMatcher(team, winningTeam) ? (
+                        <p className="text-amber-400">★</p>
+                      ) : (
+                        ""
+                      )
+                    ) : (
+                      <p className="text-amber-400">★</p>
+                    )
                   ) : (
                     ""
-                  )
-                ) : (
-                  <p className="text-amber-400">★</p>
-                )
-              ) : (
-                ""
-              )}
+                  )}
+                </div>
+                <div
+                  className={cn("sm:hidden", {
+                    "table-cell sm:table-cell": inModal,
+                  })}
+                >
+                  {year}
+                </div>
+              </div>
             </td>
-            <td className="hidden px-1 text-center font-semibold sm:table-cell">
+            <td
+              className={cn(
+                "hidden px-1 text-center font-semibold sm:table-cell",
+                {
+                  "hidden sm:hidden": inModal,
+                }
+              )}
+            >
               {year}
             </td>
             <td>
               <button
                 onClick={() => {
                   setActiveTeam(winningTeam);
-                  dialog.current?.showModal();
+                  setDialogOpen(true);
                 }}
                 className={cn(
-                  "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
                     [NFLstyleData[winningTeam].primaryBGstyle]: true,
                     [NFLstyleData[winningTeam].secondaryBorderStyle]: true,
@@ -117,24 +136,19 @@ const SuperBowlList: React.FC = () => {
                   }
                 )}
               >
-                {NFLteamData[winningTeam].location}{" "}
-                {NFLteamData[winningTeam].name}
-              </button>
-              <button
-                onClick={() => {
-                  setActiveTeam(winningTeam);
-                  dialog.current?.showModal();
-                }}
-                className={cn(
-                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                  {
-                    [NFLstyleData[winningTeam].primaryBGstyle]: true,
-                    [NFLstyleData[winningTeam].secondaryBorderStyle]: true,
-                    [NFLstyleData[winningTeam].primaryPlainText]: true,
-                  }
-                )}
-              >
-                {NFLteamData[winningTeam].name}
+                <div
+                  className={cn(
+                    "flex flex-col justify-center sm:flex-row sm:gap-1",
+                    {
+                      "sm:flex-col": inModal,
+                    }
+                  )}
+                >
+                  <div className="whitespace-nowrap">
+                    {NFLteamData[winningTeam].location}
+                  </div>
+                  <div>{NFLteamData[winningTeam].name}</div>
+                </div>
               </button>
             </td>
             <td className="whitespace-nowrap px-1 text-center font-semibold">
@@ -144,10 +158,10 @@ const SuperBowlList: React.FC = () => {
               <button
                 onClick={() => {
                   setActiveTeam(losingTeam);
-                  dialog.current?.showModal();
+                  setDialogOpen(true);
                 }}
                 className={cn(
-                  "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
                     [NFLstyleData[losingTeam].primaryBGstyle]: true,
                     [NFLstyleData[losingTeam].secondaryBorderStyle]: true,
@@ -155,59 +169,61 @@ const SuperBowlList: React.FC = () => {
                   }
                 )}
               >
-                {NFLteamData[losingTeam].location}{" "}
-                {NFLteamData[losingTeam].name}
-              </button>
-              <button
-                onClick={() => {
-                  setActiveTeam(losingTeam);
-                  dialog.current?.showModal();
-                }}
-                className={cn(
-                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                  {
-                    [NFLstyleData[losingTeam].primaryBGstyle]: true,
-                    [NFLstyleData[losingTeam].secondaryBorderStyle]: true,
-                    [NFLstyleData[losingTeam].primaryPlainText]: true,
-                  }
-                )}
-              >
-                {NFLteamData[losingTeam].name}
+                <div
+                  className={cn(
+                    "flex flex-col justify-center sm:flex-row sm:gap-1",
+                    {
+                      "sm:flex-col": inModal,
+                    }
+                  )}
+                >
+                  <div className="whitespace-nowrap">
+                    {NFLteamData[losingTeam].location}
+                  </div>
+                  <div>{NFLteamData[losingTeam].name}</div>
+                </div>
               </button>
             </td>
           </tr>
         );
       });
 
+  const modalNamer = (
+    inputTeam: AllNFLTeamType | null,
+    inputMode: TableModeType
+  ) => {
+    if (inputTeam) {
+      const teamName = NFLteamData[inputTeam].name;
+      const final =
+        inputMode === "Super Bowls"
+          ? "Super Bowls"
+          : inputMode === "AFC"
+          ? "AFC" + " Championships"
+          : "NFC" + " Championships";
+      return teamName + " " + final;
+    } else {
+      return "";
+    }
+  };
+
   return (
     <>
-      <dialog
-        ref={dialog}
-        className="m-auto w-full max-w-screen-sm items-center rounded-xl align-middle backdrop:bg-gray-500/50"
+      <Dialog
+        open={dialogOpen}
+        onOpenChange={(isOpen) => {
+          if (isOpen === true) return;
+          setDialogOpen(false);
+        }}
       >
-        <div className="flex w-full justify-end">
-          <button
-            onClick={() => {
-              dialog.current?.close();
-            }}
-            className="font-semibold"
-          >
-            ✕
-          </button>
-        </div>
-        {activeTeam && (
-          <div className="flex flex-col items-center">
-            <h1 className="mb-2 text-center text-2xl font-semibold">
-              {NFLteamData[activeTeam].name} {tableMode}{" "}
-              {tableMode === "Super Bowls" ? "" : " Championships"}
-            </h1>
-            <table>
-              <tbody>{superBowls(activeTeam)}</tbody>
-            </table>
-          </div>
-        )}
-      </dialog>
-
+        <DialogModalContent
+          title={modalNamer(activeTeam, tableMode)}
+          description=""
+        >
+          <table>
+            <tbody>{superBowls(activeTeam, true)}</tbody>
+          </table>
+        </DialogModalContent>
+      </Dialog>
       <div className="flex w-full justify-center">
         <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
           NFL Champions
@@ -219,14 +235,14 @@ const SuperBowlList: React.FC = () => {
       <table className="w-full sm:w-auto">
         <thead className="bg-nfl text-white">
           <tr>
-            <th></th>
-            <th className="hidden sm:inline-block">Year</th>
+            <th className="hidden sm:inline-block"></th>
+            <th>Year</th>
             <th>Winning Team</th>
             <th>Score</th>
             <th>Losing Team</th>
           </tr>
         </thead>
-        <tbody>{superBowls(null)}</tbody>
+        <tbody>{superBowls(null, false)}</tbody>
       </table>
     </>
   );

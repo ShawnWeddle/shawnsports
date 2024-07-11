@@ -1,5 +1,8 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { cn } from "~/utils/cn";
+import { Dialog } from "../ui/dialog";
+import DialogModalContent from "../Page/DialogModal";
+import { Card, CardContent, CardHeader, CardDescription } from "../ui/card";
 import { NFLteamData } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";
@@ -7,8 +10,7 @@ import { SuperLoserData } from "~/data/NFL/SuperLoserData";
 import { type SuperBowlType } from "~/types/ChampTypes";
 
 const SuperLoserList: React.FC = () => {
-  const dialog = useRef<HTMLDialogElement>(null);
-
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [activeSuperBowl, setActiveSuperBowl] = useState<SuperBowlType | null>(
     null
   );
@@ -41,7 +43,7 @@ const SuperLoserList: React.FC = () => {
             key={lIndex}
             onClick={() => {
               setActiveSuperBowl(game);
-              dialog.current?.showModal();
+              setDialogOpen(true);
             }}
             className={cn(
               "w-full border-x-2 px-1 text-center font-semibold first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2 sm:m-0.5 sm:rounded-lg sm:border-y-2",
@@ -74,55 +76,60 @@ const SuperLoserList: React.FC = () => {
       );
     });
 
+  const modalNamer = (game: SuperBowlType | null) => {
+    if (game && game.romanNumeral) {
+      const { romanNumeral, winningTeam, losingTeam, score } = game;
+      return {
+        game: "Super Bowl " + romanNumeral,
+        score:
+          NFLteamData[winningTeam].name +
+          " " +
+          score +
+          " " +
+          NFLteamData[losingTeam].name,
+      };
+    } else {
+      return {
+        game: "",
+        score: "",
+      };
+    }
+  };
+
   return (
     <>
-      <dialog
-        ref={dialog}
-        className="m-auto w-full max-w-screen-sm items-center rounded-xl align-middle backdrop:bg-gray-500/50"
+      <Dialog
+        open={dialogOpen}
+        onOpenChange={(isOpen) => {
+          if (isOpen === true) return;
+          setDialogOpen(false);
+        }}
       >
-        <div className="flex w-full justify-end">
-          <button
-            onClick={() => {
-              dialog.current?.close();
-            }}
-            className="font-semibold"
-          >
-            ✕
-          </button>
-        </div>
-        {activeSuperBowl && (
-          <div className="flex flex-col items-center">
-            <h1 className="text-center text-2xl font-semibold">
-              Super Bowl {activeSuperBowl?.romanNumeral}
-            </h1>
-            <p>
-              {NFLteamData[activeSuperBowl.winningTeam].name}{" "}
-              {activeSuperBowl.score}{" "}
-              {NFLteamData[activeSuperBowl.losingTeam].name}
-            </p>
-            <table>
-              <tbody>{superLosers(activeSuperBowl, true)}</tbody>
-            </table>
-          </div>
-        )}
-      </dialog>
+        <DialogModalContent
+          title={modalNamer(activeSuperBowl).game}
+          description={modalNamer(activeSuperBowl).score}
+        >
+          <table>
+            <tbody>{superLosers(activeSuperBowl, true)}</tbody>
+          </table>
+        </DialogModalContent>
+      </Dialog>
 
       <div className="flex w-full justify-center">
         <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
           Super Losers
         </h1>
       </div>
-      <div className="flex w-full justify-center">
-        <p className="mb-4 w-96 text-center italic">
-          *** Super Losers are players who have not won a Super Bowl, but have
-          played in and lost Super Bowls with more than one team. ***
-        </p>
-      </div>
-      <div>
-        <p className="mb-4 w-96 text-center italic">
-          *** This list is possibly incomplete. ***
-        </p>
-      </div>
+      <Card className="m-2">
+        <CardHeader>
+          <CardDescription>
+            <span className="font-semibold">Super Losers</span> are players who
+            have not won a Super Bowl, but have played in and lost Super Bowls
+            with more than one team.
+          </CardDescription>
+          <CardDescription>This list is likely incomplete.</CardDescription>
+        </CardHeader>
+      </Card>
       <table className="w-full sm:w-auto">
         <thead className="bg-nfl text-white">
           <tr>

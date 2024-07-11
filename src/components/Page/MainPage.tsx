@@ -3,7 +3,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import NavBar from "../Nav/NavBar";
 import NewNavBar from "../Nav/NewNavBar";
-import Footer from "../Footer";
+import Footer from "../Nav/Footer";
 import { cn } from "~/utils/cn";
 import { type PageHeadsType, type UnderPageHeadsType } from "~/data/SiteData";
 

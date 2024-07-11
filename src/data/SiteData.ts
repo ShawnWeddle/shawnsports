@@ -32,10 +32,10 @@ export const F1TitlesDesc: {[Key in F1TitlesType] : string} = {
   "F1_Tables": "See the results for every race this season",
   "F1_Standings": "See the current standings for each driver and constructor",
   "F1_Compare": "Compare cumulative points totals for every driver and constructor in the 2024 F1 season",
-  "F1_Rank": "Rank all 20 drivers from the 2024 season",
+  "F1_Rank": "Rank all 21 drivers from the 2024 season",
 };
 export const NFLTitlesDesc: {[Key in NFLTitlesType] : string} = {
-  "NFL_Schedule": "See every team's schedule for the 2023 NFL season",
+  "NFL_Schedule": "See every team's schedule for the 2024 NFL season",
   "NFL_Super_Losers": "A list of certain special players in NFL history",
   "NFL_Super_Bowls": "See all 57 Super Bowl matchups",
   "NFL_Rank": "Rank all 32 NFL teams",

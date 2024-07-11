@@ -1,11 +1,11 @@
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { cn } from "~/utils/cn";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useNavContext } from "~/hooks/useNavContext";
 import type { PageHeadsType, UnderPageHeadsType } from "~/data/SiteData";
 import { useAuthContext } from "~/hooks/useAuthContext";
 import { MobileResponsiveSMWLogo } from "../Logo";
+import SignIn from "~/components/SignIn";
 
 import {
   Menubar,
@@ -18,7 +18,18 @@ import {
   MenubarTrigger,
 } from "~/components/ui/menubar";
 
-import { CircleUserRound } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "~/components/ui/dialog";
+
+import DialogModalContent from "../Page/DialogModal";
+
+import { CircleUserRound, ChevronDown } from "lucide-react";
 
 interface NavProps {
   pageMode: PageHeadsType;
@@ -31,10 +42,6 @@ const NewNavBar: React.FC<NavProps> = (props: NavProps) => {
 
   const { authState } = useAuthContext();
   const { user } = authState;
-
-  const router = useRouter();
-
-  const dialog = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     navDispatch({
@@ -113,7 +120,9 @@ const NewNavBar: React.FC<NavProps> = (props: NavProps) => {
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>
-        <MenubarTrigger>...</MenubarTrigger>
+        <MenubarTrigger>
+          <ChevronDown />
+        </MenubarTrigger>
         <MenubarContent>
           <MenubarSub>
             <MenubarSubTrigger>MLB</MenubarSubTrigger>
@@ -159,7 +168,14 @@ const NewNavBar: React.FC<NavProps> = (props: NavProps) => {
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>
-        <CircleUserRound className="text-white" />
+        <Dialog>
+          <DialogTrigger>
+            <CircleUserRound className="text-white" />
+          </DialogTrigger>
+          <DialogModalContent title="" description="">
+            <SignIn />
+          </DialogModalContent>
+        </Dialog>
       </MenubarMenu>
     </Menubar>
   );

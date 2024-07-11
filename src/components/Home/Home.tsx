@@ -7,8 +7,14 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
+import { useNavContext } from "~/hooks/useNavContext";
+
+import NewNavBar from "../Nav/NewNavBar";
 
 const HomeComp: React.FC = () => {
+  const { navState, navDispatch } = useNavContext();
+  const { pageMode, underPageMode } = navState;
+
   return (
     <>
       <Card className="m-1 w-fit">

@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
     >
       <div className="flex justify-center">
         <MenubarMenu>
-          <MenubarTrigger className="rounded-lg text-home focus:bg-home data-[state=open]:bg-home">
+          <MenubarTrigger className="rounded-lg from-emerald-500 via-sky-600 to-indigo-600 text-home focus:bg-gradient-to-r focus:text-white data-[state=open]:bg-gradient-to-r data-[state=open]:text-white">
             <Link
               href="https://www.shawnweddle.com/"
               target="_blank"

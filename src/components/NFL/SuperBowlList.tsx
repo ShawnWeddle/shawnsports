@@ -1,12 +1,22 @@
 import { useState } from "react";
 import { cn } from "~/utils/cn";
-import { Dialog } from "../ui/dialog";
-import DialogModalContent from "../Page/DialogModal";
 import { NFLteamData, type AllNFLTeamType } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";
 import { AFCChampData, NFCChampData } from "~/data/NFL/ConferenceChampData";
 import { nameMatcher } from "~/utils/nfl";
+import { Dialog } from "../ui/dialog";
+import DialogModalContent from "../Page/DialogModal";
+import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 
 type TableModeType = "Super Bowls" | "AFC" | "NFC";
 
@@ -26,52 +36,6 @@ const SuperBowlList: React.FC = () => {
     }
   };
 
-  const TableModeInputs: React.FC = () => {
-    return (
-      <fieldset className="rounded-xl border p-2 sm:flex sm:gap-1">
-        <div className="flex justify-start sm:border-r">
-          <input
-            type="radio"
-            id="superbowl"
-            checked={tableMode === "Super Bowls"}
-            onChange={() => {
-              setTableMode("Super Bowls");
-            }}
-          />
-          <label htmlFor="superbowl" className="px-1">
-            Super Bowls
-          </label>
-        </div>
-        <div className="flex justify-start sm:border-r">
-          <input
-            type="radio"
-            id="AFC"
-            checked={tableMode === "AFC"}
-            onChange={() => {
-              setTableMode("AFC");
-            }}
-          />
-          <label htmlFor="AFC" className="px-1">
-            AFC Championships
-          </label>
-        </div>
-        <div className="flex justify-start">
-          <input
-            type="radio"
-            id="NFC"
-            checked={tableMode === "NFC"}
-            onChange={() => {
-              setTableMode("NFC");
-            }}
-          />
-          <label htmlFor="NFC" className="px-1">
-            NFC Championships
-          </label>
-        </div>
-      </fieldset>
-    );
-  };
-
   const superBowls = (team: AllNFLTeamType | null, inModal: boolean) =>
     activeData(tableMode)
       .filter((game) => {
@@ -83,8 +47,8 @@ const SuperBowlList: React.FC = () => {
         const { romanNumeral, wonSB, score, winningTeam, losingTeam, year } =
           game;
         return (
-          <tr key={index} className="even:bg-nfl/10">
-            <td className="px-1 text-center font-semibold">
+          <TableRow key={index} className="even:bg-nfl/10">
+            <TableCell className="px-1 py-0 text-center font-semibold">
               <div className="flex flex-col">
                 <div>
                   {romanNumeral}
@@ -110,18 +74,18 @@ const SuperBowlList: React.FC = () => {
                   {year}
                 </div>
               </div>
-            </td>
-            <td
+            </TableCell>
+            <TableCell
               className={cn(
-                "hidden px-1 text-center font-semibold sm:table-cell",
+                "hidden px-1 py-0 text-center font-semibold sm:table-cell",
                 {
                   "hidden sm:hidden": inModal,
                 }
               )}
             >
               {year}
-            </td>
-            <td>
+            </TableCell>
+            <TableCell className="px-1 py-0">
               <button
                 onClick={() => {
                   setActiveTeam(winningTeam);
@@ -150,11 +114,11 @@ const SuperBowlList: React.FC = () => {
                   <div>{NFLteamData[winningTeam].name}</div>
                 </div>
               </button>
-            </td>
-            <td className="whitespace-nowrap px-1 text-center font-semibold">
+            </TableCell>
+            <TableCell className="whitespace-nowrap px-1 py-0 text-center font-semibold">
               {score}
-            </td>
-            <td>
+            </TableCell>
+            <TableCell className="px-1 py-0">
               <button
                 onClick={() => {
                   setActiveTeam(losingTeam);
@@ -183,8 +147,8 @@ const SuperBowlList: React.FC = () => {
                   <div>{NFLteamData[losingTeam].name}</div>
                 </div>
               </button>
-            </td>
-          </tr>
+            </TableCell>
+          </TableRow>
         );
       });
 
@@ -229,21 +193,46 @@ const SuperBowlList: React.FC = () => {
           NFL Champions
         </h1>
       </div>
-      <div className="my-2 flex w-full justify-center">
-        <TableModeInputs />
-      </div>
-      <table className="w-full sm:w-auto">
-        <thead className="bg-nfl text-white">
-          <tr>
-            <th className="hidden sm:inline-block"></th>
-            <th>Year</th>
-            <th>Winning Team</th>
-            <th>Score</th>
-            <th>Losing Team</th>
-          </tr>
-        </thead>
-        <tbody>{superBowls(null, false)}</tbody>
-      </table>
+      <Tabs defaultValue="Super Bowls">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger
+            value="Super Bowls"
+            onClick={() => {
+              setTableMode("Super Bowls");
+            }}
+          >
+            Super Bowls
+          </TabsTrigger>
+          <TabsTrigger
+            value="AFC"
+            onClick={() => {
+              setTableMode("AFC");
+            }}
+          >
+            AFC
+          </TabsTrigger>
+          <TabsTrigger
+            value="NFC"
+            onClick={() => {
+              setTableMode("NFC");
+            }}
+          >
+            NFC
+          </TabsTrigger>
+        </TabsList>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <th className="hidden sm:inline-block"></th>
+              <TableHead>Year</TableHead>
+              <TableHead>Winning Team</TableHead>
+              <TableHead>Score</TableHead>
+              <TableHead>Losing Team</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>{superBowls(null, false)}</TableBody>
+        </Table>
+      </Tabs>
     </>
   );
 };

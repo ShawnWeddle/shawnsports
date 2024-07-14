@@ -1,8 +1,11 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { cn } from "~/utils/cn";
 import { NBAteamData, type AllNBATeamType } from "~/data/NBApickData";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { NBAFinalsData } from "~/data/NBA/NBAFinalsData";
+import { Dialog } from "../ui/dialog";
+import DialogModalContent from "../Page/DialogModal";
+import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import {
   EasternChampData,
   WesternChampData,
@@ -11,8 +14,7 @@ import {
 type TableModeType = "Finals" | "Eastern" | "Western";
 
 const NBAFinalsList: React.FC = () => {
-  const dialog = useRef<HTMLDialogElement>(null);
-
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [activeTeam, setActiveTeam] = useState<AllNBATeamType | null>(null);
   const [tableMode, setTableMode] = useState<TableModeType>("Finals");
 
@@ -27,53 +29,7 @@ const NBAFinalsList: React.FC = () => {
     }
   };
 
-  const TableModeInputs: React.FC = () => {
-    return (
-      <fieldset className="rounded-xl border p-2 sm:flex sm:gap-1">
-        <div className="flex justify-start sm:border-r">
-          <input
-            type="radio"
-            id="finals"
-            checked={tableMode === "Finals"}
-            onChange={() => {
-              setTableMode("Finals");
-            }}
-          />
-          <label htmlFor="finals" className="px-1">
-            NBA Finals
-          </label>
-        </div>
-        <div className="flex justify-start sm:border-r">
-          <input
-            type="radio"
-            id="Eastern"
-            checked={tableMode === "Eastern"}
-            onChange={() => {
-              setTableMode("Eastern");
-            }}
-          />
-          <label htmlFor="Eastern" className="px-1">
-            Eastern Finals
-          </label>
-        </div>
-        <div className="flex justify-start">
-          <input
-            type="radio"
-            id="Western"
-            checked={tableMode === "Western"}
-            onChange={() => {
-              setTableMode("Western");
-            }}
-          />
-          <label htmlFor="Western" className="px-1">
-            Western Finals
-          </label>
-        </div>
-      </fieldset>
-    );
-  };
-
-  const nbaFinals = (team: AllNBATeamType | null) =>
+  const nbaFinals = (team: AllNBATeamType | null, inModal: boolean) =>
     activeData(tableMode)
       .filter((game) => {
         if (!team) return true;
@@ -156,10 +112,10 @@ const NBAFinalsList: React.FC = () => {
               <button
                 onClick={() => {
                   setActiveTeam(winningTeam);
-                  dialog.current?.showModal();
+                  setDialogOpen(true);
                 }}
                 className={cn(
-                  "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
                     [NBAstyleData[winningTeam].primaryBGstyle]: true,
                     [NBAstyleData[winningTeam].secondaryBorderStyle]: true,
@@ -167,24 +123,19 @@ const NBAFinalsList: React.FC = () => {
                   }
                 )}
               >
-                {NBAteamData[winningTeam].location}{" "}
-                {NBAteamData[winningTeam].name}
-              </button>
-              <button
-                onClick={() => {
-                  setActiveTeam(winningTeam);
-                  dialog.current?.showModal();
-                }}
-                className={cn(
-                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                  {
-                    [NBAstyleData[winningTeam].primaryBGstyle]: true,
-                    [NBAstyleData[winningTeam].secondaryBorderStyle]: true,
-                    [NBAstyleData[winningTeam].primaryPlainText]: true,
-                  }
-                )}
-              >
-                {NBAteamData[winningTeam].name}
+                <div
+                  className={cn(
+                    "flex flex-col justify-center sm:flex-row sm:gap-1",
+                    {
+                      "sm:flex-col": inModal,
+                    }
+                  )}
+                >
+                  <div className="whitespace-nowrap">
+                    {NBAteamData[winningTeam].location}
+                  </div>
+                  <div>{NBAteamData[winningTeam].name}</div>
+                </div>
               </button>
             </td>
             <td className="px-1 text-center font-semibold">{splits}</td>
@@ -192,10 +143,10 @@ const NBAFinalsList: React.FC = () => {
               <button
                 onClick={() => {
                   setActiveTeam(losingTeam);
-                  dialog.current?.showModal();
+                  setDialogOpen(true);
                 }}
                 className={cn(
-                  "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
                     [NBAstyleData[losingTeam].primaryBGstyle]: true,
                     [NBAstyleData[losingTeam].secondaryBorderStyle]: true,
@@ -203,82 +154,114 @@ const NBAFinalsList: React.FC = () => {
                   }
                 )}
               >
-                {NBAteamData[losingTeam].location}{" "}
-                {NBAteamData[losingTeam].name}
-              </button>
-              <button
-                onClick={() => {
-                  setActiveTeam(losingTeam);
-                  dialog.current?.showModal();
-                }}
-                className={cn(
-                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                  {
-                    [NBAstyleData[losingTeam].primaryBGstyle]: true,
-                    [NBAstyleData[losingTeam].secondaryBorderStyle]: true,
-                    [NBAstyleData[losingTeam].primaryPlainText]: true,
-                  }
-                )}
-              >
-                {NBAteamData[losingTeam].name}
+                <div
+                  className={cn(
+                    "flex flex-col justify-center sm:flex-row sm:gap-1",
+                    {
+                      "sm:flex-col": inModal,
+                    }
+                  )}
+                >
+                  <div className="whitespace-nowrap">
+                    {NBAteamData[losingTeam].location}
+                  </div>
+                  <div>{NBAteamData[losingTeam].name}</div>
+                </div>
               </button>
             </td>
           </tr>
         );
       });
 
+  const modalNamer = (
+    inputTeam: AllNBATeamType | null,
+    inputMode: TableModeType
+  ) => {
+    if (inputTeam) {
+      const teamName = NBAteamData[inputTeam].name;
+      const final =
+        inputMode === "Finals"
+          ? "Finals"
+          : inputMode === "Eastern"
+          ? "Eastern" + " Finals"
+          : "Western" + " Finals";
+      return teamName + " " + final;
+    } else {
+      return "";
+    }
+  };
+
   return (
     <>
-      <dialog
-        ref={dialog}
-        className="m-auto w-full max-w-screen-sm items-center rounded-xl align-middle backdrop:bg-gray-500/50"
+      <Dialog
+        open={dialogOpen}
+        onOpenChange={(isOpen) => {
+          if (isOpen === true) return;
+          setDialogOpen(false);
+        }}
       >
-        <div className="flex w-full justify-end">
-          <button
-            onClick={() => {
-              dialog.current?.close();
-            }}
-            className="font-semibold"
-          >
-            ✕
-          </button>
-        </div>
-        {activeTeam && (
-          <div className="flex flex-col items-center">
-            <h1 className="mb-2 text-center text-2xl font-semibold">
-              {["OKC", "SEA"].includes(activeTeam) && "Thunder / Supersonics"}
-              {["PHI", "SYR"].includes(activeTeam) && "76ers"}
-              {!["OKC", "SEA", "PHI", "SYR"].includes(activeTeam) &&
-                NBAteamData[activeTeam].name}{" "}
-              {tableMode === "Finals" ? "" : tableMode} Finals
-            </h1>
-            <table>
-              <tbody>{nbaFinals(activeTeam)}</tbody>
-            </table>
-          </div>
-        )}
-      </dialog>
+        <DialogModalContent
+          title={modalNamer(activeTeam, tableMode)}
+          description=""
+        >
+          <table>
+            <tbody>{nbaFinals(activeTeam, true)}</tbody>
+          </table>
+        </DialogModalContent>
+      </Dialog>
       <div className="flex w-full justify-center">
         <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
           NBA Champions
         </h1>
       </div>
-      <div className="my-2 flex w-full justify-center">
-        <TableModeInputs />
-      </div>
-      <table className="w-full sm:w-auto">
-        <thead className="bg-nba text-white">
-          <tr>
-            <th>Year</th>
-            <th>Winning Team</th>
-            <th>Games</th>
-            <th>Losing Team</th>
-          </tr>
-        </thead>
-        <tbody>{nbaFinals(null)}</tbody>
-      </table>
+      <Tabs defaultValue="Finals">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger
+            value="Finals"
+            onClick={() => {
+              setTableMode("Finals");
+            }}
+          >
+            Finals
+          </TabsTrigger>
+          <TabsTrigger
+            value="Eastern"
+            onClick={() => {
+              setTableMode("Eastern");
+            }}
+          >
+            Eastern
+          </TabsTrigger>
+          <TabsTrigger
+            value="Western"
+            onClick={() => {
+              setTableMode("Western");
+            }}
+          >
+            Western
+          </TabsTrigger>
+        </TabsList>
+        <table className="w-full sm:w-auto">
+          <thead className="bg-nba text-white">
+            <tr>
+              <th>Year</th>
+              <th>Winning Team</th>
+              <th>Games</th>
+              <th>Losing Team</th>
+            </tr>
+          </thead>
+          <tbody>{nbaFinals(null, false)}</tbody>
+        </table>
+      </Tabs>
     </>
   );
 };
 
 export default NBAFinalsList;
+
+/*
+{["OKC", "SEA"].includes(activeTeam) && "Thunder / Supersonics"}
+              {["PHI", "SYR"].includes(activeTeam) && "76ers"}
+              {!["OKC", "SEA", "PHI", "SYR"].includes(activeTeam) &&
+                NBAteamData[activeTeam].name}{" "}
+*/

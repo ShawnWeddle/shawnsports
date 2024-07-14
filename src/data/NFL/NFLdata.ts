@@ -5,9 +5,17 @@ export const nflTeams = [
   "ATL", "LVR", "LAR", "DEN", "IND", "ARI", "HOU", "CHI",
 ] as const;
 
+export const allNFLTeams = [
+  "KAN", "PHI", "SFO", "CIN", "BUF", "DAL", "NYG", "JAX", 
+  "MIN", "BAL", "LAC", "MIA", "SEA", "TAM", "DET", "PIT", 
+  "WAS", "GNB", "NWE", "NYJ", "CLE", "TEN", "NOR", "CAR", 
+  "ATL", "LVR", "LAR", "DEN", "IND", "ARI", "HOU", "CHI",
+  "WRS", "OAK", "LRD", "STL", "BCS", "SDC", "HOL",
+] as const;
+
 export type NFLTeamType = typeof nflTeams[number];
 
-export type AllNFLTeamType = NFLTeamType | "WRS" | "OAK" | "LRD" | "STL" | "BCS" | "SDC" | "HOL";
+export type AllNFLTeamType = typeof allNFLTeams[number];
 
 export type teamInfoType = {rank: number, code: string, location: string, name: string };
 

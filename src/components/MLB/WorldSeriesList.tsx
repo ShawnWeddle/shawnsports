@@ -7,12 +7,23 @@ import {
   ALCSData,
   NLCSData,
 } from "~/data/MLB/WorldSeriesData";
+import { Dialog } from "../ui/dialog";
+import DialogModalContent from "../Page/DialogModal";
+import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 
 type TableModeType = "World Series" | "ALCS" | "NLCS";
 
 const WorldSeriesList: React.FC = () => {
   const dialog = useRef<HTMLDialogElement>(null);
-
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [activeTeam, setActiveTeam] = useState<AllMLBTeamType | null>(null);
   const [tableMode, setTableMode] = useState<TableModeType>("World Series");
 
@@ -27,53 +38,7 @@ const WorldSeriesList: React.FC = () => {
     }
   };
 
-  const TableModeInputs: React.FC = () => {
-    return (
-      <fieldset className="rounded-xl border p-2 sm:flex sm:gap-1">
-        <div className="flex justify-start sm:border-r">
-          <input
-            type="radio"
-            id="superbowl"
-            checked={tableMode === "World Series"}
-            onChange={() => {
-              setTableMode("World Series");
-            }}
-          />
-          <label htmlFor="superbowl" className="px-1">
-            World Series
-          </label>
-        </div>
-        <div className="flex justify-start sm:border-r">
-          <input
-            type="radio"
-            id="ALCS"
-            checked={tableMode === "ALCS"}
-            onChange={() => {
-              setTableMode("ALCS");
-            }}
-          />
-          <label htmlFor="ALCS" className="px-1">
-            ALCS
-          </label>
-        </div>
-        <div className="flex justify-start">
-          <input
-            type="radio"
-            id="NLCS"
-            checked={tableMode === "NLCS"}
-            onChange={() => {
-              setTableMode("NLCS");
-            }}
-          />
-          <label htmlFor="NLCS" className="px-1">
-            NLCS
-          </label>
-        </div>
-      </fieldset>
-    );
-  };
-
-  const worldSeries = (team: AllMLBTeamType | null) =>
+  const worldSeries = (team: AllMLBTeamType | null, inModal: boolean) =>
     activeData(tableMode)
       .filter((game) => {
         if (!team) return true;
@@ -151,26 +116,30 @@ const WorldSeriesList: React.FC = () => {
         const { year, splits, winningTeam, losingTeam } = series;
         if (series.year === 1994) {
           return (
-            <tr key={index} className="even:bg-mlb/10">
-              <td className="px-1 text-center font-semibold">{year}</td>
-              <td colSpan={3} className="py-1 text-center font-semibold">
+            <TableRow key={index} className="odd:bg-mlb/10 hover:bg-mlb/20">
+              <TableCell className="px-1 text-center font-semibold">
+                {year}
+              </TableCell>
+              <TableCell colSpan={3} className="py-1 text-center font-semibold">
                 No {tableMode} held in 1994
-              </td>
-            </tr>
+              </TableCell>
+            </TableRow>
           );
         }
 
         return (
-          <tr key={index} className="even:bg-mlb/10">
-            <td className="px-1 text-center font-semibold">{year}</td>
-            <td>
+          <TableRow key={index} className="odd:bg-mlb/10 hover:bg-mlb/20">
+            <TableCell className="px-1 text-center font-semibold">
+              {year}
+            </TableCell>
+            <TableCell className="px-1">
               <button
                 onClick={() => {
                   setActiveTeam(winningTeam);
-                  dialog.current?.showModal();
+                  setDialogOpen(true);
                 }}
                 className={cn(
-                  "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
                     [MLBstyleData[winningTeam].primaryBGstyle]: true,
                     [MLBstyleData[winningTeam].secondaryBorderStyle]: true,
@@ -178,35 +147,32 @@ const WorldSeriesList: React.FC = () => {
                   }
                 )}
               >
-                {MLBteamData[winningTeam].location}{" "}
-                {MLBteamData[winningTeam].name}
+                <div
+                  className={cn(
+                    "flex flex-col justify-center sm:flex-row sm:gap-1",
+                    {
+                      "sm:flex-col": inModal,
+                    }
+                  )}
+                >
+                  <div className="whitespace-nowrap">
+                    {MLBteamData[winningTeam].location}
+                  </div>
+                  <div>{MLBteamData[winningTeam].name}</div>
+                </div>
               </button>
-              <button
-                onClick={() => {
-                  setActiveTeam(winningTeam);
-                  dialog.current?.showModal();
-                }}
-                className={cn(
-                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                  {
-                    [MLBstyleData[winningTeam].primaryBGstyle]: true,
-                    [MLBstyleData[winningTeam].secondaryBorderStyle]: true,
-                    [MLBstyleData[winningTeam].primaryPlainText]: true,
-                  }
-                )}
-              >
-                {MLBteamData[winningTeam].name}
-              </button>
-            </td>
-            <td className="px-1 text-center font-semibold">{splits}</td>
-            <td>
+            </TableCell>
+            <TableCell className="px-1 text-center font-semibold">
+              {splits}
+            </TableCell>
+            <TableCell className="px-1">
               <button
                 onClick={() => {
                   setActiveTeam(losingTeam);
-                  dialog.current?.showModal();
+                  setDialogOpen(true);
                 }}
                 className={cn(
-                  "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
                     [MLBstyleData[losingTeam].primaryBGstyle]: true,
                     [MLBstyleData[losingTeam].secondaryBorderStyle]: true,
@@ -214,76 +180,103 @@ const WorldSeriesList: React.FC = () => {
                   }
                 )}
               >
-                {MLBteamData[losingTeam].location}{" "}
-                {MLBteamData[losingTeam].name}
+                <div
+                  className={cn(
+                    "flex flex-col justify-center sm:flex-row sm:gap-1",
+                    {
+                      "sm:flex-col": inModal,
+                    }
+                  )}
+                >
+                  <div className="whitespace-nowrap">
+                    {MLBteamData[losingTeam].location}
+                  </div>
+                  <div>{MLBteamData[losingTeam].name}</div>
+                </div>
               </button>
-              <button
-                onClick={() => {
-                  setActiveTeam(losingTeam);
-                  dialog.current?.showModal();
-                }}
-                className={cn(
-                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                  {
-                    [MLBstyleData[losingTeam].primaryBGstyle]: true,
-                    [MLBstyleData[losingTeam].secondaryBorderStyle]: true,
-                    [MLBstyleData[losingTeam].primaryPlainText]: true,
-                  }
-                )}
-              >
-                {MLBteamData[losingTeam].name}
-              </button>
-            </td>
-          </tr>
+            </TableCell>
+          </TableRow>
         );
       });
 
+  const modalNamer = (
+    inputTeam: AllMLBTeamType | null,
+    inputMode: TableModeType
+  ) => {
+    if (inputTeam) {
+      const teamName = MLBteamData[inputTeam].name;
+      const final = inputMode;
+      return teamName + " " + final;
+    } else {
+      return "";
+    }
+  };
+
   return (
     <>
-      <dialog
-        ref={dialog}
-        className="m-auto w-full max-w-screen-sm items-center rounded-xl align-middle backdrop:bg-gray-500/50"
+      <Dialog
+        open={dialogOpen}
+        onOpenChange={(isOpen) => {
+          if (isOpen === true) return;
+          setDialogOpen(false);
+        }}
       >
-        <div className="flex w-full justify-end">
-          <button
-            onClick={() => {
-              dialog.current?.close();
-            }}
-            className="font-semibold"
-          >
-            ✕
-          </button>
-        </div>
-        {activeTeam && (
-          <div className="flex flex-col items-center">
-            <h1 className="mb-2 text-center text-2xl font-semibold">
-              {MLBteamData[activeTeam].name} {tableMode}
-            </h1>
-            <table>
-              <tbody>{worldSeries(activeTeam)}</tbody>
-            </table>
-          </div>
-        )}
-      </dialog>
+        <DialogModalContent
+          title={modalNamer(activeTeam, tableMode)}
+          description=""
+        >
+          <table>
+            <TableBody>{worldSeries(activeTeam, true)}</TableBody>
+          </table>
+        </DialogModalContent>
+      </Dialog>
       <div className="flex w-full justify-center">
         <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
           World Series Champions
         </h1>
       </div>
-      <div className="my-2 flex w-full justify-center">
-        <TableModeInputs />
-      </div>
-      <table className="w-full sm:w-auto">
-        <thead className="bg-mlb text-white">
-          <tr>
-            <th>Year</th>
-            <th>Winning Team</th>
-            <th>Games</th>
-            <th>Losing Team</th>
-          </tr>
-        </thead>
-        <tbody>{worldSeries(null)}</tbody>
-      </table>
+      <Tabs defaultValue="World Series">
+        <TabsList className="grid w-full grid-cols-3 bg-mlb">
+          <TabsTrigger
+            className="text-white"
+            value="World Series"
+            onClick={() => {
+              setTableMode("World Series");
+            }}
+          >
+            World Series
+          </TabsTrigger>
+          <TabsTrigger
+            className="text-white"
+            value="ALCS"
+            onClick={() => {
+              setTableMode("ALCS");
+            }}
+          >
+            ALCS
+          </TabsTrigger>
+          <TabsTrigger
+            className="text-white"
+            value="NLCS"
+            onClick={() => {
+              setTableMode("NLCS");
+            }}
+          >
+            NLCS
+          </TabsTrigger>
+        </TabsList>
+        <Table className="w-full sm:w-auto">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Year</TableHead>
+              <TableHead>Winning Team</TableHead>
+              <TableHead>Games</TableHead>
+              <TableHead>Losing Team</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>{worldSeries(null, false)}</TableBody>
+        </Table>
+      </Tabs>
     </>
   );
 };

@@ -3,13 +3,21 @@ import { cn } from "~/utils/cn";
 import { NBAteamData, type AllNBATeamType } from "~/data/NBApickData";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { NBAFinalsData } from "~/data/NBA/NBAFinalsData";
-import { Dialog } from "../ui/dialog";
-import DialogModalContent from "../Page/DialogModal";
-import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import {
   EasternChampData,
   WesternChampData,
 } from "~/data/NBA/ConferenceChampData";
+import { Dialog } from "../ui/dialog";
+import DialogModalContent from "../Page/DialogModal";
+import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 
 type TableModeType = "Finals" | "Eastern" | "Western";
 
@@ -106,9 +114,11 @@ const NBAFinalsList: React.FC = () => {
       .map((series, index) => {
         const { year, splits, winningTeam, losingTeam } = series;
         return (
-          <tr key={index} className="even:bg-nba/10">
-            <td className="px-1 text-center font-semibold">{year}</td>
-            <td>
+          <TableRow key={index} className="odd:bg-nba/10 hover:bg-nba/20">
+            <TableCell className="px-1 text-center font-semibold">
+              {year}
+            </TableCell>
+            <TableCell className="px-1">
               <button
                 onClick={() => {
                   setActiveTeam(winningTeam);
@@ -137,9 +147,11 @@ const NBAFinalsList: React.FC = () => {
                   <div>{NBAteamData[winningTeam].name}</div>
                 </div>
               </button>
-            </td>
-            <td className="px-1 text-center font-semibold">{splits}</td>
-            <td>
+            </TableCell>
+            <TableCell className="px-1 text-center font-semibold">
+              {splits}
+            </TableCell>
+            <TableCell className="px-1">
               <button
                 onClick={() => {
                   setActiveTeam(losingTeam);
@@ -168,8 +180,8 @@ const NBAFinalsList: React.FC = () => {
                   <div>{NBAteamData[losingTeam].name}</div>
                 </div>
               </button>
-            </td>
-          </tr>
+            </TableCell>
+          </TableRow>
         );
       });
 
@@ -205,7 +217,7 @@ const NBAFinalsList: React.FC = () => {
           description=""
         >
           <table>
-            <tbody>{nbaFinals(activeTeam, true)}</tbody>
+            <TableBody>{nbaFinals(activeTeam, true)}</TableBody>
           </table>
         </DialogModalContent>
       </Dialog>
@@ -215,8 +227,9 @@ const NBAFinalsList: React.FC = () => {
         </h1>
       </div>
       <Tabs defaultValue="Finals">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-3 bg-nba">
           <TabsTrigger
+            className="text-white"
             value="Finals"
             onClick={() => {
               setTableMode("Finals");
@@ -225,6 +238,7 @@ const NBAFinalsList: React.FC = () => {
             Finals
           </TabsTrigger>
           <TabsTrigger
+            className="text-white"
             value="Eastern"
             onClick={() => {
               setTableMode("Eastern");
@@ -233,6 +247,7 @@ const NBAFinalsList: React.FC = () => {
             Eastern
           </TabsTrigger>
           <TabsTrigger
+            className="text-white"
             value="Western"
             onClick={() => {
               setTableMode("Western");
@@ -241,17 +256,17 @@ const NBAFinalsList: React.FC = () => {
             Western
           </TabsTrigger>
         </TabsList>
-        <table className="w-full sm:w-auto">
-          <thead className="bg-nba text-white">
-            <tr>
-              <th>Year</th>
-              <th>Winning Team</th>
-              <th>Games</th>
-              <th>Losing Team</th>
-            </tr>
-          </thead>
-          <tbody>{nbaFinals(null, false)}</tbody>
-        </table>
+        <Table className="w-full sm:w-auto">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Year</TableHead>
+              <TableHead>Winning Team</TableHead>
+              <TableHead>Games</TableHead>
+              <TableHead>Losing Team</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>{nbaFinals(null, false)}</TableBody>
+        </Table>
       </Tabs>
     </>
   );

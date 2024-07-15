@@ -3,12 +3,23 @@ import { cn } from "~/utils/cn";
 import { NHLteamData, type AllNHLTeamType } from "~/data/NHL/NHLdata";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
 import { StanleyCupData, EastData, WestData } from "~/data/NHL/StanleyCupData";
+import { Dialog } from "../ui/dialog";
+import DialogModalContent from "../Page/DialogModal";
+import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 
 type TableModeType = "Stanley Cups" | "Eastern" | "Western";
 
 const StanleyCupSeriesList: React.FC = () => {
   const dialog = useRef<HTMLDialogElement>(null);
-
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [activeTeam, setActiveTeam] = useState<AllNHLTeamType | null>(null);
   const [tableMode, setTableMode] = useState<TableModeType>("Stanley Cups");
 
@@ -23,53 +34,7 @@ const StanleyCupSeriesList: React.FC = () => {
     }
   };
 
-  const TableModeInputs: React.FC = () => {
-    return (
-      <fieldset className="rounded-xl border p-2 sm:flex sm:gap-1">
-        <div className="flex justify-start sm:border-r">
-          <input
-            type="radio"
-            id="superbowl"
-            checked={tableMode === "Stanley Cups"}
-            onChange={() => {
-              setTableMode("Stanley Cups");
-            }}
-          />
-          <label htmlFor="superbowl" className="px-1">
-            Stanley Cups
-          </label>
-        </div>
-        <div className="flex justify-start sm:border-r">
-          <input
-            type="radio"
-            id="Eastern"
-            checked={tableMode === "Eastern"}
-            onChange={() => {
-              setTableMode("Eastern");
-            }}
-          />
-          <label htmlFor="Eastern" className="px-1">
-            Eastern Finals
-          </label>
-        </div>
-        <div className="flex justify-start">
-          <input
-            type="radio"
-            id="Western"
-            checked={tableMode === "Western"}
-            onChange={() => {
-              setTableMode("Western");
-            }}
-          />
-          <label htmlFor="Western" className="px-1">
-            Western Finals
-          </label>
-        </div>
-      </fieldset>
-    );
-  };
-
-  const stanleyCups = (team: AllNHLTeamType | null) =>
+  const stanleyCups = (team: AllNHLTeamType | null, inModal: boolean) =>
     activeData(tableMode)
       .filter((game) => {
         if (!team) return true;
@@ -91,29 +56,31 @@ const StanleyCupSeriesList: React.FC = () => {
         const { year, splits, winningTeam, losingTeam } = series;
         if (year === 2005) {
           return (
-            <tr key={index} className="even:bg-nhl/10">
-              <td className="px-1 text-center font-semibold">{year}</td>
-              <td colSpan={3} className="py-1 text-center font-semibold">
+            <TableRow key={index} className="even:bg-nhl/10 hover:bg-nhl/20">
+              <TableCell className="px-1 text-center font-semibold">
+                {year}
+              </TableCell>
+              <TableCell colSpan={3} className="py-1 text-center font-semibold">
                 No 2004-05 NHL season
-              </td>
-            </tr>
+              </TableCell>
+            </TableRow>
           );
         }
 
         return (
-          <tr key={index} className="even:bg-nhl/10">
-            <td className="px-1 text-center font-semibold">
+          <TableRow key={index} className="even:bg-nhl/10 hover:bg-nhl/20">
+            <TableCell className="px-1 text-center font-semibold">
               {year}
               {year === 2021 && tableMode !== "Stanley Cups" && "*"}
-            </td>
-            <td>
+            </TableCell>
+            <TableCell className="px-1">
               <button
                 onClick={() => {
                   setActiveTeam(winningTeam);
-                  dialog.current?.showModal();
+                  setDialogOpen(true);
                 }}
                 className={cn(
-                  "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
                     [NHLstyleData[winningTeam].primaryBGstyle]: true,
                     [NHLstyleData[winningTeam].secondaryBorderStyle]: true,
@@ -121,35 +88,32 @@ const StanleyCupSeriesList: React.FC = () => {
                   }
                 )}
               >
-                {NHLteamData[winningTeam].location}{" "}
-                {NHLteamData[winningTeam].name}
+                <div
+                  className={cn(
+                    "flex flex-col justify-center sm:flex-row sm:gap-1",
+                    {
+                      "sm:flex-col": inModal,
+                    }
+                  )}
+                >
+                  <div className="whitespace-nowrap">
+                    {NHLteamData[winningTeam].location}
+                  </div>
+                  <div>{NHLteamData[winningTeam].name}</div>
+                </div>
               </button>
-              <button
-                onClick={() => {
-                  setActiveTeam(winningTeam);
-                  dialog.current?.showModal();
-                }}
-                className={cn(
-                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                  {
-                    [NHLstyleData[winningTeam].primaryBGstyle]: true,
-                    [NHLstyleData[winningTeam].secondaryBorderStyle]: true,
-                    [NHLstyleData[winningTeam].primaryPlainText]: true,
-                  }
-                )}
-              >
-                {NHLteamData[winningTeam].name}
-              </button>
-            </td>
-            <td className="px-1 text-center font-semibold">{splits}</td>
-            <td>
+            </TableCell>
+            <TableCell className="px-1 text-center font-semibold">
+              {splits}
+            </TableCell>
+            <TableCell className="px-1">
               <button
                 onClick={() => {
                   setActiveTeam(losingTeam);
-                  dialog.current?.showModal();
+                  setDialogOpen(true);
                 }}
                 className={cn(
-                  "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
                     [NHLstyleData[losingTeam].primaryBGstyle]: true,
                     [NHLstyleData[losingTeam].secondaryBorderStyle]: true,
@@ -157,79 +121,109 @@ const StanleyCupSeriesList: React.FC = () => {
                   }
                 )}
               >
-                {NHLteamData[losingTeam].location}{" "}
-                {NHLteamData[losingTeam].name}
+                <div
+                  className={cn(
+                    "flex flex-col justify-center sm:flex-row sm:gap-1",
+                    {
+                      "sm:flex-col": inModal,
+                    }
+                  )}
+                >
+                  <div className="whitespace-nowrap">
+                    {NHLteamData[losingTeam].location}
+                  </div>
+                  <div>{NHLteamData[losingTeam].name}</div>
+                </div>
               </button>
-              <button
-                onClick={() => {
-                  setActiveTeam(losingTeam);
-                  dialog.current?.showModal();
-                }}
-                className={cn(
-                  "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                  {
-                    [NHLstyleData[losingTeam].primaryBGstyle]: true,
-                    [NHLstyleData[losingTeam].secondaryBorderStyle]: true,
-                    [NHLstyleData[losingTeam].primaryPlainText]: true,
-                  }
-                )}
-              >
-                {NHLteamData[losingTeam].name}
-              </button>
-            </td>
-          </tr>
+            </TableCell>
+          </TableRow>
         );
       });
 
+  const modalNamer = (
+    inputTeam: AllNHLTeamType | null,
+    inputMode: TableModeType
+  ) => {
+    if (inputTeam) {
+      const teamName = NHLteamData[inputTeam].name;
+      const final =
+        inputMode === "Stanley Cups"
+          ? "Stanley Cups"
+          : inputMode === "Eastern"
+          ? "Eastern" + " Finals"
+          : "Western" + " Finals";
+      return teamName + " " + final;
+    } else {
+      return "";
+    }
+  };
+
   return (
     <>
-      <dialog
-        ref={dialog}
-        className="m-auto w-full max-w-screen-sm items-center rounded-xl align-middle backdrop:bg-gray-500/50"
+      <Dialog
+        open={dialogOpen}
+        onOpenChange={(isOpen) => {
+          if (isOpen === true) return;
+          setDialogOpen(false);
+        }}
       >
-        <div className="flex w-full justify-end">
-          <button
-            onClick={() => {
-              dialog.current?.close();
-            }}
-            className="font-semibold"
-          >
-            ✕
-          </button>
-        </div>
-        {activeTeam && (
-          <div className="flex flex-col items-center">
-            <h1 className="mb-2 text-center text-2xl font-semibold">
-              {activeTeam === "MNS" ? "Stars" : NHLteamData[activeTeam].name}{" "}
-              {tableMode}
-              {tableMode !== "Stanley Cups" && " Finals"}
-            </h1>
-            <table>
-              <tbody>{stanleyCups(activeTeam)}</tbody>
-            </table>
-          </div>
-        )}
-      </dialog>
-
+        <DialogModalContent
+          title={modalNamer(activeTeam, tableMode)}
+          description=""
+        >
+          <table>
+            <TableBody>{stanleyCups(activeTeam, true)}</TableBody>
+          </table>
+        </DialogModalContent>
+      </Dialog>
       <div className="flex w-full justify-center">
         <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
           Stanley Cup Champions
         </h1>
       </div>
-      <div className="my-2 flex w-full justify-center">
-        <TableModeInputs />
-      </div>
-      <table className="w-full sm:w-auto">
-        <thead className="bg-nhl text-white">
-          <tr>
-            <th>Year</th>
-            <th>Winning Team</th>
-            <th>Games</th>
-            <th>Losing Team</th>
-          </tr>
-        </thead>
-        <tbody>{stanleyCups(null)}</tbody>
-      </table>
+      <Tabs defaultValue="Stanley Cups">
+        <TabsList className="grid w-full grid-cols-3 bg-nhl">
+          <TabsTrigger
+            className="text-white"
+            value="Stanley Cups"
+            onClick={() => {
+              setTableMode("Stanley Cups");
+            }}
+          >
+            Stanley Cups
+          </TabsTrigger>
+          <TabsTrigger
+            className="text-white"
+            value="Eastern"
+            onClick={() => {
+              setTableMode("Eastern");
+            }}
+          >
+            Eastern
+          </TabsTrigger>
+          <TabsTrigger
+            className="text-white"
+            value="Western"
+            onClick={() => {
+              setTableMode("Western");
+            }}
+          >
+            Western
+          </TabsTrigger>
+        </TabsList>
+        <Table className="w-full sm:w-auto">
+          <TableHeader>
+            <TableRow>
+              <TableHead>Year</TableHead>
+              <TableHead>Winning Team</TableHead>
+              <TableHead>Games</TableHead>
+              <TableHead>Losing Team</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>{stanleyCups(null, false)}</TableBody>
+        </Table>
+      </Tabs>
+
       {tableMode === "Eastern" && (
         <div className="flex w-full justify-center">
           <p className="mb-4 w-96 text-center italic">

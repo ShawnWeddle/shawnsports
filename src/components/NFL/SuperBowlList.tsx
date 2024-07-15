@@ -8,7 +8,6 @@ import { nameMatcher } from "~/utils/nfl";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
 import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
-
 import {
   Table,
   TableBody,
@@ -47,8 +46,8 @@ const SuperBowlList: React.FC = () => {
         const { romanNumeral, wonSB, score, winningTeam, losingTeam, year } =
           game;
         return (
-          <TableRow key={index} className="even:bg-nfl/10">
-            <TableCell className="px-1 py-0 text-center font-semibold">
+          <TableRow key={index} className="odd:bg-nfl/10 hover:bg-nfl/20">
+            <TableCell className="px-1 text-center font-semibold">
               <div className="flex flex-col">
                 <div>
                   {romanNumeral}
@@ -77,7 +76,7 @@ const SuperBowlList: React.FC = () => {
             </TableCell>
             <TableCell
               className={cn(
-                "hidden px-1 py-0 text-center font-semibold sm:table-cell",
+                "hidden px-1 text-center font-semibold sm:table-cell",
                 {
                   "hidden sm:hidden": inModal,
                 }
@@ -85,7 +84,7 @@ const SuperBowlList: React.FC = () => {
             >
               {year}
             </TableCell>
-            <TableCell className="px-1 py-0">
+            <TableCell className="px-1">
               <button
                 onClick={() => {
                   setActiveTeam(winningTeam);
@@ -115,10 +114,10 @@ const SuperBowlList: React.FC = () => {
                 </div>
               </button>
             </TableCell>
-            <TableCell className="whitespace-nowrap px-1 py-0 text-center font-semibold">
+            <TableCell className="whitespace-nowrap px-1 text-center font-semibold">
               {score}
             </TableCell>
-            <TableCell className="px-1 py-0">
+            <TableCell className="px-1">
               <button
                 onClick={() => {
                   setActiveTeam(losingTeam);
@@ -194,8 +193,9 @@ const SuperBowlList: React.FC = () => {
         </h1>
       </div>
       <Tabs defaultValue="Super Bowls">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-3 bg-nfl">
           <TabsTrigger
+            className="text-white"
             value="Super Bowls"
             onClick={() => {
               setTableMode("Super Bowls");
@@ -204,6 +204,7 @@ const SuperBowlList: React.FC = () => {
             Super Bowls
           </TabsTrigger>
           <TabsTrigger
+            className="text-white"
             value="AFC"
             onClick={() => {
               setTableMode("AFC");
@@ -212,6 +213,7 @@ const SuperBowlList: React.FC = () => {
             AFC
           </TabsTrigger>
           <TabsTrigger
+            className="text-white"
             value="NFC"
             onClick={() => {
               setTableMode("NFC");
@@ -223,7 +225,7 @@ const SuperBowlList: React.FC = () => {
         <Table>
           <TableHeader>
             <TableRow>
-              <th className="hidden sm:inline-block"></th>
+              <TableHead className="hidden sm:inline-block"></TableHead>
               <TableHead>Year</TableHead>
               <TableHead>Winning Team</TableHead>
               <TableHead>Score</TableHead>

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { cn } from "~/utils/cn";
 import { NHLteamData, type AllNHLTeamType } from "~/data/NHL/NHLdata";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
@@ -18,7 +18,6 @@ import {
 type TableModeType = "Stanley Cups" | "Eastern" | "Western";
 
 const StanleyCupSeriesList: React.FC = () => {
-  const dialog = useRef<HTMLDialogElement>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [activeTeam, setActiveTeam] = useState<AllNHLTeamType | null>(null);
   const [tableMode, setTableMode] = useState<TableModeType>("Stanley Cups");

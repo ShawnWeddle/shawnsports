@@ -3,13 +3,22 @@ import { cn } from "~/utils/cn";
 import { CFLteamData, type AllCFLTeamType } from "~/data/CFL/CFLdata";
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
 import { GreyCupData } from "~/data/CFL/GreyCupData";
+import { Dialog } from "../ui/dialog";
+import DialogModalContent from "../Page/DialogModal";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 
 const GreyCupList: React.FC = () => {
-  const dialog = useRef<HTMLDialogElement>(null);
-
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [activeTeam, setActiveTeam] = useState<AllCFLTeamType | null>(null);
 
-  const greyCups = (team: AllCFLTeamType | null) =>
+  const greyCups = (team: AllCFLTeamType | null, inModal: boolean) =>
     GreyCupData.filter((game) => {
       if (!team) return true;
       let isTeam = false;
@@ -22,7 +31,7 @@ const GreyCupList: React.FC = () => {
 
       if (year === 2020) {
         return (
-          <tr key={index} className="even:bg-cfl/10">
+          <tr key={index} className="odd:bg-cfl/10">
             <td className="px-1 text-center font-semibold">{year}</td>
             <td colSpan={3} className="py-1 text-center font-semibold">
               No 2020 CFL season
@@ -32,16 +41,18 @@ const GreyCupList: React.FC = () => {
       }
 
       return (
-        <tr key={index} className="even:bg-cfl/10">
-          <td className="px-1 text-center font-semibold">{year}</td>
-          <td>
+        <TableRow key={index} className="odd:bg-cfl/10 hover:bg-cfl/20">
+          <TableCell className="px-1 text-center font-semibold">
+            {year}
+          </TableCell>
+          <TableCell className="px-1">
             <button
               onClick={() => {
                 setActiveTeam(winningTeam);
-                dialog.current?.showModal();
+                setDialogOpen(true);
               }}
               className={cn(
-                "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                 {
                   [CFLstyleData[winningTeam].primaryBGstyle]: true,
                   [CFLstyleData[winningTeam].secondaryBorderStyle]: true,
@@ -49,35 +60,32 @@ const GreyCupList: React.FC = () => {
                 }
               )}
             >
-              {CFLteamData[winningTeam].location}{" "}
-              {CFLteamData[winningTeam].name}
+              <div
+                className={cn(
+                  "flex flex-col justify-center sm:flex-row sm:gap-1",
+                  {
+                    "sm:flex-col": inModal,
+                  }
+                )}
+              >
+                <div className="whitespace-nowrap">
+                  {CFLteamData[winningTeam].location}
+                </div>
+                <div>{CFLteamData[winningTeam].name}</div>
+              </div>
             </button>
-            <button
-              onClick={() => {
-                setActiveTeam(winningTeam);
-                dialog.current?.showModal();
-              }}
-              className={cn(
-                "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                {
-                  [CFLstyleData[winningTeam].primaryBGstyle]: true,
-                  [CFLstyleData[winningTeam].secondaryBorderStyle]: true,
-                  [CFLstyleData[winningTeam].primaryPlainText]: true,
-                }
-              )}
-            >
-              {CFLteamData[winningTeam].name}
-            </button>
-          </td>
-          <td className="px-1 text-center font-semibold">{score}</td>
-          <td>
+          </TableCell>
+          <TableCell className="whitespace-nowrap px-1 text-center font-semibold">
+            {score}
+          </TableCell>
+          <TableCell className="px-1">
             <button
               onClick={() => {
                 setActiveTeam(losingTeam);
-                dialog.current?.showModal();
+                setDialogOpen(true);
               }}
               className={cn(
-                "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                 {
                   [CFLstyleData[losingTeam].primaryBGstyle]: true,
                   [CFLstyleData[losingTeam].secondaryBorderStyle]: true,
@@ -85,72 +93,68 @@ const GreyCupList: React.FC = () => {
                 }
               )}
             >
-              {CFLteamData[losingTeam].location} {CFLteamData[losingTeam].name}
+              <div
+                className={cn(
+                  "flex flex-col justify-center sm:flex-row sm:gap-1",
+                  {
+                    "sm:flex-col": inModal,
+                  }
+                )}
+              >
+                <div className="whitespace-nowrap">
+                  {CFLteamData[losingTeam].location}
+                </div>
+                <div>{CFLteamData[losingTeam].name}</div>
+              </div>
             </button>
-            <button
-              onClick={() => {
-                setActiveTeam(losingTeam);
-                dialog.current?.showModal();
-              }}
-              className={cn(
-                "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                {
-                  [CFLstyleData[losingTeam].primaryBGstyle]: true,
-                  [CFLstyleData[losingTeam].secondaryBorderStyle]: true,
-                  [CFLstyleData[losingTeam].primaryPlainText]: true,
-                }
-              )}
-            >
-              {CFLteamData[losingTeam].name}
-            </button>
-          </td>
-        </tr>
+          </TableCell>
+        </TableRow>
       );
     });
 
+  const modalNamer = (inputTeam: AllCFLTeamType | null) => {
+    if (inputTeam) {
+      const teamName = CFLteamData[inputTeam].name;
+
+      return teamName + "  Grey Cups";
+    } else {
+      return "";
+    }
+  };
+
   return (
     <>
-      <dialog
-        ref={dialog}
-        className="m-auto w-full max-w-screen-sm items-center rounded-xl align-middle backdrop:bg-gray-500/50"
+      <Dialog
+        open={dialogOpen}
+        onOpenChange={(isOpen) => {
+          if (isOpen === true) return;
+          setDialogOpen(false);
+        }}
       >
-        <div className="flex w-full justify-end">
-          <button
-            onClick={() => {
-              dialog.current?.close();
-            }}
-            className="font-semibold"
-          >
-            ✕
-          </button>
+        <DialogModalContent title={modalNamer(activeTeam)} description="">
+          <Table>
+            <TableBody>{greyCups(activeTeam, true)}</TableBody>
+          </Table>
+        </DialogModalContent>
+      </Dialog>
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        Grey Cup Champions
+      </h1>
+      <div className="flex justify-center">
+        <div>
+          <Table className="w-full sm:w-auto">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Year</TableHead>
+                <TableHead>Winning Team</TableHead>
+                <TableHead>Score</TableHead>
+                <TableHead>Losing Team</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>{greyCups(null, false)}</TableBody>
+          </Table>
         </div>
-        {activeTeam && (
-          <div className="flex flex-col items-center">
-            <h1 className="mb-2 text-center text-2xl font-semibold">
-              {CFLteamData[activeTeam].name} Grey Cups
-            </h1>
-            <table>
-              <tbody>{greyCups(activeTeam)}</tbody>
-            </table>
-          </div>
-        )}
-      </dialog>
-      <div className="flex w-full justify-center">
-        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          Grey Cup Champions
-        </h1>
       </div>
-      <table className="w-full sm:w-auto">
-        <thead className="bg-cfl text-white">
-          <tr>
-            <th>Year</th>
-            <th>Winning Team</th>
-            <th>Score</th>
-            <th>Losing Team</th>
-          </tr>
-        </thead>
-        <tbody>{greyCups(null)}</tbody>
-      </table>
     </>
   );
 };

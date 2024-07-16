@@ -1,15 +1,24 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { cn } from "~/utils/cn";
 import { WNBAteamData, type AllWNBATeamType } from "~/data/WNBA/WNBAdata";
 import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
 import { WNBAFinalsData } from "~/data/WNBA/WNBAFinalsData";
+import { Dialog } from "../ui/dialog";
+import DialogModalContent from "../Page/DialogModal";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 
 const WNBAFinalsList: React.FC = () => {
-  const dialog = useRef<HTMLDialogElement>(null);
-
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [activeTeam, setActiveTeam] = useState<AllWNBATeamType | null>(null);
 
-  const wnbaFinals = (team: AllWNBATeamType | null) =>
+  const wnbaFinals = (team: AllWNBATeamType | null, inModal: boolean) =>
     WNBAFinalsData.filter((game) => {
       if (!team) return true;
       let isTeam = false;
@@ -27,16 +36,18 @@ const WNBAFinalsList: React.FC = () => {
     }).map((series, index) => {
       const { year, splits, winningTeam, losingTeam } = series;
       return (
-        <tr key={index} className="even:bg-nba/10">
-          <td className="px-1 text-center font-semibold">{year}</td>
-          <td>
+        <TableRow key={index} className="odd:bg-nba/10 hover:bg-nba/20">
+          <TableCell className="px-1 text-center font-semibold">
+            {year}
+          </TableCell>
+          <TableCell className="px-1">
             <button
               onClick={() => {
                 setActiveTeam(winningTeam);
-                dialog.current?.showModal();
+                setDialogOpen(true);
               }}
               className={cn(
-                "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                 {
                   [WNBAstyleData[winningTeam].primaryBGstyle]: true,
                   [WNBAstyleData[winningTeam].secondaryBorderStyle]: true,
@@ -44,35 +55,32 @@ const WNBAFinalsList: React.FC = () => {
                 }
               )}
             >
-              {WNBAteamData[winningTeam].location}{" "}
-              {WNBAteamData[winningTeam].name}
+              <div
+                className={cn(
+                  "flex flex-col justify-center sm:flex-row sm:gap-1",
+                  {
+                    "sm:flex-col": inModal,
+                  }
+                )}
+              >
+                <div className="whitespace-nowrap">
+                  {WNBAteamData[winningTeam].location}
+                </div>
+                <div>{WNBAteamData[winningTeam].name}</div>
+              </div>
             </button>
-            <button
-              onClick={() => {
-                setActiveTeam(winningTeam);
-                dialog.current?.showModal();
-              }}
-              className={cn(
-                "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                {
-                  [WNBAstyleData[winningTeam].primaryBGstyle]: true,
-                  [WNBAstyleData[winningTeam].secondaryBorderStyle]: true,
-                  [WNBAstyleData[winningTeam].primaryPlainText]: true,
-                }
-              )}
-            >
-              {WNBAteamData[winningTeam].name}
-            </button>
-          </td>
-          <td className="px-1 text-center font-semibold">{splits}</td>
-          <td>
+          </TableCell>
+          <TableCell className="px-1 text-center font-semibold">
+            {splits}
+          </TableCell>
+          <TableCell className="px-1">
             <button
               onClick={() => {
                 setActiveTeam(losingTeam);
-                dialog.current?.showModal();
+                setDialogOpen(true);
               }}
               className={cn(
-                "m-0.5 hidden w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
+                "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                 {
                   [WNBAstyleData[losingTeam].primaryBGstyle]: true,
                   [WNBAstyleData[losingTeam].secondaryBorderStyle]: true,
@@ -80,73 +88,68 @@ const WNBAFinalsList: React.FC = () => {
                 }
               )}
             >
-              {WNBAteamData[losingTeam].location}{" "}
-              {WNBAteamData[losingTeam].name}
+              <div
+                className={cn(
+                  "flex flex-col justify-center sm:flex-row sm:gap-1",
+                  {
+                    "sm:flex-col": inModal,
+                  }
+                )}
+              >
+                <div className="whitespace-nowrap">
+                  {WNBAteamData[losingTeam].location}
+                </div>
+                <div>{WNBAteamData[losingTeam].name}</div>
+              </div>
             </button>
-            <button
-              onClick={() => {
-                setActiveTeam(losingTeam);
-                dialog.current?.showModal();
-              }}
-              className={cn(
-                "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:hidden",
-                {
-                  [WNBAstyleData[losingTeam].primaryBGstyle]: true,
-                  [WNBAstyleData[losingTeam].secondaryBorderStyle]: true,
-                  [WNBAstyleData[losingTeam].primaryPlainText]: true,
-                }
-              )}
-            >
-              {WNBAteamData[losingTeam].name}
-            </button>
-          </td>
-        </tr>
+          </TableCell>
+        </TableRow>
       );
     });
 
+  const modalNamer = (inputTeam: AllWNBATeamType | null) => {
+    if (inputTeam) {
+      const teamName = WNBAteamData[inputTeam].name;
+
+      return teamName + "  Finals";
+    } else {
+      return "";
+    }
+  };
+
   return (
     <>
-      <dialog
-        ref={dialog}
-        className="m-auto w-full max-w-screen-sm items-center rounded-xl align-middle backdrop:bg-gray-500/50"
+      <Dialog
+        open={dialogOpen}
+        onOpenChange={(isOpen) => {
+          if (isOpen === true) return;
+          setDialogOpen(false);
+        }}
       >
-        <div className="flex w-full justify-end">
-          <button
-            onClick={() => {
-              dialog.current?.close();
-            }}
-            className="font-semibold"
-          >
-            ✕
-          </button>
+        <DialogModalContent title={modalNamer(activeTeam)} description="">
+          <Table>
+            <TableBody>{wnbaFinals(activeTeam, true)}</TableBody>
+          </Table>
+        </DialogModalContent>
+      </Dialog>
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        WNBA Champions
+      </h1>
+      <div className="flex justify-center">
+        <div>
+          <Table className="w-full sm:w-auto">
+            <TableHeader>
+              <TableRow>
+                <TableHead>Year</TableHead>
+                <TableHead>Winning Team</TableHead>
+                <TableHead>Games</TableHead>
+                <TableHead>Losing Team</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>{wnbaFinals(null, false)}</TableBody>
+          </Table>
         </div>
-        {activeTeam && (
-          <div className="flex flex-col items-center">
-            <h1 className="mb-2 text-center text-2xl font-semibold">
-              {WNBAteamData[activeTeam].name} Finals
-            </h1>
-            <table>
-              <tbody>{wnbaFinals(activeTeam)}</tbody>
-            </table>
-          </div>
-        )}
-      </dialog>
-      <div className="flex w-full justify-center">
-        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          WNBA Champions
-        </h1>
       </div>
-      <table className="w-full sm:w-auto">
-        <thead className="bg-nba text-white">
-          <tr>
-            <th>Year</th>
-            <th>Winning Team</th>
-            <th>Games</th>
-            <th>Losing Team</th>
-          </tr>
-        </thead>
-        <tbody>{wnbaFinals(null)}</tbody>
-      </table>
     </>
   );
 };

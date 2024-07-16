@@ -99,11 +99,13 @@ const StanleyCupSeriesList: React.FC = () => {
                   <div className="whitespace-nowrap">
                     {NHLteamData[winningTeam].location}
                   </div>
-                  <div>{NHLteamData[winningTeam].name}</div>
+                  <div className="whitespace-nowrap">
+                    {NHLteamData[winningTeam].name}
+                  </div>
                 </div>
               </button>
             </TableCell>
-            <TableCell className="px-1 text-center font-semibold">
+            <TableCell className="whitespace-nowrap px-1 text-center font-semibold">
               {splits}
             </TableCell>
             <TableCell className="px-1">
@@ -132,7 +134,9 @@ const StanleyCupSeriesList: React.FC = () => {
                   <div className="whitespace-nowrap">
                     {NHLteamData[losingTeam].location}
                   </div>
-                  <div>{NHLteamData[losingTeam].name}</div>
+                  <div className="whitespace-nowrap">
+                    {NHLteamData[losingTeam].name}
+                  </div>
                 </div>
               </button>
             </TableCell>

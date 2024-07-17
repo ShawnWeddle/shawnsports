@@ -2,7 +2,6 @@ import { type ReactNode } from "react";
 import { type NextPage } from "next";
 import Head from "next/head";
 import NavBar from "../Nav/NavBar";
-import NewNavBar from "../Nav/NewNavBar";
 import Footer from "../Nav/Footer";
 import { cn } from "~/utils/cn";
 import { type PageHeadsType, type UnderPageHeadsType } from "~/data/SiteData";
@@ -40,7 +39,7 @@ const MainPage: NextPage<PageProps> = (props: PageProps) => {
           }
         )}
       >
-        <NewNavBar pageMode={pageMode} underPageMode={underPageMode} />
+        <NavBar pageMode={pageMode} underPageMode={underPageMode} />
 
         <div className="mx-auto flex w-full grow flex-col items-center justify-between bg-white sm:m-0 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg">
           {children}

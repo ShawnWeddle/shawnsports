@@ -9,7 +9,7 @@ import {
 } from "~/components/ui/card";
 import { useNavContext } from "~/hooks/useNavContext";
 
-import NewNavBar from "../Nav/NewNavBar";
+import NewNavBar from "../Nav/NavBar";
 
 const HomeComp: React.FC = () => {
   const { navState, navDispatch } = useNavContext();

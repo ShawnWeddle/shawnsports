@@ -55,7 +55,12 @@ const StanleyCupSeriesList: React.FC = () => {
         const { year, splits, winningTeam, losingTeam } = series;
         if (year === 2005) {
           return (
-            <TableRow key={index} className="even:bg-nhl/10 hover:bg-nhl/20">
+            <TableRow
+              key={index}
+              className={cn("odd:bg-nhl/10 hover:bg-nhl/20", {
+                "text-sm": inModal,
+              })}
+            >
               <TableCell className="px-1 text-center font-semibold">
                 {year}
               </TableCell>
@@ -67,7 +72,12 @@ const StanleyCupSeriesList: React.FC = () => {
         }
 
         return (
-          <TableRow key={index} className="even:bg-nhl/10 hover:bg-nhl/20">
+          <TableRow
+            key={index}
+            className={cn("odd:bg-nhl/10 hover:bg-nhl/20", {
+              "text-sm": inModal,
+            })}
+          >
             <TableCell className="px-1 text-center font-semibold">
               {year}
               {year === 2021 && tableMode !== "Stanley Cups" && "*"}

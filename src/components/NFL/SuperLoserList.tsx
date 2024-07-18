@@ -2,7 +2,7 @@ import { useState } from "react";
 import { cn } from "~/utils/cn";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
-import { Card, CardContent, CardHeader, CardDescription } from "../ui/card";
+import { Card, CardHeader, CardDescription } from "../ui/card";
 import { NFLteamData } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";
@@ -59,7 +59,12 @@ const SuperLoserList: React.FC = () => {
         );
       });
       return (
-        <tr key={index} className="even:bg-nfl/10">
+        <tr
+          key={index}
+          className={cn("odd:bg-nfl/10 hover:bg-nfl/20", {
+            "text-sm": inModal,
+          })}
+        >
           <td className="px-1 text-center font-semibold">
             {firstName} {lastName}
           </td>

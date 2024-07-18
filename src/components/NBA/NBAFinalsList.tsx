@@ -114,7 +114,12 @@ const NBAFinalsList: React.FC = () => {
       .map((series, index) => {
         const { year, splits, winningTeam, losingTeam } = series;
         return (
-          <TableRow key={index} className="odd:bg-nba/10 hover:bg-nba/20">
+          <TableRow
+            key={index}
+            className={cn("odd:bg-nba/10 hover:bg-nba/20", {
+              "text-sm": inModal,
+            })}
+          >
             <TableCell className="px-1 text-center font-semibold">
               {year}
             </TableCell>

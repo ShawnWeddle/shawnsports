@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { cn } from "~/utils/cn";
 import { MLBteamData, type AllMLBTeamType } from "~/data/MLB/MLBdata";
 import { MLBstyleData } from "~/data/MLB/MLBstyleData";
@@ -22,7 +22,6 @@ import {
 type TableModeType = "World Series" | "ALCS" | "NLCS";
 
 const WorldSeriesList: React.FC = () => {
-  const dialog = useRef<HTMLDialogElement>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [activeTeam, setActiveTeam] = useState<AllMLBTeamType | null>(null);
   const [tableMode, setTableMode] = useState<TableModeType>("World Series");
@@ -116,7 +115,12 @@ const WorldSeriesList: React.FC = () => {
         const { year, splits, winningTeam, losingTeam } = series;
         if (series.year === 1994) {
           return (
-            <TableRow key={index} className="odd:bg-mlb/10 hover:bg-mlb/20">
+            <TableRow
+              key={index}
+              className={cn("odd:bg-mlb/10 hover:bg-mlb/20", {
+                "text-sm": inModal,
+              })}
+            >
               <TableCell className="px-1 text-center font-semibold">
                 {year}
               </TableCell>
@@ -128,7 +132,12 @@ const WorldSeriesList: React.FC = () => {
         }
 
         return (
-          <TableRow key={index} className="odd:bg-mlb/10 hover:bg-mlb/20">
+          <TableRow
+            key={index}
+            className={cn("odd:bg-mlb/10 hover:bg-mlb/20", {
+              "text-sm": inModal,
+            })}
+          >
             <TableCell className="px-1 text-center font-semibold">
               {year}
             </TableCell>

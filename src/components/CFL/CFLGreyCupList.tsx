@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { cn } from "~/utils/cn";
 import { CFLteamData, type AllCFLTeamType } from "~/data/CFL/CFLdata";
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
@@ -31,7 +31,12 @@ const GreyCupList: React.FC = () => {
 
       if (year === 2020) {
         return (
-          <tr key={index} className="odd:bg-cfl/10">
+          <tr
+            key={index}
+            className={cn("odd:bg-cfl/10 hover:bg-cfl/20", {
+              "text-sm": inModal,
+            })}
+          >
             <td className="px-1 text-center font-semibold">{year}</td>
             <td colSpan={3} className="py-1 text-center font-semibold">
               No 2020 CFL season
@@ -41,7 +46,12 @@ const GreyCupList: React.FC = () => {
       }
 
       return (
-        <TableRow key={index} className="odd:bg-cfl/10 hover:bg-cfl/20">
+        <TableRow
+          key={index}
+          className={cn("odd:bg-cfl/10 hover:bg-cfl/20", {
+            "text-sm": inModal,
+          })}
+        >
           <TableCell className="px-1 text-center font-semibold">
             {year}
           </TableCell>

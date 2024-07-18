@@ -46,7 +46,12 @@ const SuperBowlList: React.FC = () => {
         const { romanNumeral, wonSB, score, winningTeam, losingTeam, year } =
           game;
         return (
-          <TableRow key={index} className="odd:bg-nfl/10 hover:bg-nfl/20">
+          <TableRow
+            key={index}
+            className={cn("odd:bg-nfl/10 hover:bg-nfl/20", {
+              "text-sm": inModal,
+            })}
+          >
             <TableCell className="px-1 text-center font-semibold">
               <div className="flex flex-col">
                 <div>
@@ -187,11 +192,9 @@ const SuperBowlList: React.FC = () => {
           </table>
         </DialogModalContent>
       </Dialog>
-      <div className="flex w-full justify-center">
-        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          NFL Champions
-        </h1>
-      </div>
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        NFL Champions
+      </h1>
       <Tabs defaultValue="Super Bowls">
         <TabsList className="grid w-full grid-cols-3 bg-nfl">
           <TabsTrigger

@@ -1,21 +1,25 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { NBAteamData, TeamNameEnum } from "~/data/NBApickData";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { AllNBAPicks } from "~/data/AllNBApicks";
 import type { PickType } from "~/data/AllNBApicks";
 import { cn } from "~/utils/cn";
+import { Dialog, DialogTitle, DialogContent, DialogHeader } from "../ui/dialog";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 
 const NBApickTable: React.FC = () => {
-  const dialog = useRef<HTMLDialogElement>(null);
-
+  const [dialogOpen, setDialogOpen] = useState(false);
   const [activePick, setActivePick] = useState<PickType | null>(null);
 
   const activePickNotes = activePick?.notes.map((note, index) => {
-    return (
-      <p key={index} className="mt-2">
-        {note}
-      </p>
-    );
+    return <p key={index}>{note}</p>;
   });
 
   const NBArows = Object.entries(AllNBAPicks).map((teamPicks, rowIndex) => {
@@ -34,7 +38,7 @@ const NBApickTable: React.FC = () => {
             )}
             onClick={() => {
               setActivePick(pick);
-              dialog.current?.showModal();
+              setDialogOpen(true);
             }}
           >
             {pick.nativeTeam}
@@ -45,83 +49,90 @@ const NBApickTable: React.FC = () => {
         );
       });
       return (
-        <td
+        <TableCell
           key={`cell-${rowIndex}-${cellIndex}`}
-          className="py-1 text-center align-top last:pr-1"
+          className="px-px py-1 text-center align-top last:pr-1 sm:px-0.5"
         >
           {activePicks.length > 0 && (
             <div className="flex flex-col">{activePicks}</div>
           )}
-        </td>
+        </TableCell>
       );
     });
     return (
-      <tr key={`row-${rowIndex}`} className="even:bg-nba/10">
-        <td className="hidden px-2 sm:block">
+      <TableRow
+        key={`row-${rowIndex}`}
+        className="odd:bg-nba/10 hover:bg-nba/20"
+      >
+        <TableCell className="hidden px-2 sm:block">
           {NBAteamData[activeTeamCode].location}{" "}
           {NBAteamData[activeTeamCode].name}
-        </td>
-        <td className="px-2 sm:hidden">
+        </TableCell>
+        <TableCell className="px-2 sm:hidden">
           {NBAteamData[activeTeamCode].nickName ??
             NBAteamData[activeTeamCode].name}
-        </td>
+        </TableCell>
         {NBAcells}
-      </tr>
+      </TableRow>
     );
   });
+
+  const modalNamer = (inputPick: PickType | null) => {
+    if (inputPick) {
+      const { year, nativeTeam } = inputPick;
+      const teamLocation = NBAteamData[nativeTeam].location;
+      const teamName = NBAteamData[nativeTeam].name;
+      return (
+        year.toString() +
+        " " +
+        teamLocation +
+        " " +
+        teamName +
+        " First Round Pick"
+      );
+    } else {
+      return "";
+    }
+  };
+
   return (
     <>
-      <dialog
-        ref={dialog}
-        className="mx-auto my-auto w-full max-w-screen-sm rounded-xl align-middle backdrop:bg-gray-500/50"
-        onClose={() => {
-          setActivePick(null);
+      <Dialog
+        open={dialogOpen}
+        onOpenChange={(isOpen) => {
+          if (isOpen === true) return;
+          setDialogOpen(false);
         }}
       >
-        <div>
-          <div className="flex justify-between">
-            <p></p>
-            {activePick ? (
-              <h1 className="text-xl font-semibold">
-                {activePick?.year} {NBAteamData[activePick.nativeTeam].location}{" "}
-                {NBAteamData[activePick.nativeTeam].name} First Round Pick
-              </h1>
-            ) : (
-              <p></p>
-            )}
-
-            <button
-              onClick={() => {
-                dialog.current?.close();
-              }}
-              className="font-semibold"
-            >
-              ✕
-            </button>
-          </div>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{modalNamer(activePick)}</DialogTitle>
+          </DialogHeader>
           {activePickNotes}
+        </DialogContent>
+      </Dialog>
+      <h1 className="mx-2 my-4 text-center text-2xl font-semibold sm:text-4xl">
+        Future NBA First Round Picks
+      </h1>
+      <div className="flex justify-center">
+        <div>
+          <Table className="w-full sm:w-auto">
+            <TableHeader>
+              <TableRow>
+                <TableHead className="px-0">Team</TableHead>
+                <TableHead className="px-0">2025</TableHead>
+                <TableHead className="px-0">2026</TableHead>
+                <TableHead className="px-0">2027</TableHead>
+                <TableHead className="px-0">2028</TableHead>
+                <TableHead className="px-0">2029</TableHead>
+                <TableHead className="px-0">2030</TableHead>
+                <TableHead className="px-0">2031</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody className="text-xs sm:text-base">{NBArows}</TableBody>
+          </Table>
         </div>
-      </dialog>
-      <div className="flex w-full justify-center">
-        <h1 className="mx-2 my-4 text-center text-2xl font-semibold sm:text-4xl">
-          Future NBA First Round Picks
-        </h1>
       </div>
-      <table className="w-full sm:w-auto">
-        <thead>
-          <tr className="bg-nba text-white sm:text-xl">
-            <th>Team</th>
-            <th>2025</th>
-            <th>2026</th>
-            <th>2027</th>
-            <th>2028</th>
-            <th>2029</th>
-            <th>2030</th>
-            <th>2031</th>
-          </tr>
-        </thead>
-        <tbody className="text-xs sm:text-base">{NBArows}</tbody>
-      </table>
     </>
   );
 };

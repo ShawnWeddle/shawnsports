@@ -292,7 +292,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     nativeTeam: "CLE",
     pickCode: "CLE-2028",
     year: 2028,
-    notes: ["Cleveland will receive the lesser of their native pick and Utah's."],
+    notes: ["Cleveland will receive the lesser of their native pick and Utah's pick."],
     swap: "negative",
   },],
   "2029":[],

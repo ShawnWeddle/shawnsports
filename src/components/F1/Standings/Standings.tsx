@@ -3,8 +3,11 @@ import ConstructorStandings from "~/components/F1/Standings/ConstructorStandings
 
 const Standings: React.FC = () => {
   return (
-    <div className="flex w-full justify-center">
-      <div className="m-4 sm:grid sm:w-auto sm:grid-cols-2 sm:gap-4">
+    <>
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        2024 Formula One Standings
+      </h1>
+      <div className="grid w-full grid-cols-1 sm:grid-cols-2 sm:px-4">
         <div>
           <DriverStandings />
         </div>
@@ -12,7 +15,7 @@ const Standings: React.FC = () => {
           <ConstructorStandings />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

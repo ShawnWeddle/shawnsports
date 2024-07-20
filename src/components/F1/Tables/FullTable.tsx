@@ -125,11 +125,9 @@ const FormulaOneTable: React.FC = () => {
 
   return (
     <>
-      <div className="flex w-full justify-center">
-        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          2024 Formula One Season
-        </h1>
-      </div>
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        2024 Formula One Season
+      </h1>
       <div className="flex w-full justify-center gap-4">
         <TableModeInputs />
         <RaceModeInputs />

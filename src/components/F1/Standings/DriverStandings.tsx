@@ -7,6 +7,15 @@ import { F1styleData } from "~/data/F1/2024/F1styleData24";
 import { FormulaOneRaceResults } from "~/data/F1/2024/raceResults2024";
 import { createStandings } from "~/data/F1/2024/F1converters24";
 import PodiumLogo from "../PodiumLogo";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 
 export const DriverStandings: React.FC = () => {
   const { driverStandings, driverOrder, driverPodiums } = createStandings(
@@ -16,12 +25,9 @@ export const DriverStandings: React.FC = () => {
   const driverPointsPairs = driverOrder.map((driver, index) => {
     const podiums = driverPodiums[driver];
     return (
-      <tr
-        key={index}
-        className="border-b-2 border-gray-200 font-semibold last:border-0"
-      >
-        <td className="px-1 text-center"> {index + 1} </td>
-        <td
+      <TableRow key={index} className="w-auto font-semibold sm:text-base">
+        <TableCell className="px-1 text-center"> {index + 1} </TableCell>
+        <TableCell
           className={cn("px-3", {
             [F1styleData[driverToConstructor2024(driver)].primaryBGstyle]: true,
             [F1styleData[driverToConstructor2024(driver)].secondaryTextStyle]:
@@ -29,34 +35,40 @@ export const DriverStandings: React.FC = () => {
           })}
         >
           {driverNames2024[driver].first} {driverNames2024[driver].last}
-        </td>
-        <td className="px-3 text-center">{driverStandings[driver].total}</td>
-        <td className="px-3 text-center">{podiums}</td>
-      </tr>
+        </TableCell>
+        <TableCell className="px-3 text-center">
+          {driverStandings[driver].total}
+        </TableCell>
+        <TableCell className="px-3 text-center">{podiums}</TableCell>
+      </TableRow>
     );
   });
 
   return (
-    <div className="flex flex-col items-center rounded-xl sm:border-2">
-      <h1 className="mx-2 my-4 text-center text-2xl font-semibold lg:text-4xl">
-        Driver Standings
-      </h1>
-      <table className="sm:mx-4 sm:mb-4">
-        <thead>
-          <tr>
-            <td></td>
-            <td></td>
-            <td>
-              <p className="text-center text-sm font-bold text-gray-500">P</p>
-            </td>
-            <td>
-              <PodiumLogo />
-            </td>
-          </tr>
-        </thead>
-        <tbody>{driverPointsPairs}</tbody>
-      </table>
-    </div>
+    <Card className="m-4">
+      <CardHeader>
+        <CardTitle className="text-center">Driver Standings</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="pb-4">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Team</TableHead>
+                <TableHead>
+                  <p className="font-bold">P</p>
+                </TableHead>
+                <TableHead>
+                  <PodiumLogo />
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>{driverPointsPairs}</TableBody>
+          </Table>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 

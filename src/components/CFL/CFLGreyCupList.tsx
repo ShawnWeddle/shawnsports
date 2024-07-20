@@ -81,7 +81,9 @@ const GreyCupList: React.FC = () => {
                 <div className="whitespace-nowrap">
                   {CFLteamData[winningTeam].location}
                 </div>
-                <div>{CFLteamData[winningTeam].name}</div>
+                <div className="whitespace-nowrap">
+                  {CFLteamData[winningTeam].name}
+                </div>
               </div>
             </button>
           </TableCell>
@@ -114,7 +116,9 @@ const GreyCupList: React.FC = () => {
                 <div className="whitespace-nowrap">
                   {CFLteamData[losingTeam].location}
                 </div>
-                <div>{CFLteamData[losingTeam].name}</div>
+                <div className="whitespace-nowrap">
+                  {CFLteamData[losingTeam].name}
+                </div>
               </div>
             </button>
           </TableCell>

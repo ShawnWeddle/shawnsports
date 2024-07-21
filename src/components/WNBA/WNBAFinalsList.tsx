@@ -12,6 +12,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableRowNoHover,
 } from "~/components/ui/table";
 
 const WNBAFinalsList: React.FC = () => {
@@ -144,12 +145,12 @@ const WNBAFinalsList: React.FC = () => {
         <div>
           <Table className="w-full sm:w-auto">
             <TableHeader>
-              <TableRow>
+              <TableRowNoHover>
                 <TableHead>Year</TableHead>
                 <TableHead>Winning Team</TableHead>
                 <TableHead>Games</TableHead>
                 <TableHead>Losing Team</TableHead>
-              </TableRow>
+              </TableRowNoHover>
             </TableHeader>
             <TableBody>{wnbaFinals(null, false)}</TableBody>
           </Table>

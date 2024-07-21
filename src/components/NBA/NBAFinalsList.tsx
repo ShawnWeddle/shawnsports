@@ -17,6 +17,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableRowNoHover,
 } from "~/components/ui/table";
 
 type TableModeType = "Finals" | "Eastern" | "Western";
@@ -263,12 +264,12 @@ const NBAFinalsList: React.FC = () => {
         </TabsList>
         <Table className="w-full sm:w-auto">
           <TableHeader>
-            <TableRow>
+            <TableRowNoHover>
               <TableHead>Year</TableHead>
               <TableHead>Winning Team</TableHead>
               <TableHead>Games</TableHead>
               <TableHead>Losing Team</TableHead>
-            </TableRow>
+            </TableRowNoHover>
           </TableHeader>
           <TableBody>{nbaFinals(null, false)}</TableBody>
         </Table>

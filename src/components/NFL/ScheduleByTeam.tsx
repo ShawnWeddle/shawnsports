@@ -10,6 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableRowNoHover,
 } from "~/components/ui/table";
 
 interface ScheduleForTeamProps {
@@ -134,14 +135,14 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
         <div>
           <Table className="w-auto">
             <TableHeader>
-              <TableRow>
+              <TableRowNoHover>
                 <TableHead></TableHead>
                 <TableHead>Away</TableHead>
                 <TableHead></TableHead>
                 <TableHead>Home</TableHead>
                 <TableHead></TableHead>
                 <TableHead>Winner</TableHead>
-              </TableRow>
+              </TableRowNoHover>
             </TableHeader>
             <TableBody className="text-sm sm:text-base">{schedule}</TableBody>
           </Table>

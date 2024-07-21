@@ -15,6 +15,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableRowNoHover,
 } from "~/components/ui/table";
 
 type TableModeType = "Super Bowls" | "AFC" | "NFC";
@@ -227,13 +228,13 @@ const SuperBowlList: React.FC = () => {
         </TabsList>
         <Table>
           <TableHeader>
-            <TableRow>
+            <TableRowNoHover>
               <TableHead className="hidden sm:inline-block"></TableHead>
               <TableHead>Year</TableHead>
               <TableHead>Winning Team</TableHead>
               <TableHead>Score</TableHead>
               <TableHead>Losing Team</TableHead>
-            </TableRow>
+            </TableRowNoHover>
           </TableHeader>
           <TableBody>{superBowls(null, false)}</TableBody>
         </Table>

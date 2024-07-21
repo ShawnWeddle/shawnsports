@@ -12,6 +12,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableRowNoHover,
 } from "~/components/ui/table";
 
 const NBApickTable: React.FC = () => {
@@ -118,7 +119,7 @@ const NBApickTable: React.FC = () => {
         <div>
           <Table className="w-full sm:w-auto">
             <TableHeader>
-              <TableRow>
+              <TableRowNoHover>
                 <TableHead className="px-0">Team</TableHead>
                 <TableHead className="px-0">2025</TableHead>
                 <TableHead className="px-0">2026</TableHead>
@@ -127,7 +128,7 @@ const NBApickTable: React.FC = () => {
                 <TableHead className="px-0">2029</TableHead>
                 <TableHead className="px-0">2030</TableHead>
                 <TableHead className="px-0">2031</TableHead>
-              </TableRow>
+              </TableRowNoHover>
             </TableHeader>
             <TableBody className="text-xs sm:text-base">{NBArows}</TableBody>
           </Table>

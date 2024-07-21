@@ -13,7 +13,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableRowNoHover,
 } from "~/components/ui/table";
+import { Card, CardDescription, CardHeader } from "../ui/card";
 
 type TableModeType = "Stanley Cups" | "Eastern" | "Western";
 
@@ -189,11 +191,9 @@ const StanleyCupSeriesList: React.FC = () => {
           </table>
         </DialogModalContent>
       </Dialog>
-      <div className="flex w-full justify-center">
-        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          Stanley Cup Champions
-        </h1>
-      </div>
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        Stanley Cup Champions
+      </h1>
       <Tabs defaultValue="Stanley Cups">
         <TabsList className="grid w-full grid-cols-3 bg-nhl">
           <TabsTrigger
@@ -226,40 +226,31 @@ const StanleyCupSeriesList: React.FC = () => {
         </TabsList>
         <Table className="w-full sm:w-auto">
           <TableHeader>
-            <TableRow>
+            <TableRowNoHover>
               <TableHead>Year</TableHead>
               <TableHead>Winning Team</TableHead>
               <TableHead>Games</TableHead>
               <TableHead>Losing Team</TableHead>
-            </TableRow>
+            </TableRowNoHover>
           </TableHeader>
           <TableBody>{stanleyCups(null, false)}</TableBody>
         </Table>
       </Tabs>
-
-      {tableMode === "Eastern" && (
-        <div className="flex w-full justify-center">
-          <p className="mb-4 w-96 text-center italic">
+      <Card className="m-2">
+        <CardHeader>
+          <CardDescription>
             The Eastern Conference was called the Prince of Wales Conference
             from 1982-93
-          </p>
-        </div>
-      )}
-      {tableMode === "Western" && (
-        <div className="flex w-full justify-center">
-          <p className="mb-4 w-96 text-center italic">
+          </CardDescription>
+          <CardDescription>
             The Western Conference was called the Clarence Campbell Conference
             from 1982-93
-          </p>
-        </div>
-      )}
-      {tableMode !== "Stanley Cups" && (
-        <div className="flex w-full justify-center">
-          <p className="mb-4 w-96 text-center italic">
+          </CardDescription>
+          <CardDescription>
             The 2021 playoffs were not separated by conference
-          </p>
-        </div>
-      )}
+          </CardDescription>
+        </CardHeader>
+      </Card>
     </>
   );
 };

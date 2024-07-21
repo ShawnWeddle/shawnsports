@@ -22,7 +22,12 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "~/components/ui/alert-dialog";
-import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableRowNoHover,
+} from "~/components/ui/table";
 
 const NFLSchedule: React.FC = () => {
   const [scheduleMode, setScheduleMode] = useState<"Menu" | "Team">("Menu");
@@ -43,10 +48,7 @@ const NFLSchedule: React.FC = () => {
             const { wins, losses } = recordForTeam(team, games);
             const allGamesPicked = wins + losses === 17;
             return (
-              <TableRow
-                className="border-0 hover:bg-inherit data-[state=selected]:bg-inherit"
-                key={team + teamIndex.toString()}
-              >
+              <TableRowNoHover key={team + teamIndex.toString()}>
                 <TableCell className="px-2">
                   <div className="flex w-full flex-col justify-center p-0.5 sm:p-0">
                     <button
@@ -87,16 +89,16 @@ const NFLSchedule: React.FC = () => {
                 >
                   {wins}-{losses}
                 </TableCell>
-              </TableRow>
+              </TableRowNoHover>
             );
           });
           return (
             <Fragment key={"Division" + divisionIndex.toString()}>
-              <TableRow className="border-0 hover:bg-inherit data-[state=selected]:bg-inherit">
+              <TableRowNoHover>
                 <TableCell className="px-2 py-1 text-center font-semibold">
                   {conferenceName} {divisionName}
                 </TableCell>
-              </TableRow>
+              </TableRowNoHover>
               {teamButtons}
             </Fragment>
           );
@@ -193,7 +195,7 @@ const NFLSchedule: React.FC = () => {
             >
               <div className="flex items-center justify-center text-sm hover:font-bold">
                 <FaArrowLeft />
-                <span className="mb-2 px-1 text-base"> Back to Menu</span>
+                <span className="px-1 text-base"> Back to Menu</span>
               </div>
             </button>
           </div>

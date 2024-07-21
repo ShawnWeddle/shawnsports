@@ -11,7 +11,7 @@ import {
   TableBody,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRowNoHover,
 } from "~/components/ui/table";
 
 type TableModeType =
@@ -145,12 +145,12 @@ const FormulaOneTable: React.FC = () => {
         </div>
       </Card>
       <div className="flex w-full justify-start">
-        <Table className="text-sm sm:text-base">
+        <Table className="w-fit text-sm sm:text-base">
           <TableHeader>
-            <TableRow className="hover:bg-inherit">
+            <TableRowNoHover>
               <TableHead></TableHead>
               <F1TableHeaders raceMode={raceMode} />
-            </TableRow>
+            </TableRowNoHover>
           </TableHeader>
           <TableBody>
             {tableMode === "PlaceSort" && (

@@ -17,6 +17,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableRowNoHover,
 } from "~/components/ui/table";
 
 type TableModeType = "World Series" | "ALCS" | "NLCS";
@@ -239,11 +240,11 @@ const WorldSeriesList: React.FC = () => {
           </table>
         </DialogModalContent>
       </Dialog>
-      <div className="flex w-full justify-center">
-        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          World Series Champions
-        </h1>
-      </div>
+
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        World Series Champions
+      </h1>
+
       <Tabs defaultValue="World Series">
         <TabsList className="grid w-full grid-cols-3 bg-mlb">
           <TabsTrigger
@@ -276,12 +277,12 @@ const WorldSeriesList: React.FC = () => {
         </TabsList>
         <Table className="w-full sm:w-auto">
           <TableHeader>
-            <TableRow>
+            <TableRowNoHover>
               <TableHead>Year</TableHead>
               <TableHead>Winning Team</TableHead>
               <TableHead>Games</TableHead>
               <TableHead>Losing Team</TableHead>
-            </TableRow>
+            </TableRowNoHover>
           </TableHeader>
           <TableBody>{worldSeries(null, false)}</TableBody>
         </Table>

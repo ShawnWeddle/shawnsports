@@ -21,7 +21,7 @@ const F1TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
       >
         <p
           className={cn(
-            "w-0 -rotate-[30deg] transform whitespace-nowrap px-4 font-semibold "
+            "w-0 -rotate-[30deg] transform whitespace-nowrap px-4 font-semibold text-black"
           )}
         >
           {sprint ? locationName + " Sprint" : locationName}

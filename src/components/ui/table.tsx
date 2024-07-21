@@ -66,6 +66,14 @@ const TableRow = React.forwardRef<
 ));
 TableRow.displayName = "TableRow";
 
+const TableRowNoHover = React.forwardRef<
+  HTMLTableRowElement,
+  React.HTMLAttributes<HTMLTableRowElement>
+>(({ className, ...props }, ref) => (
+  <tr ref={ref} className={cn("transition-colors", className)} {...props} />
+));
+TableRowNoHover.displayName = "TableRowNoHover";
+
 const TableHead = React.forwardRef<
   HTMLTableCellElement,
   React.ThHTMLAttributes<HTMLTableCellElement>
@@ -112,6 +120,7 @@ export {
   TableFooter,
   TableHead,
   TableRow,
+  TableRowNoHover,
   TableCell,
   TableCaption,
 };

@@ -12,6 +12,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableRowNoHover,
 } from "~/components/ui/table";
 
 const GreyCupList: React.FC = () => {
@@ -158,12 +159,12 @@ const GreyCupList: React.FC = () => {
         <div>
           <Table className="w-full sm:w-auto">
             <TableHeader>
-              <TableRow>
+              <TableRowNoHover>
                 <TableHead>Year</TableHead>
                 <TableHead>Winning Team</TableHead>
                 <TableHead>Score</TableHead>
                 <TableHead>Losing Team</TableHead>
-              </TableRow>
+              </TableRowNoHover>
             </TableHeader>
             <TableBody>{greyCups(null, false)}</TableBody>
           </Table>

@@ -12,7 +12,7 @@ import {
 } from "~/data/F1/2024/HandleActivation24";
 import { F1styleData } from "~/data/F1/2024/F1styleData24";
 import type { RaceModeProps } from "~/data/F1/2024/F1data24";
-import { TableCell, TableRow } from "~/components/ui/table";
+import { TableCell, TableRowNoHover } from "~/components/ui/table";
 
 export const RaceResultTable: React.FC<RaceModeProps> = (
   props: RaceModeProps
@@ -107,7 +107,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
       }
     });
     return (
-      <TableRow
+      <TableRowNoHover
         key={`r-${rowIndex}`}
         className="border-b-2 border-gray-200 font-mono"
       >
@@ -134,12 +134,12 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
           {rowIndex + 1}
         </TableCell>
         {tableCells}
-      </TableRow>
+      </TableRowNoHover>
     );
   });
   const DNFRows = DNFs.map((dnf, rowIndex) => {
     const DNFCells = dnf.map((driver, cellIndex) => {
-      const { driverName, sprint } = driver;
+      const { driverName, sprint, polePosition } = driver;
       const isDriver = !!driverName && !!activeDrivers[driverName];
       if (driverName) {
         const activeStyleGuide =
@@ -176,6 +176,11 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
               )}
             >
               {driverName}
+              {polePosition && (
+                <span className="absolute -right-1 -top-1 text-sm text-black">
+                  P
+                </span>
+              )}
             </button>
           </TableCell>
         );
@@ -192,15 +197,18 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
       }
     });
     return (
-      <TableRow key={`r-${rowIndex}`} className="bg-red-500/30 font-mono">
+      <TableRowNoHover
+        key={`r-${rowIndex}`}
+        className="bg-formulaOne/30 font-mono"
+      >
         <TableCell>{rowIndex === 0 ? "DNF" : ""}</TableCell>
         {DNFCells}
-      </TableRow>
+      </TableRowNoHover>
     );
   });
   const DQRows = DQs.map((dq, rowIndex) => {
     const DQCells = dq.map((driver, cellIndex) => {
-      const { driverName, sprint } = driver;
+      const { driverName, sprint, polePosition } = driver;
       const isDriver = !!driverName && !!activeDrivers[driverName];
       if (driverName) {
         const activeStyleGuide =
@@ -237,6 +245,11 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
               )}
             >
               {driverName}
+              {polePosition && (
+                <span className="absolute -right-1 -top-1 text-sm text-black">
+                  P
+                </span>
+              )}
             </button>
           </TableCell>
         );
@@ -253,13 +266,13 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
       }
     });
     return (
-      <TableRow
+      <TableRowNoHover
         key={`r-${rowIndex}`}
         className="bg-black/40 font-mono text-white"
       >
         <TableCell>{rowIndex === 0 ? "DQ" : ""}</TableCell>
         {DQCells}
-      </TableRow>
+      </TableRowNoHover>
     );
   });
 

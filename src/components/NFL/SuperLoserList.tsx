@@ -8,6 +8,15 @@ import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";
 import { SuperLoserData } from "~/data/NFL/SuperLoserData";
 import { type SuperBowlType } from "~/types/ChampTypes";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableRowNoHover,
+} from "~/components/ui/table";
 
 const SuperLoserList: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -46,11 +55,12 @@ const SuperLoserList: React.FC = () => {
               setDialogOpen(true);
             }}
             className={cn(
-              "w-full border-x-2 px-1 text-center font-semibold first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2 sm:m-0.5 sm:rounded-lg sm:border-y-2",
+              "w-full border-x-2 px-1 text-center font-semibold first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2",
               {
                 [NFLstyleData[losingTeam].primaryBGstyle]: true,
                 [NFLstyleData[losingTeam].secondaryBorderStyle]: true,
                 [NFLstyleData[losingTeam].primaryPlainText]: true,
+                "sm:rounded-lg sm:border-y-2": !inModal,
               }
             )}
           >
@@ -59,25 +69,25 @@ const SuperLoserList: React.FC = () => {
         );
       });
       return (
-        <tr
+        <TableRow
           key={index}
           className={cn("odd:bg-nfl/10 hover:bg-nfl/20", {
             "text-sm": inModal,
           })}
         >
-          <td className="px-1 text-center font-semibold">
+          <TableCell className="px-1 text-center font-semibold">
             {firstName} {lastName}
-          </td>
-          <td>
+          </TableCell>
+          <TableCell>
             <div
-              className={cn("m-1", {
-                "sm:m-0 sm:grid sm:grid-cols-3 sm:gap-1": !inModal,
+              className={cn("p-0.5", {
+                "sm:grid sm:grid-cols-3 sm:gap-1": !inModal,
               })}
             >
               {lossList}
             </div>
-          </td>
-        </tr>
+          </TableCell>
+        </TableRow>
       );
     });
 
@@ -114,17 +124,14 @@ const SuperLoserList: React.FC = () => {
           title={modalNamer(activeSuperBowl).game}
           description={modalNamer(activeSuperBowl).score}
         >
-          <table>
-            <tbody>{superLosers(activeSuperBowl, true)}</tbody>
-          </table>
+          <Table>
+            <TableBody>{superLosers(activeSuperBowl, true)}</TableBody>
+          </Table>
         </DialogModalContent>
       </Dialog>
-
-      <div className="flex w-full justify-center">
-        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          Super Losers
-        </h1>
-      </div>
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        Super Losers
+      </h1>
       <Card className="m-2">
         <CardHeader>
           <CardDescription>
@@ -135,15 +142,19 @@ const SuperLoserList: React.FC = () => {
           <CardDescription>This list is likely incomplete.</CardDescription>
         </CardHeader>
       </Card>
-      <table className="w-full sm:w-auto">
-        <thead className="bg-nfl text-white">
-          <tr>
-            <th>Player</th>
-            <th>Losses</th>
-          </tr>
-        </thead>
-        <tbody>{superLosers(null, false)}</tbody>
-      </table>
+      <div className="flex justify-center">
+        <div>
+          <Table className="w-full sm:w-auto">
+            <TableHeader>
+              <TableRowNoHover>
+                <TableHead>Player</TableHead>
+                <TableHead>Losses</TableHead>
+              </TableRowNoHover>
+            </TableHeader>
+            <TableBody>{superLosers(null, false)}</TableBody>
+          </Table>
+        </div>
+      </div>
     </>
   );
 };

@@ -2,18 +2,19 @@ import { cn } from "~/utils/cn";
 import { locationHeaders } from "~/data/F1/2024/F1converters24";
 import { FormulaOneRaceResults } from "~/data/F1/2024/raceResults2024";
 import type { RaceModeProps } from "~/data/F1/2024/F1data24";
+import { TableHead } from "~/components/ui/table";
 
 const { headers } = locationHeaders(FormulaOneRaceResults);
 
-export const TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
+const F1TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
   const tableHeaders = headers.map((location, index) => {
     const { locationName, sprint } = location;
     const { raceMode } = props;
     return (
-      <th
+      <TableHead
         key={index}
         className={cn(
-          "pt-16",
+          "px-0 pt-16",
           { hidden: sprint && raceMode === "Grands Prix Only" },
           { hidden: !sprint && raceMode === "Sprint Races Only" }
         )}
@@ -25,9 +26,11 @@ export const TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
         >
           {sprint ? locationName + " Sprint" : locationName}
         </p>
-      </th>
+      </TableHead>
     );
   });
 
   return <>{tableHeaders}</>;
 };
+
+export default F1TableHeaders;

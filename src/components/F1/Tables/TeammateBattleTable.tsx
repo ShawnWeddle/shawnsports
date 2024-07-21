@@ -7,6 +7,7 @@ import { FormulaOneRaceResults } from "~/data/F1/2024/raceResults2024";
 import { F1styleData } from "~/data/F1/2024/F1styleData24";
 import { driverToConstructor2024 } from "~/data/F1/2024/F1data24";
 import type { RaceModeProps } from "~/data/F1/2024/F1data24";
+import { TableCell, TableRow } from "~/components/ui/table";
 
 export const TeammateBattleTable: React.FC<RaceModeProps> = (
   props: RaceModeProps
@@ -23,7 +24,7 @@ export const TeammateBattleTable: React.FC<RaceModeProps> = (
     const tableCells = result.map((place, Cindex) => {
       const { sprint, finishPosition, beatTeammate } = place;
       return (
-        <td
+        <TableCell
           key={`${index} - ${Cindex}`}
           className={cn(
             "w-10 text-center",
@@ -38,7 +39,7 @@ export const TeammateBattleTable: React.FC<RaceModeProps> = (
           )}
         >
           {finishPosition !== "DNR" ? finishPosition : ""}
-        </td>
+        </TableCell>
       );
     });
     const driverTextColor =
@@ -46,17 +47,20 @@ export const TeammateBattleTable: React.FC<RaceModeProps> = (
     const driverBg =
       F1styleData[driverToConstructor2024(activeDriver)].primaryBGstyle;
     return (
-      <tr key={`r-${index}`} className="border-b-2 border-gray-200 font-mono">
-        <td
+      <TableRow
+        key={`r-${index}`}
+        className="border-b-2 border-gray-200 font-mono"
+      >
+        <TableCell
           className={cn("px-2 text-center", {
             [driverTextColor]: true,
             [driverBg]: true,
           })}
         >
           {driverByConstructorOrder[index]}
-        </td>
+        </TableCell>
         {tableCells}
-      </tr>
+      </TableRow>
     );
   });
 

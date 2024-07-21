@@ -1,10 +1,18 @@
 import { useState } from "react";
-import { TableHeaders } from "./TableHeaders";
+import F1TableHeaders from "./TableHeaders";
 import { RaceResultTable } from "~/components/F1/Tables/RaceResultTable";
 import { DriverResultTable } from "~/components/F1/Tables/DriverResultTable";
 import { RunningResultTable } from "~/components/F1/Tables/RunningTotalsTable";
 import { TeammateBattleTable } from "./TeammateBattleTable";
 import type { RaceModeType } from "~/data/F1/2023/F1data23";
+import { Card } from "~/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 
 type TableModeType =
   | "DriverSort"
@@ -20,7 +28,7 @@ const FormulaOneTable: React.FC = () => {
 
   const TableModeInputs: React.FC = () => {
     return (
-      <fieldset className="rounded-xl border p-2">
+      <fieldset>
         <div className="flex justify-start">
           <input
             type="radio"
@@ -79,7 +87,7 @@ const FormulaOneTable: React.FC = () => {
 
   const RaceModeInputs: React.FC = () => {
     return (
-      <fieldset className="rounded-xl border p-2">
+      <fieldset>
         <div className="flex justify-start">
           <input
             type="radio"
@@ -128,19 +136,23 @@ const FormulaOneTable: React.FC = () => {
       <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
         2024 Formula One Season
       </h1>
-      <div className="flex w-full justify-center gap-4">
-        <TableModeInputs />
-        <RaceModeInputs />
-      </div>
-      <div className="flex w-full justify-start overflow-auto">
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <TableHeaders raceMode={raceMode} />
-            </tr>
-          </thead>
-          <tbody>
+      <Card className="flex justify-center gap-2 p-2">
+        <div>
+          <TableModeInputs />
+        </div>
+        <div>
+          <RaceModeInputs />
+        </div>
+      </Card>
+      <div className="flex w-full justify-start">
+        <Table className="text-sm sm:text-base">
+          <TableHeader>
+            <TableRow className="hover:bg-inherit">
+              <TableHead></TableHead>
+              <F1TableHeaders raceMode={raceMode} />
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {tableMode === "PlaceSort" && (
               <RaceResultTable raceMode={raceMode} />
             )}
@@ -153,8 +165,8 @@ const FormulaOneTable: React.FC = () => {
             {tableMode === "TeammateBattle" && (
               <TeammateBattleTable raceMode={raceMode} />
             )}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
     </>
   );

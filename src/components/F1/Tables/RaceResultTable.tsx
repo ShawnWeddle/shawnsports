@@ -12,6 +12,7 @@ import {
 } from "~/data/F1/2024/HandleActivation24";
 import { F1styleData } from "~/data/F1/2024/F1styleData24";
 import type { RaceModeProps } from "~/data/F1/2024/F1data24";
+import { TableCell, TableRow } from "~/components/ui/table";
 
 export const RaceResultTable: React.FC<RaceModeProps> = (
   props: RaceModeProps
@@ -42,7 +43,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
         const activeBg = activeStyleGuide.primaryBGstyle;
         const activeTextColor = activeStyleGuide.secondaryTextStyle;
         return (
-          <td
+          <TableCell
             key={`c-${cellIndex}`}
             className={cn(
               {
@@ -88,11 +89,11 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
                 </span>
               )}
             </button>
-          </td>
+          </TableCell>
         );
       } else {
         return (
-          <td
+          <TableCell
             key={`c-${cellIndex}`}
             className={cn(
               {
@@ -101,16 +102,16 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
               { hidden: sprint && raceMode === "Grands Prix Only" },
               { hidden: !sprint && raceMode === "Sprint Races Only" }
             )}
-          ></td>
+          ></TableCell>
         );
       }
     });
     return (
-      <tr
+      <TableRow
         key={`r-${rowIndex}`}
         className="border-b-2 border-gray-200 font-mono"
       >
-        <td
+        <TableCell
           className={cn(
             "text-center",
             {
@@ -131,9 +132,9 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
           )}
         >
           {rowIndex + 1}
-        </td>
+        </TableCell>
         {tableCells}
-      </tr>
+      </TableRow>
     );
   });
   const DNFRows = DNFs.map((dnf, rowIndex) => {
@@ -152,7 +153,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
         const activeBg = activeStyleGuide.primaryBGstyle;
         const activeTextColor = activeStyleGuide.secondaryTextStyle;
         return (
-          <td
+          <TableCell
             key={`c-${cellIndex}`}
             className={cn(
               {
@@ -176,25 +177,25 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
             >
               {driverName}
             </button>
-          </td>
+          </TableCell>
         );
       } else {
         return (
-          <td
+          <TableCell
             key={`c-${cellIndex}`}
             className={cn(
               { hidden: sprint && raceMode === "Grands Prix Only" },
               { hidden: !sprint && raceMode === "Sprint Races Only" }
             )}
-          ></td>
+          ></TableCell>
         );
       }
     });
     return (
-      <tr key={`r-${rowIndex}`} className="bg-red-500/30 font-mono">
-        <td>{rowIndex === 0 ? "DNF" : ""}</td>
+      <TableRow key={`r-${rowIndex}`} className="bg-red-500/30 font-mono">
+        <TableCell>{rowIndex === 0 ? "DNF" : ""}</TableCell>
         {DNFCells}
-      </tr>
+      </TableRow>
     );
   });
   const DQRows = DQs.map((dq, rowIndex) => {
@@ -213,7 +214,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
         const activeBg = activeStyleGuide.primaryBGstyle;
         const activeTextColor = activeStyleGuide.secondaryTextStyle;
         return (
-          <td
+          <TableCell
             key={`c-${cellIndex}`}
             className={cn(
               {
@@ -237,25 +238,28 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
             >
               {driverName}
             </button>
-          </td>
+          </TableCell>
         );
       } else {
         return (
-          <td
+          <TableCell
             key={`c-${cellIndex}`}
             className={cn(
               { hidden: sprint && raceMode === "Grands Prix Only" },
               { hidden: !sprint && raceMode === "Sprint Races Only" }
             )}
-          ></td>
+          ></TableCell>
         );
       }
     });
     return (
-      <tr key={`r-${rowIndex}`} className="bg-black/40 font-mono text-white">
-        <td>{rowIndex === 0 ? "DQ" : ""}</td>
+      <TableRow
+        key={`r-${rowIndex}`}
+        className="bg-black/40 font-mono text-white"
+      >
+        <TableCell>{rowIndex === 0 ? "DQ" : ""}</TableCell>
         {DQCells}
-      </tr>
+      </TableRow>
     );
   });
 

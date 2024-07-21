@@ -4,7 +4,7 @@ import { NFLteamData, type AllNFLTeamType } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";
 import { AFCChampData, NFCChampData } from "~/data/NFL/ConferenceChampData";
-import { nameMatcher } from "~/utils/nfl";
+import { nameMatcher, nflTeamPreNames } from "~/utils/nfl";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
 import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
@@ -162,7 +162,7 @@ const SuperBowlList: React.FC = () => {
     inputMode: TableModeType
   ) => {
     if (inputTeam) {
-      const teamName = NFLteamData[inputTeam].name;
+      const teamName = nflTeamPreNames(inputTeam);
       const final =
         inputMode === "Super Bowls"
           ? "Super Bowls"

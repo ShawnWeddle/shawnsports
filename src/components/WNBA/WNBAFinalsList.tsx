@@ -3,6 +3,7 @@ import { cn } from "~/utils/cn";
 import { WNBAteamData, type AllWNBATeamType } from "~/data/WNBA/WNBAdata";
 import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
 import { WNBAFinalsData } from "~/data/WNBA/WNBAFinalsData";
+import { nameMatcher, wnbaTeamPreNames } from "~/utils/wnba";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
 import {
@@ -22,17 +23,7 @@ const WNBAFinalsList: React.FC = () => {
   const wnbaFinals = (team: AllWNBATeamType | null, inModal: boolean) =>
     WNBAFinalsData.filter((game) => {
       if (!team) return true;
-      let isTeam = false;
-      if ([game.losingTeam, game.winningTeam].includes(team)) {
-        isTeam = true;
-      }
-      if (
-        (team === "LVA" &&
-          [game.losingTeam, game.winningTeam].includes("SAS")) ||
-        (team === "SAS" && [game.losingTeam, game.winningTeam].includes("LVA"))
-      ) {
-        isTeam = true;
-      }
+      const isTeam = nameMatcher(team, game.winningTeam, game.losingTeam);
       return isTeam;
     }).map((series, index) => {
       const { year, splits, winningTeam, losingTeam } = series;
@@ -115,8 +106,7 @@ const WNBAFinalsList: React.FC = () => {
 
   const modalNamer = (inputTeam: AllWNBATeamType | null) => {
     if (inputTeam) {
-      const teamName = WNBAteamData[inputTeam].name;
-
+      const teamName = wnbaTeamPreNames(inputTeam);
       return teamName + "  Finals";
     } else {
       return "";

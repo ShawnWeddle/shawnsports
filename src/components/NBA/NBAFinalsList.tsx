@@ -7,6 +7,7 @@ import {
   EasternChampData,
   WesternChampData,
 } from "~/data/NBA/ConferenceChampData";
+import { nameMatcher, nbaTeamPreNames } from "~/utils/nba";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
 import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
@@ -42,74 +43,7 @@ const NBAFinalsList: React.FC = () => {
     activeData(tableMode)
       .filter((game) => {
         if (!team) return true;
-        let isTeam = false;
-        if ([game.losingTeam, game.winningTeam].includes(team)) {
-          isTeam = true;
-        }
-        if (
-          (team === "LAL" &&
-            [game.losingTeam, game.winningTeam].includes("MNL")) ||
-          (team === "MNL" &&
-            [game.losingTeam, game.winningTeam].includes("LAL"))
-        ) {
-          isTeam = true;
-        }
-        if (
-          (team === "PHI" &&
-            [game.losingTeam, game.winningTeam].includes("SYR")) ||
-          (team === "SYR" &&
-            [game.losingTeam, game.winningTeam].includes("PHI"))
-        ) {
-          isTeam = true;
-        }
-        if (
-          (team === "DET" &&
-            [game.losingTeam, game.winningTeam].includes("FWP")) ||
-          (team === "FWP" &&
-            [game.losingTeam, game.winningTeam].includes("DET"))
-        ) {
-          isTeam = true;
-        }
-        if (
-          (team === "ATL" &&
-            [game.losingTeam, game.winningTeam].includes("STL")) ||
-          (team === "STL" &&
-            [game.losingTeam, game.winningTeam].includes("ATL"))
-        ) {
-          isTeam = true;
-        }
-        if (
-          (team === "OKC" &&
-            [game.losingTeam, game.winningTeam].includes("SEA")) ||
-          (team === "SEA" &&
-            [game.losingTeam, game.winningTeam].includes("OKC"))
-        ) {
-          isTeam = true;
-        }
-        if (
-          (team === "WSB" &&
-            [game.losingTeam, game.winningTeam].includes("BAL")) ||
-          (team === "BAL" &&
-            [game.losingTeam, game.winningTeam].includes("WSB"))
-        ) {
-          isTeam = true;
-        }
-        if (
-          (team === "GSW" &&
-            [game.losingTeam, game.winningTeam].includes("PHW")) ||
-          (team === "PHW" &&
-            [game.losingTeam, game.winningTeam].includes("SFW")) ||
-          (team === "SFW" &&
-            [game.losingTeam, game.winningTeam].includes("GSW")) ||
-          (team === "GSW" &&
-            [game.losingTeam, game.winningTeam].includes("SFW")) ||
-          (team === "PHW" &&
-            [game.losingTeam, game.winningTeam].includes("GSW")) ||
-          (team === "SFW" &&
-            [game.losingTeam, game.winningTeam].includes("PHW"))
-        ) {
-          isTeam = true;
-        }
+        const isTeam = nameMatcher(team, game.winningTeam, game.losingTeam);
         return isTeam;
       })
       .map((series, index) => {
@@ -196,7 +130,7 @@ const NBAFinalsList: React.FC = () => {
     inputMode: TableModeType
   ) => {
     if (inputTeam) {
-      const teamName = NBAteamData[inputTeam].name;
+      const teamName = nbaTeamPreNames(inputTeam);
       const final =
         inputMode === "Finals"
           ? "Finals"
@@ -227,11 +161,9 @@ const NBAFinalsList: React.FC = () => {
           </table>
         </DialogModalContent>
       </Dialog>
-      <div className="flex w-full justify-center">
-        <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-          NBA Champions
-        </h1>
-      </div>
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        NBA Champions
+      </h1>
       <Tabs defaultValue="Finals">
         <TabsList className="grid w-full grid-cols-3 bg-nba">
           <TabsTrigger

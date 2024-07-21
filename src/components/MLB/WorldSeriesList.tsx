@@ -7,6 +7,7 @@ import {
   ALCSData,
   NLCSData,
 } from "~/data/MLB/WorldSeriesData";
+import { nameMatcher, mlbTeamPreNames } from "~/utils/mlb";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
 import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
@@ -42,74 +43,7 @@ const WorldSeriesList: React.FC = () => {
     activeData(tableMode)
       .filter((game) => {
         if (!team) return true;
-        let isTeam = false;
-        if ([game.losingTeam, game.winningTeam].includes(team)) {
-          isTeam = true;
-        }
-        if (
-          (team === "OAK" &&
-            [game.losingTeam, game.winningTeam].includes("PHA")) ||
-          (team === "PHA" &&
-            [game.losingTeam, game.winningTeam].includes("OAK"))
-        ) {
-          isTeam = true;
-        }
-        if (
-          (team === "SFG" &&
-            [game.losingTeam, game.winningTeam].includes("NYG")) ||
-          (team === "NYG" &&
-            [game.losingTeam, game.winningTeam].includes("SFG"))
-        ) {
-          isTeam = true;
-        }
-        if (
-          (team === "BAL" &&
-            [game.losingTeam, game.winningTeam].includes("SLB")) ||
-          (team === "SLB" &&
-            [game.losingTeam, game.winningTeam].includes("BAL"))
-        ) {
-          isTeam = true;
-        }
-        if (
-          (team === "MIN" &&
-            [game.losingTeam, game.winningTeam].includes("WAS")) ||
-          (team === "WAS" &&
-            [game.losingTeam, game.winningTeam].includes("MIN"))
-        ) {
-          isTeam = true;
-        }
-        if (
-          (team === "LAD" &&
-            [game.losingTeam, game.winningTeam].includes("BKD")) ||
-          (team === "BKD" &&
-            [game.losingTeam, game.winningTeam].includes("BKR")) ||
-          (team === "BKR" &&
-            [game.losingTeam, game.winningTeam].includes("LAD")) ||
-          (team === "LAD" &&
-            [game.losingTeam, game.winningTeam].includes("BKR")) ||
-          (team === "BKD" &&
-            [game.losingTeam, game.winningTeam].includes("LAD")) ||
-          (team === "BKR" &&
-            [game.losingTeam, game.winningTeam].includes("BKD"))
-        ) {
-          isTeam = true;
-        }
-        if (
-          (team === "ATL" &&
-            [game.losingTeam, game.winningTeam].includes("MLB")) ||
-          (team === "MLB" &&
-            [game.losingTeam, game.winningTeam].includes("BOB")) ||
-          (team === "BOB" &&
-            [game.losingTeam, game.winningTeam].includes("ATL")) ||
-          (team === "ATL" &&
-            [game.losingTeam, game.winningTeam].includes("BOB")) ||
-          (team === "MLB" &&
-            [game.losingTeam, game.winningTeam].includes("ATL")) ||
-          (team === "BOB" &&
-            [game.losingTeam, game.winningTeam].includes("MLB"))
-        ) {
-          isTeam = true;
-        }
+        const isTeam = nameMatcher(team, game.winningTeam, game.losingTeam);
         return isTeam;
       })
       .map((series, index) => {
@@ -214,7 +148,7 @@ const WorldSeriesList: React.FC = () => {
     inputMode: TableModeType
   ) => {
     if (inputTeam) {
-      const teamName = MLBteamData[inputTeam].name;
+      const teamName = mlbTeamPreNames(inputTeam);
       const final = inputMode;
       return teamName + " " + final;
     } else {

@@ -1,4 +1,4 @@
-import { type AllNFLTeamType } from "~/data/NFL/NFLdata"
+import { type AllNFLTeamType, NFLteamData } from "~/data/NFL/NFLdata"
 
 export const nameMatcher = (checkTeam: AllNFLTeamType, winningTeam: AllNFLTeamType, losingTeam?: AllNFLTeamType,) => {
   let isTeam = false;
@@ -29,37 +29,23 @@ export const nameMatcher = (checkTeam: AllNFLTeamType, winningTeam: AllNFLTeamTy
   ) {
     isTeam = true;
   }
+  if (
+    (checkTeam === "TEN" &&
+      [losingTeam, winningTeam].includes("HOL")) ||
+    (checkTeam === "HOL" &&
+      [losingTeam, winningTeam].includes("TEN"))
+  ) {
+    isTeam = true;
+  }
   return isTeam;
 }
 
-const nameMatcherX = (checkTeam: AllNFLTeamType, winningTeam: AllNFLTeamType, losingTeam: AllNFLTeamType,) => {
-  let isTeam = false;
-  if ([losingTeam, winningTeam].includes(checkTeam)) {
-    isTeam = true;
+export const nflTeamPreNames = (checkTeam: AllNFLTeamType): string => {
+  switch(checkTeam){
+    case "TEN":
+    case "HOL":
+      return "Titans/Oilers"
+    default:
+      return NFLteamData[checkTeam].name
   }
-  if (
-    (checkTeam === "OAK" &&
-      [losingTeam, winningTeam].includes("LRD")) ||
-    (checkTeam === "LRD" &&
-      [losingTeam, winningTeam].includes("OAK"))
-  ) {
-    isTeam = true;
-  }
-  if (
-    (checkTeam === "STL" &&
-      [losingTeam, winningTeam].includes("LAR")) ||
-    (checkTeam === "LAR" &&
-      [losingTeam, winningTeam].includes("STL"))
-  ) {
-    isTeam = true;
-  }
-  if (
-    (checkTeam === "BCS" &&
-      [losingTeam, winningTeam].includes("IND")) ||
-    (checkTeam === "IND" &&
-      [losingTeam, winningTeam].includes("BCS"))
-  ) {
-    isTeam = true;
-  }
-  return isTeam;
-}
+} 

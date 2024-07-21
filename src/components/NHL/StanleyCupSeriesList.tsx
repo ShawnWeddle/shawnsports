@@ -3,6 +3,7 @@ import { cn } from "~/utils/cn";
 import { NHLteamData, type AllNHLTeamType } from "~/data/NHL/NHLdata";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
 import { StanleyCupData, EastData, WestData } from "~/data/NHL/StanleyCupData";
+import { nameMatcher, nhlTeamPreNames } from "~/utils/nhl";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
 import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
@@ -39,18 +40,7 @@ const StanleyCupSeriesList: React.FC = () => {
     activeData(tableMode)
       .filter((game) => {
         if (!team) return true;
-        let isTeam = false;
-        if ([game.losingTeam, game.winningTeam].includes(team)) {
-          isTeam = true;
-        }
-        if (
-          (team === "DAL" &&
-            [game.losingTeam, game.winningTeam].includes("MNS")) ||
-          (team === "MNS" &&
-            [game.losingTeam, game.winningTeam].includes("DAL"))
-        ) {
-          isTeam = true;
-        }
+        const isTeam = nameMatcher(team, game.winningTeam, game.losingTeam);
         return isTeam;
       })
       .map((series, index) => {
@@ -160,7 +150,7 @@ const StanleyCupSeriesList: React.FC = () => {
     inputMode: TableModeType
   ) => {
     if (inputTeam) {
-      const teamName = NHLteamData[inputTeam].name;
+      const teamName = nhlTeamPreNames(inputTeam);
       const final =
         inputMode === "Stanley Cups"
           ? "Stanley Cups"

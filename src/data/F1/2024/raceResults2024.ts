@@ -193,12 +193,16 @@ export const FormulaOneRaceResults : F1RaceType[] = [
   },
   {
     location: "Hungary",
-    finalOrder: [],
-    DNFs: [],
-    fastestLap: "VER",
-    polePosition: "VER",
+    finalOrder: [
+      "PIA", "NOR", "HAM", "LEC", "VER", "SAI", "PER", "RUS", "TSU", "STR", "ALO", "RIC", "HUL", "ALB", "MAG", "BOT", "SAR", "OCO", "ZHO",
+    ],
+    DNFs: [
+      "GAS"
+    ],
+    fastestLap: "RUS",
+    polePosition: "NOR",
     sprint: false,
-    completed: false,
+    completed: true,
   },
   {
     location: "Belgium",

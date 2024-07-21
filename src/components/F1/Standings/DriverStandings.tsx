@@ -34,7 +34,10 @@ export const DriverStandings: React.FC = () => {
               true,
           })}
         >
-          {driverNames2024[driver].first} {driverNames2024[driver].last}
+          <span className="sm:hidden md:inline">
+            {driverNames2024[driver].first}
+          </span>{" "}
+          {driverNames2024[driver].last}
         </TableCell>
         <TableCell className="px-3 text-center">
           {driverStandings[driver].total}

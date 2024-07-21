@@ -21,8 +21,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../ui/alert-dialog";
-import DialogModalContent from "../Page/DialogModal";
+} from "~/components/ui/alert-dialog";
+import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
 
 const NFLSchedule: React.FC = () => {
   const [scheduleMode, setScheduleMode] = useState<"Menu" | "Team">("Menu");
@@ -41,17 +41,25 @@ const NFLSchedule: React.FC = () => {
               (game) => game.Away === team || game.Home === team
             );
             const { wins, losses } = recordForTeam(team, games);
+            const allGamesPicked = wins + losses === 17;
             return (
-              <tr key={team + teamIndex.toString()}>
-                <td>
+              <TableRow
+                className="border-0 hover:bg-inherit data-[state=selected]:bg-inherit"
+                key={team + teamIndex.toString()}
+              >
+                <TableCell className="px-2">
                   <div className="flex w-full flex-col justify-center p-0.5 sm:p-0">
                     <button
                       className={cn(
-                        "grow rounded-t-lg px-1 text-center text-sm sm:m-0.5 sm:rounded-b-lg sm:border-2 sm:text-base",
+                        "grow rounded-lg border-2 px-1 text-center text-sm sm:m-0.5 sm:text-base",
                         {
-                          [NFLstyleData[team].primaryBGstyle]: true,
-                          [NFLstyleData[team].secondaryBorderStyle]: true,
-                          [NFLstyleData[team].primaryPlainText]: true,
+                          [NFLstyleData[team].primaryPlainTextHover]: true,
+                          [NFLstyleData[team].primaryPlainText]: allGamesPicked,
+                          [NFLstyleData[team].primaryBGHover]: true,
+                          [NFLstyleData[team].secondaryBorderStyleHover]: true,
+                          [NFLstyleData[team].primaryBGstyle]: allGamesPicked,
+                          [NFLstyleData[team].secondaryBorderStyle]:
+                            allGamesPicked,
                         }
                       )}
                       onClick={() => {
@@ -59,64 +67,107 @@ const NFLSchedule: React.FC = () => {
                         setActiveTeam(team);
                       }}
                     >
-                      {team === "WAS" ? "D.C." : NFLteamData[team].location}{" "}
-                      {NFLteamData[team].name}
+                      <div className={cn("font-semibold sm:font-normal", {})}>
+                        {team === "WAS" ? "D.C." : NFLteamData[team].location}{" "}
+                        {NFLteamData[team].name}
+                      </div>
+                      <div className={cn("sm:hidden")}>
+                        2024 Record: {wins}-{losses}
+                      </div>
                     </button>
-                    <p
-                      className={cn(
-                        "rounded-b-lg text-center text-sm sm:hidden",
-                        {
-                          [NFLstyleData[team].secondaryBGstyle]: true,
-                          [NFLstyleData[team].secondaryPlainText]: true,
-                        }
-                      )}
-                    >
-                      2024 Record: {wins}-{losses}
-                    </p>
                   </div>
-                </td>
-                <td
+                </TableCell>
+                <TableCell
                   className={cn(
-                    "hidden text-center font-semibold sm:table-cell",
+                    "hidden px-2 text-center font-semibold sm:table-cell",
                     {
-                      "bg-nfl/40": wins + losses === 17,
+                      "font-bold text-nfl": allGamesPicked,
                     }
                   )}
                 >
                   {wins}-{losses}
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             );
           });
           return (
             <Fragment key={"Division" + divisionIndex.toString()}>
-              <tr>
-                <td className="text-center font-semibold">
+              <TableRow className="border-0 hover:bg-inherit data-[state=selected]:bg-inherit">
+                <TableCell className="px-2 py-1 text-center font-semibold">
                   {conferenceName} {divisionName}
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
               {teamButtons}
             </Fragment>
           );
         }
       );
       return (
-        <table key={conferenceIndex}>
-          <tbody>{conferenceList}</tbody>
-        </table>
+        <Table key={conferenceIndex}>
+          <TableBody>{conferenceList}</TableBody>
+        </Table>
       );
     }
   );
 
   return (
     <>
-      <div className="w-full bg-nfl/10 sm:max-w-screen-sm">
-        <div className="flex w-full justify-center">
-          <h1 className="mx-2 mt-4 text-2xl font-semibold sm:text-4xl">
-            2024 {activeTeam} Schedule
-          </h1>
-        </div>
-        {scheduleMode === "Team" && (
+      <h1 className="mx-2 mt-4 text-2xl font-semibold sm:text-4xl">
+        2024 {activeTeam} Schedule
+      </h1>
+
+      {scheduleMode === "Menu" && (
+        <>
+          <div className="grid grid-cols-2 p-2">{NFLTeams}</div>
+          <div className="flex justify-center">
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <button className="p-2 hover:font-semibold">
+                  Clear All Selections
+                </button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>
+                    Are you sure you want to clear all selections?
+                  </AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action can not be undone.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel asChild>
+                    <button>Cancel</button>
+                  </AlertDialogCancel>
+                  <AlertDialogAction asChild>
+                    <button
+                      onClick={() => {
+                        const clearAllGames = NFLscheduleData.schedule.map(
+                          (game) => {
+                            const clearGame = {
+                              Code: game.Code,
+                              Winner: undefined,
+                            };
+                            return clearGame;
+                          }
+                        );
+                        nflScheduleDispatch({
+                          type: "PICK",
+                          payload: clearAllGames,
+                        });
+                      }}
+                    >
+                      Clear
+                    </button>
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </div>
+        </>
+      )}
+      {scheduleMode === "Team" && (
+        <>
           <div className="flex w-full justify-center">
             <button
               className="text-sm font-semibold sm:text-base"
@@ -131,68 +182,23 @@ const NFLSchedule: React.FC = () => {
               </div>
             </button>
           </div>
-        )}
-        {scheduleMode === "Menu" && (
-          <>
-            <div className="grid grid-cols-2 p-2">{NFLTeams}</div>
-            <div className="flex justify-center">
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <button className="p-2 hover:font-semibold">
-                    Clear All Selections
-                  </button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>
-                      Are you sure you want to clear all selections?
-                    </AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This action can not be undone.
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel asChild>
-                      <button>Cancel</button>
-                    </AlertDialogCancel>
-                    <AlertDialogAction asChild>
-                      <button
-                        onClick={() => {
-                          nflScheduleDispatch({
-                            type: "PICK",
-                            payload: [...NFLscheduleData.schedule],
-                          });
-                        }}
-                      >
-                        Clear
-                      </button>
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            </div>
-          </>
-        )}
-        {scheduleMode === "Team" && (
-          <>
-            <ScheduleForTeam team={activeTeam === "NFL" ? "KAN" : activeTeam} />
-            <div className="flex w-full justify-center">
-              <button
-                className="text-sm font-semibold sm:text-base"
-                onClick={() => {
-                  setActiveTeam("NFL");
-                  setScheduleMode("Menu");
-                }}
-              >
-                <div className="flex items-center justify-center text-sm hover:font-bold">
-                  <FaArrowLeft />
-                  <span className="mb-2 px-1 text-base"> Back to Menu</span>
-                </div>
-              </button>
-            </div>
-          </>
-        )}
-      </div>
+          <ScheduleForTeam team={activeTeam === "NFL" ? "KAN" : activeTeam} />
+          <div className="flex w-full justify-center">
+            <button
+              className="text-sm font-semibold sm:text-base"
+              onClick={() => {
+                setActiveTeam("NFL");
+                setScheduleMode("Menu");
+              }}
+            >
+              <div className="flex items-center justify-center text-sm hover:font-bold">
+                <FaArrowLeft />
+                <span className="mb-2 px-1 text-base"> Back to Menu</span>
+              </div>
+            </button>
+          </div>
+        </>
+      )}
     </>
   );
 };

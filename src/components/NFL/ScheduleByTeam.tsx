@@ -4,11 +4,13 @@ import { NFLscheduleData, type GameType } from "~/data/NFL/NFLscheduleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { type NFLTeamType, NFLteamData, nullArray18 } from "~/data/NFL/NFLdata";
 import {
-  FaArrowRight,
-  FaArrowLeft,
-  FaArrowUp,
-  FaArrowDown,
-} from "react-icons/fa";
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 
 interface ScheduleForTeamProps {
   team: NFLTeamType;
@@ -18,10 +20,12 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
   props: ScheduleForTeamProps
 ) => {
   const { team } = props;
+
   const allGames: (GameType | null)[] = [...nullArray18];
 
   const allGamesNoBye = NFLscheduleData.schedule.filter((game) => {
-    if (game.Away === team || game.Home === team) {
+    const { Away, Home } = game;
+    if (Away === team || Home === team) {
       return game;
     }
   });
@@ -36,131 +40,112 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
     }
   });
 
-  const { nflScheduleState, nflScheduleDispatch } = useNFLScheduleContext();
+  const { nflScheduleDispatch } = useNFLScheduleContext();
 
   const schedule = allGames.map((game, gameIndex) => {
     if (game) {
-      const winnerBGstyle = game.Winner
-        ? NFLstyleData[game.Winner].primaryBGstyle
-        : "bg-nfl50";
-      const winnerTextStyle = game.Winner
-        ? NFLstyleData[game.Winner].secondaryTextStyle
-        : "text-white";
+      const { Away, Code, Home, Week, Winner } = game;
       return (
-        <tr
+        <TableRow
           key={gameIndex}
           className="border-b-2 border-gray-200 last:border-0"
         >
-          <td className="hidden px-1 sm:inline-block">Week {game.Week}</td>
-          <td className="px-1 sm:hidden">W{game.Week}</td>
+          <TableCell className="hidden px-1 sm:inline-block">
+            Week {Week}
+          </TableCell>
+          <TableCell className="px-1 sm:hidden">W{Week}</TableCell>
 
-          <td
-            className={cn({
-              [NFLstyleData[game.Away].primaryBGstyle]: true,
-              [NFLstyleData[game.Away].secondaryTextStyle]: true,
-            })}
-          >
+          <TableCell>
             <button
-              className="w-24 px-1 text-center sm:w-28"
-              disabled={game.readOnly}
+              className={cn("w-full rounded border px-1 text-center", {
+                [NFLstyleData[Away].primaryPlainText]: true,
+                [NFLstyleData[Away].primaryBGstyle]: true,
+                [NFLstyleData[Away].secondaryBorderStyle]: true,
+              })}
               onClick={() => {
                 nflScheduleDispatch({
                   type: "PICK",
-                  payload: [{ Code: game.Code, Winner: game.Away }],
+                  payload: [{ Code: Code, Winner: Away }],
                 });
               }}
             >
-              {NFLteamData[game.Away].name}
+              {NFLteamData[Away].name}
             </button>
-          </td>
-          <td
-            className={cn("w-4 text-center", {
-              "bg-gray-800 text-white": game.readOnly,
-            })}
-          >
-            {" "}
-            @{" "}
-          </td>
-          <td
-            className={cn({
-              [NFLstyleData[game.Home].primaryBGstyle]: true,
-              [NFLstyleData[game.Home].secondaryTextStyle]: true,
-            })}
-          >
+          </TableCell>
+          <TableCell className={cn("text-center")}> @ </TableCell>
+          <TableCell>
             <button
-              className="w-24 px-1 text-center sm:w-28"
-              disabled={game.readOnly}
+              className={cn("w-full rounded border px-1 text-center", {
+                [NFLstyleData[Home].primaryPlainText]: true,
+                [NFLstyleData[Home].primaryBGstyle]: true,
+                [NFLstyleData[Home].secondaryBorderStyle]: true,
+              })}
               onClick={() => {
                 nflScheduleDispatch({
                   type: "PICK",
-                  payload: [{ Code: game.Code, Winner: game.Home }],
+                  payload: [{ Code: Code, Winner: game.Home }],
                 });
               }}
             >
               {NFLteamData[game.Home].name}
             </button>
-          </td>
-          <td
-            className={cn("w-4 text-center", {
-              "bg-gray-800 text-white": game.readOnly,
-            })}
-          >
-            {" "}
-            ::{" "}
-          </td>
-          <td
-            className={cn({
-              "bg-gray-800 text-white": game.readOnly,
-            })}
-          >
-            <button
-              className={cn("w-24 px-1 text-center sm:w-28", {
-                [winnerBGstyle]: true,
-                [winnerTextStyle]: true,
-              })}
-              disabled={game.readOnly}
-              onClick={() => {
-                nflScheduleDispatch({
-                  type: "PICK",
-                  payload: [{ Code: game.Code, Winner: undefined }],
-                });
-              }}
-            >
-              {game.Winner ? NFLteamData[game.Winner].name : "/"}
-            </button>
-          </td>
-        </tr>
+          </TableCell>
+          <TableCell className={cn("text-center")}> :: </TableCell>
+          <TableCell>
+            {Winner && (
+              <button
+                className={cn("w-full rounded border px-1 text-center", {
+                  [NFLstyleData[Winner].primaryPlainText]: true,
+                  [NFLstyleData[Winner].primaryBGstyle]: true,
+                  [NFLstyleData[Winner].secondaryBorderStyle]: true,
+                })}
+                onClick={() => {
+                  nflScheduleDispatch({
+                    type: "PICK",
+                    payload: [{ Code: Code, Winner: undefined }],
+                  });
+                }}
+              >
+                {Winner ? NFLteamData[Winner].name : "/"}
+              </button>
+            )}
+          </TableCell>
+        </TableRow>
       );
     } else {
       return (
-        <tr key={gameIndex}>
-          <td className="hidden px-1 sm:inline-block">Week {gameIndex + 1}</td>
-          <td className="px-1 sm:hidden">W{gameIndex + 1}</td>
-          <td></td>
-          <td></td>
-          <td className="text-center">BYE</td>
-          <td></td>
-          <td></td>
-        </tr>
+        <TableRow key={gameIndex}>
+          <TableCell className="hidden px-1 sm:inline-block">
+            Week {gameIndex + 1}
+          </TableCell>
+          <TableCell className="px-1 sm:hidden">W{gameIndex + 1}</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell className="text-center">BYE</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+        </TableRow>
       );
     }
   });
   return (
     <>
-      <div className="flex w-full justify-start overflow-auto sm:justify-center">
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Away</th>
-              <th></th>
-              <th>Home</th>
-              <th></th>
-              <th>Winner</th>
-            </tr>
-          </thead>
-          <tbody className="text-sm sm:text-base">{schedule}</tbody>
-        </table>
+      <div className="flex w-full justify-center">
+        <div>
+          <Table className="w-auto">
+            <TableHeader>
+              <TableRow>
+                <TableHead></TableHead>
+                <TableHead>Away</TableHead>
+                <TableHead></TableHead>
+                <TableHead>Home</TableHead>
+                <TableHead></TableHead>
+                <TableHead>Winner</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody className="text-sm sm:text-base">{schedule}</TableBody>
+          </Table>
+        </div>
       </div>
       <div className="flex justify-center">
         <button

@@ -48,7 +48,7 @@ export const NBAteamData: {
   },
   
   BOS:{  
-    rank: 3,
+    rank: 2,
     location: "Boston",
     name: "Celtics",
   },
@@ -182,7 +182,7 @@ export const NBAteamData: {
   },
   
   PHO:{  
-    rank: 2,
+    rank: 3,
     location: "Phoenix",
     name: "Suns",
   },

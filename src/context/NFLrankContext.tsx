@@ -1,6 +1,5 @@
 import { createContext, useReducer } from "react";
-import type { NFLTeamType } from "~/data/NFL/NFLdata";
-import { nflTeams, NFLteamData, nullArray32 } from "~/data/NFL/NFLdata";
+import { type NFLTeamType, nflTeams, nullArray32 } from "~/data/NFL/NFLdata";
 
 export const NFLRankContext = createContext<ContextType | null>(null);
 
@@ -29,6 +28,12 @@ type NFLRankReducerAction = {
   payload: NFLRankPayloadType;
 };
 
+const fullRank = new Map<NFLTeamType, number>();
+nflTeams.forEach((team, index) => {
+  fullRank.set(team, index);
+});
+console.log(fullRank);
+
 export const nflRankReducer = (
   state: NFLRankReducerState,
   action: NFLRankReducerAction
@@ -41,7 +46,8 @@ export const nflRankReducer = (
       if (newRank > -1 && newRank < 32 && team !== null) {
         // Remove from Unranked
         const newUnRankedTeams = [...unRankedTeams];
-        newUnRankedTeams[NFLteamData[team].rank] = null;
+        const eRank = fullRank.get(team) ?? 100;
+        newUnRankedTeams[eRank] = null;
 
         // Add to Ranked
         const newRankedTeams = [...rankedTeams];
@@ -90,7 +96,8 @@ export const nflRankReducer = (
 
         // Add to Unranked
         const newUnRankedTeams = [...unRankedTeams];
-        newUnRankedTeams[NFLteamData[team].rank] = team;
+        const eRank = fullRank.get(team) ?? 100;
+        newUnRankedTeams[eRank] = team;
 
         const newState = {
           unRankedTeams: newUnRankedTeams,

@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
-import type { NBATeamType } from "~/data/NBApickData";
-import { nbaTeamsRanked, NBAteamData, nullArray30 } from "~/data/NBApickData";
+import type { NBATeamType } from "~/data/NBA/NBAdata";
+import { nbaTeamsRanked, NBAteamData, nullArray30 } from "~/data/NBA/NBAdata";
 
 export const NBARankContext = createContext<ContextType | null>(null);
 

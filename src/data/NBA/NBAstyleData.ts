@@ -1,4 +1,4 @@
-import type { AllNBATeamType } from "~/data/NBApickData";
+import type { AllNBATeamType } from "~/data/NBA/NBAdata";
 
 export const NBAstyleData: {[Key in AllNBATeamType] : {
   primary: string;

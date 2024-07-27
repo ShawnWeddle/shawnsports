@@ -2,7 +2,7 @@ import { cn } from "~/utils/cn";
 import { useDrop } from "react-dnd";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { useNBALotteryContext } from "~/hooks/useNBALottery";
-import { type NBATeamType } from "~/data/NBApickData";
+import { type NBATeamType } from "~/data/NBA/NBAdata";
 
 interface TileLandingProps {
   place: number;

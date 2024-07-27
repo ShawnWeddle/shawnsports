@@ -1,4 +1,4 @@
-import type { NBATeamType, PickYearType, PickCodeType } from "./NBApickData";
+import type { NBATeamType, PickYearType, PickCodeType } from "./NBAdata";
 
 type ProtectionValueType = "N/A"; //"UP" | "P - FU" | "P - FS" | 
 type SwapRightType = "positive" | "negative" | "neutral";

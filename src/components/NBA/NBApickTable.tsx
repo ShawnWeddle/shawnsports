@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { NBAteamData, TeamNameEnum } from "~/data/NBApickData";
+import { NBAteamData, TeamNameEnum } from "~/data/NBA/NBAdata";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
-import { AllNBAPicks } from "~/data/AllNBApicks";
-import type { PickType } from "~/data/AllNBApicks";
+import { AllNBAPicks } from "~/data/NBA/AllNBApicks";
+import type { PickType } from "~/data/NBA/AllNBApicks";
 import { cn } from "~/utils/cn";
 import { Dialog, DialogTitle, DialogContent, DialogHeader } from "../ui/dialog";
 import {
@@ -33,9 +33,9 @@ const NBApickTable: React.FC = () => {
             key={`pick-${rowIndex}-${cellIndex}-${pickIndex}`}
             className={cn(
               "border-x-2 first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2",
-              NBAstyleData[pick.nativeTeam].primaryBGstyle,
-              NBAstyleData[pick.nativeTeam].primaryPlainText,
-              NBAstyleData[pick.nativeTeam].secondaryBorderStyle
+              NBAstyleData[pick.nativeTeam]?.primaryBGstyle,
+              NBAstyleData[pick.nativeTeam]?.primaryPlainText,
+              NBAstyleData[pick.nativeTeam]?.secondaryBorderStyle
             )}
             onClick={() => {
               setActivePick(pick);

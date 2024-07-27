@@ -1,4 +1,4 @@
-import { type NBATeamType } from "../NBApickData";
+import { type NBATeamType } from "./NBAdata";
 import { type FinishOrderType} from "~/data/NBA/lotteryWork";
 
 const teamDraftOrder: { [Key in NBATeamType] : number} = {

@@ -1,6 +1,5 @@
 import { cn } from "~/utils/cn";
-import type { NBATeamType } from "~/data/NBApickData";
-import { NBAteamData } from "~/data/NBApickData";
+import { type NBATeamType, NBAteamData } from "~/data/NBA/NBAdata";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { useDrag } from "react-dnd";
 import { useNBALotteryContext } from "~/hooks/useNBALottery";
@@ -16,7 +15,6 @@ const NBATeamTile: React.FC<NBATeamTileProps> = (props: NBATeamTileProps) => {
   const { location, name } = NBAteamData[team];
   const { primaryPlainText, primaryBGstyle, secondaryBorderStyle } =
     NBAstyleData[team];
-
   const { nbaLotteryState, nbaLotteryDispatch } = useNBALotteryContext();
   const { rankedTeams } = nbaLotteryState;
 

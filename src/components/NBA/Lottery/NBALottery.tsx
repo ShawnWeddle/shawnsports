@@ -5,7 +5,7 @@ import {
   NBAteamData,
   nbaTeamsRankedWorst,
   type NBATeamType,
-} from "~/data/NBApickData";
+} from "~/data/NBA/NBAdata";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { rankedTeamVerification, Lotterizer } from "~/data/NBA/lotteryWork";
 import { type PickType, lotterySwaps } from "~/data/NBA/lotterySwaps";

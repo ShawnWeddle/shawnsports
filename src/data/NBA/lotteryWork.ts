@@ -1,4 +1,4 @@
-import { type NBATeamType, nbaTeams } from "../NBApickData";
+import { type NBATeamType, nbaTeams } from "../NBA/NBAdata";
 
 type NBATeamOrNullType = NBATeamType | null;
 

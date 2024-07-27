@@ -8,8 +8,7 @@ import {
 import { BsChevronCompactUp, BsChevronCompactDown } from "react-icons/bs";
 import { cn } from "~/utils/cn";
 import { useNBARankContext } from "~/hooks/useNBARanker";
-import type { NBATeamType } from "~/data/NBApickData";
-import { NBAteamData } from "~/data/NBApickData";
+import { type NBATeamType, NBAteamData } from "~/data/NBA/NBAdata";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 
 interface RankerRowProps {

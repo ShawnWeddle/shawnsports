@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { cn } from "~/utils/cn";
-import { NBAteamData, type AllNBATeamType } from "~/data/NBApickData";
+import { NBAteamData, type AllNBATeamType } from "~/data/NBA/NBAdata";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { NBAFinalsData } from "~/data/NBA/NBAFinalsData";
 import {
@@ -66,11 +66,9 @@ const NBAFinalsList: React.FC = () => {
                 }}
                 className={cn(
                   "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
-                  {
-                    [NBAstyleData[winningTeam].primaryBGstyle]: true,
-                    [NBAstyleData[winningTeam].secondaryBorderStyle]: true,
-                    [NBAstyleData[winningTeam].primaryPlainText]: true,
-                  }
+                  [NBAstyleData[winningTeam]?.primaryBGstyle],
+                  [NBAstyleData[winningTeam]?.secondaryBorderStyle],
+                  [NBAstyleData[winningTeam]?.primaryPlainText]
                 )}
               >
                 <div
@@ -99,11 +97,9 @@ const NBAFinalsList: React.FC = () => {
                 }}
                 className={cn(
                   "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
-                  {
-                    [NBAstyleData[losingTeam].primaryBGstyle]: true,
-                    [NBAstyleData[losingTeam].secondaryBorderStyle]: true,
-                    [NBAstyleData[losingTeam].primaryPlainText]: true,
-                  }
+                  [NBAstyleData[losingTeam]?.primaryBGstyle],
+                  [NBAstyleData[losingTeam]?.secondaryBorderStyle],
+                  [NBAstyleData[losingTeam]?.primaryPlainText]
                 )}
               >
                 <div

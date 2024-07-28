@@ -6,11 +6,11 @@ export const nflTeams = [
 ] as const;
 
 export const allNFLTeams = [
-  "KAN", "PHI", "SFO", "CIN", "BUF", "DAL", "NYG", "JAX", 
-  "MIN", "BAL", "LAC", "MIA", "SEA", "TAM", "DET", "PIT", 
-  "WAS", "GNB", "NWE", "NYJ", "CLE", "TEN", "NOR", "CAR", 
-  "ATL", "LVR", "LAR", "DEN", "IND", "ARI", "HOU", "CHI",
-  "WRS", "OAK", "LRD", "STL", "BCS", "SDC", "HOL",
+  "ARI", "ATL", "BAL", "BCS", "BUF", "CAR", "CHI", "CIN",
+  "CLE", "DAL", "DEN", "DET", "GNB", "HOL", "HOU", "IND",
+  "JAX", "KAN", "LAC", "LAR", "LRD", "LVR", "MIA", "MIN",
+  "NOR", "NWE", "NYG", "NYJ", "OAK", "PHI", "PIT", "SDC",
+  "SEA", "SFO", "STL", "TAM", "TEN", "WAS", "WRS",
 ] as const;
 
 export type NFLTeamType = typeof nflTeams[number];

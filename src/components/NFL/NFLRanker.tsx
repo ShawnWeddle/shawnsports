@@ -9,7 +9,7 @@ import { BsChevronCompactUp, BsChevronCompactDown } from "react-icons/bs";
 import { cn } from "~/utils/cn";
 import { useNFLRankContext } from "~/hooks/useNFLRanker";
 import type { NFLTeamType } from "~/data/NFL/NFLdata";
-import { NFLteamData } from "~/data/NFL/NFLdata";
+import { NFLteamData, allNFLTeams } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 interface RankerRowProps {
   unRankedTeam: NFLTeamType | null;
@@ -22,6 +22,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   const [newRank, setNewRank] = useState<string>("");
   const [reRank, setReRank] = useState<string>("");
   const { nflRankDispatch } = useNFLRankContext();
+
+  console.log([...allNFLTeams].sort());
 
   return (
     <tr className="border-b-2 border-gray-200 font-semibold last:border-0">

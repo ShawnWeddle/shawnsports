@@ -1,4 +1,4 @@
-import { type AllNBATeamType, NBAteamData } from "~/data/NBApickData";
+import { type AllNBATeamType, NBAteamData } from "~/data/NBA/NBAdata";
 
 export const nameMatcher = (checkTeam: AllNBATeamType, winningTeam: AllNBATeamType, losingTeam?: AllNBATeamType) => {
   let isTeam = false;

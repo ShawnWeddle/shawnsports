@@ -75,6 +75,9 @@ export const nameMatcher = (checkTeam: AllMLBTeamType, winningTeam: AllMLBTeamTy
 
 export const mlbTeamPreNames = (checkTeam: AllMLBTeamType): string => {
   switch(checkTeam){
+    case "CLI":
+      return "Guardians/Indians"
+
     case "BAL":
     case "SLB":
       return "Orioles/Browns"

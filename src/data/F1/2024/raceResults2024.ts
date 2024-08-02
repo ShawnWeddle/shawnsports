@@ -215,8 +215,8 @@ export const FormulaOneRaceResults : F1RaceType[] = [
     DQs: [
       "RUS",
     ],
-    fastestLap: "VER",
-    polePosition: "VER",
+    fastestLap: "PER",
+    polePosition: "LEC",
     sprint: false,
     completed: true,
   },

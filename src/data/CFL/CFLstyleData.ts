@@ -132,4 +132,15 @@ export const CFLstyleData: { [Key in AllCFLTeamType] : {
     primaryPlainText: "text-white",
     secondaryPlainText: "text-white",
   },
+  XXX:{
+    primary: "#000000",
+    secondary: "#FFFFFF",
+    primaryBGstyle: "bg-[#000000]",
+    primaryBGfadeHover: "hover:bg-[#000000]/50",
+    secondaryBGstyle: "bg-[#FFFFFF]",
+    secondaryTextStyle: "text-[#FFFFFF]",
+    secondaryBorderStyle: "border-[#FFFFFF]",
+    primaryPlainText: "text-white",
+    secondaryPlainText: "text-white",
+  },
 }

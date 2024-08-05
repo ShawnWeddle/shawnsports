@@ -20,8 +20,8 @@ export const GreyCupData: GreyCupType[] = [
     year: 2021,
   },
   {
-    winningTeam: "BAL",
-    losingTeam: "BAL",
+    winningTeam: "XXX",
+    losingTeam: "XXX",
     score: "0 - 0 ",
     year: 2020,
   },

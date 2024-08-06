@@ -1,8 +1,7 @@
 import { createContext, useReducer } from "react";
 import {
   type NBATeamType,
-  nbaTeamsRanked,
-  NBAteamData,
+  nbaTeamsRankedWorst,
   nullArray14,
 } from "~/data/NBA/NBAdata";
 
@@ -33,6 +32,11 @@ type NBALotteryReducerAction = {
   payload: NBALotteryPayloadType;
 };
 
+const fullRank = new Map<NBATeamType, number>();
+nbaTeamsRankedWorst.forEach((team, index) => {
+  fullRank.set(team, index);
+});
+
 export const nbaLotteryReducer = (
   state: NBALotteryReducerState,
   action: NBALotteryReducerAction
@@ -45,7 +49,8 @@ export const nbaLotteryReducer = (
       if (newRank > -1 && newRank < 14 && team !== null) {
         // Remove from Unranked
         const newUnRankedTeams = [...unRankedTeams];
-        newUnRankedTeams[NBAteamData[team].rank] = null;
+        const eRank = fullRank.get(team) ?? 100;
+        newUnRankedTeams[eRank] = null;
 
         // Add to Ranked
         const newRankedTeams = [...rankedTeams];
@@ -94,7 +99,8 @@ export const nbaLotteryReducer = (
 
         // Add to Unranked
         const newUnRankedTeams = [...unRankedTeams];
-        newUnRankedTeams[NBAteamData[team].rank] = team;
+        const eRank = fullRank.get(team) ?? 100;
+        newUnRankedTeams[eRank] = team;
 
         const newState = {
           unRankedTeams: newUnRankedTeams,
@@ -117,7 +123,7 @@ export const NBALotteryContextProvider = ({
   children,
 }: NBALotteryContextProviderProps) => {
   const [nbaLotteryState, nbaLotteryDispatch] = useReducer(nbaLotteryReducer, {
-    unRankedTeams: [...nbaTeamsRanked].reverse(),
+    unRankedTeams: [...nbaTeamsRankedWorst],
     rankedTeams: [...nullArray14],
   });
 

@@ -139,7 +139,9 @@ const SuperLoserList: React.FC = () => {
             have not won a Super Bowl, but have played in and lost Super Bowls
             with more than one team.
           </CardDescription>
-          <CardDescription>This list is likely incomplete.</CardDescription>
+          <CardDescription>
+            I have probably missed a few players who should be on this list.
+          </CardDescription>
         </CardHeader>
       </Card>
       <div className="flex justify-center">

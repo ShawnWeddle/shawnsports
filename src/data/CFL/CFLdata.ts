@@ -1,10 +1,16 @@
-export const cflTeams = [
-  "BCL", "CGY", "EDM", 
-  "HAM", "MTL", "OTT", 
-  "SSK", "TOR", "WPG", 
+export const cflTeamsRanked = [
+  "TOR", 
+  "WPG", 
+  "BCL", 
+  "MTL", 
+  "HAM", 
+  "CGY", 
+  "SSK", 
+  "EDM", 
+  "OTT", 
 ] as const;
 
-export type CFLTeamType = typeof cflTeams[number];
+export type CFLTeamType = typeof cflTeamsRanked[number];
 
 export type AllCFLTeamType = CFLTeamType | "ORR" | "BAL" | "XXX";
 
@@ -29,7 +35,7 @@ export const CFLteamData: { [Key in AllCFLTeamType] : teamInfoType} = {
   EDM: {
     code: "EDM",
     location: "Edmonton",
-    name: "Eskimos",
+    name: "Elks",
   },
   HAM: {
     code: "HAM",
@@ -72,3 +78,9 @@ export const CFLteamData: { [Key in AllCFLTeamType] : teamInfoType} = {
     name: "",
   },
 }
+
+export const nullArray9 = [
+  null, null, null, 
+  null, null, null, 
+  null, null, null, 
+]

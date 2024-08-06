@@ -132,6 +132,9 @@ const Footer: React.FC = () => {
             <MenubarItem asChild>
               <Link href="/cfl/grey-cups">Grey Cups</Link>
             </MenubarItem>
+            <MenubarItem asChild>
+              <Link href="/cfl/rank">Rank</Link>
+            </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
       </div>

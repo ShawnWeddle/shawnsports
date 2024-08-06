@@ -5,7 +5,6 @@ import { useNavContext } from "~/hooks/useNavContext";
 import type { PageHeadsType, UnderPageHeadsType } from "~/data/SiteData";
 import { useAuthContext } from "~/hooks/useAuthContext";
 import { MobileResponsiveSMWLogo } from "../Page/Logo";
-import SignIn from "~/components/SignIn";
 import { ProfileForm } from "../NewSignIn";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 
@@ -23,8 +22,6 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "~/components/ui/dialog";
@@ -162,6 +159,9 @@ const NewNavBar: React.FC<NavProps> = (props: NavProps) => {
             <MenubarSubContent>
               <MenubarItem asChild>
                 <Link href="/cfl/grey-cups">Grey Cups</Link>
+              </MenubarItem>
+              <MenubarItem asChild>
+                <Link href="/cfl/rank">Rank</Link>
               </MenubarItem>
             </MenubarSubContent>
           </MenubarSub>

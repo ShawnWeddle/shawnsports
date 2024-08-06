@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const titlesArray = [
-  "Home", "NBA_Future_Picks", "NBA_Lottery", "NBA_Finals", "NBA_Rank", "NFL_Schedule", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "MLB_World_Series", "MLB_Rank", "NHL_Stanley_Cups", "NHL_Rank", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups",
+  "Home", "NBA_Future_Picks", "NBA_Lottery", "NBA_Finals", "NBA_Rank", "NFL_Schedule", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "MLB_World_Series", "MLB_Rank", "NHL_Stanley_Cups", "NHL_Rank", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank",
 ] as const;
 export const TitlesEnum = z.enum(titlesArray);
 
@@ -13,7 +13,7 @@ export const allNavHeads = {
   "MLB": ["MLB_World_Series", "MLB_Rank", ], 
   "NHL": ["NHL_Stanley_Cups", "NHL_Rank", ], 
   "WNBA": ["WNBA_Finals", "WNBA_Rank", ],
-  "CFL": ["CFL_Grey_Cups", ],
+  "CFL": ["CFL_Grey_Cups", "CFL_Rank", ],
 } as const;
 
 export type HomeTitlesType = typeof allNavHeads["Home"][number];
@@ -60,6 +60,7 @@ export const WNBATitlesDesc: {[Key in WNBATitlesType] : string} = {
 };
 export const CFLTitlesDesc: {[Key in CFLTitlesType] : string} = {
   "CFL_Grey_Cups": "See all Grey cups since 1954",
+  "CFL_Rank" : "Rank all 9 CFL teams"
 }
 
 type HomeTitlesDescType = typeof HomeTitlesDesc;
@@ -132,7 +133,8 @@ export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, url
   NHL_Rank: { navTitle: "Rank", urlName: "/nhl/rank",},
   WNBA_Finals: { navTitle: "Finals", urlName: "/wnba/finals",},
   WNBA_Rank: { navTitle: "Rank", urlName: "/wnba/rank",},
-  CFL_Grey_Cups: { navTitle: "Grey Cups", urlName: "/cfl/grey-cups"}
+  CFL_Grey_Cups: { navTitle: "Grey Cups", urlName: "/cfl/grey-cups"},
+  CFL_Rank: { navTitle: "Rank", urlName: "/cfl/rank"},
 };
 
 export const pageData: {[Key in PageHeadsType] : LowerPageHeadType} = {

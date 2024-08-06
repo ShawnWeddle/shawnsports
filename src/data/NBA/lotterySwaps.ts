@@ -71,6 +71,7 @@ export const lotterySwaps: (finishOrder : FinishOrderType) => PickType[] = (fini
   simpleSwap("MIN", "UTA", 0);
   simpleSwap("NYK", "BRK", 0);
   simpleSwap("MIL", "NOP", 0);
+  simpleSwap("PHO", "BRK", 0);
 
   //Protected Picks
 
@@ -84,6 +85,10 @@ export const lotterySwaps: (finishOrder : FinishOrderType) => PickType[] = (fini
   simpleSwap("WAS", "NYK", 10);
 
   //Pick Swaps
+
+  //OKC swap with LAC
+  //OKC swap with HOU
+  //HOU swap theirs with BRK's PHO
 
   return fullOrder;
 }

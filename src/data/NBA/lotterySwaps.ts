@@ -54,152 +54,36 @@ export const lotterySwaps: (finishOrder : FinishOrderType) => PickType[] = (fini
     return pick;
   });
 
+  const simpleSwap = (nativeT: NBATeamType, newT: NBATeamType, limit: number) => {
+    const activePick = fullOrder[teamDraftOrder[nativeT]];
+    if(teamDraftOrder[nativeT] > limit - 1){
+      if(!!activePick){
+        activePick.newTeam = newT;
+      }
+    }
+  }
+
   //Unprotected Picks
 
-  let activePick;
-
-  activePick = fullOrder[teamDraftOrder["BRK"]];
-  if(!!activePick){
-    activePick.newTeam = "HOU";
-  }
-
-  activePick = fullOrder[teamDraftOrder["LAC"]];
-  if(!!activePick){
-    activePick.newTeam = "OKC";
-  }
-
-  activePick = fullOrder[teamDraftOrder["LAL"]];
-  if(!!activePick){
-    activePick.newTeam = "NOP";
-  }
+  simpleSwap("ATL", "SAS", 0);
+  simpleSwap("CLE", "UTA", 0);
+  simpleSwap("LAL", "ATL", 0);
+  simpleSwap("MIN", "UTA", 0);
+  simpleSwap("NYK", "BRK", 0);
+  simpleSwap("MIL", "NOP", 0);
 
   //Protected Picks
 
-  if(teamDraftOrder["CHO"] > 13){
-    const activePick = fullOrder[teamDraftOrder["CHO"]];
-    if(!!activePick){
-      activePick.newTeam = "SAS";
-    }
-  }
-
-  if(teamDraftOrder["DAL"] > 9){
-    const activePick = fullOrder[teamDraftOrder["DAL"]];
-    if(!!activePick){
-      activePick.newTeam = "NYK";
-    }
-  }
-
-  if(teamDraftOrder["DET"] > 17){
-    const activePick = fullOrder[teamDraftOrder["DET"]];
-    if(!!activePick){
-      activePick.newTeam = "NYK";
-    }
-  }
-
-  if(teamDraftOrder["GSW"] > 9){
-    const activePick = fullOrder[teamDraftOrder["GSW"]];
-    if(!!activePick){
-      activePick.newTeam = "POR";
-    }
-  }
-
-  if(teamDraftOrder["HOU"] > 3){
-    const activePick = fullOrder[teamDraftOrder["HOU"]];
-    if(!!activePick){
-      activePick.newTeam = "OKC";
-    }
-  }
-
-  if(teamDraftOrder["POR"] > 13){
-    const activePick = fullOrder[teamDraftOrder["POR"]];
-    if(!!activePick){
-      activePick.newTeam = "CHO";
-    }
-  }
-
-  if(teamDraftOrder["SAC"] > 13){
-    const activePick = fullOrder[teamDraftOrder["SAC"]];
-    if(!!activePick){
-      activePick.newTeam = "ATL";
-    }
-  }
-
-  if(teamDraftOrder["TOR"] > 5){
-    const activePick = fullOrder[teamDraftOrder["TOR"]];
-    if(!!activePick){
-      activePick.newTeam = "SAS";
-    }
-  }
-
-  if(teamDraftOrder["UTA"] > 9){
-    const activePick = fullOrder[teamDraftOrder["UTA"]];
-    if(!!activePick){
-      activePick.newTeam = "OKC";
-    }
-  }
-
-  if(teamDraftOrder["WAS"] > 11){
-    const activePick = fullOrder[teamDraftOrder["WAS"]];
-    if(!!activePick){
-      activePick.newTeam = "NYK";
-    }
-  }
-
-  if(teamDraftOrder["IND"] > 11){
-    const activePick = fullOrder[teamDraftOrder["IND"]];
-    if(!!activePick){
-      activePick.newTeam = "TOR";
-    }
-  }
+  simpleSwap("CHI", "SAS", 10);
+  simpleSwap("DEN", "ORL", 5);
+  simpleSwap("DET", "NYK", 13);
+  simpleSwap("MIL", "BRK", 4);
+  simpleSwap("PHI", "OKC", 6);
+  simpleSwap("SAC", "ATL", 12);
+  simpleSwap("UTA", "OKC", 10);
+  simpleSwap("WAS", "NYK", 10);
 
   //Pick Swaps
-
-  if(teamDraftOrder["NOP"] > teamDraftOrder["MIL"]){
-    const NOP_Pick = fullOrder[teamDraftOrder["NOP"]];
-    const MIL_Pick = fullOrder[teamDraftOrder["MIL"]];
-    if(!!NOP_Pick && !!MIL_Pick){
-      NOP_Pick.newTeam = "MIL";
-      MIL_Pick.newTeam = "NOP";
-    }
-  }
-
-  if(teamDraftOrder["WAS"] < 11 && teamDraftOrder["WAS"] > teamDraftOrder["PHO"]){
-    const WAS_Pick = fullOrder[teamDraftOrder["WAS"]];
-    const PHO_Pick = fullOrder[teamDraftOrder["PHO"]];
-    if(teamDraftOrder["MEM"] > teamDraftOrder["WAS"]){
-      const MEM_Pick = fullOrder[teamDraftOrder["MEM"]];
-      if(!!WAS_Pick && !!PHO_Pick && MEM_Pick){
-        WAS_Pick.newTeam = "MEM";
-        PHO_Pick.newTeam = "WAS";
-        MEM_Pick.newTeam = "PHO";
-      }
-    } else {
-      if(!!WAS_Pick && !!PHO_Pick){
-        WAS_Pick.newTeam = "PHO";
-        PHO_Pick.newTeam = "WAS";
-      }
-    }
-  } else {
-    if(teamDraftOrder["MEM"] > teamDraftOrder["PHO"]){
-      const MEM_Pick = fullOrder[teamDraftOrder["MEM"]];
-      const PHO_Pick = fullOrder[teamDraftOrder["PHO"]];
-      if(!!PHO_Pick && MEM_Pick){
-        PHO_Pick.newTeam = "MEM";
-        MEM_Pick.newTeam = "PHO";
-      }
-    }
-  }
-
-  //OKC worst pick to UTA
-
-  const Last_OKC_Pick = [...fullOrder].filter(pick => pick.newTeam === "OKC").pop();
-  if(!!Last_OKC_Pick){
-    const activeTeam = Last_OKC_Pick.nativeTeam;
-    const OKC_Pick = fullOrder[teamDraftOrder[activeTeam]];
-    if(!!OKC_Pick){
-      OKC_Pick.newTeam = "UTA";
-    }
-  }
 
   return fullOrder;
 }

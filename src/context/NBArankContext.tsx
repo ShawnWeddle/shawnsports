@@ -1,6 +1,9 @@
 import { createContext, useReducer } from "react";
-import type { NBATeamType } from "~/data/NBA/NBAdata";
-import { nbaTeamsRanked, NBAteamData, nullArray30 } from "~/data/NBA/NBAdata";
+import {
+  type NBATeamType,
+  nbaTeamsRanked,
+  nullArray30,
+} from "~/data/NBA/NBAdata";
 
 export const NBARankContext = createContext<ContextType | null>(null);
 
@@ -29,6 +32,11 @@ type NBARankReducerAction = {
   payload: NBARankPayloadType;
 };
 
+const fullRank = new Map<NBATeamType, number>();
+nbaTeamsRanked.forEach((team, index) => {
+  fullRank.set(team, index);
+});
+
 export const nbaRankReducer = (
   state: NBARankReducerState,
   action: NBARankReducerAction
@@ -41,7 +49,8 @@ export const nbaRankReducer = (
       if (newRank > -1 && newRank < 30 && team !== null) {
         // Remove from Unranked
         const newUnRankedTeams = [...unRankedTeams];
-        newUnRankedTeams[NBAteamData[team].rank] = null;
+        const eRank = fullRank.get(team) ?? 100;
+        newUnRankedTeams[eRank] = null;
 
         // Add to Ranked
         const newRankedTeams = [...rankedTeams];
@@ -90,7 +99,8 @@ export const nbaRankReducer = (
 
         // Add to Unranked
         const newUnRankedTeams = [...unRankedTeams];
-        newUnRankedTeams[NBAteamData[team].rank] = team;
+        const eRank = fullRank.get(team) ?? 100;
+        newUnRankedTeams[eRank] = team;
 
         const newState = {
           unRankedTeams: newUnRankedTeams,

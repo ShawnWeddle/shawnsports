@@ -1,6 +1,9 @@
 import { createContext, useReducer } from "react";
-import type { NHLTeamType } from "~/data/NHL/NHLdata";
-import { activeNHLTeams, NHLteamData, nullArray32 } from "~/data/NHL/NHLdata";
+import {
+  type NHLTeamType,
+  nhlTeamsRanked,
+  nullArray32,
+} from "~/data/NHL/NHLdata";
 
 export const NHLRankContext = createContext<ContextType | null>(null);
 
@@ -29,6 +32,11 @@ type NHLRankReducerAction = {
   payload: NHLRankPayloadType;
 };
 
+const fullRank = new Map<NHLTeamType, number>();
+nhlTeamsRanked.forEach((team, index) => {
+  fullRank.set(team, index);
+});
+
 export const nhlRankReducer = (
   state: NHLRankReducerState,
   action: NHLRankReducerAction
@@ -41,7 +49,8 @@ export const nhlRankReducer = (
       if (newRank > -1 && newRank < 32 && team !== null) {
         // Remove from Unranked
         const newUnRankedTeams = [...unRankedTeams];
-        newUnRankedTeams[NHLteamData[team].rank] = null;
+        const eRank = fullRank.get(team) ?? 100;
+        newUnRankedTeams[eRank] = null;
 
         // Add to Ranked
         const newRankedTeams = [...rankedTeams];
@@ -90,7 +99,8 @@ export const nhlRankReducer = (
 
         // Add to Unranked
         const newUnRankedTeams = [...unRankedTeams];
-        newUnRankedTeams[NHLteamData[team].rank] = team;
+        const eRank = fullRank.get(team) ?? 100;
+        newUnRankedTeams[eRank] = team;
 
         const newState = {
           unRankedTeams: newUnRankedTeams,
@@ -202,7 +212,7 @@ export const NHLRankContextProvider = ({
   children,
 }: NHLRankContextProviderProps) => {
   const [nhlRankState, nhlRankDispatch] = useReducer(nhlRankReducer, {
-    unRankedTeams: [...activeNHLTeams],
+    unRankedTeams: [...nhlTeamsRanked],
     rankedTeams: [...nullArray32],
   });
 

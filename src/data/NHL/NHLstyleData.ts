@@ -225,6 +225,13 @@ export const NHLstyleData: { [Key in AllNHLTeamType] : {
     secondaryTextStyle: "text-[#FFFFFF]",
     secondaryBorderStyle: "border-[#FFFFFF]",
     primaryPlainText: "text-white",
+  }, "UTA": {
+    primary: "#6CACE4",
+    secondary: "#010101",
+    primaryBGstyle: "bg-[#6CACE4]",
+    secondaryTextStyle: "text-[#010101]",
+    secondaryBorderStyle: "border-[#010101]",
+    primaryPlainText: "text-white",
   }, "VAN": {
     primary: "#00205B",
     secondary: "#00843D",

@@ -1,6 +1,9 @@
 import { createContext, useReducer } from "react";
-import type { MLBTeamType } from "~/data/MLB/MLBdata";
-import { mlbTeamsRanked, MLBteamData, nullArray30 } from "~/data/MLB/MLBdata";
+import {
+  type MLBTeamType,
+  mlbTeamsRanked,
+  nullArray30,
+} from "~/data/MLB/MLBdata";
 
 export const MLBRankContext = createContext<ContextType | null>(null);
 
@@ -29,6 +32,11 @@ type MLBRankReducerAction = {
   payload: MLBRankPayloadType;
 };
 
+const fullRank = new Map<MLBTeamType, number>();
+mlbTeamsRanked.forEach((team, index) => {
+  fullRank.set(team, index);
+});
+
 export const mlbRankReducer = (
   state: MLBRankReducerState,
   action: MLBRankReducerAction
@@ -41,7 +49,8 @@ export const mlbRankReducer = (
       if (newRank > -1 && newRank < 30 && team !== null) {
         // Remove from Unranked
         const newUnRankedTeams = [...unRankedTeams];
-        newUnRankedTeams[MLBteamData[team].rank] = null;
+        const eRank = fullRank.get(team) ?? 100;
+        newUnRankedTeams[eRank] = null;
 
         // Add to Ranked
         const newRankedTeams = [...rankedTeams];
@@ -90,7 +99,8 @@ export const mlbRankReducer = (
 
         // Add to Unranked
         const newUnRankedTeams = [...unRankedTeams];
-        newUnRankedTeams[MLBteamData[team].rank] = team;
+        const eRank = fullRank.get(team) ?? 100;
+        newUnRankedTeams[eRank] = team;
 
         const newState = {
           unRankedTeams: newUnRankedTeams,

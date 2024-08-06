@@ -185,7 +185,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             </button>
             <button
               className="h-3 px-0.5 text-sm text-white disabled:bg-white/50"
-              disabled={index === 21}
+              disabled={index === 20}
               onClick={() => {
                 f1RankDispatch({
                   type: "MOVE_DOWN",
@@ -217,7 +217,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             </button>
             <button
               className="h-6 px-0.5 text-sm text-white disabled:bg-white/50"
-              disabled={index === 21}
+              disabled={index === 20}
               onClick={() => {
                 f1RankDispatch({
                   type: "MOVE_DOWN",

@@ -1,5 +1,9 @@
 import { createContext, useReducer } from "react";
-import { type NFLTeamType, nflTeams, nullArray32 } from "~/data/NFL/NFLdata";
+import {
+  type NFLTeamType,
+  nflTeamsRanked,
+  nullArray32,
+} from "~/data/NFL/NFLdata";
 
 export const NFLRankContext = createContext<ContextType | null>(null);
 
@@ -29,10 +33,9 @@ type NFLRankReducerAction = {
 };
 
 const fullRank = new Map<NFLTeamType, number>();
-nflTeams.forEach((team, index) => {
+nflTeamsRanked.forEach((team, index) => {
   fullRank.set(team, index);
 });
-console.log(fullRank);
 
 export const nflRankReducer = (
   state: NFLRankReducerState,
@@ -209,7 +212,7 @@ export const NFLRankContextProvider = ({
   children,
 }: NFLRankContextProviderProps) => {
   const [nflRankState, nflRankDispatch] = useReducer(nflRankReducer, {
-    unRankedTeams: [...nflTeams],
+    unRankedTeams: [...nflTeamsRanked],
     rankedTeams: [...nullArray32],
   });
 

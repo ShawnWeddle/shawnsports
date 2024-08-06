@@ -1,4 +1,4 @@
-export const nflTeams = [
+export const nflTeamsRanked = [
   "KAN", "SFO", "BAL", "DET", "BUF", "HOU", "TAM", "GNB",
   "DAL", "CLE", "PHI", "MIA", "PIT", "LAR", "CIN", "JAX",
   "SEA", "IND", "NOR", "LVR", "DEN", "MIN", "NYJ", "CHI",
@@ -13,7 +13,7 @@ export const allNFLTeams = [
   "SEA", "SFO", "STL", "TAM", "TEN", "WAS", "WRS",
 ] as const;
 
-export type NFLTeamType = typeof nflTeams[number];
+export type NFLTeamType = typeof nflTeamsRanked[number];
 
 export type AllNFLTeamType = typeof allNFLTeams[number];
 

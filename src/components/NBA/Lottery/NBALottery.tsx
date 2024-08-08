@@ -147,9 +147,3 @@ const NBALottery: React.FC = () => {
 };
 
 export default NBALottery;
-
-/*[
-"WAS", "HOU", "POR", "DET", "CHO", "SAS", "TOR", 
-"ORL", "UTA", "BRK", "IND", "NOP", "MIN", "DAL",
-]
-*/

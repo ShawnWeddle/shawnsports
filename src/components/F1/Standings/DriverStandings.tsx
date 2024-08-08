@@ -15,6 +15,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableRowNoHover,
 } from "~/components/ui/table";
 
 export const DriverStandings: React.FC = () => {
@@ -56,7 +57,7 @@ export const DriverStandings: React.FC = () => {
         <div className="pb-4">
           <Table>
             <TableHeader>
-              <TableRow>
+              <TableRowNoHover>
                 <TableHead></TableHead>
                 <TableHead>Team</TableHead>
                 <TableHead>
@@ -65,7 +66,7 @@ export const DriverStandings: React.FC = () => {
                 <TableHead>
                   <PodiumLogo />
                 </TableHead>
-              </TableRow>
+              </TableRowNoHover>
             </TableHeader>
             <TableBody>{driverPointsPairs}</TableBody>
           </Table>

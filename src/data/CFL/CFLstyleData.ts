@@ -55,6 +55,17 @@ export const CFLstyleData: { [Key in AllCFLTeamType] : {
     primaryPlainText: "text-white",
     secondaryPlainText: "text-white",
   },
+  ESK:{
+    primary: "#2C5234",
+    secondary: "#FFB81C",
+    primaryBGstyle: "bg-[#2C5234]",
+    primaryBGfadeHover: "hover:bg-[#2C5234]/50",
+    secondaryBGstyle: "bg-[#FFB81C]",
+    secondaryTextStyle: "text-[#FFB81C]",
+    secondaryBorderStyle: "border-[#FFB81C]",
+    primaryPlainText: "text-white",
+    secondaryPlainText: "text-white",
+  },
   HAM:{
     primary: "#FFB81C",
     secondary: "#000000",

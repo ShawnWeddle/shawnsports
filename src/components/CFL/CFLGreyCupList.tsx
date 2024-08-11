@@ -3,6 +3,7 @@ import { cn } from "~/utils/cn";
 import { CFLteamData, type AllCFLTeamType } from "~/data/CFL/CFLdata";
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
 import { GreyCupData } from "~/data/CFL/GreyCupData";
+import { cflTeamPreNames } from "~/utils/cfl";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
 import {
@@ -129,8 +130,7 @@ const GreyCupList: React.FC = () => {
 
   const modalNamer = (inputTeam: AllCFLTeamType | null) => {
     if (inputTeam) {
-      const teamName = CFLteamData[inputTeam].name;
-
+      const teamName = cflTeamPreNames(inputTeam);
       return teamName + "  Grey Cups";
     } else {
       return "";

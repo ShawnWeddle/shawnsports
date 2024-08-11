@@ -12,7 +12,7 @@ export const cflTeamsRanked = [
 
 export type CFLTeamType = typeof cflTeamsRanked[number];
 
-export type AllCFLTeamType = CFLTeamType | "ORR" | "BAL" | "XXX";
+export type AllCFLTeamType = CFLTeamType | "ORR" | "BAL" | "ESK" | "XXX";
 
 export type teamInfoType = { code: string, location: string, name: string };
 
@@ -36,6 +36,11 @@ export const CFLteamData: { [Key in AllCFLTeamType] : teamInfoType} = {
     code: "EDM",
     location: "Edmonton",
     name: "Elks",
+  },
+  ESK: {
+    code: "EDM",
+    location: "Edmonton",
+    name: "Eskimos",
   },
   HAM: {
     code: "HAM",

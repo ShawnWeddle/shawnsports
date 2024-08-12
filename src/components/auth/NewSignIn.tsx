@@ -1,5 +1,4 @@
 import { type z } from "zod";
-import { api } from "~/utils/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { createUserSchema, logInUserSchema } from "~/server/api/auth/schema";
@@ -14,7 +13,7 @@ import {
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { Button } from "./ui/button";
+import { Button } from "~/components/ui/button";
 
 export function ProfileForm() {
   const signUpForm = useForm<z.infer<typeof createUserSchema>>({

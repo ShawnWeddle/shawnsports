@@ -5,7 +5,7 @@ import { useNavContext } from "~/hooks/useNavContext";
 import type { PageHeadsType, UnderPageHeadsType } from "~/data/SiteData";
 import { useAuthContext } from "~/hooks/useAuthContext";
 import { MobileResponsiveSMWLogo } from "../Page/Logo";
-import { ProfileForm } from "../NewSignIn";
+import { ProfileForm } from "../auth/NewSignIn";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 
 import {
@@ -33,12 +33,9 @@ interface NavProps {
   underPageMode: UnderPageHeadsType;
 }
 
-const NewNavBar: React.FC<NavProps> = (props: NavProps) => {
+const NavBar: React.FC<NavProps> = (props: NavProps) => {
   const { pageMode, underPageMode } = props;
   const { navState, navDispatch } = useNavContext();
-
-  const { authState } = useAuthContext();
-  const { user } = authState;
 
   useEffect(() => {
     navDispatch({
@@ -184,4 +181,4 @@ const NewNavBar: React.FC<NavProps> = (props: NavProps) => {
   );
 };
 
-export default NewNavBar;
+export default NavBar;

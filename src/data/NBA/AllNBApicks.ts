@@ -749,7 +749,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     nativeTeam: "MIN",
     pickCode: "MIN-2030",
     year: 2030,
-    notes: ["Minnesota has not yet traded this pick."],
+    notes: ["Minnesota will receive the lesser of their native pick and (the greater of San Antonio's pick and Dallas's pick)."],
     swap: "negative",
   },],
   "2031":[],
@@ -1123,7 +1123,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "SAC-2031",
     year: 2031,
     swap: "negative",
-    notes: ["Sacramento will receive the least favorable of their native pick, Minnesota's pick, and San Antonio's pick."],
+    notes: ["Sacramento will receive the least favorable of their native pick and San Antonio's pick."],
   }],
 },
 "SAS":{
@@ -1184,7 +1184,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     nativeTeam: "SAS",
     pickCode: "SAS-2030",
     year: 2030,
-    notes: ["San Antonio will receive the greater of their native pick and Dallas's pick."],
+    notes: ["San Antonio will receive the greater of Minnesota's pick and (the greater of their native pick and Dallas's pick)."],
     swap: "positive",
   },],
   "2031":[{
@@ -1192,13 +1192,13 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "SAS-2031",
     year: 2031,
     swap: "positive",
-    notes: ["San Antonio will receive the two most favorable of their native pick, Minnesota's pick, and Sacramento's pick."],
+    notes: ["San Antonio will receive the greater of their native pick and Sacramento's pick."],
   },{
     nativeTeam: "MIN",
     pickCode: "MIN-2031",
     year: 2031,
     swap: "positive",
-    notes: ["Traded from Minnesota to San Antonio.", "San Antonio will receive the two most favorable of their native pick, Minnesota's pick, and Sacramento's pick."],
+    notes: ["Traded from Minnesota to San Antonio."],
   }],
 },
 "TOR":{

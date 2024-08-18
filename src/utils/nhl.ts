@@ -13,6 +13,14 @@ export const nameMatcher = (checkTeam: AllNHLTeamType, winningTeam: AllNHLTeamTy
   ) {
     isTeam = true;
   }
+  if (
+    (checkTeam === "COL" &&
+      [losingTeam, winningTeam].includes("QUE")) ||
+    (checkTeam === "QUE" &&
+      [losingTeam, winningTeam].includes("COL"))
+  ) {
+    isTeam = true;
+  }
   return isTeam;
 }
 
@@ -21,6 +29,9 @@ export const nhlTeamPreNames = (checkTeam: AllNHLTeamType): string => {
     case "DAL":
     case "MNS":
       return "Stars/North Stars"
+      case "COL":
+      case "QUE":
+        return "Avalanche/Nordiques"
     default:
       return NHLteamData[checkTeam].name
   }

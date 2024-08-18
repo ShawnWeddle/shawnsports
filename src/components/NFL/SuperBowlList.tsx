@@ -197,7 +197,7 @@ const SuperBowlList: React.FC = () => {
         NFL Champions
       </h1>
       <Tabs defaultValue="Super Bowls">
-        <TabsList className="grid w-full grid-cols-3 bg-nfl">
+        <TabsList className="grid w-full grid-cols-3 border border-nfl bg-nfl">
           <TabsTrigger
             className="text-white"
             value="Super Bowls"

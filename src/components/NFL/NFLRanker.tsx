@@ -1,27 +1,11 @@
 import { useState } from "react";
 import { cn } from "~/utils/cn";
-import {
-  MoveRight,
-  MoveLeft,
-  MoveUp,
-  MoveDown,
-  ChevronUp,
-  ChevronDown,
-} from "lucide-react";
+import { MoveRight, MoveLeft, MoveUp, MoveDown } from "lucide-react";
 import { useNFLRankContext } from "~/hooks/useNFLRanker";
 import type { NFLTeamType } from "~/data/NFL/NFLdata";
 import { NFLteamData } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "~/components/ui/table";
+import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
 interface RankerRowProps {
   unRankedTeam: NFLTeamType | null;
   rankedTeam: NFLTeamType | null;

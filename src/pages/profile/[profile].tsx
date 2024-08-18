@@ -3,8 +3,6 @@ import { useRouter } from "next/router";
 import { useAuthContext } from "~/hooks/useAuthContext";
 import MainPage from "~/components/Page/MainPage";
 
-import SignOut from "~/components/SignOut";
-
 const ProfilePage = () => {
   const router = useRouter();
   const [pageUsername, setPageUsername] = useState<string>();
@@ -28,7 +26,7 @@ const ProfilePage = () => {
       pageMode="Home"
       underPageMode="Home"
     >
-      <SignOut />
+      {" "}
     </MainPage>
   );
 };

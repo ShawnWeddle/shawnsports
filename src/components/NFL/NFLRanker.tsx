@@ -2,8 +2,7 @@ import { useState } from "react";
 import { cn } from "~/utils/cn";
 import { MoveRight, MoveLeft, MoveUp, MoveDown } from "lucide-react";
 import { useNFLRankContext } from "~/hooks/useNFLRanker";
-import type { NFLTeamType } from "~/data/NFL/NFLdata";
-import { NFLteamData } from "~/data/NFL/NFLdata";
+import { type NFLTeamType, NFLteamData } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
 interface RankerRowProps {
@@ -24,7 +23,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
         <>
           <TableCell
             className={cn(
-              "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:table-cell",
+              "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
                 [NFLstyleData[unRankedTeam].primaryBGstyle]: true,
                 [NFLstyleData[unRankedTeam].primaryPlainText]: true,
@@ -44,9 +43,13 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
         </>
       ) : (
-        <TableCell
-          className={cn("-pr-2 h-6 w-24 whitespace-nowrap bg-nfl/30 pl-2")}
-        ></TableCell>
+        <TableCell>
+          <div
+            className={cn(
+              "-pr-2 h-6 w-24 whitespace-nowrap bg-nfl/30 py-0 pl-2 sm:w-52"
+            )}
+          ></div>
+        </TableCell>
       )}
       <TableCell>
         <div className="flex justify-center overflow-hidden rounded bg-nfl">
@@ -102,15 +105,18 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
       {rankedTeam ? (
         <>
           <TableCell
-            className={cn("-pr-2 hidden w-52 pl-2 sm:block", {
-              [NFLstyleData[rankedTeam].primaryBGstyle]: true,
-              [NFLstyleData[rankedTeam].primaryPlainText]: true,
-            })}
+            className={cn(
+              "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
+              {
+                [NFLstyleData[rankedTeam].primaryBGstyle]: true,
+                [NFLstyleData[rankedTeam].primaryPlainText]: true,
+              }
+            )}
           >
             {NFLteamData[rankedTeam].location} {NFLteamData[rankedTeam].name}
           </TableCell>
           <TableCell
-            className={cn("-pr-2 w-24 pl-2 sm:hidden", {
+            className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
               [NFLstyleData[rankedTeam].primaryBGstyle]: true,
               [NFLstyleData[rankedTeam].primaryPlainText]: true,
             })}
@@ -120,7 +126,11 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
         </>
       ) : (
         <TableCell>
-          <div className="w-24 bg-nfl/30 sm:w-52"></div>
+          <div
+            className={cn(
+              "-pr-2 h-6 w-24 whitespace-nowrap bg-nfl/30 py-0 pl-2 sm:w-52"
+            )}
+          ></div>
         </TableCell>
       )}
       <TableCell>

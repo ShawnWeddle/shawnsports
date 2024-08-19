@@ -118,7 +118,12 @@ export const wnbaRankReducer = (
       const { unRankedTeams, rankedTeams } = state;
       const { team, rank, prevRank } = action.payload;
       const newRank = rank - 1;
-      if (newRank > -1 && newRank < 12 && team !== null && prevRank) {
+      if (
+        newRank > -1 &&
+        newRank < 12 &&
+        team !== null &&
+        prevRank !== undefined
+      ) {
         // Remove from Ranked
         const newRankedTeams = [...rankedTeams];
         newRankedTeams[prevRank] = null;

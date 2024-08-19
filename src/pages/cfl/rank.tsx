@@ -7,7 +7,7 @@ const Rank = () => {
     <MainPage
       title="CFL - Sports Mega World"
       description="CFL SportsMegaWorld"
-      favicon="/cflfavicon.ico"
+      favicon="/nflfavicon.ico"
       pageMode="CFL"
       underPageMode="CFL_Rank"
     >

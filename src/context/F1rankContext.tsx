@@ -123,7 +123,12 @@ export const F1RankReducer = (
       const { unRankedDrivers, rankedDrivers } = state;
       const { driver, rank, prevRank } = action.payload;
       const newRank = rank - 1;
-      if (newRank > -1 && newRank < 21 && driver !== null && prevRank) {
+      if (
+        newRank > -1 &&
+        newRank < 21 &&
+        driver !== null &&
+        prevRank !== undefined
+      ) {
         // Remove from Ranked
         const newRankedDrivers = [...rankedDrivers];
         newRankedDrivers[prevRank] = null;

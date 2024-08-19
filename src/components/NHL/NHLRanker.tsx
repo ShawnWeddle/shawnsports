@@ -1,16 +1,10 @@
 import { useState } from "react";
-import {
-  FaArrowRight,
-  FaArrowLeft,
-  FaArrowUp,
-  FaArrowDown,
-} from "react-icons/fa";
-import { BsChevronCompactUp, BsChevronCompactDown } from "react-icons/bs";
 import { cn } from "~/utils/cn";
+import { MoveRight, MoveLeft, MoveUp, MoveDown } from "lucide-react";
 import { useNHLRankContext } from "~/hooks/useNHLRanker";
-import type { NHLTeamType } from "~/data/NHL/NHLdata";
-import { NHLteamData } from "~/data/NHL/NHLdata";
+import { type NHLTeamType, NHLteamData } from "~/data/NHL/NHLdata";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
+import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
 interface RankerRowProps {
   unRankedTeam: NHLTeamType | null;
   rankedTeam: NHLTeamType | null;
@@ -24,33 +18,42 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   const { nhlRankDispatch } = useNHLRankContext();
 
   return (
-    <tr className="border-b-2 border-gray-200 font-semibold last:border-0">
+    <TableRow className="border-b-2 border-gray-200 font-semibold last:border-0">
       {unRankedTeam ? (
         <>
-          <td
-            className={cn("-pr-2 hidden w-52 pl-2 sm:block", {
-              [NHLstyleData[unRankedTeam].primaryBGstyle]: true,
-              [NHLstyleData[unRankedTeam].secondaryTextStyle]: true,
-            })}
+          <TableCell
+            className={cn(
+              "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
+              {
+                [NHLstyleData[unRankedTeam].primaryBGstyle]: true,
+                [NHLstyleData[unRankedTeam].primaryPlainText]: true,
+              }
+            )}
           >
             {NHLteamData[unRankedTeam].location}{" "}
             {NHLteamData[unRankedTeam].name}
-          </td>
-          <td
-            className={cn("-pr-2 w-24 pl-2 sm:hidden", {
+          </TableCell>
+          <TableCell
+            className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
               [NHLstyleData[unRankedTeam].primaryBGstyle]: true,
-              [NHLstyleData[unRankedTeam].secondaryTextStyle]: true,
+              [NHLstyleData[unRankedTeam].primaryPlainText]: true,
             })}
           >
             {unRankedTeam === "VEG"
-              ? "Knights"
+              ? "G-Knights"
               : NHLteamData[unRankedTeam].name}
-          </td>
+          </TableCell>
         </>
       ) : (
-        <td className={cn("w-24 bg-nhl/30 sm:w-52")}></td>
+        <TableCell>
+          <div
+            className={cn(
+              "-pr-2 h-6 w-24 whitespace-nowrap bg-nhl/30 py-0 pl-2 sm:w-52"
+            )}
+          ></div>
+        </TableCell>
       )}
-      <td>
+      <TableCell>
         <div className="flex justify-center overflow-hidden rounded bg-nhl">
           <input
             type="number"
@@ -64,7 +67,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             value={newRank}
           />
           <button
-            className="px-1 py-0.5 text-white"
+            className="px-1 text-white"
             onClick={() => {
               nhlRankDispatch({
                 type: "RANK_TEAM",
@@ -76,14 +79,14 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               setNewRank("");
             }}
           >
-            <FaArrowRight />
+            <MoveRight />
           </button>
         </div>
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         <div className="flex justify-between">
           <button
-            className="rounded px-1 py-0.5 text-nhl"
+            className="rounded px-1 text-nhl"
             onClick={() => {
               nhlRankDispatch({
                 type: "UNRANK_TEAM",
@@ -94,67 +97,76 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               });
             }}
           >
-            <FaArrowLeft />
+            <MoveLeft />
           </button>
           <span className="px-1 text-center text-sm font-bold">
             {index + 1}
           </span>
         </div>
-      </td>
+      </TableCell>
       {rankedTeam ? (
         <>
-          <td
-            className={cn("-pr-2 hidden w-52 pl-2 sm:block", {
-              [NHLstyleData[rankedTeam].primaryBGstyle]: true,
-              [NHLstyleData[rankedTeam].secondaryTextStyle]: true,
-            })}
+          <TableCell
+            className={cn(
+              "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
+              {
+                [NHLstyleData[rankedTeam].primaryBGstyle]: true,
+                [NHLstyleData[rankedTeam].primaryPlainText]: true,
+              }
+            )}
           >
             {NHLteamData[rankedTeam].location} {NHLteamData[rankedTeam].name}
-          </td>
-          <td
-            className={cn("-pr-2 w-24 pl-2 sm:hidden", {
+          </TableCell>
+          <TableCell
+            className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
               [NHLstyleData[rankedTeam].primaryBGstyle]: true,
-              [NHLstyleData[rankedTeam].secondaryTextStyle]: true,
+              [NHLstyleData[rankedTeam].primaryPlainText]: true,
             })}
           >
-            {rankedTeam === "VEG" ? "Knights" : NHLteamData[rankedTeam].name}
-          </td>
+            {rankedTeam === "VEG" ? "G-Knights" : NHLteamData[rankedTeam].name}
+          </TableCell>
         </>
       ) : (
-        <td className={cn("w-24 bg-nhl/30 sm:w-52")}></td>
+        <TableCell>
+          <div
+            className={cn(
+              "-pr-2 h-6 w-24 whitespace-nowrap bg-nhl/30 py-0 pl-2 sm:w-52"
+            )}
+          ></div>
+        </TableCell>
       )}
-      <td>
+      <TableCell>
         <div className="flex justify-center overflow-hidden rounded bg-nhl">
-          <input
-            type="number"
-            min={1}
-            max={32}
-            className="h-6 w-6 bg-gray-100 text-center sm:w-10"
-            onChange={(e) => {
-              const inputRank = e.target.value;
-              setReRank(inputRank);
-            }}
-            value={reRank}
-          />
-          <button
-            className="px-1 py-0.5 text-white"
-            onClick={() => {
-              nhlRankDispatch({
-                type: "RERANK_TEAM",
-                payload: {
-                  team: rankedTeam,
-                  rank: parseInt(reRank),
-                  prevRank: index,
-                },
-              });
-              setReRank("");
-            }}
-          >
-            <FaArrowRight />
-          </button>
-          <div className="hidden h-6 flex-col justify-between sm:flex">
+          <div className="flex h-6 justify-between text-sm">
+            <input
+              type="number"
+              min={1}
+              max={32}
+              className="hidden h-6 w-6 bg-gray-100 text-center sm:block sm:w-10"
+              onChange={(e) => {
+                const inputRank = e.target.value;
+                setReRank(inputRank);
+              }}
+              value={reRank}
+            />
             <button
-              className="h-3 px-0.5 text-sm text-white disabled:bg-white/50"
+              className="hidden px-1 text-white sm:block"
+              onClick={() => {
+                nhlRankDispatch({
+                  type: "RERANK_TEAM",
+                  payload: {
+                    team: rankedTeam,
+                    rank: parseInt(reRank),
+                    prevRank: index,
+                  },
+                });
+                setReRank("");
+              }}
+            >
+              <MoveRight />
+            </button>
+            <button
+              className="h-6 px-0.5 text-xs text-white disabled:bg-white/50"
               disabled={index === 0}
               onClick={() => {
                 nhlRankDispatch({
@@ -166,10 +178,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
                 });
               }}
             >
-              <BsChevronCompactUp />
+              <MoveUp size={20} />
             </button>
             <button
-              className="h-3 px-0.5 text-sm text-white disabled:bg-white/50"
+              className="h-6 px-0.5 text-xs text-white disabled:bg-white/50"
               disabled={index === 31}
               onClick={() => {
                 nhlRankDispatch({
@@ -181,44 +193,12 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
                 });
               }}
             >
-              <BsChevronCompactDown />
-            </button>
-          </div>
-          <div className="flex h-6 justify-between sm:hidden">
-            <button
-              className="h-6 px-0.5 text-sm text-white disabled:bg-white/50"
-              disabled={index === 0}
-              onClick={() => {
-                nhlRankDispatch({
-                  type: "MOVE_UP",
-                  payload: {
-                    team: rankedTeam,
-                    rank: index,
-                  },
-                });
-              }}
-            >
-              <FaArrowUp />
-            </button>
-            <button
-              className="h-6 px-0.5 text-sm text-white disabled:bg-white/50"
-              disabled={index === 31}
-              onClick={() => {
-                nhlRankDispatch({
-                  type: "MOVE_DOWN",
-                  payload: {
-                    team: rankedTeam,
-                    rank: index,
-                  },
-                });
-              }}
-            >
-              <FaArrowDown />
+              <MoveDown size={20} />
             </button>
           </div>
         </div>
-      </td>
-    </tr>
+      </TableCell>
+    </TableRow>
   );
 };
 
@@ -244,9 +224,9 @@ const NHLRanker: React.FC = () => {
       <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
         Rank NHL Teams
       </h1>
-      <table className="text-xs sm:text-base">
-        <tbody>{nhlRows}</tbody>
-      </table>
+      <Table className="text-xs sm:text-base">
+        <TableBody>{nhlRows}</TableBody>
+      </Table>
     </div>
   );
 };

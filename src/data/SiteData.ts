@@ -5,6 +5,8 @@ const titlesArray = [
 ] as const;
 export const TitlesEnum = z.enum(titlesArray);
 
+export const sportsNames = ["CFL", "F1", "MLB", "NBA", "NFL", "NHL", "WNBA"] as const;
+
 export const allNavHeads = {
   "Home": ["Home",], 
   "NBA": ["NBA_Future_Picks", "NBA_Lottery", "NBA_Finals", "NBA_Rank",], 

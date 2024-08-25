@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { cn } from "~/utils/cn";
 import { MoveRight, MoveLeft, MoveUp, MoveDown } from "lucide-react";
+import { useAuthContext } from "~/hooks/useAuthContext";
 import { useNFLRankContext } from "~/hooks/useNFLRanker";
 import { type NFLTeamType, NFLteamData } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
+import {
+  createRankSchema,
+  type CreateRankInput,
+} from "~/server/api/rank/schema";
+import { api } from "~/utils/api";
 interface RankerRowProps {
   unRankedTeam: NFLTeamType | null;
   rankedTeam: NFLTeamType | null;
@@ -204,6 +210,38 @@ const NFLRanker: React.FC = () => {
   const { nflRankState } = useNFLRankContext();
   const { unRankedTeams, rankedTeams } = nflRankState;
 
+  const { authState } = useAuthContext();
+  const { user } = authState;
+
+  const postRank = api.rank.createRank.useMutation();
+
+  const handleSubmit = () => {
+    const order = rankedTeams as string[];
+    if (user) {
+      const { userId, username, email } = user;
+      const rankPost: CreateRankInput = {
+        sport: "NFL",
+        order,
+        client: {
+          userId,
+          username,
+          email,
+        },
+      };
+      const rankValidation = createRankSchema.safeParse(rankPost);
+      if (rankValidation) {
+        postRank.mutate(
+          { ...rankPost },
+          {
+            onSuccess() {
+              console.log("Success");
+            },
+          }
+        );
+      }
+    }
+  };
+
   const nflRows = unRankedTeams.map((unRankedTeam, index) => {
     const rankedTeam: NFLTeamType | null = rankedTeams[index] ?? null;
 
@@ -226,6 +264,17 @@ const NFLRanker: React.FC = () => {
       <Table className="w-min text-xs md:text-base">
         <TableBody>{nflRows}</TableBody>
       </Table>
+
+      <button
+        disabled={rankedTeams.includes(null)}
+        className="m-2 rounded-md border-2 border-nfl bg-nfl/50 p-1 text-lg font-semibold text-white hover:bg-nfl/60 disabled:bg-gray-500"
+        onClick={() => {
+          handleSubmit();
+        }}
+      >
+        {" "}
+        SAVE{" "}
+      </button>
     </div>
   );
 };

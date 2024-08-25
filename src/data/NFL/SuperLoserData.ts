@@ -289,6 +289,11 @@ export const SuperLoserData: SuperLoserType[] = [
   {
     firstName: "Super",
     lastName: "Loser",
-    losses: [ 10, 20, 30, 40, 50 ],
+    losses: [ 5, 15, 25 ],
+  },
+  {
+    firstName: "Super",
+    lastName: "Loser",
+    losses: [ 35, 45, 55 ],
   },
 ]

@@ -28,7 +28,7 @@ const SignUp: React.FC = () => {
 
   const registerUser = api.user.registerUser.useMutation();
 
-  function onCreateSubmit(values: z.infer<typeof createUserSchema>) {
+  function onRegisterSubmit(values: z.infer<typeof createUserSchema>) {
     const { username, email, password, passwordConfirm } = values;
     registerUser.mutate(
       {
@@ -51,7 +51,7 @@ const SignUp: React.FC = () => {
   return (
     <Form {...signUpForm}>
       <form
-        onSubmit={signUpForm.handleSubmit(onCreateSubmit)}
+        onSubmit={signUpForm.handleSubmit(onRegisterSubmit)}
         className="space-y-8"
       >
         <FormField

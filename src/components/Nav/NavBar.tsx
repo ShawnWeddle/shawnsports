@@ -6,8 +6,8 @@ import type { PageHeadsType, UnderPageHeadsType } from "~/data/SiteData";
 import { useAuthContext } from "~/hooks/useAuthContext";
 import { MobileResponsiveSMWLogo } from "../Page/Logo";
 import SignIn from "../auth/NewSignIn";
-("../auth/NewSignIn");
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
+import { Button } from "../ui/button";
 
 import {
   Menubar,
@@ -23,6 +23,7 @@ import {
 import {
   Dialog,
   DialogContent,
+  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "~/components/ui/dialog";
@@ -37,6 +38,8 @@ interface NavProps {
 const NavBar: React.FC<NavProps> = (props: NavProps) => {
   const { pageMode, underPageMode } = props;
   const { navState, navDispatch } = useNavContext();
+  const { authState, authDispatch } = useAuthContext();
+  const { user } = authState;
 
   useEffect(() => {
     navDispatch({
@@ -171,10 +174,41 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             <CircleUserRound className="text-white" />
           </DialogTrigger>
           <DialogContent>
-            <DialogTitle>
-              <VisuallyHidden.Root>Sign Up or Log In</VisuallyHidden.Root>
-            </DialogTitle>
-            <SignIn />
+            {!user && (
+              <>
+                <DialogHeader>
+                  <DialogTitle>
+                    <VisuallyHidden.Root>Sign Up or Log In</VisuallyHidden.Root>
+                  </DialogTitle>
+                </DialogHeader>
+                <SignIn />
+              </>
+            )}
+            {user && (
+              <>
+                <DialogHeader>
+                  <DialogTitle>
+                    You are logged in as{" "}
+                    <Link
+                      className="hover:underline"
+                      href={`/profile/${user.username}`}
+                    >
+                      {user.username}
+                    </Link>
+                  </DialogTitle>
+                </DialogHeader>
+                <div className="m-1 flex justify-center">
+                  <Button
+                    variant={"home"}
+                    onClick={() => {
+                      authDispatch({ type: "LOGOUT", payload: null });
+                    }}
+                  >
+                    Log Out
+                  </Button>
+                </div>
+              </>
+            )}
           </DialogContent>
         </Dialog>
       </MenubarMenu>

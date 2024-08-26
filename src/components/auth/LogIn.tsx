@@ -1,6 +1,7 @@
 import { type z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useAuthContext } from "~/hooks/useAuthContext";
 import { logInUserSchema } from "~/server/api/auth/schema";
 import { api } from "~/utils/api";
 import {
@@ -25,8 +26,9 @@ const LogIn: React.FC = () => {
   });
 
   const logInUser = api.user.logInUser.useMutation();
+  const { authDispatch } = useAuthContext();
 
-  function onCreateSubmit(values: z.infer<typeof logInUserSchema>) {
+  function onLogInSubmit(values: z.infer<typeof logInUserSchema>) {
     const { username, password } = values;
     logInUser.mutate(
       {
@@ -34,11 +36,18 @@ const LogIn: React.FC = () => {
         password,
       },
       {
-        onSuccess() {
-          console.log("SIGNED IN");
-        },
-        onError(error) {
-          console.log(error);
+        onSuccess(data) {
+          const { user, token } = data;
+          const { userId, email, username } = user;
+          authDispatch({
+            type: "LOGIN",
+            payload: {
+              token,
+              userId,
+              email,
+              username,
+            },
+          });
         },
       }
     );
@@ -47,7 +56,7 @@ const LogIn: React.FC = () => {
   return (
     <Form {...logInForm}>
       <form
-        onSubmit={logInForm.handleSubmit(onCreateSubmit)}
+        onSubmit={logInForm.handleSubmit(onLogInSubmit)}
         className="space-y-8"
       >
         <FormField

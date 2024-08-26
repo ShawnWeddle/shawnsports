@@ -6,6 +6,7 @@ import { useNFLRankContext } from "~/hooks/useNFLRanker";
 import { type NFLTeamType, NFLteamData } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
+import { Button } from "../ui/button";
 import {
   createRankSchema,
   type CreateRankInput,
@@ -207,7 +208,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
 };
 
 const NFLRanker: React.FC = () => {
-  const { nflRankState } = useNFLRankContext();
+  const { nflRankState, nflRankDispatch } = useNFLRankContext();
   const { unRankedTeams, rankedTeams } = nflRankState;
 
   const { authState } = useAuthContext();
@@ -216,7 +217,6 @@ const NFLRanker: React.FC = () => {
   const postRank = api.rank.createRank.useMutation();
 
   const handleSubmit = () => {
-    console.log(user);
     const order = rankedTeams as string[];
     if (user) {
       const { userId, username, email } = user;
@@ -230,7 +230,6 @@ const NFLRanker: React.FC = () => {
         },
       };
       const rankValidation = createRankSchema.safeParse(rankPost);
-      console.log(rankPost, rankValidation);
       if (rankValidation) {
         postRank.mutate(
           { ...rankPost },
@@ -266,17 +265,34 @@ const NFLRanker: React.FC = () => {
       <Table className="w-min text-xs md:text-base">
         <TableBody>{nflRows}</TableBody>
       </Table>
-
-      <button
-        disabled={rankedTeams.includes(null)}
-        className="m-2 rounded-md border-2 border-nfl bg-nfl/50 p-1 text-lg font-semibold text-white hover:bg-nfl/60 disabled:bg-gray-500"
-        onClick={() => {
-          handleSubmit();
-        }}
-      >
-        {" "}
-        SAVE{" "}
-      </button>
+      <div className="flex justify-center">
+        <Button
+          className="m-1"
+          variant={"nfl"}
+          onClick={() => {
+            nflRankState.rankedTeams.map((team, index) => {
+              if (team) {
+                nflRankDispatch({
+                  type: "UNRANK_TEAM",
+                  payload: { team, rank: index },
+                });
+              }
+            });
+          }}
+        >
+          RESET
+        </Button>
+        <Button
+          className="m-1"
+          disabled={rankedTeams.includes(null)}
+          variant={"nfl"}
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          SAVE
+        </Button>
+      </div>
     </div>
   );
 };

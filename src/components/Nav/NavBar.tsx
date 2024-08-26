@@ -5,7 +5,8 @@ import { useNavContext } from "~/hooks/useNavContext";
 import type { PageHeadsType, UnderPageHeadsType } from "~/data/SiteData";
 import { useAuthContext } from "~/hooks/useAuthContext";
 import { MobileResponsiveSMWLogo } from "../Page/Logo";
-import { ProfileForm } from "../auth/NewSignIn";
+import SignIn from "../auth/NewSignIn";
+("../auth/NewSignIn");
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 
 import {
@@ -173,7 +174,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             <DialogTitle>
               <VisuallyHidden.Root>Sign Up or Log In</VisuallyHidden.Root>
             </DialogTitle>
-            {ProfileForm()}
+            <SignIn />
           </DialogContent>
         </Dialog>
       </MenubarMenu>

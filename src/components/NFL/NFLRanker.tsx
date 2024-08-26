@@ -216,6 +216,7 @@ const NFLRanker: React.FC = () => {
   const postRank = api.rank.createRank.useMutation();
 
   const handleSubmit = () => {
+    console.log(user);
     const order = rankedTeams as string[];
     if (user) {
       const { userId, username, email } = user;
@@ -229,6 +230,7 @@ const NFLRanker: React.FC = () => {
         },
       };
       const rankValidation = createRankSchema.safeParse(rankPost);
+      console.log(rankPost, rankValidation);
       if (rankValidation) {
         postRank.mutate(
           { ...rankPost },

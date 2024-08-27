@@ -6,6 +6,7 @@ const titlesArray = [
 export const TitlesEnum = z.enum(titlesArray);
 
 export const sportsNames = ["CFL", "F1", "MLB", "NBA", "NFL", "NHL", "WNBA"] as const;
+export type SportType = typeof sportsNames[number];
 
 export const allNavHeads = {
   "Home": ["Home",], 

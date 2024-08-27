@@ -46,6 +46,32 @@ export const raceLocations2024 = [
   "Abu Dhabi",
 ] as const;
 
+export const raceCountryCodes: { [Key in RaceLocation24Type] : string} = {
+  Bahrain: "BH",
+  "Saudi Arabia": "SA",
+  Australia: "AU",
+  Japan: "JP",
+  China: "CN",
+  Miami: "US",
+  Imola: "IT",
+  Monaco: "MC",
+  Canada: "CA",
+  Spain: "ES",
+  Austria: "AT",
+  "Great Britain": "GB",
+  Hungary: "HU",
+  Belgium: "BE",
+  Netherlands: "NL",
+  Monza: "IT",
+  Azerbaijan: "AZ",
+  Singapore: "SG",
+  Austin: "US",
+  Mexico: "MX",
+  Brazil: "BR",
+  "Las Vegas": "US",
+  Qatar: "QA",
+  "Abu Dhabi": "AE",
+}
 export type DriverCode24Type = typeof driverCodes2024[number];
 export type ConstructorName24Type = typeof constructorNames2024[number];
 export type RaceLocation24Type = typeof raceLocations2024[number];

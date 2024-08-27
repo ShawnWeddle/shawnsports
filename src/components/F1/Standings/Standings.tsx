@@ -8,10 +8,10 @@ const Standings: React.FC = () => {
         2024 Formula One Standings
       </h1>
       <div className="grid w-full grid-cols-1 sm:grid-cols-2 sm:px-4">
-        <div>
+        <div className="flex justify-center">
           <DriverStandings />
         </div>
-        <div>
+        <div className="flex justify-center">
           <ConstructorStandings />
         </div>
       </div>

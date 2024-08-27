@@ -145,17 +145,15 @@ const SuperLoserList: React.FC = () => {
         </CardHeader>
       </Card>
       <div className="flex justify-center">
-        <div>
-          <Table className="w-full sm:w-auto">
-            <TableHeader>
-              <TableRowNoHover>
-                <TableHead>Player</TableHead>
-                <TableHead>Losses</TableHead>
-              </TableRowNoHover>
-            </TableHeader>
-            <TableBody>{superLosers(null, false)}</TableBody>
-          </Table>
-        </div>
+        <Table className="w-full sm:w-auto">
+          <TableHeader>
+            <TableRowNoHover>
+              <TableHead>Player</TableHead>
+              <TableHead>Losses</TableHead>
+            </TableRowNoHover>
+          </TableHeader>
+          <TableBody>{superLosers(null, false)}</TableBody>
+        </Table>
       </div>
     </>
   );

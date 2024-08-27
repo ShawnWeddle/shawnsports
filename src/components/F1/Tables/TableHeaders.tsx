@@ -3,6 +3,8 @@ import { locationHeaders } from "~/data/F1/2024/F1converters24";
 import { FormulaOneRaceResults } from "~/data/F1/2024/raceResults2024";
 import type { RaceModeProps } from "~/data/F1/2024/F1data24";
 import { TableHead } from "~/components/ui/table";
+import { ReactCountryFlag } from "react-country-flag";
+import { raceCountryCodes } from "~/data/F1/2024/F1data24";
 
 const { headers } = locationHeaders(FormulaOneRaceResults);
 
@@ -26,6 +28,23 @@ const F1TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
         >
           {sprint ? locationName + " Sprint" : locationName}
         </p>
+        <div
+          className={cn("w-full pb-0.5", {
+            "bg-gray-200": !sprint,
+            "bg-teal-200": sprint,
+          })}
+        >
+          <button>
+            <ReactCountryFlag
+              style={{
+                width: "1.5em",
+                height: "1.5em",
+              }}
+              countryCode={raceCountryCodes[locationName]}
+              svg
+            />
+          </button>
+        </div>
       </TableHead>
     );
   });

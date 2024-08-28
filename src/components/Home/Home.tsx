@@ -9,7 +9,7 @@ import {
 } from "~/components/ui/card";
 import { useNavContext } from "~/hooks/useNavContext";
 
-import NewNavBar from "../Nav/NavBar";
+import Link from "next/link";
 
 const HomeComp: React.FC = () => {
   const { navState, navDispatch } = useNavContext();
@@ -34,8 +34,16 @@ const HomeComp: React.FC = () => {
         </CardHeader>
         <CardContent>
           Hello, I&apos;m
-          <span className="text-lg text-home"> Shawn Marlin Weddle</span>.
-          I&apos;m a lifelong sports fan, and I created this website to put
+          <Link
+            className="text-lg text-home hover:underline"
+            href="https://www.shawnweddle.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {" "}
+            Shawn Marlin Weddle
+          </Link>
+          . I&apos;m a lifelong sports fan, and I created this website to put
           together these sports resources I couldn&apos;t find anywhere else.
           Thanks for checking out{" "}
           <span className="text-lg text-home"> SportsMegaWorld </span>.

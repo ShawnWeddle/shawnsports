@@ -24,6 +24,29 @@ const SuperLoserList: React.FC = () => {
     null
   );
 
+  const SBgridItems = SuperBowlData.map((game, index) => {
+    const { losingTeam } = game;
+    return (
+      <button
+        onClick={() => {
+          setActiveSuperBowl(game);
+          setDialogOpen(true);
+        }}
+        key={index}
+        className={cn(
+          "flex aspect-square items-center justify-center rounded-md border-2 font-semibold",
+          {
+            [NFLstyleData[losingTeam].primaryBGstyle]: true,
+            [NFLstyleData[losingTeam].secondaryBorderStyle]: true,
+            [NFLstyleData[losingTeam].primaryPlainText]: true,
+          }
+        )}
+      >
+        {losingTeam}
+      </button>
+    );
+  }).reverse();
+
   const superLosers = (game: SuperBowlType | null, inModal: boolean) =>
     SuperLoserData.filter((player) => {
       if (!game) {
@@ -154,6 +177,15 @@ const SuperLoserList: React.FC = () => {
           </TableHeader>
           <TableBody>{superLosers(null, false)}</TableBody>
         </Table>
+      </div>
+      <div className="my-2 grid grid-cols-10 gap-1 rounded-lg bg-gray-200 p-1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        {SBgridItems}
       </div>
     </>
   );

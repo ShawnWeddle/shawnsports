@@ -37,7 +37,7 @@ interface NavProps {
 
 const NavBar: React.FC<NavProps> = (props: NavProps) => {
   const { pageMode, underPageMode } = props;
-  const { navState, navDispatch } = useNavContext();
+  const { navDispatch } = useNavContext();
   const { authState, authDispatch } = useAuthContext();
   const { user } = authState;
 

@@ -119,13 +119,13 @@ export const NBAstyleData: {[Key in AllNBATeamType] : {
     secondaryBorderStyle: "border-[#FDBB30]",
   },
   LAC:{
-    primary: "#C8102E",
-    secondary: "#1D428A",  
-    primaryBGstyle: "bg-[#C8102E]",
+    primary: "#0A2240",
+    secondary: "#CE0E2D",  
+    primaryBGstyle: "bg-[#0A2240]",
     primaryPlainText: "text-white",
-    primaryTextStyle: "text-[#C8102E]",
+    primaryTextStyle: "text-[#0A2240]",
     secondaryTextStyle: "text-white",
-    secondaryBorderStyle: "border-[#1D428A]",
+    secondaryBorderStyle: "border-[#CE0E2D]",
   },
   LAL:{
     primary: "#FDB927",

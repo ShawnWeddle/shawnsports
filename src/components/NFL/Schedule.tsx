@@ -1,15 +1,25 @@
 import { cn } from "~/utils/cn";
 import { useState, Fragment } from "react";
 import { useNFLScheduleContext } from "~/hooks/useNFLSchedule";
+import { useAuthContext } from "~/hooks/useAuthContext";
+import { api } from "~/utils/api";
 import {
   nflDivisions,
   type NFLTeamType,
   NFLteamData,
 } from "~/data/NFL/NFLdata";
-import { NFLscheduleData } from "~/data/NFL/NFLscheduleData";
+import {
+  NFLscheduleData,
+  type FinishGameType,
+  GameCheck,
+} from "~/data/NFL/NFLscheduleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import ScheduleForTeam from "./ScheduleByTeam";
 import { recordForTeam } from "~/data/NFL/NFLscheduleRecord";
+import {
+  createScheduleSchema,
+  type CreateScheduleInput,
+} from "~/server/api/schedule/schema";
 import { FaArrowLeft } from "react-icons/fa";
 import {
   AlertDialog,
@@ -28,12 +38,50 @@ import {
   TableCell,
   TableRowNoHover,
 } from "~/components/ui/table";
+import { Button } from "../ui/button";
 
 const NFLSchedule: React.FC = () => {
   const [scheduleMode, setScheduleMode] = useState<"Menu" | "Team">("Menu");
   const [activeTeam, setActiveTeam] = useState<NFLTeamType | "NFL">("NFL");
 
   const { nflScheduleState, nflScheduleDispatch } = useNFLScheduleContext();
+  const { schedule } = nflScheduleState;
+
+  const { authState } = useAuthContext();
+  const { user } = authState;
+
+  const postSchedule = api.schedule.createSchedule.useMutation();
+
+  // const handleSubmit = () => {
+  //   const newSchedule: FinishGameType[] = schedule.map((game, index) => {
+  //     const { Winner } = game;
+  //     if (Winner) {
+  //     }
+  //   });
+  //   if (user) {
+  //     const { userId, username, email } = user;
+  //     const schedulePost: CreateScheduleInput = {
+  //       sport: "NFL",
+  //       schedule,
+  //       client: {
+  //         userId,
+  //         username,
+  //         email,
+  //       },
+  //     };
+  //     const scheduleValidation = createScheduleSchema.safeParse(schedulePost);
+  //     if (scheduleValidation) {
+  //       postSchedule.mutate(
+  //         { ...schedulePost },
+  //         {
+  //           onSuccess() {
+  //             console.log("Success");
+  //           },
+  //         }
+  //       );
+  //     }
+  //   }
+  // };
 
   const NFLTeams = Object.entries(nflDivisions).map(
     (conference, conferenceIndex) => {
@@ -124,9 +172,9 @@ const NFLSchedule: React.FC = () => {
           <div className="flex justify-center">
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <button className="p-2 hover:font-semibold">
-                  Clear All Selections
-                </button>
+                <Button variant={"nfl"} className="m-1">
+                  RESET
+                </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
@@ -165,6 +213,16 @@ const NFLSchedule: React.FC = () => {
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
+            <Button
+              className="m-1"
+              disabled={true}
+              variant={"nfl"}
+              onClick={() => {
+                console.log("F");
+              }}
+            >
+              SAVE
+            </Button>
           </div>
         </>
       )}

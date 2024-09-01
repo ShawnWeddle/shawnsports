@@ -9,9 +9,42 @@ export type GameType ={
   readOnly: boolean,
 }
 
+export type FinishGameType ={
+  Away: NFLTeamType,
+  Home: NFLTeamType,
+  Week: number,
+  Code: string,
+  Winner: NFLTeamType,
+  readOnly: boolean,
+}
+
 export type GameWinner = Pick<GameType, "Code" | "Winner">
 
 export type NFLScheduleType = typeof NFLscheduleData;
+
+export function GameCheck(schedule: GameType[]) {
+  let allChecked = true;
+  const newSchedule = schedule.map((game, index) => {
+    let newGame: FinishGameType;
+    if(!game.Winner){
+      allChecked = false;
+      newGame = {...game, Winner: "ARI"}
+    } else {
+      newGame = {...game, Winner: game.Winner};
+    }
+    return newGame;
+  })
+  if(allChecked){
+    return {
+      status: "success",
+      schedule: newSchedule,
+    } 
+  } else {
+    return {
+      status: "fail"
+    }
+  }
+}
 
 export const NFLscheduleData: {weeksCompleted: number, schedule: GameType[]} = {
   weeksCompleted: 17, 

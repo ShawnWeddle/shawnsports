@@ -1,6 +1,5 @@
 import { createContext, useReducer, useEffect } from "react";
 import {
-  type GameType,
   type GameWinner,
   type NFLScheduleType,
   NFLscheduleData,

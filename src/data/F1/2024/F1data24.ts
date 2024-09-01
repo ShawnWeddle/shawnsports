@@ -16,7 +16,7 @@ export const driverCodes2024 = [
   "HUL", "LEC", "MAG", "NOR", "OCO", 
   "PER", "PIA", "RIC", "RUS", "SAI",
   "SAR", "STR", "TSU", "VER", "ZHO", 
-  "BEA",
+  "BEA", "COL",
 ] as const;
 
 export const raceLocations2024 = [
@@ -107,6 +107,7 @@ export const driverToConstructor2024 = (driver: DriverCode24Type ) : Constructor
     case "ZHO":
       return "Sauber";
     case "ALB":
+    case "COL":
     case "SAR":
       return "Williams";
     default:
@@ -154,6 +155,7 @@ export const allToConstructor2024 = (input: DriverCode24Type | ConstructorName24
     case "Sauber":
       return "Sauber";
     case "ALB":
+    case "COL":
     case "SAR":
     case "Williams":
       return "Williams";
@@ -184,7 +186,7 @@ export const constructorToDrivers2024 = (constructor: ConstructorName24Type) : D
     case "Sauber":
       return ["BOT", "ZHO"];
     case "Williams":
-      return ["ALB", "SAR"];
+      return ["ALB", "COL", "SAR"];
   }
 
 }
@@ -194,6 +196,7 @@ export const driverNames2024: { [Key in DriverCode24Type] : { alphabeticOrder: n
   ALO : { alphabeticOrder: 1, first: "Fernando", last: "Alonso"},
   BEA : { alphabeticOrder: 2, first: "Oliver", last: "Bearman"},
   BOT : { alphabeticOrder: 3, first: "Valterri", last: "Bottas"},
+  COL : { alphabeticOrder: 69, first: "Franco", last: "Colapinto"},
   GAS : { alphabeticOrder: 4, first: "Pierre", last: "Gasly"},
   HAM : { alphabeticOrder: 5, first: "Lewis", last: "Hamilton"},
   HUL : { alphabeticOrder: 6, first: "Nico", last: "Hulkenberg"},
@@ -218,7 +221,7 @@ export const driverTcamColors2024: { [Key in DriverCode24Type] : "Black" | "Yell
   HUL: "Yellow", LEC: "Black", MAG: "Black", NOR: "Yellow", OCO: "Black", 
   PIA: "Black", PER: "Yellow", RIC: "Black", RUS: "Black", SAI: "Yellow", 
   SAR: "Yellow", STR: "Black", TSU: "Yellow", VER: "Black", ZHO: "Yellow", 
-  BEA: "Cyan",
+  BEA: "Cyan", COL: "Cyan",
 }
 
 export const calculatePoints = (place: number, sprint: boolean, fastestLap: boolean) => {

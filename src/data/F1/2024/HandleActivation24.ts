@@ -5,10 +5,11 @@ export const driverActivation2024: {[Key in DriverCode24Type]? : {teammateActive
 type ActiveDriversType = typeof driverActivation2024;
 
 export const driverTeammates2024: {[Key in DriverCode24Type] : DriverCode24Type[]} = {
-  ALB : ["SAR"],
+  ALB : ["COL", "SAR"],
   ALO : ["STR"],
   BEA : ["LEC", "SAI"],
   BOT : ["ZHO"],
+  COL : ["ALB", "SAR"],
   GAS : ["OCO"],
   HAM : ["RUS"],
   HUL : ["MAG"],
@@ -21,7 +22,7 @@ export const driverTeammates2024: {[Key in DriverCode24Type] : DriverCode24Type[
   RIC : ["TSU"],
   RUS : ["HAM"],
   SAI : ["BEA", "LEC"],
-  SAR : ["ALB"],
+  SAR : ["ALB", "COL"],
   STR : ["ALO"],
   TSU : ["RIC"],
   VER : ["PER"],

@@ -148,7 +148,6 @@ const FormulaOneTable: React.FC = () => {
         <Table className="w-fit text-sm sm:text-base">
           <TableHeader>
             <TableRowNoHover>
-              <TableHead></TableHead>
               <F1TableHeaders raceMode={raceMode} />
             </TableRowNoHover>
           </TableHeader>

@@ -1,17 +1,36 @@
+import { useState } from "react";
 import { cn } from "~/utils/cn";
 import { locationHeaders } from "~/data/F1/2024/F1converters24";
-import { FormulaOneRaceResults } from "~/data/F1/2024/raceResults2024";
+import {
+  FormulaOneRaceResults,
+  type F1RaceType,
+} from "~/data/F1/2024/raceResults2024";
 import type { RaceModeProps } from "~/data/F1/2024/F1data24";
-import { TableHead } from "~/components/ui/table";
 import { ReactCountryFlag } from "react-country-flag";
 import { raceCountryCodes } from "~/data/F1/2024/F1data24";
+import { Dialog, DialogContent } from "~/components/ui/dialog";
+import DialogModalContent from "~/components/Page/DialogModal";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableRowNoHover,
+} from "~/components/ui/table";
+import SingleRaceTable from "./DialogTable";
 
 const { headers } = locationHeaders(FormulaOneRaceResults);
 
 const F1TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [activeRace, setActiveRace] = useState<F1RaceType | null>(null);
+
   const tableHeaders = headers.map((location, index) => {
     const { locationName, sprint } = location;
     const { raceMode } = props;
+
     return (
       <TableHead
         key={index}
@@ -34,7 +53,17 @@ const F1TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
             "bg-teal-200": sprint,
           })}
         >
-          <button>
+          <button
+            onClick={() => {
+              setDialogOpen(true);
+              setActiveRace(
+                FormulaOneRaceResults.find(
+                  (race) =>
+                    race.location === locationName && race.sprint === sprint
+                ) ?? null
+              );
+            }}
+          >
             <ReactCountryFlag
               style={{
                 width: "1.5em",
@@ -49,7 +78,38 @@ const F1TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
     );
   });
 
-  return <>{tableHeaders}</>;
+  const modalNamer = (inputRace: F1RaceType | null) => {
+    if (inputRace) {
+      const { location, sprint } = inputRace;
+      const final = sprint ? " Sprint Race" : " Grand Prix";
+      return "2024 " + location + final;
+    } else {
+      return "";
+    }
+  };
+
+  return (
+    <>
+      <TableHead>
+        <Dialog
+          open={dialogOpen}
+          onOpenChange={(isOpen) => {
+            if (isOpen === true) return;
+            setDialogOpen(false);
+          }}
+        >
+          <DialogModalContent
+            title={modalNamer(activeRace)}
+            description={"Pole: Max Verstappen Fastest Lap: Lando Norris"}
+          >
+            <SingleRaceTable race={activeRace!} />
+          </DialogModalContent>
+        </Dialog>
+      </TableHead>
+      {tableHeaders}
+      <TableHead className="w-16"></TableHead>
+    </>
+  );
 };
 
 export default F1TableHeaders;

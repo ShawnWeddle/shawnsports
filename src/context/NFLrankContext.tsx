@@ -4,6 +4,7 @@ import {
   nflTeamsRanked,
   nullArray32,
 } from "~/data/NFL/NFLdata";
+import { type SportType } from "~/data/SiteData";
 
 export const NFLRankContext = createContext<ContextType | null>(null);
 
@@ -14,6 +15,7 @@ type ContextType = {
 
 type NFLRankContextProviderProps = {
   children: React.ReactNode;
+  sport: SportType;
 };
 
 type NFLRankReducerState = {
@@ -212,9 +214,8 @@ export const nflRankReducer = (
   }
 };
 
-export const NFLRankContextProvider = ({
-  children,
-}: NFLRankContextProviderProps) => {
+export const NFLRankContextProvider = (props: NFLRankContextProviderProps) => {
+  const { children, sport } = props;
   const [nflRankState, nflRankDispatch] = useReducer(nflRankReducer, {
     unRankedTeams: [...nflTeamsRanked],
     rankedTeams: [...nullArray32],

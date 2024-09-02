@@ -24,7 +24,7 @@ export type NFLScheduleType = typeof NFLscheduleData;
 
 export function GameCheck(schedule: GameType[]) {
   let allChecked = true;
-  const newSchedule = schedule.map((game, index) => {
+  const newSchedule = schedule.map((game) => {
     let newGame: FinishGameType;
     if(!game.Winner){
       allChecked = false;
@@ -44,6 +44,15 @@ export function GameCheck(schedule: GameType[]) {
       status: "fail"
     }
   }
+}
+
+export function GameTest(schedule: GameType[]) {
+  const newSchedule = schedule.map((game) => {
+    const pickWinner = Math.random() > 0.5 ? game.Away : game.Home;
+    const newGame: GameWinner = {Code: game.Code, Winner: pickWinner};
+    return newGame;
+  });
+  return newSchedule;
 }
 
 export const NFLscheduleData: {weeksCompleted: number, schedule: GameType[]} = {

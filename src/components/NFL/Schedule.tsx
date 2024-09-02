@@ -12,6 +12,7 @@ import {
   NFLscheduleData,
   type FinishGameType,
   GameCheck,
+  GameTest,
 } from "~/data/NFL/NFLscheduleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import ScheduleForTeam from "./ScheduleByTeam";
@@ -45,43 +46,38 @@ const NFLSchedule: React.FC = () => {
   const [activeTeam, setActiveTeam] = useState<NFLTeamType | "NFL">("NFL");
 
   const { nflScheduleState, nflScheduleDispatch } = useNFLScheduleContext();
-  const { schedule } = nflScheduleState;
 
   const { authState } = useAuthContext();
   const { user } = authState;
 
   const postSchedule = api.schedule.createSchedule.useMutation();
 
-  // const handleSubmit = () => {
-  //   const newSchedule: FinishGameType[] = schedule.map((game, index) => {
-  //     const { Winner } = game;
-  //     if (Winner) {
-  //     }
-  //   });
-  //   if (user) {
-  //     const { userId, username, email } = user;
-  //     const schedulePost: CreateScheduleInput = {
-  //       sport: "NFL",
-  //       schedule,
-  //       client: {
-  //         userId,
-  //         username,
-  //         email,
-  //       },
-  //     };
-  //     const scheduleValidation = createScheduleSchema.safeParse(schedulePost);
-  //     if (scheduleValidation) {
-  //       postSchedule.mutate(
-  //         { ...schedulePost },
-  //         {
-  //           onSuccess() {
-  //             console.log("Success");
-  //           },
-  //         }
-  //       );
-  //     }
-  //   }
-  // };
+  const handleSubmit = () => {
+    const newSchedule = GameCheck([...nflScheduleState.schedule]);
+    if (user && newSchedule.schedule) {
+      const { userId, username, email } = user;
+      const schedulePost: CreateScheduleInput = {
+        sport: "NFL",
+        schedule: newSchedule.schedule,
+        client: {
+          userId,
+          username,
+          email,
+        },
+      };
+      const scheduleValidation = createScheduleSchema.safeParse(schedulePost);
+      if (scheduleValidation) {
+        postSchedule.mutate(
+          { ...schedulePost },
+          {
+            onSuccess() {
+              console.log("Success");
+            },
+          }
+        );
+      }
+    }
+  };
 
   const NFLTeams = Object.entries(nflDivisions).map(
     (conference, conferenceIndex) => {
@@ -215,10 +211,14 @@ const NFLSchedule: React.FC = () => {
             </AlertDialog>
             <Button
               className="m-1"
-              disabled={true}
+              disabled={
+                nflScheduleState.schedule.filter(
+                  (game) => game.Winner === null || game.Winner === undefined
+                ).length > 0
+              }
               variant={"nfl"}
               onClick={() => {
-                console.log("F");
+                handleSubmit();
               }}
             >
               SAVE
@@ -264,3 +264,18 @@ const NFLSchedule: React.FC = () => {
 };
 
 export default NFLSchedule;
+
+/*
+            <Button
+              className="m-1"
+              variant={"nfl"}
+              onClick={() => {
+                nflScheduleDispatch({
+                  type: "PICK",
+                  payload: GameTest([...nflScheduleState.schedule]),
+                });
+              }}
+            >
+              RANDOM
+            </Button>
+*/

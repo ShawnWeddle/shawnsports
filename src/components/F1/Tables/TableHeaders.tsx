@@ -5,20 +5,12 @@ import {
   FormulaOneRaceResults,
   type F1RaceType,
 } from "~/data/F1/2024/raceResults2024";
-import type { RaceModeProps } from "~/data/F1/2024/F1data24";
+import { type RaceModeProps } from "~/data/F1/2024/F1data24";
 import { ReactCountryFlag } from "react-country-flag";
 import { raceCountryCodes } from "~/data/F1/2024/F1data24";
-import { Dialog, DialogContent } from "~/components/ui/dialog";
+import { Dialog } from "~/components/ui/dialog";
 import DialogModalContent from "~/components/Page/DialogModal";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-  TableRowNoHover,
-} from "~/components/ui/table";
+import { TableHead } from "~/components/ui/table";
 import SingleRaceTable from "./DialogTable";
 
 const { headers } = locationHeaders(FormulaOneRaceResults);
@@ -98,11 +90,12 @@ const F1TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
             setDialogOpen(false);
           }}
         >
-          <DialogModalContent
-            title={modalNamer(activeRace)}
-            description={"Pole: Max Verstappen Fastest Lap: Lando Norris"}
-          >
-            <SingleRaceTable race={activeRace!} />
+          <DialogModalContent title={modalNamer(activeRace)} description={""}>
+            {activeRace?.completed ? (
+              <SingleRaceTable race={activeRace} />
+            ) : (
+              <div>This race has not yet taken place.</div>
+            )}
           </DialogModalContent>
         </Dialog>
       </TableHead>

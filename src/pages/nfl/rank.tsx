@@ -11,7 +11,7 @@ const Rank = () => {
       pageMode="NFL"
       underPageMode="NFL_Rank"
     >
-      <NFLRankContextProvider>
+      <NFLRankContextProvider sport="NFL">
         <NFLRanker />
       </NFLRankContextProvider>
     </MainPage>

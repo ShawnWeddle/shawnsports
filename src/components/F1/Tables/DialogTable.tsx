@@ -69,7 +69,7 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
                 "bg-emerald-100": !sprint && index < 10 && index > 2,
               },
               { "bg-red-500/50 text-white": DNFs.includes(driver) },
-              { "bg-black/50 text-white": DQs && DQs.includes(driver) }
+              { "bg-black text-white": DQs && DQs.includes(driver) }
             )}
           >
             {driverPoints !== 0 && driverPoints}

@@ -121,6 +121,14 @@ export const WNBAstyleData: {[Key in AllWNBATeamType] : {
     secondaryTextStyle: "text-[#FF0045]",
     secondaryBorderStyle: "border-[#FF0045]",
   },
+  GSV:{
+    primary: "#B896D4",
+    secondary: "#000000",
+    primaryBGstyle: "bg-[#B896D4]",
+    primaryPlainText: "text-white",
+    secondaryTextStyle: "text-[#000000]",
+    secondaryBorderStyle: "border-[#000000]",
+  },
   HOU:{
     primary: "#CE0B40",
     secondary: "#00265D",

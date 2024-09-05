@@ -10,6 +10,7 @@ export const activeWNBAteams = [
 
 export const inactiveWNBAteams = [
   "CHO", "DET", "HOU", "SAC", "SAS", 
+  "GSV"
 ] as const;
 
 export type WNBATeamType = typeof activeWNBAteams[number];
@@ -96,6 +97,11 @@ export const WNBAteamData : {
     rank: 0,
     location: "Detroit",
     name: "Shock",
+  },
+  GSV: {
+    rank: 0,
+    location: "Golden State",
+    name: "Valkyries",
   },
   HOU:{
     rank: 0,

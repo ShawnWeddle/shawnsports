@@ -10,6 +10,7 @@ export type StanleyCupSeriesType = {
   losingTeam: AllNHLTeamType;
   splits: string;
   year: number;
+  wonFinals?: boolean;
 }
 
 export type NBAFinalsSeriesType = {
@@ -17,6 +18,7 @@ export type NBAFinalsSeriesType = {
   losingTeam: AllNBATeamType;
   splits: string;
   year: number;
+  wonFinals?: boolean;
 }
 
 export type WNBAFinalsSeriesType = {
@@ -24,6 +26,7 @@ export type WNBAFinalsSeriesType = {
   losingTeam: AllWNBATeamType;
   splits: string;
   year: number;
+  wonFinals?: boolean;
 }
 
 export type WorldSeriesType = {
@@ -31,6 +34,7 @@ export type WorldSeriesType = {
   losingTeam: AllMLBTeamType;
   splits: string;
   year: number;
+  wonWorldSeries?: boolean;
 }
 
 export type SuperBowlType = {
@@ -41,14 +45,6 @@ export type SuperBowlType = {
   romanNumeral?: string;
   wonSB?: boolean;
 }
-
-// export type ConChampType = {
-//   winningTeam: AllNFLTeamType;
-//   losingTeam: AllNFLTeamType;
-//   score: string;
-//   wonSB?: boolean;
-//   year: number;
-// }
 
 export type GreyCupType = {
   winningTeam: AllCFLTeamType;

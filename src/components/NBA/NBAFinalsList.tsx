@@ -193,6 +193,7 @@ const NBAFinalsList: React.FC = () => {
         <Table className="w-full sm:w-auto">
           <TableHeader>
             <TableRowNoHover>
+              <TableHead className="hidden"></TableHead>
               <TableHead>Year</TableHead>
               <TableHead>Winning Team</TableHead>
               <TableHead>Games</TableHead>
@@ -207,10 +208,3 @@ const NBAFinalsList: React.FC = () => {
 };
 
 export default NBAFinalsList;
-
-/*
-{["OKC", "SEA"].includes(activeTeam) && "Thunder / Supersonics"}
-              {["PHI", "SYR"].includes(activeTeam) && "76ers"}
-              {!["OKC", "SEA", "PHI", "SYR"].includes(activeTeam) &&
-                NBAteamData[activeTeam].name}{" "}
-*/

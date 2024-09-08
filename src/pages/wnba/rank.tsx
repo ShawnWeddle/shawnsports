@@ -1,5 +1,5 @@
 import MainPage from "~/components/Page/MainPage";
-import { WNBARankContextProvider } from "~/context/WNBArankContext";
+import { RankContextProvider } from "~/context/RankContext";
 import WNBARanker from "~/components/WNBA/WNBARanker";
 
 const Rank = () => {
@@ -11,9 +11,9 @@ const Rank = () => {
       pageMode="WNBA"
       underPageMode="WNBA_Rank"
     >
-      <WNBARankContextProvider>
+      <RankContextProvider sport="WNBA">
         <WNBARanker />
-      </WNBARankContextProvider>
+      </RankContextProvider>
     </MainPage>
   );
 };

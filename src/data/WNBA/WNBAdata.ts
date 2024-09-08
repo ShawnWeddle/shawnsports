@@ -1,7 +1,7 @@
-export const wnbaTeamsRanked: WNBATeamType[] = [
+export const wnbaTeamsRanked = [
   "LVA", "NYL", "CON", "DAL", "ATL", "MIN",
   "WAS", "CHI", "LAS", "IND", "SEA", "PHO",
-];
+] as const;
 
 export const activeWNBAteams = [
   "ATL", "CHI", "CON", "DAL", "IND", "LVA",

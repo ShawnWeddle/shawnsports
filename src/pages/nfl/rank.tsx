@@ -1,5 +1,5 @@
 import MainPage from "~/components/Page/MainPage";
-import { NFLRankContextProvider } from "~/context/NFLrankContext";
+import { RankContextProvider } from "~/context/RankContext";
 import NFLRanker from "~/components/NFL/NFLRanker";
 
 const Rank = () => {
@@ -11,9 +11,9 @@ const Rank = () => {
       pageMode="NFL"
       underPageMode="NFL_Rank"
     >
-      <NFLRankContextProvider sport="NFL">
+      <RankContextProvider sport="NFL">
         <NFLRanker />
-      </NFLRankContextProvider>
+      </RankContextProvider>
     </MainPage>
   );
 };

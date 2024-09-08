@@ -12,6 +12,12 @@ const buttonVariants = cva(
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         home: "bg-home text-white hover:bg-home/90",
         nfl: "bg-nfl text-white hover:bg-nfl/90",
+        nba: "bg-nba text-white hover:bg-nba/90",
+        formulaOne: "bg-formulaOne text-white hover:bg-formulaOne/90",
+        mlb: "bg-mlb text-white hover:bg-mlb/90",
+        nhl: "bg-nhl text-white hover:bg-nhl/90",
+        wnba: "bg-wnba text-white hover:bg-wnba/90",
+        cfl: "bg-cfl text-white hover:bg-cfl/90",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:

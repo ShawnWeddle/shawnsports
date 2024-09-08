@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { cn } from "~/utils/cn";
+import { z } from "zod";
+import { useRankContext } from "~/hooks/useRanker";
 import { MoveRight, MoveLeft, MoveUp, MoveDown } from "lucide-react";
-import { useWNBARankContext } from "~/hooks/useWNBARanker";
-import { type WNBATeamType, WNBAteamData } from "~/data/WNBA/WNBAdata";
+import {
+  type WNBATeamType,
+  WNBAteamData,
+  wnbaTeamsRanked,
+} from "~/data/WNBA/WNBAdata";
 import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
 import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
 
@@ -12,12 +17,14 @@ interface RankerRowProps {
   index: number;
 }
 
+const WNBAenum = z.enum(wnbaTeamsRanked);
+
 const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   const { unRankedTeam, rankedTeam, index } = props;
   const [newRank, setNewRank] = useState<string>("");
   const [reRank, setReRank] = useState<string>("");
 
-  const { wnbaRankDispatch } = useWNBARankContext();
+  const { rankDispatch } = useRankContext();
 
   return (
     <TableRow className="border-b-2 border-gray-200 font-semibold last:border-0">
@@ -69,10 +76,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="px-1 text-white"
             onClick={() => {
-              wnbaRankDispatch({
-                type: "RANK_TEAM",
+              rankDispatch({
+                type: "RANK_ENTRY",
                 payload: {
-                  team: unRankedTeam,
+                  entry: unRankedTeam,
                   rank: parseInt(newRank),
                 },
               });
@@ -88,10 +95,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="rounded px-1 text-nba"
             onClick={() => {
-              wnbaRankDispatch({
-                type: "UNRANK_TEAM",
+              rankDispatch({
+                type: "UNRANK_ENTRY",
                 payload: {
-                  team: rankedTeam,
+                  entry: rankedTeam,
                   rank: index,
                 },
               });
@@ -152,10 +159,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             <button
               className="hidden px-1 text-white sm:block"
               onClick={() => {
-                wnbaRankDispatch({
-                  type: "RERANK_TEAM",
+                rankDispatch({
+                  type: "RERANK_ENTRY",
                   payload: {
-                    team: rankedTeam,
+                    entry: rankedTeam,
                     rank: parseInt(reRank),
                     prevRank: index,
                   },
@@ -169,10 +176,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-6 px-0.5 text-xs text-white disabled:bg-white/50"
               disabled={index === 0}
               onClick={() => {
-                wnbaRankDispatch({
+                rankDispatch({
                   type: "MOVE_UP",
                   payload: {
-                    team: rankedTeam,
+                    entry: rankedTeam,
                     rank: index,
                   },
                 });
@@ -184,10 +191,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-6 px-0.5 text-xs text-white disabled:bg-white/50"
               disabled={index === 11}
               onClick={() => {
-                wnbaRankDispatch({
+                rankDispatch({
                   type: "MOVE_DOWN",
                   payload: {
-                    team: rankedTeam,
+                    entry: rankedTeam,
                     rank: index,
                   },
                 });
@@ -203,16 +210,19 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
 };
 
 const WNBARanker: React.FC = () => {
-  const { wnbaRankState } = useWNBARankContext();
-  const { unRankedTeams, rankedTeams } = wnbaRankState;
+  const { rankState } = useRankContext();
+  const { unRankedEntries, rankedEntries } = rankState;
 
-  const wnbaRows = unRankedTeams.map((unRankedTeam, index) => {
-    const rankedTeam: WNBATeamType | null = rankedTeams[index] ?? null;
+  const wnbaRows = unRankedEntries.map((unRankedTeam, index) => {
+    const rankedTeam: string | null = rankedEntries[index] ?? null;
+
+    const newUnrankedTeam = unRankedTeam ? WNBAenum.parse(unRankedTeam) : null;
+    const newRankedTeam = rankedTeam ? WNBAenum.parse(rankedTeam) : null;
 
     return (
       <RankerRow
-        unRankedTeam={unRankedTeam}
-        rankedTeam={rankedTeam}
+        unRankedTeam={newUnrankedTeam}
+        rankedTeam={newRankedTeam}
         index={index}
         key={index}
       />

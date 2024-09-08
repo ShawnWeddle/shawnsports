@@ -1,14 +1,23 @@
 import { useState } from "react";
+import { api } from "~/utils/api";
 import { cn } from "~/utils/cn";
+import { z } from "zod";
+import { useRankContext } from "~/hooks/useRanker";
+import { useAuthContext } from "~/hooks/useAuthContext";
 import { MoveRight, MoveLeft, MoveUp, MoveDown } from "lucide-react";
-import { useF1RankContext } from "~/hooks/useF1Ranker";
 import {
   type DriverCode24Type,
   driverToConstructor2024,
   driverNames2024,
+  driverCodes2024,
 } from "~/data/F1/2024/F1data24";
 import { F1styleData } from "~/data/F1/2024/F1styleData24";
 import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
+import { Button } from "../../ui/button";
+import {
+  createRankSchema,
+  type CreateRankInput,
+} from "~/server/api/rank/schema";
 
 interface RankerRowProps {
   unRankedDriver: DriverCode24Type | null;
@@ -16,12 +25,13 @@ interface RankerRowProps {
   index: number;
 }
 
+const F1enum = z.enum(driverCodes2024);
+
 const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   const { unRankedDriver, rankedDriver, index } = props;
   const [newRank, setNewRank] = useState<string>("");
   const [reRank, setReRank] = useState<string>("");
-
-  const { f1RankDispatch } = useF1RankContext();
+  const { rankDispatch } = useRankContext();
 
   return (
     <TableRow className="border-b-2 border-gray-200 font-semibold last:border-0">
@@ -79,10 +89,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="px-1 text-white"
             onClick={() => {
-              f1RankDispatch({
-                type: "RANK_DRIVER",
+              rankDispatch({
+                type: "RANK_ENTRY",
                 payload: {
-                  driver: unRankedDriver,
+                  entry: unRankedDriver,
                   rank: parseInt(newRank),
                 },
               });
@@ -98,10 +108,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="rounded px-1 text-formulaOne"
             onClick={() => {
-              f1RankDispatch({
-                type: "UNRANK_DRIVER",
+              rankDispatch({
+                type: "UNRANK_ENTRY",
                 payload: {
-                  driver: rankedDriver,
+                  entry: rankedDriver,
                   rank: index,
                 },
               });
@@ -169,10 +179,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             <button
               className="hidden px-1 text-white sm:block"
               onClick={() => {
-                f1RankDispatch({
-                  type: "RERANK_DRIVER",
+                rankDispatch({
+                  type: "RERANK_ENTRY",
                   payload: {
-                    driver: rankedDriver,
+                    entry: rankedDriver,
                     rank: parseInt(reRank),
                     prevRank: index,
                   },
@@ -186,10 +196,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-6 px-0.5 text-xs text-white disabled:bg-white/50"
               disabled={index === 0}
               onClick={() => {
-                f1RankDispatch({
+                rankDispatch({
                   type: "MOVE_UP",
                   payload: {
-                    driver: rankedDriver,
+                    entry: rankedDriver,
                     rank: index,
                   },
                 });
@@ -199,12 +209,12 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             </button>
             <button
               className="h-6 px-0.5 text-xs text-white disabled:bg-white/50"
-              disabled={index === 20}
+              disabled={index === 21}
               onClick={() => {
-                f1RankDispatch({
+                rankDispatch({
                   type: "MOVE_DOWN",
                   payload: {
-                    driver: rankedDriver,
+                    entry: rankedDriver,
                     rank: index,
                   },
                 });
@@ -220,16 +230,46 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
 };
 
 const F1Ranker: React.FC = () => {
-  const { f1RankState } = useF1RankContext();
-  const { unRankedDrivers, rankedDrivers } = f1RankState;
+  const { rankState, rankDispatch } = useRankContext();
+  const { unRankedEntries, rankedEntries } = rankState;
 
-  const f1Rows = unRankedDrivers.map((unRankedDriver, index) => {
-    const rankedDriver: DriverCode24Type | null = rankedDrivers[index] ?? null;
+  const { authState } = useAuthContext();
+  const { user } = authState;
+
+  const postRank = api.rank.createRank.useMutation();
+
+  const handleSubmit = () => {
+    const order = rankedEntries as string[];
+    if (user) {
+      const { userId, username, email } = user;
+      const rankPost: CreateRankInput = {
+        sport: "F1",
+        order,
+        client: {
+          userId,
+          username,
+          email,
+        },
+      };
+      const rankValidation = createRankSchema.safeParse(rankPost);
+      if (rankValidation) {
+        postRank.mutate({ ...rankPost });
+      }
+    }
+  };
+
+  const f1Rows = unRankedEntries.map((unRankedDriver, index) => {
+    const rankedDriver: string | null = rankedEntries[index] ?? null;
+
+    const newUnrankedDriver = unRankedDriver
+      ? F1enum.parse(unRankedDriver)
+      : null;
+    const newRankedDriver = rankedDriver ? F1enum.parse(rankedDriver) : null;
 
     return (
       <RankerRow
-        unRankedDriver={unRankedDriver}
-        rankedDriver={rankedDriver}
+        unRankedDriver={newUnrankedDriver}
+        rankedDriver={newRankedDriver}
         index={index}
         key={index}
       />
@@ -244,6 +284,34 @@ const F1Ranker: React.FC = () => {
       <Table className="text-xs sm:text-base">
         <TableBody>{f1Rows}</TableBody>
       </Table>
+      <div className="flex justify-center">
+        <Button
+          className="m-1"
+          variant={"formulaOne"}
+          onClick={() => {
+            rankState.rankedEntries.map((team, index) => {
+              if (team) {
+                rankDispatch({
+                  type: "UNRANK_ENTRY",
+                  payload: { entry: team, rank: index },
+                });
+              }
+            });
+          }}
+        >
+          RESET
+        </Button>
+        <Button
+          className="m-1"
+          disabled={rankedEntries.includes(null)}
+          variant={"formulaOne"}
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          SAVE
+        </Button>
+      </div>
     </div>
   );
 };

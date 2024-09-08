@@ -35,9 +35,9 @@ export const RunningResultTable: React.FC<RaceModeProps> = (
     });
     const activeDriver = driverOrder[index] ?? "ALB";
     const driverTextColor =
-      F1styleData[driverToConstructor2024(activeDriver)].secondaryTextStyle;
+      F1styleData[driverToConstructor2024(activeDriver)].secondaryText;
     const driverBg =
-      F1styleData[driverToConstructor2024(activeDriver)].primaryBGstyle;
+      F1styleData[driverToConstructor2024(activeDriver)].primaryBackground;
     return (
       <TableRowNoHover
         key={`r-${index}`}

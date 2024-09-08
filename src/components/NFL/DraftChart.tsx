@@ -56,11 +56,11 @@ const DraftChart: React.FC = () => {
         <td key={pickNum} className="border border-black p-0">
           <button
             className={cn("flex justify-start", {
-              [NFLstyleData[activeTeam].primaryBGstyle]: [
+              [NFLstyleData[activeTeam].primaryBackground]: [
                 activeTeams[0],
                 activeTeams[1],
               ].includes(activeTeam),
-              [NFLstyleData[activeTeam].secondaryTextStyle]: [
+              [NFLstyleData[activeTeam].secondaryText]: [
                 activeTeams[0],
                 activeTeams[1],
               ].includes(activeTeam),

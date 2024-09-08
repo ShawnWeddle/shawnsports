@@ -66,9 +66,9 @@ const GreyCupList: React.FC = () => {
               className={cn(
                 "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                 {
-                  [CFLstyleData[winningTeam].primaryBGstyle]: true,
-                  [CFLstyleData[winningTeam].secondaryBorderStyle]: true,
-                  [CFLstyleData[winningTeam].primaryPlainText]: true,
+                  [CFLstyleData[winningTeam].primaryBackground]: true,
+                  [CFLstyleData[winningTeam].secondaryBorder]: true,
+                  [CFLstyleData[winningTeam].simpleText]: true,
                 }
               )}
             >
@@ -101,9 +101,9 @@ const GreyCupList: React.FC = () => {
               className={cn(
                 "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                 {
-                  [CFLstyleData[losingTeam].primaryBGstyle]: true,
-                  [CFLstyleData[losingTeam].secondaryBorderStyle]: true,
-                  [CFLstyleData[losingTeam].primaryPlainText]: true,
+                  [CFLstyleData[losingTeam].primaryBackground]: true,
+                  [CFLstyleData[losingTeam].secondaryBorder]: true,
+                  [CFLstyleData[losingTeam].simpleText]: true,
                 }
               )}
             >

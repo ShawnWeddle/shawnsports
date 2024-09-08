@@ -13,8 +13,7 @@ interface NBATeamTileProps {
 const NBATeamTile: React.FC<NBATeamTileProps> = (props: NBATeamTileProps) => {
   const { team, activeTeam, setActiveTeam } = props;
   const { location, name } = NBAteamData[team];
-  const { primaryPlainText, primaryBGstyle, secondaryBorderStyle } =
-    NBAstyleData[team];
+  const { simpleText, primaryBackground, secondaryBorder } = NBAstyleData[team];
   const { nbaLotteryState, nbaLotteryDispatch } = useNBALotteryContext();
   const { rankedTeams } = nbaLotteryState;
 
@@ -34,9 +33,9 @@ const NBATeamTile: React.FC<NBATeamTileProps> = (props: NBATeamTileProps) => {
       className={cn(
         "m-1 flex h-16 w-28 flex-col items-center justify-center border-2",
         {
-          [primaryPlainText]: true,
-          [primaryBGstyle]: true,
-          [secondaryBorderStyle]: true,
+          [primaryBackground]: true,
+          [secondaryBorder]: true,
+          [simpleText]: true,
         }
       )}
     >

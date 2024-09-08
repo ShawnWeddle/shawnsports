@@ -57,8 +57,8 @@ const TileLanding: React.FC<TileLandingProps> = (props: TileLandingProps) => {
           className={cn(
             "my-1 mr-1 flex h-12 w-16 flex-col items-center justify-center rounded-r-lg bg-gray-200 text-gray-600",
             {
-              [NBAstyleData[team].primaryBGstyle]: true,
-              [NBAstyleData[team].secondaryTextStyle]: true,
+              [NBAstyleData[team].primaryBackground]: true,
+              [NBAstyleData[team].secondaryText]: true,
             }
           )}
         >

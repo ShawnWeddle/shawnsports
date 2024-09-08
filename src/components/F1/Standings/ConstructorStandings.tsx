@@ -25,8 +25,8 @@ export const ConstructorStandings: React.FC = () => {
         <TableCell className="text-center"> {index + 1} </TableCell>
         <TableCell
           className={cn("px-3", {
-            [F1styleData[constructor].primaryBGstyle]: true,
-            [F1styleData[constructor].secondaryTextStyle]: true,
+            [F1styleData[constructor].primaryBackground]: true,
+            [F1styleData[constructor].secondaryText]: true,
           })}
         >
           {constructor}

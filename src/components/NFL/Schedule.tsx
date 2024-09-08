@@ -99,13 +99,13 @@ const NFLSchedule: React.FC = () => {
                       className={cn(
                         "grow rounded-lg border-2 px-1 text-center text-sm sm:m-0.5 sm:text-base",
                         {
-                          [NFLstyleData[team].primaryPlainTextHover]: true,
-                          [NFLstyleData[team].primaryPlainText]: allGamesPicked,
-                          [NFLstyleData[team].primaryBGHover]: true,
-                          [NFLstyleData[team].secondaryBorderStyleHover]: true,
-                          [NFLstyleData[team].primaryBGstyle]: allGamesPicked,
-                          [NFLstyleData[team].secondaryBorderStyle]:
+                          [NFLstyleData[team].primaryBackground]:
                             allGamesPicked,
+                          [NFLstyleData[team].secondaryBorder]: allGamesPicked,
+                          [NFLstyleData[team].simpleText]: allGamesPicked,
+                          [NFLstyleData[team].primaryBackgroundHover]: true,
+                          [NFLstyleData[team].secondaryBorderHover]: true,
+                          [NFLstyleData[team].simpleTextHover]: true,
                         }
                       )}
                       onClick={() => {

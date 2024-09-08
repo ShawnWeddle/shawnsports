@@ -85,9 +85,9 @@ const WorldSeriesList: React.FC = () => {
                 className={cn(
                   "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
-                    [MLBstyleData[winningTeam].primaryBGstyle]: true,
-                    [MLBstyleData[winningTeam].secondaryBorderStyle]: true,
-                    [MLBstyleData[winningTeam].primaryPlainText]: true,
+                    [MLBstyleData[winningTeam].primaryBackground]: true,
+                    [MLBstyleData[winningTeam].secondaryBorder]: true,
+                    [MLBstyleData[winningTeam].simpleText]: true,
                   }
                 )}
               >
@@ -118,9 +118,9 @@ const WorldSeriesList: React.FC = () => {
                 className={cn(
                   "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
-                    [MLBstyleData[losingTeam].primaryBGstyle]: true,
-                    [MLBstyleData[losingTeam].secondaryBorderStyle]: true,
-                    [MLBstyleData[losingTeam].primaryPlainText]: true,
+                    [MLBstyleData[losingTeam].primaryBackground]: true,
+                    [MLBstyleData[losingTeam].secondaryBorder]: true,
+                    [MLBstyleData[losingTeam].simpleText]: true,
                   }
                 )}
               >

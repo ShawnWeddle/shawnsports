@@ -36,9 +36,9 @@ const SuperLoserList: React.FC = () => {
         className={cn(
           "flex aspect-square items-center justify-center rounded-md border-2 font-semibold",
           {
-            [NFLstyleData[losingTeam].primaryBGstyle]: true,
-            [NFLstyleData[losingTeam].secondaryBorderStyle]: true,
-            [NFLstyleData[losingTeam].primaryPlainText]: true,
+            [NFLstyleData[losingTeam].primaryBackground]: true,
+            [NFLstyleData[losingTeam].secondaryBorder]: true,
+            [NFLstyleData[losingTeam].simpleText]: true,
           }
         )}
       >
@@ -80,9 +80,9 @@ const SuperLoserList: React.FC = () => {
             className={cn(
               "w-full border-x-2 px-1 text-center font-semibold first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2",
               {
-                [NFLstyleData[losingTeam].primaryBGstyle]: true,
-                [NFLstyleData[losingTeam].secondaryBorderStyle]: true,
-                [NFLstyleData[losingTeam].primaryPlainText]: true,
+                [NFLstyleData[losingTeam].primaryBackground]: true,
+                [NFLstyleData[losingTeam].secondaryBorder]: true,
+                [NFLstyleData[losingTeam].simpleText]: true,
                 "sm:rounded-lg sm:border-y-2": !inModal,
               }
             )}

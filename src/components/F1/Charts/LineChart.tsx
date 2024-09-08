@@ -179,7 +179,7 @@ const LineChart: React.FC = () => {
                     ? pointsHolder1.name
                     : "ALB"
                 )
-              ].primaryBGstyle]: pointsHolder1.name !== "No Selection",
+              ].primaryBackground]: pointsHolder1.name !== "No Selection",
             },
             {
               "bg-gray-300": pointsHolder1.name === "No Selection",
@@ -236,7 +236,7 @@ const LineChart: React.FC = () => {
                     ? pointsHolder2.name
                     : "ALB"
                 )
-              ].primaryBGstyle]: pointsHolder2.name !== "No Selection",
+              ].primaryBackground]: pointsHolder2.name !== "No Selection",
             },
             {
               "bg-gray-300": pointsHolder2.name === "No Selection",
@@ -297,7 +297,7 @@ const LineChart: React.FC = () => {
                     ? pointsHolder3.name
                     : "ALB"
                 )
-              ].primaryBGstyle]: pointsHolder3.name !== "No Selection",
+              ].primaryBackground]: pointsHolder3.name !== "No Selection",
             },
             {
               "bg-gray-300": pointsHolder3.name === "No Selection",
@@ -358,7 +358,7 @@ const LineChart: React.FC = () => {
                     ? pointsHolder4.name
                     : "ALB"
                 )
-              ].primaryBGstyle]: pointsHolder4.name !== "No Selection",
+              ].primaryBackground]: pointsHolder4.name !== "No Selection",
             },
             {
               "bg-gray-300": pointsHolder4.name === "No Selection",

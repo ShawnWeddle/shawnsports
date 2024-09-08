@@ -66,9 +66,9 @@ const NBAFinalsList: React.FC = () => {
                 }}
                 className={cn(
                   "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
-                  [NBAstyleData[winningTeam]?.primaryBGstyle],
-                  [NBAstyleData[winningTeam]?.secondaryBorderStyle],
-                  [NBAstyleData[winningTeam]?.primaryPlainText]
+                  [NBAstyleData[winningTeam]?.primaryBackground],
+                  [NBAstyleData[winningTeam]?.secondaryBorder],
+                  [NBAstyleData[winningTeam]?.simpleText]
                 )}
               >
                 <div
@@ -97,9 +97,9 @@ const NBAFinalsList: React.FC = () => {
                 }}
                 className={cn(
                   "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
-                  [NBAstyleData[losingTeam]?.primaryBGstyle],
-                  [NBAstyleData[losingTeam]?.secondaryBorderStyle],
-                  [NBAstyleData[losingTeam]?.primaryPlainText]
+                  [NBAstyleData[losingTeam]?.primaryBackground],
+                  [NBAstyleData[losingTeam]?.secondaryBorder],
+                  [NBAstyleData[losingTeam]?.simpleText]
                 )}
               >
                 <div

@@ -40,8 +40,8 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
             : Tcam === "Yellow"
             ? "bg-[#d9ff00]"
             : "bg-[#00ffd9]";
-        const activeBg = activeStyleGuide.primaryBGstyle;
-        const activeTextColor = activeStyleGuide.secondaryTextStyle;
+        const activeBg = activeStyleGuide.primaryBackground;
+        const activeTextColor = activeStyleGuide.secondaryText;
         return (
           <TableCell
             key={`c-${cellIndex}`}
@@ -150,8 +150,8 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
           newActiveDriver && newActiveDriver.teammateActive && Tcam === "Black"
             ? "bg-[#33424d]" //black
             : "bg-[#d9ff00]"; //yellow
-        const activeBg = activeStyleGuide.primaryBGstyle;
-        const activeTextColor = activeStyleGuide.secondaryTextStyle;
+        const activeBg = activeStyleGuide.primaryBackground;
+        const activeTextColor = activeStyleGuide.secondaryText;
         return (
           <TableCell
             key={`c-${cellIndex}`}
@@ -219,8 +219,8 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
           newActiveDriver && newActiveDriver.teammateActive && Tcam === "Black"
             ? "bg-[#33424d]" //black
             : "bg-[#d9ff00]"; //yellow
-        const activeBg = activeStyleGuide.primaryBGstyle;
-        const activeTextColor = activeStyleGuide.secondaryTextStyle;
+        const activeBg = activeStyleGuide.primaryBackground;
+        const activeTextColor = activeStyleGuide.secondaryText;
         return (
           <TableCell
             key={`c-${cellIndex}`}

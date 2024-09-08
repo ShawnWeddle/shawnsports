@@ -83,9 +83,9 @@ const StanleyCupSeriesList: React.FC = () => {
                 className={cn(
                   "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
-                    [NHLstyleData[winningTeam].primaryBGstyle]: true,
-                    [NHLstyleData[winningTeam].secondaryBorderStyle]: true,
-                    [NHLstyleData[winningTeam].primaryPlainText]: true,
+                    [NHLstyleData[winningTeam].primaryBackground]: true,
+                    [NHLstyleData[winningTeam].secondaryBorder]: true,
+                    [NHLstyleData[winningTeam].simpleText]: true,
                   }
                 )}
               >
@@ -118,9 +118,9 @@ const StanleyCupSeriesList: React.FC = () => {
                 className={cn(
                   "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
-                    [NHLstyleData[losingTeam].primaryBGstyle]: true,
-                    [NHLstyleData[losingTeam].secondaryBorderStyle]: true,
-                    [NHLstyleData[losingTeam].primaryPlainText]: true,
+                    [NHLstyleData[losingTeam].primaryBackground]: true,
+                    [NHLstyleData[losingTeam].secondaryBorder]: true,
+                    [NHLstyleData[losingTeam].simpleText]: true,
                   }
                 )}
               >

@@ -99,9 +99,9 @@ const SuperBowlList: React.FC = () => {
                 className={cn(
                   "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
-                    [NFLstyleData[winningTeam].primaryBGstyle]: true,
-                    [NFLstyleData[winningTeam].secondaryBorderStyle]: true,
-                    [NFLstyleData[winningTeam].primaryPlainText]: true,
+                    [NFLstyleData[winningTeam].primaryBackground]: true,
+                    [NFLstyleData[winningTeam].secondaryBorder]: true,
+                    [NFLstyleData[winningTeam].simpleText]: true,
                   }
                 )}
               >
@@ -132,9 +132,9 @@ const SuperBowlList: React.FC = () => {
                 className={cn(
                   "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                   {
-                    [NFLstyleData[losingTeam].primaryBGstyle]: true,
-                    [NFLstyleData[losingTeam].secondaryBorderStyle]: true,
-                    [NFLstyleData[losingTeam].primaryPlainText]: true,
+                    [NFLstyleData[losingTeam].primaryBackground]: true,
+                    [NFLstyleData[losingTeam].secondaryBorder]: true,
+                    [NFLstyleData[losingTeam].simpleText]: true,
                   }
                 )}
               >

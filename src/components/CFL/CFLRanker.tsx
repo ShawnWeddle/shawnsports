@@ -25,8 +25,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             className={cn(
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
-                [CFLstyleData[unRankedTeam].primaryBGstyle]: true,
-                [CFLstyleData[unRankedTeam].primaryPlainText]: true,
+                [CFLstyleData[unRankedTeam].primaryBackground]: true,
+                [CFLstyleData[unRankedTeam].simpleText]: true,
               }
             )}
           >
@@ -35,8 +35,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
           <TableCell
             className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
-              [CFLstyleData[unRankedTeam].primaryBGstyle]: true,
-              [CFLstyleData[unRankedTeam].primaryPlainText]: true,
+              [CFLstyleData[unRankedTeam].primaryBackground]: true,
+              [CFLstyleData[unRankedTeam].simpleText]: true,
             })}
           >
             {CFLteamData[unRankedTeam].name}
@@ -108,8 +108,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             className={cn(
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
-                [CFLstyleData[rankedTeam].primaryBGstyle]: true,
-                [CFLstyleData[rankedTeam].primaryPlainText]: true,
+                [CFLstyleData[rankedTeam].primaryBackground]: true,
+                [CFLstyleData[rankedTeam].simpleText]: true,
               }
             )}
           >
@@ -117,8 +117,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
           <TableCell
             className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
-              [CFLstyleData[rankedTeam].primaryBGstyle]: true,
-              [CFLstyleData[rankedTeam].primaryPlainText]: true,
+              [CFLstyleData[rankedTeam].primaryBackground]: true,
+              [CFLstyleData[rankedTeam].simpleText]: true,
             })}
           >
             {CFLteamData[rankedTeam].name}

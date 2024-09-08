@@ -46,9 +46,9 @@ const WNBAFinalsList: React.FC = () => {
               className={cn(
                 "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                 {
-                  [WNBAstyleData[winningTeam].primaryBGstyle]: true,
-                  [WNBAstyleData[winningTeam].secondaryBorderStyle]: true,
-                  [WNBAstyleData[winningTeam].primaryPlainText]: true,
+                  [WNBAstyleData[winningTeam].primaryBackground]: true,
+                  [WNBAstyleData[winningTeam].secondaryBorder]: true,
+                  [WNBAstyleData[winningTeam].simpleText]: true,
                 }
               )}
             >
@@ -79,9 +79,9 @@ const WNBAFinalsList: React.FC = () => {
               className={cn(
                 "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
                 {
-                  [WNBAstyleData[losingTeam].primaryBGstyle]: true,
-                  [WNBAstyleData[losingTeam].secondaryBorderStyle]: true,
-                  [WNBAstyleData[losingTeam].primaryPlainText]: true,
+                  [WNBAstyleData[losingTeam].primaryBackground]: true,
+                  [WNBAstyleData[losingTeam].secondaryBorder]: true,
+                  [WNBAstyleData[losingTeam].simpleText]: true,
                 }
               )}
             >

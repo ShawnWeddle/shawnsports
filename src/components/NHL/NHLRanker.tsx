@@ -25,8 +25,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             className={cn(
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
-                [NHLstyleData[unRankedTeam].primaryBGstyle]: true,
-                [NHLstyleData[unRankedTeam].primaryPlainText]: true,
+                [NHLstyleData[unRankedTeam].primaryBackground]: true,
+                [NHLstyleData[unRankedTeam].simpleText]: true,
               }
             )}
           >
@@ -35,8 +35,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
           <TableCell
             className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
-              [NHLstyleData[unRankedTeam].primaryBGstyle]: true,
-              [NHLstyleData[unRankedTeam].primaryPlainText]: true,
+              [NHLstyleData[unRankedTeam].primaryBackground]: true,
+              [NHLstyleData[unRankedTeam].simpleText]: true,
             })}
           >
             {unRankedTeam === "VEG"
@@ -110,8 +110,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             className={cn(
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
-                [NHLstyleData[rankedTeam].primaryBGstyle]: true,
-                [NHLstyleData[rankedTeam].primaryPlainText]: true,
+                [NHLstyleData[rankedTeam].primaryBackground]: true,
+                [NHLstyleData[rankedTeam].simpleText]: true,
               }
             )}
           >
@@ -119,8 +119,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
           <TableCell
             className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
-              [NHLstyleData[rankedTeam].primaryBGstyle]: true,
-              [NHLstyleData[rankedTeam].primaryPlainText]: true,
+              [NHLstyleData[rankedTeam].primaryBackground]: true,
+              [NHLstyleData[rankedTeam].simpleText]: true,
             })}
           >
             {rankedTeam === "VEG" ? "G-Knights" : NHLteamData[rankedTeam].name}

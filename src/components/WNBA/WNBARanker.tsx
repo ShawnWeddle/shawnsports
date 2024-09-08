@@ -34,8 +34,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             className={cn(
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
-                [WNBAstyleData[unRankedTeam].primaryBGstyle]: true,
-                [WNBAstyleData[unRankedTeam].primaryPlainText]: true,
+                [WNBAstyleData[unRankedTeam].primaryBackground]: true,
+                [WNBAstyleData[unRankedTeam].simpleText]: true,
               }
             )}
           >
@@ -44,8 +44,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
           <TableCell
             className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
-              [WNBAstyleData[unRankedTeam].primaryBGstyle]: true,
-              [WNBAstyleData[unRankedTeam].primaryPlainText]: true,
+              [WNBAstyleData[unRankedTeam].primaryBackground]: true,
+              [WNBAstyleData[unRankedTeam].simpleText]: true,
             })}
           >
             {WNBAteamData[unRankedTeam].name}
@@ -117,8 +117,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             className={cn(
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
-                [WNBAstyleData[rankedTeam].primaryBGstyle]: true,
-                [WNBAstyleData[rankedTeam].primaryPlainText]: true,
+                [WNBAstyleData[rankedTeam].primaryBackground]: true,
+                [WNBAstyleData[rankedTeam].simpleText]: true,
               }
             )}
           >
@@ -126,8 +126,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
           <TableCell
             className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
-              [WNBAstyleData[rankedTeam].primaryBGstyle]: true,
-              [WNBAstyleData[rankedTeam].primaryPlainText]: true,
+              [WNBAstyleData[rankedTeam].primaryBackground]: true,
+              [WNBAstyleData[rankedTeam].simpleText]: true,
             })}
           >
             {WNBAteamData[rankedTeam].name}

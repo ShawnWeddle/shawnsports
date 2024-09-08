@@ -1,5 +1,5 @@
 import MainPage from "~/components/Page/MainPage";
-import { RankContextProvider } from "~/context/RankContext";
+import { MLBRankContextProvider } from "~/context/MLBrankContext";
 import MLBRanker from "~/components/MLB/MLBRanker";
 
 const Rank = () => {
@@ -11,9 +11,9 @@ const Rank = () => {
       pageMode="MLB"
       underPageMode="MLB_Rank"
     >
-      <RankContextProvider sport="MLB">
+      <MLBRankContextProvider>
         <MLBRanker />
-      </RankContextProvider>
+      </MLBRankContextProvider>
     </MainPage>
   );
 };

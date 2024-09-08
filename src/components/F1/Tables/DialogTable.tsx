@@ -39,9 +39,9 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
           <TableCell className="px-1 text-center"> {index + 1} </TableCell>
           <TableCell
             className={cn("px-3", {
-              [F1styleData[driverToConstructor2024(driver)].primaryBGstyle]:
+              [F1styleData[driverToConstructor2024(driver)].primaryBackground]:
                 true,
-              [F1styleData[driverToConstructor2024(driver)].secondaryTextStyle]:
+              [F1styleData[driverToConstructor2024(driver)].secondaryText]:
                 true,
             })}
           >

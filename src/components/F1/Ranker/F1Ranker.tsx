@@ -42,9 +42,9 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
                 [F1styleData[driverToConstructor2024(unRankedDriver)]
-                  .primaryBGstyle]: true,
+                  .primaryBackground]: true,
                 [F1styleData[driverToConstructor2024(unRankedDriver)]
-                  .secondaryTextStyle]: true,
+                  .secondaryText]: true,
               }
             )}
           >
@@ -54,9 +54,9 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <TableCell
             className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
               [F1styleData[driverToConstructor2024(unRankedDriver)]
-                .primaryBGstyle]: true,
+                .primaryBackground]: true,
               [F1styleData[driverToConstructor2024(unRankedDriver)]
-                .secondaryTextStyle]: true,
+                .secondaryText]: true,
             })}
           >
             {unRankedDriver !== "ZHO"
@@ -131,9 +131,9 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
                 [F1styleData[driverToConstructor2024(rankedDriver)]
-                  .primaryBGstyle]: true,
+                  .primaryBackground]: true,
                 [F1styleData[driverToConstructor2024(rankedDriver)]
-                  .secondaryTextStyle]: true,
+                  .secondaryText]: true,
               }
             )}
           >
@@ -143,9 +143,9 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <TableCell
             className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
               [F1styleData[driverToConstructor2024(rankedDriver)]
-                .primaryBGstyle]: true,
+                .primaryBackground]: true,
               [F1styleData[driverToConstructor2024(rankedDriver)]
-                .secondaryTextStyle]: true,
+                .secondaryText]: true,
             })}
           >
             {rankedDriver === "ZHO"

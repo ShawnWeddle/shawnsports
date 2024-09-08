@@ -33,9 +33,9 @@ const NBApickTable: React.FC = () => {
             key={`pick-${rowIndex}-${cellIndex}-${pickIndex}`}
             className={cn(
               "border-x-2 first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2",
-              NBAstyleData[pick.nativeTeam]?.primaryBGstyle,
-              NBAstyleData[pick.nativeTeam]?.primaryPlainText,
-              NBAstyleData[pick.nativeTeam]?.secondaryBorderStyle
+              NBAstyleData[pick.nativeTeam]?.primaryBackground,
+              NBAstyleData[pick.nativeTeam]?.simpleText,
+              NBAstyleData[pick.nativeTeam]?.secondaryBorder
             )}
             onClick={() => {
               setActivePick(pick);

@@ -25,10 +25,10 @@ const NBALottery: React.FC = () => {
     : {
         primary: "",
         secondary: "",
-        primaryBGstyle: "",
-        primaryPlainText: "",
-        secondaryTextStyle: "",
-        secondaryBorderStyle: "",
+        primaryBackground: "",
+        secondaryText: "",
+        secondaryBorder: "",
+        simpleText: "",
       };
 
   const teamTiles = nbaTeamsRankedWorst.map((team, index) => {
@@ -67,7 +67,7 @@ const NBALottery: React.FC = () => {
           </span>
           <span
             className={cn("font-bold", {
-              [NBAstyleData[newTeam].primaryTextStyle]: true,
+              [NBAstyleData[newTeam].primaryBackground]: true,
             })}
           >
             {NBAteamData[newTeam].location}
@@ -131,9 +131,9 @@ const NBALottery: React.FC = () => {
           className={cn(
             "col-span-3 m-1 flex h-12 items-center justify-center border border-black bg-gray-200 sm:col-span-5 md:col-span-6 lg:col-span-8",
             {
-              [activeTeamStyleData.primaryPlainText]: activeTeam,
-              [activeTeamStyleData.primaryBGstyle]: activeTeam,
-              [activeTeamStyleData.secondaryBorderStyle]: activeTeam,
+              [activeTeamStyleData.primaryBackground]: activeTeam,
+              [activeTeamStyleData.secondaryBorder]: activeTeam,
+              [activeTeamStyleData.simpleText]: activeTeam,
             }
           )}
         >

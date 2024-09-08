@@ -59,9 +59,9 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
           <TableCell>
             <button
               className={cn("w-full rounded border px-1 text-center", {
-                [NFLstyleData[Away].primaryPlainText]: true,
-                [NFLstyleData[Away].primaryBGstyle]: true,
-                [NFLstyleData[Away].secondaryBorderStyle]: true,
+                [NFLstyleData[Away].primaryBackground]: true,
+                [NFLstyleData[Away].secondaryBorder]: true,
+                [NFLstyleData[Away].simpleText]: true,
               })}
               onClick={() => {
                 nflScheduleDispatch({
@@ -77,9 +77,9 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
           <TableCell>
             <button
               className={cn("w-full rounded border px-1 text-center", {
-                [NFLstyleData[Home].primaryPlainText]: true,
-                [NFLstyleData[Home].primaryBGstyle]: true,
-                [NFLstyleData[Home].secondaryBorderStyle]: true,
+                [NFLstyleData[Home].primaryBackground]: true,
+                [NFLstyleData[Home].secondaryBorder]: true,
+                [NFLstyleData[Home].simpleText]: true,
               })}
               onClick={() => {
                 nflScheduleDispatch({
@@ -96,9 +96,9 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
             {Winner && (
               <button
                 className={cn("w-full rounded border px-1 text-center", {
-                  [NFLstyleData[Winner].primaryPlainText]: true,
-                  [NFLstyleData[Winner].primaryBGstyle]: true,
-                  [NFLstyleData[Winner].secondaryBorderStyle]: true,
+                  [NFLstyleData[Winner].primaryBackground]: true,
+                  [NFLstyleData[Winner].secondaryBorder]: true,
+                  [NFLstyleData[Winner].simpleText]: true,
                 })}
                 onClick={() => {
                   nflScheduleDispatch({

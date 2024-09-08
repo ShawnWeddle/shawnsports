@@ -27,8 +27,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             className={cn(
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
-                [MLBstyleData[unRankedTeam].primaryBGstyle]: true,
-                [MLBstyleData[unRankedTeam].primaryPlainText]: true,
+                [MLBstyleData[unRankedTeam].primaryBackground]: true,
+                [MLBstyleData[unRankedTeam].simpleText]: true,
               }
             )}
           >
@@ -37,8 +37,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
           <TableCell
             className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
-              [MLBstyleData[unRankedTeam].primaryBGstyle]: true,
-              [MLBstyleData[unRankedTeam].primaryPlainText]: true,
+              [MLBstyleData[unRankedTeam].primaryBackground]: true,
+              [MLBstyleData[unRankedTeam].simpleText]: true,
             })}
           >
             {MLBteamData[unRankedTeam].name}
@@ -110,8 +110,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             className={cn(
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
-                [MLBstyleData[rankedTeam].primaryBGstyle]: true,
-                [MLBstyleData[rankedTeam].primaryPlainText]: true,
+                [MLBstyleData[rankedTeam].primaryBackground]: true,
+                [MLBstyleData[rankedTeam].simpleText]: true,
               }
             )}
           >
@@ -119,8 +119,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
           <TableCell
             className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
-              [MLBstyleData[rankedTeam].primaryBGstyle]: true,
-              [MLBstyleData[rankedTeam].primaryPlainText]: true,
+              [MLBstyleData[rankedTeam].primaryBackground]: true,
+              [MLBstyleData[rankedTeam].simpleText]: true,
             })}
           >
             {MLBteamData[rankedTeam].name}

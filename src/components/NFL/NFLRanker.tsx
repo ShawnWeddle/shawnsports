@@ -39,8 +39,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             className={cn(
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
-                [NFLstyleData[unRankedTeam].primaryBGstyle]: true,
-                [NFLstyleData[unRankedTeam].primaryPlainText]: true,
+                [NFLstyleData[unRankedTeam].primaryBackground]: true,
+                [NFLstyleData[unRankedTeam].simpleText]: true,
               }
             )}
           >
@@ -49,8 +49,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
           <TableCell
             className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
-              [NFLstyleData[unRankedTeam].primaryBGstyle]: true,
-              [NFLstyleData[unRankedTeam].primaryPlainText]: true,
+              [NFLstyleData[unRankedTeam].primaryBackground]: true,
+              [NFLstyleData[unRankedTeam].simpleText]: true,
             })}
           >
             {NFLteamData[unRankedTeam].name}
@@ -122,8 +122,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             className={cn(
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
-                [NFLstyleData[rankedTeam].primaryBGstyle]: true,
-                [NFLstyleData[rankedTeam].primaryPlainText]: true,
+                [NFLstyleData[rankedTeam].primaryBackground]: true,
+                [NFLstyleData[rankedTeam].simpleText]: true,
               }
             )}
           >
@@ -131,8 +131,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
           <TableCell
             className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
-              [NFLstyleData[rankedTeam].primaryBGstyle]: true,
-              [NFLstyleData[rankedTeam].primaryPlainText]: true,
+              [NFLstyleData[rankedTeam].primaryBackground]: true,
+              [NFLstyleData[rankedTeam].simpleText]: true,
             })}
           >
             {NFLteamData[rankedTeam].name}

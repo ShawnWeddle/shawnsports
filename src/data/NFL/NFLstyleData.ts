@@ -95,8 +95,8 @@ export const NFLstyleData: { [Key in AllNFLTeamType] : StyleBookType} = {
     secondaryBorderHover: "hover:border-[#000000]",
     secondaryText: "text-[#000000]",
     secondaryTextHover: "hover:text-[#000000]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   },
   "CLE":{
     primary: "#FF3C00",
@@ -311,8 +311,8 @@ export const NFLstyleData: { [Key in AllNFLTeamType] : StyleBookType} = {
     secondaryBorderHover: "hover:border-[#101820]",
     secondaryText: "text-[#101820]",
     secondaryTextHover: "hover:text-[#101820]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   },
   "NYG":{
     primary: "#0B2265",
@@ -371,8 +371,8 @@ export const NFLstyleData: { [Key in AllNFLTeamType] : StyleBookType} = {
     secondaryBorderHover: "hover:border-[#101820]",
     secondaryText: "text-[#101820]",
     secondaryTextHover: "hover:text-[#101820]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   },
   "SEA":{
     primary: "#002244",

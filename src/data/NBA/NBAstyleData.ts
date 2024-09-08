@@ -120,8 +120,8 @@ export const NBAstyleData: {[Key in AllNBATeamType] : StyleBookType
     secondaryBorderHover: "hover:border-[#1D428A]",
     secondaryText: "text-[#1D428A]",
     secondaryTextHover: "hover:text-[#1D428A]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   },
   HOU:{
     primary: "#CE1141",
@@ -168,8 +168,8 @@ export const NBAstyleData: {[Key in AllNBATeamType] : StyleBookType
     secondaryBorderHover: "hover:border-[#552583]",
     secondaryText: "text-[#552583]",
     secondaryTextHover: "hover:text-[#552583]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#552583]",
+    simpleTextHover: "hover:text-[#552583]",
   },
   MEM:{
     primary: "#5D76A9",
@@ -324,8 +324,8 @@ export const NBAstyleData: {[Key in AllNBATeamType] : StyleBookType
     secondaryBorderHover: "hover:border-[#000000]",
     secondaryText: "text-[#000000]",
     secondaryTextHover: "hover:text-[#000000]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   },
   TOR:{
     primary: "#CE1141",

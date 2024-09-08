@@ -131,8 +131,8 @@ export const MLBstyleData: { [Key in AllMLBTeamType] : StyleBookType} = {
     secondaryBorderHover: "hover:border-[#002D62]",
     secondaryText: "text-[#002D62]",
     secondaryTextHover: "hover:text-[#002D62]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   },
   KCR:{
     primary: "#004687",
@@ -263,8 +263,8 @@ export const MLBstyleData: { [Key in AllMLBTeamType] : StyleBookType} = {
     secondaryBorderHover: "hover:border-[#27251F]",
     secondaryText: "text-[#27251F]",
     secondaryTextHover: "hover:text-[#27251F]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   },
   SDP:{
     primary: "#2F241D",
@@ -299,8 +299,8 @@ export const MLBstyleData: { [Key in AllMLBTeamType] : StyleBookType} = {
     secondaryBorderHover: "hover:border-[#27251F]",
     secondaryText: "text-[#27251F]",
     secondaryTextHover: "hover:text-[#27251F]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   },
   STL:{
     primary: "#C41E3A",

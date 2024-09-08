@@ -84,8 +84,8 @@ export const WNBAstyleData: {[Key in AllWNBATeamType] : StyleBookType
     secondaryBorderHover: "hover:border-[#702F8A]",
     secondaryText: "text-[#702F8A]",
     secondaryTextHover: "hover:text-[#702F8A]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#702F8A]",
+    simpleTextHover: "hover:text-[#702F8A]",
   },
   MIN:{
     primary: "#0C2340",

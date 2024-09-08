@@ -11,8 +11,8 @@ export const NHLstyleData: { [Key in AllNHLTeamType] : StyleBookType} = {
     secondaryBorderHover: "hover:bg-[#000000]",
     secondaryText: "text-[#000000]",
     secondaryTextHover: "hover:text-[#000000]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   }, "ARI": {
     primary: "#8C2633",
     secondary: "#E2D6B5",
@@ -33,8 +33,8 @@ export const NHLstyleData: { [Key in AllNHLTeamType] : StyleBookType} = {
     secondaryBorderHover: "hover:bg-[#000000]",
     secondaryText: "text-[#000000]",
     secondaryTextHover: "hover:text-[#000000]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   }, "BUF": {
     primary: "#003087",
     secondary: "#FFB81C",
@@ -220,8 +220,8 @@ export const NHLstyleData: { [Key in AllNHLTeamType] : StyleBookType} = {
     secondaryBorderHover: "hover:bg-[#041E42]",
     secondaryText: "text-[#041E42]",
     secondaryTextHover: "hover:text-[#041E42]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   }, "NYI": {
     primary: "#00539B",
     secondary: "#F47D30",
@@ -264,8 +264,8 @@ export const NHLstyleData: { [Key in AllNHLTeamType] : StyleBookType} = {
     secondaryBorderHover: "hover:bg-[#000000]",
     secondaryText: "text-[#000000]",
     secondaryTextHover: "hover:text-[#000000]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   }, "PIT": {
     primary: "#000000",
     secondary: "#CFC493",

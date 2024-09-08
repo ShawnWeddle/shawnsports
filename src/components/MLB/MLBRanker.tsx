@@ -1,10 +1,22 @@
 import { useState } from "react";
+import { api } from "~/utils/api";
 import { cn } from "~/utils/cn";
+import { z } from "zod";
+import { useRankContext } from "~/hooks/useRanker";
+import { useAuthContext } from "~/hooks/useAuthContext";
 import { MoveRight, MoveLeft, MoveUp, MoveDown } from "lucide-react";
-import { useMLBRankContext } from "~/hooks/useMLBRanker";
-import { type MLBTeamType, MLBteamData } from "~/data/MLB/MLBdata";
+import {
+  type MLBTeamType,
+  MLBteamData,
+  activeMLBTeams,
+} from "~/data/MLB/MLBdata";
 import { MLBstyleData } from "~/data/MLB/MLBstyleData";
 import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
+import { Button } from "../ui/button";
+import {
+  createRankSchema,
+  type CreateRankInput,
+} from "~/server/api/rank/schema";
 
 interface RankerRowProps {
   unRankedTeam: MLBTeamType | null;
@@ -12,12 +24,13 @@ interface RankerRowProps {
   index: number;
 }
 
+const MLBenum = z.enum(activeMLBTeams);
+
 const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   const { unRankedTeam, rankedTeam, index } = props;
   const [newRank, setNewRank] = useState<string>("");
   const [reRank, setReRank] = useState<string>("");
-
-  const { mlbRankDispatch } = useMLBRankContext();
+  const { rankDispatch } = useRankContext();
 
   return (
     <TableRow className="border-b-2 border-gray-200 font-semibold last:border-0">
@@ -69,10 +82,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="px-1 text-white"
             onClick={() => {
-              mlbRankDispatch({
-                type: "RANK_TEAM",
+              rankDispatch({
+                type: "RANK_ENTRY",
                 payload: {
-                  team: unRankedTeam,
+                  entry: unRankedTeam,
                   rank: parseInt(newRank),
                 },
               });
@@ -88,10 +101,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="rounded px-1 text-mlb"
             onClick={() => {
-              mlbRankDispatch({
-                type: "UNRANK_TEAM",
+              rankDispatch({
+                type: "UNRANK_ENTRY",
                 payload: {
-                  team: rankedTeam,
+                  entry: rankedTeam,
                   rank: index,
                 },
               });
@@ -152,10 +165,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             <button
               className="hidden px-1 text-white sm:block"
               onClick={() => {
-                mlbRankDispatch({
-                  type: "RERANK_TEAM",
+                rankDispatch({
+                  type: "RERANK_ENTRY",
                   payload: {
-                    team: rankedTeam,
+                    entry: rankedTeam,
                     rank: parseInt(reRank),
                     prevRank: index,
                   },
@@ -169,10 +182,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-6 px-0.5 text-xs text-white disabled:bg-white/50"
               disabled={index === 0}
               onClick={() => {
-                mlbRankDispatch({
+                rankDispatch({
                   type: "MOVE_UP",
                   payload: {
-                    team: rankedTeam,
+                    entry: rankedTeam,
                     rank: index,
                   },
                 });
@@ -184,10 +197,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-6 px-0.5 text-xs text-white disabled:bg-white/50"
               disabled={index === 29}
               onClick={() => {
-                mlbRankDispatch({
+                rankDispatch({
                   type: "MOVE_DOWN",
                   payload: {
-                    team: rankedTeam,
+                    entry: rankedTeam,
                     rank: index,
                   },
                 });
@@ -203,16 +216,44 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
 };
 
 const MLBRanker: React.FC = () => {
-  const { mlbRankState } = useMLBRankContext();
-  const { unRankedTeams, rankedTeams } = mlbRankState;
+  const { rankState, rankDispatch } = useRankContext();
+  const { unRankedEntries, rankedEntries } = rankState;
 
-  const mlbRows = unRankedTeams.map((unRankedTeam, index) => {
-    const rankedTeam: MLBTeamType | null = rankedTeams[index] ?? null;
+  const { authState } = useAuthContext();
+  const { user } = authState;
+
+  const postRank = api.rank.createRank.useMutation();
+
+  const handleSubmit = () => {
+    const order = rankedEntries as string[];
+    if (user) {
+      const { userId, username, email } = user;
+      const rankPost: CreateRankInput = {
+        sport: "MLB",
+        order,
+        client: {
+          userId,
+          username,
+          email,
+        },
+      };
+      const rankValidation = createRankSchema.safeParse(rankPost);
+      if (rankValidation) {
+        postRank.mutate({ ...rankPost });
+      }
+    }
+  };
+
+  const mlbRows = unRankedEntries.map((unRankedTeam, index) => {
+    const rankedTeam: string | null = rankedEntries[index] ?? null;
+
+    const newUnrankedTeam = unRankedTeam ? MLBenum.parse(unRankedTeam) : null;
+    const newRankedTeam = rankedTeam ? MLBenum.parse(rankedTeam) : null;
 
     return (
       <RankerRow
-        unRankedTeam={unRankedTeam}
-        rankedTeam={rankedTeam}
+        unRankedTeam={newUnrankedTeam}
+        rankedTeam={newRankedTeam}
         index={index}
         key={index}
       />
@@ -227,6 +268,34 @@ const MLBRanker: React.FC = () => {
       <Table className="text-xs sm:text-base">
         <TableBody>{mlbRows}</TableBody>
       </Table>
+      <div className="flex justify-center">
+        <Button
+          className="m-1"
+          variant={"mlb"}
+          onClick={() => {
+            rankState.rankedEntries.map((team, index) => {
+              if (team) {
+                rankDispatch({
+                  type: "UNRANK_ENTRY",
+                  payload: { entry: team, rank: index },
+                });
+              }
+            });
+          }}
+        >
+          RESET
+        </Button>
+        <Button
+          className="m-1"
+          disabled={rankedEntries.includes(null)}
+          variant={"mlb"}
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          SAVE
+        </Button>
+      </div>
     </div>
   );
 };

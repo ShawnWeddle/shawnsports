@@ -1,21 +1,35 @@
 import { useState } from "react";
+import { api } from "~/utils/api";
 import { cn } from "~/utils/cn";
+import { z } from "zod";
+import { useRankContext } from "~/hooks/useRanker";
+import { useAuthContext } from "~/hooks/useAuthContext";
 import { MoveRight, MoveLeft, MoveUp, MoveDown } from "lucide-react";
-import { useCFLRankContext } from "~/hooks/useCFLRanker";
-import { type CFLTeamType, CFLteamData } from "~/data/CFL/CFLdata";
+import {
+  type CFLTeamType,
+  CFLteamData,
+  cflTeamsRanked,
+} from "~/data/CFL/CFLdata";
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
 import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
+import { Button } from "../ui/button";
+import {
+  createRankSchema,
+  type CreateRankInput,
+} from "~/server/api/rank/schema";
 interface RankerRowProps {
   unRankedTeam: CFLTeamType | null;
   rankedTeam: CFLTeamType | null;
   index: number;
 }
 
+const CFLenum = z.enum(cflTeamsRanked);
+
 const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   const { unRankedTeam, rankedTeam, index } = props;
   const [newRank, setNewRank] = useState<string>("");
   const [reRank, setReRank] = useState<string>("");
-  const { cflRankDispatch } = useCFLRankContext();
+  const { rankDispatch } = useRankContext();
 
   return (
     <TableRow className="border-b-2 border-gray-200 font-semibold last:border-0">
@@ -67,10 +81,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="px-1 text-white"
             onClick={() => {
-              cflRankDispatch({
-                type: "RANK_TEAM",
+              rankDispatch({
+                type: "RANK_ENTRY",
                 payload: {
-                  team: unRankedTeam,
+                  entry: unRankedTeam,
                   rank: parseInt(newRank),
                 },
               });
@@ -86,10 +100,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           <button
             className="rounded px-1 text-cfl"
             onClick={() => {
-              cflRankDispatch({
-                type: "UNRANK_TEAM",
+              rankDispatch({
+                type: "UNRANK_ENTRY",
                 payload: {
-                  team: rankedTeam,
+                  entry: rankedTeam,
                   rank: index,
                 },
               });
@@ -150,10 +164,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             <button
               className="hidden px-1 text-white sm:block"
               onClick={() => {
-                cflRankDispatch({
-                  type: "RERANK_TEAM",
+                rankDispatch({
+                  type: "RERANK_ENTRY",
                   payload: {
-                    team: rankedTeam,
+                    entry: rankedTeam,
                     rank: parseInt(reRank),
                     prevRank: index,
                   },
@@ -167,10 +181,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-6 px-0.5 text-xs text-white disabled:bg-white/50"
               disabled={index === 0}
               onClick={() => {
-                cflRankDispatch({
+                rankDispatch({
                   type: "MOVE_UP",
                   payload: {
-                    team: rankedTeam,
+                    entry: rankedTeam,
                     rank: index,
                   },
                 });
@@ -182,10 +196,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               className="h-6 px-0.5 text-xs text-white disabled:bg-white/50"
               disabled={index === 8}
               onClick={() => {
-                cflRankDispatch({
+                rankDispatch({
                   type: "MOVE_DOWN",
                   payload: {
-                    team: rankedTeam,
+                    entry: rankedTeam,
                     rank: index,
                   },
                 });
@@ -201,16 +215,44 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
 };
 
 const CFLRanker: React.FC = () => {
-  const { cflRankState } = useCFLRankContext();
-  const { unRankedTeams, rankedTeams } = cflRankState;
+  const { rankState, rankDispatch } = useRankContext();
+  const { unRankedEntries, rankedEntries } = rankState;
 
-  const cflRows = unRankedTeams.map((unRankedTeam, index) => {
-    const rankedTeam: CFLTeamType | null = rankedTeams[index] ?? null;
+  const { authState } = useAuthContext();
+  const { user } = authState;
+
+  const postRank = api.rank.createRank.useMutation();
+
+  const handleSubmit = () => {
+    const order = rankedEntries as string[];
+    if (user) {
+      const { userId, username, email } = user;
+      const rankPost: CreateRankInput = {
+        sport: "CFL",
+        order,
+        client: {
+          userId,
+          username,
+          email,
+        },
+      };
+      const rankValidation = createRankSchema.safeParse(rankPost);
+      if (rankValidation) {
+        postRank.mutate({ ...rankPost });
+      }
+    }
+  };
+
+  const cflRows = unRankedEntries.map((unRankedTeam, index) => {
+    const rankedTeam: string | null = rankedEntries[index] ?? null;
+
+    const newUnrankedTeam = unRankedTeam ? CFLenum.parse(unRankedTeam) : null;
+    const newRankedTeam = rankedTeam ? CFLenum.parse(rankedTeam) : null;
 
     return (
       <RankerRow
-        unRankedTeam={unRankedTeam}
-        rankedTeam={rankedTeam}
+        unRankedTeam={newUnrankedTeam}
+        rankedTeam={newRankedTeam}
         index={index}
         key={index}
       />
@@ -225,6 +267,34 @@ const CFLRanker: React.FC = () => {
       <Table className="text-xs sm:text-base">
         <TableBody>{cflRows}</TableBody>
       </Table>
+      <div className="flex justify-center">
+        <Button
+          className="m-1"
+          variant={"cfl"}
+          onClick={() => {
+            rankState.rankedEntries.map((team, index) => {
+              if (team) {
+                rankDispatch({
+                  type: "UNRANK_ENTRY",
+                  payload: { entry: team, rank: index },
+                });
+              }
+            });
+          }}
+        >
+          RESET
+        </Button>
+        <Button
+          className="m-1"
+          disabled={rankedEntries.includes(null)}
+          variant={"cfl"}
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          SAVE
+        </Button>
+      </div>
     </div>
   );
 };

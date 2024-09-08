@@ -1,5 +1,5 @@
 import MainPage from "~/components/Page/MainPage";
-import { CFLRankContextProvider } from "~/context/CFLrankContext";
+import { RankContextProvider } from "~/context/RankContext";
 import CFLRanker from "~/components/CFL/CFLRanker";
 
 const Rank = () => {
@@ -11,9 +11,9 @@ const Rank = () => {
       pageMode="CFL"
       underPageMode="CFL_Rank"
     >
-      <CFLRankContextProvider>
+      <RankContextProvider sport="CFL">
         <CFLRanker />
-      </CFLRankContextProvider>
+      </RankContextProvider>
     </MainPage>
   );
 };

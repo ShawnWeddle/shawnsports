@@ -107,11 +107,11 @@ const DraftChartModal = (props: DraftChartModalProps) => {
           <button
             onClick={() => handlePickClick(pick)}
             className={cn("w-full", {
-              [NFLstyleData[team].primaryBGfadeHover]: [team0, team1].includes(
+              [NFLstyleData[team].primaryBackground]: [team0, team1].includes(
                 team
               ),
-              [NFLstyleData[team].primaryBGstyle]: pick.active,
-              [NFLstyleData[team].secondaryTextStyle]: pick.active,
+              [NFLstyleData[team].primaryBackground]: pick.active,
+              [NFLstyleData[team].secondaryText]: pick.active,
             })}
           >
             <div className="flex justify-center">
@@ -131,13 +131,11 @@ const DraftChartModal = (props: DraftChartModalProps) => {
       <div className="text-center">
         <div
           className={cn("border-2", {
-            [NFLstyleData[team].primaryBGstyle]: [team0, team1].includes(team),
-            [NFLstyleData[team].secondaryBorderStyle]: [team0, team1].includes(
+            [NFLstyleData[team].primaryBackground]: [team0, team1].includes(
               team
             ),
-            [NFLstyleData[team].primaryPlainText]: [team0, team1].includes(
-              team
-            ),
+            [NFLstyleData[team].secondaryBorder]: [team0, team1].includes(team),
+            [NFLstyleData[team].simpleText]: [team0, team1].includes(team),
           })}
         >
           <div>

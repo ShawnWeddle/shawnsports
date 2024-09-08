@@ -12,11 +12,10 @@ export const constructorNames2024 = [
 ] as const;
 
 export const driverCodes2024 = [
-  "ALB", "ALO", "BOT", "GAS", "HAM", 
+  "ALB", "ALO", "BEA", "BOT", "COL", "GAS", "HAM", 
   "HUL", "LEC", "MAG", "NOR", "OCO", 
   "PER", "PIA", "RIC", "RUS", "SAI",
   "SAR", "STR", "TSU", "VER", "ZHO", 
-  "BEA", "COL",
 ] as const;
 
 export const raceLocations2024 = [

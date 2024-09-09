@@ -1,6 +1,7 @@
 import MainPage from "~/components/Page/MainPage";
 import { RankContextProvider } from "~/context/RankContext";
 import NBARanker from "~/components/NBA/NBARanker";
+import Ranker from "~/components/rank/Ranker";
 
 const Rank = () => {
   return (
@@ -12,7 +13,7 @@ const Rank = () => {
       underPageMode="NBA_Rank"
     >
       <RankContextProvider sport="NBA">
-        <NBARanker />
+        <Ranker sport="NBA" />
       </RankContextProvider>
     </MainPage>
   );

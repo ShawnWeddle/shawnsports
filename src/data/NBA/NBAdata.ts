@@ -7,12 +7,12 @@ export const nbaTeams = [
   "POR", "SAC", "SAS", "TOR", "UTA", "WAS"
 ] as const;
 
-export const nbaTeamsRanked: NBATeamType[] = [
+export const nbaTeamsRanked = [
   "BOS", "OKC", "DEN", "MIN", "DAL", "NYK", "PHI", "MEM", 
   "MIL", "MIA", "IND", "NOP", "CLE", "ORL", "SAC", "HOU", 
   "LAC", "PHO", "GSW", "LAL", "ATL", "SAS", "UTA", "TOR", 
   "CHI", "POR", "CHO", "DET", "WAS", "BRK"
-];
+] as const;
 
 export const nbaTeamsRankedWorst: NBATeamType[] = [
   "BRK", "WAS", "DET", "CHO", "POR", "CHI", "TOR", "UTA",

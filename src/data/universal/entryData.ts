@@ -1,10 +1,10 @@
-import { CFLteamData } from "../CFL/CFLdata";
-import { driverNames2024 } from "../F1/2024/F1data24";
-import { MLBteamData } from "../MLB/MLBdata";
-import { NBAteamData } from "../NBA/NBAdata";
-import { NFLteamData } from "../NFL/NFLdata";
-import { NHLteamData } from "../NHL/NHLdata";
-import { WNBAteamData } from "../WNBA/WNBAdata";
+import { CFLteamData } from "~/data/CFL/CFLdata";
+import { driverNames2024 } from "~/data/F1/2024/F1data24";
+import { MLBteamData } from "~/data/MLB/MLBdata";
+import { NBAteamData } from "~/data/NBA/NBAdata";
+import { NFLteamData } from "~/data/NFL/NFLdata";
+import { NHLteamData } from "~/data/NHL/NHLdata";
+import { WNBAteamData } from "~/data/WNBA/WNBAdata";
 
 export const universalEntryData = {
   CFL: CFLteamData,

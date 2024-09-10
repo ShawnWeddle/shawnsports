@@ -1,0 +1,41 @@
+export const allMLSteams = [
+  "ATL", "ATX", "MTL", "CLT", "CHI", "COL", 
+  "CLB", "DCU", "CIN", "DAL", "HOU", "MIA", 
+  "LAF", "LAG", "MIN", "NSH", "NER", "NYC", 
+  "NYR", "ORL", "PHI", "POR", "RSL", "SJE", 
+  "SEA", "SKC", "STL", "TOR", "VAN", 
+] as const;
+
+export type MLSTeamType = typeof allMLSteams[number];
+
+export const mlsData = {
+ATL: "Atlanta United",
+ATX: "Austin FC",
+MTL: "CF Montreal",
+CLT: "Charlotte FC",
+CHI: "Chicago Fire",
+COL: "Colorado Rapids",
+CLB: "Columbus Crew SC",
+DCU: "D.C. United",
+CIN: "FC Cincinnati",
+DAL: "FC Dallas",
+HOU: "Houston Dynamo",
+MIA: "Inter Miami",
+LAF: "Los Angeles FC",
+LAG: "Los Angeles Galaxy",
+MIN: "Minnesota United FC",
+NSH: "Nashville SC",
+NER: "New England Revolution",
+NYC: "New York City",
+NYR: "New York Red Bulls",
+ORL: "Orlando City",
+PHI: "Philadelphia Union",
+POR: "Portland Timbers",
+RSL: "Real Salt Lake",
+SJE: "San Jose Earthquakes",
+SEA: "Seattle Sounders",
+SKC: "Sporting Kansas City",
+STL: "St Louis City SC",
+TOR: "Toronto FC",
+VAN: "Vancouver Whitecaps",
+}

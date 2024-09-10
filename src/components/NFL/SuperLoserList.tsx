@@ -2,7 +2,13 @@ import { useState } from "react";
 import { cn } from "~/utils/cn";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
-import { Card, CardHeader, CardDescription } from "../ui/card";
+import {
+  Card,
+  CardHeader,
+  CardDescription,
+  CardContent,
+  CardTitle,
+} from "../ui/card";
 import { NFLteamData } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";
@@ -34,7 +40,7 @@ const SuperLoserList: React.FC = () => {
         }}
         key={index}
         className={cn(
-          "flex aspect-square items-center justify-center rounded-md border-2 font-semibold",
+          "flex aspect-square items-center justify-center rounded-md border-2 text-sm font-semibold sm:text-base",
           {
             [NFLstyleData[losingTeam].primaryBackground]: true,
             [NFLstyleData[losingTeam].secondaryBorder]: true,
@@ -134,6 +140,9 @@ const SuperLoserList: React.FC = () => {
     }
   };
 
+  //Checks whether any super losers played in the game
+  const activeSBhasSL = superLosers(activeSuperBowl, true).length > 0;
+
   return (
     <>
       <Dialog
@@ -147,9 +156,13 @@ const SuperLoserList: React.FC = () => {
           title={modalNamer(activeSuperBowl).game}
           description={modalNamer(activeSuperBowl).score}
         >
-          <Table>
-            <TableBody>{superLosers(activeSuperBowl, true)}</TableBody>
-          </Table>
+          {activeSBhasSL ? (
+            <Table>
+              <TableBody>{superLosers(activeSuperBowl, true)}</TableBody>
+            </Table>
+          ) : (
+            <div>No Super Losers played in this game</div>
+          )}
         </DialogModalContent>
       </Dialog>
       <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
@@ -178,15 +191,17 @@ const SuperLoserList: React.FC = () => {
           <TableBody>{superLosers(null, false)}</TableBody>
         </Table>
       </div>
-      <div className="my-2 grid grid-cols-10 gap-1 rounded-lg bg-gray-200 p-1">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        {SBgridItems}
-      </div>
+      <Card className="my-4 bg-nfl/10 p-1 shadow sm:p-4">
+        <div className="grid grid-cols-10 gap-1">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          {SBgridItems}
+        </div>
+      </Card>
     </>
   );
 };

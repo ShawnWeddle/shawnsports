@@ -8,12 +8,7 @@ import {
   type NFLTeamType,
   NFLteamData,
 } from "~/data/NFL/NFLdata";
-import {
-  NFLscheduleData,
-  type FinishGameType,
-  GameCheck,
-  GameTest,
-} from "~/data/NFL/NFLscheduleData";
+import { NFLscheduleData, GameCheck } from "~/data/NFL/NFLscheduleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import ScheduleForTeam from "./ScheduleByTeam";
 import { recordForTeam } from "~/data/NFL/NFLscheduleRecord";

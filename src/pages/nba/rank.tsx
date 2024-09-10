@@ -1,6 +1,5 @@
 import MainPage from "~/components/Page/MainPage";
 import { RankContextProvider } from "~/context/RankContext";
-import NBARanker from "~/components/NBA/NBARanker";
 import Ranker from "~/components/rank/Ranker";
 
 const Rank = () => {

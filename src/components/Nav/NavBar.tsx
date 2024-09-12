@@ -145,6 +145,17 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
             </MenubarSubContent>
           </MenubarSub>
           <MenubarSub>
+            <MenubarSubTrigger>MLS</MenubarSubTrigger>
+            <MenubarSubContent>
+              <MenubarItem asChild>
+                <Link href="/mls/finals">Finals</Link>
+              </MenubarItem>
+              <MenubarItem asChild>
+                <Link href="/mls/rank">Rank</Link>
+              </MenubarItem>
+            </MenubarSubContent>
+          </MenubarSub>
+          <MenubarSub>
             <MenubarSubTrigger>WNBA</MenubarSubTrigger>
             <MenubarSubContent>
               <MenubarItem asChild>

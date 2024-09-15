@@ -1,9 +1,9 @@
+import { cn } from "~/lib/utils";
 import { type ReactNode } from "react";
 import { type NextPage } from "next";
 import Head from "next/head";
 import NavBar from "../Nav/NavBar";
 import Footer from "../Nav/Footer";
-import { cn } from "~/utils/cn";
 import { type PageHeadsType, type UnderPageHeadsType } from "~/data/SiteData";
 
 interface PageProps {

@@ -1,4 +1,4 @@
-import { cn } from "~/utils/cn";
+import { cn } from "~/lib/utils";
 import { type NBATeamType, NBAteamData } from "~/data/NBA/NBAdata";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { useDrag } from "react-dnd";

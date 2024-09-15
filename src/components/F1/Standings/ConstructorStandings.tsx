@@ -1,4 +1,4 @@
-import { cn } from "~/utils/cn";
+import { cn } from "~/lib/utils";
 import { F1styleData } from "~/data/F1/2024/F1styleData24";
 import { FormulaOneRaceResults } from "~/data/F1/2024/raceResults2024";
 import { createStandings } from "~/data/F1/2024/F1converters24";

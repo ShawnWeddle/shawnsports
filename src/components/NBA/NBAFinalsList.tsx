@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { cn } from "~/utils/cn";
+import { cn } from "~/lib/utils";
 import { NBAteamData, type AllNBATeamType } from "~/data/NBA/NBAdata";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { NBAFinalsData } from "~/data/NBA/NBAFinalsData";

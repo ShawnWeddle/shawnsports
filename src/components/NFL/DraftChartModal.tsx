@@ -1,5 +1,5 @@
-import { useRef, useState, Fragment } from "react";
-import { cn } from "~/utils/cn";
+import { useState } from "react";
+import { cn } from "~/lib/utils";
 import { NFLteamData, type NFLTeamType } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import {

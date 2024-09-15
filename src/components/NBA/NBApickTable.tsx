@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { cn } from "~/lib/utils";
 import { NBAteamData, TeamNameEnum } from "~/data/NBA/NBAdata";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { AllNBAPicks } from "~/data/NBA/AllNBApicks";
 import type { PickType } from "~/data/NBA/AllNBApicks";
-import { cn } from "~/utils/cn";
 import { Dialog, DialogTitle, DialogContent, DialogHeader } from "../ui/dialog";
 import {
   Table,

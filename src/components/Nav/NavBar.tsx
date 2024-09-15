@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { cn } from "~/utils/cn";
+import { cn } from "~/lib/utils";
 import Link from "next/link";
 import { useNavContext } from "~/hooks/useNavContext";
 import type { PageHeadsType, UnderPageHeadsType } from "~/data/SiteData";

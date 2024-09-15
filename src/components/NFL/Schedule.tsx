@@ -1,4 +1,4 @@
-import { cn } from "~/utils/cn";
+import { cn } from "~/lib/utils";
 import { useState, Fragment } from "react";
 import { useNFLScheduleContext } from "~/hooks/useNFLSchedule";
 import { useAuthContext } from "~/hooks/useAuthContext";

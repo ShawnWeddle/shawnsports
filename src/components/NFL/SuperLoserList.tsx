@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { cn } from "~/utils/cn";
+import { cn } from "~/lib/utils";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
 import { Card, CardHeader, CardDescription } from "../ui/card";

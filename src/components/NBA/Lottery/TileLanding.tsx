@@ -1,4 +1,4 @@
-import { cn } from "~/utils/cn";
+import { cn } from "~/lib/utils";
 import { useDrop } from "react-dnd";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { useNBALotteryContext } from "~/hooks/useNBALottery";

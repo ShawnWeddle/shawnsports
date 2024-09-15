@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { api } from "~/utils/api";
-import { cn } from "~/utils/cn";
+import { cn } from "~/lib/utils";
 import { useRankContext } from "~/hooks/useRanker";
 import { useAuthContext } from "~/hooks/useAuthContext";
 import { MoveRight, MoveLeft, MoveUp, MoveDown } from "lucide-react";

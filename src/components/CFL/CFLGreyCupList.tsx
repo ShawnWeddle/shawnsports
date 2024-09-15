@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { cn } from "~/utils/cn";
+import { cn } from "~/lib/utils";
 import { CFLteamData, type AllCFLTeamType } from "~/data/CFL/CFLdata";
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
 import { GreyCupData } from "~/data/CFL/GreyCupData";

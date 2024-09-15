@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { cn } from "~/utils/cn";
+import { cn } from "~/lib/utils";
 import { locationHeaders } from "~/data/F1/2024/F1converters24";
 import {
   FormulaOneRaceResults,

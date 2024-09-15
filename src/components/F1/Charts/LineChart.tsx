@@ -25,7 +25,7 @@ import {
   driverToConstructor2024,
   allToConstructor2024,
 } from "~/data/F1/2024/F1data24";
-import { cn } from "~/utils/cn";
+import { cn } from "~/lib/utils";
 
 ChartJS.register(
   CategoryScale,

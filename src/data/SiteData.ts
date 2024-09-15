@@ -44,7 +44,7 @@ export const NFLTitlesDesc: {[Key in NFLTitlesType] : string} = {
   "NFL_Rank": "Rank all 32 NFL teams",
 };
 export const NBATitlesDesc: {[Key in NBATitlesType] : string} = {
-  "NBA_Future_Picks": "See which team owns each first round pick through 2030",
+  "NBA_Future_Picks": "See which team owns each first round pick through 2031",
   "NBA_Lottery": "Select any 14 teams and simulate the 2024 NBA draft lottery",
   "NBA_Finals": "See all NBA Finals since 1947",
   "NBA_Rank": "Rank all 30 NBA teams",

@@ -41,7 +41,7 @@ const HomeComp: React.FC = () => {
           . I&apos;m a lifelong sports fan, and I created this website to put
           together these sports resources I couldn&apos;t find anywhere else.
           Thanks for checking out{" "}
-          <span className="text-lg text-home"> SportsMegaWorld </span>.
+          <span className="text-lg text-home"> SportsMegaWorld</span>.
         </CardContent>
       </Card>
     </>

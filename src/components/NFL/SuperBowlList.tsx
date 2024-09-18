@@ -44,7 +44,7 @@ const SuperBowlList: React.FC = () => {
         return isTeam;
       })
       .map((game, index) => {
-        const { romanNumeral, wonSB, score, winningTeam, losingTeam, year } =
+        const { romanNumeral, wonChamp, score, winningTeam, losingTeam, year } =
           game;
         return (
           <TableRow
@@ -57,7 +57,7 @@ const SuperBowlList: React.FC = () => {
               <div className="flex flex-col">
                 <div>
                   {romanNumeral}
-                  {wonSB ? (
+                  {wonChamp ? (
                     team ? (
                       nameMatcher(team, winningTeam) ? (
                         <p className="text-amber-400">★</p>

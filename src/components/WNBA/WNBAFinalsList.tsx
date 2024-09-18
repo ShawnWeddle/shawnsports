@@ -26,7 +26,7 @@ const WNBAFinalsList: React.FC = () => {
       const isTeam = nameMatcher(team, game.winningTeam, game.losingTeam);
       return isTeam;
     }).map((series, index) => {
-      const { year, splits, winningTeam, losingTeam } = series;
+      const { year, score, winningTeam, losingTeam } = series;
       return (
         <TableRow
           key={index}
@@ -68,7 +68,7 @@ const WNBAFinalsList: React.FC = () => {
             </button>
           </TableCell>
           <TableCell className="px-1 text-center font-semibold">
-            {splits}
+            {score}
           </TableCell>
           <TableCell className="px-1">
             <button

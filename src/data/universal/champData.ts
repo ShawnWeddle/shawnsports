@@ -229,7 +229,7 @@ export const GlobalSportData: {
     title: "NBA Champions",
     variant: "nba",
     totalNum: 30,
-    finalNames: ["NBA Finals", "Eastern", "Western"],
+    finalNames: ["Finals", "Eastern", "Western"],
   },
   "NFL": {
     title: "Super Bowl Champions",
@@ -248,6 +248,6 @@ export const GlobalSportData: {
     variant: "wnba",
     totalNum: 12,
   
-    finalNames: ["WNBA Finals"],
+    finalNames: ["Finals"],
   },
 }

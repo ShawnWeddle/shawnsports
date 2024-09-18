@@ -47,7 +47,7 @@ const WorldSeriesList: React.FC = () => {
         return isTeam;
       })
       .map((series, index) => {
-        const { year, splits, winningTeam, losingTeam } = series;
+        const { year, score, winningTeam, losingTeam } = series;
         if (series.year === 1994) {
           return (
             <TableRow
@@ -107,7 +107,7 @@ const WorldSeriesList: React.FC = () => {
               </button>
             </TableCell>
             <TableCell className="px-1 text-center font-semibold">
-              {splits}
+              {score}
             </TableCell>
             <TableCell className="px-1">
               <button

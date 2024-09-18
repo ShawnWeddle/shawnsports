@@ -5,36 +5,44 @@ import { type AllWNBATeamType } from "~/data/WNBA/WNBAdata";
 import { type AllMLBTeamType } from "~/data/MLB/MLBdata";
 import { type AllCFLTeamType } from "~/data/CFL/CFLdata";
 
+export type UniversalFinalsType = {
+  winningTeam: string;
+  losingTeam: string;
+  score: string;
+  year: number;
+  romanNumeral?: string;
+  wonChamp?: boolean;
+}
+
 export type StanleyCupSeriesType = {
   winningTeam: AllNHLTeamType;
   losingTeam: AllNHLTeamType;
-  splits: string;
+  score: string;
   year: number;
-  wonFinals?: boolean;
+  wonChamp?: boolean;
 }
 
 export type NBAFinalsSeriesType = {
   winningTeam: AllNBATeamType;
   losingTeam: AllNBATeamType;
-  splits: string;
+  score: string;
   year: number;
-  wonFinals?: boolean;
+  wonChamp?: boolean;
 }
 
 export type WNBAFinalsSeriesType = {
   winningTeam: AllWNBATeamType;
   losingTeam: AllWNBATeamType;
-  splits: string;
+  score: string;
   year: number;
-  wonFinals?: boolean;
 }
 
 export type WorldSeriesType = {
   winningTeam: AllMLBTeamType;
   losingTeam: AllMLBTeamType;
-  splits: string;
+  score: string;
   year: number;
-  wonWorldSeries?: boolean;
+  wonChamp?: boolean;
 }
 
 export type SuperBowlType = {
@@ -42,8 +50,8 @@ export type SuperBowlType = {
   losingTeam: AllNFLTeamType;
   score: string;
   year: number;
+  wonChamp?: boolean;
   romanNumeral?: string;
-  wonSB?: boolean;
 }
 
 export type GreyCupType = {

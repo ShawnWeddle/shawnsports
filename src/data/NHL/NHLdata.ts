@@ -5,9 +5,17 @@ export const nhlTeamsRanked = [
   "WAS", "PHI", "UTA", "MTL", "SJS", "CBJ", "ANA", "CHI", 
 ] as const;
 
+export const nhlTeamsAll = [
+  "VEG", "FLA", "CAR", "DAL", "BOS", "COL", "NJD", "TOR", 
+  "EDM", "NYR", "LAK", "MIN", "SEA", "TBL", "WIN", "NYI", 
+  "CGY", "NSH", "PIT", "BUF", "OTT", "VAN", "STL", "DET", 
+  "WAS", "PHI", "UTA", "MTL", "SJS", "CBJ", "ANA", "CHI", 
+  "MMR", "MNS", "QUE", "ARI"
+] as const;
+
 export type NHLTeamType = typeof nhlTeamsRanked[number];
 
-export type AllNHLTeamType = NHLTeamType | "MMR" | "MNS" | "QUE" | "ARI";
+export type AllNHLTeamType = typeof nhlTeamsAll[number];
 
 export type teamInfoType = { code: string, location: string, name: string };
 

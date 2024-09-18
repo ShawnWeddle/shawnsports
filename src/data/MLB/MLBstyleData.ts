@@ -467,8 +467,8 @@ export const MLBstyleData: { [Key in AllMLBTeamType] : StyleBookType} = {
     secondaryBorderHover: "hover:border-[#27251F]",
     secondaryText: "text-[#27251F]",
     secondaryTextHover: "hover:text-[#27251F]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   },
   PHA:{
     primary: "#003831",

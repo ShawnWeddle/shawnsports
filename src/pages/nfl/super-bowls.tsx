@@ -1,5 +1,5 @@
 import MainPage from "~/components/Page/MainPage";
-import SuperBowlList from "~/components/NFL/SuperBowlList";
+import ChampionshipList from "~/components/champs/Championships";
 
 const SuperBowls = () => {
   return (
@@ -10,7 +10,7 @@ const SuperBowls = () => {
       pageMode="NFL"
       underPageMode="NFL_Super_Bowls"
     >
-      <SuperBowlList />
+      <ChampionshipList sport="NFL" />
     </MainPage>
   );
 };

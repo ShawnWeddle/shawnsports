@@ -3,18 +3,14 @@ export const wnbaTeamsRanked = [
   "WAS", "CHI", "LAS", "IND", "SEA", "PHO",
 ] as const;
 
-export const activeWNBAteams = [
+export const wnbaTeamsAll = [
   "ATL", "CHI", "CON", "DAL", "IND", "LVA",
   "LAS", "MIN", "NYL", "PHO", "SEA", "WAS",
+  "CHO", "DET", "HOU", "SAC", "SAS", "GSV"
 ] as const;
 
-export const inactiveWNBAteams = [
-  "CHO", "DET", "HOU", "SAC", "SAS", 
-  "GSV"
-] as const;
-
-export type WNBATeamType = typeof activeWNBAteams[number];
-export type AllWNBATeamType = typeof activeWNBAteams[number] | typeof inactiveWNBAteams[number];
+export type WNBATeamType = typeof wnbaTeamsRanked[number];
+export type AllWNBATeamType = typeof wnbaTeamsAll[number];
 
 export const nullArray12 = [
   null, null, null, null, null, null, 

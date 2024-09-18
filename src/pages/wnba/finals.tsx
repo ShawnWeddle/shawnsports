@@ -1,5 +1,5 @@
 import MainPage from "~/components/Page/MainPage";
-import WNBAFinalsList from "~/components/WNBA/WNBAFinalsList";
+import ChampionshipList from "~/components/champs/Championships";
 
 const Finals = () => {
   return (
@@ -10,7 +10,7 @@ const Finals = () => {
       pageMode="WNBA"
       underPageMode="WNBA_Finals"
     >
-      <WNBAFinalsList />
+      <ChampionshipList sport="WNBA" />
     </MainPage>
   );
 };

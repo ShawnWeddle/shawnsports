@@ -1,10 +1,11 @@
 import { z } from "zod";
 
-export const nbaTeams = [
+export const nbaTeamsAll = [
   "ATL", "BOS", "BRK", "CHI", "CHO", "CLE", "DAL", "DEN",
   "DET", "GSW", "HOU", "IND", "LAC", "LAL", "MEM", "MIA",
   "MIL", "MIN", "NOP", "NYK", "OKC", "ORL", "PHI", "PHO",
-  "POR", "SAC", "SAS", "TOR", "UTA", "WAS"
+  "POR", "SAC", "SAS", "TOR", "UTA", "WAS",
+  "SEA", "WSB", "STL", "PHW", "SYR", "MNL", "ROC", "BAL", "NJN", "SFW", "FWP", "WSC", "CHS", "KCK"
 ] as const;
 
 export const nbaTeamsRanked = [
@@ -25,12 +26,12 @@ export const years = [
   "2025", "2026", "2027", "2028", "2029", "2030", "2031" 
 ] as const;
 
-export type NBATeamType = typeof nbaTeams[number];
-export type AllNBATeamType = NBATeamType | "SEA" | "WSB" | "STL" | "PHW" | "SYR" | "MNL" | "ROC" | "BAL" | "NJN" | "SFW" | "FWP" | "WSC" | "CHS" | "KCK";
+export type NBATeamType = typeof nbaTeamsRanked[number];
+export type AllNBATeamType = typeof nbaTeamsAll[number];
 export type PickYearType = typeof years[number];
 export type PickCodeType = `${NBATeamType}-${PickYearType}`;
 
-export const TeamNameEnum = z.enum(nbaTeams);
+export const TeamNameEnum = z.enum(nbaTeamsAll);
 export const YearEnum = z.enum(years);
 
 export const NBAteamData: {

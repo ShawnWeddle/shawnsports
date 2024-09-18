@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { cn } from "~/lib/utils";
-import { NFLteamData, type AllNFLTeamType } from "~/data/NFL/NFLdata";
-import { NFLstyleData } from "~/data/NFL/NFLstyleData";
-import { SuperBowlData } from "~/data/NFL/SuperBowlData";
-import { AFCChampData, NFCChampData } from "~/data/NFL/ConferenceChampData";
-import { nameMatcher, nflTeamPreNames } from "~/utils/nfl";
 import { type UniversalFinalsType } from "~/types/ChampTypes";
 import { type SportType } from "~/data/SiteData";
-import { champInfo, activeData } from "~/data/universal/champData";
+import {
+  champInfo,
+  activeData,
+  GlobalSportData,
+} from "~/data/universal/champData";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
 import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
@@ -54,11 +53,100 @@ const ChampionshipList: React.FC<ChampProps> = (props: ChampProps) => {
     const winningInfo = champInfo(winningTeam, sport);
     const losingInfo = champInfo(losingTeam, sport);
 
+    if (sport === "NHL" && year === 2005) {
+      return (
+        <TableRow
+          key={"NHL-2005"}
+          className={cn("odd:bg-nhl/10 hover:bg-nhl/20", {
+            "text-sm": inModal,
+          })}
+        >
+          <TableCell></TableCell>
+          <TableCell
+            className={cn(
+              "hidden px-1 text-center font-semibold sm:table-cell",
+              {
+                "hidden sm:hidden": inModal,
+              }
+            )}
+          >
+            {year}
+          </TableCell>
+          <TableCell colSpan={3}>
+            <div className="flex justify-center p-1 font-semibold">
+              No 2004-05 NHL season
+            </div>
+          </TableCell>
+        </TableRow>
+      );
+    }
+
+    if (sport === "CFL" && year === 2020) {
+      return (
+        <TableRow
+          key={"CFL-2020"}
+          className={cn("odd:bg-cfl/10 hover:bg-cfl/20", {
+            "text-sm": inModal,
+          })}
+        >
+          <TableCell></TableCell>
+          <TableCell
+            className={cn(
+              "hidden px-1 text-center font-semibold sm:table-cell",
+              {
+                "hidden sm:hidden": inModal,
+              }
+            )}
+          >
+            {year}
+          </TableCell>
+          <TableCell colSpan={3}>
+            <div className="flex justify-center p-1 font-semibold">
+              No 2020 CFL season
+            </div>
+          </TableCell>
+        </TableRow>
+      );
+    }
+
+    if (sport === "MLB" && year === 1994) {
+      return (
+        <TableRow
+          key={"MLB-1994"}
+          className={cn("odd:bg-mlb/10 hover:bg-mlb/20", {
+            "text-sm": inModal,
+          })}
+        >
+          <TableCell></TableCell>
+          <TableCell
+            className={cn(
+              "hidden px-1 text-center font-semibold sm:table-cell",
+              {
+                "hidden sm:hidden": inModal,
+              }
+            )}
+          >
+            {year}
+          </TableCell>
+          <TableCell colSpan={3}>
+            <div className="flex justify-center p-1 font-semibold">
+              No 1994 MLB Playoffs
+            </div>
+          </TableCell>
+        </TableRow>
+      );
+    }
+
     return (
       <TableRow
         key={index}
-        className={cn("odd:bg-nfl/10 hover:bg-nfl/20", {
+        className={cn("", {
           "text-sm": inModal,
+          "odd:bg-cfl/10 hover:bg-cfl/20": sport === "CFL",
+          "odd:bg-mlb/10 hover:bg-mlb/20": sport === "MLB",
+          "odd:bg-nba/10 hover:bg-nba/20": sport === "NBA" || sport === "WNBA",
+          "odd:bg-nfl/10 hover:bg-nfl/20": sport === "NFL",
+          "odd:bg-nhl/10 hover:bg-nhl/20": sport === "NHL",
         })}
       >
         <TableCell className="px-1 text-center font-semibold">
@@ -178,36 +266,44 @@ const ChampionshipList: React.FC<ChampProps> = (props: ChampProps) => {
         </DialogModalContent>
       </Dialog>
       <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-        NFL Champions
+        {GlobalSportData[sport].title}
       </h1>
-      <Tabs defaultValue="Finals">
-        <TabsList className="grid w-full grid-cols-3 border border-nfl bg-nfl">
+      <Tabs defaultValue="0">
+        <TabsList
+          className={cn("grid w-full grid-cols-3", {
+            "bg-mlb": sport === "MLB",
+            "bg-nba": sport === "NBA",
+            "bg-nhl": sport === "NHL",
+            "bg-nfl": sport === "NFL",
+            hidden: sport === "WNBA" || sport === "CFL",
+          })}
+        >
           <TabsTrigger
             className="text-white"
-            value="Finals"
+            value="0"
             onClick={() => {
               setTableMode(0);
             }}
           >
-            Finals
+            {GlobalSportData[sport].finalNames[0]}
           </TabsTrigger>
           <TabsTrigger
             className="text-white"
-            value="AFC"
+            value="1"
             onClick={() => {
               setTableMode(1);
             }}
           >
-            AFC
+            {GlobalSportData[sport].finalNames[1]}
           </TabsTrigger>
           <TabsTrigger
             className="text-white"
-            value="NFC"
+            value="2"
             onClick={() => {
               setTableMode(2);
             }}
           >
-            NFC
+            {GlobalSportData[sport].finalNames[2]}
           </TabsTrigger>
         </TabsList>
         <Table>

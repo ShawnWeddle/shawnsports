@@ -1,5 +1,5 @@
 import MainPage from "~/components/Page/MainPage";
-import WorldSeriesList from "~/components/MLB/WorldSeriesList";
+import ChampionshipList from "~/components/champs/Championships";
 
 const WorldSeries = () => {
   return (
@@ -10,7 +10,7 @@ const WorldSeries = () => {
       pageMode="MLB"
       underPageMode="MLB_World_Series"
     >
-      <WorldSeriesList />
+      <ChampionshipList sport="MLB" />
     </MainPage>
   );
 };

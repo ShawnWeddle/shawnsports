@@ -10,17 +10,17 @@ import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
 import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
-import { CFLteamData, cflTeamsRanked } from "~/data/CFL/CFLdata";
+import { CFLteamData, cflTeamsAll } from "~/data/CFL/CFLdata";
 import {
   driverCodes2024,
   driverNames2024,
   driverToConstructor2024,
 } from "~/data/F1/2024/F1data24";
-import { MLBteamData, mlbTeamsRanked } from "~/data/MLB/MLBdata";
-import { NBAteamData, nbaTeamsRanked } from "~/data/NBA/NBAdata";
-import { NFLteamData, nflTeamsRanked } from "~/data/NFL/NFLdata";
+import { MLBteamData, mlbTeamsAll } from "~/data/MLB/MLBdata";
+import { NBAteamData, nbaTeamsAll } from "~/data/NBA/NBAdata";
+import { NFLteamData, nflTeamsAll } from "~/data/NFL/NFLdata";
 import { NHLteamData, nhlTeamsAll } from "~/data/NHL/NHLdata";
-import { WNBAteamData, wnbaTeamsRanked } from "~/data/WNBA/WNBAdata";
+import { WNBAteamData, wnbaTeamsAll } from "~/data/WNBA/WNBAdata";
 
 import { SuperBowlData } from "../NFL/SuperBowlData";
 import { AFCChampData, NFCChampData } from "../NFL/ConferenceChampData";
@@ -31,13 +31,13 @@ import { StanleyCupData, EastData as EastNHLdata, WestData as WestNHLdata } from
 import { GreyCupData } from "../CFL/GreyCupData";
 import { WNBAFinalsData } from "../WNBA/WNBAFinalsData";
 
-const CFLenum = z.enum(cflTeamsRanked);
+const CFLenum = z.enum(cflTeamsAll);
 const F1enum = z.enum(driverCodes2024);
-const MLBenum = z.enum(mlbTeamsRanked);
-const NBAenum = z.enum(nbaTeamsRanked);
-const NFLenum = z.enum(nflTeamsRanked);
+const MLBenum = z.enum(mlbTeamsAll);
+const NBAenum = z.enum(nbaTeamsAll);
+const NFLenum = z.enum(nflTeamsAll);
 const NHLenum = z.enum(nhlTeamsAll);
-const WNBAenum = z.enum(wnbaTeamsRanked);
+const WNBAenum = z.enum(wnbaTeamsAll);
 
 export const champInfo = (input: string, sport: SportType) => {
   let code;
@@ -204,41 +204,50 @@ export const GlobalSportData: {
     title: string,
     variant: "nfl" | "nba" | "formulaOne" | "mlb" | "nhl" | "wnba" | "cfl",
     totalNum: number,
+    finalNames: [string, string, string] | [string]
   }
 } = {
   "CFL": {
-    title: "CFL Teams",
+    title: "Grey Cup Champions",
     variant: "cfl",
     totalNum: 9,
+    finalNames: ["Grey Cups"],
   },
   "F1": {
     title: "F1 Drivers",
     variant: "formulaOne",
     totalNum: 22,
+    finalNames: [""],
   },
   "MLB": {
-    title: "MLB Teams",
+    title: "World Series Champions",
     variant: "mlb",
     totalNum: 30,
+    finalNames: ["World Series", "ALCS", "NLCS"],
   },
   "NBA": {
-    title: "NBA Teams",
+    title: "NBA Champions",
     variant: "nba",
     totalNum: 30,
+    finalNames: ["NBA Finals", "Eastern", "Western"],
   },
   "NFL": {
-    title: "NFL Teams",
+    title: "Super Bowl Champions",
     variant: "nfl",
     totalNum: 32,
+    finalNames: ["Super Bowls", "AFC", "NFC"],
   },
   "NHL": {
-    title: "NHL Teams",
+    title: "Stanley Cup Champions",
     variant: "nhl",
     totalNum: 32,
+    finalNames: ["Stanley Cups", "Eastern", "Western"],
   },
   "WNBA": {
-    title: "WNBA Teams",
+    title: "WNBA Champions",
     variant: "wnba",
     totalNum: 12,
+  
+    finalNames: ["WNBA Finals"],
   },
 }

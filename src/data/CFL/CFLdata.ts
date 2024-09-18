@@ -10,9 +10,14 @@ export const cflTeamsRanked = [
   "OTT", 
 ] as const;
 
+export const cflTeamsAll = [
+  "TOR", "WPG", "BCL", "MTL", "HAM", "CGY",
+  "SSK", "EDM", "OTT", "ORR", "BAL", "ESK", "XXX", 
+] as const;
+
 export type CFLTeamType = typeof cflTeamsRanked[number];
 
-export type AllCFLTeamType = CFLTeamType | "ORR" | "BAL" | "ESK" | "XXX";
+export type AllCFLTeamType = typeof cflTeamsAll[number];
 
 export type teamInfoType = { code: string, location: string, name: string };
 

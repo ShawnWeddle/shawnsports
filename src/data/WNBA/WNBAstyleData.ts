@@ -216,7 +216,7 @@ export const WNBAstyleData: {[Key in AllWNBATeamType] : StyleBookType
     secondaryBorderHover: "hover:border-[#000000]",
     secondaryText: "text-[#000000]",
     secondaryTextHover: "hover:text-[#000000]",
-    simpleText: "text-[#FFFFFF]",
-    simpleTextHover: "hover:text-[#FFFFFF]",
+    simpleText: "text-[#000000]",
+    simpleTextHover: "hover:text-[#000000]",
   },
 };

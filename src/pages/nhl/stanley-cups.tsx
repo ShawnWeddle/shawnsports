@@ -1,5 +1,4 @@
 import MainPage from "~/components/Page/MainPage";
-import StanleyCupSeriesList from "~/components/NHL/StanleyCupSeriesList";
 import ChampionshipList from "~/components/champs/Championships";
 
 const StanleyCups = () => {

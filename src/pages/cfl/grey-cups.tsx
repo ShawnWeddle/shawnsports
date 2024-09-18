@@ -1,5 +1,5 @@
 import MainPage from "~/components/Page/MainPage";
-import GreyCupList from "~/components/CFL/CFLGreyCupList";
+import ChampionshipList from "~/components/champs/Championships";
 
 const GreyCups = () => {
   return (
@@ -10,7 +10,7 @@ const GreyCups = () => {
       pageMode="CFL"
       underPageMode="CFL_Grey_Cups"
     >
-      <GreyCupList />
+      <ChampionshipList sport="CFL" />
     </MainPage>
   );
 };

@@ -1,15 +1,3 @@
-export const activeMLBTeams = [
-  "ARI", "ATL", "BAL", "BOS", "CHC", "CHW", 
-  "CIN", "CLE", "COL", "DET", "HOU", "KCR", 
-  "LAA", "LAD", "MIA", "MIL", "MIN", "NYM", 
-  "NYY", "OAK", "PHI", "PIT", "SDP", "SEA", 
-  "SFG", "STL", "TBR", "TEX", "TOR", "WSN", 
-] as const;
-
-export const inactiveMLBTeams = [
-  "BOB", "BKD", "BKR", "CLI", "FLA", "MLB", "MTL", "NYG", "PHA", "SLB", "WAS", "XXX",
-] as const;
-
 export const mlbTeamsRanked = [
   "HOU", "PHI", "NYY", "SDP", "LAD", "ATL",
   "CLE", "SEA", "NYM", "STL", "TOR", "TBR",
@@ -18,9 +6,19 @@ export const mlbTeamsRanked = [
   "OAK", "MIN", "TEX", "DET", "WSN", "PIT",
 ] as const;
 
-export type MLBTeamType = typeof activeMLBTeams[number];
+export const mlbTeamsAll = [
+  "ARI", "ATL", "BAL", "BOS", "CHC", "CHW", 
+  "CIN", "CLE", "COL", "DET", "HOU", "KCR", 
+  "LAA", "LAD", "MIA", "MIL", "MIN", "NYM", 
+  "NYY", "OAK", "PHI", "PIT", "SDP", "SEA", 
+  "SFG", "STL", "TBR", "TEX", "TOR", "WSN", 
+  "BOB", "BKD", "BKR", "CLI", "FLA", "MLB", 
+  "MTL", "NYG", "PHA", "SLB", "WAS", "XXX",
+] as const;
 
-export type AllMLBTeamType = typeof activeMLBTeams[number] | typeof inactiveMLBTeams[number];
+export type MLBTeamType = typeof mlbTeamsRanked[number];
+
+export type AllMLBTeamType = typeof mlbTeamsAll[number];
 
 export type teamInfoType = {rank: number, location: string, name: string };
 

@@ -1,4 +1,4 @@
-import { type NBATeamType, nbaTeams } from "../NBA/NBAdata";
+import { type NBATeamType, nbaTeamsRanked } from "../NBA/NBAdata";
 
 type NBATeamOrNullType = NBATeamType | null;
 
@@ -87,7 +87,7 @@ export const Lotterizer = (teams: NBATeamType[]) => {
   const newWinners: NBATeamType[] = winners.flatMap(team => team ? [team] : []);
   const losers: NBATeamType[] = newTeams.filter(team => !winners.includes(team));
   const lotteryArray: NBATeamType[] = [...newWinners, ...losers];
-  const playoffTeams: NBATeamType[] = nbaTeams.filter(team => !lotteryArray.includes(team));
+  const playoffTeams: NBATeamType[] = nbaTeamsRanked.filter(team => !lotteryArray.includes(team));
   const fullOrder: NBATeamType[] = [...lotteryArray, ...playoffTeams];
 
   const finishOrder: FinishOrderType = [

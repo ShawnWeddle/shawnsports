@@ -104,7 +104,7 @@ const LineChart: React.FC = () => {
     doc("NOR")
   );
   const [pointsHolder3, setPointsHolder3] = useState<PointsHolderType>(
-    doc("No Selection")
+    doc("LEC")
   );
   const [pointsHolder4, setPointsHolder4] = useState<PointsHolderType>(
     doc("No Selection")
@@ -157,7 +157,7 @@ const LineChart: React.FC = () => {
   };
 
   useEffect(() => {
-    setActiveDrivers([doc("VER"), doc("NOR")]);
+    setActiveDrivers([doc("VER"), doc("NOR"), doc("LEC")]);
   }, []);
 
   return (

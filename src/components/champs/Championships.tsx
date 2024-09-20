@@ -6,6 +6,7 @@ import {
   champInfo,
   activeData,
   GlobalSportData,
+  modalNamer,
 } from "~/data/universal/champData";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
@@ -192,7 +193,7 @@ const ChampionshipList: React.FC<ChampProps> = (props: ChampProps) => {
               )}
             >
               <div className="whitespace-nowrap">{winningInfo.location}</div>
-              <div>{winningInfo.name}</div>
+              <div className="whitespace-nowrap">{winningInfo.name}</div>
             </div>
           </button>
         </TableCell>
@@ -223,7 +224,7 @@ const ChampionshipList: React.FC<ChampProps> = (props: ChampProps) => {
               )}
             >
               <div className="whitespace-nowrap">{losingInfo.location}</div>
-              <div>{losingInfo.name}</div>
+              <div className="whitespace-nowrap">{losingInfo.name}</div>
             </div>
           </button>
         </TableCell>
@@ -231,24 +232,25 @@ const ChampionshipList: React.FC<ChampProps> = (props: ChampProps) => {
     );
   };
 
-  const championships = (team: string | null, inModal: boolean) =>
-    activeData(sport, tableMode).map((game, index) => {
+  const championships = (team: string | null, inModal: boolean) => {
+    return activeData(sport, team, tableMode).map((game, index) => {
       const { romanNumeral, wonChamp, score, winningTeam, losingTeam, year } =
         game;
       return (
         <ChampRow
           key={index}
+          index={index}
           winningTeam={winningTeam}
           losingTeam={losingTeam}
           score={score}
           year={year}
           romanNumeral={romanNumeral}
           wonChamp={wonChamp}
-          index={index}
           inModal={inModal}
         />
       );
     });
+  };
 
   return (
     <>
@@ -259,7 +261,10 @@ const ChampionshipList: React.FC<ChampProps> = (props: ChampProps) => {
           setDialogOpen(false);
         }}
       >
-        <DialogModalContent title="" description="">
+        <DialogModalContent
+          title={modalNamer(sport, activeTeam, tableMode)}
+          description=""
+        >
           <table>
             <tbody>{championships(activeTeam, true)}</tbody>
           </table>

@@ -1,6 +1,6 @@
 import { type AllMLBTeamType, MLBteamData } from "~/data/MLB/MLBdata"
 
-export const nameMatcher = (checkTeam: AllMLBTeamType, winningTeam: AllMLBTeamType, losingTeam?: AllMLBTeamType,) => {
+export const nameMatcherMLB = (checkTeam: AllMLBTeamType, winningTeam: AllMLBTeamType, losingTeam?: AllMLBTeamType,) => {
 
   let isTeam = false;
   if ([losingTeam, winningTeam].includes(checkTeam)) {

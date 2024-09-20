@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { type SportType } from "../SiteData";
 import { NullBook } from "~/types/StyleBook";
-import { type UniversalFinalsType } from "~/types/ChampTypes";
+import type { NBAFinalsSeriesType, StanleyCupSeriesType, SuperBowlType, WorldSeriesType, UniversalFinalsType } from "~/types/ChampTypes";
 
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
 import { F1styleData } from "~/data/F1/2024/F1styleData24";
@@ -10,17 +10,17 @@ import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
 import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
-import { CFLteamData, cflTeamsAll } from "~/data/CFL/CFLdata";
+import { CFLteamData, cflTeamsAll, type AllCFLTeamType } from "~/data/CFL/CFLdata";
 import {
   driverCodes2024,
   driverNames2024,
   driverToConstructor2024,
 } from "~/data/F1/2024/F1data24";
-import { MLBteamData, mlbTeamsAll } from "~/data/MLB/MLBdata";
-import { NBAteamData, nbaTeamsAll } from "~/data/NBA/NBAdata";
-import { NFLteamData, nflTeamsAll } from "~/data/NFL/NFLdata";
-import { NHLteamData, nhlTeamsAll } from "~/data/NHL/NHLdata";
-import { WNBAteamData, wnbaTeamsAll } from "~/data/WNBA/WNBAdata";
+import { MLBteamData, mlbTeamsAll, type AllMLBTeamType } from "~/data/MLB/MLBdata";
+import { NBAteamData, nbaTeamsAll, type AllNBATeamType } from "~/data/NBA/NBAdata";
+import { NFLteamData, nflTeamsAll, type AllNFLTeamType } from "~/data/NFL/NFLdata";
+import { NHLteamData, nhlTeamsAll, type AllNHLTeamType } from "~/data/NHL/NHLdata";
+import { WNBAteamData, wnbaTeamsAll, type AllWNBATeamType } from "~/data/WNBA/WNBAdata";
 
 import { SuperBowlData } from "../NFL/SuperBowlData";
 import { AFCChampData, NFCChampData } from "../NFL/ConferenceChampData";
@@ -30,6 +30,13 @@ import { WorldSeriesData, ALCSData, NLCSData } from "../MLB/WorldSeriesData";
 import { StanleyCupData, EastData as EastNHLdata, WestData as WestNHLdata } from "../NHL/StanleyCupData";
 import { GreyCupData } from "../CFL/GreyCupData";
 import { WNBAFinalsData } from "../WNBA/WNBAFinalsData";
+
+import { cflTeamPreNames } from "~/utils/cfl";
+import { mlbTeamPreNames, nameMatcherMLB } from "~/utils/mlb";
+import { nbaTeamPreNames, nameMatcherNBA } from "~/utils/nba";
+import { nflTeamPreNames, nameMatcherNFL } from "~/utils/nfl";
+import { nhlTeamPreNames, nameMatcherNHL } from "~/utils/nhl";
+import { wnbaTeamPreNames, nameMatcherWNBA } from "~/utils/wnba";
 
 const CFLenum = z.enum(cflTeamsAll);
 const F1enum = z.enum(driverCodes2024);
@@ -106,13 +113,27 @@ export const champInfo = (input: string, sport: SportType) => {
   }
 }
 
-export const activeData = (sport: SportType, bet: 0 | 1 | 2): UniversalFinalsType[] => {
+export const activeData = (sport: SportType, activeTeam: string | null, bet: 0 | 1 | 2): UniversalFinalsType[] => {
   let Z: UniversalFinalsType[] = [];
   switch(sport){
     case "CFL":
-      Z = GreyCupData.map((game) => {
-        return {...game}
-      })
+      if(activeTeam){
+        const teamCFL: AllCFLTeamType = CFLenum.parse(activeTeam);
+        Z = GreyCupData.filter((game) => {
+          if (!teamCFL) return true;
+          let isTeam = false;
+          if ([game.losingTeam, game.winningTeam].includes(teamCFL)) {
+            isTeam = true;
+          }
+          return isTeam;
+        }).map((game) => {
+          return {...game}
+        })
+      } else {
+        Z = GreyCupData.map((game) => {
+          return {...game}
+        })
+      }
       return Z;
     case "F1":
       Z = GreyCupData.map((game) => {
@@ -120,82 +141,230 @@ export const activeData = (sport: SportType, bet: 0 | 1 | 2): UniversalFinalsTyp
       })
       return Z;
     case "MLB":
+      let newDataMLB: WorldSeriesType[];
       switch(bet){
         case 0: 
-          Z = WorldSeriesData.map((game) => {
-            return {...game}
-          })
-          return Z;
+          newDataMLB = WorldSeriesData;
+          break;
         case 1:
-          Z = ALCSData.map((game) => {
-            return {...game}
-          })
-          return Z;
+          newDataMLB = ALCSData;
+          break;
         case 2:
-          Z = NLCSData.map((game) => {
-            return {...game}
-          })
-          return Z;
+          newDataMLB =  NLCSData;
+          break;
+      }
+      if(activeTeam){
+        const teamMLB: AllMLBTeamType = MLBenum.parse(activeTeam);
+        Z = newDataMLB.filter((game) => {
+          if (!teamMLB) return true;
+          const isTeam = nameMatcherMLB(teamMLB, game.winningTeam, game.losingTeam);
+          return isTeam;
+        }).map((game) => {
+          return {...game}
+        })
+      } else {
+        Z = newDataMLB.map((game) => {
+          return {...game}
+        })
+      }
+      return Z;
+    case "NBA":
+      let newDataNBA: NBAFinalsSeriesType[];
+      switch(bet){
+        case 0: 
+          newDataNBA = NBAFinalsData;
+          break;
+        case 1:
+          newDataNBA = EastNBAdata;
+          break;
+        case 2:
+          newDataNBA =  WestNBAdata;
+          break;
+      }
+      if(activeTeam){
+        const teamNBA: AllNBATeamType = NBAenum.parse(activeTeam);
+        Z = newDataNBA.filter((game) => {
+          if (!teamNBA) return true;
+          const isTeam = nameMatcherNBA(teamNBA, game.winningTeam, game.losingTeam);
+          return isTeam;
+        }).map((game) => {
+          return {...game}
+        })
+      } else {
+        Z = newDataNBA.map((game) => {
+          return {...game}
+        })
+      }
+      return Z;
+    case "NFL":
+      let newDataNFL: SuperBowlType[];
+      switch(bet){
+        case 0: 
+          newDataNFL = SuperBowlData;
+          break;
+        case 1:
+          newDataNFL = AFCChampData;
+          break;
+        case 2:
+          newDataNFL = NFCChampData;
+          break;
+      }
+      if(activeTeam){
+        const teamNFL: AllNFLTeamType = NFLenum.parse(activeTeam);
+        Z = newDataNFL.filter((game) => {
+          if (!teamNFL) return true;
+          const isTeam = nameMatcherNFL(teamNFL, game.winningTeam, game.losingTeam);
+          return isTeam;
+        }).map((game) => {
+          return {...game}
+        })
+      } else {
+        Z = newDataNFL.map((game) => {
+          return {...game}
+        })
+      }
+      return Z;
+    case "NHL":
+      let newDataNHL: StanleyCupSeriesType[];
+      switch(bet){
+        case 0: 
+          newDataNHL = StanleyCupData;
+          break;
+        case 1:
+          newDataNHL = EastNHLdata;
+          break;
+        case 2:
+          newDataNHL =  WestNHLdata;
+          break;
+      }
+      if(activeTeam){
+        const teamNHL: AllNHLTeamType = NHLenum.parse(activeTeam);
+        Z = newDataNHL.filter((game) => {
+          if (!teamNHL) return true;
+          const isTeam = nameMatcherNHL(teamNHL, game.winningTeam, game.losingTeam);
+          return isTeam;
+        }).map((game) => {
+          return {...game}
+        })
+      } else {
+        Z = newDataNHL.map((game) => {
+          return {...game}
+        })
+      }
+      return Z;
+    case "WNBA":
+      if(activeTeam){
+        const teamWNBA: AllWNBATeamType = WNBAenum.parse(activeTeam);
+        Z = WNBAFinalsData.filter((game) => {
+          if (!teamWNBA) return true;
+          const isTeam = nameMatcherWNBA(teamWNBA, game.winningTeam, game.losingTeam);
+          return isTeam;
+        }).map((game) => {
+          return {...game}
+        })
+      } else {
+        Z = WNBAFinalsData.map((game) => {
+          return {...game}
+        })
+      }
+      return Z;
+  }
+}
+
+export const modalNamer = (sport: SportType, activeTeam: string | null, bet: 0 | 1 | 2) => {
+  switch(sport){
+    case "CFL":
+      if(activeTeam){
+        const teamCFL: AllCFLTeamType = CFLenum.parse(activeTeam);
+        return cflTeamPreNames(teamCFL) + " Grey Cups";
+      } else {
+        return "";
+      }
+    case "F1":
+      return "";
+    case "MLB":
+      let finalNameMLB = "";
+      switch(bet){
+        case 0: 
+          finalNameMLB = " World Series";
+          break;
+        case 1:
+          finalNameMLB = " ALCS";
+          break;
+        case 2:
+          finalNameMLB = " NLCS";
+          break;
+      }
+      if(activeTeam){
+        const teamMLB: AllMLBTeamType = MLBenum.parse(activeTeam);
+        return mlbTeamPreNames(teamMLB) + finalNameMLB;
+      } else {
+        return "";
       }
     case "NBA":
+      let finalNameNBA = "";
       switch(bet){
         case 0: 
-          Z = NBAFinalsData.map((game) => {
-            return {...game}
-          })
-          return Z;
+          finalNameNBA = " Finals";
+          break;
         case 1:
-          Z = EastNBAdata.map((game) => {
-            return {...game}
-          })
-          return Z;
+          finalNameNBA = " Eastern Finals";
+          break;
         case 2:
-          Z = WestNBAdata.map((game) => {
-            return {...game}
-          })
-          return Z;
+          finalNameNBA = " Western Finals";
+          break;
+      }
+      if(activeTeam){
+        const teamNBA: AllNBATeamType = NBAenum.parse(activeTeam);
+        return nbaTeamPreNames(teamNBA) + finalNameNBA;
+      } else {
+        return "";
       }
     case "NFL":
+      let finalNameNFL = "";
       switch(bet){
         case 0: 
-          Z = SuperBowlData.map((game) => {
-            return {...game}
-          })
-          return Z;
+          finalNameNFL = " Super Bowls";
+          break;
         case 1:
-          Z = AFCChampData.map((game) => {
-            return {...game}
-          })
-          return Z;
+          finalNameNFL = " AFC Championships";
+          break;
         case 2:
-          Z = NFCChampData.map((game) => {
-            return {...game}
-          })
-          return Z;
+          finalNameNFL = " NFC Championships";
+          break;
+      }
+      if(activeTeam){
+        const teamNFL: AllNFLTeamType = NFLenum.parse(activeTeam);
+        return nflTeamPreNames(teamNFL) + finalNameNFL;
+      } else {
+        return "";
       }
     case "NHL":
+      let finalNameNHL = "";
       switch(bet){
         case 0: 
-          Z = StanleyCupData.map((game) => {
-            return {...game}
-          })
-          return Z;
+          finalNameNHL = " Stanley Cups";
+          break;
         case 1:
-          Z = EastNHLdata.map((game) => {
-            return {...game}
-          })
-          return Z;
+          finalNameNHL = " Eastern Finals";
+          break;
         case 2:
-          Z = WestNHLdata.map((game) => {
-            return {...game}
-          })
-          return Z;
+          finalNameNHL = " Western Finals";
+          break;
+      }
+      if(activeTeam){
+        const teamNHL: AllNHLTeamType = NHLenum.parse(activeTeam);
+        return nhlTeamPreNames(teamNHL) + finalNameNHL;
+      } else {
+        return "";
       }
     case "WNBA":
-      Z = WNBAFinalsData.map((game) => {
-        return {...game}
-      })
-      return Z;
+      if(activeTeam){
+        const teamWNBA: AllWNBATeamType = WNBAenum.parse(activeTeam);
+        return wnbaTeamPreNames(teamWNBA) + " Finals";
+      } else {
+        return "";
+      }
   }
 }
 

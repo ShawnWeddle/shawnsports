@@ -1,6 +1,6 @@
 import { type AllNFLTeamType, NFLteamData } from "~/data/NFL/NFLdata"
 
-export const nameMatcher = (checkTeam: AllNFLTeamType, winningTeam: AllNFLTeamType, losingTeam?: AllNFLTeamType,) => {
+export const nameMatcherNFL = (checkTeam: AllNFLTeamType, winningTeam: AllNFLTeamType, losingTeam?: AllNFLTeamType,) => {
   let isTeam = false;
   if ([losingTeam, winningTeam].includes(checkTeam)) {
     isTeam = true;

@@ -3,6 +3,7 @@ import { type AllNHLTeamType } from "~/data/NHL/NHLdata";
 import { type AllNBATeamType } from "~/data/NBA/NBAdata";
 import { type AllWNBATeamType } from "~/data/WNBA/WNBAdata";
 import { type AllMLBTeamType } from "~/data/MLB/MLBdata";
+import { type MLSTeamType } from "~/data/MLS/MLSdata";
 import { type AllCFLTeamType } from "~/data/CFL/CFLdata";
 
 export type UniversalFinalsType = {
@@ -57,6 +58,13 @@ export type SuperBowlType = {
 export type GreyCupType = {
   winningTeam: AllCFLTeamType;
   losingTeam: AllCFLTeamType;
+  score: string;
+  year: number;
+}
+
+export type MLSCupType = {
+  winningTeam: MLSTeamType;
+  losingTeam: MLSTeamType;
   score: string;
   year: number;
 }

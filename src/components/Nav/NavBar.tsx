@@ -59,6 +59,7 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
         "bg-nfl": pageMode === "NFL",
         "bg-nhl": pageMode === "NHL",
         "bg-mlb": pageMode === "MLB",
+        "bg-mls": pageMode === "MLS",
         "bg-formulaOne": pageMode === "F1",
         "bg-cfl": pageMode === "CFL",
       })}
@@ -141,6 +142,17 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
               </MenubarItem>
               <MenubarItem asChild>
                 <Link href="/nhl/rank">Rank</Link>
+              </MenubarItem>
+            </MenubarSubContent>
+          </MenubarSub>
+          <MenubarSub>
+            <MenubarSubTrigger>MLS</MenubarSubTrigger>
+            <MenubarSubContent>
+              <MenubarItem asChild>
+                <Link href="/mls/mls-cups">MLS Cups</Link>
+              </MenubarItem>
+              <MenubarItem asChild>
+                <Link href="/mls/rank">Rank</Link>
               </MenubarItem>
             </MenubarSubContent>
           </MenubarSub>

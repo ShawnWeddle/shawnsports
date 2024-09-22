@@ -4,6 +4,7 @@ import { NullBook } from "~/types/StyleBook";
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
 import { F1styleData } from "~/data/F1/2024/F1styleData24";
 import { MLBstyleData } from "~/data/MLB/MLBstyleData";
+import { MLSstyleData } from "~/data/MLS/MLSstyleData";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
@@ -15,6 +16,7 @@ import {
   driverToConstructor2024,
 } from "~/data/F1/2024/F1data24";
 import { MLBteamData, mlbTeamsRanked } from "~/data/MLB/MLBdata";
+import { mlsData, allMLSteams } from "../MLS/MLSdata";
 import { NBAteamData, nbaTeamsRanked } from "~/data/NBA/NBAdata";
 import { NFLteamData, nflTeamsRanked } from "~/data/NFL/NFLdata";
 import { NHLteamData, nhlTeamsRanked } from "~/data/NHL/NHLdata";
@@ -23,6 +25,7 @@ import { WNBAteamData, wnbaTeamsRanked } from "~/data/WNBA/WNBAdata";
 const CFLenum = z.enum(cflTeamsRanked);
 const F1enum = z.enum(driverCodes2024);
 const MLBenum = z.enum(mlbTeamsRanked);
+const MLSenum = z.enum(allMLSteams);
 const NBAenum = z.enum(nbaTeamsRanked);
 const NFLenum = z.enum(nflTeamsRanked);
 const NHLenum = z.enum(nhlTeamsRanked);
@@ -52,6 +55,12 @@ export const rankerInfo = (input: string, sport: SportType) => {
         style = MLBstyleData[code];
         text.long = MLBteamData[code].location + " " + MLBteamData[code].name;
         text.short = MLBteamData[code].name;
+        break;
+      case "MLS":
+        code = MLSenum.parse(input);
+        style = MLSstyleData[code];
+        text.long = mlsData[code];
+        text.short = code;
         break;
       case "NBA":
         code = NBAenum.parse(input);
@@ -94,7 +103,7 @@ export const rankerInfo = (input: string, sport: SportType) => {
 export const GlobalSportData: {
   [Key in SportType] : {
     title: string,
-    variant: "nfl" | "nba" | "formulaOne" | "mlb" | "nhl" | "wnba" | "cfl",
+    variant: "nfl" | "nba" | "formulaOne" | "mlb" | "nhl" | "wnba" | "cfl" | "mls",
     totalNum: number,
   }
 } = {
@@ -112,6 +121,11 @@ export const GlobalSportData: {
     title: "MLB Teams",
     variant: "mlb",
     totalNum: 30,
+  },
+  "MLS": {
+    title: "MLS Teams",
+    variant: "mls",
+    totalNum: 29,
   },
   "NBA": {
     title: "NBA Teams",

@@ -6,10 +6,12 @@ import type { NBAFinalsSeriesType, StanleyCupSeriesType, SuperBowlType, WorldSer
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
 import { F1styleData } from "~/data/F1/2024/F1styleData24";
 import { MLBstyleData } from "~/data/MLB/MLBstyleData";
+import { MLSstyleData } from "~/data/MLS/MLSstyleData";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
 import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
+
 import { CFLteamData, cflTeamsAll, type AllCFLTeamType } from "~/data/CFL/CFLdata";
 import {
   driverCodes2024,
@@ -17,6 +19,7 @@ import {
   driverToConstructor2024,
 } from "~/data/F1/2024/F1data24";
 import { MLBteamData, mlbTeamsAll, type AllMLBTeamType } from "~/data/MLB/MLBdata";
+import { mlsData, allMLSteams, type MLSTeamType} from "~/data/MLS/MLSdata";
 import { NBAteamData, nbaTeamsAll, type AllNBATeamType } from "~/data/NBA/NBAdata";
 import { NFLteamData, nflTeamsAll, type AllNFLTeamType } from "~/data/NFL/NFLdata";
 import { NHLteamData, nhlTeamsAll, type AllNHLTeamType } from "~/data/NHL/NHLdata";
@@ -30,6 +33,7 @@ import { WorldSeriesData, ALCSData, NLCSData } from "../MLB/WorldSeriesData";
 import { StanleyCupData, EastData as EastNHLdata, WestData as WestNHLdata } from "../NHL/StanleyCupData";
 import { GreyCupData } from "../CFL/GreyCupData";
 import { WNBAFinalsData } from "../WNBA/WNBAFinalsData";
+import { MLSCupData } from "../MLS/MLScupData";
 
 import { cflTeamPreNames } from "~/utils/cfl";
 import { mlbTeamPreNames, nameMatcherMLB } from "~/utils/mlb";
@@ -41,6 +45,7 @@ import { wnbaTeamPreNames, nameMatcherWNBA } from "~/utils/wnba";
 const CFLenum = z.enum(cflTeamsAll);
 const F1enum = z.enum(driverCodes2024);
 const MLBenum = z.enum(mlbTeamsAll);
+const MLSenum = z.enum(allMLSteams);
 const NBAenum = z.enum(nbaTeamsAll);
 const NFLenum = z.enum(nflTeamsAll);
 const NHLenum = z.enum(nhlTeamsAll);
@@ -69,6 +74,13 @@ export const champInfo = (input: string, sport: SportType) => {
       location = MLBteamData[code].location;
       name = MLBteamData[code].name;
       finalNames = ["World Series", "ALCS", "NLCS"];
+      break;
+    case "MLS":
+      code = MLSenum.parse(input);
+      style = MLSstyleData[code];
+      location = mlsData[code];
+      name = "";
+      finalNames = ["MLS Cups"];
       break;
     case "NBA":
       code = NBAenum.parse(input);
@@ -164,6 +176,25 @@ export const activeData = (sport: SportType, activeTeam: string | null, bet: 0 |
         })
       } else {
         Z = newDataMLB.map((game) => {
+          return {...game}
+        })
+      }
+      return Z;
+    case "MLS":
+      if(activeTeam){
+        const teamMLS: MLSTeamType = MLSenum.parse(activeTeam);
+        Z = MLSCupData.filter((game) => {
+          if (!teamMLS) return true;
+          let isTeam = false;
+          if ([game.losingTeam, game.winningTeam].includes(teamMLS)) {
+            isTeam = true;
+          }
+          return isTeam;
+        }).map((game) => {
+          return {...game}
+        })
+      } else {
+        Z = MLSCupData.map((game) => {
           return {...game}
         })
       }
@@ -301,6 +332,8 @@ export const modalNamer = (sport: SportType, activeTeam: string | null, bet: 0 |
       } else {
         return "";
       }
+    case "MLS":
+      return "";
     case "NBA":
       let finalNameNBA = "";
       switch(bet){
@@ -371,7 +404,7 @@ export const modalNamer = (sport: SportType, activeTeam: string | null, bet: 0 |
 export const GlobalSportData: {
   [Key in SportType] : {
     title: string,
-    variant: "nfl" | "nba" | "formulaOne" | "mlb" | "nhl" | "wnba" | "cfl",
+    variant: "nfl" | "nba" | "formulaOne" | "mlb" | "nhl" | "wnba" | "cfl" | "mls",
     totalNum: number,
     finalNames: [string, string, string] | [string]
   }
@@ -393,6 +426,12 @@ export const GlobalSportData: {
     variant: "mlb",
     totalNum: 30,
     finalNames: ["World Series", "ALCS", "NLCS"],
+  },
+  "MLS": {
+    title: "MLS Cup Champions",
+    variant: "mls",
+    totalNum: 29,
+    finalNames: ["MLS Cups"],
   },
   "NBA": {
     title: "NBA Champions",
@@ -416,7 +455,6 @@ export const GlobalSportData: {
     title: "WNBA Champions",
     variant: "wnba",
     totalNum: 12,
-  
     finalNames: ["Finals"],
   },
 }

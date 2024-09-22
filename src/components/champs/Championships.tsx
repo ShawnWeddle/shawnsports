@@ -145,6 +145,7 @@ const ChampionshipList: React.FC<ChampProps> = (props: ChampProps) => {
           "text-sm": inModal,
           "odd:bg-cfl/10 hover:bg-cfl/20": sport === "CFL",
           "odd:bg-mlb/10 hover:bg-mlb/20": sport === "MLB",
+          "odd:bg-mls/10 hover:bg-mls/20": sport === "MLS",
           "odd:bg-nba/10 hover:bg-nba/20": sport === "NBA" || sport === "WNBA",
           "odd:bg-nfl/10 hover:bg-nfl/20": sport === "NFL",
           "odd:bg-nhl/10 hover:bg-nhl/20": sport === "NHL",
@@ -280,7 +281,7 @@ const ChampionshipList: React.FC<ChampProps> = (props: ChampProps) => {
             "bg-nba": sport === "NBA",
             "bg-nhl": sport === "NHL",
             "bg-nfl": sport === "NFL",
-            hidden: sport === "WNBA" || sport === "CFL",
+            hidden: sport === "WNBA" || sport === "CFL" || sport === "MLS",
           })}
         >
           <TabsTrigger

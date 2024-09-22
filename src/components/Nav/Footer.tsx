@@ -9,7 +9,10 @@ import {
   MenubarTrigger,
 } from "~/components/ui/menubar";
 
+import { MLSCupData } from "~/data/MLS/MLScupData";
+
 const Footer: React.FC = () => {
+  console.log(MLSCupData.reverse().map((game) => game));
   return (
     <Menubar
       className={cn("flex min-w-full flex-col justify-center sm:flex-row")}

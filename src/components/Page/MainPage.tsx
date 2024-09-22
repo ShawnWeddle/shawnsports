@@ -34,6 +34,7 @@ const MainPage: NextPage<PageProps> = (props: PageProps) => {
             "from-nfl/50 to-nfl/50": pageMode === "NFL",
             "from-nba/50 to-nba/50": pageMode === "NBA" || pageMode === "WNBA",
             "from-mlb/50 to-mlb/50": pageMode === "MLB",
+            "from-mls/50 to-mls/50": pageMode === "MLS",
             "from-nhl/50 to-nhl/50": pageMode === "NHL",
             "from-cfl/50 to-cfl/50": pageMode === "CFL",
           }

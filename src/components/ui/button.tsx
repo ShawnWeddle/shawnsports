@@ -15,6 +15,7 @@ const buttonVariants = cva(
         nba: "bg-nba text-white hover:bg-nba/90",
         formulaOne: "bg-formulaOne text-white hover:bg-formulaOne/90",
         mlb: "bg-mlb text-white hover:bg-mlb/90",
+        mls: "bg-mls text-white hover:bg-mls/90",
         nhl: "bg-nhl text-white hover:bg-nhl/90",
         wnba: "bg-wnba text-white hover:bg-wnba/90",
         cfl: "bg-cfl text-white hover:bg-cfl/90",

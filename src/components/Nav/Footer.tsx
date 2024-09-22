@@ -9,10 +9,7 @@ import {
   MenubarTrigger,
 } from "~/components/ui/menubar";
 
-import { MLSCupData } from "~/data/MLS/MLScupData";
-
 const Footer: React.FC = () => {
-  console.log(MLSCupData.reverse().map((game) => game));
   return (
     <Menubar
       className={cn("flex min-w-full flex-col justify-center sm:flex-row")}
@@ -137,6 +134,19 @@ const Footer: React.FC = () => {
             </MenubarItem>
             <MenubarItem asChild>
               <Link href="/cfl/rank">Rank</Link>
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+        <MenubarMenu>
+          <MenubarTrigger className="rounded-lg text-mls focus:bg-mls data-[state=open]:bg-mls">
+            MLS
+          </MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem asChild>
+              <Link href="/mls/mls-cups">MLS Cups</Link>
+            </MenubarItem>
+            <MenubarItem asChild>
+              <Link href="/mls/rank">Rank</Link>
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>

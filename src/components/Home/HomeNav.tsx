@@ -19,6 +19,7 @@ import {
   FaFootball,
   FaTrophy,
   FaHockeyPuck,
+  FaFutbol,
 } from "react-icons/fa6";
 import { BsArrowReturnRight } from "react-icons/bs";
 
@@ -34,6 +35,8 @@ const Icon = (sport: PageHeadsType) => {
       return <FaTrophy />;
     case "MLB":
       return <FaBaseball />;
+    case "MLS":
+      return <FaFutbol />;
     case "NHL":
       return <FaHockeyPuck />;
     case "WNBA":
@@ -63,6 +66,7 @@ const HomeNav: React.FC = () => {
             "hover:bg-nfl/10": sportMode === "NFL",
             "hover:bg-nhl/10": sportMode === "NHL",
             "hover:bg-mlb/10": sportMode === "MLB",
+            "hover:bg-mls/10": sportMode === "MLS",
             "hover:bg-formulaOne/10": sportMode === "F1",
             "hover:bg-cfl/10": sportMode === "CFL",
           })}
@@ -95,6 +99,7 @@ const HomeNav: React.FC = () => {
                 "text-nfl hover:bg-nfl hover:text-white": sportMode === "NFL",
                 "text-nhl hover:bg-nhl hover:text-white": sportMode === "NHL",
                 "text-mlb hover:bg-mlb hover:text-white": sportMode === "MLB",
+                "text-mls hover:bg-mls hover:text-white": sportMode === "MLS",
                 "text-formulaOne hover:bg-formulaOne hover:text-white":
                   sportMode === "F1",
                 "text-cfl hover:bg-cfl hover:text-white": sportMode === "CFL",

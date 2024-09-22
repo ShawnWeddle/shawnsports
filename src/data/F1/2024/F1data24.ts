@@ -173,7 +173,7 @@ export const constructorToDrivers2024 = (constructor: ConstructorName24Type) : D
     case "Ferrari":
       return ["BEA", "LEC", "SAI"];
     case "Haas":
-      return ["HUL", "MAG"];
+      return ["BEA", "HUL", "MAG"];
     case "McLaren":
       return ["NOR", "PIA"];
     case "Mercedes":

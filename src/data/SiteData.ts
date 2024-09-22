@@ -101,9 +101,9 @@ export const homePageData: {[Key in PageHeadsType] : TitlesDescType } = {
   NFL: NFLTitlesDesc,
   NBA: NBATitlesDesc,
   MLB: MLBTitlesDesc,
-  MLS: MLSTitlesDesc,
   NHL: NHLTitlesDesc,
   WNBA: WNBATitlesDesc,
+  MLS: MLSTitlesDesc,
   CFL: CFLTitlesDesc,
 };
 

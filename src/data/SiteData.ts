@@ -143,7 +143,7 @@ export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, url
   MLB_World_Series: { navTitle: "World Series", urlName: "/mlb/world-series",},
   MLB_Rank: { navTitle: "Rank", urlName: "/mlb/rank",},
   MLS_Cups: { navTitle: "MLS Cups", urlName: "/mls/mls-cups", },
-  MLS_Rank: { navTitle: "Rank", urlName: "/mls/mls-cups", },
+  MLS_Rank: { navTitle: "Rank", urlName: "/mls/rank", },
   NHL_Stanley_Cups: { navTitle: "Stanley Cups", urlName: "/nhl/stanley-cups",},
   NHL_Rank: { navTitle: "Rank", urlName: "/nhl/rank",},
   WNBA_Finals: { navTitle: "Finals", urlName: "/wnba/finals",},
@@ -156,7 +156,7 @@ export const pageData: {[Key in PageHeadsType] : LowerPageHeadType} = {
   "Home":"", "F1":"f1", "NFL":"nfl", "NBA":"nba", "MLB":"mlb", "MLS":"mls", "NHL":"nfl", "WNBA":"wnba", "CFL":"cfl"
 }
 
-export const pageHeads = ["F1", "NFL", "NBA", "MLB", "MLS", "NHL", "WNBA", "CFL", ] as const;
+export const pageHeads = ["F1", "NFL", "NBA", "MLB", "NHL", "WNBA", "MLS", "CFL", ] as const;
 export type NavHeadsType = typeof allNavHeads;
 export type PageHeadsType = keyof NavHeadsType;
 export type UnderPageHeadsType = typeof allNavHeads[PageHeadsType][number];

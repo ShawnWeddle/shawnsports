@@ -14,11 +14,7 @@ import {
   TableRowNoHover,
 } from "~/components/ui/table";
 
-type TableModeType =
-  | "DriverSort"
-  | "PlaceSort"
-  | "RunningTotal"
-  | "TeammateBattle";
+type TableModeType = "DriverSort" | "PlaceSort" | "RunningTotal";
 
 const FormulaOneTable: React.FC = () => {
   const [tableMode, setTableMode] = useState<TableModeType>("PlaceSort");
@@ -66,19 +62,6 @@ const FormulaOneTable: React.FC = () => {
           />
           <label htmlFor="Running" className="px-1">
             Cumulative Points
-          </label>
-        </div>
-        <div className="flex justify-start">
-          <input
-            type="radio"
-            id="Teammate"
-            checked={tableMode === "TeammateBattle"}
-            onChange={() => {
-              setTableMode("TeammateBattle");
-            }}
-          />
-          <label htmlFor="Teammate" className="px-1">
-            Teammate Battle
           </label>
         </div>
       </fieldset>
@@ -160,9 +143,6 @@ const FormulaOneTable: React.FC = () => {
             )}
             {tableMode === "RunningTotal" && (
               <RunningResultTable raceMode={raceMode} />
-            )}
-            {tableMode === "TeammateBattle" && (
-              <TeammateBattleTable raceMode={raceMode} />
             )}
           </TableBody>
         </Table>

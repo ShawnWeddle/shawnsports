@@ -721,7 +721,7 @@ export const FormulaOneRaceResults : F1RaceType[] = [
         { driver: "ALO", constructor: "Aston Martin" },
         { driver: "HUL", constructor: "Haas" },
         { driver: "PER", constructor: "Red Bull" },
-        { driver: "SAR", constructor: "Williams" },
+        { driver: "COL", constructor: "Williams" },
         { driver: "TSU", constructor: "RB" },
         { driver: "OCO", constructor: "Alpine" },
         { driver: "STR", constructor: "Aston Martin" },

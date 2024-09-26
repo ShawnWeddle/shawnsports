@@ -39,16 +39,25 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               {
                 [unrankedInfo.style.primaryBackground]: true,
                 [unrankedInfo.style.simpleText]: true,
+              },
+              {
+                [unrankedInfo.style.secondaryText]: sport === "F1",
               }
             )}
           >
             {unrankedInfo.text.long}
           </TableCell>
           <TableCell
-            className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
-              [unrankedInfo.style.primaryBackground]: true,
-              [unrankedInfo.style.simpleText]: true,
-            })}
+            className={cn(
+              "-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden",
+              {
+                [unrankedInfo.style.primaryBackground]: true,
+                [unrankedInfo.style.simpleText]: true,
+              },
+              {
+                [unrankedInfo.style.secondaryText]: sport === "F1",
+              }
+            )}
           >
             {unrankedInfo.text.short}
           </TableCell>
@@ -147,17 +156,26 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
               {
                 [rankedInfo.style.primaryBackground]: true,
-                [rankedInfo.style.simpleText]: true,
+                [rankedInfo.style.simpleText]: sport !== "F1",
+              },
+              {
+                [rankedInfo.style.secondaryText]: sport === "F1",
               }
             )}
           >
             {rankedInfo.text.long}
           </TableCell>
           <TableCell
-            className={cn("-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden", {
-              [rankedInfo.style.primaryBackground]: true,
-              [rankedInfo.style.simpleText]: true,
-            })}
+            className={cn(
+              "-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden",
+              {
+                [rankedInfo.style.primaryBackground]: true,
+                [rankedInfo.style.simpleText]: true,
+              },
+              {
+                [rankedInfo.style.secondaryText]: sport === "F1",
+              }
+            )}
           >
             {rankedInfo.text.short}
           </TableCell>

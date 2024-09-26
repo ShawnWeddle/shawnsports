@@ -5,10 +5,10 @@ export const F1styleData: {
   [Key in ConstructorName24Type]: StyleBookType
 } = {
   Alpine: { 
-    primary: "#FF99C4", 
+    primary: "#FD4BC7", 
     secondary: "#FFFFFF",
-    primaryBackground: "bg-[#FF99C4]",
-    primaryBackgroundHover: "hover:bg-[#FF99C4]",
+    primaryBackground: "bg-[#FD4BC7]",
+    primaryBackgroundHover: "hover:bg-[#FD4BC7]",
     secondaryBorder: "border-[#FFFFFF]",
     secondaryBorderHover: "hover:border-[#FFFFFF]",
     secondaryText: "text-[#FFFFFF]",
@@ -41,10 +41,10 @@ export const F1styleData: {
     simpleTextHover: "hover:text-[#FFFFFF]",
   },
   Haas: { 
-    primary: "#ED1A3B", 
+    primary: "#E6002B", 
     secondary: "#FFFFFF",
-    primaryBackground: "bg-[#ED1A3B]",
-    primaryBackgroundHover: "hover:bg-[#ED1A3B]",
+    primaryBackground: "bg-[#E6002B]",
+    primaryBackgroundHover: "hover:bg-[#E6002B]",
     secondaryBorder: "border-[#FFFFFF]",
     secondaryBorderHover: "hover:border-[#FFFFFF]",
     secondaryText: "text-[#FFFFFF]",

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { cn } from "~/lib/utils";
-import { resultsSortedByPlace } from "~/data/F1/2024/F1converters24";
+import { resultsSortedByPlace } from "~/data/F1/2024/convert";
 import {
   driverTcamColors2024,
   driverToConstructor2024,
 } from "~/data/F1/2024/F1data24";
-import { FormulaOneRaceResults } from "~/data/F1/2024/raceResults2024";
+import { FormulaOneRaceResults } from "~/data/F1/2024/raceData";
 import {
   driverActivation2024,
   handleActivate2024,

@@ -3,7 +3,6 @@ import F1TableHeaders from "./TableHeaders";
 import { RaceResultTable } from "~/components/F1/Tables/RaceResultTable";
 import { DriverResultTable } from "~/components/F1/Tables/DriverResultTable";
 import { RunningResultTable } from "~/components/F1/Tables/RunningTotalsTable";
-import { TeammateBattleTable } from "./TeammateBattleTable";
 import type { RaceModeType } from "~/data/F1/2023/F1data23";
 import { Card } from "~/components/ui/card";
 import {

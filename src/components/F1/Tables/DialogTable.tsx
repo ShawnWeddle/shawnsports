@@ -5,7 +5,7 @@ import {
   calculatePoints,
 } from "~/data/F1/2024/F1data24";
 import { F1styleData } from "~/data/F1/2024/F1styleData24";
-import { type F1RaceType } from "~/data/F1/2024/raceResults2024";
+import { type F1RaceType } from "~/data/F1/2024/raceData";
 import {
   Table,
   TableBody,
@@ -28,8 +28,13 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
   const driverOrder = DQs
     ? [...finalOrder, ...DNFs, ...DQs]
     : [...finalOrder, ...DNFs];
-  const driverPointsPairs = driverOrder.map((driver, index) => {
-    const driverPoints = calculatePoints(index, sprint, driver === fastestLap);
+  const driverPointsPairs = driverOrder.map((dac, index) => {
+    const driver = dac.driver;
+    const driverPoints = calculatePoints(
+      index,
+      sprint,
+      driver === fastestLap?.driver
+    );
     if (completed) {
       return (
         <TableRowNoHover
@@ -68,13 +73,20 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
               {
                 "bg-emerald-100": !sprint && index < 10 && index > 2,
               },
-              { "bg-red-500/50 text-white": DNFs.includes(driver) },
-              { "bg-black text-white": DQs && DQs.includes(driver) }
+              {
+                "bg-red-500/50 text-white": DNFs.map(
+                  (dac) => dac.driver
+                ).includes(driver),
+              },
+              {
+                "bg-black text-white":
+                  DQs && DQs.map((dac) => dac.driver).includes(driver),
+              }
             )}
           >
             {driverPoints !== 0 && driverPoints}
-            {DNFs.includes(driver) && "DNF"}
-            {DQs && DQs.includes(driver) && "DQ"}
+            {DNFs.map((dac) => dac.driver).includes(driver) && "DNF"}
+            {DQs && DQs.map((dac) => dac.driver).includes(driver) && "DQ"}
           </TableCell>
         </TableRowNoHover>
       );
@@ -95,14 +107,14 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
       </Table>
       {polePosition && (
         <div className="mt-1">
-          Pole: {driverNames2024[polePosition].first}{" "}
-          {driverNames2024[polePosition].last}
+          Pole: {driverNames2024[polePosition.driver].first}{" "}
+          {driverNames2024[polePosition.driver].last}
         </div>
       )}
       {fastestLap && (
         <div>
-          Fastest Lap: {driverNames2024[fastestLap].first}{" "}
-          {driverNames2024[fastestLap].last}
+          Fastest Lap: {driverNames2024[fastestLap.driver].first}{" "}
+          {driverNames2024[fastestLap.driver].last}
         </div>
       )}
     </div>

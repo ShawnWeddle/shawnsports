@@ -11,8 +11,8 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import type { ChartData, ChartDataset } from "chart.js";
-import { FormulaOneRaceResults } from "~/data/F1/2024/raceResults2024";
-import { createStandings } from "~/data/F1/2024/F1converters24";
+import { FormulaOneRaceResults } from "~/data/F1/2024/raceData";
+import { createStandings } from "~/data/F1/2024/convert";
 import type {
   DriverCode24Type,
   ConstructorName24Type,

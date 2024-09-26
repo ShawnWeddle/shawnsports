@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { cn } from "~/lib/utils";
-import { locationHeaders } from "~/data/F1/2024/F1converters24";
+import { locationHeaders } from "~/data/F1/2024/convert";
 import {
   FormulaOneRaceResults,
   type F1RaceType,
-} from "~/data/F1/2024/raceResults2024";
+} from "~/data/F1/2024/raceData";
 import { type RaceModeProps } from "~/data/F1/2024/F1data24";
 import { ReactCountryFlag } from "react-country-flag";
 import { raceCountryCodes } from "~/data/F1/2024/F1data24";

@@ -729,7 +729,12 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   }],
 },
 "MIN":{
-  "2025":[],
+  "2025":[{
+    nativeTeam: "DET",
+    pickCode: "DET-2025",
+    year: 2025,
+    notes: ["Traded from Detroit to Houston to Oklahoma City to New York to Minnesota."],
+  },],
   "2026":[{
     nativeTeam: "MIN",
     pickCode: "MIN-2026",
@@ -802,11 +807,6 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
 },
 "NYK":{
   "2025":[{
-    nativeTeam: "DET",
-    pickCode: "DET-2025",
-    year: 2025,
-    notes: ["Traded from Detroit to Houston to Oklahoma City to New York."],
-  },{
     nativeTeam: "WAS",
     pickCode: "WAS-2025",
     year: 2025,

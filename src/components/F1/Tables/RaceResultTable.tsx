@@ -26,12 +26,17 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
   );
   const tableRows = fullResults.map((result, rowIndex) => {
     const tableCells = result.map((driver, cellIndex) => {
-      const { driverName, sprint, finishPosition, polePosition, fastestLap } =
-        driver;
+      const {
+        driverName,
+        constructor,
+        sprint,
+        finishPosition,
+        polePosition,
+        fastestLap,
+      } = driver;
       const isDriver = !!driverName && !!activeDrivers[driverName];
-      if (driverName) {
-        const activeStyleGuide =
-          F1styleData[driverToConstructor2024(driverName)];
+      if (driverName && constructor) {
+        const activeStyleGuide = F1styleData[constructor];
         const Tcam = driverTcamColors2024[driverName];
         const newActiveDriver = activeDrivers[driverName];
         const outlineColor =

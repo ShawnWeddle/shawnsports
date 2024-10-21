@@ -1,9 +1,4 @@
 import { cn } from "~/lib/utils";
-// import {
-//   resultsSortedByDriver,
-//   createStandings,
-// } from "~/data/F1/2024/F1converters24";
-// import { FormulaOneRaceResults } from "~/data/F1/2024/raceResults2024";
 import { resultsSortedByDriver, createStandings } from "~/data/F1/2024/convert";
 import { FormulaOneRaceResults } from "~/data/F1/2024/raceData";
 import { F1styleData } from "~/data/F1/2024/F1styleData24";

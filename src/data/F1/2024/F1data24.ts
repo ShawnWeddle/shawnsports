@@ -12,8 +12,9 @@ export const constructorNames2024 = [
 ] as const;
 
 export const driverCodes2024 = [
-  "ALB", "ALO", "BEA", "BOT", "COL", "GAS", "HAM", 
-  "HUL", "LEC", "MAG", "NOR", "OCO", 
+  "ALB", "ALO", "BEA", "BOT", "COL",
+  "GAS", "HAM", 
+  "HUL", "LAW", "LEC", "MAG", "NOR", "OCO", 
   "PER", "PIA", "RIC", "RUS", "SAI",
   "SAR", "STR", "TSU", "VER", "ZHO", 
 ] as const;
@@ -96,6 +97,7 @@ export const driverToConstructor2024 = (driver: DriverCode24Type ) : Constructor
     case "HAM":
     case "RUS":
       return "Mercedes";
+    case "LAW":
     case "RIC":
     case "TSU":
       return "RB";
@@ -141,6 +143,7 @@ export const allToConstructor2024 = (input: DriverCode24Type | ConstructorName24
     case "RUS":
     case "Mercedes":
       return "Mercedes";
+    case "LAW":
     case "RIC":
     case "TSU":
     case "RB":
@@ -179,7 +182,7 @@ export const constructorToDrivers2024 = (constructor: ConstructorName24Type) : D
     case "Mercedes":
       return ["HAM", "RUS"];
     case "RB":
-      return ["RIC", "TSU"];
+      return ["LAW", "RIC", "TSU"];
     case "Red Bull":
       return ["PER", "VER"];
     case "Sauber":
@@ -199,6 +202,7 @@ export const driverNames2024: { [Key in DriverCode24Type] : { first: string, las
   GAS : { first: "Pierre", last: "Gasly"},
   HAM : { first: "Lewis", last: "Hamilton"},
   HUL : { first: "Nico", last: "Hulkenberg"},
+  LAW : { first: "Liam", last: "Lawson"},
   LEC : { first: "Charles", last: "Leclerc"},
   MAG : { first: "Kevin", last: "Magnussen"},
   NOR : { first: "Lando", last: "Norris"},
@@ -220,7 +224,7 @@ export const driverTcamColors2024: { [Key in DriverCode24Type] : "Black" | "Yell
   HUL: "Yellow", LEC: "Black", MAG: "Black", NOR: "Yellow", OCO: "Black", 
   PIA: "Black", PER: "Yellow", RIC: "Black", RUS: "Black", SAI: "Yellow", 
   SAR: "Yellow", STR: "Black", TSU: "Yellow", VER: "Black", ZHO: "Yellow", 
-  BEA: "Cyan", COL: "Cyan",
+  BEA: "Cyan", COL: "Cyan", LAW: "Cyan",
 }
 
 export const calculatePoints = (place: number, sprint: boolean, fastestLap: boolean) => {

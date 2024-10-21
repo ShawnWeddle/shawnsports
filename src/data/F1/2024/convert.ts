@@ -166,6 +166,7 @@ export const createStandings = (results: RaceResultsType) => {
     GAS : {total: 0, runTotal: [0]}, 
     HAM : {total: 0, runTotal: [0]}, 
     HUL : {total: 0, runTotal: [0]}, 
+    LAW : {total: 0, runTotal: [0]}, 
     LEC : {total: 0, runTotal: [0]}, 
     MAG : {total: 0, runTotal: [0]}, 
     NOR : {total: 0, runTotal: [0]}, 

@@ -746,24 +746,67 @@ export const FormulaOneRaceResults : F1RaceType[] = [
       completed: true,
   },{
       location: "Austin",
-      finalOrder: [],
+      finalOrder: [
+        { driver: "VER", constructor: "Red Bull" },
+        { driver: "SAI", constructor: "Ferrari" },
+        { driver: "NOR", constructor: "McLaren" },
+        { driver: "LEC", constructor: "Ferrari" },
+        { driver: "RUS", constructor: "Mercedes" },
+        { driver: "HAM", constructor: "Mercedes" },
+        { driver: "MAG", constructor: "Haas" },
+        { driver: "HUL", constructor: "Haas" },
+        { driver: "PER", constructor: "Red Bull" },
+        { driver: "PIA", constructor: "McLaren" },
+        { driver: "TSU", constructor: "RB" },
+        { driver: "COL", constructor: "Williams" },
+        { driver: "STR", constructor: "Aston Martin" },
+        { driver: "GAS", constructor: "Alpine" },
+        { driver: "OCO", constructor: "Alpine" },
+        { driver: "LAW", constructor: "RB" },
+        { driver: "ALB", constructor: "Williams" },
+        { driver: "ALO", constructor: "Aston Martin" },
+        { driver: "BOT", constructor: "Sauber" },
+        { driver: "ZHO", constructor: "Sauber" },
+      ],
       DNFs: [],
       sprint: true,
-      completed: false
+      completed: true
   },{
       location: "Austin",
-      finalOrder: [],
-      DNFs: [],
+      finalOrder: [
+        { driver: "LEC", constructor: "Ferrari" },
+        { driver: "SAI", constructor: "Ferrari" },
+        { driver: "VER", constructor: "Red Bull" },
+        { driver: "NOR", constructor: "McLaren" },
+        { driver: "PIA", constructor: "McLaren" },
+        { driver: "RUS", constructor: "Mercedes" },
+        { driver: "PER", constructor: "Red Bull" },
+        { driver: "HUL", constructor: "Haas" },
+        { driver: "LAW", constructor: "RB" },
+        { driver: "COL", constructor: "Williams" },
+        { driver: "MAG", constructor: "Haas" },
+        { driver: "GAS", constructor: "Alpine" },
+        { driver: "ALO", constructor: "Aston Martin" },
+        { driver: "TSU", constructor: "RB" },
+        { driver: "STR", constructor: "Aston Martin" },
+        { driver: "ALB", constructor: "Williams" },
+        { driver: "BOT", constructor: "Sauber" },
+        { driver: "OCO", constructor: "Alpine" },
+        { driver: "ZHO", constructor: "Sauber" },
+      ],
+      DNFs: [
+        { driver: "HAM", constructor: "Mercedes" },
+      ],
       fastestLap: {
-          driver: "VER",
-          constructor: "Red Bull"
+          driver: "OCO",
+          constructor: "Alpine"
       },
       polePosition: {
-          driver: "VER",
-          constructor: "Red Bull"
+          driver: "NOR",
+          constructor: "McLaren"
       },
       sprint: false,
-      completed: false
+      completed: true
   },{
       location: "Mexico",
       finalOrder: [],

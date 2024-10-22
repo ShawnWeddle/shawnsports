@@ -24,6 +24,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
   const { fullResults, DNFs, DQs } = resultsSortedByPlace(
     FormulaOneRaceResults
   );
+
   const tableRows = fullResults.map((result, rowIndex) => {
     const tableCells = result.map((driver, cellIndex) => {
       const {

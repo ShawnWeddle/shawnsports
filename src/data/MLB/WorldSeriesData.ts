@@ -606,6 +606,12 @@ export const WorldSeriesData: WorldSeriesType[] = [
 
 export const ALCSData: WorldSeriesType[] = [
   {
+    winningTeam: "NYY",
+    losingTeam: "CLE",
+    score: "4-1",
+    year: 2024,
+    wonChamp: false,
+  },{
     winningTeam: "TEX",
     losingTeam: "HOU",
     score: "4-3",
@@ -940,6 +946,12 @@ export const ALCSData: WorldSeriesType[] = [
 
 export const NLCSData: WorldSeriesType[] = [
   {
+    winningTeam: "LAD",
+    losingTeam: "NYM",
+    score: "4-2",
+    year: 2024,
+    wonChamp: false,
+  },{
     winningTeam: "ARI",
     losingTeam: "PHI",
     score: "4-3",

@@ -193,8 +193,21 @@ const ChampionshipList: React.FC<ChampProps> = (props: ChampProps) => {
                 }
               )}
             >
-              <div className="whitespace-nowrap">{winningInfo.location}</div>
-              <div className="whitespace-nowrap">{winningInfo.name}</div>
+              {winningInfo.reverse ? (
+                <>
+                  <div className="whitespace-nowrap">{winningInfo.name}</div>
+                  <div className="whitespace-nowrap">
+                    {winningInfo.location}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="whitespace-nowrap">
+                    {winningInfo.location}
+                  </div>
+                  <div className="whitespace-nowrap">{winningInfo.name}</div>
+                </>
+              )}
             </div>
           </button>
         </TableCell>
@@ -224,8 +237,17 @@ const ChampionshipList: React.FC<ChampProps> = (props: ChampProps) => {
                 }
               )}
             >
-              <div className="whitespace-nowrap">{losingInfo.location}</div>
-              <div className="whitespace-nowrap">{losingInfo.name}</div>
+              {losingInfo.reverse ? (
+                <>
+                  <div className="whitespace-nowrap">{losingInfo.name}</div>
+                  <div className="whitespace-nowrap">{losingInfo.location}</div>
+                </>
+              ) : (
+                <>
+                  <div className="whitespace-nowrap">{losingInfo.location}</div>
+                  <div className="whitespace-nowrap">{losingInfo.name}</div>
+                </>
+              )}
             </div>
           </button>
         </TableCell>

@@ -16,7 +16,7 @@ import {
   driverToConstructor2024,
 } from "~/data/F1/2024/F1data24";
 import { MLBteamData, mlbTeamsRanked } from "~/data/MLB/MLBdata";
-import { mlsData, allMLSteams } from "../MLS/MLSdata";
+import { MLSteamData, allMLSteams } from "../MLS/MLSdata";
 import { NBAteamData, nbaTeamsRanked } from "~/data/NBA/NBAdata";
 import { NFLteamData, nflTeamsRanked } from "~/data/NFL/NFLdata";
 import { NHLteamData, nhlTeamsRanked } from "~/data/NHL/NHLdata";
@@ -59,8 +59,8 @@ export const rankerInfo = (input: string, sport: SportType) => {
       case "MLS":
         code = MLSenum.parse(input);
         style = MLSstyleData[code];
-        text.long = mlsData[code];
-        text.short = code;
+        text.long = MLSteamData[code].reverse ? MLSteamData[code].name + " " + MLSteamData[code].location : MLSteamData[code].location + " " + MLSteamData[code].name;
+        text.short = MLSteamData[code].name;
         break;
       case "NBA":
         code = NBAenum.parse(input);

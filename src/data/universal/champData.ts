@@ -19,7 +19,7 @@ import {
   driverToConstructor2024,
 } from "~/data/F1/2024/F1data24";
 import { MLBteamData, mlbTeamsAll, type AllMLBTeamType } from "~/data/MLB/MLBdata";
-import { mlsData, allMLSteams, type MLSTeamType} from "~/data/MLS/MLSdata";
+import { MLSteamData, allMLSteams, type MLSTeamType} from "~/data/MLS/MLSdata";
 import { NBAteamData, nbaTeamsAll, type AllNBATeamType } from "~/data/NBA/NBAdata";
 import { NFLteamData, nflTeamsAll, type AllNFLTeamType } from "~/data/NFL/NFLdata";
 import { NHLteamData, nhlTeamsAll, type AllNHLTeamType } from "~/data/NHL/NHLdata";
@@ -37,6 +37,7 @@ import { MLSCupData } from "../MLS/MLScupData";
 
 import { cflTeamPreNames } from "~/utils/cfl";
 import { mlbTeamPreNames, nameMatcherMLB } from "~/utils/mlb";
+import { mlsTeamPreNames } from "~/utils/mls";
 import { nbaTeamPreNames, nameMatcherNBA } from "~/utils/nba";
 import { nflTeamPreNames, nameMatcherNFL } from "~/utils/nfl";
 import { nhlTeamPreNames, nameMatcherNHL } from "~/utils/nhl";
@@ -57,6 +58,7 @@ export const champInfo = (input: string, sport: SportType) => {
   let name = "";
   let style = NullBook;
   let finalNames: [string, string, string] | [string] = [""];
+  let reverse = false;
   switch(sport){
     case "F1":
       break;
@@ -78,8 +80,9 @@ export const champInfo = (input: string, sport: SportType) => {
     case "MLS":
       code = MLSenum.parse(input);
       style = MLSstyleData[code];
-      location = mlsData[code];
-      name = "";
+      location = MLSteamData[code].location;
+      name = MLSteamData[code].name;
+      reverse = MLSteamData[code].reverse;
       finalNames = ["MLS Cups"];
       break;
     case "NBA":
@@ -122,6 +125,7 @@ export const champInfo = (input: string, sport: SportType) => {
     location,
     name,
     finalNames,
+    reverse
   }
 }
 
@@ -333,7 +337,12 @@ export const modalNamer = (sport: SportType, activeTeam: string | null, bet: 0 |
         return "";
       }
     case "MLS":
-      return "";
+      if(activeTeam){
+        const teamMLS: MLSTeamType = MLSenum.parse(activeTeam);
+        return mlsTeamPreNames(teamMLS) + " Finals";
+      } else {
+        return "";
+      }
     case "NBA":
       let finalNameNBA = "";
       switch(bet){

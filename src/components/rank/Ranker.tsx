@@ -35,7 +35,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
         <>
           <TableCell
             className={cn(
-              "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
+              "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 md:block",
               {
                 [unrankedInfo.style.primaryBackground]: true,
                 [unrankedInfo.style.simpleText]: true,
@@ -49,7 +49,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
           <TableCell
             className={cn(
-              "-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden",
+              "-pr-2 h-6 w-24 whitespace-nowrap pl-2 md:hidden",
               {
                 [unrankedInfo.style.primaryBackground]: true,
                 [unrankedInfo.style.simpleText]: true,
@@ -66,7 +66,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
         <TableCell>
           <div
             className={cn(
-              "-pr-2 h-6 w-24 whitespace-nowrap py-0 pl-2 sm:w-52",
+              "-pr-2 h-6 w-24 whitespace-nowrap py-0 pl-2 md:w-52",
               {
                 "bg-cfl/30": sport === "CFL",
                 "bg-formulaOne/30": sport === "F1",
@@ -96,7 +96,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
             type="number"
             min={1}
             max={32}
-            className="h-6 w-6 bg-gray-100 text-center sm:w-10"
+            className="h-6 w-6 bg-gray-100 text-center md:w-10"
             onChange={(e) => {
               const inputRank = e.target.value;
               setNewRank(inputRank);
@@ -153,7 +153,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
         <>
           <TableCell
             className={cn(
-              "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 sm:block",
+              "-pr-2 hidden h-6 w-52 whitespace-nowrap pl-2 md:block",
               {
                 [rankedInfo.style.primaryBackground]: true,
                 [rankedInfo.style.simpleText]: sport !== "F1",
@@ -167,7 +167,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
           </TableCell>
           <TableCell
             className={cn(
-              "-pr-2 h-6 w-24 whitespace-nowrap pl-2 sm:hidden",
+              "-pr-2 h-6 w-24 whitespace-nowrap pl-2 md:hidden",
               {
                 [rankedInfo.style.primaryBackground]: true,
                 [rankedInfo.style.simpleText]: true,
@@ -184,7 +184,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
         <TableCell>
           <div
             className={cn(
-              "-pr-2 h-6 w-24 whitespace-nowrap py-0 pl-2 sm:w-52",
+              "-pr-2 h-6 w-24 whitespace-nowrap py-0 pl-2 md:w-52",
               {
                 "bg-cfl/30": sport === "CFL",
                 "bg-formulaOne/30": sport === "F1",
@@ -215,7 +215,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               type="number"
               min={1}
               max={GlobalSportData[sport].totalNum}
-              className="hidden h-6 w-6 bg-gray-100 text-center sm:block sm:w-10"
+              className="hidden h-6 w-6 bg-gray-100 text-center md:block md:w-10"
               onChange={(e) => {
                 const inputRank = e.target.value;
                 setReRank(inputRank);
@@ -223,7 +223,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               value={reRank}
             />
             <button
-              className="hidden px-1 text-white sm:block"
+              className="hidden px-1 text-white md:block"
               onClick={() => {
                 rankDispatch({
                   type: "RERANK_ENTRY",

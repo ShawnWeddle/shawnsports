@@ -172,10 +172,10 @@ export const WNBAstyleData: {[Key in AllWNBATeamType] : StyleBookType
     simpleTextHover: "hover:text-[#FFFFFF]",
   },
   GSV:{
-    primary: "#B896D4",
+    primary: "#9C59D4",
     secondary: "#000000",
-    primaryBackground: "bg-[#B896D4]",
-    primaryBackgroundHover: "hover:bg-[#B896D4]",
+    primaryBackground: "bg-[#9C59D4]",
+    primaryBackgroundHover: "hover:bg-[#9C59D4]",
     secondaryBorder: "border-[#000000]",
     secondaryBorderHover: "hover:border-[#000000]",
     secondaryText: "text-[#000000]",

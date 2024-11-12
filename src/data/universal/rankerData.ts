@@ -42,7 +42,7 @@ export const rankerInfo = (input: string, sport: SportType) => {
         code = driverToConstructor2024(driverCode);
         style = F1styleData[code];
         text.long = driverNames2024[driverCode].first + " " + driverNames2024[driverCode].last;
-        text.short = driverNames2024[driverCode].last;
+        text.short = driverCode === "ZHO" ? driverNames2024[driverCode].first : driverNames2024[driverCode].last;
         break;
       case "CFL":
         code = CFLenum.parse(input);
@@ -145,6 +145,6 @@ export const GlobalSportData: {
   "WNBA": {
     title: "WNBA Teams",
     variant: "wnba",
-    totalNum: 12,
+    totalNum: 13,
   },
 }

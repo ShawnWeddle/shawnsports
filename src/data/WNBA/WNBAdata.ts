@@ -1,6 +1,7 @@
 export const wnbaTeamsRanked = [
-  "LVA", "NYL", "CON", "DAL", "ATL", "MIN",
-  "WAS", "CHI", "LAS", "IND", "SEA", "PHO",
+  "NYL", "MIN", "CON", "LVA", 
+  "SEA", "IND", "PHO", "ATL", 
+  "WAS", "CHI", "DAL", "LAS", "GSV"
 ] as const;
 
 export const wnbaTeamsAll = [

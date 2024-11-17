@@ -308,7 +308,7 @@ export const createStandings = (results: RaceResultsType) => {
   }
 
   const runningDriverResults = driverOrder.map((driver) => {
-    const fullRunningArray =  cumulativeArray(findPlaceArray(driver).map((place) => {
+    const fullRunningArray = cumulativeArray(findPlaceArray(driver).map((place) => {
       const pointTotal: FullDriverResultType = {
         ...place
       }
@@ -341,7 +341,6 @@ export const createStandings = (results: RaceResultsType) => {
     driverPodiums,
     constructorPodiums,
     runningDriverResults,
-    runningConstructorResults,
   };
 }
 

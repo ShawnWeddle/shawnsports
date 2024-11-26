@@ -60,7 +60,7 @@ export const rankerInfo = (input: string, sport: SportType) => {
         code = MLSenum.parse(input);
         style = MLSstyleData[code];
         text.long = MLSteamData[code].reverse ? MLSteamData[code].name + " " + MLSteamData[code].location : MLSteamData[code].location + " " + MLSteamData[code].name;
-        text.short = MLSteamData[code].name;
+        text.short = MLSteamData[code].location;
         break;
       case "NBA":
         code = NBAenum.parse(input);

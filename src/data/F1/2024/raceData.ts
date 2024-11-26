@@ -910,18 +910,40 @@ export const FormulaOneRaceResults : F1RaceType[] = [
       completed: true
   },{
       location: "Las Vegas",
-      finalOrder: [],
-      DNFs: [],
+      finalOrder: [
+        { driver: "RUS", constructor: "Mercedes" },
+        { driver: "HAM", constructor: "Mercedes" },
+        { driver: "SAI", constructor: "Ferrari" },
+        { driver: "LEC", constructor: "Ferrari" },
+        { driver: "VER", constructor: "Red Bull" },
+        { driver: "NOR", constructor: "McLaren" },
+        { driver: "PIA", constructor: "McLaren" },
+        { driver: "HUL", constructor: "Haas" },
+        { driver: "TSU", constructor: "RB" },
+        { driver: "PER", constructor: "Red Bull" },
+        { driver: "ALO", constructor: "Aston Martin" },
+        { driver: "MAG", constructor: "Haas" },
+        { driver: "ZHO", constructor: "Sauber" },
+        { driver: "COL", constructor: "Williams" },
+        { driver: "STR", constructor: "Aston Martin" },
+        { driver: "LAW", constructor: "RB" },
+        { driver: "OCO", constructor: "Alpine" },
+        { driver: "BOT", constructor: "Sauber" },
+      ],
+      DNFs: [
+        { driver: "ALB", constructor: "Williams" },
+        { driver: "GAS", constructor: "Alpine" },
+      ],
       fastestLap: {
-          driver: "VER",
-          constructor: "Red Bull"
+          driver: "NOR",
+          constructor: "McLaren"
       },
       polePosition: {
-          driver: "VER",
-          constructor: "Red Bull"
+          driver: "RUS",
+          constructor: "Mercedes"
       },
       sprint: false,
-      completed: false
+      completed: true
   },{
       location: "Qatar",
       finalOrder: [],

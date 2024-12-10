@@ -115,7 +115,7 @@ export const GlobalSportData: {
   "F1": {
     title: "F1 Drivers",
     variant: "formulaOne",
-    totalNum: 22,
+    totalNum: 24,
   },
   "MLB": {
     title: "MLB Teams",

@@ -12,9 +12,9 @@ export const constructorNames2024 = [
 ] as const;
 
 export const driverCodes2024 = [
-  "ALB", "ALO", "BEA", "BOT", "COL",
-  "GAS", "HAM", 
-  "HUL", "LAW", "LEC", "MAG", "NOR", "OCO", 
+  "ALB", "ALO", "BEA", "BOT", 
+  "COL", "DOO", "GAS", "HAM", "HUL", 
+  "LAW", "LEC", "MAG", "NOR", "OCO", 
   "PER", "PIA", "RIC", "RUS", "SAI",
   "SAR", "STR", "TSU", "VER", "ZHO", 
 ] as const;
@@ -78,6 +78,7 @@ export type RaceLocation24Type = typeof raceLocations2024[number];
 
 export const driverToConstructor2024 = (driver: DriverCode24Type ) : ConstructorName24Type => {
   switch(driver){
+    case "DOO":
     case "GAS":
     case "OCO":
       return "Alpine";
@@ -118,6 +119,7 @@ export const driverToConstructor2024 = (driver: DriverCode24Type ) : Constructor
 
 export const allToConstructor2024 = (input: DriverCode24Type | ConstructorName24Type ) : ConstructorName24Type => {
   switch(input){
+    case "DOO":
     case "GAS":
     case "OCO":
     case "Alpine":
@@ -170,7 +172,7 @@ export const constructorToDrivers2024 = (constructor: ConstructorName24Type) : D
   switch(constructor){
 
     case "Alpine":
-      return ["GAS", "OCO"];
+      return ["DOO", "GAS", "OCO"];
     case "Aston Martin":
       return ["ALO", "STR"];
     case "Ferrari":
@@ -199,6 +201,7 @@ export const driverNames2024: { [Key in DriverCode24Type] : { first: string, las
   BEA : { first: "Oliver", last: "Bearman"},
   BOT : { first: "Valterri", last: "Bottas"},
   COL : { first: "Franco", last: "Colapinto"},
+  DOO : { first: "Jack", last: "Doohan"},
   GAS : { first: "Pierre", last: "Gasly"},
   HAM : { first: "Lewis", last: "Hamilton"},
   HUL : { first: "Nico", last: "Hulkenberg"},
@@ -224,7 +227,7 @@ export const driverTcamColors2024: { [Key in DriverCode24Type] : "Black" | "Yell
   HUL: "Yellow", LEC: "Black", MAG: "Black", NOR: "Yellow", OCO: "Black", 
   PIA: "Black", PER: "Yellow", RIC: "Black", RUS: "Black", SAI: "Yellow", 
   SAR: "Yellow", STR: "Black", TSU: "Yellow", VER: "Black", ZHO: "Yellow", 
-  BEA: "Cyan", COL: "Cyan", LAW: "Cyan",
+  BEA: "Cyan", COL: "Cyan", LAW: "Cyan", DOO: "Cyan",
 }
 
 export const calculatePoints = (place: number, sprint: boolean, fastestLap: boolean) => {

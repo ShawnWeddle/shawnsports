@@ -173,6 +173,7 @@ export const createStandings = (results: RaceResultsType) => {
     BEA : {total: 0, runTotal: [0]},
     BOT : {total: 0, runTotal: [0]}, 
     COL : {total: 0, runTotal: [0]}, 
+    DOO : {total: 0, runTotal: [0]}, 
     GAS : {total: 0, runTotal: [0]}, 
     HAM : {total: 0, runTotal: [0]}, 
     HUL : {total: 0, runTotal: [0]}, 

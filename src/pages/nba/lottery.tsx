@@ -14,6 +14,9 @@ const Lottery = () => {
       pageMode="NBA"
       underPageMode="NBA_Lottery"
     >
+      <h1 className="mx-2 my-4 text-center text-2xl font-semibold sm:text-4xl">
+        2025 NBA Lottery
+      </h1>
       <NoteFromDev />
       {/* <DndProvider backend={HTML5Backend}>
         <NBALotteryContextProvider>

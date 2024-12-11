@@ -3,6 +3,7 @@ import { NBALotteryContextProvider } from "~/context/NBAlotteryContext";
 import NBALottery from "~/components/NBA/Lottery/NBALottery";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import NoteFromDev from "~/components/Home/NoteFromDev";
 
 const Lottery = () => {
   return (
@@ -13,11 +14,12 @@ const Lottery = () => {
       pageMode="NBA"
       underPageMode="NBA_Lottery"
     >
-      <DndProvider backend={HTML5Backend}>
+      <NoteFromDev />
+      {/* <DndProvider backend={HTML5Backend}>
         <NBALotteryContextProvider>
           <NBALottery />
         </NBALotteryContextProvider>
-      </DndProvider>
+      </DndProvider> */}
     </MainPage>
   );
 };

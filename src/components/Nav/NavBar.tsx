@@ -23,6 +23,7 @@ import {
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -200,16 +201,13 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
               <>
                 <DialogHeader>
                   <DialogTitle>
-                    You are logged in as{" "}
-                    <Link
-                      className="hover:underline"
-                      href={`/profile/${user.username}`}
-                    >
-                      {user.username}
-                    </Link>
+                    You are logged in as {user.username}
                   </DialogTitle>
                 </DialogHeader>
-                <div className="m-1 flex justify-center">
+                <div className="m-1 flex justify-center gap-2">
+                  <Button asChild variant={"home"}>
+                    <Link href={`/profile/${user.username}`}>Visit Page</Link>
+                  </Button>
                   <Button
                     variant={"home"}
                     onClick={() => {

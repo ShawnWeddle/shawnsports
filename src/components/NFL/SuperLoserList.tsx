@@ -170,7 +170,10 @@ const SuperLoserList: React.FC = () => {
             with more than one team.
           </CardDescription>
           <CardDescription>
-            I have probably missed a few players who should be on this list.
+            I believe this list is complete for now, but I am not 100% sure.
+          </CardDescription>
+          <CardDescription>
+            I estimate one or more players will join this list every year.
           </CardDescription>
         </CardHeader>
       </Card>

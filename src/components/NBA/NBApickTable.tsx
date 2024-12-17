@@ -15,6 +15,8 @@ import {
   TableRowNoHover,
 } from "~/components/ui/table";
 
+import { createOrder } from "~/data/NBA/newLotteryWork";
+
 const NBApickTable: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [activePick, setActivePick] = useState<PickType | null>(null);
@@ -22,6 +24,8 @@ const NBApickTable: React.FC = () => {
   const activePickNotes = activePick?.notes.map((note, index) => {
     return <p key={index}>{note}</p>;
   });
+
+  console.log(createOrder(["ATL", "DET", "IND", "UTA", "NOP"]));
 
   const NBArows = Object.entries(AllNBAPicks).map((teamPicks, rowIndex) => {
     const activeTeamCode = TeamNameEnum.parse(teamPicks[0]);

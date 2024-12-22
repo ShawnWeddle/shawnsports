@@ -138,10 +138,11 @@ export const createOrder = (lotteryOrder: NBATeamType[]) => {
 
   const simpleSwap = (bottomT: NBATeamType, topT: NBATeamType, limit: number) => {
     if(newOrder[bottomT].position > limit){
-      newOrder[bottomT].owner = topT;
-      newOrder[topT].owner = topT;
+      [newOrder[bottomT].owner, newOrder[topT].owner] = [newOrder[topT].owner, newOrder[bottomT].owner];
     }
   };
+
+
 
   //Unprotected Picks
 
@@ -163,6 +164,23 @@ export const createOrder = (lotteryOrder: NBATeamType[]) => {
   simpleConvey("SAC", "ATL", 12);
   simpleConvey("UTA", "OKC", 10);
   simpleConvey("WAS", "NYK", 10);
+
+  const LAC_OKC_swap = newOrder["LAC"].position < newOrder["OKC"].position;
+  if(LAC_OKC_swap){
+    simpleSwap("LAC", "OKC", 0);
+  }
+
+  const LAC_OR_OKC = LAC_OKC_swap ? "LAC" : "OKC";
+  const HOU_OKC_swap = newOrder["HOU"].position < newOrder[LAC_OR_OKC].position;
+  if(HOU_OKC_swap){
+    simpleSwap("HOU", LAC_OR_OKC, 0);
+  }
+
+  const HOU_LAC_OR_OKC = HOU_OKC_swap ? LAC_OKC_swap ? "LAC" : "OKC" : "HOU"
+  const PHO_HOU_swap = newOrder["PHO"].position < newOrder[HOU_LAC_OR_OKC].position;
+  if(PHO_HOU_swap){
+    simpleSwap("PHO", HOU_LAC_OR_OKC, 0);
+  }
 
   return newOrder;
 }

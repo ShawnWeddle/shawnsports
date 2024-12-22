@@ -25,7 +25,7 @@ const NBApickTable: React.FC = () => {
     return <p key={index}>{note}</p>;
   });
 
-  console.log(createOrder(["ATL", "DET", "IND", "UTA", "NOP"]));
+  console.log(createOrder(["PHO", "DET", "UTA", "HOU", "LAC", "OKC"]));
 
   const NBArows = Object.entries(AllNBAPicks).map((teamPicks, rowIndex) => {
     const activeTeamCode = TeamNameEnum.parse(teamPicks[0]);

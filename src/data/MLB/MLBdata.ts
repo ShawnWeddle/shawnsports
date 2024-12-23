@@ -192,10 +192,3 @@ export const MLBteamData: { [Key in AllMLBTeamType] : teamInfoType} = {
     name: "Senators",
   },
 };
-
-export const nullArray30 = [
-  null, null, null, null, null, null, null, null, 
-  null, null, null, null, null, null, null, null, 
-  null, null, null, null, null, null, null, null, 
-  null, null, null, null, null, null, 
-];

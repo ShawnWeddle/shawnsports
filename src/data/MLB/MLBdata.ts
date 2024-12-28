@@ -167,10 +167,6 @@ export const MLBteamData: { [Key in AllMLBTeamType] : teamInfoType} = {
     location: "Florida",
     name: "Marlins",
   },
-  XXX:{
-    location: "",
-    name: "",
-  },
   MTL: {
     location: "Montreal",
     name: "Expos",
@@ -190,5 +186,9 @@ export const MLBteamData: { [Key in AllMLBTeamType] : teamInfoType} = {
   WAS:{
     location: "Washington",
     name: "Senators",
+  },
+  XXX:{
+    location: "",
+    name: "",
   },
 };

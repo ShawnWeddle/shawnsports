@@ -2,7 +2,7 @@ import { useState } from "react";
 import { cn } from "~/lib/utils";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
-import { Card, CardHeader, CardDescription } from "../ui/card";
+import { Card, CardHeader, CardDescription, CardTitle } from "../ui/card";
 import { NFLteamData } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";
@@ -190,12 +190,9 @@ const SuperLoserList: React.FC = () => {
       </div>
       <Card className="my-4 bg-nfl/10 p-1 shadow sm:p-4">
         <div className="grid grid-cols-10 gap-1">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          {[1, 2, 3, 4, 5, 6].map((item, index) => {
+            return <div key={index}></div>;
+          })}
           {SBgridItems}
         </div>
       </Card>

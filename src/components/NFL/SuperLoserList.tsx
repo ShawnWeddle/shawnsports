@@ -190,7 +190,7 @@ const SuperLoserList: React.FC = () => {
       </div>
       <Card className="my-4 bg-nfl/10 p-1 shadow sm:p-4">
         <div className="grid grid-cols-10 gap-1">
-          {[1, 2, 3, 4, 5, 6].map((item, index) => {
+          {["W", "E", "D", "D", "L", "E"].map((item, index) => {
             return <div key={index}></div>;
           })}
           {SBgridItems}

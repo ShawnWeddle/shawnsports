@@ -9,7 +9,7 @@ const MainPage: NextPage = () => {
       <Head>
         <title>NFL 2024-25 Playoffs</title>
         <meta name="description" content="" />
-        <link rel="icon" href="nflfavicon.ico" />
+        <link rel="icon" href="/nflfavicon.ico" />
       </Head>
       <main className={cn("flex min-h-screen flex-col items-center bg-[#999]")}>
         <NFLPlayoffs />

@@ -44,7 +44,6 @@ const config = {
         mls: "#808080",
         cfl: "#7000A8",
         ylo: "#E0E000",
-        fun: "#A80070",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

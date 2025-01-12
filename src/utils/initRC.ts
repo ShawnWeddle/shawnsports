@@ -1,4 +1,4 @@
-import { driverCodes2024 } from "~/data/F1/2024/F1data24";
+import { driverCodes2025 } from "~/data/F1/2025/F1data";
 import { cflTeamsRanked } from "~/data/CFL/CFLdata";
 import { mlbTeamsRanked } from "~/data/MLB/MLBdata";
 import { allMLSteams } from "~/data/MLS/MLSdata";
@@ -10,7 +10,7 @@ import { type SportType } from "~/data/SiteData"
 
 export const initialValues: { [Key in SportType] : string[]} = {
   CFL: [...cflTeamsRanked] as string[],
-  F1: [...driverCodes2024] as string[],
+  F1: [...driverCodes2025] as string[],
   MLB: [...mlbTeamsRanked] as string[],
   MLS: [...allMLSteams] as string[],
   NBA: [...nbaTeamsRanked] as string[],

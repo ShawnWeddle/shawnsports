@@ -11,10 +11,10 @@ import { NHLstyleData } from "~/data/NHL/NHLstyleData";
 import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
 import { CFLteamData, cflTeamsRanked } from "~/data/CFL/CFLdata";
 import {
-  driverCodes2024,
-  driverNames2024,
-  driverToConstructor2024,
-} from "~/data/F1/2024/F1data24";
+  driverCodes2025,
+  driverNames2025,
+  driverToConstructor2025,
+} from "~/data/F1/2025/F1data";
 import { MLBteamData, mlbTeamsRanked } from "~/data/MLB/MLBdata";
 import { MLSteamData, allMLSteams } from "../MLS/MLSdata";
 import { NBAteamData, nbaTeamsRanked } from "~/data/NBA/NBAdata";
@@ -23,7 +23,7 @@ import { NHLteamData, nhlTeamsRanked } from "~/data/NHL/NHLdata";
 import { WNBAteamData, wnbaTeamsRanked } from "~/data/WNBA/WNBAdata";
 
 const CFLenum = z.enum(cflTeamsRanked);
-const F1enum = z.enum(driverCodes2024);
+const F1enum = z.enum(driverCodes2025);
 const MLBenum = z.enum(mlbTeamsRanked);
 const MLSenum = z.enum(allMLSteams);
 const NBAenum = z.enum(nbaTeamsRanked);
@@ -38,11 +38,11 @@ export const rankerInfo = (input: string, sport: SportType) => {
   if(input){
     switch (sport) {
       case "F1":
-        const driverCode = F1enum.parse(input)
-        code = driverToConstructor2024(driverCode);
+        const driverCode = F1enum.parse(input);
+        code = driverToConstructor2025(driverCode);
         style = F1styleData[code];
-        text.long = driverNames2024[driverCode].first + " " + driverNames2024[driverCode].last;
-        text.short = driverCode === "ZHO" ? driverNames2024[driverCode].first : driverNames2024[driverCode].last;
+        text.long = driverNames2025[driverCode].first + " " + driverNames2025[driverCode].last;
+        text.short = driverNames2025[driverCode].last
         break;
       case "CFL":
         code = CFLenum.parse(input);
@@ -115,7 +115,7 @@ export const GlobalSportData: {
   "F1": {
     title: "F1 Drivers",
     variant: "formulaOne",
-    totalNum: 24,
+    totalNum: 20,
   },
   "MLB": {
     title: "MLB Teams",

@@ -72,7 +72,7 @@ const NFLPlayoffs: React.FC = () => {
         {PlayoffGame("BAL", "KAN", [3, 1], "AFC")}
       </div>
       <div className="flex flex-col justify-around gap-4">
-        {PlayoffGame("LAC", "KAN", [4, 1], "AFC")}
+        {PlayoffGame("HOU", "KAN", [4, 1], "AFC")}
         {PlayoffGame("BAL", "BUF", [3, 2], "AFC")}
       </div>
       <div className="flex flex-col justify-around gap-4">

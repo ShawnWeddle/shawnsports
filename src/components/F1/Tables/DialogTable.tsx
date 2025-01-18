@@ -29,7 +29,7 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
     ? [...finalOrder, ...DNFs, ...DQs]
     : [...finalOrder, ...DNFs];
   const driverPointsPairs = driverOrder.map((dac, index) => {
-    const driver = dac.driver;
+    const { driver, constructor } = dac;
     const driverPoints = calculatePoints(
       index,
       sprint,
@@ -44,10 +44,8 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
           <TableCell className="px-1 text-center"> {index + 1} </TableCell>
           <TableCell
             className={cn("px-3", {
-              [F1styleData[driverToConstructor2024(driver)].primaryBackground]:
-                true,
-              [F1styleData[driverToConstructor2024(driver)].secondaryText]:
-                true,
+              [F1styleData[constructor].primaryBackground]: true,
+              [F1styleData[constructor].secondaryText]: true,
             })}
           >
             <span className="sm:hidden md:inline">

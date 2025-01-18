@@ -1,7 +1,7 @@
 import { driverCodes2024, constructorNames2024, driverToConstructor2024, calculatePoints, constructorToDrivers2024, beatTeammate } from "~/data/F1/2024/F1data24";
 import type { DriverCode24Type, ConstructorName24Type } from "~/data/F1/2024/F1data24";
-import type { RaceResultsType, F1RaceType } from "~/data/F1/2024/raceData";
-import { flip2DArrays } from "~/utils/cuA";
+import { type RaceResultsType, type F1RaceType, FormulaOneRaceResults } from "~/data/F1/2024/raceData";
+import { cumulativeArray } from "~/utils/cuA";
 import { dcSort } from "~/utils/sorting";
 
 type FullDriverResultType = {
@@ -297,7 +297,7 @@ export const createStandings = (results: RaceResultsType) => {
     return driverArray;
   }
 
-  const cumulativeArray = (array: FullDriverResultType[]) : FullDriverResultType[] => {
+  const cumulativeDriverArray = (array: FullDriverResultType[]) : FullDriverResultType[] => {
     let sum: number;
     return array.filter((race) => race.completed).map((sum = 0, n => {
       const newN = {
@@ -309,7 +309,7 @@ export const createStandings = (results: RaceResultsType) => {
   }
 
   const runningDriverResults = driverOrder.map((driver) => {
-    const fullRunningArray = cumulativeArray(findPlaceArray(driver).map((place) => {
+    const fullRunningArray = cumulativeDriverArray(findPlaceArray(driver).map((place) => {
       const pointTotal: FullDriverResultType = {
         ...place
       }
@@ -320,15 +320,29 @@ export const createStandings = (results: RaceResultsType) => {
     return fullRunningArray;
   });
 
-  const runningConstructorResults = constructorOrder.map((constructor)=>{
-    const driverPoints = constructorToDrivers2024(constructor).map((driver) => {
-      const driverRunArray = driverStandings[driver].runTotal;
-      return driverRunArray;
+  const runningConstructorResults = constructorOrder.map((constructor) => {
+    const teamPoints = FormulaOneRaceResults.map((race) => {
+      const teamResult = race.finalOrder.map((dac, index) => {
+        return {
+          keep: dac.constructor === constructor,
+          points: calculatePoints(index, race.sprint, race.fastestLap?.driver === dac.driver)
+        }
+      }).filter((result) => result.keep).map((result) => {return result.points}).reduce((accumulator, currentValue) => accumulator + currentValue,
+      0);
+      return teamResult;
     });
-    const constructorRunningArray = flip2DArrays(driverPoints).map((pointsArray) => {return pointsArray.reduce((total, num) => total + num)});
-    constructorStandings[constructor].runTotal = constructorRunningArray;
-    return constructorRunningArray;
+    constructorStandings[constructor].runTotal = cumulativeArray(teamPoints);
   })
+
+  // const runningConstructorResults = constructorOrder.map((constructor)=>{
+  //   const driverPoints = constructorToDrivers2024(constructor).map((driver) => {
+  //     const driverRunArray = driverStandings[driver].runTotal;
+  //     return driverRunArray;
+  //   });
+  //   const constructorRunningArray = flip2DArrays(driverPoints).map((pointsArray) => {return pointsArray.reduce((total, num) => total + num)});
+  //   constructorStandings[constructor].runTotal = constructorRunningArray;
+  //   return constructorRunningArray;
+  // })
 
   return {
     driverStandings, 

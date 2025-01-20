@@ -3,6 +3,12 @@ import { type SuperBowlType } from "~/types/ChampTypes";
 export const AFCChampData: SuperBowlType[] = [
   {
     winningTeam: "KAN",
+    losingTeam: "BUF",
+    score: "? - ?",
+    wonChamp: true,
+    year: 2024
+  },{
+    winningTeam: "KAN",
     losingTeam: "BAL",
     score: "17 - 10",
     wonChamp: true,
@@ -383,6 +389,12 @@ export const AFCChampData: SuperBowlType[] = [
 
 export const NFCChampData: SuperBowlType[] = [
   {
+    winningTeam: "PHI",
+    losingTeam: "WAS",
+    score: "? - ?",
+    wonChamp: false,
+    year: 2024
+  },{
     winningTeam: "SFO",
     losingTeam: "DET",
     score: "34 - 31",

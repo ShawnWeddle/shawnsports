@@ -3,6 +3,12 @@ import { type SuperBowlType } from "~/types/ChampTypes";
 export const SuperBowlData: SuperBowlType[] = [
   {
       "winningTeam": "KAN",
+      "losingTeam": "PHI",
+      "score": "? - ?",
+      "romanNumeral": "LIX",
+      "year": 2024,
+  },{
+      "winningTeam": "KAN",
       "losingTeam": "SFO",
       "score": "25 - 22",
       "romanNumeral": "LVIII",

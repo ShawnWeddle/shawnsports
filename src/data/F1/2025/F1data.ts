@@ -45,7 +45,7 @@ export const raceLocations2025 = [
   "Abu Dhabi",
 ] as const;
 
-export const raceCountryCodes: { [Key in RaceLocation24Type] : string} = {
+export const raceCountryCodes: { [Key in RaceLocation25Type] : string} = {
   Bahrain: "BH",
   "Saudi Arabia": "SA",
   Australia: "AU",
@@ -71,11 +71,11 @@ export const raceCountryCodes: { [Key in RaceLocation24Type] : string} = {
   Qatar: "QA",
   "Abu Dhabi": "AE",
 }
-export type DriverCode24Type = typeof driverCodes2025[number];
-export type ConstructorName24Type = typeof constructorNames2025[number];
-export type RaceLocation24Type = typeof raceLocations2025[number];
+export type DriverCode25Type = typeof driverCodes2025[number];
+export type ConstructorName25Type = typeof constructorNames2025[number];
+export type RaceLocation25Type = typeof raceLocations2025[number];
 
-export const driverToConstructor2025 = (driver: DriverCode24Type ) : ConstructorName24Type => {
+export const driverToConstructor2025 = (driver: DriverCode25Type ) : ConstructorName25Type => {
   switch(driver){
     case "DOO":
     case "GAS":
@@ -110,7 +110,7 @@ export const driverToConstructor2025 = (driver: DriverCode24Type ) : Constructor
   }
 }
 
-// export const allToConstructor2025 = (input: DriverCode24Type | ConstructorName24Type ) : ConstructorName24Type => {
+// export const allToConstructor2025 = (input: DriverCode25Type | ConstructorName25Type ) : ConstructorName25Type => {
 //   switch(input){
 //     case "DOO":
 //     case "GAS":
@@ -161,7 +161,7 @@ export const driverToConstructor2025 = (driver: DriverCode24Type ) : Constructor
 //   }
 // }
 
-// export const constructorToDrivers2025 = (constructor: ConstructorName24Type) : DriverCode24Type[] => {
+// export const constructorToDrivers2025 = (constructor: ConstructorName25Type) : DriverCode25Type[] => {
 //   switch(constructor){
 
 //     case "Alpine":
@@ -188,7 +188,7 @@ export const driverToConstructor2025 = (driver: DriverCode24Type ) : Constructor
 
 // }
 
-export const driverNames2025: { [Key in DriverCode24Type] : { first: string, last: string}} = {
+export const driverNames2025: { [Key in DriverCode25Type] : { first: string, last: string}} = {
   ALB : { first: "Alex", last: "Albon"},
   ALO : { first: "Fernando", last: "Alonso"},
   ANT : { first: "Kimi", last: "Antonelli"},
@@ -211,7 +211,7 @@ export const driverNames2025: { [Key in DriverCode24Type] : { first: string, las
   VER : { first: "Max", last: "Verstappen"},
 }
 
-// export const driverTcamColors2025: { [Key in DriverCode24Type] : "Black" | "Yellow" | "Cyan"} = {
+// export const driverTcamColors2025: { [Key in DriverCode25Type] : "Black" | "Yellow" | "Cyan"} = {
 //   ALB: "Black", ALO: "Yellow", BOT: "Black", GAS: "Yellow", HAM: "Yellow", 
 //   HUL: "Yellow", LEC: "Black", MAG: "Black", NOR: "Yellow", OCO: "Black", 
 //   PIA: "Black", PER: "Yellow", RIC: "Black", RUS: "Black", SAI: "Yellow", 
@@ -242,7 +242,7 @@ export const calculatePoints = (place: number, sprint: boolean, fastestLap: bool
   }
 }
 
-export const beatTeammate = (driver: DriverCode24Type, teammates: DriverCode24Type[], results: DriverCode24Type[]) : boolean | undefined => {
+export const beatTeammate = (driver: DriverCode25Type, teammates: DriverCode25Type[], results: DriverCode25Type[]) : boolean | undefined => {
   const driverFinish = results.indexOf(driver);
 
   if(driverFinish === -1) return undefined;

@@ -66,7 +66,7 @@ const RankF1 = () => {
           <div
             className={cn("m-1 rounded p-1 text-center font-semibold", {
               "bg-yellow-200": rank === 1,
-              "bg-gray-400": rank === 2,
+              "bg-gray-500": rank === 2,
               "bg-amber-600": rank === 3,
             })}
           >

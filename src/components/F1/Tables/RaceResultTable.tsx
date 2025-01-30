@@ -53,10 +53,10 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
             key={`c-${cellIndex}`}
             className={cn(
               {
-                "bg-teal-100": sprint,
+                "bg-lightTeal/50": sprint,
               },
               {
-                "bg-teal-200":
+                "bg-lightTeal":
                   sprint &&
                   finishPosition !== "DNF" &&
                   finishPosition !== "DNR" &&
@@ -103,7 +103,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
             key={`c-${cellIndex}`}
             className={cn(
               {
-                "bg-teal-100": sprint,
+                "bg-lightTeal/50": sprint,
               },
               { hidden: sprint && raceMode === "Grands Prix Only" },
               { hidden: !sprint && raceMode === "Sprint Races Only" }
@@ -121,16 +121,16 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
           className={cn(
             "text-center",
             {
-              "bg-yellow-200/60": rowIndex === 0,
+              "bg-gold/60": rowIndex === 0,
             },
             {
-              "bg-gray-400/60": rowIndex === 1,
+              "bg-silver/60": rowIndex === 1,
             },
             {
-              "bg-amber-600/60": rowIndex === 2,
+              "bg-bronze/60": rowIndex === 2,
             },
             {
-              "bg-emerald-100": rowIndex > 2 && rowIndex < 10,
+              "bg-superEmerald": rowIndex > 2 && rowIndex < 10,
             },
             {
               "border-b-2 border-black": rowIndex === 9,

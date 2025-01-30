@@ -23,7 +23,7 @@ export const RunningResultTable: React.FC<RaceModeProps> = (
           className={cn(
             "w-8 px-2 text-center",
             {
-              "bg-teal-100": sprint,
+              "bg-lightTeal/50": sprint,
             },
             { hidden: sprint && raceMode === "Grands Prix Only" },
             { hidden: !sprint && raceMode === "Sprint Races Only" }

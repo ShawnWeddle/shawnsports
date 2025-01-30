@@ -44,6 +44,11 @@ const config = {
         mls: "#808080",
         cfl: "#7000A8",
         ylo: "#E0E000",
+        gold: "#FFCC00",
+        silver: "#9EA7B0",
+        bronze: "#FF8C00",
+        lightTeal: "#99FFEC",
+        superEmerald: "#CCFFE4",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

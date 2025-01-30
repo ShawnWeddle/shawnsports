@@ -26,16 +26,16 @@ export const DriverResultTable: React.FC<RaceModeProps> = (
             "w-10",
             "text-center",
             {
-              "bg-yellow-200/60": !sprint && finishPosition === 1,
+              "bg-gold/60": !sprint && finishPosition === 1,
             },
             {
-              "bg-gray-400/60": !sprint && finishPosition === 2,
+              "bg-silver/60": !sprint && finishPosition === 2,
             },
             {
-              "bg-amber-600/60": !sprint && finishPosition === 3,
+              "bg-bronze/60": !sprint && finishPosition === 3,
             },
             {
-              "bg-emerald-100":
+              "bg-superEmerald":
                 !sprint &&
                 finishPosition !== "DNF" &&
                 finishPosition !== "DNR" &&
@@ -44,7 +44,7 @@ export const DriverResultTable: React.FC<RaceModeProps> = (
                 finishPosition > 3,
             },
             {
-              "bg-teal-200":
+              "bg-lightTeal":
                 sprint &&
                 finishPosition !== "DNF" &&
                 finishPosition !== "DNR" &&
@@ -52,14 +52,14 @@ export const DriverResultTable: React.FC<RaceModeProps> = (
                 finishPosition < 9,
             },
             {
-              "bg-teal-100":
+              "bg-lightTeal/50":
                 sprint &&
                 (finishPosition === "DNF" ||
                   finishPosition === "DNR" ||
                   finishPosition === "DQ" ||
                   finishPosition > 8),
             },
-            { "text-red-500": finishPosition === "DNF" },
+            { "text-formulaOne": finishPosition === "DNF" },
             { "bg-black text-white": finishPosition === "DQ" },
             { hidden: sprint && raceMode === "Grands Prix Only" },
             { hidden: !sprint && raceMode === "Sprint Races Only" }

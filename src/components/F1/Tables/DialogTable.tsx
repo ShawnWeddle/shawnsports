@@ -35,6 +35,8 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
       const driverDidScore = driverPoints !== 0;
       const driverDidDNF = DNFs.map((dac) => dac.driver).includes(driver);
       const driverDidDQ = DQs && DQs.map((dac) => dac.driver).includes(driver);
+      const driverDidFinishNoScore =
+        !driverDidScore && !driverDidDNF && !driverDidDQ;
       return (
         <TableRowNoHover
           key={index}
@@ -59,31 +61,35 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
             className={cn(
               "px-3 text-center",
               {
-                "bg-teal-200": sprint && driverDidScore,
+                "bg-lightTeal": sprint && driverDidScore,
               },
               {
-                "bg-yellow-200/60": !sprint && index === 0,
+                "bg-gold/60": !sprint && index === 0,
               },
               {
-                "bg-gray-400/60": !sprint && index === 1,
+                "bg-silver/60": !sprint && index === 1,
               },
               {
-                "bg-amber-600/60": !sprint && index === 2,
+                "bg-bronze/60": !sprint && index === 2,
               },
               {
-                "bg-emerald-100": !sprint && index < 10 && index > 2,
+                "bg-superEmerald": !sprint && index < 10 && index > 2,
               },
               {
-                "bg-red-500/50 text-white": driverDidDNF,
+                "bg-formulaOne/50 text-white": driverDidDNF,
               },
               {
                 "bg-black text-white": driverDidDQ,
+              },
+              {
+                "bg-gray-100": driverDidFinishNoScore,
               }
             )}
           >
             {driverDidScore && driverPoints}
             {driverDidDNF && "DNF"}
             {driverDidDQ && "DQ"}
+            {driverDidFinishNoScore && "-"}
           </TableCell>
         </TableRowNoHover>
       );
@@ -91,7 +97,7 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
   });
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center gap-4">
       <Table>
         <TableHeader>
           <TableRowNoHover>
@@ -106,8 +112,10 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
         <TableBody>
           {polePosition && (
             <TableRowNoHover>
-              <TableCell>Pole:</TableCell>
-              <TableCell>
+              <TableCell className="pr-2 text-lg font-semibold">
+                Pole:
+              </TableCell>
+              <TableCell className="pl-1 text-lg">
                 {driverNames2024[polePosition.driver].first}{" "}
                 {driverNames2024[polePosition.driver].last}
               </TableCell>
@@ -115,8 +123,10 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
           )}
           {fastestLap && (
             <TableRowNoHover className="py-2">
-              <TableCell>Fastest Lap:</TableCell>
-              <TableCell>
+              <TableCell className="pr-2 text-lg font-semibold">
+                Fastest Lap:
+              </TableCell>
+              <TableCell className="pl-1 text-lg">
                 {driverNames2024[fastestLap.driver].first}{" "}
                 {driverNames2024[fastestLap.driver].last}
               </TableCell>

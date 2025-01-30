@@ -42,7 +42,7 @@ const F1TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
         <div
           className={cn("w-full pb-0.5", {
             "bg-gray-200": !sprint,
-            "bg-teal-200": sprint,
+            "bg-lightTeal": sprint,
           })}
         >
           <button

@@ -8,7 +8,6 @@ import { Card } from "~/components/ui/card";
 import {
   Table,
   TableBody,
-  TableHead,
   TableHeader,
   TableRowNoHover,
 } from "~/components/ui/table";

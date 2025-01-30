@@ -173,7 +173,13 @@ const SuperLoserList: React.FC = () => {
             I believe this list is complete for now, but I am not 100% sure.
           </CardDescription>
           <CardDescription>
-            I estimate one or more players will join this list every year.
+            I estimate one or more players will join this list every year on
+            average.
+          </CardDescription>
+          <CardDescription>
+            Either <span className="font-semibold">Samaje Perine</span> or{" "}
+            <span className="font-semibold">Oren Burks</span> will join this
+            list after Super Bowl LIX.
           </CardDescription>
         </CardHeader>
       </Card>
@@ -190,7 +196,7 @@ const SuperLoserList: React.FC = () => {
       </div>
       <Card className="my-4 bg-nfl/10 p-1 shadow sm:p-4">
         <div className="grid grid-cols-10 gap-1">
-          {[1,1,1,1,1,1].map((item, index) => {
+          {[1, 1, 1, 1, 1, 1].map((item, index) => {
             return <div key={index}></div>;
           })}
           {SBgridItems}

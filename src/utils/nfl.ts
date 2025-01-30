@@ -14,6 +14,14 @@ export const nameMatcherNFL = (checkTeam: AllNFLTeamType, winningTeam: AllNFLTea
     isTeam = true;
   }
   if (
+    (checkTeam === "WAS" &&
+      [losingTeam, winningTeam].includes("WRS")) ||
+    (checkTeam === "WRS" &&
+      [losingTeam, winningTeam].includes("WAS"))
+  ) {
+    isTeam = true;
+  }
+  if (
     (checkTeam === "STL" &&
       [losingTeam, winningTeam].includes("LAR")) ||
     (checkTeam === "LAR" &&
@@ -44,7 +52,10 @@ export const nflTeamPreNames = (checkTeam: AllNFLTeamType): string => {
   switch(checkTeam){
     case "TEN":
     case "HOL":
-      return "Titans/Oilers"
+      return "Titans/Oilers";
+    case "WAS":
+    case "WRS":
+      return "Commanders/Redskins";
     default:
       return NFLteamData[checkTeam].name
   }

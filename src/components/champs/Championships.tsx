@@ -8,6 +8,7 @@ import {
   GlobalSportData,
   modalNamer,
 } from "~/data/universal/champData";
+import { IoStar } from "react-icons/io5";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
 import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
@@ -160,6 +161,9 @@ const ChampionshipList: React.FC<ChampProps> = (props: ChampProps) => {
               })}
             >
               {year}
+            </div>
+            <div className="flex justify-center text-[#FFCC00]">
+              {wonChamp && <IoStar />}
             </div>
           </div>
         </TableCell>

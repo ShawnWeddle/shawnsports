@@ -1,19 +1,10 @@
 import { useState } from "react";
 import { cn } from "~/lib/utils";
-import {
-  MoveRight,
-  MoveLeft,
-  MoveUp,
-  MoveDown,
-  ArrowRightLeft,
-} from "lucide-react";
+import { MoveUp, MoveDown, ArrowRightLeft } from "lucide-react";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableHead,
-  TableHeader,
   TableRowNoHover,
 } from "~/components/ui/table";
 import {
@@ -29,7 +20,6 @@ import {
   type ConstructorOrderType,
   type DriverOrderType,
 } from "~/data/F1/2025/F1rank";
-import { access } from "fs";
 
 interface RowProps {
   team: ConstructorName25Type;
@@ -65,9 +55,9 @@ const RankF1 = () => {
         <TableCell>
           <div
             className={cn("m-1 rounded p-1 text-center font-semibold", {
-              "bg-yellow-200": rank === 1,
-              "bg-gray-500": rank === 2,
-              "bg-amber-600": rank === 3,
+              "bg-[#FFCC00]": rank === 1,
+              "bg-[#9EA7B0]": rank === 2,
+              "bg-[#FF8C00]": rank === 3,
             })}
           >
             {rank}

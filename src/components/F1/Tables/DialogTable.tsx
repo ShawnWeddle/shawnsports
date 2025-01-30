@@ -1,9 +1,5 @@
 import { cn } from "~/lib/utils";
-import {
-  driverToConstructor2024,
-  driverNames2024,
-  calculatePoints,
-} from "~/data/F1/2024/F1data24";
+import { driverNames2024, calculatePoints } from "~/data/F1/2024/F1data24";
 import { F1styleData } from "~/data/F1/2024/F1styleData24";
 import { type F1RaceType } from "~/data/F1/2024/raceData";
 import {
@@ -36,12 +32,18 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
       driver === fastestLap?.driver
     );
     if (completed) {
+      const driverDidScore = driverPoints !== 0;
+      const driverDidDNF = DNFs.map((dac) => dac.driver).includes(driver);
+      const driverDidDQ = DQs && DQs.map((dac) => dac.driver).includes(driver);
       return (
         <TableRowNoHover
           key={index}
           className={cn("w-auto font-semibold sm:text-base")}
         >
-          <TableCell className="px-1 text-center"> {index + 1} </TableCell>
+          <TableCell className="px-1 text-center">
+            {" "}
+            {!driverDidDNF && !driverDidDQ ? index + 1 : "-"}{" "}
+          </TableCell>
           <TableCell
             className={cn("px-3", {
               [F1styleData[constructor].primaryBackground]: true,
@@ -57,7 +59,7 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
             className={cn(
               "px-3 text-center",
               {
-                "bg-teal-200": sprint && driverPoints !== 0,
+                "bg-teal-200": sprint && driverDidScore,
               },
               {
                 "bg-yellow-200/60": !sprint && index === 0,
@@ -72,19 +74,16 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
                 "bg-emerald-100": !sprint && index < 10 && index > 2,
               },
               {
-                "bg-red-500/50 text-white": DNFs.map(
-                  (dac) => dac.driver
-                ).includes(driver),
+                "bg-red-500/50 text-white": driverDidDNF,
               },
               {
-                "bg-black text-white":
-                  DQs && DQs.map((dac) => dac.driver).includes(driver),
+                "bg-black text-white": driverDidDQ,
               }
             )}
           >
-            {driverPoints !== 0 && driverPoints}
-            {DNFs.map((dac) => dac.driver).includes(driver) && "DNF"}
-            {DQs && DQs.map((dac) => dac.driver).includes(driver) && "DQ"}
+            {driverDidScore && driverPoints}
+            {driverDidDNF && "DNF"}
+            {driverDidDQ && "DQ"}
           </TableCell>
         </TableRowNoHover>
       );
@@ -103,18 +102,28 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
         </TableHeader>
         <TableBody>{driverPointsPairs}</TableBody>
       </Table>
-      {polePosition && (
-        <div className="mt-1">
-          Pole: {driverNames2024[polePosition.driver].first}{" "}
-          {driverNames2024[polePosition.driver].last}
-        </div>
-      )}
-      {fastestLap && (
-        <div>
-          Fastest Lap: {driverNames2024[fastestLap.driver].first}{" "}
-          {driverNames2024[fastestLap.driver].last}
-        </div>
-      )}
+      <Table>
+        <TableBody>
+          {polePosition && (
+            <TableRowNoHover>
+              <TableCell>Pole:</TableCell>
+              <TableCell>
+                {driverNames2024[polePosition.driver].first}{" "}
+                {driverNames2024[polePosition.driver].last}
+              </TableCell>
+            </TableRowNoHover>
+          )}
+          {fastestLap && (
+            <TableRowNoHover className="py-2">
+              <TableCell>Fastest Lap:</TableCell>
+              <TableCell>
+                {driverNames2024[fastestLap.driver].first}{" "}
+                {driverNames2024[fastestLap.driver].last}
+              </TableCell>
+            </TableRowNoHover>
+          )}
+        </TableBody>
+      </Table>
     </div>
   );
 };

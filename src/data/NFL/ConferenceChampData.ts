@@ -4,8 +4,8 @@ export const AFCChampData: SuperBowlType[] = [
   {
     winningTeam: "KAN",
     losingTeam: "BUF",
-    score: "? - ?",
-    wonChamp: true,
+    score: "32 - 29",
+    wonChamp: false,
     year: 2024
   },{
     winningTeam: "KAN",
@@ -391,8 +391,8 @@ export const NFCChampData: SuperBowlType[] = [
   {
     winningTeam: "PHI",
     losingTeam: "WAS",
-    score: "? - ?",
-    wonChamp: false,
+    score: "55 - 23",
+    wonChamp: true,
     year: 2024
   },{
     winningTeam: "SFO",

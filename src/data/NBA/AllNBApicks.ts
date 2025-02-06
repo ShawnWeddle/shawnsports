@@ -424,12 +424,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   }],
 },
 "GSW":{
-  "2025":[{
-    nativeTeam: "GSW",
-    pickCode: "GSW-2025",
-    year: 2025,
-    notes: ["Golden State has not yet traded this pick."],
-  },],
+  "2025":[],
   "2026":[{
     nativeTeam: "GSW",
     pickCode: "GSW-2026",
@@ -668,7 +663,12 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   }],
 },
 "MIA":{
-  "2025":[],
+  "2025":[{
+    nativeTeam: "GSW",
+    pickCode: "GSW-2025",
+    year: 2025,
+    notes: ["Traded from Golden State to Miami."],
+  },],
   "2026":[{
     nativeTeam: "MIA",
     pickCode: "MIA-2026",
@@ -777,6 +777,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     year: 2026,
     notes: ["New Orleans will receive the greater of their native pick and Milwaukee's pick."],
     swap: "positive",
+  },{
+    nativeTeam: "IND",
+    pickCode: "IND-2026",
+    year: 2026,
+    notes: ["Traded from Indiana to Toronto to New Orleans."],
   },],
   "2027":[{
     nativeTeam: "MIL",
@@ -1223,11 +1228,6 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "TOR-2026",
     year: 2026,
     notes: ["Toronto has not yet traded this pick."],
-  },{
-    nativeTeam: "IND",
-    pickCode: "IND-2026",
-    year: 2026,
-    notes: ["Traded from Indiana to Toronto."],
   },],
   "2027":[{
     nativeTeam: "TOR",

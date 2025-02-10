@@ -207,6 +207,11 @@ export const SuperLoserData: SuperLoserType[] = [
     losses: [ 29, 37 ],
   },
   {
+    firstName: "Samaje",
+    lastName: "Perine",
+    losses: [ 56, 59 ],
+  },
+  {
     firstName: "Randy",
     lastName: "Poltl",
     losses: [ 9, 12 ],
@@ -255,11 +260,6 @@ export const SuperLoserData: SuperLoserType[] = [
     firstName: "Levine",
     lastName: "Toilolo",
     losses: [ 51, 54 ],
-  },
-  {
-    firstName: "Peter",
-    lastName: "Towns",
-    losses: [ 49, 53 ],
   },
   {
     firstName: "Will",

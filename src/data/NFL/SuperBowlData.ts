@@ -4,7 +4,7 @@ export const SuperBowlData: SuperBowlType[] = [
   {
       "winningTeam": "PHI",
       "losingTeam": "KAN",
-      "score": "? - ?",
+      "score": "40 - 22",
       "romanNumeral": "LIX",
       "year": 2024,
   },{

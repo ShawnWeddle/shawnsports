@@ -23,7 +23,6 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -90,6 +89,9 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
         <MenubarContent>
           <MenubarItem asChild>
             <Link href="/nfl/schedule">Schedule</Link>
+          </MenubarItem>
+          <MenubarItem asChild>
+            <Link href="/nfl/draft-chart">Draft Chart</Link>
           </MenubarItem>
           <MenubarItem asChild>
             <Link href="/nfl/super-losers">Super Losers</Link>

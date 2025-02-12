@@ -15,8 +15,6 @@ import {
   TableRowNoHover,
 } from "~/components/ui/table";
 
-import { createOrder } from "~/data/NBA/newLotteryWork";
-
 const NBApickTable: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [activePick, setActivePick] = useState<PickType | null>(null);
@@ -24,8 +22,6 @@ const NBApickTable: React.FC = () => {
   const activePickNotes = activePick?.notes.map((note, index) => {
     return <p key={index}>{note}</p>;
   });
-
-  console.log(createOrder(["PHO", "DET", "UTA", "HOU", "LAC", "OKC"]));
 
   const NBArows = Object.entries(AllNBAPicks).map((teamPicks, rowIndex) => {
     const activeTeamCode = TeamNameEnum.parse(teamPicks[0]);
@@ -88,34 +84,43 @@ const NBApickTable: React.FC = () => {
       const teamLocation = NBAteamData[nativeTeam].location;
       const teamName = NBAteamData[nativeTeam].name;
       return (
-        year.toString() +
-        " " +
-        teamLocation +
-        " " +
-        teamName +
-        " First Round Pick"
+        <span>
+          {year}{" "}
+          <span
+            className={cn("rounded border-b border-r px-1 py-0.5", {
+              [NBAstyleData[nativeTeam].primaryBackground]: true,
+              [NBAstyleData[nativeTeam].secondaryBorder]: true,
+              [NBAstyleData[nativeTeam].simpleText]: true,
+            })}
+          >
+            {teamLocation + " " + teamName}
+          </span>{" "}
+          First Round Pick
+        </span>
       );
     } else {
-      return "";
+      return <span></span>;
     }
   };
 
   return (
     <>
-      <Dialog
-        open={dialogOpen}
-        onOpenChange={(isOpen) => {
-          if (isOpen === true) return;
-          setDialogOpen(false);
-        }}
-      >
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>{modalNamer(activePick)}</DialogTitle>
-          </DialogHeader>
-          {activePickNotes}
-        </DialogContent>
-      </Dialog>
+      {activePick && (
+        <Dialog
+          open={dialogOpen}
+          onOpenChange={(isOpen) => {
+            if (isOpen === true) return;
+            setDialogOpen(false);
+          }}
+        >
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{modalNamer(activePick)}</DialogTitle>
+            </DialogHeader>
+            {activePickNotes}
+          </DialogContent>
+        </Dialog>
+      )}
       <h1 className="mx-2 my-4 text-center text-2xl font-semibold sm:text-4xl">
         Future NBA First Round Picks
       </h1>

@@ -4,11 +4,15 @@ import { NFLteamData, type NFLTeamType } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { type NFLPickType, NFLpickOrderByRound } from "~/data/NFL/NFL2024picks";
 import DraftChartModal from "./DraftChartModal";
+import { T } from "~/data/NFL/t";
+import { type NFLActivePickType } from "~/data/NFL/NFL2024picks";
 
 type ActiveTeamType = NFLTeamType | undefined;
 
 const DraftChart: React.FC = () => {
   const dialog = useRef<HTMLDialogElement>(null);
+
+  const newT = [...T];
 
   const [activeTeams, setActiveTeams] = useState<
     [ActiveTeamType, ActiveTeamType]

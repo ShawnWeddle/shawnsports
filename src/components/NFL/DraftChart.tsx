@@ -2,23 +2,19 @@ import { useRef, useState, Fragment } from "react";
 import { cn } from "~/lib/utils";
 import { NFLteamData, type NFLTeamType } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
-import { type NFLPickType, NFLpickOrderByRound } from "~/data/NFL/NFL2024picks";
+import { type NFLActivePickType, NFLpicks2025 } from "~/data/NFL/NFLpicks2025";
 import DraftChartModal from "./DraftChartModal";
-import { T } from "~/data/NFL/t";
-import { type NFLActivePickType } from "~/data/NFL/NFL2024picks";
 
 type ActiveTeamType = NFLTeamType | undefined;
 
 const DraftChart: React.FC = () => {
   const dialog = useRef<HTMLDialogElement>(null);
 
-  const newT = [...T];
-
   const [activeTeams, setActiveTeams] = useState<
     [ActiveTeamType, ActiveTeamType]
   >([undefined, undefined]);
 
-  const handleSet = (pick: NFLPickType) => {
+  const handleSet = (pick: NFLActivePickType) => {
     const { pickNum, nativeTeam, round, local, value, tradedTeam } = pick;
     const activeTeam = tradedTeam ?? nativeTeam;
 
@@ -51,7 +47,7 @@ const DraftChart: React.FC = () => {
     return;
   };
 
-  const createCell = (pick: NFLPickType | undefined) => {
+  const createCell = (pick: NFLActivePickType | undefined) => {
     if (pick) {
       const { pickNum, nativeTeam, round, local, value, tradedTeam } = pick;
       const activeTeam = tradedTeam ?? nativeTeam;
@@ -83,13 +79,13 @@ const DraftChart: React.FC = () => {
   };
 
   const createRow = (local: number, width: "FULL" | "TOP" | "BOTTOM") => {
-    const round1 = NFLpickOrderByRound[0];
-    const round2 = NFLpickOrderByRound[1];
-    const round3 = NFLpickOrderByRound[2];
-    const round4 = NFLpickOrderByRound[3];
-    const round5 = NFLpickOrderByRound[4];
-    const round6 = NFLpickOrderByRound[5];
-    const round7 = NFLpickOrderByRound[6];
+    const round1 = NFLpicks2025[0];
+    const round2 = NFLpicks2025[1];
+    const round3 = NFLpicks2025[2];
+    const round4 = NFLpicks2025[3];
+    const round5 = NFLpicks2025[4];
+    const round6 = NFLpicks2025[5];
+    const round7 = NFLpicks2025[6];
 
     if (width === "TOP") {
       return (

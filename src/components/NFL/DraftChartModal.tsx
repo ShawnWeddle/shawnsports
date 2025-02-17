@@ -2,11 +2,7 @@ import { useState } from "react";
 import { cn } from "~/lib/utils";
 import { NFLteamData, type NFLTeamType } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
-import {
-  type NFLPickType,
-  type NFLActivePickType,
-  NFLpickOrderByRound,
-} from "~/data/NFL/NFL2024picks";
+import { type NFLActivePickType, NFLpicks2025 } from "~/data/NFL/NFLpicks2025";
 
 type ActivePickType = {
   team: NFLTeamType;
@@ -20,7 +16,7 @@ const DraftChartModal = (props: DraftChartModalProps) => {
   const team1 = props.teams[1];
 
   const activePickList = (team: NFLTeamType) => {
-    return NFLpickOrderByRound.flat()
+    return NFLpicks2025.flat()
       .filter((pick) => {
         const { nativeTeam, tradedTeam } = pick;
         const activeTeam = tradedTeam ?? nativeTeam;
@@ -81,7 +77,7 @@ const DraftChartModal = (props: DraftChartModalProps) => {
   };
 
   const teamPickList = (team: NFLTeamType, num: 0 | 1) => {
-    const pointsTotal = NFLpickOrderByRound.flat()
+    const pointsTotal = NFLpicks2025.flat()
       .filter((pick) => {
         const { nativeTeam, tradedTeam } = pick;
         const activeTeam = tradedTeam ?? nativeTeam;

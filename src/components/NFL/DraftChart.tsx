@@ -15,7 +15,7 @@ const DraftChart: React.FC = () => {
   >([undefined, undefined]);
 
   const handleSet = (pick: NFLActivePickType) => {
-    const { pickNum, nativeTeam, round, local, value, tradedTeam } = pick;
+    const { nativeTeam, tradedTeam } = pick;
     const activeTeam = tradedTeam ?? nativeTeam;
 
     if (!activeTeams[0]) {
@@ -49,11 +49,11 @@ const DraftChart: React.FC = () => {
 
   const createCell = (pick: NFLActivePickType | undefined) => {
     if (pick) {
-      const { pickNum, nativeTeam, round, local, value, tradedTeam } = pick;
+      const { pickNum, nativeTeam, value, tradedTeam } = pick;
       const activeTeam = tradedTeam ?? nativeTeam;
 
       return (
-        <td key={pickNum} className="border border-black p-0">
+        <td key={pickNum} className="m-0 border p-0">
           <button
             className={cn("flex justify-start", {
               [NFLstyleData[activeTeam].primaryBackground]: [
@@ -138,7 +138,7 @@ const DraftChart: React.FC = () => {
 
   const tableHead = (width: number) => {
     const cellHead = (round: number) => (
-      <th key={round}>
+      <th key={round} className="p-0">
         <p className="inline-block w-6 text-center">#</p>
         <p className="inline-block w-8 text-center">T</p>
         <p className="inline-block w-8 text-center">V</p>

@@ -542,6 +542,7 @@ export const NFLpicks2025: NFLActivePickType[][] = [
     round: 3,
     local: 2,
     value: 76,
+    tradedTeam: "KAN",
   },
   {
     active: false,

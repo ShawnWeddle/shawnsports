@@ -137,6 +137,7 @@ const NBApickTable: React.FC = () => {
                 <TableHead className="px-0">2029</TableHead>
                 <TableHead className="px-0">2030</TableHead>
                 <TableHead className="px-0">2031</TableHead>
+                <TableHead className="px-0">2032</TableHead>
               </TableRowNoHover>
             </TableHeader>
             <TableBody className="text-xs sm:text-base">{NBArows}</TableBody>

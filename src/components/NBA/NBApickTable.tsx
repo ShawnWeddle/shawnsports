@@ -35,7 +35,10 @@ const NBApickTable: React.FC = () => {
               "border-x-2 first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2",
               NBAstyleData[pick.nativeTeam]?.primaryBackground,
               NBAstyleData[pick.nativeTeam]?.simpleText,
-              NBAstyleData[pick.nativeTeam]?.secondaryBorder
+              NBAstyleData[pick.nativeTeam]?.secondaryBorder,
+              {
+                italic: pick.swap !== undefined,
+              }
             )}
             onClick={() => {
               setActivePick(pick);
@@ -43,9 +46,6 @@ const NBApickTable: React.FC = () => {
             }}
           >
             {pick.nativeTeam}
-            {pick.swap && pick.swap === "positive" && "⭡"}
-            {pick.swap && pick.swap === "negative" && "⭣"}
-            {pick.swap && pick.swap === "neutral" && "-"}
           </button>
         );
       });
@@ -149,3 +149,9 @@ const NBApickTable: React.FC = () => {
 };
 
 export default NBApickTable;
+
+/*
+            {pick.swap && pick.swap === "positive" && "⭡"}
+            {pick.swap && pick.swap === "negative" && "⭣"}
+            {pick.swap && pick.swap === "neutral" && "-"}
+*/

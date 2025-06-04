@@ -955,7 +955,7 @@ export const NLCSData: WorldSeriesType[] = [
     losingTeam: "NYM",
     score: "4-2",
     year: 2024,
-    wonChamp: false,
+    wonChamp: true,
   },{
     winningTeam: "ARI",
     losingTeam: "PHI",

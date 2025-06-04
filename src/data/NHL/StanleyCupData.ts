@@ -4,6 +4,11 @@ export const StanleyCupData: StanleyCupSeriesType[] = [
   {
     winningTeam: "FLA",
     losingTeam: "EDM",
+    score: "4-?",
+    year: 2025
+  },{
+    winningTeam: "FLA",
+    losingTeam: "EDM",
     score: "4-3",
     year: 2024
   },{
@@ -497,6 +502,12 @@ export const StanleyCupData: StanleyCupSeriesType[] = [
 export const EastData: StanleyCupSeriesType[] = [
   {
     winningTeam: "FLA",
+    losingTeam: "CAR",
+    score: "4-1",
+    year: 2025,
+    wonChamp: false,
+  },{
+    winningTeam: "FLA",
     losingTeam: "NYR",
     score: "4-2",
     year: 2024,
@@ -758,6 +769,12 @@ export const EastData: StanleyCupSeriesType[] = [
 
 export const WestData: StanleyCupSeriesType[] = [
   {
+    winningTeam: "EDM",
+    losingTeam: "DAL",
+    score: "4-1",
+    year: 2025,
+    wonChamp: false,
+  },{
     winningTeam: "EDM",
     losingTeam: "DAL",
     score: "4-2",

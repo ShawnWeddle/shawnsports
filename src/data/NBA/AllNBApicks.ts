@@ -709,12 +709,22 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   },],
 },
 "MEM":{
-  "2025":[],
+  "2025":[{
+    nativeTeam: "ORL",
+    pickCode: "ORL-2025",
+    year: 2025,
+    notes: ["Traded from Orlando to Memphis."],
+  },],
   "2026":[{
     nativeTeam: "MEM",
     pickCode: "MEM-2026",
     year: 2026,
-    notes: ["Memphis will receive the greater of their native pick and (the lesser of Orlando's pick and Phoenix's pick)."],
+    notes: ["Memphis has not yet traded this pick."],
+  },{
+    nativeTeam: "ORL",
+    pickCode: "ORL-2026",
+    year: 2026,
+    notes: ["Traded from Orlando to Memphis.", "Memphis will receive the greater of Orlando's pick and Phoenix's pick."],
     swap: "positive",
   },],
   "2027":[{
@@ -728,6 +738,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "MEM-2028",
     year: 2028,
     notes: ["Memphis has not yet traded this pick."],
+  },{
+    nativeTeam: "ORL",
+    pickCode: "ORL-2028",
+    year: 2028,
+    notes: ["Traded from Orlando to Memphis."],
   },],
   "2029":[{
     nativeTeam: "MEM",
@@ -741,6 +756,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     year: 2030,
     notes: ["Memphis will receive the greater of their native pick and (the lesser of Phoenix's pick and Washington's pick)."],
     swap: "positive",
+  },{
+    nativeTeam: "ORL",
+    pickCode: "ORL-2030",
+    year: 2030,
+    notes: ["Traded from Orlando to Memphis."],
   },],
   "2031":[{
     nativeTeam: "MEM",
@@ -1056,47 +1076,26 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
 },
 "ORL":{
   "2025":[{
-    nativeTeam: "ORL",
-    pickCode: "ORL-2025",
-    year: 2025,
-    notes: ["Orlando has not yet traded this pick."],
-  },{
     nativeTeam: "DEN",
     pickCode: "DEN-2025",
     year: 2025,
     notes: ["Traded from Denver to Orlando."],
   },],
-  "2026":[{
-    nativeTeam: "ORL",
-    pickCode: "ORL-2026",
-    year: 2026,
-    notes: ["Orlando will receive the greater of their native pick and Phoenix's pick."],
-    swap: "positive",
-  },],
+  "2026":[],
   "2027":[{
     nativeTeam: "ORL",
     pickCode: "ORL-2027",
     year: 2027,
     notes: ["Orlando has not yet traded this pick."],
   },],
-  "2028":[{
-    nativeTeam: "ORL",
-    pickCode: "ORL-2028",
-    year: 2028,
-    notes: ["Orlando has not yet traded this pick."],
-  },],
+  "2028":[],
   "2029":[{
     nativeTeam: "ORL",
     pickCode: "ORL-2029",
     year: 2029,
     notes: ["Orlando has not yet traded this pick."],
   },],
-  "2030":[{
-    nativeTeam: "ORL",
-    pickCode: "ORL-2030",
-    year: 2030,
-    notes: ["Orlando has not yet traded this pick."],
-  },],
+  "2030":[],
   "2031":[{
     nativeTeam: "ORL",
     pickCode: "ORL-2031",

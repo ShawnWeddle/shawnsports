@@ -37,7 +37,7 @@ const NBApickTable: React.FC = () => {
               NBAstyleData[pick.nativeTeam]?.simpleText,
               NBAstyleData[pick.nativeTeam]?.secondaryBorder,
               {
-                italic: pick.swap !== undefined,
+                "font-bold italic": pick.swap !== undefined,
               }
             )}
             onClick={() => {

@@ -147,7 +147,7 @@ export const NHLteamData: { [Key in AllNHLTeamType] : teamInfoType} = {
   }, "UTA": {
     code: "UTA",
     location: "Utah",
-    name: "Hockey Club",
+    name: "Mammoth",
   }, "VAN": {
     code: "VAN",
     location: "Vancouver",

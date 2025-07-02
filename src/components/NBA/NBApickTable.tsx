@@ -130,7 +130,6 @@ const NBApickTable: React.FC = () => {
             <TableHeader>
               <TableRowNoHover>
                 <TableHead className="px-0">Team</TableHead>
-                <TableHead className="px-0">2025</TableHead>
                 <TableHead className="px-0">2026</TableHead>
                 <TableHead className="px-0">2027</TableHead>
                 <TableHead className="px-0">2028</TableHead>

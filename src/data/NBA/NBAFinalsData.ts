@@ -2,9 +2,9 @@ import { type NBAFinalsSeriesType } from "~/types/ChampTypes";
 
 export const NBAFinalsData: NBAFinalsSeriesType[] = [
   {
-      "winningTeam": "IND",
-      "losingTeam": "OKC",
-      "score": "4-?",
+      "winningTeam": "OKC",
+      "losingTeam": "IND",
+      "score": "4-3",
       "year": 2025
   },{
       "winningTeam": "BOS",

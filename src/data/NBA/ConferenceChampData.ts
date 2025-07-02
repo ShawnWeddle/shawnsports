@@ -340,7 +340,7 @@ export const WesternChampData: NBAFinalsSeriesType[] = [
     losingTeam: "MIN",
     score: "4-1",
     year: 2025,
-    wonChamp: false,
+    wonChamp: true,
   },{
     winningTeam: "DAL",
     losingTeam: "MIN",

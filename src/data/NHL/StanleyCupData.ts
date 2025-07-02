@@ -4,7 +4,7 @@ export const StanleyCupData: StanleyCupSeriesType[] = [
   {
     winningTeam: "FLA",
     losingTeam: "EDM",
-    score: "4-?",
+    score: "4-2",
     year: 2025
   },{
     winningTeam: "FLA",
@@ -505,7 +505,7 @@ export const EastData: StanleyCupSeriesType[] = [
     losingTeam: "CAR",
     score: "4-1",
     year: 2025,
-    wonChamp: false,
+    wonChamp: true,
   },{
     winningTeam: "FLA",
     losingTeam: "NYR",

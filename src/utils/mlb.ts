@@ -39,6 +39,14 @@ export const nameMatcherMLB = (checkTeam: AllMLBTeamType, winningTeam: AllMLBTea
     isTeam = true;
   }
   if (
+    (checkTeam === "CLE" &&
+      [losingTeam, winningTeam].includes("CLI")) ||
+    (checkTeam === "CLI" &&
+      [losingTeam, winningTeam].includes("CLE"))
+  ) {
+    isTeam = true;
+  }
+  if (
     (checkTeam === "LAD" &&
       [losingTeam, winningTeam].includes("BKD")) ||
     (checkTeam === "BKD" &&
@@ -75,6 +83,7 @@ export const nameMatcherMLB = (checkTeam: AllMLBTeamType, winningTeam: AllMLBTea
 
 export const mlbTeamPreNames = (checkTeam: AllMLBTeamType): string => {
   switch(checkTeam){
+    case "CLE":
     case "CLI":
       return "Guardians/Indians"
 

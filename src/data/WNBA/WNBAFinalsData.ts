@@ -1,6 +1,7 @@
 import { type WNBAFinalsSeriesType } from "~/types/ChampTypes";
 
 export const WNBAFinalsData: WNBAFinalsSeriesType[] = [
+  {winningTeam: "LVA", losingTeam:	"PHO", score:"4-0", year: 2025},
   {winningTeam: "NYL", losingTeam:	"MIN", score:"3-2", year: 2024},
   {winningTeam: "LVA", losingTeam:	"NYL", score:"3-1", year: 2023},
   {winningTeam: "LVA", losingTeam:	"CON", score:"3-1", year: 2022},

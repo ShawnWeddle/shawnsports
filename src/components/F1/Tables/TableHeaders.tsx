@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { cn } from "~/lib/utils";
-import { locationHeaders } from "~/data/F1/2024/convert";
+import { locationHeaders } from "~/data/F1/2025/convert";
 import {
   FormulaOneRaceResults,
   type F1RaceType,
-} from "~/data/F1/2024/raceData";
-import { type RaceModeProps } from "~/data/F1/2024/F1data24";
+} from "~/data/F1/2025/raceData";
+import { type RaceModeProps } from "~/data/F1/2025/F1data";
 import { ReactCountryFlag } from "react-country-flag";
-import { raceCountryCodes } from "~/data/F1/2024/F1data24";
+import { raceCountryCodes } from "~/data/F1/2025/F1data";
 import { Dialog } from "~/components/ui/dialog";
 import DialogModalContent from "~/components/Page/DialogModal";
 import { TableHead } from "~/components/ui/table";
@@ -74,7 +74,7 @@ const F1TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
     if (inputRace) {
       const { location, sprint } = inputRace;
       const final = sprint ? " Sprint Race" : " Grand Prix";
-      return "2024 " + location + final;
+      return "2025 " + location + final;
     } else {
       return "";
     }

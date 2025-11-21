@@ -16,23 +16,24 @@ export const driverCodes2025 = [
   "DOO", "GAS", "HAD", "HAM", "HUL", 
   "LAW", "LEC", "NOR", "OCO", "PIA", 
   "RUS", "SAI", "STR", "TSU", "VER", 
+  "COL",
 ] as const;
 
 export const raceLocations2025 = [
+  "Australia",
+  "China",
+  "Japan",
   "Bahrain",
   "Saudi Arabia",
-  "Australia",
-  "Japan",
-  "China",
   "Miami",
   "Imola",
   "Monaco",
-  "Canada",
   "Spain",
+  "Canada",
   "Austria",
   "Great Britain",
-  "Hungary",
   "Belgium",
+  "Hungary",
   "Netherlands",
   "Monza",
   "Azerbaijan",
@@ -46,30 +47,30 @@ export const raceLocations2025 = [
 ] as const;
 
 export const raceCountryCodes: { [Key in RaceLocation25Type] : string} = {
-  Bahrain: "BH",
-  "Saudi Arabia": "SA",
+  "Abu Dhabi": "AE",
+  Austin: "US",
   Australia: "AU",
-  Japan: "JP",
-  China: "CN",
-  Miami: "US",
-  Imola: "IT",
-  Monaco: "MC",
-  Canada: "CA",
-  Spain: "ES",
   Austria: "AT",
+  Azerbaijan: "AZ",
+  Bahrain: "BH",
+  Belgium: "BE",
+  Brazil: "BR",
+  Canada: "CA",
+  China: "CN",
   "Great Britain": "GB",
   Hungary: "HU",
-  Belgium: "BE",
-  Netherlands: "NL",
-  Monza: "IT",
-  Azerbaijan: "AZ",
-  Singapore: "SG",
-  Austin: "US",
-  Mexico: "MX",
-  Brazil: "BR",
+  Imola: "IT",
+  Japan: "JP",
   "Las Vegas": "US",
+  Mexico: "MX",
+  Miami: "US",
+  Monaco: "MC",
+  Monza: "IT",
+  Netherlands: "NL",
   Qatar: "QA",
-  "Abu Dhabi": "AE",
+  "Saudi Arabia": "SA",
+  Singapore: "SG",
+  Spain: "ES",
 }
 export type DriverCode25Type = typeof driverCodes2025[number];
 export type ConstructorName25Type = typeof constructorNames2025[number];
@@ -77,6 +78,7 @@ export type RaceLocation25Type = typeof raceLocations2025[number];
 
 export const driverToConstructor2025 = (driver: DriverCode25Type ) : ConstructorName25Type => {
   switch(driver){
+    case "COL":
     case "DOO":
     case "GAS":
       return "Alpine";
@@ -194,6 +196,7 @@ export const driverNames2025: { [Key in DriverCode25Type] : { first: string, las
   ANT : { first: "Kimi", last: "Antonelli"},
   BEA : { first: "Oliver", last: "Bearman"},
   BOR : { first: "Gabriel", last: "Bortoleto"},
+  COL : { first: "Franco", last: "Colapinto"},
   DOO : { first: "Jack", last: "Doohan"},
   GAS : { first: "Pierre", last: "Gasly"},
   HAD : { first: "Isack", last: "Hadjar"},
@@ -219,7 +222,7 @@ export const driverNames2025: { [Key in DriverCode25Type] : { first: string, las
 //   BEA: "Cyan", COL: "Cyan", LAW: "Cyan", DOO: "Cyan",
 // }
 
-export const calculatePoints = (place: number, sprint: boolean, fastestLap: boolean) => {
+export const calculatePoints = (place: number, sprint: boolean) => {
   if(sprint) {
     const sprintPointsArray = [8, 7, 6, 5, 4, 3, 2, 1];
       const points = sprintPointsArray[place];
@@ -230,11 +233,8 @@ export const calculatePoints = (place: number, sprint: boolean, fastestLap: bool
       }
   } else {
     const grandPrixPointsArray = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
-      let points = grandPrixPointsArray[place];
+      const points = grandPrixPointsArray[place];
       if (points){
-        if(fastestLap){
-          points += 1;
-        }
         return points;
       } else {
         return 0;

@@ -1,9 +1,9 @@
 import { cn } from "~/lib/utils";
-import { createStandings } from "~/data/F1/2024/convert";
-import { FormulaOneRaceResults } from "~/data/F1/2024/raceData";
-import { F1styleData } from "~/data/F1/2024/F1styleData24";
-import { driverToConstructor2024 } from "~/data/F1/2024/F1data24";
-import type { RaceModeProps } from "~/data/F1/2024/F1data24";
+import { createStandings } from "~/data/F1/2025/convert";
+import { FormulaOneRaceResults } from "~/data/F1/2025/raceData";
+import { F1styleData } from "~/data/F1/2025/F1styleData";
+import { driverToConstructor2025 } from "~/data/F1/2025/F1data";
+import type { RaceModeProps } from "~/data/F1/2025/F1data";
 import { TableCell, TableRowNoHover } from "~/components/ui/table";
 
 export const RunningResultTable: React.FC<RaceModeProps> = (
@@ -35,9 +35,9 @@ export const RunningResultTable: React.FC<RaceModeProps> = (
     });
     const activeDriver = driverOrder[index] ?? "ALB";
     const driverTextColor =
-      F1styleData[driverToConstructor2024(activeDriver)].secondaryText;
+      F1styleData[driverToConstructor2025(activeDriver)].secondaryText;
     const driverBg =
-      F1styleData[driverToConstructor2024(activeDriver)].primaryBackground;
+      F1styleData[driverToConstructor2025(activeDriver)].primaryBackground;
     return (
       <TableRowNoHover
         key={`r-${index}`}

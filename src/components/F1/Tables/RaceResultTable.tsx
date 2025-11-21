@@ -1,25 +1,17 @@
 import { useState } from "react";
 import { cn } from "~/lib/utils";
-import { resultsSortedByPlace } from "~/data/F1/2024/convert";
-import {
-  driverTcamColors2024,
-  driverToConstructor2024,
-} from "~/data/F1/2024/F1data24";
-import { FormulaOneRaceResults } from "~/data/F1/2024/raceData";
-import {
-  driverActivation2024,
-  handleActivate2024,
-} from "~/data/F1/2024/HandleActivation24";
-import { F1styleData } from "~/data/F1/2024/F1styleData24";
-import type { RaceModeProps } from "~/data/F1/2024/F1data24";
+import { resultsSortedByPlace } from "~/data/F1/2025/convert";
+import { driverToConstructor2025 } from "~/data/F1/2025/F1data";
+import { FormulaOneRaceResults } from "~/data/F1/2025/raceData";
+
+import { F1styleData } from "~/data/F1/2025/F1styleData";
+import type { RaceModeProps } from "~/data/F1/2025/F1data";
 import { TableCell, TableRowNoHover } from "~/components/ui/table";
 
 export const RaceResultTable: React.FC<RaceModeProps> = (
   props: RaceModeProps
 ) => {
   const { raceMode } = props;
-
-  const [activeDrivers, setActiveDrivers] = useState(driverActivation2024);
 
   const { fullResults, DNFs, DQs } = resultsSortedByPlace(
     FormulaOneRaceResults
@@ -35,17 +27,9 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
         polePosition,
         fastestLap,
       } = driver;
-      const isDriver = !!driverName && !!activeDrivers[driverName];
+      const isDriver = !!driverName;
       if (driverName && constructor) {
         const activeStyleGuide = F1styleData[constructor];
-        const Tcam = driverTcamColors2024[driverName];
-        const newActiveDriver = activeDrivers[driverName];
-        const outlineColor =
-          newActiveDriver && newActiveDriver.teammateActive && Tcam === "Black"
-            ? "bg-[#33424d]"
-            : Tcam === "Yellow"
-            ? "bg-[#d9ff00]"
-            : "bg-[#00ffd9]";
         const activeBg = activeStyleGuide.primaryBackground;
         const activeTextColor = activeStyleGuide.secondaryText;
         return (
@@ -66,18 +50,11 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
               {
                 "border-b-2 border-black": !sprint && finishPosition === 9,
               },
-              {
-                [outlineColor]:
-                  newActiveDriver && newActiveDriver.teammateActive && isDriver,
-              },
               { hidden: sprint && raceMode === "Grands Prix Only" },
               { hidden: !sprint && raceMode === "Sprint Races Only" }
             )}
           >
             <button
-              onClick={() => {
-                setActiveDrivers(handleActivate2024(driverName, activeDrivers));
-              }}
               className={cn("relative mx-0.5 rounded-full px-1 font-mono", {
                 [activeTextColor]: isDriver,
                 [activeBg]: isDriver,
@@ -146,26 +123,17 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
   const DNFRows = DNFs.map((dnf, rowIndex) => {
     const DNFCells = dnf.map((driver, cellIndex) => {
       const { driverName, sprint, polePosition } = driver;
-      const isDriver = !!driverName && !!activeDrivers[driverName];
+      const isDriver = !!driverName;
       if (driverName) {
         const activeStyleGuide =
-          F1styleData[driverToConstructor2024(driverName)];
-        const Tcam = driverTcamColors2024[driverName];
-        const newActiveDriver = activeDrivers[driverName];
-        const outlineColor =
-          newActiveDriver && newActiveDriver.teammateActive && Tcam === "Black"
-            ? "bg-[#33424d]" //black
-            : "bg-[#d9ff00]"; //yellow
+          F1styleData[driverToConstructor2025(driverName)];
+
         const activeBg = activeStyleGuide.primaryBackground;
         const activeTextColor = activeStyleGuide.secondaryText;
         return (
           <TableCell
             key={`c-${cellIndex}`}
             className={cn(
-              {
-                [outlineColor]:
-                  newActiveDriver && newActiveDriver.teammateActive && isDriver,
-              },
               { hidden: sprint && raceMode === "Grands Prix Only" },
               { hidden: !sprint && raceMode === "Sprint Races Only" }
             )}
@@ -215,26 +183,16 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
   const DQRows = DQs.map((dq, rowIndex) => {
     const DQCells = dq.map((driver, cellIndex) => {
       const { driverName, sprint, polePosition } = driver;
-      const isDriver = !!driverName && !!activeDrivers[driverName];
+      const isDriver = !!driverName;
       if (driverName) {
         const activeStyleGuide =
-          F1styleData[driverToConstructor2024(driverName)];
-        const Tcam = driverTcamColors2024[driverName];
-        const newActiveDriver = activeDrivers[driverName];
-        const outlineColor =
-          newActiveDriver && newActiveDriver.teammateActive && Tcam === "Black"
-            ? "bg-[#33424d]" //black
-            : "bg-[#d9ff00]"; //yellow
+          F1styleData[driverToConstructor2025(driverName)];
         const activeBg = activeStyleGuide.primaryBackground;
         const activeTextColor = activeStyleGuide.secondaryText;
         return (
           <TableCell
             key={`c-${cellIndex}`}
             className={cn(
-              {
-                [outlineColor]:
-                  newActiveDriver && newActiveDriver.teammateActive && isDriver,
-              },
               { hidden: sprint && raceMode === "Grands Prix Only" },
               { hidden: !sprint && raceMode === "Sprint Races Only" }
             )}

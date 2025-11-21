@@ -3,6 +3,11 @@ import { type WorldSeriesType } from "~/types/ChampTypes"
 export const WorldSeriesData: WorldSeriesType[] = [
   {
     winningTeam: "LAD",
+    losingTeam: "TOR",
+    score: "4-3",
+    year: 2025,
+  },{
+    winningTeam: "LAD",
     losingTeam: "NYY",
     score: "4-1",
     year: 2024,
@@ -611,6 +616,12 @@ export const WorldSeriesData: WorldSeriesType[] = [
 
 export const ALCSData: WorldSeriesType[] = [
   {
+    winningTeam: "TOR",
+    losingTeam: "SEA",
+    score: "4-3",
+    year: 2025,
+    wonChamp: false,
+  },{
     winningTeam: "NYY",
     losingTeam: "CLE",
     score: "4-1",
@@ -659,7 +670,7 @@ export const ALCSData: WorldSeriesType[] = [
     year: 2017,
     wonChamp: true,
   },{
-    winningTeam: "CLE",
+    winningTeam: "CLI",
     losingTeam: "TOR",
     score: "4-1",
     year: 2016,
@@ -714,7 +725,7 @@ export const ALCSData: WorldSeriesType[] = [
     wonChamp: false,
   },{
     winningTeam: "BOS",
-    losingTeam: "CLE",
+    losingTeam: "CLI",
     score: "4-3",
     year: 2007,
     wonChamp: true,
@@ -768,12 +779,12 @@ export const ALCSData: WorldSeriesType[] = [
     wonChamp: true,
   },{
     winningTeam: "NYY",
-    losingTeam: "CLE",
+    losingTeam: "CLI",
     score: "4-2",
     year: 1998,
     wonChamp: true,
   },{
-    winningTeam: "CLE",
+    winningTeam: "CLI",
     losingTeam: "BAL",
     score: "4-2",
     year: 1997,
@@ -785,7 +796,7 @@ export const ALCSData: WorldSeriesType[] = [
     year: 1996,
     wonChamp: true,
   },{
-    winningTeam: "CLE",
+    winningTeam: "CLI",
     losingTeam: "SEA",
     score: "4-2",
     year: 1995,
@@ -951,6 +962,12 @@ export const ALCSData: WorldSeriesType[] = [
 
 export const NLCSData: WorldSeriesType[] = [
   {
+    winningTeam: "LAD",
+    losingTeam: "MIL",
+    score: "4-0",
+    year: 2025,
+    wonChamp: true,
+  },{
     winningTeam: "LAD",
     losingTeam: "NYM",
     score: "4-2",

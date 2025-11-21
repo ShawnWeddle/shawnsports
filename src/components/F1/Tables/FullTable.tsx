@@ -115,7 +115,7 @@ const FormulaOneTable: React.FC = () => {
   return (
     <>
       <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-        2024 Formula One Season
+        2025 Formula One Season
       </h1>
       <Card className="flex justify-center gap-2 p-2">
         <div>

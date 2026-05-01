@@ -26,11 +26,7 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
     : [...finalOrder, ...DNFs];
   const driverPointsPairs = driverOrder.map((dac, index) => {
     const { driver, constructor } = dac;
-    const driverPoints = calculatePoints(
-      index,
-      sprint,
-      driver === fastestLap?.driver
-    );
+    const driverPoints = calculatePoints(index, sprint);
     if (completed) {
       const driverDidScore = driverPoints !== 0;
       const driverDidDNF = DNFs.map((dac) => dac.driver).includes(driver);

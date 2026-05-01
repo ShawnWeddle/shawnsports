@@ -2,6 +2,11 @@ import { type GreyCupType } from "~/types/ChampTypes"
 
 export const GreyCupData: GreyCupType[] = [
   {
+    winningTeam: "SSK",
+    losingTeam: "MTL",
+    score: "25 - 17",
+    year: 2025,
+  },{
     winningTeam: "TOR",
     losingTeam: "WPG",
     score: "41 - 24",

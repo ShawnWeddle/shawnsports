@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { cn } from "~/lib/utils";
 import { NBAteamData, TeamNameEnum } from "~/data/NBA/NBAdata";
-import { NBAstyleData } from "~/data/NBA/NBAstyleData";
+import { NBAstyleDataFull } from "~/data/NBA/NBAstyleData";
 import { AllNBAPicks } from "~/data/NBA/AllNBApicks";
-import type { PickType } from "~/data/NBA/AllNBApicks";
+import { AllNBAPicks2, type PickType } from "~/data/NBA/nbaPickBreakdown";
+import { pickNoteCreator } from "~/utils/nba";
+// import type { PickType } from "~/data/NBA/AllNBApicks";
 import { Dialog, DialogTitle, DialogContent, DialogHeader } from "../ui/dialog";
 import {
   Table,
@@ -19,25 +21,24 @@ const NBApickTable: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [activePick, setActivePick] = useState<PickType | null>(null);
 
-  const activePickNotes = activePick?.notes.map((note, index) => {
-    return <p key={index}>{note}</p>;
-  });
-
-  const NBArows = Object.entries(AllNBAPicks).map((teamPicks, rowIndex) => {
+  const NBArows = Object.entries(AllNBAPicks2).map((teamPicks, rowIndex) => {
     const activeTeamCode = TeamNameEnum.parse(teamPicks[0]);
     const activeTeamPicks = teamPicks[1];
     const NBAcells = Object.values(activeTeamPicks).map((picks, cellIndex) => {
       const activePicks = picks.map((pick, pickIndex) => {
+        const activeTeam = pick.nativeTeam;
+        const { swap } = pick;
         return (
           <button
             key={`pick-${rowIndex}-${cellIndex}-${pickIndex}`}
             className={cn(
               "border-x-2 first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2",
-              NBAstyleData[pick.nativeTeam]?.primaryBackground,
-              NBAstyleData[pick.nativeTeam]?.simpleText,
-              NBAstyleData[pick.nativeTeam]?.secondaryBorder,
+              NBAstyleDataFull[activeTeam]?.primaryBackground,
+              NBAstyleDataFull[activeTeam]?.simpleText,
+              NBAstyleDataFull[activeTeam]?.secondaryBorder,
               {
-                "font-bold italic": pick.swap !== undefined,
+                "font-bold": swap && swap[0] === "positive",
+                lowercase: swap && swap[0] === "negative",
               }
             )}
             onClick={() => {
@@ -45,7 +46,7 @@ const NBApickTable: React.FC = () => {
               setDialogOpen(true);
             }}
           >
-            {pick.nativeTeam}
+            {activeTeam !== "NBA" ? activeTeam : "+++"}
           </button>
         );
       });
@@ -81,6 +82,23 @@ const NBApickTable: React.FC = () => {
   const modalNamer = (inputPick: PickType | null) => {
     if (inputPick) {
       const { year, nativeTeam } = inputPick;
+      if (nativeTeam === "NBA") {
+        return (
+          <span>
+            {year}{" "}
+            <span
+              className={cn("rounded border-b border-r px-1 py-0.5", {
+                [NBAstyleDataFull[nativeTeam].primaryBackground]: true,
+                [NBAstyleDataFull[nativeTeam].secondaryBorder]: true,
+                [NBAstyleDataFull[nativeTeam].simpleText]: true,
+              })}
+            >
+              NBA
+            </span>{" "}
+            First Round Pick
+          </span>
+        );
+      }
       const teamLocation = NBAteamData[nativeTeam].location;
       const teamName = NBAteamData[nativeTeam].name;
       return (
@@ -88,9 +106,9 @@ const NBApickTable: React.FC = () => {
           {year}{" "}
           <span
             className={cn("rounded border-b border-r px-1 py-0.5", {
-              [NBAstyleData[nativeTeam].primaryBackground]: true,
-              [NBAstyleData[nativeTeam].secondaryBorder]: true,
-              [NBAstyleData[nativeTeam].simpleText]: true,
+              [NBAstyleDataFull[nativeTeam].primaryBackground]: true,
+              [NBAstyleDataFull[nativeTeam].secondaryBorder]: true,
+              [NBAstyleDataFull[nativeTeam].simpleText]: true,
             })}
           >
             {teamLocation + " " + teamName}
@@ -117,7 +135,9 @@ const NBApickTable: React.FC = () => {
             <DialogHeader>
               <DialogTitle>{modalNamer(activePick)}</DialogTitle>
             </DialogHeader>
-            {activePickNotes}
+            {pickNoteCreator(activePick).map((note, index) => {
+              return <p key={index}>{note}</p>;
+            })}
           </DialogContent>
         </Dialog>
       )}
@@ -130,13 +150,34 @@ const NBApickTable: React.FC = () => {
             <TableHeader>
               <TableRowNoHover>
                 <TableHead className="px-0">Team</TableHead>
-                <TableHead className="px-0">2026</TableHead>
-                <TableHead className="px-0">2027</TableHead>
-                <TableHead className="px-0">2028</TableHead>
-                <TableHead className="px-0">2029</TableHead>
-                <TableHead className="px-0">2030</TableHead>
-                <TableHead className="px-0">2031</TableHead>
-                <TableHead className="px-0">2032</TableHead>
+                <TableHead className="hidden px-0 sm:table-cell">
+                  2026
+                </TableHead>
+                <TableHead className="hidden px-0 sm:table-cell">
+                  2027
+                </TableHead>
+                <TableHead className="hidden px-0 sm:table-cell">
+                  2028
+                </TableHead>
+                <TableHead className="hidden px-0 sm:table-cell">
+                  2029
+                </TableHead>
+                <TableHead className="hidden px-0 sm:table-cell">
+                  2030
+                </TableHead>
+                <TableHead className="hidden px-0 sm:table-cell">
+                  2031
+                </TableHead>
+                <TableHead className="hidden px-0 sm:table-cell">
+                  2032
+                </TableHead>
+                <TableHead className="px-0 sm:hidden">{"'"}26</TableHead>
+                <TableHead className="px-0 sm:hidden">{"'"}27</TableHead>
+                <TableHead className="px-0 sm:hidden">{"'"}28</TableHead>
+                <TableHead className="px-0 sm:hidden">{"'"}29</TableHead>
+                <TableHead className="px-0 sm:hidden">{"'"}30</TableHead>
+                <TableHead className="px-0 sm:hidden">{"'"}31</TableHead>
+                <TableHead className="px-0 sm:hidden">{"'"}32</TableHead>
               </TableRowNoHover>
             </TableHeader>
             <TableBody className="text-xs sm:text-base">{NBArows}</TableBody>

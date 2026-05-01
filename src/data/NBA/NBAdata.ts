@@ -8,6 +8,13 @@ export const nbaTeamsAll = [
   "SEA", "WSB", "STL", "PHW", "SYR", "MNL", "ROC", "BAL", "NJN", "SFW", "FWP", "WSC", "CHS", "KCK"
 ] as const;
 
+export const nbaTeamsAlpha = [
+  "ATL", "BOS", "BRK", "CHI", "CHO", "CLE", "DAL", "DEN",
+  "DET", "GSW", "HOU", "IND", "LAC", "LAL", "MEM", "MIA",
+  "MIL", "MIN", "NOP", "NYK", "OKC", "ORL", "PHI", "PHO",
+  "POR", "SAC", "SAS", "TOR", "UTA", "WAS",
+] as const;
+
 export const nbaTeamsRanked = [
   "BOS", "OKC", "DEN", "MIN", "DAL", "NYK", "PHI", "MEM", 
   "MIL", "MIA", "IND", "NOP", "CLE", "ORL", "SAC", "HOU", 
@@ -26,7 +33,7 @@ export const years = [
   "2026", "2027", "2028", "2029", "2030", "2031", "2032" 
 ] as const;
 
-export type NBATeamType = typeof nbaTeamsRanked[number];
+export type NBATeamType = typeof nbaTeamsAlpha[number];
 export type AllNBATeamType = typeof nbaTeamsAll[number];
 export type PickYearType = typeof years[number];
 export type PickCodeType = `${NBATeamType}-${PickYearType}`;

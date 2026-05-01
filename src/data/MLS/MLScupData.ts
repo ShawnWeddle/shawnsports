@@ -1,6 +1,7 @@
 import { type MLSCupType } from "~/types/ChampTypes";
 
 export const MLSCupData: MLSCupType[] = [
+  { year: 2025, winningTeam: "MIA", losingTeam: "VAN", score: "3-1" },
   { year: 2024, winningTeam: "LAG", losingTeam: "NYR", score: "2-1" },
   { year: 2023, winningTeam: "CLB", losingTeam: "LAF", score: "2-1" },
   { year: 2022, winningTeam: "LAF", losingTeam: "PHI", score: "3-3" },

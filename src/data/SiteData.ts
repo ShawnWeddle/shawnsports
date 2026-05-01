@@ -1,8 +1,9 @@
 import { z } from "zod";
 
 const titlesArray = [
-  "Home", "NBA_Future_Picks", "NBA_Lottery", "NBA_Finals", "NBA_Rank", "NFL_Schedule", "NFL_Draft_Chart", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "MLB_World_Series", "MLB_Rank", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank",
+  "Home", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "MLB_World_Series", "MLB_Rank", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", 
 ] as const;
+//"NFL_Schedule", "NFL_Draft_Chart",  "NBA_Lottery"
 export const TitlesEnum = z.enum(titlesArray);
 
 export const sportsNames = ["CFL", "F1", "MLB", "MLS", "NBA", "NFL", "NHL", "WNBA"] as const;
@@ -10,8 +11,8 @@ export type SportType = typeof sportsNames[number];
 
 export const allNavHeads = {
   "Home": ["Home",], 
-  "NBA": ["NBA_Future_Picks", "NBA_Lottery", "NBA_Finals", "NBA_Rank",], 
-  "NFL": ["NFL_Schedule", "NFL_Draft_Chart", "NFL_Super_Losers", "NFL_Super_Bowls", "NFL_Rank", ], 
+  "NBA": ["NBA_Future_Picks", "NBA_Finals", "NBA_Rank",], 
+  "NFL": ["NFL_Super_Losers", "NFL_Super_Bowls", "NFL_Rank", ], 
   "F1": ["F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", ], 
   "MLB": ["MLB_World_Series", "MLB_Rank", ], 
   "MLS": [ "MLS_Cups", "MLS_Rank", ],
@@ -19,6 +20,7 @@ export const allNavHeads = {
   "WNBA": ["WNBA_Finals", "WNBA_Rank", ],
   "CFL": ["CFL_Grey_Cups", "CFL_Rank", ],
 } as const;
+//"NFL_Schedule", "NFL_Draft_Chart", "NBA_Lottery",
 
 export type HomeTitlesType = typeof allNavHeads["Home"][number];
 export type F1TitlesType = typeof allNavHeads["F1"][number];
@@ -40,15 +42,15 @@ export const F1TitlesDesc: {[Key in F1TitlesType] : string} = {
   "F1_Rank": "Rank all 20 drivers for the 2025 season",
 };
 export const NFLTitlesDesc: {[Key in NFLTitlesType] : string} = {
-  "NFL_Schedule": "See every team's schedule for the 2024 NFL season",
-  "NFL_Draft_Chart": "NFL Draft Chart",
   "NFL_Super_Losers": "A list of certain special players in NFL history",
   "NFL_Super_Bowls": "See all 59 Super Bowl matchups",
   "NFL_Rank": "Rank all 32 NFL teams",
 };
+//  "NFL_Schedule": "See every team's schedule for the 2024 NFL season",
+//  "NFL_Draft_Chart": "NFL Draft Chart",
+//  "NBA_Lottery": "Select any 14 teams and simulate the 2025 NBA draft lottery",
 export const NBATitlesDesc: {[Key in NBATitlesType] : string} = {
   "NBA_Future_Picks": "See which team owns each first round pick through 2031",
-  "NBA_Lottery": "Select any 14 teams and simulate the 2025 NBA draft lottery",
   "NBA_Finals": "See all NBA Finals since 1947",
   "NBA_Rank": "Rank all 30 NBA teams",
 };
@@ -115,10 +117,7 @@ export const underPageTitles = [
 "compare",
 "rank",
 "future-picks",
-"lottery",
 "finals",
-"schedule",
-"draft-chart",
 "super-bowls",
 "super-losers",
 "draft-chart",
@@ -127,6 +126,9 @@ export const underPageTitles = [
 "grey-cups",
 "mls-cups",
 ] as const;
+//"schedule",
+//"draft-chart",
+//"lottery",
 
 export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, urlName: PageURLType}} = {
   Home: { navTitle: "Home", urlName: "/",},
@@ -135,11 +137,8 @@ export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, url
   F1_Compare: { navTitle: "Compare", urlName: "/f1/compare",},
   F1_Rank: { navTitle: "Rank", urlName: "/f1/rank",},
   NBA_Future_Picks: { navTitle: "Future Picks", urlName: "/nba/future-picks",},
-  NBA_Lottery: { navTitle: "Lottery", urlName: "/nba/lottery",},
   NBA_Finals: { navTitle: "Finals", urlName: "/nba/finals",},
   NBA_Rank: { navTitle: "Rank", urlName: "/nba/rank",},
-  NFL_Schedule: { navTitle: "Schedule", urlName: "/nfl/schedule",},
-  NFL_Draft_Chart: { navTitle: "Draft Chart", urlName: "/nfl/draft-chart"},
   NFL_Super_Losers: {navTitle: "Super Losers", urlName: "/nfl/super-losers",},
   NFL_Super_Bowls: { navTitle: "Super Bowls", urlName: "/nfl/super-bowls",},
   NFL_Rank: { navTitle: "Rank", urlName: "/nfl/rank",},
@@ -154,6 +153,13 @@ export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, url
   CFL_Grey_Cups: { navTitle: "Grey Cups", urlName: "/cfl/grey-cups"},
   CFL_Rank: { navTitle: "Rank", urlName: "/cfl/rank"},
 };
+
+/**
+ *   NFL_Schedule: { navTitle: "Schedule", urlName: "/nfl/schedule",},
+    NFL_Draft_Chart: { navTitle: "Draft Chart", urlName: "/nfl/draft-chart"},
+ *   NBA_Lottery: { navTitle: "Lottery", urlName: "/nba/lottery",},
+ * 
+ */
 
 export const pageData: {[Key in PageHeadsType] : LowerPageHeadType} = {
   "Home":"", "F1":"f1", "NFL":"nfl", "NBA":"nba", "MLB":"mlb", "MLS":"mls", "NHL":"nfl", "WNBA":"wnba", "CFL":"cfl"
@@ -179,7 +185,7 @@ export const pageRouter = (page: PageHeadsType) : PageURLType => {
       return "/nba/future-picks"
     }
     case "NFL": {
-      return "/nfl/schedule"
+      return "/nfl/super-bowls"
     }
     case "MLB": {
       return "/mlb/world-series"

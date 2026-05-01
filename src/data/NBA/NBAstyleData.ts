@@ -532,3 +532,16 @@ export const NBAstyleData: {[Key in AllNBATeamType] : StyleBookType
     simpleTextHover: "hover:text-[#FFFFFF]",
   },
 };
+
+export const NBAstyleDataFull = {...NBAstyleData, NBA : {
+  primary: "#FFFFFF",
+  secondary: "#E07800",  
+  primaryBackground: "bg-[#FFFFFF]",
+  primaryBackgroundHover: "hover:bg-[#FFFFFF]",
+  secondaryBorder: "border-[#E07800]",
+  secondaryBorderHover: "hover:border-[#E07800]",
+  secondaryText: "text-[#E07800]",
+  secondaryTextHover: "hover:text-[#E07800]",
+  simpleText: "text-[#E07800]",
+  simpleTextHover: "hover:text-[#E07800]",
+}};

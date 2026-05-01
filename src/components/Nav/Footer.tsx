@@ -51,12 +51,6 @@ const Footer: React.FC = () => {
           </MenubarTrigger>
           <MenubarContent>
             <MenubarItem asChild>
-              <Link href="/nfl/schedule">Schedule</Link>
-            </MenubarItem>
-            <MenubarItem asChild>
-              <Link href="/nfl/draft-chart">Draft Chart</Link>
-            </MenubarItem>
-            <MenubarItem asChild>
               <Link href="/nfl/super-losers">Super Losers</Link>
             </MenubarItem>
             <MenubarItem asChild>
@@ -74,9 +68,6 @@ const Footer: React.FC = () => {
           <MenubarContent>
             <MenubarItem asChild>
               <Link href="/nba/future-picks">Future Picks</Link>
-            </MenubarItem>
-            <MenubarItem asChild>
-              <Link href="/nba/lottery">Lottery</Link>
             </MenubarItem>
             <MenubarItem asChild>
               <Link href="/nba/finals">Finals</Link>
@@ -159,3 +150,15 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
+
+/*
+            <MenubarItem asChild>
+              <Link href="/nfl/schedule">Schedule</Link>
+            </MenubarItem>
+            <MenubarItem asChild>
+              <Link href="/nfl/draft-chart">Draft Chart</Link>
+            </MenubarItem>
+                        <MenubarItem asChild>
+              <Link href="/nba/lottery">Lottery</Link>
+            </MenubarItem>
+*/

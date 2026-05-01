@@ -333,6 +333,12 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "DAL-2026",
     year: 2026,
     notes: ["Dallas has not yet traded this pick."],
+  },{
+    nativeTeam: "OKC",
+    pickCode: "OKC-2026",
+    year: 2026,
+    notes: ["Traded from Oklahoma City to Philadelphia to Washington to Dallas.", "Dallas will receive the least favorable of Houston's pick, Los Angeles Clippers' pick, and Oklahoma City's pick."],
+    swap: "negative",
   },],
   "2027":[],
   "2028":[{
@@ -354,6 +360,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     year: 2030,
     notes: ["Dallas will receive the lesser of their native pick and San Antonio's pick."],
     swap: "negative",
+  },{
+    nativeTeam: "GSW",
+    pickCode: "GSW-2030",
+    year: 2030,
+    notes: ["Traded from Golden State to Washington."],
   },],
   "2031":[{
     nativeTeam: "DAL",
@@ -399,10 +410,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
 },
 "DET":{
   "2026":[{
-    nativeTeam: "DET",
-    pickCode: "DET-2026",
+    nativeTeam: "MIN",
+    pickCode: "MIN-2026",
     year: 2026,
-    notes: ["Detroit has not yet traded this pick."],
+    notes: ["Minnesota will receive the lesser of their native pick and Utah's pick."],
+    swap: "negative",
   },],
   "2027":[{
     nativeTeam: "DET",
@@ -664,6 +676,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "MEM-2027",
     year: 2027,
     notes: ["Memphis has not yet traded this pick."],
+  },{
+    nativeTeam: "LAL",
+    pickCode: "LAL-2027",
+    year: 2027,
+    notes: ["Traded from Los Angeles Lakers to Utah."],
   },],
   "2028":[{
     nativeTeam: "MEM",
@@ -694,6 +711,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "MEM-2031",
     year: 2031,
     notes: ["Memphis has not yet traded this pick."],
+  },{
+    nativeTeam: "PHO",
+    pickCode: "PHO-2031",
+    year: 2031,
+    notes: ["Traded from Phoenix to Utah."],
   },],
   "2032":[{
     nativeTeam: "MEM",
@@ -780,11 +802,10 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
 },
 "MIN":{
   "2026":[{
-    nativeTeam: "MIN",
-    pickCode: "MIN-2026",
+    nativeTeam: "DET",
+    pickCode: "DET-2026",
     year: 2026,
-    notes: ["Minnesota will receive the lesser of their native pick and Utah's pick."],
-    swap: "negative",
+    notes: ["Detroit has not yet traded this pick."],
   },],
   "2027":[],
   "2028":[{
@@ -855,12 +876,6 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "NYK-2026",
     year: 2026,
     notes: ["New York has not yet traded this pick."],
-  },{
-    nativeTeam: "WAS",
-    pickCode: "WAS-2026",
-    year: 2026,
-    notes: ["Traded from Washington to Houston to Oklahoma City to New York.", "If this pick falls into the protected range, swaps will be affected elsewhere in very complex ways."],
-    //"Washington will receive the greater of their native pick and Phoenix's pick."
   },],
   "2027":[],
   "2028":[{
@@ -886,12 +901,6 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
 },
 "OKC":{
   "2026":[{
-    nativeTeam: "HOU",
-    pickCode: "HOU-2026",
-    year: 2026,
-    notes: ["Traded from Houston to Oklahoma City.", "Oklahoma City will receive the two most favorable of their native pick, Houston's pick, and Los Angeles Clippers' pick."],
-    swap: "positive",
-  },{
     nativeTeam: "LAC",
     pickCode: "LAC-2026",
     year: 2026,
@@ -902,12 +911,6 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "PHI-2026",
     year: 2026,
     notes: ["Traded from Philadelphia to Oklahoma City."],
-  },{
-    nativeTeam: "UTA",
-    pickCode: "UTA-2026",
-    year: 2026,
-    notes: ["Traded from Utah to Oklahoma City", "If this pick falls into the protected range, swaps will be affected elsewhere in very complex ways."],
-    //"Utah will receive the greater of Cleveland's pick and (the greater of their native pick and Minnesota's pick)."
   },],
   "2027":[{
     nativeTeam: "OKC",
@@ -994,7 +997,13 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   },],
 },
 "PHI":{
-  "2026":[],
+  "2026":[{
+    nativeTeam: "HOU",
+    pickCode: "HOU-2026",
+    year: 2026,
+    notes: ["Traded from Houston to Oklahoma City.", "Oklahoma City will receive the two most favorable of their native pick, Houston's pick, and Los Angeles Clippers' pick."],
+    swap: "positive",
+  },],
   "2027":[{
     nativeTeam: "PHI",
     pickCode: "PHI-2027",
@@ -1259,17 +1268,18 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   },],
 },
 "UTA":{
-  "2026":[],
+  "2026":[{
+    nativeTeam: "UTA",
+    pickCode: "UTA-2026",
+    year: 2026,
+    notes: ["Traded from Utah to Oklahoma City", "If this pick falls into the protected range, swaps will be affected elsewhere in very complex ways."],
+    //"Utah will receive the greater of Cleveland's pick and (the greater of their native pick and Minnesota's pick)."
+  },],
   "2027":[{
     nativeTeam: "CLE",
     pickCode: "CLE-2027",
     year: 2027,
     notes: ["Traded from Cleveland to Utah."],
-  },{
-    nativeTeam: "LAL",
-    pickCode: "LAL-2027",
-    year: 2027,
-    notes: ["Traded from Los Angeles Lakers to Utah."],
   },{
     nativeTeam: "MIN",
     pickCode: "MIN-2027",
@@ -1305,11 +1315,6 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     pickCode: "UTA-2031",
     year: 2031,
     notes: ["Utah has not yet traded this pick."],
-  },{
-    nativeTeam: "PHO",
-    pickCode: "PHO-2031",
-    year: 2031,
-    notes: ["Traded from Phoenix to Utah."],
   },],
   "2032":[{
     nativeTeam: "UTA",
@@ -1320,11 +1325,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
 },
 "WAS":{
   "2026":[{
-    nativeTeam: "OKC",
-    pickCode: "OKC-2026",
+    nativeTeam: "WAS",
+    pickCode: "WAS-2026",
     year: 2026,
-    notes: ["Traded from Oklahoma City to Philadelphia to Washington.", "Washington will receive the least favorable of Houston's pick, Los Angeles Clippers' pick, and Oklahoma City's pick."],
-    swap: "negative",
+    notes: ["Traded from Washington to Houston to Oklahoma City to New York.", "If this pick falls into the protected range, swaps will be affected elsewhere in very complex ways."],
+    //"Washington will receive the greater of their native pick and Phoenix's pick."
   },],
   "2027":[{
     nativeTeam: "WAS",
@@ -1357,11 +1362,6 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     year: 2030,
     notes: ["Washington will receive the greater of their native pick and Phoenix's pick."],
     swap: "positive",
-  },{
-    nativeTeam: "GSW",
-    pickCode: "GSW-2030",
-    year: 2030,
-    notes: ["Traded from Golden State to Washington."],
   },],
   "2031":[{
     nativeTeam: "WAS",

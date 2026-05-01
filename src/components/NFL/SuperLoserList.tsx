@@ -17,6 +17,7 @@ import {
   TableRow,
   TableRowNoHover,
 } from "~/components/ui/table";
+import { allMultiParticipants } from "~/data/NFL/findParticipant";
 
 const SuperLoserList: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -46,6 +47,8 @@ const SuperLoserList: React.FC = () => {
       </button>
     );
   }).reverse();
+
+  allMultiParticipants();
 
   const superLosers = (game: SuperBowlType | null, inModal: boolean) =>
     SuperLoserData.filter((player) => {

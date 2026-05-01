@@ -9,6 +9,9 @@
     "lint": "next lint",
     "start": "next start"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@next-auth/prisma-adapter": "^1.0.5",

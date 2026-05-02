@@ -29,7 +29,6 @@ const NBATeamTile: React.FC<NBATeamTileProps> = (props: NBATeamTileProps) => {
       onClick={() => {
         setActiveTeam(team === activeTeam ? null : team);
       }}
-      ref={drag}
       className={cn(
         "m-1 flex h-16 w-28 flex-col items-center justify-center border-2",
         {

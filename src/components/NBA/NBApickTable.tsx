@@ -37,7 +37,8 @@ const NBApickTable: React.FC = () => {
               NBAstyleDataFull[activeTeam]?.simpleText,
               NBAstyleDataFull[activeTeam]?.secondaryBorder,
               {
-                "font-bold": swap && swap[0] === "positive",
+                "font-bold":
+                  (swap && swap[0] === "positive") || activeTeam === "NBA",
                 lowercase: swap && swap[0] === "negative",
               }
             )}
@@ -46,7 +47,7 @@ const NBApickTable: React.FC = () => {
               setDialogOpen(true);
             }}
           >
-            {activeTeam !== "NBA" ? activeTeam : "+++"}
+            {activeTeam !== "NBA" ? activeTeam : "+"}
           </button>
         );
       });

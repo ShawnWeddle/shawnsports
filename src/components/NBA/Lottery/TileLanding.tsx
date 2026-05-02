@@ -33,7 +33,6 @@ const TileLanding: React.FC<TileLandingProps> = (props: TileLandingProps) => {
 
   return (
     <div
-      ref={drop}
       className={cn("flex justify-start", {
         "bg-gray-400 outline outline-2 outline-nba": collectedProps.isOver,
       })}

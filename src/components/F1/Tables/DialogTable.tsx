@@ -19,8 +19,7 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
   props: SingleRaceProps
 ) => {
   const { race } = props;
-  const { finalOrder, DNFs, sprint, completed, DQs, fastestLap, polePosition } =
-    race;
+  const { finalOrder, DNFs, sprint, completed, DQs, polePosition } = race;
   const driverOrder = DQs
     ? [...finalOrder, ...DNFs, ...DQs]
     : [...finalOrder, ...DNFs];

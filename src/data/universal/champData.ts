@@ -4,7 +4,7 @@ import { NullBook } from "~/types/StyleBook";
 import type { NBAFinalsSeriesType, StanleyCupSeriesType, SuperBowlType, WorldSeriesType, UniversalFinalsType } from "~/types/ChampTypes";
 
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
-import { F1styleData } from "~/data/F1/2024/F1styleData24";
+import { F1styleData } from "~/data/F1/2026/F1styleData";
 import { MLBstyleData } from "~/data/MLB/MLBstyleData";
 import { MLSstyleData } from "~/data/MLS/MLSstyleData";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
@@ -14,10 +14,10 @@ import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
 
 import { CFLteamData, cflTeamsAll, type AllCFLTeamType } from "~/data/CFL/CFLdata";
 import {
-  driverCodes2024,
-  driverNames2024,
-  driverToConstructor2024,
-} from "~/data/F1/2024/F1data24";
+  driverCodes2026,
+  driverNames2026,
+  driverToConstructor2026,
+} from "~/data/F1/2026/F1data";
 import { MLBteamData, mlbTeamsAll, type AllMLBTeamType } from "~/data/MLB/MLBdata";
 import { MLSteamData, allMLSteams, type MLSTeamType} from "~/data/MLS/MLSdata";
 import { NBAteamData, nbaTeamsAll, type AllNBATeamType } from "~/data/NBA/NBAdata";
@@ -44,7 +44,7 @@ import { nhlTeamPreNames, nameMatcherNHL } from "~/utils/nhl";
 import { wnbaTeamPreNames, nameMatcherWNBA } from "~/utils/wnba";
 
 const CFLenum = z.enum(cflTeamsAll);
-const F1enum = z.enum(driverCodes2024);
+const F1enum = z.enum(driverCodes2026);
 const MLBenum = z.enum(mlbTeamsAll);
 const MLSenum = z.enum(allMLSteams);
 const NBAenum = z.enum(nbaTeamsAll);

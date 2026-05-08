@@ -1,7 +1,7 @@
 import { cn } from "~/lib/utils";
-import { driverNames2025, calculatePoints } from "~/data/F1/2025/F1data";
-import { F1styleData } from "~/data/F1/2025/F1styleData";
-import { type F1RaceType } from "~/data/F1/2025/raceData";
+import { driverNames2026, calculatePoints } from "~/data/F1/2026/F1data";
+import { F1styleData } from "~/data/F1/2026/F1styleData";
+import { type F1RaceType } from "~/data/F1/2026/raceData";
 import {
   Table,
   TableBody,
@@ -48,9 +48,9 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
             })}
           >
             <span className="sm:hidden md:inline">
-              {driverNames2025[driver].first}
+              {driverNames2026[driver].first}
             </span>{" "}
-            {driverNames2025[driver].last}
+            {driverNames2026[driver].last}
           </TableCell>
           <TableCell
             className={cn(
@@ -111,8 +111,8 @@ export const SingleRaceTable: React.FC<SingleRaceProps> = (
                 Pole:
               </TableCell>
               <TableCell className="pl-1 text-lg">
-                {driverNames2025[polePosition.driver].first}{" "}
-                {driverNames2025[polePosition.driver].last}
+                {driverNames2026[polePosition.driver].first}{" "}
+                {driverNames2026[polePosition.driver].last}
               </TableCell>
             </TableRowNoHover>
           )}

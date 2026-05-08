@@ -1,11 +1,11 @@
 import { cn } from "~/lib/utils";
 import {
-  driverToConstructor2024,
-  driverNames2024,
-} from "~/data/F1/2024/F1data24";
-import { F1styleData } from "~/data/F1/2024/F1styleData24";
-import { FormulaOneRaceResults } from "~/data/F1/2024/raceData";
-import { createStandings } from "~/data/F1/2024/convert";
+  driverToConstructor2026,
+  driverNames2026,
+} from "~/data/F1/2026/F1data";
+import { F1styleData } from "~/data/F1/2026/F1styleData";
+import { FormulaOneRaceResults } from "~/data/F1/2026/raceData";
+import { createStandings } from "~/data/F1/2026/convert";
 import PodiumLogo from "../PodiumLogo";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {
@@ -30,12 +30,12 @@ export const DriverStandings: React.FC = () => {
         <TableCell className="px-1 text-center"> {index + 1} </TableCell>
         <TableCell
           className={cn("px-3", {
-            [F1styleData[driverToConstructor2024(driver)].primaryBackground]:
+            [F1styleData[driverToConstructor2026(driver)].primaryBackground]:
               true,
-            [F1styleData[driverToConstructor2024(driver)].secondaryText]: true,
+            [F1styleData[driverToConstructor2026(driver)].secondaryText]: true,
           })}
         >
-          {driverNames2024[driver].first} {driverNames2024[driver].last}
+          {driverNames2026[driver].first} {driverNames2026[driver].last}
         </TableCell>
         <TableCell className="px-3 text-center">
           {driverStandings[driver].total}

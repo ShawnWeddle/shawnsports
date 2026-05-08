@@ -1,5 +1,5 @@
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
-import { F1styleData } from "~/data/F1/2024/F1styleData24";
+import { F1styleData } from "~/data/F1/2026/F1styleData";
 import { MLBstyleData } from "~/data/MLB/MLBstyleData";
 import { MLSstyleData } from "../MLS/MLSstyleData";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";

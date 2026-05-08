@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { cn } from "~/lib/utils";
-import { resultsSortedByPlace } from "~/data/F1/2025/convert";
-import { driverToConstructor2025 } from "~/data/F1/2025/F1data";
-import { FormulaOneRaceResults } from "~/data/F1/2025/raceData";
+import { resultsSortedByPlace } from "~/data/F1/2026/convert";
+import { driverToConstructor2026 } from "~/data/F1/2026/F1data";
+import { FormulaOneRaceResults } from "~/data/F1/2026/raceData";
 
-import { F1styleData } from "~/data/F1/2025/F1styleData";
-import type { RaceModeProps } from "~/data/F1/2025/F1data";
+import { F1styleData } from "~/data/F1/2026/F1styleData";
+import type { RaceModeProps } from "~/data/F1/2026/F1data";
 import { TableCell, TableRowNoHover } from "~/components/ui/table";
 
 export const RaceResultTable: React.FC<RaceModeProps> = (
@@ -126,7 +126,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
       const isDriver = !!driverName;
       if (driverName) {
         const activeStyleGuide =
-          F1styleData[driverToConstructor2025(driverName)];
+          F1styleData[driverToConstructor2026(driverName)];
 
         const activeBg = activeStyleGuide.primaryBackground;
         const activeTextColor = activeStyleGuide.secondaryText;
@@ -186,7 +186,7 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
       const isDriver = !!driverName;
       if (driverName) {
         const activeStyleGuide =
-          F1styleData[driverToConstructor2025(driverName)];
+          F1styleData[driverToConstructor2026(driverName)];
         const activeBg = activeStyleGuide.primaryBackground;
         const activeTextColor = activeStyleGuide.secondaryText;
         return (

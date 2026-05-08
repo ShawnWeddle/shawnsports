@@ -1,7 +1,7 @@
 import { cn } from "~/lib/utils";
-import { F1styleData } from "~/data/F1/2024/F1styleData24";
-import { FormulaOneRaceResults } from "~/data/F1/2024/raceData";
-import { createStandings } from "~/data/F1/2024/convert";
+import { F1styleData } from "~/data/F1/2026/F1styleData";
+import { FormulaOneRaceResults } from "~/data/F1/2026/raceData";
+import { createStandings } from "~/data/F1/2026/convert";
 import PodiumLogo from "../PodiumLogo";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {

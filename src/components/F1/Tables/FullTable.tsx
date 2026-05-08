@@ -3,7 +3,7 @@ import F1TableHeaders from "./TableHeaders";
 import { RaceResultTable } from "~/components/F1/Tables/RaceResultTable";
 import { DriverResultTable } from "~/components/F1/Tables/DriverResultTable";
 import { RunningResultTable } from "~/components/F1/Tables/RunningTotalsTable";
-import type { RaceModeType } from "~/data/F1/2023/F1data23";
+import type { RaceModeType } from "~/data/F1/2026/F1data";
 import { Card } from "~/components/ui/card";
 import {
   Table,
@@ -115,7 +115,7 @@ const FormulaOneTable: React.FC = () => {
   return (
     <>
       <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-        2025 Formula One Season
+        2026 Formula One Season
       </h1>
       <Card className="flex justify-center gap-2 p-2">
         <div>

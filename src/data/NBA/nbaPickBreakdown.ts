@@ -453,6 +453,7 @@ export const AllNBAPicks2: {[Key in NBATeamType] : {[Key in PickYearType] : Pick
   },{
     nativeTeam: "IND",
     year: 2029,
+    history: ["IND", "LAC"],
   },],
   "2030": [{
     nativeTeam: "LAC",
@@ -464,6 +465,7 @@ export const AllNBAPicks2: {[Key in NBATeamType] : {[Key in PickYearType] : Pick
   },{
     nativeTeam: "IND",
     year: 2031,
+    history: ["IND", "LAC"],
   },],
   "2032": [{
     nativeTeam: "LAC",

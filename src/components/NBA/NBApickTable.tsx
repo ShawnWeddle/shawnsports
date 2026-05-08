@@ -82,31 +82,56 @@ const NBApickTable: React.FC = () => {
 
   const modalNamer = (inputPick: PickType | null) => {
     if (inputPick) {
-      const { year, nativeTeam } = inputPick;
+      const { year, nativeTeam, conditions } = inputPick;
       if (nativeTeam === "NBA") {
-        return (
-          <span>
-            {year}{" "}
-            <span
-              className={cn("rounded border-b border-r px-1 py-0.5", {
-                [NBAstyleDataFull[nativeTeam].primaryBackground]: true,
-                [NBAstyleDataFull[nativeTeam].secondaryBorder]: true,
-                [NBAstyleDataFull[nativeTeam].simpleText]: true,
-              })}
-            >
-              NBA
-            </span>{" "}
-            First Round Pick
-          </span>
-        );
+        if (conditions) {
+          const teamSpans = conditions.teams.map((team, index) => {
+            return (
+              <span
+                key={index}
+                className={cn("px-1 py-0.5", {
+                  [NBAstyleDataFull[team].primaryBackground]: true,
+                  [NBAstyleDataFull[team].secondaryBorder]: true,
+                  [NBAstyleDataFull[team].simpleText]: true,
+                  "rounded-l": index === 0,
+                  "rounded-r": index === conditions.teams.length - 1,
+                })}
+              >
+                {team}
+              </span>
+            );
+          });
+          return (
+            <span>
+              {year} {teamSpans} First Round Pick
+            </span>
+          );
+        } else {
+          return (
+            <span>
+              {year}{" "}
+              <span
+                className={cn("rounded px-1 py-0.5", {
+                  [NBAstyleDataFull[nativeTeam].primaryBackground]: true,
+                  [NBAstyleDataFull[nativeTeam].secondaryBorder]: true,
+                  [NBAstyleDataFull[nativeTeam].simpleText]: true,
+                })}
+              >
+                NBA
+              </span>{" "}
+              First Round Pick
+            </span>
+          );
+        }
       }
+
       const teamLocation = NBAteamData[nativeTeam].location;
       const teamName = NBAteamData[nativeTeam].name;
       return (
         <span>
           {year}{" "}
           <span
-            className={cn("rounded border-b border-r px-1 py-0.5", {
+            className={cn("rounded px-1 py-0.5", {
               [NBAstyleDataFull[nativeTeam].primaryBackground]: true,
               [NBAstyleDataFull[nativeTeam].secondaryBorder]: true,
               [NBAstyleDataFull[nativeTeam].simpleText]: true,

@@ -1,11 +1,6 @@
 import { type NBATeamType } from "./NBAdata";
 
-type NBAcoType = {
-  latitude: number,
-  longitude: number
-}
-
-export const NBAstadiumCoordinates: { [Key in NBATeamType] : NBAcoType} = {
+export const NBAstadiumCoordinates: { [Key in NBATeamType] : { latitude: number, longitude: number }} = {
   ATL: { latitude: 33.757, longitude: -84.396}, 
   BOS: { latitude: 42.367, longitude: -71.062}, 
   BRK: { latitude: 40.683, longitude: -73.975}, 

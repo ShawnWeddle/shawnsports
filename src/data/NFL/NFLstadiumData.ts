@@ -1,11 +1,6 @@
 import { type NFLTeamType } from "./NFLdata";
 
-type NFLcoType = {
-  latitude: number,
-  longitude: number
-}
-
-export const NFLstadiumCoordinates: { [Key in NFLTeamType] : NFLcoType} = {
+export const NFLstadiumCoordinates: { [Key in NFLTeamType] : { latitude: number, longitude: number }} = {
   ARI: { latitude: 33.528, longitude: -112.263 },
   ATL: { latitude: 33.755, longitude: -84.400 },
   BAL: { latitude: 39.278, longitude: -76.623 },

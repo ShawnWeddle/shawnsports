@@ -2,6 +2,7 @@ import { Map, MapControls } from "~/components/ui/map";
 import { Card } from "~/components/ui/card";
 import { NFLmarkers } from "./NFLmarkers";
 import { NBAmarkers } from "./NBAmarkers";
+import { WNBAmarkers } from "./WNBAmarkers";
 import { NHLmarkers } from "./NHLmarkers";
 import { MLBmarkers } from "./MLBmarkers";
 import { MLSmarkers } from "./MLSmarkers";
@@ -17,6 +18,12 @@ export function MyMap() {
           showLocate
           showFullscreen
         />
+        {/* <MLSmarkers teamColorsOn={false} /> */}
+        {/* <MLBmarkers teamColorsOn={false} /> */}
+        {/* <NHLmarkers teamColorsOn={false} /> */}
+        {/* <NFLmarkers teamColorsOn={false} /> */}
+        <NBAmarkers teamColorsOn />
+        <WNBAmarkers teamColorsOn />
       </Map>
     </Card>
   );

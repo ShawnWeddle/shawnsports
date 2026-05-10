@@ -38,19 +38,19 @@ export const HomeTitlesDesc: {[Key in HomeTitlesType] : string} = {
 export const F1TitlesDesc: {[Key in F1TitlesType] : string} = {
   "F1_Tables": "See the results for every race this season",
   "F1_Standings": "See the current standings for each driver and constructor",
-  "F1_Compare": "Compare cumulative points totals for every driver and constructor in the 2024 F1 season",
-  "F1_Rank": "Rank all 20 drivers for the 2025 season",
+  "F1_Compare": "Compare cumulative points totals for every driver and constructor in the 2026 F1 season",
+  "F1_Rank": "Rank all 20 drivers for the 2026 season",
 };
 export const NFLTitlesDesc: {[Key in NFLTitlesType] : string} = {
   "NFL_Super_Losers": "A list of certain special players in NFL history",
-  "NFL_Super_Bowls": "See all 59 Super Bowl matchups",
+  "NFL_Super_Bowls": "See all 60 Super Bowl matchups",
   "NFL_Rank": "Rank all 32 NFL teams",
 };
 //  "NFL_Schedule": "See every team's schedule for the 2024 NFL season",
 //  "NFL_Draft_Chart": "NFL Draft Chart",
 //  "NBA_Lottery": "Select any 14 teams and simulate the 2025 NBA draft lottery",
 export const NBATitlesDesc: {[Key in NBATitlesType] : string} = {
-  "NBA_Future_Picks": "See which team owns each first round pick through 2031",
+  "NBA_Future_Picks": "See which team owns each first round pick through 2032",
   "NBA_Finals": "See all NBA Finals since 1947",
   "NBA_Rank": "Rank all 30 NBA teams",
 };
@@ -60,7 +60,7 @@ export const MLBTitlesDesc: {[Key in MLBTitlesType] : string} = {
 };
 export const MLSTitlesDesc: {[Key in MLSTitlesType] : string} = {
   "MLS_Cups": "See all MLS Cups since 1996",
-  "MLS_Rank": "Rank all 29 MLS teams",
+  "MLS_Rank": "Rank all 30 MLS teams",
 };
 export const NHLTitlesDesc: {[Key in NHLTitlesType] : string} = {
   "NHL_Stanley_Cups": "See all Stanley Cup Finals since 1927",

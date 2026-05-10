@@ -1,11 +1,6 @@
 import { type MLBTeamType } from "./MLBdata";
 
-type MLBcoType = {
-  latitude: number,
-  longitude: number
-}
-
-export const MLBstadiumCoordinates: { [Key in MLBTeamType] : MLBcoType} = {
+export const MLBstadiumCoordinates: { [Key in MLBTeamType] : { latitude: number, longitude: number }} = {
   ARI: {latitude: 33.445, longitude: -112.067},
   ATL: {latitude: 33.890, longitude: -84.468},
   BAL: {latitude: 39.284, longitude: -76.622},
@@ -17,7 +12,7 @@ export const MLBstadiumCoordinates: { [Key in MLBTeamType] : MLBcoType} = {
   COL: {latitude: 39.756, longitude: -104.994},
   DET: {latitude: 42.339, longitude: -83.049},
   HOU: {latitude: 29.757, longitude: -95.356},
-  KCR: {latitude: 39.051, longitude: -94.48},
+  KCR: {latitude: 39.052, longitude: -94.48},
   LAA: {latitude: 33.800, longitude: -117.883},
   LAD: {latitude: 34.074, longitude: -118.240},
   MIA: {latitude: 25.778, longitude: -80.220},

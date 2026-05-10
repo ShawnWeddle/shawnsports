@@ -1,9 +1,9 @@
 export const allMLSteams = [
-  "ATL", "ATX", "MTL", "CLT", "CHI", "COL", 
+  "ATL", "ATX", "CLT", "CHI", "COL", 
   "CLB", "DCU", "CIN", "DAL", "HOU", "MIA", 
-  "LAF", "LAG", "MIN", "NSH", "NER", "NYC", 
+  "LAF", "LAG", "MIN", "MTL", "NSH", "NER", "NYC", 
   "NYR", "ORL", "PHI", "POR", "RSL", "SJE", 
-  "SEA", "SKC", "STL", "TOR", "VAN", 
+  "SEA", "SDF", "SKC", "STL", "TOR", "VAN", 
 ] as const;
 
 export type MLSTeamType = typeof allMLSteams[number];
@@ -30,12 +30,13 @@ export const MLSteamData: { [Key in MLSTeamType] : teamInfoType} = {
   NER: { location: "New England", name: "Revolution", reverse: false },
   NYC: { location: "New York City", name: "FC", reverse: false },
   NYR: { location: "New York", name: "Red Bulls", reverse: false },
-  ORL: { location: "Orlando", name: "City", reverse: false },
+  ORL: { location: "Orlando City", name: "SC", reverse: false },
   PHI: { location: "Philadelphia", name: "Union", reverse: false },
   POR: { location: "Portland", name: "Timbers", reverse: false },
   RSL: { location: "Salt Lake", name: "Real", reverse: true },
-  SJE: { location: "San Jose", name: "Earthquakes", reverse: false },
+  SDF: { location: "San Diego", name: "FC", reverse: false },
   SEA: { location: "Seattle", name: "Sounders", reverse: false },
+  SJE: { location: "San Jose", name: "Earthquakes", reverse: false },
   SKC: { location: "Kansas City", name: "Sporting", reverse: true },
   STL: { location: "St Louis", name: "City SC", reverse: false },
   TOR: { location: "Toronto", name: "FC", reverse: false },

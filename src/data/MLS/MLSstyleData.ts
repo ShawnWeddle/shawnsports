@@ -290,6 +290,18 @@ export const MLSstyleData: { [Key in MLSTeamType] : StyleBookType} = {
     simpleText: "text-[#FFFFFF]",
     simpleTextHover: "hover:text-[#FFFFFF]",
   },
+  "SDF": {
+    primary: "#02152B",
+    secondary: "#EC2623",
+    primaryBackground: "bg-[#02152B]",
+    primaryBackgroundHover: "hover:bg-[#02152B]",
+    secondaryBorder: "border-[#EC2623]",
+    secondaryBorderHover: "hover:border-[#EC2623]",
+    secondaryText: "text-[#EC2623]",
+    secondaryTextHover: "hover:text-[#EC2623]",
+    simpleText: "text-[#FFFFFF]",
+    simpleTextHover: "hover:text-[#FFFFFF]",
+  },
   "SEA": {
     primary: "#005595",
     secondary: "#5D9741",

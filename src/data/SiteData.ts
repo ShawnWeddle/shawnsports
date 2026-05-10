@@ -68,7 +68,7 @@ export const NHLTitlesDesc: {[Key in NHLTitlesType] : string} = {
 };
 export const WNBATitlesDesc: {[Key in WNBATitlesType] : string} = {
   "WNBA_Finals": "See all WNBA Finals since 1997",
-  "WNBA_Rank": "Rank all 12 WNBA teams",
+  "WNBA_Rank": "Rank all 15 WNBA teams",
 };
 export const CFLTitlesDesc: {[Key in CFLTitlesType] : string} = {
   "CFL_Grey_Cups": "See all Grey Cups since 1954",

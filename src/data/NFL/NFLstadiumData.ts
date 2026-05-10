@@ -1,0 +1,42 @@
+import { type NFLTeamType } from "./NFLdata";
+
+type NFLcoType = {
+  latitude: number,
+  longitude: number
+}
+
+export const NFLstadiumCoordinates: { [Key in NFLTeamType] : NFLcoType} = {
+  ARI: { latitude: 33.528, longitude: -112.263 },
+  ATL: { latitude: 33.755, longitude: -84.400 },
+  BAL: { latitude: 39.278, longitude: -76.623 },
+  BUF: { latitude: 42.774, longitude: -78.787 },
+  CAR: { latitude: 35.226, longitude: -80.853 },
+  CHI: { latitude: 41.862, longitude: -87.617 },
+  CIN: { latitude: 39.095, longitude: -84.516 },
+  CLE: { latitude: 41.506, longitude: -81.699 },
+  DAL: { latitude: 32.748, longitude: -97.093 },
+  DEN: { latitude: 39.744, longitude: -105.020 },
+  DET: { latitude: 42.340, longitude: -83.046 },
+  GNB: { latitude: 44.501, longitude: -88.062 },
+  HOU: { latitude: 29.685, longitude: -95.411 },
+  IND: { latitude: 39.760, longitude: -86.164 },
+  JAX: { latitude: 30.324, longitude: -81.638 },
+  KAN: { latitude: 39.049, longitude: -94.484 },
+  LAC: { latitude: 33.954, longitude: -118.340 },
+  LAR: { latitude: 33.952, longitude: -118.338 },
+  LVR: { latitude: 36.091, longitude: -115.184 },
+  MIA: { latitude: 25.958, longitude: -80.239 },
+  MIN: { latitude: 44.974, longitude: -93.258 },
+  NOR: { latitude: 29.951, longitude: -90.081 },
+  NWE: { latitude: 42.091, longitude: -71.264 },
+  NYG: { latitude: 40.813, longitude: -74.074 },
+  NYJ: { latitude: 40.814, longitude: -74.075 },
+  PHI: { latitude: 39.901, longitude: -75.168 },
+  PIT: { latitude: 40.447, longitude: -80.016 },
+  SEA: { latitude: 47.595, longitude: -122.332 },
+  SFO: { latitude: 37.403, longitude: -121.970 },
+  TAM: { latitude: 27.976, longitude: -82.503 },
+  TEN: { latitude: 36.166, longitude: -86.771 },
+  WAS: { latitude: 38.908, longitude: -76.864 },
+};
+

@@ -145,6 +145,6 @@ export const GlobalSportData: {
   "WNBA": {
     title: "WNBA Teams",
     variant: "wnba",
-    totalNum: 13,
+    totalNum: 15,
   },
 }

@@ -3,6 +3,7 @@ import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
 import { NFLteamData, nflTeamsRanked } from "~/data/NFL/NFLdata";
 import { NFLstadiumCoordinates } from "~/data/NFL/NFLstadiumData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
+import { FaFootball } from "react-icons/fa6";
 
 type MarkerOptionsType = {
   teamColorsOn: boolean;
@@ -18,14 +19,7 @@ export const NFLmarkers = (options: MarkerOptionsType) => {
         longitude={NFLstadiumCoordinates[team].longitude}
       >
         <MarkerContent>
-          <div
-            className={cn("size-4 rounded-full border-2 shadow-lg", {
-              [NFLstyleData[team].primaryBackground]: teamColorsOn,
-              [NFLstyleData[team].secondaryBorder]: teamColorsOn,
-              "bg-nfl": !teamColorsOn,
-              "border-white": !teamColorsOn,
-            })}
-          />
+          <FaFootball className={cn("size-4 text-nfl/60 shadow-lg")} />
         </MarkerContent>
         <MarkerPopup>
           <div className="space-y-1">

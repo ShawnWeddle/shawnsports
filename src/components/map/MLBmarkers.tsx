@@ -3,6 +3,7 @@ import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
 import { MLBteamData, mlbTeamsRanked } from "~/data/MLB/MLBdata";
 import { MLBstadiumCoordinates } from "~/data/MLB/MLBstadiumData";
 import { MLBstyleData } from "~/data/MLB/MLBstyleData";
+import { FaBaseball } from "react-icons/fa6";
 
 type MarkerOptionsType = {
   teamColorsOn: boolean;
@@ -18,14 +19,7 @@ export const MLBmarkers = (options: MarkerOptionsType) => {
         longitude={MLBstadiumCoordinates[team].longitude}
       >
         <MarkerContent>
-          <div
-            className={cn("size-4 rounded-full border-2 shadow-lg", {
-              [MLBstyleData[team].primaryBackground]: teamColorsOn,
-              [MLBstyleData[team].secondaryBorder]: teamColorsOn,
-              "bg-mlb": !teamColorsOn,
-              "border-white": !teamColorsOn,
-            })}
-          />
+          <FaBaseball className={cn("size-4 text-mlb/60 shadow-lg")} />
         </MarkerContent>
         <MarkerPopup>
           <div className="space-y-1">

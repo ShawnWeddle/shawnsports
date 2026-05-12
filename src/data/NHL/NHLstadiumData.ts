@@ -1,11 +1,8 @@
 import { type NHLTeamType } from "./NHLdata";
+import { type TeamProperties } from "../universal/testData";
+import { NHLteamData, nhlTeamsRanked } from "./NHLdata";
 
-type NHLcoType = {
-  latitude: number,
-  longitude: number
-}
-
-export const NHLstadiumCoordinates: { [Key in NHLTeamType] : NHLcoType} = {
+export const NHLstadiumCoordinates: { [Key in NHLTeamType] : { latitude: number, longitude: number }} = {
   ANA : {latitude: 33.808, longitude: -117.877},
   BOS : {latitude: 42.366, longitude: -71.062},
   BUF : {latitude: 42.875, longitude: -78.876},
@@ -40,3 +37,12 @@ export const NHLstadiumCoordinates: { [Key in NHLTeamType] : NHLcoType} = {
   WIN : {latitude: 49.893, longitude: -97.144},
 };
 
+export const nhlStadiumClusterPoints: GeoJSON.Feature<GeoJSON.Point, TeamProperties>[] = nhlTeamsRanked.map((team) => {
+  const { latitude, longitude } = NHLstadiumCoordinates[team];
+  const { location, name } = NHLteamData[team];
+  return {
+    type: "Feature",
+    geometry: { type: "Point", coordinates: [ longitude, latitude ]},
+    properties: { location, name }
+  }
+})

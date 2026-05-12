@@ -1,22 +1,21 @@
-import { NFLstadiumCoordinates } from "../NFL/NFLstadiumData";
-import { NFLteamData, nflTeamsRanked } from "../NFL/NFLdata";
+import { nbaStadiumClusterPoints } from "../NBA/NBAstadiumData";
+import { nflStadiumClusterPoints } from "../NFL/NFLstadiumData";
+import { nhlStadiumClusterPoints } from "../NHL/NHLstadiumData";
+import { mlbStadiumClusterPoints } from "../MLB/MLBstadiumData";
 
 export interface TeamProperties {
   location: string;
   name: string;
 }
 
-const features: GeoJSON.Feature<GeoJSON.Point, TeamProperties>[] = nflTeamsRanked.map((team) => {
-  const { latitude, longitude } = NFLstadiumCoordinates[team];
-  const { location, name } = NFLteamData[team];
-  return {
-    type: "Feature",
-    geometry: { type: "Point", coordinates: [ latitude , longitude ]},
-    properties: { location, name }
-  }
-})
+const features: GeoJSON.Feature<GeoJSON.Point, TeamProperties>[] = [
+  ...nbaStadiumClusterPoints,
+  ...nflStadiumClusterPoints,
+  ...nhlStadiumClusterPoints,
+  ...mlbStadiumClusterPoints
+];
 
-export const NFLpoints: GeoJSON.FeatureCollection<GeoJSON.Point, TeamProperties> = {
+export const NBApoints: GeoJSON.FeatureCollection<GeoJSON.Point, TeamProperties> = {
   "type": "FeatureCollection",
   features,
 };

@@ -1,4 +1,6 @@
 import { type NBATeamType } from "./NBAdata";
+import { type TeamProperties } from "../universal/testData";
+import { NBAteamData, nbaTeamsRanked } from "../NBA/NBAdata";
 
 export const NBAstadiumCoordinates: { [Key in NBATeamType] : { latitude: number, longitude: number }} = {
   ATL: { latitude: 33.757, longitude: -84.396}, 
@@ -32,3 +34,13 @@ export const NBAstadiumCoordinates: { [Key in NBATeamType] : { latitude: number,
   UTA: { latitude: 40.768, longitude: -111.901}, 
   WAS: { latitude: 38.899, longitude: -77.021}, 
 };
+
+export const nbaStadiumClusterPoints: GeoJSON.Feature<GeoJSON.Point, TeamProperties>[] = nbaTeamsRanked.map((team) => {
+  const { latitude, longitude } = NBAstadiumCoordinates[team];
+  const { location, name } = NBAteamData[team];
+  return {
+    type: "Feature",
+    geometry: { type: "Point", coordinates: [ longitude, latitude ]},
+    properties: { location, name }
+  }
+})

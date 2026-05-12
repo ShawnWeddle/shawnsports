@@ -3,6 +3,7 @@ import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
 import { NBAteamData, nbaTeamsRanked } from "~/data/NBA/NBAdata";
 import { NBAstadiumCoordinates } from "~/data/NBA/NBAstadiumData";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
+import { FaBasketball } from "react-icons/fa6";
 
 type MarkerOptionsType = {
   teamColorsOn: boolean;
@@ -18,14 +19,7 @@ export const NBAmarkers = (options: MarkerOptionsType) => {
         longitude={NBAstadiumCoordinates[team].longitude}
       >
         <MarkerContent>
-          <div
-            className={cn("size-4 rounded-full border-2 shadow-lg", {
-              [NBAstyleData[team].primaryBackground]: teamColorsOn,
-              [NBAstyleData[team].secondaryBorder]: teamColorsOn,
-              "bg-nba": !teamColorsOn,
-              "border-white": !teamColorsOn,
-            })}
-          />
+          <FaBasketball className={cn("size-4 text-nba/60 shadow-lg")} />
         </MarkerContent>
         <MarkerPopup>
           <div className="space-y-1">

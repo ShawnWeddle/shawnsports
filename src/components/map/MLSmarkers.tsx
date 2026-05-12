@@ -3,6 +3,7 @@ import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
 import { MLSteamData, allMLSteams } from "~/data/MLS/MLSdata";
 import { MLSstadiumCoordinates } from "~/data/MLS/MLSstadiumData";
 import { MLSstyleData } from "~/data/MLS/MLSstyleData";
+import { FaFutbol } from "react-icons/fa";
 
 type MarkerOptionsType = {
   teamColorsOn: boolean;
@@ -21,14 +22,7 @@ export const MLSmarkers = (options: MarkerOptionsType) => {
         longitude={MLSstadiumCoordinates[team].longitude}
       >
         <MarkerContent>
-          <div
-            className={cn("size-4 rounded-full border-2 shadow-lg", {
-              [MLSstyleData[team].primaryBackground]: teamColorsOn,
-              [MLSstyleData[team].secondaryBorder]: teamColorsOn,
-              "bg-mls": !teamColorsOn,
-              "border-white": !teamColorsOn,
-            })}
-          />
+          <FaFutbol className={cn("size-4 text-mls/60 shadow-lg")} />
         </MarkerContent>
         <MarkerPopup>
           <div className="space-y-1">

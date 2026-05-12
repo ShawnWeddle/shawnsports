@@ -3,6 +3,7 @@ import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
 import { NHLteamData, nhlTeamsRanked } from "~/data/NHL/NHLdata";
 import { NHLstadiumCoordinates } from "~/data/NHL/NHLstadiumData";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
+import { FaHockeyPuck } from "react-icons/fa6";
 
 type MarkerOptionsType = {
   teamColorsOn: boolean;
@@ -18,14 +19,7 @@ export const NHLmarkers = (options: MarkerOptionsType) => {
         longitude={NHLstadiumCoordinates[team].longitude}
       >
         <MarkerContent>
-          <div
-            className={cn("size-4 rounded-full border-2 shadow-lg", {
-              [NHLstyleData[team].primaryBackground]: teamColorsOn,
-              [NHLstyleData[team].secondaryBorder]: teamColorsOn,
-              "bg-nhl": !teamColorsOn,
-              "border-white": !teamColorsOn,
-            })}
-          />
+          <FaHockeyPuck className={cn("size-4 text-nhl/60 shadow-lg")} />
         </MarkerContent>
         <MarkerPopup>
           <div className="space-y-1">

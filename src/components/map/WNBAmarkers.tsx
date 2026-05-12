@@ -3,6 +3,7 @@ import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
 import { WNBAteamData, wnbaTeamsRanked } from "~/data/WNBA/WNBAdata";
 import { WNBAstadiumCoordinates } from "~/data/WNBA/WNBAstadiumData";
 import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
+import { FaBasketball } from "react-icons/fa6";
 
 type MarkerOptionsType = {
   teamColorsOn: boolean;
@@ -18,14 +19,7 @@ export const WNBAmarkers = (options: MarkerOptionsType) => {
         longitude={WNBAstadiumCoordinates[team].longitude}
       >
         <MarkerContent>
-          <div
-            className={cn("size-4 rounded-full border-2 shadow-lg", {
-              [WNBAstyleData[team].primaryBackground]: teamColorsOn,
-              [WNBAstyleData[team].secondaryBorder]: teamColorsOn,
-              "bg-[#E00078]": !teamColorsOn,
-              "border-white": !teamColorsOn,
-            })}
-          />
+          <FaBasketball className={cn("size-4 text-nba/60 shadow-lg")} />
         </MarkerContent>
         <MarkerPopup>
           <div className="space-y-1">

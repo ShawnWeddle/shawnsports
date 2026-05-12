@@ -1,4 +1,6 @@
 import { type MLBTeamType } from "./MLBdata";
+import { type TeamProperties } from "../universal/testData";
+import { MLBteamData, mlbTeamsRanked } from "../MLB/MLBdata";
 
 export const MLBstadiumCoordinates: { [Key in MLBTeamType] : { latitude: number, longitude: number }} = {
   ARI: {latitude: 33.445, longitude: -112.067},
@@ -32,3 +34,13 @@ export const MLBstadiumCoordinates: { [Key in MLBTeamType] : { latitude: number,
   TOR: {latitude: 43.641, longitude: -79.389},
   WSN: {latitude: 38.873, longitude: -77.007},
 }
+
+export const mlbStadiumClusterPoints: GeoJSON.Feature<GeoJSON.Point, TeamProperties>[] = mlbTeamsRanked.map((team) => {
+  const { latitude, longitude } = MLBstadiumCoordinates[team];
+  const { location, name } = MLBteamData[team];
+  return {
+    type: "Feature",
+    geometry: { type: "Point", coordinates: [ longitude, latitude ]},
+    properties: { location, name }
+  }
+})

@@ -1,4 +1,6 @@
 import { type NFLTeamType } from "./NFLdata";
+import { type TeamProperties } from "../universal/testData";
+import { NFLteamData, nflTeamsRanked } from "./NFLdata";
 
 export const NFLstadiumCoordinates: { [Key in NFLTeamType] : { latitude: number, longitude: number }} = {
   ARI: { latitude: 33.528, longitude: -112.263 },
@@ -35,3 +37,12 @@ export const NFLstadiumCoordinates: { [Key in NFLTeamType] : { latitude: number,
   WAS: { latitude: 38.908, longitude: -76.864 },
 };
 
+export const nflStadiumClusterPoints: GeoJSON.Feature<GeoJSON.Point, TeamProperties>[] = nflTeamsRanked.map((team) => {
+  const { latitude, longitude } = NFLstadiumCoordinates[team];
+  const { location, name } = NFLteamData[team];
+  return {
+    type: "Feature",
+    geometry: { type: "Point", coordinates: [ longitude, latitude ]},
+    properties: { location, name }
+  }
+})

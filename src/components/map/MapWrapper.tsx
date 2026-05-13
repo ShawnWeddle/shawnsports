@@ -11,6 +11,7 @@ export const sportMapList: SportType[] = [
   "NHL",
   "MLS",
   "WNBA",
+  "CFL",
 ];
 
 const MapWrapper: React.FC = () => {

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { type SportType } from "../SiteData";
+import { type SportType } from "~/data/SiteData";
 import { NullBook } from "~/types/StyleBook";
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
 import { F1styleData } from "~/data/F1/2026/F1styleData";
@@ -16,18 +16,19 @@ import {
   driverToConstructor2026,
 } from "~/data/F1/2026/F1data";
 import { MLBteamData, mlbTeamsRanked } from "~/data/MLB/MLBdata";
-import { MLSteamData, allMLSteams } from "../MLS/MLSdata";
+import { MLSteamData, allMLSteams } from "~/data/MLS/MLSdata";
 import { NBAteamData, nbaTeamsRanked } from "~/data/NBA/NBAdata";
 import { NFLteamData, nflTeamsRanked } from "~/data/NFL/NFLdata";
 import { NHLteamData, nhlTeamsRanked } from "~/data/NHL/NHLdata";
 import { WNBAteamData, wnbaTeamsRanked } from "~/data/WNBA/WNBAdata";
 
-import { MLBstadiumCoordinates } from "../MLB/MLBstadiumData";
-import { MLSstadiumCoordinates } from "../MLS/MLSstadiumData";
-import { NBAstadiumCoordinates } from "../NBA/NBAstadiumData";
+import { CFLstadiumCoordinates } from "~/data/CFL/CFLstadiumData";
+import { MLBstadiumCoordinates } from "~/data/MLB/MLBstadiumData";
+import { MLSstadiumCoordinates } from "~/data/MLS/MLSstadiumData";
+import { NBAstadiumCoordinates } from "~/data/NBA/NBAstadiumData";
 import { NFLstadiumCoordinates } from "~/data/NFL/NFLstadiumData";
-import { NHLstadiumCoordinates } from "../NHL/NHLstadiumData";
-import { WNBAstadiumCoordinates } from "../WNBA/WNBAstadiumData";
+import { NHLstadiumCoordinates } from "~/data/NHL/NHLstadiumData";
+import { WNBAstadiumCoordinates } from "~/data/WNBA/WNBAstadiumData";
 
 const CFLenum = z.enum(cflTeamsRanked);
 const F1enum = z.enum(driverCodes2026);
@@ -57,6 +58,8 @@ export const markerData = (input: string, sport: SportType) => {
         style = CFLstyleData[code];
         text.long = CFLteamData[code].location + " " + CFLteamData[code].name
         text.short = CFLteamData[code].name;
+        coordinates.latitude = CFLstadiumCoordinates[code].latitude;
+        coordinates.longitude = CFLstadiumCoordinates[code].longitude;
         break;
       case "MLB":
         code = MLBenum.parse(input);

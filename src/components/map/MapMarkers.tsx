@@ -1,12 +1,13 @@
 import { cn } from "~/lib/utils";
 import { type SportType } from "~/data/SiteData";
 import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
-import { NFLteamData, nflTeamsRanked } from "~/data/NFL/NFLdata";
+import { nflTeamsRanked } from "~/data/NFL/NFLdata";
 import { allMLSteams } from "~/data/MLS/MLSdata";
 import { mlbTeamsRanked } from "~/data/MLB/MLBdata";
 import { wnbaTeamsRanked } from "~/data/WNBA/WNBAdata";
 import { nhlTeamsRanked } from "~/data/NHL/NHLdata";
-import { NBAteamData, nbaTeamsRanked } from "~/data/NBA/NBAdata";
+import { nbaTeamsRanked } from "~/data/NBA/NBAdata";
+import { cflTeamsRanked } from "~/data/CFL/CFLdata";
 import { markerData } from "~/data/universal/markerData";
 import { Icon } from "../Home/HomeNav";
 
@@ -34,6 +35,7 @@ const Marker: React.FC<MarkerProps> = (props: MarkerProps) => {
           className={cn(
             "flex size-6 flex-row items-center justify-center rounded-full border-2 shadow-lg",
             {
+              "border-cfl": sport === "CFL" && !teamColors,
               "border-mlb": sport === "MLB" && !teamColors,
               "border-mls": sport === "MLS" && !teamColors,
               "border-nba": sport === "NBA" && !teamColors,
@@ -48,6 +50,7 @@ const Marker: React.FC<MarkerProps> = (props: MarkerProps) => {
         >
           <Icon
             style={cn("size-4", {
+              "text-cfl": sport === "CFL" && !teamColors,
               "text-mlb": sport === "MLB" && !teamColors,
               "text-mls": sport === "MLS" && !teamColors,
               "text-nba": sport === "NBA" && !teamColors,
@@ -82,7 +85,16 @@ export const MapMarkers = (props: MarkersProps) => {
 
   switch (sport) {
     case "CFL":
-      return [];
+      return cflTeamsRanked.map((team, index) => {
+        return (
+          <Marker
+            key={index}
+            team={team}
+            teamColors={teamColors}
+            sport={sport}
+          />
+        );
+      });
     case "F1":
       return [];
     case "MLB":

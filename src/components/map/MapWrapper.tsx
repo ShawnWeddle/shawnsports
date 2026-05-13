@@ -4,8 +4,18 @@ import { Card } from "~/components/ui/card";
 import { Checkbox } from "../ui/checkbox";
 import { MyMap } from "./Map";
 
+export const sportMapList: SportType[] = [
+  "NFL",
+  "NBA",
+  "MLB",
+  "NHL",
+  "MLS",
+  "WNBA",
+];
+
 const MapWrapper: React.FC = () => {
-  const [activeSports, setActiveSports] = useState<SportType[]>(["NBA", "MLB"]);
+  const [activeSports, setActiveSports] = useState<SportType[]>(["NFL", "MLB"]);
+  const [showTeamColors, setShowTeamColors] = useState<boolean>(false);
 
   const setActiveSportsHandler = (sport: SportType) => {
     const newSports = [...activeSports];
@@ -18,22 +28,37 @@ const MapWrapper: React.FC = () => {
       newSports.push(sport);
     }
     setActiveSports([...newSports]);
-    console.log(newSports);
   };
+
+  const checkList = sportMapList.map((sport, index) => {
+    return (
+      <div className="flex h-max items-center p-1" key={index}>
+        <Checkbox
+          checked={activeSports.includes(sport)}
+          onCheckedChange={() => {
+            setActiveSportsHandler(sport);
+          }}
+        ></Checkbox>
+        <span className="pl-2 text-lg"> {sport} </span>
+      </div>
+    );
+  });
 
   return (
     <Card className="flex h-96 w-full overflow-hidden p-0">
-      <div className="h-full">
-        <div className="flex">
+      <div className="h-full p-1">
+        {checkList}
+        <div className="flex h-max items-center p-1">
           <Checkbox
+            checked={showTeamColors}
             onCheckedChange={() => {
-              setActiveSportsHandler("NFL");
+              setShowTeamColors(!showTeamColors);
             }}
           ></Checkbox>
-          <span> NFL </span>
+          <span className="pl-2 text-lg"> show team colors </span>
         </div>
       </div>
-      <MyMap activeSports={activeSports} />
+      <MyMap activeSports={activeSports} showTeamColors={showTeamColors} />
     </Card>
   );
 };

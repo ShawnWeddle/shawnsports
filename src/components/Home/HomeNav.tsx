@@ -23,26 +23,32 @@ import {
 } from "react-icons/fa6";
 import { BsArrowReturnRight } from "react-icons/bs";
 
-const Icon = (sport: PageHeadsType) => {
+type IconProps = {
+  sport: PageHeadsType;
+  style: string;
+};
+
+export const Icon: React.FC<IconProps> = (props: IconProps) => {
+  const { sport, style } = props;
   switch (sport) {
     case "Home":
-      return <></>;
+      return <FaTrophy className={style} />;
     case "NBA":
-      return <FaBasketball />;
+      return <FaBasketball className={style} />;
     case "NFL":
-      return <FaFootball />;
+      return <FaFootball className={style} />;
     case "F1":
-      return <FaTrophy />;
+      return <FaTrophy className={style} />;
     case "MLB":
-      return <FaBaseball />;
+      return <FaBaseball className={style} />;
     case "MLS":
-      return <FaFutbol />;
+      return <FaFutbol className={style} />;
     case "NHL":
-      return <FaHockeyPuck />;
+      return <FaHockeyPuck className={style} />;
     case "WNBA":
-      return <FaBasketball />;
+      return <FaBasketball className={style} />;
     case "CFL":
-      return <FaFootball />;
+      return <FaFootball className={style} />;
   }
 };
 
@@ -108,7 +114,9 @@ const HomeNav: React.FC = () => {
           >
             <div className="flex gap-4">
               {sportMode === "F1" ? "Formula One" : sportMode}{" "}
-              <div className="pt-1">{Icon(sportMode)}</div>
+              <div className="pt-1">
+                <Icon style="" sport={sportMode} />
+              </div>
             </div>
           </AccordionTrigger>
           <AccordionContent>

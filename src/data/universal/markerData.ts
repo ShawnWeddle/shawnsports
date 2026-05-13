@@ -22,6 +22,13 @@ import { NFLteamData, nflTeamsRanked } from "~/data/NFL/NFLdata";
 import { NHLteamData, nhlTeamsRanked } from "~/data/NHL/NHLdata";
 import { WNBAteamData, wnbaTeamsRanked } from "~/data/WNBA/WNBAdata";
 
+import { MLBstadiumCoordinates } from "../MLB/MLBstadiumData";
+import { MLSstadiumCoordinates } from "../MLS/MLSstadiumData";
+import { NBAstadiumCoordinates } from "../NBA/NBAstadiumData";
+import { NFLstadiumCoordinates } from "~/data/NFL/NFLstadiumData";
+import { NHLstadiumCoordinates } from "../NHL/NHLstadiumData";
+import { WNBAstadiumCoordinates } from "../WNBA/WNBAstadiumData";
+
 const CFLenum = z.enum(cflTeamsRanked);
 const F1enum = z.enum(driverCodes2026);
 const MLBenum = z.enum(mlbTeamsRanked);
@@ -31,10 +38,11 @@ const NFLenum = z.enum(nflTeamsRanked);
 const NHLenum = z.enum(nhlTeamsRanked);
 const WNBAenum = z.enum(wnbaTeamsRanked);
 
-export const rankerInfo = (input: string, sport: SportType) => {
+export const markerData = (input: string, sport: SportType) => {
   let code;
   let style = NullBook;
   const text = { short: "", long: "" };
+  const coordinates = { latitude: 0, longitude: 0 };
   if(input){
     switch (sport) {
       case "F1":
@@ -55,36 +63,48 @@ export const rankerInfo = (input: string, sport: SportType) => {
         style = MLBstyleData[code];
         text.long = MLBteamData[code].location + " " + MLBteamData[code].name;
         text.short = MLBteamData[code].name;
+        coordinates.latitude = MLBstadiumCoordinates[code].latitude;
+        coordinates.longitude = MLBstadiumCoordinates[code].longitude;
         break;
       case "MLS":
         code = MLSenum.parse(input);
         style = MLSstyleData[code];
         text.long = MLSteamData[code].reverse ? MLSteamData[code].name + " " + MLSteamData[code].location : MLSteamData[code].location + " " + MLSteamData[code].name;
         text.short = MLSteamData[code].location;
+        coordinates.latitude = MLSstadiumCoordinates[code].latitude;
+        coordinates.longitude = MLSstadiumCoordinates[code].longitude;
         break;
       case "NBA":
         code = NBAenum.parse(input);
         style = NBAstyleData[code];
         text.long = NBAteamData[code].location + " " + NBAteamData[code].name;
         text.short = NBAteamData[code].name;
+        coordinates.latitude = NBAstadiumCoordinates[code].latitude;
+        coordinates.longitude = NBAstadiumCoordinates[code].longitude;
         break;
       case "NFL":
         code = NFLenum.parse(input);
         style = NFLstyleData[code];
         text.long = NFLteamData[code].location + " " + NFLteamData[code].name;
         text.short = NFLteamData[code].name;
+        coordinates.latitude = NFLstadiumCoordinates[code].latitude;
+        coordinates.longitude = NFLstadiumCoordinates[code].longitude;
         break;
       case "NHL":
         code = NHLenum.parse(input);
         style = NHLstyleData[code];
         text.long = NHLteamData[code].location + " " + NHLteamData[code].name;
         text.short = NHLteamData[code].name;
+        coordinates.latitude = NHLstadiumCoordinates[code].latitude;
+        coordinates.longitude = NHLstadiumCoordinates[code].longitude;
         break;
       case "WNBA":
         code = WNBAenum.parse(input);
         style = WNBAstyleData[code];
         text.long = WNBAteamData[code].location + " " + WNBAteamData[code].name;
         text.short = WNBAteamData[code].name;
+        coordinates.latitude = WNBAstadiumCoordinates[code].latitude;
+        coordinates.longitude = WNBAstadiumCoordinates[code].longitude;
         break;
     }
   }
@@ -95,6 +115,7 @@ export const rankerInfo = (input: string, sport: SportType) => {
 
   return {
     code,
+    coordinates,
     style,
     text,
   }

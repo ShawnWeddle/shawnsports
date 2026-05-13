@@ -19,7 +19,7 @@ export const NFLmarkers = (options: MarkerOptionsType) => {
         longitude={NFLstadiumCoordinates[team].longitude}
       >
         <MarkerContent>
-          <FaFootball className={cn("size-4 text-nfl/60 shadow-lg")} />
+          <FaFootball className={cn("size-3 text-nfl/60 shadow-lg")} />
         </MarkerContent>
         <MarkerPopup>
           <div className="space-y-1">

@@ -7,7 +7,7 @@ import { MoveRight, MoveLeft, MoveUp, MoveDown } from "lucide-react";
 import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
 import { Button } from "../ui/button";
 import { type SportType } from "~/data/SiteData";
-import { rankerInfo, GlobalSportData } from "~/data/universal/rankerData";
+import { rankerInfo, GlobalSportData } from "~/data/universal/markerData";
 import {
   createRankSchema,
   type CreateRankInput,

@@ -43,6 +43,7 @@ const config = {
         mlb: "#A80000",
         mls: "#808080",
         cfl: "#7000A8",
+        wnba: "#E03C00",
         ylo: "#E0E000",
         gold: "#FFCC00",
         silver: "#9EA7B0",

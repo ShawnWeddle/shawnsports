@@ -56,7 +56,7 @@ const MapWrapper: React.FC = () => {
               setShowTeamColors(!showTeamColors);
             }}
           ></Checkbox>
-          <span className="pl-2 text-lg"> show team colors </span>
+          <span className="pl-2 text-sm"> show team colors </span>
         </div>
       </div>
       <MyMap activeSports={activeSports} showTeamColors={showTeamColors} />

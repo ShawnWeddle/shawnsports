@@ -2991,23 +2991,6 @@
     {
       "type": "Feature",
       "properties": {
-        "Team": "Dunedin Blue Jays",
-        "League": "Florida State League",
-        "Division": "West",
-        "Stadium": "TD Ballpark",
-        "Class": "Single-A"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -82.798333,
-          27.8925
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "Team": "Fort Myers Mighty Mussels",
         "League": "Florida State League",
         "Division": "West",

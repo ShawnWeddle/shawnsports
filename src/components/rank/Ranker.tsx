@@ -7,7 +7,7 @@ import { MoveRight, MoveLeft, MoveUp, MoveDown } from "lucide-react";
 import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
 import { Button } from "../ui/button";
 import { type SportType } from "~/data/SiteData";
-import { rankerInfo, GlobalSportData } from "~/data/universal/markerData";
+import { markerData, GlobalSportData } from "~/data/universal/markerData";
 import {
   createRankSchema,
   type CreateRankInput,
@@ -26,8 +26,8 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   const [newRank, setNewRank] = useState<string>("");
   const [reRank, setReRank] = useState<string>("");
 
-  const unrankedInfo = unRankedEntry ? rankerInfo(unRankedEntry, sport) : null;
-  const rankedInfo = rankedEntry ? rankerInfo(rankedEntry, sport) : null;
+  const unrankedInfo = unRankedEntry ? markerData(unRankedEntry, sport) : null;
+  const rankedInfo = rankedEntry ? markerData(rankedEntry, sport) : null;
 
   return (
     <TableRow className="border-b-2 border-gray-200 font-semibold last:border-0">

@@ -46,7 +46,7 @@ const MapWrapper: React.FC = () => {
   });
 
   return (
-    <Card className="flex h-96 w-full overflow-hidden p-0">
+    <Card className="flex h-128 w-full overflow-hidden p-0">
       <div className="h-full p-1">
         {checkList}
         <div className="flex h-max items-center p-1">

@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
-import MapWrapper from "../map/MapWrapper";
+import MapWrapper from "~/components/map/MLBmap";
 
 const HomeComp: React.FC = () => {
   return (

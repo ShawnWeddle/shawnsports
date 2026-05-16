@@ -24,6 +24,7 @@ const config = {
       height: {
         "22":"5.5rem",
         "13":"3.25rem",
+        "128":"32rem",
       },
       spacing: {
         "13":"3.25rem",

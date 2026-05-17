@@ -1,8 +1,8 @@
 import { cn } from "~/lib/utils";
-import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
+import { MLBstyleData } from "~/data/MLB/MLBstyleData";
 import { FaBaseball } from "react-icons/fa6";
-import { milbList } from "~/data/MLB/ballparks";
-import { type TierType } from "~/data/MLB/BP2";
+import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
+import { milbList, type TierType, MiLBobject } from "~/data/MLB/ballparks";
 
 type MarkerProps = {
   activeTiers: Set<TierType>;
@@ -15,7 +15,7 @@ export const MiLBmarkers = (props: MarkerProps) => {
       return activeTiers.has(team.tier);
     })
     .map((team, index) => {
-      const { coordinates, location, name, tier } = team;
+      const { coordinates, parentTeam, tier } = team;
       return (
         <MapMarker
           key={index}
@@ -23,20 +23,74 @@ export const MiLBmarkers = (props: MarkerProps) => {
           longitude={coordinates.longitude}
         >
           <MarkerContent>
-            <FaBaseball
-              className={cn("size-4  shadow-lg", {
-                "text-mlb/60": tier === "MLB",
-                "text-[#0000FF]/60": tier === "AAA",
-                "text-[#00FF00]/60": tier === "AA",
-                "text-[#FF8800]/60": tier === "High-A",
-                "text-[#FF00FF]/60": tier === "Single-A",
-              })}
-            />
+            <div
+              className={cn(
+                "flex size-6 flex-row items-center justify-center rounded-full border-2 bg-white shadow-lg",
+                {
+                  "border-mlb": tier === "MLB",
+                  "border-aaa": tier === "AAA",
+                  "border-aa": tier === "AA",
+                  "border-higha": tier === "High-A",
+                  "border-singlea": tier === "Single-A",
+                }
+              )}
+            >
+              <FaBaseball
+                className={cn("size-4", {
+                  "text-mlb": tier === "MLB",
+                  "text-aaa": tier === "AAA",
+                  "text-aa": tier === "AA",
+                  "text-higha": tier === "High-A",
+                  "text-singlea": tier === "Single-A",
+                })}
+              />
+            </div>
           </MarkerContent>
           <MarkerPopup>
             <div className="space-y-1">
-              <p className={cn("rounded border border-mlb px-1 py-0.5")}>
-                {location} {name} {tier}
+              <p
+                className={cn("px-1 py-0.5", {
+                  [MLBstyleData[parentTeam].primaryBackground]: tier === "MLB",
+                  [MLBstyleData[parentTeam].secondaryBorder]: tier === "MLB",
+                  [MLBstyleData[parentTeam].simpleText]: tier === "MLB",
+                  "rounded border font-bold": tier === "MLB",
+                })}
+              >
+                MLB: {MiLBobject[parentTeam]["MLB"].location}{" "}
+                {MiLBobject[parentTeam]["MLB"].name}
+              </p>
+              <p
+                className={cn("px-1 py-0.5", {
+                  "rounded bg-aaa font-bold": tier === "AAA",
+                })}
+              >
+                AAA: {MiLBobject[parentTeam]["AAA"].location}{" "}
+                {MiLBobject[parentTeam]["AAA"].name}
+              </p>
+              <p
+                className={cn("px-1 py-0.5", {
+                  "rounded bg-aa font-bold text-white": tier === "AA",
+                })}
+              >
+                AA: {MiLBobject[parentTeam]["AA"].location}{" "}
+                {MiLBobject[parentTeam]["AA"].name}
+              </p>
+              <p
+                className={cn("px-1 py-0.5", {
+                  "rounded bg-higha font-bold text-white": tier === "High-A",
+                })}
+              >
+                High-A: {MiLBobject[parentTeam]["High-A"].location}{" "}
+                {MiLBobject[parentTeam]["High-A"].name}
+              </p>
+              <p
+                className={cn("px-1 py-0.5", {
+                  "rounded bg-singlea font-bold text-white":
+                    tier === "Single-A",
+                })}
+              >
+                Single-A: {MiLBobject[parentTeam]["Single-A"].location}{" "}
+                {MiLBobject[parentTeam]["Single-A"].name}
               </p>
             </div>
           </MarkerPopup>

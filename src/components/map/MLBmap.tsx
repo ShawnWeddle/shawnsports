@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { cn } from "~/lib/utils";
 import { Card } from "~/components/ui/card";
 import { Checkbox } from "../ui/checkbox";
 import { Map, MapControls } from "~/components/ui/map";
 import { MiLBmarkers } from "./MiLBMarkers";
-import { type TierType } from "~/data/MLB/BP2";
+import { type TierType } from "~/data/MLB/ballparks";
 
 export const tierMapList: Set<TierType> = new Set([
   "MLB",
@@ -32,14 +33,28 @@ const MapWrapper: React.FC = () => {
 
   const checkList = [...tierMapList].map((tier, index) => {
     return (
-      <div className="flex h-max items-center p-1" key={index}>
+      <div
+        className="flex h-max items-center whitespace-nowrap p-1"
+        key={index}
+      >
         <Checkbox
           checked={activeTiers.has(tier)}
           onCheckedChange={() => {
             setActiveTiersHandler(tier);
           }}
         ></Checkbox>
-        <span className="pl-2 text-lg"> {tier} </span>
+        <p
+          className={cn("pl-2 text-lg font-bold", {
+            "text-mlb": tier === "MLB",
+            "text-aaa": tier === "AAA",
+            "text-aa": tier === "AA",
+            "text-higha": tier === "High-A",
+            "text-singlea": tier === "Single-A",
+          })}
+        >
+          {" "}
+          {tier}{" "}
+        </p>
       </div>
     );
   });

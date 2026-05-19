@@ -138,8 +138,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 39.051,
       longitude: -94.479,
     },
-    location: "Kansas",
-    name: "City Royals",
+    location: "Kansas City",
+    name: "Royals",
     parentTeam: "KCR",
     tier: "MLB",
   },
@@ -148,8 +148,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 33.8,
       longitude: -117.883,
     },
-    location: "Los",
-    name: "Angeles Angels",
+    location: "Los Angeles",
+    name: "Angels",
     parentTeam: "LAA",
     tier: "MLB",
   },
@@ -158,8 +158,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 34.081,
       longitude: -118.239,
     },
-    location: "Los",
-    name: "Angeles Dodgers",
+    location: "Los Angeles",
+    name: "Dodgers",
     parentTeam: "LAD",
     tier: "MLB",
   },
@@ -198,8 +198,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 40.757,
       longitude: -73.833,
     },
-    location: "New",
-    name: "York Mets",
+    location: "New York",
+    name: "Mets",
     parentTeam: "NYM",
     tier: "MLB",
   },
@@ -208,8 +208,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 40.829,
       longitude: -73.926,
     },
-    location: "New",
-    name: "York Yankees",
+    location: "New York",
+    name: "Yankees",
     parentTeam: "NYY",
     tier: "MLB",
   },
@@ -218,7 +218,7 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 38.58,
       longitude: -121.514,
     },
-    location: "Oakland",
+    location: "The",
     name: "Athletics",
     parentTeam: "OAK",
     tier: "MLB",
@@ -248,8 +248,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 32.708,
       longitude: -117.157,
     },
-    location: "San",
-    name: "Diego Padres",
+    location: "San Diego",
+    name: "Padres",
     parentTeam: "SDP",
     tier: "MLB",
   },
@@ -268,8 +268,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 37.795,
       longitude: -122.39,
     },
-    location: "San",
-    name: "Francisco Giants",
+    location: "San Francisco",
+    name: "Giants",
     parentTeam: "SFG",
     tier: "MLB",
   },
@@ -278,18 +278,18 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 38.625,
       longitude: -90.193,
     },
-    location: "St.",
-    name: "Louis Cardinals",
+    location: "St. Louis",
+    name: "Cardinals",
     parentTeam: "STL",
     tier: "MLB",
   },
   {
     coordinates: {
-      latitude: 27.98,
-      longitude: -82.507,
+      latitude: 27.768, 
+      longitude: -82.653,
     },
-    location: "Tampa",
-    name: "Bay Rays",
+    location: "Tampa Bay",
+    name: "Rays",
     parentTeam: "TBR",
     tier: "MLB",
   },
@@ -448,8 +448,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 40.532,
       longitude: -111.89,
     },
-    location: "Salt",
-    name: "Lake Bees",
+    location: "Salt Lake",
+    name: "Bees",
     parentTeam: "LAA",
     tier: "AAA",
   },
@@ -848,8 +848,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 29.437,
       longitude: -98.601,
     },
-    location: "San",
-    name: "Antonio Missions",
+    location: "San Antonio",
+    name: "Missions",
     parentTeam: "SDP",
     tier: "AA",
   },
@@ -1188,8 +1188,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 36.986,
       longitude: -86.452,
     },
-    location: "Bowling",
-    name: "Green Hot Rods",
+    location: "Bowling Green",
+    name: "Hot Rods",
     parentTeam: "TBR",
     tier: "High-A",
   },
@@ -1268,8 +1268,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 33.703,
       longitude: -78.869,
     },
-    location: "Myrtle",
-    name: "Beach Pelicans",
+    location: "Myrtle Beach",
+    name: "Pelicans",
     parentTeam: "CHC",
     tier: "Single-A",
   },
@@ -1448,8 +1448,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 33.653,
       longitude: -117.33,
     },
-    location: "Lake",
-    name: "Elsinore Storm",
+    location: "Lake Elsinore",
+    name: "Storm",
     parentTeam: "SDP",
     tier: "Single-A",
   },
@@ -1458,8 +1458,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 34.09,
       longitude: -117.29,
     },
-    location: "Inland",
-    name: "Empire 66ers",
+    location: "Inland Empire",
+    name: "66ers",
     parentTeam: "SEA",
     tier: "Single-A",
   },
@@ -1478,8 +1478,8 @@ export const milbList: MiLBInfoTypeA[] = [
       latitude: 26.891,
       longitude: -80.12,
     },
-    location: "Palm",
-    name: "Beach Cardinals",
+    location: "Palm Beach",
+    name: "Cardinals",
     parentTeam: "STL",
     tier: "Single-A",
   },
@@ -1732,8 +1732,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 33.703,
                 "longitude": -78.869
             },
-            "location": "Myrtle",
-            "name": "Beach Pelicans",
+            "location": "Myrtle Beach",
+            "name": "Pelicans",
         }
     },
     "CHW": {
@@ -1994,8 +1994,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 39.051,
                 "longitude": -94.479
             },
-            "location": "Kansas",
-            "name": "City Royals",
+            "location": "Kansas City",
+            "name": "Royals",
         },
         "AAA": {
             "coordinates": {
@@ -2036,16 +2036,16 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 33.8,
                 "longitude": -117.883
             },
-            "location": "Los",
-            "name": "Angeles Angels",
+            "location": "Los Angeles",
+            "name": "Angels",
         },
         "AAA": {
             "coordinates": {
                 "latitude": 40.532,
                 "longitude": -111.89
             },
-            "location": "Salt",
-            "name": "Lake Bees",
+            "location": "Salt Lake",
+            "name": "Bees",
         },
         "AA": {
             "coordinates": {
@@ -2078,8 +2078,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 34.081,
                 "longitude": -118.239
             },
-            "location": "Los",
-            "name": "Angeles Dodgers",
+            "location": "Los Angeles",
+            "name": "Dodgers",
         },
         "AAA": {
             "coordinates": {
@@ -2246,8 +2246,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 40.757,
                 "longitude": -73.833
             },
-            "location": "New",
-            "name": "York Mets",
+            "location": "New York",
+            "name": "Mets",
         },
         "AAA": {
             "coordinates": {
@@ -2288,8 +2288,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 40.829,
                 "longitude": -73.926
             },
-            "location": "New",
-            "name": "York Yankees",
+            "location": "New York",
+            "name": "Yankees",
         },
         "AAA": {
             "coordinates": {
@@ -2330,7 +2330,7 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 38.58,
                 "longitude": -121.514
             },
-            "location": "Oakland",
+            "location": "The",
             "name": "Athletics",
         },
         "AAA": {
@@ -2456,8 +2456,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 32.708,
                 "longitude": -117.157
             },
-            "location": "San",
-            "name": "Diego Padres",
+            "location": "San Diego",
+            "name": "Padres",
         },
         "AAA": {
             "coordinates": {
@@ -2472,8 +2472,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 29.437,
                 "longitude": -98.601
             },
-            "location": "San",
-            "name": "Antonio Missions",
+            "location": "San Antonio",
+            "name": "Missions",
         },
         "High-A": {
             "coordinates": {
@@ -2488,8 +2488,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 33.653,
                 "longitude": -117.33
             },
-            "location": "Lake",
-            "name": "Elsinore Storm",
+            "location": "Lake Elsinore",
+            "name": "Storm",
         }
     },
     "SEA": {
@@ -2530,8 +2530,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 34.09,
                 "longitude": -117.29
             },
-            "location": "Inland",
-            "name": "Empire 66ers",
+            "location": "Inland Empire",
+            "name": "66ers",
         }
     },
     "SFG": {
@@ -2540,8 +2540,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 37.795,
                 "longitude": -122.39
             },
-            "location": "San",
-            "name": "Francisco Giants",
+            "location": "San Francisco",
+            "name": "Giants",
         },
         "AAA": {
             "coordinates": {
@@ -2582,8 +2582,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 38.625,
                 "longitude": -90.193
             },
-            "location": "St.",
-            "name": "Louis Cardinals",
+            "location": "St. Louis",
+            "name": "Cardinals",
         },
         "AAA": {
             "coordinates": {
@@ -2614,18 +2614,18 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 26.891,
                 "longitude": -80.12
             },
-            "location": "Palm",
-            "name": "Beach Cardinals",
+            "location": "Palm Beach",
+            "name": "Cardinals",
         }
     },
     "TBR": {
         "MLB": {
             "coordinates": {
-                "latitude": 27.98,
-                "longitude": -82.507
+                "latitude": 27.768, 
+                "longitude": -82.653,
             },
-            "location": "Tampa",
-            "name": "Bay Rays",
+            "location": "Tampa Bay",
+            "name": "Rays",
         },
         "AAA": {
             "coordinates": {
@@ -2648,8 +2648,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "latitude": 36.986,
                 "longitude": -86.452
             },
-            "location": "Bowling",
-            "name": "Green Hot Rods",
+            "location": "Bowling Green",
+            "name": "Hot Rods",
         },
         "Single-A": {
             "coordinates": {

@@ -1,4 +1,5 @@
 import { cn } from "~/lib/utils";
+import { type MLBTeamType } from "~/data/MLB/MLBdata";
 import { MLBstyleData } from "~/data/MLB/MLBstyleData";
 import { FaBaseball } from "react-icons/fa6";
 import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
@@ -6,13 +7,22 @@ import { milbList, type TierType, MiLBobject } from "~/data/MLB/ballparks";
 
 type MarkerProps = {
   activeTiers: Set<TierType>;
+  activeTeams: Set<MLBTeamType>;
+  mapMode: "Tiers" | "Paths";
 };
 
 export const MiLBmarkers = (props: MarkerProps) => {
-  const { activeTiers } = props;
+  const { activeTiers, activeTeams, mapMode } = props;
   const nm = milbList
     .filter((team) => {
-      return activeTiers.has(team.tier);
+      switch (mapMode) {
+        case "Tiers":
+          return activeTiers.has(team.tier);
+        case "Paths":
+          return activeTeams.has(team.parentTeam);
+        default:
+          return true;
+      }
     })
     .map((team, index) => {
       const { coordinates, parentTeam, tier } = team;

@@ -193,6 +193,30 @@ export const MLBteamData: { [Key in AllMLBTeamType] : teamInfoType} = {
   },
 };
 
+export const MLBdivisionData: {
+    AL: {
+        East: MLBTeamType[];
+        Central: MLBTeamType[];
+        West: MLBTeamType[];
+    };
+    NL: {
+        East: MLBTeamType[];
+        Central: MLBTeamType[];
+        West: MLBTeamType[];
+    };
+} = {
+  AL: {
+    East: ["BAL", "BOS", "NYY", "TBR", "TOR"],
+    Central: ["CLE", "CHW", "DET", "KCR", "MIN"],
+    West: ["HOU", "LAA", "OAK", "SEA", "TEX"],
+  },
+  NL: {
+    East: ["ATL", "MIA", "NYM", "PHI", "WSN"],
+    Central: ["CHC", "CIN", "MIL", "PIT", "STL"],
+    West: ["ARI", "COL", "LAD","SDP", "SFG"],
+  },
+}
+
 export const nullArray30 = [
   null, null, null, null, null, null, null, null, 
   null, null, null, null, null, null, null, null, 

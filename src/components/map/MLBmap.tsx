@@ -148,7 +148,6 @@ const MapWrapper: React.FC = () => {
               value="Tiers"
               onClick={() => {
                 setMapMode("Tiers");
-                console.log("Smoke");
               }}
             >
               Tiers

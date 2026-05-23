@@ -2,7 +2,7 @@ import { useState } from "react";
 import { cn } from "~/lib/utils";
 import { Card } from "~/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { Field, FieldGroup } from "../ui/field";
+import { Field } from "../ui/field";
 import { Label } from "../ui/label";
 import { Checkbox } from "../ui/checkbox";
 import { Map, MapControls } from "~/components/ui/map";
@@ -25,7 +25,7 @@ export const tierMapList: Set<TierType> = new Set([
   "Single-A",
 ]);
 
-export const teamMapList: Set<MLBTeamType> = new Set(["CHC"]);
+export const teamMapList: Set<MLBTeamType> = new Set(["LAA", "CHW", "NYY"]);
 
 type MapProps = {
   activeTiers: Set<TierType>;
@@ -187,6 +187,7 @@ export const MLBMap: React.FC<MapProps> = (props: MapProps) => {
         activeTiers={activeTiers}
         activeTeams={activeTeams}
         mapMode={mapMode}
+        teamColors={true}
       />
       {mapMode === "Paths" && <MiLBarcs activeTeams={activeTeams} />}
     </Map>

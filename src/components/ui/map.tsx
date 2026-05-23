@@ -1413,6 +1413,8 @@ function MapArc<T extends MapArcDatum = MapArcDatum>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoaded, map]);
 
+  /* eslint-disable */
+
   // Sync features when data / curvature / samples change.
   useEffect(() => {
     if (!isLoaded || !map) return;
@@ -1506,6 +1508,8 @@ function MapArc<T extends MapArcDatum = MapArcDatum>({
         originalEvent: e,
       });
     };
+
+    /* eslint-enable */
 
     map.on("mousemove", hitLayerId, handleMouseMove);
     map.on("mouseleave", hitLayerId, handleMouseLeave);

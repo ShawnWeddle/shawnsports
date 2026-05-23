@@ -9,10 +9,26 @@ type MarkerProps = {
   activeTiers: Set<TierType>;
   activeTeams: Set<MLBTeamType>;
   mapMode: "Tiers" | "Paths";
+  teamColors: boolean;
+};
+
+const tierToText = (tier: TierType): string => {
+  switch (tier) {
+    case "MLB":
+      return "ML";
+    case "AAA":
+      return "3A";
+    case "AA":
+      return "2A";
+    case "High-A":
+      return "HA";
+    case "Single-A":
+      return "1A";
+  }
 };
 
 export const MiLBmarkers = (props: MarkerProps) => {
-  const { activeTiers, activeTeams, mapMode } = props;
+  const { activeTiers, activeTeams, mapMode, teamColors } = props;
   const nm = milbList
     .filter((team) => {
       switch (mapMode) {
@@ -35,25 +51,41 @@ export const MiLBmarkers = (props: MarkerProps) => {
           <MarkerContent>
             <div
               className={cn(
-                "flex size-6 flex-row items-center justify-center rounded-full border-2 bg-white shadow-lg",
+                "flex size-6 flex-row items-center justify-center rounded-full border-2  shadow-lg",
                 {
-                  "border-mlb": tier === "MLB",
-                  "border-aaa": tier === "AAA",
-                  "border-aa": tier === "AA",
-                  "border-higha": tier === "High-A",
-                  "border-singlea": tier === "Single-A",
+                  [MLBstyleData[parentTeam].primaryBackground]:
+                    teamColors === true,
+                  [MLBstyleData[parentTeam].secondaryBorder]:
+                    teamColors === true,
+                  "bg-white": teamColors === false,
+                  "border-mlb": teamColors === false && tier === "MLB",
+                  "border-aaa": teamColors === false && tier === "AAA",
+                  "border-aa": teamColors === false && tier === "AA",
+                  "border-higha": teamColors === false && tier === "High-A",
+                  "border-singlea": teamColors === false && tier === "Single-A",
                 }
               )}
             >
-              <FaBaseball
-                className={cn("size-4", {
-                  "text-mlb": tier === "MLB",
-                  "text-aaa": tier === "AAA",
-                  "text-aa": tier === "AA",
-                  "text-higha": tier === "High-A",
-                  "text-singlea": tier === "Single-A",
-                })}
-              />
+              {teamColors === true && (
+                <p
+                  className={cn("text-xs", {
+                    [MLBstyleData[parentTeam].simpleText]: true,
+                  })}
+                >
+                  {tierToText(tier)}
+                </p>
+              )}
+              {teamColors === false && (
+                <FaBaseball
+                  className={cn("size-4", {
+                    "text-mlb": tier === "MLB",
+                    "text-aaa": tier === "AAA",
+                    "text-aa": tier === "AA",
+                    "text-higha": tier === "High-A",
+                    "text-singlea": tier === "Single-A",
+                  })}
+                />
+              )}
             </div>
           </MarkerContent>
           <MarkerPopup>

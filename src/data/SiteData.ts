@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const titlesArray = [
-  "Home", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "MLB_World_Series", "MLB_Rank", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", 
+  "Home", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", 
 ] as const;
 //"NFL_Schedule", "NFL_Draft_Chart",  "NBA_Lottery"
 export const TitlesEnum = z.enum(titlesArray);
@@ -14,7 +14,7 @@ export const allNavHeads = {
   "NBA": ["NBA_Future_Picks", "NBA_Finals", "NBA_Rank",], 
   "NFL": ["NFL_Super_Losers", "NFL_Super_Bowls", "NFL_Rank", ], 
   "F1": ["F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", ], 
-  "MLB": ["MLB_World_Series", "MLB_Rank", ], 
+  "MLB": ["MLB_World_Series", "MLB_Rank", "MLB_Map" ], 
   "MLS": [ "MLS_Cups", "MLS_Rank", ],
   "NHL": ["NHL_Stanley_Cups", "NHL_Rank", ], 
   "WNBA": ["WNBA_Finals", "WNBA_Rank", ],
@@ -57,6 +57,7 @@ export const NBATitlesDesc: {[Key in NBATitlesType] : string} = {
 export const MLBTitlesDesc: {[Key in MLBTitlesType] : string} = {
   "MLB_World_Series": "See all World Series since 1903",
   "MLB_Rank": "Rank all 30 MLB teams",
+  "MLB_Map": "See a map of all MLB minor league affiliates"
 };
 export const MLSTitlesDesc: {[Key in MLSTitlesType] : string} = {
   "MLS_Cups": "See all MLS Cups since 1996",
@@ -116,6 +117,7 @@ export const underPageTitles = [
 "standings",
 "compare",
 "rank",
+"map",
 "future-picks",
 "finals",
 "super-bowls",
@@ -144,6 +146,7 @@ export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, url
   NFL_Rank: { navTitle: "Rank", urlName: "/nfl/rank",},
   MLB_World_Series: { navTitle: "World Series", urlName: "/mlb/world-series",},
   MLB_Rank: { navTitle: "Rank", urlName: "/mlb/rank",},
+  MLB_Map: { navTitle: "Map", urlName: "/mlb/map",},
   MLS_Cups: { navTitle: "MLS Cups", urlName: "/mls/mls-cups", },
   MLS_Rank: { navTitle: "Rank", urlName: "/mls/rank", },
   NHL_Stanley_Cups: { navTitle: "Stanley Cups", urlName: "/nhl/stanley-cups",},

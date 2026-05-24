@@ -635,8 +635,8 @@ export const milbList: MiLBInfoTypeA[] = [
   },
   {
     coordinates: {
-      latitude: 32.275,
-      longitude: -90.036,
+      latitude: 32.452,
+      longitude: -84.992
     },
     location: "Columbus",
     name: "Clingstones",
@@ -1587,8 +1587,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
         },
         "AA": {
             "coordinates": {
-                "latitude": 32.275,
-                "longitude": -90.036
+                "latitude": 32.452,
+                "longitude": -84.992
             },
             "location": "Columbus",
             "name": "Clingstones",

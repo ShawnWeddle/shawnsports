@@ -2,7 +2,7 @@ import { useState } from "react";
 import { cn } from "~/lib/utils";
 import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
-import { Card, CardHeader, CardDescription, CardTitle } from "../ui/card";
+import { Card, CardHeader, CardDescription } from "../ui/card";
 import { NFLteamData } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";

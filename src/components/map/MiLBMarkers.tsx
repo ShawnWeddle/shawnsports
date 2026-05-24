@@ -1,13 +1,16 @@
 import { cn } from "~/lib/utils";
+import { useMLBMapContext } from "~/hooks/useMLBmap";
 import { type MLBTeamType } from "~/data/MLB/MLBdata";
 import { MLBstyleData } from "~/data/MLB/MLBstyleData";
 import { FaBaseball } from "react-icons/fa6";
 import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
 import { milbList, type TierType, MiLBobject } from "~/data/MLB/ballparks";
+import { Button } from "../ui/button";
+import { MapPin } from "lucide-react";
 
 type MarkerProps = {
   activeTiers: Set<TierType>;
-  activeTeams: Set<MLBTeamType>;
+  activeTeam: MLBTeamType | undefined;
   mapMode: "Tiers" | "Paths";
   teamColors: boolean;
 };
@@ -28,14 +31,15 @@ const tierToText = (tier: TierType): string => {
 };
 
 export const MiLBmarkers = (props: MarkerProps) => {
-  const { activeTiers, activeTeams, mapMode, teamColors } = props;
+  const { mlbMapDispatch } = useMLBMapContext();
+  const { activeTeam, activeTiers, mapMode, teamColors } = props;
   const nm = milbList
     .filter((team) => {
       switch (mapMode) {
         case "Tiers":
           return activeTiers.has(team.tier);
         case "Paths":
-          return activeTeams.has(team.parentTeam);
+          return activeTeam === team.parentTeam;
         default:
           return true;
       }
@@ -89,7 +93,7 @@ export const MiLBmarkers = (props: MarkerProps) => {
             </div>
           </MarkerContent>
           <MarkerPopup>
-            <div className="space-y-1">
+            <div className="bg-white p-1">
               <p
                 className={cn("px-1 py-0.5", {
                   [MLBstyleData[parentTeam].primaryBackground]: tier === "MLB",
@@ -134,6 +138,26 @@ export const MiLBmarkers = (props: MarkerProps) => {
                 Single-A: {MiLBobject[parentTeam]["Single-A"].location}{" "}
                 {MiLBobject[parentTeam]["Single-A"].name}
               </p>
+              {mapMode === "Tiers" && (
+                <div className="flex justify-center">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      mlbMapDispatch({
+                        type: "CHANGE_TEAM",
+                        payload: { team: parentTeam },
+                      });
+                      mlbMapDispatch({
+                        type: "CHANGE_MAP_MODE",
+                        payload: { mode: "Paths" },
+                      });
+                    }}
+                  >
+                    Show path
+                  </Button>
+                </div>
+              )}
             </div>
           </MarkerPopup>
         </MapMarker>

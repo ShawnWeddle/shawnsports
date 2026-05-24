@@ -57,13 +57,18 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-  .maplibregl-popup-content {
-    @apply bg-transparent! shadow-none! p-0! rounded-none!;
-  }
-  .maplibregl-popup-tip {
-    @apply hidden!;
-  }
 }
+
+.maplibregl-popup-content {
+  background-color: transparent !important;
+  box-shadow: 0 0 #0000 !important;
+  padding: 0px !important;
+  border-radius: 0px !important;
+}
+
+.maplibregl-popup-tip {
+    display: none;
+  }
 
 @layer base {
   * {

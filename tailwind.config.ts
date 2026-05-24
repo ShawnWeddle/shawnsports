@@ -51,7 +51,7 @@ const config = {
         bronze: "#FF8C00",
         lightTeal: "#99FFEC",
         superEmerald: "#CCFFE4",
-        aaa: "#BFBF00",
+        aaa: "#BBBB00",
         aa: "#008000",
         higha: "#000080",
         singlea: "#800080",

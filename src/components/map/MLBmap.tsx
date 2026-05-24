@@ -25,7 +25,7 @@ export const tierMapList: Set<TierType> = new Set([
   "Single-A",
 ]);
 
-export const teamMapList: Set<MLBTeamType> = new Set(["LAA", "CHW", "NYY"]);
+export const teamMapList: Set<MLBTeamType> = new Set(["PHI", "CIN", "SDP"]);
 
 type MapProps = {
   activeTiers: Set<TierType>;

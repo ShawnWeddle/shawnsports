@@ -1,10 +1,10 @@
 import { MapArc } from "~/components/ui/map";
-import { MiLBobject, milbList } from "~/data/MLB/ballparks";
-import { type MLBTeamType } from "~/data/MLB/MLBdata";
-import { MLBstyleData } from "~/data/MLB/MLBstyleData";
+import { nhlMinorList } from "~/data/NHL/NHLstadiums";
+import { type NHLTeamType } from "~/data/NHL/NHLdata";
+import { NHLstyleData } from "~/data/NHL/NHLstyleData";
 
 type ArcProps = {
-  team: MLBTeamType | undefined;
+  team: NHLTeamType | undefined;
 };
 
 type ArcData = {
@@ -13,18 +13,17 @@ type ArcData = {
   to: [number, number];
 };
 
-const MiLBarc = (props: ArcProps) => {
+const NHLarc = (props: ArcProps) => {
   const { team } = props;
   if (team) {
-    const allTiers = Object.values(MiLBobject[team]);
-    const allTiers2 = milbList.filter((t) => {
+    const allTiers = nhlMinorList.filter((t) => {
       const { parentTeam } = t;
       return parentTeam === team;
     });
     const output: ArcData[] = [];
     for (let i = 0; i < 4; i++) {
-      const higherTeam = allTiers2[i];
-      const lowerTeam = allTiers2[i + 1];
+      const higherTeam = allTiers[i];
+      const lowerTeam = allTiers[i + 1];
       if (higherTeam && lowerTeam) {
         const teamPair: ArcData = {
           id: team + i.toString(),
@@ -42,7 +41,7 @@ const MiLBarc = (props: ArcProps) => {
         <MapArc
           data={output}
           paint={{
-            "line-color": MLBstyleData[team].primary,
+            "line-color": NHLstyleData[team].primary,
             "line-width": 2,
           }}
         />
@@ -53,4 +52,4 @@ const MiLBarc = (props: ArcProps) => {
   }
 };
 
-export default MiLBarc;
+export default NHLarc;

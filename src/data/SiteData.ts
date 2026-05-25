@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const titlesArray = [
-  "Home", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", 
+  "Home", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", 
 ] as const;
 //"NFL_Schedule", "NFL_Draft_Chart",  "NBA_Lottery"
 export const TitlesEnum = z.enum(titlesArray);
@@ -16,7 +16,7 @@ export const allNavHeads = {
   "F1": ["F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", ], 
   "MLB": ["MLB_World_Series", "MLB_Rank", "MLB_Map" ], 
   "MLS": [ "MLS_Cups", "MLS_Rank", ],
-  "NHL": ["NHL_Stanley_Cups", "NHL_Rank", ], 
+  "NHL": ["NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", ], 
   "WNBA": ["WNBA_Finals", "WNBA_Rank", ],
   "CFL": ["CFL_Grey_Cups", "CFL_Rank", ],
 } as const;
@@ -66,6 +66,7 @@ export const MLSTitlesDesc: {[Key in MLSTitlesType] : string} = {
 export const NHLTitlesDesc: {[Key in NHLTitlesType] : string} = {
   "NHL_Stanley_Cups": "See all Stanley Cup Finals since 1927",
   "NHL_Rank": "Rank all 32 NHL teams",
+  "NHL_Map": "See a map of all NHL, AHL, and ECHL teams"
 };
 export const WNBATitlesDesc: {[Key in WNBATitlesType] : string} = {
   "WNBA_Finals": "See all WNBA Finals since 1997",
@@ -151,6 +152,7 @@ export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, url
   MLS_Rank: { navTitle: "Rank", urlName: "/mls/rank", },
   NHL_Stanley_Cups: { navTitle: "Stanley Cups", urlName: "/nhl/stanley-cups",},
   NHL_Rank: { navTitle: "Rank", urlName: "/nhl/rank",},
+  NHL_Map: { navTitle: "Map", urlName: "/nhl/map",},
   WNBA_Finals: { navTitle: "Finals", urlName: "/wnba/finals",},
   WNBA_Rank: { navTitle: "Rank", urlName: "/wnba/rank",},
   CFL_Grey_Cups: { navTitle: "Grey Cups", urlName: "/cfl/grey-cups"},

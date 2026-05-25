@@ -55,6 +55,7 @@ const config = {
         aa: "#008000",
         higha: "#000080",
         singlea: "#800080",
+        echl: "#BF3030",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

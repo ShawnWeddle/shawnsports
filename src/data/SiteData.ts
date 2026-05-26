@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const titlesArray = [
-  "Home", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", 
+  "Home", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", 
 ] as const;
 //"NFL_Schedule", "NFL_Draft_Chart",  "NBA_Lottery"
 export const TitlesEnum = z.enum(titlesArray);
@@ -11,10 +11,10 @@ export type SportType = typeof sportsNames[number];
 
 export const allNavHeads = {
   "Home": ["Home",], 
-  "NBA": ["NBA_Future_Picks", "NBA_Finals", "NBA_Rank",], 
+  "NBA": ["NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", ], 
   "NFL": ["NFL_Super_Losers", "NFL_Super_Bowls", "NFL_Rank", ], 
   "F1": ["F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", ], 
-  "MLB": ["MLB_World_Series", "MLB_Rank", "MLB_Map" ], 
+  "MLB": ["MLB_World_Series", "MLB_Rank", "MLB_Map", ], 
   "MLS": [ "MLS_Cups", "MLS_Rank", ],
   "NHL": ["NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", ], 
   "WNBA": ["WNBA_Finals", "WNBA_Rank", ],
@@ -53,6 +53,7 @@ export const NBATitlesDesc: {[Key in NBATitlesType] : string} = {
   "NBA_Future_Picks": "See which team owns each first round pick through 2032",
   "NBA_Finals": "See all NBA Finals since 1947",
   "NBA_Rank": "Rank all 30 NBA teams",
+  "NBA_Map": "See a map of all NBA and G-League teams",
 };
 export const MLBTitlesDesc: {[Key in MLBTitlesType] : string} = {
   "MLB_World_Series": "See all World Series since 1903",
@@ -142,6 +143,7 @@ export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, url
   NBA_Future_Picks: { navTitle: "Future Picks", urlName: "/nba/future-picks",},
   NBA_Finals: { navTitle: "Finals", urlName: "/nba/finals",},
   NBA_Rank: { navTitle: "Rank", urlName: "/nba/rank",},
+  NBA_Map: { navTitle: "Map", urlName: "/nba/map",},
   NFL_Super_Losers: {navTitle: "Super Losers", urlName: "/nfl/super-losers",},
   NFL_Super_Bowls: { navTitle: "Super Bowls", urlName: "/nfl/super-bowls",},
   NFL_Rank: { navTitle: "Rank", urlName: "/nfl/rank",},

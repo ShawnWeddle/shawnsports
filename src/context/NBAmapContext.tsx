@@ -1,7 +1,9 @@
 import { createContext, useReducer } from "react";
-import { type NBATeamType } from "~/data/NBA/NBAdata";
-import { type TierType } from "~/data/NBA/NBAstadiums";
-import { tierMapList } from "~/components/map/NBAmap";
+import {
+  type NBATeamType,
+  type TierType,
+  tierMapList,
+} from "~/data/NBA/NBAdata";
 
 export const NBAMapContext = createContext<ContextType | null>(null);
 

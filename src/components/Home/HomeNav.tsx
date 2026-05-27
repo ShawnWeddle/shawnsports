@@ -68,13 +68,14 @@ const HomeNav: React.FC = () => {
             void router.push(underPageData[newKey].urlName);
           }}
           className={cn("flex flex-col border-t", {
-            "hover:bg-nba/10": sportMode === "NBA" || sportMode === "WNBA",
+            "hover:bg-nba/10": sportMode === "NBA",
             "hover:bg-nfl/10": sportMode === "NFL",
             "hover:bg-nhl/10": sportMode === "NHL",
             "hover:bg-mlb/10": sportMode === "MLB",
             "hover:bg-mls/10": sportMode === "MLS",
             "hover:bg-formulaOne/10": sportMode === "F1",
             "hover:bg-cfl/10": sportMode === "CFL",
+            "hover:bg-wnba/10": sportMode === "WNBA",
           })}
         >
           <p className="pl-12 text-lg font-semibold">
@@ -100,8 +101,7 @@ const HomeNav: React.FC = () => {
             className={cn(
               "rounded px-12 text-center text-2xl font-semibold text-white",
               {
-                "text-nba hover:bg-nba hover:text-white":
-                  sportMode === "NBA" || sportMode === "WNBA",
+                "text-nba hover:bg-nba hover:text-white": sportMode === "NBA",
                 "text-nfl hover:bg-nfl hover:text-white": sportMode === "NFL",
                 "text-nhl hover:bg-nhl hover:text-white": sportMode === "NHL",
                 "text-mlb hover:bg-mlb hover:text-white": sportMode === "MLB",
@@ -109,6 +109,8 @@ const HomeNav: React.FC = () => {
                 "text-formulaOne hover:bg-formulaOne hover:text-white":
                   sportMode === "F1",
                 "text-cfl hover:bg-cfl hover:text-white": sportMode === "CFL",
+                "text-wnba hover:bg-wnba hover:text-white":
+                  sportMode === "WNBA",
               }
             )}
           >

@@ -33,6 +33,9 @@ export const years = [
   "2026", "2027", "2028", "2029", "2030", "2031", "2032" 
 ] as const;
 
+export type TierType =  "NBA" | "NGL" | "WNBA";
+export const tierMapList: Set<TierType> = new Set(["NBA", "NGL", "WNBA"]);
+
 export type NBATeamType = typeof nbaTeamsAlpha[number];
 export type AllNBATeamType = typeof nbaTeamsAll[number];
 export type PickYearType = typeof years[number];

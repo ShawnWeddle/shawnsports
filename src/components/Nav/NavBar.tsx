@@ -55,13 +55,14 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
     <Menubar
       className={cn("min-w-full justify-center", {
         "bg-home": pageMode === "Home",
-        "bg-nba": pageMode === "NBA" || pageMode === "WNBA",
+        "bg-nba": pageMode === "NBA",
         "bg-nfl": pageMode === "NFL",
         "bg-nhl": pageMode === "NHL",
         "bg-mlb": pageMode === "MLB",
         "bg-mls": pageMode === "MLS",
         "bg-formulaOne": pageMode === "F1",
         "bg-cfl": pageMode === "CFL",
+        "bg-wnba": pageMode === "WNBA",
       })}
     >
       <MenubarMenu>
@@ -167,6 +168,9 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
               </MenubarItem>
               <MenubarItem asChild>
                 <Link href="/wnba/rank">Rank</Link>
+              </MenubarItem>
+              <MenubarItem asChild>
+                <Link href="/nba/map">Map</Link>
               </MenubarItem>
             </MenubarSubContent>
           </MenubarSub>

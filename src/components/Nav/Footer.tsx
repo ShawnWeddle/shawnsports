@@ -115,7 +115,7 @@ const Footer: React.FC = () => {
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
-          <MenubarTrigger className="rounded-lg text-nba focus:bg-nba data-[state=open]:bg-nba">
+          <MenubarTrigger className="rounded-lg text-wnba focus:bg-wnba data-[state=open]:bg-wnba">
             WNBA
           </MenubarTrigger>
           <MenubarContent>
@@ -124,6 +124,9 @@ const Footer: React.FC = () => {
             </MenubarItem>
             <MenubarItem asChild>
               <Link href="/wnba/rank">Rank</Link>
+            </MenubarItem>
+            <MenubarItem asChild>
+              <Link href="/nba/map">Map</Link>
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>

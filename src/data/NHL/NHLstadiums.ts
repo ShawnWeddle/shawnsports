@@ -1,6 +1,4 @@
-import { type NHLTeamType } from "./NHLdata";
-
-export type TierType =  "NHL" | "AHL" | "ECHL";
+import { type NHLTeamType, type TierType } from "./NHLdata";
 
 export type NHLminorInfoType = {
   coordinates: {

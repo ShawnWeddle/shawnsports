@@ -18,3 +18,4 @@ export const WNBAstadiumCoordinates: { [Key in WNBATeamType] : { latitude: numbe
   TOR: { latitude: 43.636, longitude: -79.415}, 
   WAS: { latitude: 38.847, longitude: -76.991}, 
 }
+

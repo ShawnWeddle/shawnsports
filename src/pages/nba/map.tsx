@@ -1,6 +1,6 @@
 import MainPage from "~/components/Page/MainPage";
 import { NBAMapContextProvider } from "~/context/NBAmapContext";
-import MapNBA from "~/components/map/NBAmap";
+import MapNBA from "~/components/map/NBA/NBAmap";
 
 const Map = () => {
   return (

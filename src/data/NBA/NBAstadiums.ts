@@ -1,6 +1,4 @@
-import { type NBATeamType } from "./NBAdata";
-
-export type TierType =  "NBA" | "NGL";
+import { type NBATeamType, type TierType } from "./NBAdata";
 
 export type NBAminorInfoType = {
   coordinates: {
@@ -10,7 +8,7 @@ export type NBAminorInfoType = {
   location: string;
   name: string;
   tier: TierType;
-  parentTeam: NBATeamType;
+  parentTeam?: NBATeamType;
 };
 
 export const nbaMinorList: NBAminorInfoType[] = [
@@ -378,7 +376,6 @@ export const nbaMinorList: NBAminorInfoType[] = [
     coordinates: { latitude: 19.498, longitude: -99.175 },
     location: "Mexico City",
     name: "Capitanes",
-    parentTeam: "IND",
     tier: "NGL",
   },
 ];

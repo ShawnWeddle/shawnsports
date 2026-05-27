@@ -1,6 +1,6 @@
 import { cn } from "~/lib/utils";
-import { type NHLTeamType } from "~/data/NHL/NHLdata";
-import { type TierType, nhlMinorList } from "~/data/NHL/NHLstadiums";
+import { type NHLTeamType, type TierType } from "~/data/NHL/NHLdata";
+import { nhlMinorList } from "~/data/NHL/NHLstadiums";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
 
 interface TeamTagProps {

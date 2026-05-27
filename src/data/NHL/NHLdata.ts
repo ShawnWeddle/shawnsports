@@ -13,6 +13,9 @@ export const nhlTeamsAll = [
   "MMR", "MNS", "QUE", "ARI"
 ] as const;
 
+export type TierType =  "NHL" | "AHL" | "ECHL";
+export const tierMapList: Set<TierType> = new Set(["NHL", "AHL", "ECHL"]);
+
 export type NHLTeamType = typeof nhlTeamsRanked[number];
 
 export type AllNHLTeamType = typeof nhlTeamsAll[number];

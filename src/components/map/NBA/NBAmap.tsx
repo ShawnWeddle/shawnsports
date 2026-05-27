@@ -1,22 +1,21 @@
 import { useNBAMapContext } from "~/hooks/useNBAmap";
 import { cn } from "~/lib/utils";
 import { Card } from "~/components/ui/card";
-import { Field } from "../ui/field";
-import { Label } from "../ui/label";
-import { Checkbox } from "../ui/checkbox";
-import { Button } from "../ui/button";
+import { Field } from "../../ui/field";
+import { Label } from "../../ui/label";
+import { Checkbox } from "../../ui/checkbox";
+import { Button } from "../../ui/button";
 import { Map, MapControls } from "~/components/ui/map";
-import { type TierType } from "~/data/NBA/NBAstadiums";
-import { NBAmarkers } from "./NBAMarkers";
+import { tierMapList } from "~/data/NBA/NBAdata";
+import { NBAmarkers } from "~/components/map/NBA/NBAMarkers";
 import NBAarc from "./NBAArc";
-
-export const tierMapList: Set<TierType> = new Set(["NBA", "NGL"]);
+import { WNBAmarkers } from "./WNBAMarkers";
 
 const MapNBA: React.FC = () => {
   const { nbaMapState, nbaMapDispatch } = useNBAMapContext();
   const { activeTeam, activeTiers, mapMode } = nbaMapState;
 
-  const checkList = [...tierMapList].map((tier, index) => {
+  const nbaCheckList = [...tierMapList].map((tier, index) => {
     return (
       <Field
         key={index}
@@ -24,6 +23,7 @@ const MapNBA: React.FC = () => {
         className={cn("rounded p-1", {
           "hover:bg-nba/50": tier === "NBA",
           "hover:bg-aaa/50": tier === "NGL",
+          "hover:bg-wnba/50": tier === "WNBA",
         })}
       >
         <Checkbox
@@ -45,7 +45,7 @@ const MapNBA: React.FC = () => {
       <Card className="relative flex h-128 w-full p-0">
         <Map center={[-98.579, 39.828]} zoom={3}>
           <div className="absolute left-3 top-3 rounded bg-white p-1">
-            {mapMode === "Tiers" && checkList}
+            {mapMode === "Tiers" && nbaCheckList}
             {mapMode === "Paths" && (
               <Button
                 variant="destructive"
@@ -68,6 +68,12 @@ const MapNBA: React.FC = () => {
             showFullscreen
           />
           <NBAmarkers
+            activeTiers={activeTiers}
+            activeTeam={activeTeam}
+            mapMode={mapMode}
+            teamColors={false}
+          />
+          <WNBAmarkers
             activeTiers={activeTiers}
             activeTeam={activeTeam}
             mapMode={mapMode}

@@ -1,8 +1,8 @@
 import { cn } from "~/lib/utils";
 import { useNHLMapContext } from "~/hooks/useNHLmap";
-import { type NHLTeamType } from "~/data/NHL/NHLdata";
+import { type NHLTeamType, type TierType } from "~/data/NHL/NHLdata";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
-import { nhlMinorList, type TierType } from "~/data/NHL/NHLstadiums";
+import { nhlMinorList } from "~/data/NHL/NHLstadiums";
 import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
 import { FaHockeyPuck } from "react-icons/fa6";
 import TeamTag from "~/components/map/NHL/NHLminorTag";

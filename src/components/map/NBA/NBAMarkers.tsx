@@ -1,11 +1,12 @@
 import { cn } from "~/lib/utils";
 import { useNBAMapContext } from "~/hooks/useNBAmap";
-import { type NBATeamType } from "~/data/NBA/NBAdata";
+import { type NBATeamType, type TierType } from "~/data/NBA/NBAdata";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 import { FaBasketball } from "react-icons/fa6";
 import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
-import { nbaMinorList, type TierType } from "~/data/NBA/NBAstadiums";
-import { Button } from "../ui/button";
+import { nbaMinorList } from "~/data/NBA/NBAstadiums";
+import { Button } from "~/components/ui/button";
+import TeamTag from "./NBAgLeagueTag";
 
 type MarkerProps = {
   activeTiers: Set<TierType>;
@@ -20,12 +21,15 @@ const tierToText = (tier: TierType): string => {
       return "N";
     case "NGL":
       return "G";
+    case "WNBA":
+      return "W";
   }
 };
 
 export const NBAmarkers = (props: MarkerProps) => {
   const { nbaMapDispatch } = useNBAMapContext();
   const { activeTeam, activeTiers, mapMode, teamColors } = props;
+
   const nm = nbaMinorList
     .filter((team) => {
       switch (mapMode) {
@@ -38,7 +42,22 @@ export const NBAmarkers = (props: MarkerProps) => {
       }
     })
     .map((team, index) => {
-      const { coordinates, location, name, parentTeam, tier } = team;
+      const { coordinates, parentTeam, tier } = team;
+      const activeStyles = (): [string, string, string] => {
+        if (parentTeam) {
+          return [
+            NBAstyleData[parentTeam].primaryBackground,
+            NBAstyleData[parentTeam].secondaryBorder,
+            NBAstyleData[parentTeam].simpleText,
+          ];
+        } else {
+          return [
+            NBAstyleData["IND"].primaryBackground,
+            NBAstyleData["IND"].secondaryBorder,
+            NBAstyleData["IND"].simpleText,
+          ];
+        }
+      };
       return (
         <MapMarker
           key={index}
@@ -50,10 +69,8 @@ export const NBAmarkers = (props: MarkerProps) => {
               className={cn(
                 "flex size-6 flex-row items-center justify-center rounded-full border-2  shadow-lg",
                 {
-                  [NBAstyleData[parentTeam].primaryBackground]:
-                    teamColors === true,
-                  [NBAstyleData[parentTeam].secondaryBorder]:
-                    teamColors === true,
+                  [activeStyles()[0]]: teamColors === true,
+                  [activeStyles()[1]]: teamColors === true,
                   "bg-white": teamColors === false,
                   "border-nba": teamColors === false && tier === "NBA",
                   "border-aaa": teamColors === false && tier === "NGL",
@@ -63,7 +80,7 @@ export const NBAmarkers = (props: MarkerProps) => {
               {teamColors === true && (
                 <p
                   className={cn("text-xs", {
-                    [NBAstyleData[parentTeam].simpleText]: true,
+                    [activeStyles()[2]]: teamColors === true,
                   })}
                 >
                   {tierToText(tier)}
@@ -81,16 +98,7 @@ export const NBAmarkers = (props: MarkerProps) => {
           </MarkerContent>
           <MarkerPopup>
             <div className="bg-white p-1">
-              <p
-                className={cn("px-1 py-0.5", {
-                  [NBAstyleData[parentTeam].primaryBackground]: tier === "NBA",
-                  [NBAstyleData[parentTeam].secondaryBorder]: tier === "NBA",
-                  [NBAstyleData[parentTeam].simpleText]: tier === "NBA",
-                  "rounded border font-bold": tier === "NBA",
-                })}
-              >
-                {location} {name}
-              </p>
+              <TeamTag team={team.parentTeam} tier={tier} />
               {mapMode === "Tiers" && (
                 <div className="flex justify-center">
                   <Button

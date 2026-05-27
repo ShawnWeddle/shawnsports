@@ -6,11 +6,9 @@ import { Label } from "~/components/ui/label";
 import { Checkbox } from "~/components/ui/checkbox";
 import { Button } from "~/components/ui/button";
 import { Map, MapControls } from "~/components/ui/map";
-import { type TierType } from "~/data/NHL/NHLstadiums";
+import { tierMapList } from "~/data/NHL/NHLdata";
 import { NHLmarkers } from "./NHLMarkers";
 import NHLarc from "./NHLArc";
-
-export const tierMapList: Set<TierType> = new Set(["NHL", "AHL", "ECHL"]);
 
 const MapNHL: React.FC = () => {
   const { nhlMapState, nhlMapDispatch } = useNHLMapContext();

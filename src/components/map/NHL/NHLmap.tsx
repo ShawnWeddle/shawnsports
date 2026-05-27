@@ -1,10 +1,10 @@
 import { useNHLMapContext } from "~/hooks/useNHLmap";
 import { cn } from "~/lib/utils";
 import { Card } from "~/components/ui/card";
-import { Field } from "../ui/field";
-import { Label } from "../ui/label";
-import { Checkbox } from "../ui/checkbox";
-import { Button } from "../ui/button";
+import { Field } from "~/components/ui/field";
+import { Label } from "~/components/ui/label";
+import { Checkbox } from "~/components/ui/checkbox";
+import { Button } from "~/components/ui/button";
 import { Map, MapControls } from "~/components/ui/map";
 import { type TierType } from "~/data/NHL/NHLstadiums";
 import { NHLmarkers } from "./NHLMarkers";

@@ -67,8 +67,14 @@
 }
 
 .maplibregl-popup-tip {
-    display: none;
-  }
+  display: none;
+}
+
+/* HTML: <div class="triangle"></div> */
+.triangle {
+  aspect-ratio: 1/cos(30deg);
+  clip-path: polygon(50% 100%,100% 0,0 0);
+}
 
 @layer base {
   * {

@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { cn } from "~/lib/utils";
 import { resultsSortedByPlace } from "~/data/F1/2026/convert";
-import { driverToConstructor2026 } from "~/data/F1/2026/F1data";
+import {
+  type DriverCode26Type,
+  driverCodes2026,
+  driverToConstructor2026,
+} from "~/data/F1/2026/F1data";
 import { FormulaOneRaceResults } from "~/data/F1/2026/raceData";
 
 import { F1styleData } from "~/data/F1/2026/F1styleData";
@@ -16,6 +20,19 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
   const { fullResults, DNFs, DQs } = resultsSortedByPlace(
     FormulaOneRaceResults
   );
+
+  const activeDriverSetInit = new Set<DriverCode26Type>();
+  const [activeDrivers, setActiveDrivers] =
+    useState<Set<DriverCode26Type>>(activeDriverSetInit);
+  const setActiveDriverHandler = (driver: DriverCode26Type) => {
+    const newDrivers = new Set<DriverCode26Type>([...activeDrivers]);
+    if (activeDrivers.has(driver)) {
+      newDrivers.delete(driver);
+    } else {
+      newDrivers.add(driver);
+    }
+    setActiveDrivers(newDrivers);
+  };
 
   const tableRows = fullResults.map((result, rowIndex) => {
     const tableCells = result.map((driver, cellIndex) => {
@@ -55,9 +72,12 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
             )}
           >
             <button
+              onClick={() => {
+                setActiveDriverHandler(driverName);
+              }}
               className={cn("relative mx-0.5 rounded-full px-1 font-mono", {
-                [activeTextColor]: isDriver,
-                [activeBg]: isDriver,
+                [activeTextColor]: isDriver && activeDrivers.has(driverName),
+                [activeBg]: isDriver && activeDrivers.has(driverName),
               })}
             >
               {driverName}
@@ -139,15 +159,10 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
             )}
           >
             <button
-              className={cn(
-                "relative mx-0.5 rounded-full px-1",
-                {
-                  [activeTextColor]: isDriver,
-                },
-                {
-                  [activeBg]: isDriver,
-                }
-              )}
+              className={cn("relative mx-0.5 rounded-full px-1", {
+                [activeTextColor]: isDriver && activeDrivers.has(driverName),
+                [activeBg]: isDriver && activeDrivers.has(driverName),
+              })}
             >
               {driverName}
               {polePosition && (
@@ -198,15 +213,10 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
             )}
           >
             <button
-              className={cn(
-                "relative mx-0.5 rounded-full px-1",
-                {
-                  [activeTextColor]: isDriver,
-                },
-                {
-                  [activeBg]: isDriver,
-                }
-              )}
+              className={cn("relative mx-0.5 rounded-full px-1", {
+                [activeTextColor]: isDriver && activeDrivers.has(driverName),
+                [activeBg]: isDriver && activeDrivers.has(driverName),
+              })}
             >
               {driverName}
               {polePosition && (

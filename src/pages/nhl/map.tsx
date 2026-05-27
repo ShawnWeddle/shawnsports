@@ -1,6 +1,6 @@
 import MainPage from "~/components/Page/MainPage";
 import { NHLMapContextProvider } from "~/context/NHLmapContext";
-import MapNHL from "~/components/map/NHLmap";
+import MapNHL from "~/components/map/NHL/NHLmap";
 
 const Map = () => {
   return (

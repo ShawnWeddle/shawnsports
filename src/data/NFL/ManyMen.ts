@@ -12,6 +12,21 @@ type GameType = {
   team: AllNFLTeamType,
 }
 
+export const findLoserThenWinner = (man: ManType) => {
+  const {name, losses, wins} = man;
+  let LW = {success: false, name: "", loss: {}, win: {}};
+  losses.forEach((loss) => {
+    const { year: lossYear, team: lossTeam } = loss;
+    wins.forEach((win) => {
+      const { year: winYear, team: winTeam } = win;
+      if(winYear - lossYear === 1 && lossTeam !== winTeam){
+        LW = {success: true, name, loss, win};
+      }
+    })
+  });
+  return LW;
+}
+
 export const manyMen: ManType[] = [
     {
         "name": "Herb Adderley",

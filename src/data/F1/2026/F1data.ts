@@ -145,6 +145,53 @@ export const driverNames2026: { [Key in DriverCode26Type] : { first: string, las
 //   BEA: "Cyan", COL: "Cyan", LAW: "Cyan", DOO: "Cyan",
 // }
 
+export const allToConstructor2026 = (driver: DriverCode26Type | ConstructorName26Type ) : ConstructorName26Type => {
+  switch(driver){
+    case "COL":
+    case "GAS":
+    case "Alpine":
+      return "Alpine";
+    case "LAW":
+    case "LIN":
+    case "RB":
+      return "RB";
+    case "BOR":
+    case "HUL":
+    case "Audi":
+      return "Audi";
+    case "ALO":
+    case "STR":
+    case "Aston Martin":
+      return "Aston Martin";
+    case "LEC":
+    case "HAM":
+    case "Ferrari":
+      return "Ferrari";
+    case "BEA":
+    case "OCO":
+    case "Haas":
+      return "Haas";
+    case "NOR":
+    case "PIA":
+    case "McLaren":
+      return "McLaren";
+    case "ANT":
+    case "RUS":
+    case "Mercedes":
+      return "Mercedes";
+    case "HAD":
+    case "VER":
+    case "Red Bull":
+      return "Red Bull";
+    case "ALB":
+    case "SAI":
+    case "Williams":
+      return "Williams";
+    default:
+      return "Williams";
+  }
+}
+
 export const calculatePoints = (place: number, sprint: boolean) => {
   if(sprint) {
     const sprintPointsArray = [8, 7, 6, 5, 4, 3, 2, 1];

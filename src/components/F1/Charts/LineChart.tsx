@@ -11,20 +11,19 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import type { ChartData, ChartDataset } from "chart.js";
-import { FormulaOneRaceResults } from "~/data/F1/2024/raceData";
-import { createStandings } from "~/data/F1/2024/convert";
+import { FormulaOneRaceResults } from "~/data/F1/2026/raceData";
+import { createStandings } from "~/data/F1/2026/convert";
 import type {
-  DriverCode24Type,
-  ConstructorName24Type,
-} from "~/data/F1/2024/F1data24";
-import { F1styleData } from "~/data/F1/2024/F1styleData24";
+  DriverCode26Type,
+  ConstructorName26Type,
+} from "~/data/F1/2026/F1data";
+import { F1styleData } from "~/data/F1/2026/F1styleData";
 import {
-  driverCodes2024,
-  constructorNames2024,
-  driverTcamColors2024,
-  driverToConstructor2024,
-  allToConstructor2024,
-} from "~/data/F1/2024/F1data24";
+  driverCodes2026,
+  constructorNames2026,
+  driverToConstructor2026,
+  allToConstructor2026,
+} from "~/data/F1/2026/F1data";
 import { cn } from "~/lib/utils";
 
 ChartJS.register(
@@ -44,7 +43,7 @@ const { driverStandings, constructorStandings } = createStandings(
   FormulaOneRaceResults
 );
 
-const pointsHolderOptions = [...driverCodes2024, ...constructorNames2024].map(
+const pointsHolderOptions = [...driverCodes2026, ...constructorNames2026].map(
   (pointsHolder, index) => {
     return (
       <option key={index}>
@@ -54,23 +53,23 @@ const pointsHolderOptions = [...driverCodes2024, ...constructorNames2024].map(
   }
 );
 
-const driverEnum = z.enum(driverCodes2024);
-const constructorEnum = z.enum(constructorNames2024);
+const driverEnum = z.enum(driverCodes2026);
+const constructorEnum = z.enum(constructorNames2026);
 const pointsHolderEnum = z.enum([
-  ...driverCodes2024,
-  ...constructorNames2024,
+  ...driverCodes2026,
+  ...constructorNames2026,
   "No Selection",
 ]);
 
 type PointsHolderType = {
-  name: DriverCode24Type | ConstructorName24Type | "No Selection";
+  name: DriverCode26Type | ConstructorName26Type | "No Selection";
   type: "Driver" | "Constructor" | "No Selection";
-  driver?: DriverCode24Type;
-  constructor?: ConstructorName24Type;
+  driver?: DriverCode26Type;
+  constructor?: ConstructorName26Type;
 };
 
 const doc = (
-  name: DriverCode24Type | ConstructorName24Type | "No Selection"
+  name: DriverCode26Type | ConstructorName26Type | "No Selection"
 ): PointsHolderType => {
   if (driverEnum.safeParse(name).success) {
     return {
@@ -98,13 +97,13 @@ const doc = (
 
 const LineChart: React.FC = () => {
   const [pointsHolder1, setPointsHolder1] = useState<PointsHolderType>(
-    doc("VER")
+    doc("ANT")
   );
   const [pointsHolder2, setPointsHolder2] = useState<PointsHolderType>(
-    doc("NOR")
+    doc("LEC")
   );
   const [pointsHolder3, setPointsHolder3] = useState<PointsHolderType>(
-    doc("LEC")
+    doc("NOR")
   );
   const [pointsHolder4, setPointsHolder4] = useState<PointsHolderType>(
     doc("No Selection")
@@ -116,6 +115,8 @@ const LineChart: React.FC = () => {
     pointsHolder4,
   ]);
 
+  console.log(driverStandings, constructorStandings);
+
   const createData = (
     pointsHolders: PointsHolderType[]
   ): ChartDataset<"line">[] => {
@@ -125,13 +126,7 @@ const LineChart: React.FC = () => {
         return {
           label: driver,
           data: driverStandings[driver].runTotal,
-          borderColor: F1styleData[driverToConstructor2024(driver)].primary,
-          backgroundColor:
-            driverTcamColors2024[driver] === "Black"
-              ? "#33424d"
-              : driverTcamColors2024[driver] === "Yellow"
-              ? "#d9ff00"
-              : "#00ffd9",
+          borderColor: F1styleData[driverToConstructor2026(driver)].primary,
         };
       } else if (pointsHolder.type === "Constructor") {
         const constructor = constructorEnum.parse(pointsHolder.name);
@@ -174,7 +169,7 @@ const LineChart: React.FC = () => {
             "flex justify-center gap-2 rounded-md p-2",
             {
               [F1styleData[
-                allToConstructor2024(
+                allToConstructor2026(
                   pointsHolder1.name !== "No Selection"
                     ? pointsHolder1.name
                     : "ALB"
@@ -187,27 +182,9 @@ const LineChart: React.FC = () => {
           )}
         >
           <div
-            className={cn(
-              "m-auto h-3 w-3 rounded-full",
-              {
-                "bg-[#33424d]":
-                  pointsHolder1.driver &&
-                  driverTcamColors2024[pointsHolder1.driver] === "Black",
-              },
-              {
-                "bg-[#d9ff00]":
-                  pointsHolder1.driver &&
-                  driverTcamColors2024[pointsHolder1.driver] === "Yellow",
-              },
-              {
-                "bg-[#00ffd9]":
-                  pointsHolder1.driver &&
-                  driverTcamColors2024[pointsHolder1.driver] === "Cyan",
-              },
-              {
-                "bg-white": pointsHolder1.constructor,
-              }
-            )}
+            className={cn("m-auto h-3 w-3 rounded-full", {
+              "bg-white": pointsHolder1.constructor,
+            })}
           ></div>
           <select
             onChange={(e) => {
@@ -231,7 +208,7 @@ const LineChart: React.FC = () => {
             "flex justify-center gap-2 rounded-md p-2",
             {
               [F1styleData[
-                allToConstructor2024(
+                allToConstructor2026(
                   pointsHolder2.name !== "No Selection"
                     ? pointsHolder2.name
                     : "ALB"
@@ -246,21 +223,6 @@ const LineChart: React.FC = () => {
           <div
             className={cn(
               "m-auto h-3 w-3 rounded-full",
-              {
-                "bg-[#33424d]":
-                  pointsHolder2.driver &&
-                  driverTcamColors2024[pointsHolder2.driver] === "Black",
-              },
-              {
-                "bg-[#d9ff00]":
-                  pointsHolder2.driver &&
-                  driverTcamColors2024[pointsHolder2.driver] === "Yellow",
-              },
-              {
-                "bg-[#00ffd9]":
-                  pointsHolder2.driver &&
-                  driverTcamColors2024[pointsHolder2.driver] === "Cyan",
-              },
               {
                 "bg-white": pointsHolder2.constructor,
               },
@@ -292,7 +254,7 @@ const LineChart: React.FC = () => {
             "flex justify-center gap-2 rounded-md p-2",
             {
               [F1styleData[
-                allToConstructor2024(
+                allToConstructor2026(
                   pointsHolder3.name !== "No Selection"
                     ? pointsHolder3.name
                     : "ALB"
@@ -307,21 +269,6 @@ const LineChart: React.FC = () => {
           <div
             className={cn(
               "m-auto h-3 w-3 rounded-full",
-              {
-                "bg-[#33424d]":
-                  pointsHolder3.driver &&
-                  driverTcamColors2024[pointsHolder3.driver] === "Black",
-              },
-              {
-                "bg-[#d9ff00]":
-                  pointsHolder3.driver &&
-                  driverTcamColors2024[pointsHolder3.driver] === "Yellow",
-              },
-              {
-                "bg-[#00ffd9]":
-                  pointsHolder3.driver &&
-                  driverTcamColors2024[pointsHolder3.driver] === "Cyan",
-              },
               {
                 "bg-white": pointsHolder3.constructor,
               },
@@ -353,7 +300,7 @@ const LineChart: React.FC = () => {
             "flex justify-center gap-2 rounded-md p-2",
             {
               [F1styleData[
-                allToConstructor2024(
+                allToConstructor2026(
                   pointsHolder4.name !== "No Selection"
                     ? pointsHolder4.name
                     : "ALB"
@@ -368,21 +315,6 @@ const LineChart: React.FC = () => {
           <div
             className={cn(
               "m-auto h-3 w-3 rounded-full",
-              {
-                "bg-[#33424d]":
-                  pointsHolder4.driver &&
-                  driverTcamColors2024[pointsHolder4.driver] === "Black",
-              },
-              {
-                "bg-[#d9ff00]":
-                  pointsHolder4.driver &&
-                  driverTcamColors2024[pointsHolder4.driver] === "Yellow",
-              },
-              {
-                "bg-[#00ffd9]":
-                  pointsHolder4.driver &&
-                  driverTcamColors2024[pointsHolder4.driver] === "Cyan",
-              },
               {
                 "bg-white": pointsHolder4.constructor,
               },
@@ -414,3 +346,12 @@ const LineChart: React.FC = () => {
 };
 
 export default LineChart;
+
+/*
+backgroundColor:
+            driverTcamColors2026[driver] === "Black"
+              ? "#33426d"
+              : driverTcamColors2026[driver] === "Yellow"
+              ? "#d9ff00"
+              : "#00ffd9",
+*/

@@ -48,8 +48,6 @@ const SuperLoserList: React.FC = () => {
     );
   }).reverse();
 
-  allMultiParticipants();
-
   const superLosers = (game: SuperBowlType | null, inModal: boolean) =>
     SuperLoserData.filter((player) => {
       if (!game) {

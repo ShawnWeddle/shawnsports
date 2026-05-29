@@ -1,6 +1,7 @@
 import { type SportType } from "~/data/SiteData";
 import { Map, MapControls } from "~/components/ui/map";
 import { MapMarkers } from "./MapMarkers";
+import CityMarkers from "./CityMarkers";
 
 type MapProps = {
   activeSports: SportType[];
@@ -20,3 +21,7 @@ export const MyMap: React.FC<MapProps> = (props: MapProps) => {
     </Map>
   );
 };
+
+/*
+{CityMarkers}
+*/

@@ -459,7 +459,7 @@ export const milbList: MiLBInfoTypeA[] = [
       longitude: -97.513,
     },
     location: "Oklahoma City",
-    name: "Dodgers",
+    name: "Comets",
     parentTeam: "LAD",
     tier: "AAA",
   },
@@ -2087,7 +2087,7 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
                 "longitude": -97.513
             },
             "location": "Oklahoma City",
-            "name": "Dodgers",
+            "name": "Comets",
         },
         "AA": {
             "coordinates": {

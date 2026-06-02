@@ -342,6 +342,12 @@ export const EasternChampData: NBAFinalsSeriesType[] = [
 
 export const WesternChampData: NBAFinalsSeriesType[] = [
   {
+    winningTeam: "SAS",
+    losingTeam: "OKC",
+    score: "4-3",
+    year: 2026,
+    wonChamp: false,
+  },{
     winningTeam: "OKC",
     losingTeam: "MIN",
     score: "4-1",

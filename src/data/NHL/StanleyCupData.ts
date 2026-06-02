@@ -2,6 +2,11 @@ import { type StanleyCupSeriesType } from "~/types/ChampTypes"
 
 export const StanleyCupData: StanleyCupSeriesType[] = [
   {
+    winningTeam: "CAR",
+    losingTeam: "VEG",
+    score: "4-?",
+    year: 2026
+  },{
     winningTeam: "FLA",
     losingTeam: "EDM",
     score: "4-2",

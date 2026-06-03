@@ -4,7 +4,7 @@ export const NBAFinalsData: NBAFinalsSeriesType[] = [
   {
       "winningTeam": "SAS",
       "losingTeam": "NYK",
-      "score": "4-?",
+      "score": "4-",
       "year": 2026
   },{
       "winningTeam": "OKC",

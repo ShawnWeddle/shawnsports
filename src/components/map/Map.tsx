@@ -1,7 +1,7 @@
 import { type SportType } from "~/data/SiteData";
 import { Map, MapControls } from "~/components/ui/map";
 import { MapMarkers } from "./MapMarkers";
-import CityMarkers from "./CityMarkers";
+// import CityMarkers from "./CityMarkers";
 
 type MapProps = {
   activeSports: SportType[];
@@ -11,7 +11,7 @@ type MapProps = {
 export const MyMap: React.FC<MapProps> = (props: MapProps) => {
   const { activeSports, showTeamColors } = props;
   return (
-    <Map center={[-98.579, 39.828]} zoom={3}>
+    <Map center={[-100, 40]} zoom={4}>
       <MapControls position="top-right" showZoom showLocate showFullscreen />
       {activeSports.map((sport, index) => {
         return (

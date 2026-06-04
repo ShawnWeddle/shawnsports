@@ -15,7 +15,7 @@ export const sportMapList: SportType[] = [
 ];
 
 const MapWrapper: React.FC = () => {
-  const [activeSports, setActiveSports] = useState<SportType[]>(["NFL", "MLB"]);
+  const [activeSports, setActiveSports] = useState<SportType[]>(["NFL", "NBA"]);
   const [showTeamColors, setShowTeamColors] = useState<boolean>(false);
 
   const setActiveSportsHandler = (sport: SportType) => {

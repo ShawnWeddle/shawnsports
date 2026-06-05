@@ -6,7 +6,6 @@ import { FaBaseball } from "react-icons/fa6";
 import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
 import { milbList, type TierType, MiLBobject } from "~/data/MLB/ballparks";
 import { Button } from "../ui/button";
-import { MapPin } from "lucide-react";
 
 type MarkerProps = {
   activeTiers: Set<TierType>;

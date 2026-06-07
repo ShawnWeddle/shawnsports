@@ -355,6 +355,7 @@ export const createStandings = (results: RaceResultsType) => {
     driverPodiums,
     constructorPodiums,
     runningDriverResults,
+    runningConstructorResults
   };
 }
 

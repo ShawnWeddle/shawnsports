@@ -70,6 +70,51 @@ export const raceCountryCodes: { [Key in RaceLocation26Type] : string} = {
   Qatar: "QA",
   Singapore: "SG",
 }
+
+export const raceCoordinates: {
+    [Key in RaceLocation26Type]?: {
+        coordinates: {
+            latitude: number;
+            longitude: number;
+        };
+        circuitName: string;
+        raceDate: string;
+    };
+} = {
+  "Australia": {
+    coordinates: {
+      latitude: -37.850,
+      longitude: 144.969,
+    },
+    circuitName: "Albert Park Ciruit",
+    raceDate: "March 8",
+  },
+  "China": {
+    coordinates: {
+      latitude: 31.337,
+      longitude: 121.220,
+    },
+    circuitName: "Shanghai International Circuit",
+    raceDate: "March 15",
+  },
+  "Japan": {
+    coordinates: {
+      latitude: 34.844,
+      longitude: 136.540,
+    },
+    circuitName: "Suzuka Circuit",
+    raceDate: "March 29",
+  },
+  "Miami": {
+    coordinates: {
+      latitude: 25.959,
+      longitude: -80.238,
+    },
+    circuitName: "Miami Internation Autodrome",
+    raceDate: "May 3",
+  },
+};
+
 export type DriverCode26Type = typeof driverCodes2026[number];
 export type ConstructorName26Type = typeof constructorNames2026[number];
 export type RaceLocation26Type = typeof raceLocations2026[number];

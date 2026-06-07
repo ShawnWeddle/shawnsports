@@ -115,8 +115,6 @@ const LineChart: React.FC = () => {
     pointsHolder4,
   ]);
 
-  console.log(driverStandings, constructorStandings);
-
   const createData = (
     pointsHolders: PointsHolderType[]
   ): ChartDataset<"line">[] => {

@@ -8,11 +8,12 @@ import { Button } from "~/components/ui/button";
 import { Map, MapControls } from "~/components/ui/map";
 import { leagueMapList } from "~/data/NHL/NHLdata";
 import { NHLmarkers } from "./NHLMarkers";
+import { PWHLMarkers } from "./PWHLMarkers";
 import NHLarc from "./NHLArc";
 
 const MapNHL: React.FC = () => {
   const { nhlMapState, nhlMapDispatch } = useNHLMapContext();
-  const { activeTeam, activeTiers, mapMode } = nhlMapState;
+  const { activeTeam, activeLeagues, mapMode } = nhlMapState;
 
   const checkList = [...leagueMapList].map((league, index) => {
     return (
@@ -29,10 +30,10 @@ const MapNHL: React.FC = () => {
         <Checkbox
           id={league}
           name={league}
-          checked={nhlMapState.activeTiers.has(league)}
+          checked={nhlMapState.activeLeagues.has(league)}
           onCheckedChange={() => {
             nhlMapDispatch({
-              type: "CHANGE_TIERS",
+              type: "CHANGE_LEAGUES",
               payload: { league: league },
             });
           }}
@@ -48,7 +49,7 @@ const MapNHL: React.FC = () => {
       <Card className="relative flex h-128 w-full p-0">
         <Map center={[-98.579, 39.828]} zoom={3}>
           <div className="absolute left-3 top-3 rounded bg-white p-1">
-            {mapMode === "Tiers" && checkList}
+            {mapMode === "Leagues" && checkList}
             {mapMode === "Paths" && (
               <Button
                 variant="destructive"
@@ -56,7 +57,7 @@ const MapNHL: React.FC = () => {
                 onClick={() => {
                   nhlMapDispatch({
                     type: "CHANGE_MAP_MODE",
-                    payload: { mode: "Tiers" },
+                    payload: { mode: "Leagues" },
                   });
                 }}
               >
@@ -71,7 +72,7 @@ const MapNHL: React.FC = () => {
             showFullscreen
           />
           <NHLmarkers
-            activeTiers={activeTiers}
+            activeLeagues={activeLeagues}
             activeTeam={activeTeam}
             mapMode={mapMode}
             teamColors={false}

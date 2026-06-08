@@ -875,7 +875,7 @@ export const HockeyArenaData: {[Key in TierType] : {[Key in NHLTeamType]? : Hock
     }
 };
 
-export const PWHLArenaData: {[Key in PWHLTeamType]? : PWHLInfoType} = {
+export const PWHLArenaData: {[Key in PWHLTeamType] : PWHLInfoType} = {
   "BOS": {
     coordinates: {
       latitude: 42.650,

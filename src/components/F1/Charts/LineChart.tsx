@@ -100,7 +100,7 @@ const LineChart: React.FC = () => {
     doc("ANT")
   );
   const [pointsHolder2, setPointsHolder2] = useState<PointsHolderType>(
-    doc("LEC")
+    doc("HAM")
   );
   const [pointsHolder3, setPointsHolder3] = useState<PointsHolderType>(
     doc("NOR")
@@ -150,7 +150,7 @@ const LineChart: React.FC = () => {
   };
 
   useEffect(() => {
-    setActiveDrivers([doc("VER"), doc("NOR"), doc("LEC")]);
+    setActiveDrivers([doc("ANT"), doc("HAM"), doc("NOR")]);
   }, []);
 
   return (

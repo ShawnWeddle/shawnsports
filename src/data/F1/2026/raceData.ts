@@ -299,14 +299,38 @@ export const FormulaOneRaceResults : F1RaceType[] = [
   },
   {
     location: "Monaco",
-    finalOrder: [],
-    DNFs: [],
+    finalOrder: [
+      { driver: "ANT", constructor: "Mercedes" },
+      { driver: "HAM", constructor: "Ferrari" },
+      { driver: "HAD", constructor: "Red Bull" },
+      { driver: "PIA", constructor: "McLaren" },
+      { driver: "LAW", constructor: "RB" },
+      { driver: "LIN", constructor: "RB" },
+      { driver: "GAS", constructor: "Alpine" },
+      { driver: "ALB", constructor: "Williams" },
+      { driver: "OCO", constructor: "Haas" },
+      { driver: "ALO", constructor: "Aston Martin" },
+      { driver: "BOR", constructor: "Audi" },
+      { driver: "RUS", constructor: "Mercedes" },
+      { driver: "HUL", constructor: "Audi" },
+      { driver: "COL", constructor: "Alpine" },
+      { driver: "PER", constructor: "Cadillac" },
+    ],
+    DNFs: [
+      { driver: "SAI", constructor: "Williams" },
+      { driver: "LEC", constructor: "Ferrari" },
+      { driver: "STR", constructor: "Aston Martin" },
+      { driver: "NOR", constructor: "McLaren" },
+      { driver: "BEA", constructor: "Haas" },
+      { driver: "BOT", constructor: "Cadillac" },
+      { driver: "VER", constructor: "Red Bull" },
+    ],
     polePosition: {
-      driver: "VER",
-      constructor: "Red Bull"
+      driver: "ANT",
+      constructor: "Mercedes"
     },
     sprint: false,
-    completed: false,
+    completed: true,
   },
   {
     location: "Barcelona",

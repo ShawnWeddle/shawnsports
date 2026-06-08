@@ -1,6 +1,6 @@
 import { cn } from "~/lib/utils";
 import { useNHLMapContext } from "~/hooks/useNHLmap";
-import { type NHLTeamType, type TierType } from "~/data/NHL/NHLdata";
+import { type NHLTeamType, type LeagueType } from "~/data/NHL/NHLdata";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
 import { nhlMinorList } from "~/data/NHL/NHLstadiums";
 import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
@@ -9,31 +9,35 @@ import TeamTag from "~/components/map/NHL/NHLminorTag";
 import { Button } from "~/components/ui/button";
 
 type MarkerProps = {
-  activeTiers: Set<TierType>;
+  activeLeagues: Set<LeagueType>;
   activeTeam: NHLTeamType | undefined;
-  mapMode: "Tiers" | "Paths";
+  mapMode: "Leagues" | "Paths";
   teamColors: boolean;
 };
 
-const tierToText = (tier: TierType): string => {
-  switch (tier) {
+const leagueToText = (league: LeagueType): string => {
+  switch (league) {
     case "NHL":
       return "N";
     case "AHL":
       return "A";
     case "ECHL":
       return "E";
+    case "PWHL":
+      return "W";
+    default:
+      return "";
   }
 };
 
 export const NHLmarkers = (props: MarkerProps) => {
   const { nhlMapDispatch } = useNHLMapContext();
-  const { activeTeam, activeTiers, mapMode, teamColors } = props;
+  const { activeTeam, activeLeagues, mapMode, teamColors } = props;
   const nm = nhlMinorList
     .filter((team) => {
       switch (mapMode) {
-        case "Tiers":
-          return activeTiers.has(team.tier);
+        case "Leagues":
+          return activeLeagues.has(team.tier);
         case "Paths":
           return activeTeam === team.parentTeam;
         default:
@@ -70,7 +74,7 @@ export const NHLmarkers = (props: MarkerProps) => {
                     [NHLstyleData[parentTeam].simpleText]: true,
                   })}
                 >
-                  {tierToText(tier)}
+                  {leagueToText(tier)}
                 </p>
               )}
               {teamColors === false && (
@@ -87,7 +91,7 @@ export const NHLmarkers = (props: MarkerProps) => {
           <MarkerPopup>
             <div className="rounded-md bg-white p-1">
               <TeamTag team={parentTeam} tier={tier} />
-              {mapMode === "Tiers" && (
+              {mapMode === "Leagues" && (
                 <div className="flex justify-center">
                   <Button
                     variant="ghost"
@@ -126,9 +130,9 @@ export const NHLmarkers = (props: MarkerProps) => {
                   [NHLstyleData[parentTeam].secondaryBorder]:
                     teamColors === true,
                   "bg-white": teamColors === false,
-                  "border-nhl": teamColors === false && tier === "NHL",
-                  "border-ahl": teamColors === false && tier === "AHL",
-                  "border-echl": teamColors === false && tier === "ECHL",
+                  "border-nhl": teamColors === false && league === "NHL",
+                  "border-ahl": teamColors === false && league === "AHL",
+                  "border-echl": teamColors === false && league === "ECHL",
                 }
               )}
             >
@@ -138,15 +142,15 @@ export const NHLmarkers = (props: MarkerProps) => {
                     [NHLstyleData[parentTeam].simpleText]: true,
                   })}
                 >
-                  {tierToText(tier)}
+                  {leagueToText(league)}
                 </p>
               )}
               {teamColors === false && (
                 <FaHockeyPuck
                   className={cn("size-4", {
-                    "text-nhl": tier === "NHL",
-                    "text-ahl": tier === "AHL",
-                    "text-echl": tier === "ECHL",
+                    "text-nhl": league === "NHL",
+                    "text-ahl": league === "AHL",
+                    "text-echl": league === "ECHL",
                   })}
                 />
               )}

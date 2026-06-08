@@ -1,8 +1,8 @@
 import { createContext, useReducer } from "react";
 import {
   type NHLTeamType,
-  type TierType,
-  tierMapList,
+  type LeagueType,
+  leagueMapList,
 } from "~/data/NHL/NHLdata";
 
 export const NHLMapContext = createContext<ContextType | null>(null);
@@ -17,19 +17,19 @@ type NHLMapContextProviderProps = {
 };
 
 type NHLMapReducerState = {
-  activeTiers: Set<TierType>;
+  activeLeagues: Set<LeagueType>;
   activeTeam: NHLTeamType | undefined;
-  mapMode: "Tiers" | "Paths";
+  mapMode: "Leagues" | "Paths";
 };
 
 type NHLMapPayloadType = {
   team?: NHLTeamType;
-  tier?: TierType;
-  mode?: "Tiers" | "Paths";
+  league?: LeagueType;
+  mode?: "Leagues" | "Paths";
 };
 
 type NHLMapReducerAction = {
-  type: "CHANGE_TIERS" | "CHANGE_TEAM" | "CHANGE_MAP_MODE";
+  type: "CHANGE_LEAGUES" | "CHANGE_TEAM" | "CHANGE_MAP_MODE";
   payload: NHLMapPayloadType;
 };
 
@@ -38,18 +38,18 @@ export const nhlMapReducer = (
   action: NHLMapReducerAction
 ) => {
   switch (action.type) {
-    case "CHANGE_TIERS":
-      const newTiers = new Set<TierType>([...state.activeTiers]);
-      const activeTier = action.payload.tier;
-      if (activeTier) {
-        if (newTiers.has(activeTier)) {
-          newTiers.delete(activeTier);
+    case "CHANGE_LEAGUES":
+      const newLeagues = new Set<LeagueType>([...state.activeLeagues]);
+      const activeLeague = action.payload.league;
+      if (activeLeague) {
+        if (newLeagues.has(activeLeague)) {
+          newLeagues.delete(activeLeague);
         } else {
-          newTiers.add(activeTier);
+          newLeagues.add(activeLeague);
         }
       }
 
-      return { ...state, activeTiers: newTiers };
+      return { ...state, activeLeagues: newLeagues };
     case "CHANGE_TEAM":
       const team = action.payload.team;
       return { ...state, activeTeam: team };
@@ -65,9 +65,9 @@ export const NHLMapContextProvider = ({
   children,
 }: NHLMapContextProviderProps) => {
   const [nhlMapState, nhlMapDispatch] = useReducer(nhlMapReducer, {
-    activeTiers: tierMapList,
+    activeLeagues: leagueMapList,
     activeTeam: undefined,
-    mapMode: "Tiers",
+    mapMode: "Leagues",
   });
 
   return (

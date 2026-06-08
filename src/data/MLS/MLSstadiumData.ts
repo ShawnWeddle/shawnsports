@@ -26,7 +26,7 @@ export const MLSstadiumCoordinates: { [Key in MLSTeamType] : MLScoType} = {
   NYC: {latitude: 40.829, longitude: -73.926},
   NYR: {latitude: 40.737, longitude: -74.15},
   ORL: {latitude: 28.624, longitude: -81.389},
-  PHI: {latitude: 39.832, longitude: -75.379},
+  PHI: {latitude: 39.833, longitude: -75.379},
   POR: {latitude: 45.521, longitude: -122.692},
   RSL: {latitude: 40.583, longitude: -111.893},
   SDF: {latitude: 32.784, longitude: -117.123},

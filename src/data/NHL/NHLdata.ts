@@ -13,10 +13,17 @@ export const nhlTeamsAll = [
   "MMR", "MNS", "QUE", "ARI"
 ] as const;
 
-export type TierType =  "NHL" | "AHL" | "ECHL";
-export const tierMapList: Set<TierType> = new Set(["NHL", "AHL", "ECHL"]);
+export const pwhlTeamsAll = [
+  "BOS", "DET", "HAM", "MIN", "MTL","NYS", 
+  "OTT", "SEA", "SJS", "TOR", "VAN", "VEG",
+] as const;
+
+export type TierType = "NHL" | "AHL" | "ECHL";
+export type LeagueType = "NHL" | "AHL" | "ECHL" | "PWHL";
+export const leagueMapList: Set<LeagueType> = new Set(["NHL", "AHL", "ECHL", "PWHL"]);
 
 export type NHLTeamType = typeof nhlTeamsRanked[number];
+export type PWHLTeamType = typeof pwhlTeamsAll[number];
 
 export type AllNHLTeamType = typeof nhlTeamsAll[number];
 

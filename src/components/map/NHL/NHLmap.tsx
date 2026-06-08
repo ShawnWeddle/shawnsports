@@ -6,7 +6,7 @@ import { Label } from "~/components/ui/label";
 import { Checkbox } from "~/components/ui/checkbox";
 import { Button } from "~/components/ui/button";
 import { Map, MapControls } from "~/components/ui/map";
-import { tierMapList } from "~/data/NHL/NHLdata";
+import { leagueMapList } from "~/data/NHL/NHLdata";
 import { NHLmarkers } from "./NHLMarkers";
 import NHLarc from "./NHLArc";
 
@@ -14,26 +14,30 @@ const MapNHL: React.FC = () => {
   const { nhlMapState, nhlMapDispatch } = useNHLMapContext();
   const { activeTeam, activeTiers, mapMode } = nhlMapState;
 
-  const checkList = [...tierMapList].map((tier, index) => {
+  const checkList = [...leagueMapList].map((league, index) => {
     return (
       <Field
         key={index}
         orientation="horizontal"
         className={cn("rounded p-1", {
-          "hover:bg-nhl/50": tier === "NHL",
-          "hover:bg-aaa/50": tier === "AHL",
-          "hover:bg-echl/50": tier === "ECHL",
+          "hover:bg-nhl/50": league === "NHL",
+          "hover:bg-aaa/50": league === "AHL",
+          "hover:bg-echl/50": league === "ECHL",
+          "hover:bg-cfl/50": league === "PWHL",
         })}
       >
         <Checkbox
-          id={tier}
-          name={tier}
-          checked={nhlMapState.activeTiers.has(tier)}
+          id={league}
+          name={league}
+          checked={nhlMapState.activeTiers.has(league)}
           onCheckedChange={() => {
-            nhlMapDispatch({ type: "CHANGE_TIERS", payload: { tier: tier } });
+            nhlMapDispatch({
+              type: "CHANGE_TIERS",
+              payload: { league: league },
+            });
           }}
         ></Checkbox>
-        <Label htmlFor={tier}>{tier}</Label>
+        <Label htmlFor={league}>{league}</Label>
       </Field>
     );
   });

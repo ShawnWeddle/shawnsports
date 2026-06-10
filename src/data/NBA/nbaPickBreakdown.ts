@@ -16,7 +16,7 @@ export type PickType = {
   }
 };
 
-export const AllNBAPicks2: {[Key in NBATeamType] : {[Key in PickYearType] : PickType[]}} = {
+export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickType[]}} = {
 "ATL": {
   "2026": [{
     nativeTeam: "CLE",

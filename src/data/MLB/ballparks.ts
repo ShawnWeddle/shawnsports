@@ -996,8 +996,8 @@ export const milbList: MiLBInfoTypeA[] = [
   },
   {
     coordinates: {
-      latitude: 41.695,
-      longitude: -81.45,
+      latitude: 41.641,
+      longitude: -81.436,
     },
     location: "Lake County",
     name: "Captains",
@@ -1848,8 +1848,8 @@ export const MiLBobject: {[Key in MLBTeamType] : {[Key in TierType] : MiLBInfoTy
         },
         "High-A": {
             "coordinates": {
-                "latitude": 41.695,
-                "longitude": -81.45
+                "latitude": 41.641,
+                "longitude": -81.436
             },
             "location": "Lake County",
             "name": "Captains",

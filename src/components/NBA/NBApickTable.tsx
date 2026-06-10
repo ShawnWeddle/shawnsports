@@ -2,8 +2,7 @@ import { useState } from "react";
 import { cn } from "~/lib/utils";
 import { NBAteamData, TeamNameEnum } from "~/data/NBA/NBAdata";
 import { NBAstyleDataFull } from "~/data/NBA/NBAstyleData";
-import { AllNBAPicks } from "~/data/NBA/AllNBApicks";
-import { AllNBAPicks2, type PickType } from "~/data/NBA/nbaPickBreakdown";
+import { AllNBAPicks, type PickType } from "~/data/NBA/nbaPickBreakdown";
 import { pickNoteCreator } from "~/utils/nba";
 // import type { PickType } from "~/data/NBA/AllNBApicks";
 import { Dialog, DialogTitle, DialogContent, DialogHeader } from "../ui/dialog";
@@ -21,7 +20,7 @@ const NBApickTable: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [activePick, setActivePick] = useState<PickType | null>(null);
 
-  const NBArows = Object.entries(AllNBAPicks2).map((teamPicks, rowIndex) => {
+  const NBArows = Object.entries(AllNBAPicks).map((teamPicks, rowIndex) => {
     const activeTeamCode = TeamNameEnum.parse(teamPicks[0]);
     const activeTeamPicks = teamPicks[1];
     const NBAcells = Object.values(activeTeamPicks).map((picks, cellIndex) => {
@@ -215,9 +214,3 @@ const NBApickTable: React.FC = () => {
 };
 
 export default NBApickTable;
-
-/*
-            {pick.swap && pick.swap === "positive" && "⭡"}
-            {pick.swap && pick.swap === "negative" && "⭣"}
-            {pick.swap && pick.swap === "neutral" && "-"}
-*/

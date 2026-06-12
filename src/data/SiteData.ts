@@ -46,9 +46,6 @@ export const NFLTitlesDesc: {[Key in NFLTitlesType] : string} = {
   "NFL_Super_Bowls": "See all 60 Super Bowl matchups",
   "NFL_Rank": "Rank all 32 NFL teams",
 };
-//  "NFL_Schedule": "See every team's schedule for the 2024 NFL season",
-//  "NFL_Draft_Chart": "NFL Draft Chart",
-//  "NBA_Lottery": "Select any 14 teams and simulate the 2025 NBA draft lottery",
 export const NBATitlesDesc: {[Key in NBATitlesType] : string} = {
   "NBA_Future_Picks": "See which team owns each first round pick through 2032",
   "NBA_Finals": "See all NBA Finals since 1947",
@@ -130,9 +127,6 @@ export const underPageTitles = [
 "grey-cups",
 "mls-cups",
 ] as const;
-//"schedule",
-//"draft-chart",
-//"lottery",
 
 export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, urlName: PageURLType}} = {
   Home: { navTitle: "Home", urlName: "/",},
@@ -160,13 +154,6 @@ export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, url
   CFL_Grey_Cups: { navTitle: "Grey Cups", urlName: "/cfl/grey-cups"},
   CFL_Rank: { navTitle: "Rank", urlName: "/cfl/rank"},
 };
-
-/**
- *   NFL_Schedule: { navTitle: "Schedule", urlName: "/nfl/schedule",},
-    NFL_Draft_Chart: { navTitle: "Draft Chart", urlName: "/nfl/draft-chart"},
- *   NBA_Lottery: { navTitle: "Lottery", urlName: "/nba/lottery",},
- * 
- */
 
 export const pageData: {[Key in PageHeadsType] : LowerPageHeadType} = {
   "Home":"", "F1":"f1", "NFL":"nfl", "NBA":"nba", "MLB":"mlb", "MLS":"mls", "NHL":"nfl", "WNBA":"wnba", "CFL":"cfl"

@@ -302,11 +302,11 @@ export const FormulaOneRaceResults : F1RaceType[] = [
     finalOrder: [
       { driver: "ANT", constructor: "Mercedes" },
       { driver: "HAM", constructor: "Ferrari" },
+      { driver: "GAS", constructor: "Alpine" },
       { driver: "HAD", constructor: "Red Bull" },
       { driver: "PIA", constructor: "McLaren" },
       { driver: "LAW", constructor: "RB" },
       { driver: "LIN", constructor: "RB" },
-      { driver: "GAS", constructor: "Alpine" },
       { driver: "ALB", constructor: "Williams" },
       { driver: "OCO", constructor: "Haas" },
       { driver: "ALO", constructor: "Aston Martin" },

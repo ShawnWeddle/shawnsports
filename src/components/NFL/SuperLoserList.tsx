@@ -17,7 +17,6 @@ import {
   TableRow,
   TableRowNoHover,
 } from "~/components/ui/table";
-import { allMultiParticipants } from "~/data/NFL/findParticipant";
 
 const SuperLoserList: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);

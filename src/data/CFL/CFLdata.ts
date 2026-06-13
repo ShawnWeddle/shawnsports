@@ -15,9 +15,22 @@ export const cflTeamsAll = [
   "SSK", "EDM", "OTT", "ORR", "BAL", "ESK", "XXX", 
 ] as const;
 
+export const uflTeamsList = [
+  "BHM", "CBA", "DAL", "DCD", "HOU", "LOU", "ORL", "STL",
+] as const;
+
+export const iflTeamsList = [
+  "ARI", "FSH", "GBB", "IBS", "JAX", 
+  "NMC", "NAW", "ORL", "QCS", "SAG",
+  "SDS", "TSS", "TUL", "VEG", 
+] as const;
+
 export type CFLTeamType = typeof cflTeamsRanked[number];
 
 export type AllCFLTeamType = typeof cflTeamsAll[number];
+
+export type UFLTeamType = typeof uflTeamsList[number];
+export type IFLTeamType = typeof iflTeamsList[number];
 
 export type teamInfoType = { code: string, location: string, name: string };
 

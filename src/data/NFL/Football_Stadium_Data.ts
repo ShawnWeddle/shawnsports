@@ -344,7 +344,7 @@ export const CFLStadiumData: {[Key in CFLTeamType] : FootballInfoType} = {
     }
 };
 
-export const IFLStadiumData: {[Key in IFLTeamType]? : FootballInfoType} = {
+export const IFLStadiumData: {[Key in IFLTeamType] : FootballInfoType} = {
   ARI: {
     coordinates: {
       latitude: 33.532,

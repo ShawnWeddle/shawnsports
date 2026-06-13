@@ -59,6 +59,9 @@ const Footer: React.FC = () => {
             <MenubarItem asChild>
               <Link href="/nfl/rank">Rank</Link>
             </MenubarItem>
+            <MenubarItem asChild>
+              <Link href="/nfl/map">Map</Link>
+            </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
@@ -162,15 +165,3 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-
-/*
-            <MenubarItem asChild>
-              <Link href="/nfl/schedule">Schedule</Link>
-            </MenubarItem>
-            <MenubarItem asChild>
-              <Link href="/nfl/draft-chart">Draft Chart</Link>
-            </MenubarItem>
-                        <MenubarItem asChild>
-              <Link href="/nba/lottery">Lottery</Link>
-            </MenubarItem>
-*/

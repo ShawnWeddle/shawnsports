@@ -6,7 +6,7 @@ export const EasternChampData: NBAFinalsSeriesType[] = [
     losingTeam: "CLE",
     score: "4-0",
     year: 2026,
-    wonChamp: false,
+    wonChamp: true,
   },{
     winningTeam: "IND",
     losingTeam: "NYK",

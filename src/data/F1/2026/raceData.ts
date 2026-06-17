@@ -334,14 +334,38 @@ export const FormulaOneRaceResults : F1RaceType[] = [
   },
   {
     location: "Barcelona",
-    finalOrder: [],
-    DNFs: [],
+    finalOrder: [
+      { driver: "HAM", constructor: "Ferrari" },
+      { driver: "RUS", constructor: "Mercedes" },
+      { driver: "NOR", constructor: "McLaren" },
+      { driver: "VER", constructor: "Red Bull" },
+      { driver: "PIA", constructor: "McLaren" },
+      { driver: "HAD", constructor: "Red Bull" },
+      { driver: "GAS", constructor: "Alpine" },
+      { driver: "LAW", constructor: "RB" },
+      { driver: "LIN", constructor: "RB" },
+      { driver: "COL", constructor: "Alpine" },
+      { driver: "BOR", constructor: "Audi" },
+      { driver: "SAI", constructor: "Williams" },
+      { driver: "OCO", constructor: "Haas" },
+      { driver: "PER", constructor: "Cadillac" },
+      { driver: "LEC", constructor: "Ferrari" },
+      { driver: "ANT", constructor: "Mercedes" },
+      { driver: "BEA", constructor: "Haas" },
+    ],
+    DNFs: [
+      { driver: "ALB", constructor: "Williams" },
+      { driver: "ALO", constructor: "Aston Martin" },
+      { driver: "HUL", constructor: "Audi" },
+      { driver: "BOT", constructor: "Cadillac" },
+      { driver: "STR", constructor: "Aston Martin" },
+    ],
     polePosition: {
-      driver: "VER",
-      constructor: "Red Bull"
+      driver: "RUS",
+      constructor: "Mercedes"
     },
     sprint: false,
-    completed: false,
+    completed: true,
   },
   {
     location: "Austria",

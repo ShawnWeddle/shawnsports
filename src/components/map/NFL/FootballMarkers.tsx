@@ -134,7 +134,7 @@ const FootballMarker: React.FC<FootballMarkerProps> = (
               "bg-white": true,
               "border-nfl": league === "NFL",
               "border-cfl": league === "CFL",
-              "border-home": league === "IFL",
+              "border-echl": league === "IFL",
               "border-black": league === "UFL",
             }
           )}
@@ -144,7 +144,7 @@ const FootballMarker: React.FC<FootballMarkerProps> = (
               className={cn("size-4", {
                 "text-nfl": league === "NFL",
                 "text-cfl": league === "CFL",
-                "text-home": league === "IFL",
+                "text-echl": league === "IFL",
                 "text-black": league === "UFL",
               })}
             />

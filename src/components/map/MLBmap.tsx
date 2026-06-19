@@ -9,12 +9,6 @@ import { Map, MapControls } from "~/components/ui/map";
 import { MiLBmarkers } from "./MiLBMarkers";
 import MiLBarc from "./MiLBArc";
 import { type TierType } from "~/data/MLB/ballparks";
-import {
-  MLBdivisionData,
-  type MLBTeamType,
-  MLBteamData,
-} from "~/data/MLB/MLBdata";
-import { MLBstyleData } from "~/data/MLB/MLBstyleData";
 
 export const tierMapList: Set<TierType> = new Set([
   "MLB",

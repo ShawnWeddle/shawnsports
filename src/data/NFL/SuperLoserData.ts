@@ -307,3 +307,30 @@ export const SuperLoserData: SuperLoserType[] = [
     losses: [ 44, 51 ],
   },
 ]
+
+/*
+      .toSorted((a, b) => {
+        if (a.losses.length > b.losses.length) {
+          return -1;
+        }
+
+        if (a.losses.length < b.losses.length) {
+          return 1;
+        }
+
+        const aL = a.losses;
+        const bL = b.losses;
+        let rv = 0;
+
+        for (let i = 0; i < aL.length; i++) {
+          if (aL[i]! > bL[i]!) {
+            rv = 1;
+            break;
+          } else {
+            rv = -1;
+            break;
+          }
+        }
+        return rv;
+      })
+*/

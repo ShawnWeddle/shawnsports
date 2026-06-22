@@ -50,7 +50,9 @@ const MapMLB: React.FC = () => {
 
   return (
     <div className="flex w-full flex-col items-center justify-center">
-      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">MLB Map</h1>
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        Baseball Map
+      </h1>
       <Card className="relative flex h-128 w-full p-0">
         <Map center={[-98.579, 39.828]} zoom={3}>
           <div className="absolute left-3 top-3 rounded bg-white p-1">

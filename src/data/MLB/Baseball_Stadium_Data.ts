@@ -1,5 +1,4 @@
 import { type MLBTeamType } from "./MLBdata"
-import { milbList } from "./ballparks";
 
 export type TierType = "MLB" |"AAA" | "AA" | "High-A" | "Single-A";
 
@@ -18,8 +17,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
     "MLB": {
         "ARI": {
             "coordinates": {
-                "latitude": 33.454,
-                "longitude": -112.08
+                "latitude": 33.445,
+                "longitude": -112.067
             },
             "location": "Arizona",
             "name": "Diamondbacks",
@@ -27,8 +26,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "ATL": {
             "coordinates": {
-                "latitude": 33.954,
-                "longitude": -84.455
+                "latitude": 33.89,
+                "longitude": -84.468
             },
             "location": "Atlanta",
             "name": "Braves",
@@ -46,7 +45,7 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         "BOS": {
             "coordinates": {
                 "latitude": 42.346,
-                "longitude": -71.097
+                "longitude": -71.098
             },
             "location": "Boston",
             "name": "Red Sox",
@@ -72,8 +71,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "CIN": {
             "coordinates": {
-                "latitude": 39.095,
-                "longitude": -84.506
+                "latitude": 39.097,
+                "longitude": -84.507
             },
             "location": "Cincinnati",
             "name": "Reds",
@@ -117,8 +116,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "KCR": {
             "coordinates": {
-                "latitude": 39.051,
-                "longitude": -94.479
+                "latitude": 39.052,
+                "longitude": -94.48
             },
             "location": "Kansas City",
             "name": "Royals",
@@ -135,8 +134,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "LAD": {
             "coordinates": {
-                "latitude": 34.081,
-                "longitude": -118.239
+                "latitude": 34.074,
+                "longitude": -118.24
             },
             "location": "Los Angeles",
             "name": "Dodgers",
@@ -144,8 +143,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "MIA": {
             "coordinates": {
-                "latitude": 25.776,
-                "longitude": -80.221
+                "latitude": 25.778,
+                "longitude": -80.22
             },
             "location": "Miami",
             "name": "Marlins",
@@ -153,8 +152,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "MIL": {
             "coordinates": {
-                "latitude": 43.041,
-                "longitude": -87.968
+                "latitude": 43.028,
+                "longitude": -87.971
             },
             "location": "Milwaukee",
             "name": "Brewers",
@@ -172,7 +171,7 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         "NYM": {
             "coordinates": {
                 "latitude": 40.757,
-                "longitude": -73.833
+                "longitude": -73.846
             },
             "location": "New York",
             "name": "Mets",
@@ -190,9 +189,9 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         "OAK": {
             "coordinates": {
                 "latitude": 38.58,
-                "longitude": -121.514
+                "longitude": -121.513
             },
-            "location": "The",
+            "location": "Oakland",
             "name": "Athletics",
             "parentTeam": "OAK"
         },
@@ -208,7 +207,7 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         "PIT": {
             "coordinates": {
                 "latitude": 40.447,
-                "longitude": -80.01
+                "longitude": -80.006
             },
             "location": "Pittsburgh",
             "name": "Pirates",
@@ -216,7 +215,7 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "SDP": {
             "coordinates": {
-                "latitude": 32.708,
+                "latitude": 32.707,
                 "longitude": -117.157
             },
             "location": "San Diego",
@@ -226,7 +225,7 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         "SEA": {
             "coordinates": {
                 "latitude": 47.591,
-                "longitude": -122.332
+                "longitude": -122.333
             },
             "location": "Seattle",
             "name": "Mariners",
@@ -234,8 +233,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "SFG": {
             "coordinates": {
-                "latitude": 37.795,
-                "longitude": -122.39
+                "latitude": 37.779,
+                "longitude": -122.389
             },
             "location": "San Francisco",
             "name": "Giants",
@@ -243,7 +242,7 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "STL": {
             "coordinates": {
-                "latitude": 38.625,
+                "latitude": 38.623,
                 "longitude": -90.193
             },
             "location": "St. Louis",
@@ -261,8 +260,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "TEX": {
             "coordinates": {
-                "latitude": 32.751,
-                "longitude": -97.083
+                "latitude": 32.747,
+                "longitude": -97.084
             },
             "location": "Texas",
             "name": "Rangers",
@@ -271,7 +270,7 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         "TOR": {
             "coordinates": {
                 "latitude": 43.641,
-                "longitude": -79.39
+                "longitude": -79.389
             },
             "location": "Toronto",
             "name": "Blue Jays",
@@ -279,8 +278,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "WSN": {
             "coordinates": {
-                "latitude": 38.874,
-                "longitude": -77.009
+                "latitude": 38.873,
+                "longitude": -77.007
             },
             "location": "Washington",
             "name": "Nationals",

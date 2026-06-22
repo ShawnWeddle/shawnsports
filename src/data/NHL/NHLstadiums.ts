@@ -409,9 +409,9 @@ export const nhlMinorList: NHLminorInfoType[] = [
     tier: "ECHL",
     parentTeam: "BOS"
   },{
-    coordinates: { latitude: 42.265, longitude: -71.799 },
-    location: "Worcester",
-    name: "Railers",
+    coordinates: { latitude: 26.440, longitude: -81.779 },
+    location: "Florida",
+    name: "Everblades",
     tier: "ECHL",
     parentTeam: "BUF"
   },{
@@ -535,9 +535,9 @@ export const nhlMinorList: NHLminorInfoType[] = [
     tier: "ECHL",
     parentTeam: "SJS"
   },{
-    coordinates: { latitude: 26.440, longitude: -81.779 },
-    location: "Florida",
-    name: "Everblades",
+    coordinates: { latitude: 42.265, longitude: -71.799 },
+    location: "Worcester",
+    name: "Railers",
     tier: "ECHL",
     parentTeam: "STL"
   },{

@@ -5,6 +5,7 @@ import { MLBstyleData } from "~/data/MLB/MLBstyleData";
 import { FaBaseball } from "react-icons/fa6";
 import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
 import { milbList, type TierType, MiLBobject } from "~/data/MLB/ballparks";
+import { BaseballStadiumData } from "~/data/MLB/Baseball_Stadium_Data";
 import { Button } from "../ui/button";
 
 type MarkerProps = {
@@ -32,7 +33,7 @@ const tierToText = (tier: TierType): string => {
 export const MiLBmarkers = (props: MarkerProps) => {
   const { mlbMapDispatch } = useMLBMapContext();
   const { activeTeam, activeTiers, mapMode, teamColors } = props;
-  const nm = milbList
+  const markerList = milbList
     .filter((team) => {
       switch (mapMode) {
         case "Tiers":
@@ -162,5 +163,5 @@ export const MiLBmarkers = (props: MarkerProps) => {
         </MapMarker>
       );
     });
-  return nm;
+  return markerList;
 };

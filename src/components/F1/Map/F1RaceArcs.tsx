@@ -13,19 +13,21 @@ const F1raceArcs = () => {
     const locationA = raceLocations2026[i];
     const locationB = raceLocations2026[i + 1];
 
-    if (locationA && locationB) {
-      const LA = raceCoordinates[locationA];
-      const LB = raceCoordinates[locationB];
+    if (!locationA) break;
+    if (!locationB) break;
 
-      if (LA && LB) {
-        const teamPair: ArcData = {
-          id: locationA + "-" + locationB,
-          from: [LA.coordinates.longitude, LA.coordinates.latitude],
-          to: [LB.coordinates.longitude, LB.coordinates.latitude],
-        };
-        output.push(teamPair);
-      }
-    }
+    const LA = raceCoordinates[locationA];
+    const LB = raceCoordinates[locationB];
+
+    if (!LA) break;
+    if (!LB) break;
+
+    const teamPair: ArcData = {
+      id: locationA + "-" + locationB,
+      from: [LA.coordinates.longitude, LA.coordinates.latitude],
+      to: [LB.coordinates.longitude, LB.coordinates.latitude],
+    };
+    output.push(teamPair);
   }
   return (
     <MapArc

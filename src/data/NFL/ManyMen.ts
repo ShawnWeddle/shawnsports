@@ -5690,5 +5690,5 @@ export const manyMen: ManType[] = [
                 "team": "KAN"
             }
         ]
-    }
+    },
 ]

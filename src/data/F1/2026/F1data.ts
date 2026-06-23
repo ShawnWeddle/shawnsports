@@ -113,6 +113,30 @@ export const raceCoordinates: {
     circuitName: "Miami Internation Autodrome",
     raceDate: "May 3",
   },
+  "Canada": {
+    coordinates: {
+      latitude: 45.501,
+      longitude: -73.523,
+    },
+    circuitName: "Circuit Gilles Villeneuve",
+    raceDate: "May 24",
+  },
+  "Monaco": {
+    coordinates: {
+      latitude: 43.734,
+      longitude: 7.422,
+    },
+    circuitName: "Circuit de Monaco",
+    raceDate: "June 7",
+  },
+  "Barcelona": {
+    coordinates: {
+      latitude: 41.570,
+      longitude: 2.261,
+    },
+    circuitName: "Circuit de Barcelona-Catalunya",
+    raceDate: "June 14",
+  },
 };
 
 export type DriverCode26Type = typeof driverCodes2026[number];

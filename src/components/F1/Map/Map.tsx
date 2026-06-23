@@ -1,5 +1,6 @@
 import { Map, MapControls } from "~/components/ui/map";
 import F1raceArcs from "./F1RaceArcs";
+import F1RaceMarkers from "./F1RaceMarkers";
 
 const MyMap: React.FC = () => {
   return (
@@ -7,6 +8,7 @@ const MyMap: React.FC = () => {
       <Map center={[-80.238, 25.959]} zoom={2} projection={{ type: "globe" }}>
         <MapControls position="top-right" showZoom showLocate showFullscreen />
         <F1raceArcs />
+        <F1RaceMarkers />
       </Map>
     </div>
   );

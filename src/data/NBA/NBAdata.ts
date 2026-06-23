@@ -30,7 +30,7 @@ export const nbaTeamsRankedWorst: NBATeamType[] = [
 ];
 
 export const years = [
-  "2026", "2027", "2028", "2029", "2030", "2031", "2032" 
+  "2027", "2028", "2029", "2030", "2031", "2032", "2033"
 ] as const;
 
 export type TierType =  "NBA" | "NGL" | "WNBA";

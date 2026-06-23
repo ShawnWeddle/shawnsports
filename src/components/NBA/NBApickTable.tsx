@@ -175,9 +175,7 @@ const NBApickTable: React.FC = () => {
             <TableHeader>
               <TableRowNoHover>
                 <TableHead className="px-0">Team</TableHead>
-                <TableHead className="hidden px-0 sm:table-cell">
-                  2026
-                </TableHead>
+
                 <TableHead className="hidden px-0 sm:table-cell">
                   2027
                 </TableHead>
@@ -196,13 +194,16 @@ const NBApickTable: React.FC = () => {
                 <TableHead className="hidden px-0 sm:table-cell">
                   2032
                 </TableHead>
-                <TableHead className="px-0 sm:hidden">{"'"}26</TableHead>
+                <TableHead className="hidden px-0 sm:table-cell">
+                  2033
+                </TableHead>
                 <TableHead className="px-0 sm:hidden">{"'"}27</TableHead>
                 <TableHead className="px-0 sm:hidden">{"'"}28</TableHead>
                 <TableHead className="px-0 sm:hidden">{"'"}29</TableHead>
                 <TableHead className="px-0 sm:hidden">{"'"}30</TableHead>
                 <TableHead className="px-0 sm:hidden">{"'"}31</TableHead>
                 <TableHead className="px-0 sm:hidden">{"'"}32</TableHead>
+                <TableHead className="px-0 sm:hidden">{"'"}33</TableHead>
               </TableRowNoHover>
             </TableHeader>
             <TableBody className="text-xs sm:text-base">{NBArows}</TableBody>

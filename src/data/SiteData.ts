@@ -20,7 +20,6 @@ export const allNavHeads = {
   "WNBA": ["WNBA_Finals", "WNBA_Rank", ],
   "CFL": ["CFL_Grey_Cups", "CFL_Rank", ],
 } as const;
-//"NFL_Schedule", "NFL_Draft_Chart", "NBA_Lottery",
 
 export type HomeTitlesType = typeof allNavHeads["Home"][number];
 export type F1TitlesType = typeof allNavHeads["F1"][number];

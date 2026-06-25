@@ -21,6 +21,14 @@ export const nameMatcherWNBA = (checkTeam: AllWNBATeamType, winningTeam: AllWNBA
   ) {
     isTeam = true;
   }
+  if (
+    (checkTeam === "HOU" &&
+      [losingTeam, winningTeam].includes("CON")) ||
+    (checkTeam === "CON" &&
+      [losingTeam, winningTeam].includes("HOU"))
+  ) {
+    isTeam = true;
+  }
   return isTeam;
 }
 
@@ -33,6 +41,9 @@ export const wnbaTeamPreNames = (checkTeam: AllWNBATeamType): string => {
     case "DAL":
     case "DET":
       return "Wings/Shock"
+    case "CON":
+    case "HOU":
+      return "Comets/Sun"
     default:
       return WNBAteamData[checkTeam].name
   }

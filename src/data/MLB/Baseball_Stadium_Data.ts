@@ -289,8 +289,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
     "AAA": {
         "ARI": {
             "coordinates": {
-                "latitude": 39.525,
-                "longitude": -119.828
+                "latitude": 39.528,
+                "longitude": -119.808
             },
             "location": "Reno",
             "name": "Aces",
@@ -298,8 +298,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "ATL": {
             "coordinates": {
-                "latitude": 34.039,
-                "longitude": -84.07
+                "latitude": 34.041,
+                "longitude": -83.992
             },
             "location": "Gwinnett",
             "name": "Stripers",
@@ -307,8 +307,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "BAL": {
             "coordinates": {
-                "latitude": 36.847,
-                "longitude": -76.283
+                "latitude": 36.843,
+                "longitude": -76.279
             },
             "location": "Norfolk",
             "name": "Tides",
@@ -316,8 +316,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "BOS": {
             "coordinates": {
-                "latitude": 42.26,
-                "longitude": -71.794
+                "latitude": 42.257,
+                "longitude": -71.800
             },
             "location": "Worcester",
             "name": "Red Sox",
@@ -325,8 +325,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "CHC": {
             "coordinates": {
-                "latitude": 41.59,
-                "longitude": -93.628
+                "latitude": 41.580,
+                "longitude": -93.616
             },
             "location": "Iowa",
             "name": "Cubs",
@@ -334,8 +334,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "CHW": {
             "coordinates": {
-                "latitude": 35.229,
-                "longitude": -80.846
+                "latitude": 35.228,
+                "longitude": -80.849
             },
             "location": "Charlotte",
             "name": "Knights",
@@ -343,8 +343,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "CIN": {
             "coordinates": {
-                "latitude": 38.253,
-                "longitude": -85.734
+                "latitude": 38.256,
+                "longitude": -85.745
             },
             "location": "Louisville",
             "name": "Bats",
@@ -352,8 +352,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "CLE": {
             "coordinates": {
-                "latitude": 39.962,
-                "longitude": -83.004
+                "latitude": 39.969,
+                "longitude": -83.011
             },
             "location": "Columbus",
             "name": "Clippers",
@@ -361,8 +361,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "COL": {
             "coordinates": {
-                "latitude": 35.074,
-                "longitude": -106.614
+                "latitude": 35.070,
+                "longitude": -106.629
             },
             "location": "Albuquerque",
             "name": "Isotopes",
@@ -370,8 +370,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "DET": {
             "coordinates": {
-                "latitude": 41.653,
-                "longitude": -83.542
+                "latitude": 41.649,
+                "longitude": -83.539
             },
             "location": "Toledo",
             "name": "Mud Hens",
@@ -379,8 +379,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "HOU": {
             "coordinates": {
-                "latitude": 29.594,
-                "longitude": -95.629
+                "latitude": 29.623,
+                "longitude": -95.647
             },
             "location": "Sugar Land",
             "name": "Space Cowboys",
@@ -388,8 +388,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "KCR": {
             "coordinates": {
-                "latitude": 41.164,
-                "longitude": -96.089
+                "latitude": 41.152,
+                "longitude": -96.107
             },
             "location": "Omaha",
             "name": "Storm Chasers",
@@ -397,8 +397,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "LAA": {
             "coordinates": {
-                "latitude": 40.532,
-                "longitude": -111.89
+                "latitude": 40.550,
+                "longitude": -112.023
             },
             "location": "Salt Lake",
             "name": "Bees",
@@ -406,8 +406,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "LAD": {
             "coordinates": {
-                "latitude": 35.462,
-                "longitude": -97.513
+                "latitude": 35.465,
+                "longitude": -97.508
             },
             "location": "Oklahoma City",
             "name": "Comets",
@@ -416,7 +416,7 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         "MIA": {
             "coordinates": {
                 "latitude": 30.325,
-                "longitude": -81.641
+                "longitude": -81.643
             },
             "location": "Jacksonville",
             "name": "Jumbo Shrimp",
@@ -424,8 +424,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "MIL": {
             "coordinates": {
-                "latitude": 36.169,
-                "longitude": -86.786
+                "latitude": 36.173,
+                "longitude": -86.785
             },
             "location": "Nashville",
             "name": "Sounds",
@@ -434,7 +434,7 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         "MIN": {
             "coordinates": {
                 "latitude": 44.951,
-                "longitude": -93.092
+                "longitude": -93.085
             },
             "location": "St. Paul",
             "name": "Saints",
@@ -442,8 +442,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "NYM": {
             "coordinates": {
-                "latitude": 43.069,
-                "longitude": -76.158
+                "latitude": 43.079,
+                "longitude": -76.165
             },
             "location": "Syracuse",
             "name": "Mets",
@@ -451,8 +451,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "NYY": {
             "coordinates": {
-                "latitude": 41.362,
-                "longitude": -75.76
+                "latitude": 41.360,
+                "longitude": -75.684
             },
             "location": "Scranton/Wilkes-Barre",
             "name": "RailRiders",
@@ -460,8 +460,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "OAK": {
             "coordinates": {
-                "latitude": 36.053,
-                "longitude": -115.336
+                "latitude": 36.153,
+                "longitude": -115.330
             },
             "location": "Las Vegas",
             "name": "Aviators",
@@ -469,8 +469,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "PHI": {
             "coordinates": {
-                "latitude": 40.639,
-                "longitude": -75.469
+                "latitude": 40.626,
+                "longitude": -75.453
             },
             "location": "Lehigh Valley",
             "name": "IronPigs",
@@ -478,8 +478,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "PIT": {
             "coordinates": {
-                "latitude": 39.768,
-                "longitude": -86.171
+                "latitude": 39.765,
+                "longitude": -86.169
             },
             "location": "Indianapolis",
             "name": "Indians",
@@ -487,8 +487,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "SDP": {
             "coordinates": {
-                "latitude": 31.75,
-                "longitude": -106.508
+                "latitude": 31.759,
+                "longitude": -106.493
             },
             "location": "El Paso",
             "name": "Chihuahuas",
@@ -496,8 +496,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "SEA": {
             "coordinates": {
-                "latitude": 47.223,
-                "longitude": -122.491
+                "latitude": 47.228,
+                "longitude": -122.498
             },
             "location": "Tacoma",
             "name": "Rainiers",
@@ -505,8 +505,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "SFG": {
             "coordinates": {
-                "latitude": 38.587,
-                "longitude": -121.517
+                "latitude": 38.580,
+                "longitude": -121.514
             },
             "location": "Sacramento",
             "name": "River Cats",
@@ -514,8 +514,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "STL": {
             "coordinates": {
-                "latitude": 35.15,
-                "longitude": -90.05
+                "latitude": 35.143,
+                "longitude": -90.050
             },
             "location": "Memphis",
             "name": "Redbirds",
@@ -523,8 +523,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "TBR": {
             "coordinates": {
-                "latitude": 35.973,
-                "longitude": -78.903
+                "latitude": 35.992,
+                "longitude": -78.904
             },
             "location": "Durham",
             "name": "Bulls",
@@ -532,8 +532,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "TEX": {
             "coordinates": {
-                "latitude": 30.512,
-                "longitude": -97.617
+                "latitude": 30.528,
+                "longitude": -97.630
             },
             "location": "Round Rock",
             "name": "Express",
@@ -541,8 +541,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "TOR": {
             "coordinates": {
-                "latitude": 42.891,
-                "longitude": -78.878
+                "latitude": 42.880,
+                "longitude": -78.874
             },
             "location": "Buffalo",
             "name": "Bisons",
@@ -550,8 +550,8 @@ export const BaseballStadiumData: {[Key in TierType] : {[Key in MLBTeamType] : B
         },
         "WSN": {
             "coordinates": {
-                "latitude": 43.153,
-                "longitude": -77.604
+                "latitude": 43.158,
+                "longitude": -77.620
             },
             "location": "Rochester",
             "name": "Red Wings",

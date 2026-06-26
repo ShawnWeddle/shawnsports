@@ -13,6 +13,13 @@ export const nhlTeamsAll = [
   "MMR", "MNS", "QUE", "ARI"
 ] as const;
 
+export const echlParentTeams = [
+  "VEG", "FLA", "CAR", "DAL", "BOS", "COL", "NJD", "TOR", 
+  "EDM", "NYR", "LAK", "MIN", "SEA", "TBL", "WIN", "NYI", 
+  "CGY", "NSH", "PIT", "BUF", "OTT", "VAN", "STL", "DET", 
+  "WAS", "PHI", "MTL", "SJS", "ANA", "CHI", 
+] as const;
+
 export const pwhlTeamsAll = [
   "BOS", "DET", "HAM", "MIN", "MTL","NYS", 
   "OTT", "SEA", "SJS", "TOR", "VAN", "VEG",
@@ -23,6 +30,8 @@ export type LeagueType = "NHL" | "AHL" | "ECHL" | "PWHL";
 export const leagueMapList: Set<LeagueType> = new Set(["NHL", "AHL", "ECHL", "PWHL"]);
 
 export type NHLTeamType = typeof nhlTeamsRanked[number];
+export type AHLTeamType = `AHL-${NHLTeamType}`;
+export type ECHLTeamType = `ECHL-${typeof echlParentTeams[number]}`
 export type PWHLTeamType = typeof pwhlTeamsAll[number];
 
 export type AllNHLTeamType = typeof nhlTeamsAll[number];

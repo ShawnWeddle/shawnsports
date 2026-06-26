@@ -1,3 +1,4 @@
+import { TeamInfoType } from "~/types/MapTypes";
 import { type WNBATeamType } from "./WNBAdata";
 
 export type WNBAinfoType = {

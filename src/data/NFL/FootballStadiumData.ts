@@ -1,16 +1,8 @@
 import { type NFLTeamType} from "~/data/NFL/NFLdata";
 import type { CFLTeamType, IFLTeamType, UFLTeamType  } from "~/data/CFL/CFLdata";
+import type { TeamInfoType } from "~/types/MapTypes";
 
-export type FootballInfoType = {
-  coordinates: {
-    latitude: number,
-    longitude: number,
-  };
-  location: string;
-  name: string;
-};
-
-export const NFLStadiumData: {[Key in NFLTeamType] : FootballInfoType} = {
+export const NFLStadiumData: {[Key in NFLTeamType] : TeamInfoType} = {
     ARI: {
         coordinates: {
             latitude: 33.528,
@@ -269,7 +261,7 @@ export const NFLStadiumData: {[Key in NFLTeamType] : FootballInfoType} = {
     }
 };
 
-export const CFLStadiumData: {[Key in CFLTeamType] : FootballInfoType} = {
+export const CFLStadiumData: {[Key in CFLTeamType] : TeamInfoType} = {
     BCL: {
         coordinates: {
             latitude: 49.276,
@@ -344,7 +336,7 @@ export const CFLStadiumData: {[Key in CFLTeamType] : FootballInfoType} = {
     }
 };
 
-export const IFLStadiumData: {[Key in IFLTeamType] : FootballInfoType} = {
+export const IFLStadiumData: {[Key in IFLTeamType] : TeamInfoType} = {
   ARI: {
     coordinates: {
       latitude: 33.532,
@@ -459,7 +451,7 @@ export const IFLStadiumData: {[Key in IFLTeamType] : FootballInfoType} = {
   },
 };
 
-export const UFLStadiumData: {[Key in UFLTeamType] : FootballInfoType} = {
+export const UFLStadiumData: {[Key in UFLTeamType] : TeamInfoType} = {
   BHM: {
     coordinates: {
       latitude: 33.529,

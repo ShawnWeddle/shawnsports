@@ -37,6 +37,7 @@ export type TierType =  "NBA" | "NGL" | "WNBA";
 export const tierMapList: Set<TierType> = new Set(["NBA", "NGL", "WNBA"]);
 
 export type NBATeamType = typeof nbaTeamsAlpha[number];
+export type NGLTeamType = `NGL-${NBATeamType}` | "MEX";
 export type AllNBATeamType = typeof nbaTeamsAll[number];
 export type PickYearType = typeof years[number];
 export type PickCodeType = `${NBATeamType}-${PickYearType}`;

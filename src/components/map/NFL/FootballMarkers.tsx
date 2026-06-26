@@ -17,7 +17,7 @@ import {
   CFLStadiumData,
   UFLStadiumData,
   IFLStadiumData,
-} from "~/data/NFL/Football_Stadium_Data";
+} from "~/data/NFL/FootballStadiumData";
 
 export const FootballMarkers = () => {
   const { nflMapState } = useNFLMapContext();

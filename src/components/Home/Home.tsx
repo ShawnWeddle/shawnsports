@@ -22,7 +22,7 @@ const HomeComp: React.FC = () => {
           </CardDescription>
         </CardHeader>
       </Card>
-      <MyMap />
+      <MapWrapper />
       <HomeNav />
       <NoteFromDev />
     </>

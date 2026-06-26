@@ -21,6 +21,11 @@ export type MLBTeamType = typeof mlbTeamsRanked[number];
 
 export type AllMLBTeamType = typeof mlbTeamsAll[number];
 
+export type AAATeamType = `AAA-${MLBTeamType}`
+export type AATeamType = `AA-${MLBTeamType}`
+export type HATeamType = `HA-${MLBTeamType}`
+export type SATeamType = `SA-${MLBTeamType}`
+
 export type teamInfoType = {location: string, name: string };
 
 export const MLBteamData: { [Key in AllMLBTeamType] : teamInfoType} = {

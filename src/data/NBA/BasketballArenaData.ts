@@ -13,7 +13,7 @@ export const NBAArenaData: {[Key in NBATeamType] : TeamInfoType} = {
   },
   "BOS": {
     coordinates: {
-      latitude: 42.367,
+      latitude: 42.366,
       longitude: -71.062
     },
     location: "Boston",
@@ -30,7 +30,7 @@ export const NBAArenaData: {[Key in NBATeamType] : TeamInfoType} = {
   "CHI": {
     coordinates: {
       latitude: 41.881,
-      longitude: -87.675
+      longitude: -87.674
     },
     location: "Chicago",
     name: "Bulls",
@@ -61,7 +61,7 @@ export const NBAArenaData: {[Key in NBATeamType] : TeamInfoType} = {
   },
   "DEN": {
     coordinates: {
-      latitude: 39.748,
+      latitude: 39.749,
       longitude: -105.008
     },
     location: "Denver",
@@ -69,7 +69,7 @@ export const NBAArenaData: {[Key in NBATeamType] : TeamInfoType} = {
   },
   "DET": {
     coordinates: {
-      latitude: 42.342,
+      latitude: 42.341,
       longitude: -83.055
     },
     location: "Detroit",
@@ -157,7 +157,7 @@ export const NBAArenaData: {[Key in NBATeamType] : TeamInfoType} = {
   },
   "NYK": {
     coordinates: {
-      latitude: 40.75,
+      latitude: 40.751,
       longitude: -73.994
     },
     location: "New York",
@@ -182,7 +182,7 @@ export const NBAArenaData: {[Key in NBATeamType] : TeamInfoType} = {
   "PHI": {
     coordinates: {
       latitude: 39.901,
-      longitude: -75.171
+      longitude: -75.172
     },
     location: "Philadelphia",
     name: "76ers",
@@ -221,7 +221,7 @@ export const NBAArenaData: {[Key in NBATeamType] : TeamInfoType} = {
   },
   "TOR": {
     coordinates: {
-      latitude: 43.644,
+      latitude: 43.643,
       longitude: -79.379
     },
     location: "Toronto",
@@ -237,7 +237,7 @@ export const NBAArenaData: {[Key in NBATeamType] : TeamInfoType} = {
   },
   "WAS": {
     coordinates: {
-      latitude: 38.899,
+      latitude: 38.898,
       longitude: -77.021
     },
     location: "Washington",

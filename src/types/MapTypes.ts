@@ -59,6 +59,26 @@ export type MapDataInputType = {
   team: MLSTeamType
 };
 
+export type LeagueTeamListType = {
+  "NFL": NFLTeamType[];
+  "CFL": CFLTeamType[];
+  "IFL": IFLTeamType[];
+  "UFL": UFLTeamType[];
+  "NBA": NBATeamType[];
+  "WNBA": WNBATeamType[];
+  "NGL": NGLTeamType[];
+  "MLB": MLBTeamType[];
+  "AAA": AAATeamType[];
+  "AA": AATeamType[];
+  "HA": HATeamType[];
+  "SA": SATeamType[];
+  "NHL": NHLTeamType[];
+  "AHL": AHLTeamType[];
+  "ECHL": ECHLTeamType[];
+  "PWHL": PWHLTeamType[];
+  "MLS": MLSTeamType[];
+};
+
 export type TeamInfoType = {
   coordinates: {
     latitude: number,
@@ -66,4 +86,5 @@ export type TeamInfoType = {
   };
   location: string;
   name: string;
+  reverse: boolean;
 };

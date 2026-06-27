@@ -68,8 +68,8 @@ export const NHLArenaData: {[Key in NHLTeamType] : TeamInfoType} = {
     },
     "DAL": {
         coordinates: {
-          latitude: 32.791,
-          longitude: -96.81
+          latitude: 32.790,
+          longitude: -96.810
         },
         location: "Dallas",
         name: "Stars",
@@ -101,7 +101,7 @@ export const NHLArenaData: {[Key in NHLTeamType] : TeamInfoType} = {
     "LAK": {
         coordinates: {
           latitude: 34.043,
-          longitude: -118.268
+          longitude: -118.267
         },
         location: "Los Angeles",
         name: "Kings",
@@ -221,7 +221,7 @@ export const NHLArenaData: {[Key in NHLTeamType] : TeamInfoType} = {
     "UTA": {
         coordinates: {
           latitude: 40.768,
-          longitude: -111.902
+          longitude: -111.901
         },
         location: "Utah",
         name: "Mammoth",

@@ -1,6 +1,6 @@
 import { useMapContext } from "~/hooks/useMap";
 import { cn } from "~/lib/utils";
-import { initialLeagueList } from "~/data/map/mapData";
+import { initialLeagueList, lengthenLeagueName } from "~/data/map/mapData";
 import { Field } from "../ui/field";
 import { Label } from "../ui/label";
 import { Checkbox } from "../ui/checkbox";
@@ -22,7 +22,7 @@ const CheckList: React.FC = () => {
             });
           }}
         ></Checkbox>
-        <Label htmlFor={league}>{league}</Label>
+        <Label htmlFor={league}>{lengthenLeagueName(league)}</Label>
       </Field>
     );
   });

@@ -4,6 +4,7 @@ import { NFLStadiumData, CFLStadiumData, IFLStadiumData, UFLStadiumData } from "
 import { NBAArenaData, NGLArenaData, WNBAArenaData } from "../NBA/BasketballArenaData";
 import { MLBFieldData, AAAFieldData, AAFieldData, HAFieldData, SAFieldData } from "../MLB/BaseballStadiumData";
 import { NHLArenaData, AHLArenaData, ECHLArenaData, PWHLArenaData } from "../NHL/HockeyArenaData";
+import { MLSStadiumData } from "../MLS/SoccerStadiumData";
 
 export const markerData = (input: MapDataInputType) => {
   const { league, team } = input;
@@ -127,6 +128,10 @@ export const markerData = (input: MapDataInputType) => {
       break;
     case "MLS":
       code = team;
+      location = MLSStadiumData[team].location;
+      name = MLSStadiumData[team].name;
+      coordinates.latitude = MLSStadiumData[team].coordinates.latitude;
+      coordinates.longitude = MLSStadiumData[team].coordinates.longitude;
       break;
   }
 

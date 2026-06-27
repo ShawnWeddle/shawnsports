@@ -1,4 +1,5 @@
-import { type MLSTeamType } from "./MLSdata";
+import { allMLSteams, MLSteamData, type MLSTeamType } from "./MLSdata";
+import type { TeamInfoType } from "~/types/MapTypes";
 
 type MLScoType = {
   latitude: number,
@@ -37,3 +38,23 @@ export const MLSstadiumCoordinates: { [Key in MLSTeamType] : MLScoType} = {
   TOR: {latitude: 43.633, longitude: -79.419},
   VAN: {latitude: 49.277, longitude: -123.112},
 };
+
+export const FindMLS = () => {
+  const MLSC: {[Key in MLSTeamType]? : TeamInfoType} = {};
+  
+  allMLSteams.forEach((team) => {
+    const { latitude, longitude } = MLSstadiumCoordinates[team];
+    const { location, name, reverse } = MLSteamData[team];
+    MLSC[team] = {
+      coordinates: {
+        latitude,
+        longitude
+      },
+      location,
+      name,
+      reverse
+    }
+  });
+
+  console.log(MLSC);
+}

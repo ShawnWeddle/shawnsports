@@ -59,7 +59,7 @@ const config = {
         echl: "#BF3030",
         pwhl: "#000060",
         ifl: "#008000",
-        ufl: "#000080",
+        ufl: "#220066",
         ngl: "#BF9900",
         primary: {
           DEFAULT: "hsl(var(--primary))",

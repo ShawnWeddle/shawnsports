@@ -14,7 +14,7 @@ export const NFLStadiumData: {[Key in NFLTeamType] : TeamInfoType} = {
     ATL: {
         coordinates: {
             latitude: 33.755,
-            longitude: -84.4,
+            longitude: -84.401,
         },
         location: "Atlanta",
         name: "Falcons",
@@ -264,7 +264,7 @@ export const NFLStadiumData: {[Key in NFLTeamType] : TeamInfoType} = {
 export const CFLStadiumData: {[Key in CFLTeamType] : TeamInfoType} = {
     BCL: {
         coordinates: {
-            latitude: 49.276,
+            latitude: 49.277,
             longitude: -123.112,
         },
         location: "BC",

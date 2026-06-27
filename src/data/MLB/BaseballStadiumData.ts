@@ -157,7 +157,7 @@ export const MLBFieldData: {[Key in MLBTeamType] : TeamInfoType} = {
   OAK: {
     coordinates: {
       latitude: 38.58,
-      longitude: -121.513
+      longitude: -121.514
     },
     location: "Oakland",
     name: "Athletics",

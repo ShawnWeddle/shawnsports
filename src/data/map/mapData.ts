@@ -1,3 +1,5 @@
+import type { LeagueTeamListType } from "~/types/MapTypes";
+
 export const FullLeagueList = [
   "NFL", "CFL", "UFL", "IFL",
   "NBA", "NGL", "WNBA",
@@ -34,6 +36,34 @@ export const convertLeagueToSport = (league: LeagueType): SportType => {
       return "Baseball";
     case "MLS":
       return "Soccer";
+  }
+}
+
+export const lengthenLeagueName = (league: LeagueType): string => {
+  switch(league){
+    case "NFL":
+    case "CFL":
+    case "NBA":
+    case "WNBA":
+    case "NHL":
+    case "AHL":
+    case "ECHL":
+    case "PWHL":
+    case "MLB":
+    case "AAA":
+    case "AA":
+    case "MLS":
+      return league;
+    case "UFL":
+      return "United FL";
+    case "IFL":
+      return "Indoor FL";
+    case "HA":
+      return "High-A";
+    case "SA":
+      return "Single-A";
+    case "NGL":
+      return "G League";
   }
 }
 
@@ -77,4 +107,24 @@ export const initialLeagueList = (
     default:
       return new Set<LeagueType>();
   }
+};
+
+export const LeagueTeamList: LeagueTeamListType = {
+  "NFL": [],
+  "CFL": [],
+  "IFL": [],
+  "UFL": [],
+  "NBA": [],
+  "WNBA": [],
+  "NGL": [],
+  "MLB": [],
+  "AAA": [],
+  "AA": [],
+  "HA": [],
+  "SA": [],
+  "NHL": [],
+  "AHL": [],
+  "ECHL": [],
+  "PWHL": [],
+  "MLS": [],
 };

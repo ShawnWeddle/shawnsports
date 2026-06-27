@@ -52,7 +52,7 @@ const Marker: React.FC<MapDataInputType> = (props: MapDataInputType) => {
         </div>
       </MarkerContent>
       <MarkerPopup>
-        <div>
+        <div className="rounded bg-white p-1">
           {location} {name}
         </div>
       </MarkerPopup>
@@ -61,3 +61,17 @@ const Marker: React.FC<MapDataInputType> = (props: MapDataInputType) => {
 };
 
 export default Marker;
+
+/*
+<div className="flex items-center justify-center rounded-full bg-transparent p-1 shadow-lg">
+          <div
+            className={cn(
+              "flex size-6 flex-row items-center justify-center rounded-full border-2 bg-white shadow-lg",
+              leagueStyles(league)
+            )}
+          >
+            <Icon sport={convertLeagueToSport(league)} />
+          </div>
+          
+        </div>
+*/

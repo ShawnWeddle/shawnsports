@@ -1,6 +1,6 @@
 import MainPage from "~/components/Page/MainPage";
-import { NBAMapContextProvider } from "~/context/NBAmapContext";
-import MapNBA from "~/components/map/NBA/NBAmap";
+import { MapContextProvider } from "~/context/MapContext";
+import FullMap from "~/components/map/FullMap";
 
 const Map = () => {
   return (
@@ -11,9 +11,9 @@ const Map = () => {
       pageMode="NBA"
       underPageMode="NBA_Map"
     >
-      <NBAMapContextProvider>
-        <MapNBA />
-      </NBAMapContextProvider>
+      <MapContextProvider sport="Basketball">
+        <FullMap />
+      </MapContextProvider>
     </MainPage>
   );
 };

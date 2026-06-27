@@ -29,6 +29,40 @@ export const nbaTeamsRankedWorst: NBATeamType[] = [
   "NYK", "DAL", "MIN", "DEN", "OKC", "BOS", 
 ];
 
+export const nglTeamsOrder = [
+  "NGL-ATL",
+  "NGL-BOS",
+  "NGL-BRK",
+  "NGL-CHI",
+  "NGL-CHO",
+  "NGL-CLE",
+  "NGL-DAL",
+  "NGL-DEN",
+  "NGL-DET",
+  "NGL-GSW",
+  "NGL-HOU",
+  "NGL-IND",
+  "NGL-LAC",
+  "NGL-LAL",
+  "NGL-MEM",
+  "NGL-MIA",
+  "NGL-MIL",
+  "NGL-MIN",
+  "NGL-NOP",
+  "NGL-NYK",
+  "NGL-OKC",
+  "NGL-ORL",
+  "NGL-PHI",
+  "NGL-PHO",
+  "NGL-POR",
+  "NGL-SAC",
+  "NGL-SAS",
+  "NGL-TOR",
+  "NGL-UTA",
+  "NGL-WAS",
+  "MEX",
+] as const;
+
 export const years = [
   "2027", "2028", "2029", "2030", "2031", "2032", "2033"
 ] as const;
@@ -37,7 +71,7 @@ export type TierType =  "NBA" | "NGL" | "WNBA";
 export const tierMapList: Set<TierType> = new Set(["NBA", "NGL", "WNBA"]);
 
 export type NBATeamType = typeof nbaTeamsAlpha[number];
-export type NGLTeamType = `NGL-${NBATeamType}` | "MEX";
+export type NGLTeamType = typeof nglTeamsOrder[number];
 export type AllNBATeamType = typeof nbaTeamsAll[number];
 export type PickYearType = typeof years[number];
 export type PickCodeType = `${NBATeamType}-${PickYearType}`;

@@ -6,8 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
-import MapWrapper from "~/components/map/MapWrapper";
-import MyMap from "../F1/Map/Map";
 
 const HomeComp: React.FC = () => {
   return (
@@ -22,7 +20,6 @@ const HomeComp: React.FC = () => {
           </CardDescription>
         </CardHeader>
       </Card>
-      <MapWrapper />
       <HomeNav />
       <NoteFromDev />
     </>

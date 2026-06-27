@@ -1,167 +1,117 @@
-import { cn } from "~/lib/utils";
-import { type SportType } from "~/data/SiteData";
-import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
+import Marker from "./MapMarker";
 import { nflTeamsRanked } from "~/data/NFL/NFLdata";
-import { allMLSteams } from "~/data/MLS/MLSdata";
-import { mlbTeamsRanked } from "~/data/MLB/MLBdata";
+import { cflTeamsRanked, iflTeamsList, uflTeamsList } from "~/data/CFL/CFLdata";
+import { nbaTeamsRanked, nglTeamsOrder } from "~/data/NBA/NBAdata";
 import { wnbaTeamsRanked } from "~/data/WNBA/WNBAdata";
-import { nhlTeamsRanked } from "~/data/NHL/NHLdata";
-import { nbaTeamsRanked } from "~/data/NBA/NBAdata";
-import { cflTeamsRanked } from "~/data/CFL/CFLdata";
-import { markerData } from "~/data/universal/markerData";
-import { Icon } from "../Home/HomeNav";
+import {
+  mlbTeamsRanked,
+  AAAteamsOrder,
+  AAteamsOrder,
+  HAteamsOrder,
+  SAteamsOrder,
+} from "~/data/MLB/MLBdata";
+import {
+  nhlTeamsRanked,
+  ahlTeamsOrder,
+  echlTeamsOrder,
+  pwhlTeamsAll,
+} from "~/data/NHL/NHLdata";
+import { useMapContext } from "~/hooks/useMap";
 
-type MarkerProps = {
-  team: string;
-  teamColors: boolean;
-  sport: SportType;
+const SportsMarkers = () => {
+  const { mapState, mapDispatch } = useMapContext();
+  const { activeLeagues } = mapState;
+  //Football 4
+  const NFLMarkers = nflTeamsRanked.map((team, index) => {
+    return <Marker key={"NFL" + index.toString()} league="NFL" team={team} />;
+  });
+  const CFLMarkers = cflTeamsRanked.map((team, index) => {
+    return <Marker key={"CFL" + index.toString()} league="CFL" team={team} />;
+  });
+  const IFLMarkers = iflTeamsList.map((team, index) => {
+    return <Marker key={"IFL" + index.toString()} league="IFL" team={team} />;
+  });
+  const UFLMarkers = uflTeamsList.map((team, index) => {
+    return <Marker key={"UFL" + index.toString()} league="UFL" team={team} />;
+  });
+  //Basketball 3
+  const NBAMarkers = nbaTeamsRanked.map((team, index) => {
+    return <Marker key={"NBA" + index.toString()} league="NBA" team={team} />;
+  });
+  const NGLMarkers = nglTeamsOrder.map((team, index) => {
+    return <Marker key={"NGL" + index.toString()} league="NGL" team={team} />;
+  });
+  const WNBAMarkers = wnbaTeamsRanked.map((team, index) => {
+    return <Marker key={"WNBA" + index.toString()} league="WNBA" team={team} />;
+  });
+  //Baseball 5
+  const MLBMarkers = mlbTeamsRanked.map((team, index) => {
+    return <Marker key={"MLB" + index.toString()} league="MLB" team={team} />;
+  });
+  const AAAMarkers = AAAteamsOrder.map((team, index) => {
+    return <Marker key={"AAA" + index.toString()} league="AAA" team={team} />;
+  });
+  const AAMarkers = AAteamsOrder.map((team, index) => {
+    return <Marker key={"AA" + index.toString()} league="AA" team={team} />;
+  });
+  const HAMarkers = HAteamsOrder.map((team, index) => {
+    return <Marker key={"HA" + index.toString()} league="HA" team={team} />;
+  });
+  const SAMarkers = SAteamsOrder.map((team, index) => {
+    return <Marker key={"SA" + index.toString()} league="SA" team={team} />;
+  });
+  //Hockey
+  const NHLMarkers = nhlTeamsRanked.map((team, index) => {
+    return <Marker key={"NHL" + index.toString()} league="NHL" team={team} />;
+  });
+  const AHLMarkers = ahlTeamsOrder.map((team, index) => {
+    return <Marker key={"AHL" + index.toString()} league="AHL" team={team} />;
+  });
+  const ECHLMarkers = echlTeamsOrder.map((team, index) => {
+    return <Marker key={"ECHL" + index.toString()} league="ECHL" team={team} />;
+  });
+  const PWHLMarkers = pwhlTeamsAll.map((team, index) => {
+    return <Marker key={"PWHL" + index.toString()} league="PWHL" team={team} />;
+  });
+  const leagueList = [...activeLeagues].map((league) => {
+    switch (league) {
+      case "NFL":
+        return NFLMarkers;
+      case "CFL":
+        return CFLMarkers;
+      case "UFL":
+        return UFLMarkers;
+      case "IFL":
+        return IFLMarkers;
+      case "NBA":
+        return NBAMarkers;
+      case "NGL":
+        return NGLMarkers;
+      case "WNBA":
+        return WNBAMarkers;
+      case "NHL":
+        return NHLMarkers;
+      case "AHL":
+        return AHLMarkers;
+      case "ECHL":
+        return ECHLMarkers;
+      case "PWHL":
+        return PWHLMarkers;
+      case "MLB":
+        return MLBMarkers;
+      case "AAA":
+        return AAAMarkers;
+      case "AA":
+        return AAMarkers;
+      case "HA":
+        return HAMarkers;
+      case "SA":
+        return SAMarkers;
+      case "MLS":
+        return [];
+    }
+  });
+  return leagueList.flat();
 };
 
-type MarkersProps = {
-  teamColors: boolean;
-  sport: SportType;
-};
-
-const Marker: React.FC<MarkerProps> = (props: MarkerProps) => {
-  const { team, teamColors, sport } = props;
-  const { coordinates, style, text } = markerData(team, sport);
-  return (
-    <MapMarker
-      latitude={coordinates.latitude}
-      longitude={coordinates.longitude}
-    >
-      <MarkerContent>
-        <div
-          className={cn(
-            "flex size-6 flex-row items-center justify-center rounded-full border-2 shadow-lg",
-            {
-              "border-cfl": sport === "CFL" && !teamColors,
-              "border-mlb": sport === "MLB" && !teamColors,
-              "border-mls": sport === "MLS" && !teamColors,
-              "border-nba": sport === "NBA" && !teamColors,
-              "border-nfl": sport === "NFL" && !teamColors,
-              "border-nhl": sport === "NHL" && !teamColors,
-              "border-wnba": sport === "WNBA" && !teamColors,
-              [style.secondaryBorder]: teamColors,
-              "bg-white": !teamColors,
-              [style.primaryBackground]: teamColors,
-            }
-          )}
-        >
-          <Icon
-            style={cn("size-4", {
-              "text-cfl": sport === "CFL" && !teamColors,
-              "text-mlb": sport === "MLB" && !teamColors,
-              "text-mls": sport === "MLS" && !teamColors,
-              "text-nba": sport === "NBA" && !teamColors,
-              "text-nfl": sport === "NFL" && !teamColors,
-              "text-nhl": sport === "NHL" && !teamColors,
-              "text-wnba": sport === "WNBA" && !teamColors,
-              [style.secondaryText]: teamColors,
-            })}
-            sport={sport}
-          />
-        </div>
-      </MarkerContent>
-      <MarkerPopup>
-        <div className="space-y-1">
-          <p
-            className={cn("rounded border px-1 py-0.5", {
-              [style.primaryBackground]: true,
-              [style.secondaryBorder]: true,
-              [style.simpleText]: true,
-            })}
-          >
-            {text.long}
-          </p>
-        </div>
-      </MarkerPopup>
-    </MapMarker>
-  );
-};
-
-export const MapMarkers = (props: MarkersProps) => {
-  const { teamColors, sport } = props;
-
-  switch (sport) {
-    case "CFL":
-      return cflTeamsRanked.map((team, index) => {
-        return (
-          <Marker
-            key={index}
-            team={team}
-            teamColors={teamColors}
-            sport={sport}
-          />
-        );
-      });
-    case "F1":
-      return [];
-    case "MLB":
-      return mlbTeamsRanked.map((team, index) => {
-        return (
-          <Marker
-            key={index}
-            team={team}
-            teamColors={teamColors}
-            sport={sport}
-          />
-        );
-      });
-    case "MLS":
-      return allMLSteams.map((team, index) => {
-        return (
-          <Marker
-            key={index}
-            team={team}
-            teamColors={teamColors}
-            sport={sport}
-          />
-        );
-      });
-    case "NBA":
-      return nbaTeamsRanked.map((team, index) => {
-        return (
-          <Marker
-            key={index}
-            team={team}
-            teamColors={teamColors}
-            sport={sport}
-          />
-        );
-      });
-    case "NFL":
-      return nflTeamsRanked.map((team, index) => {
-        return (
-          <Marker
-            key={index}
-            team={team}
-            teamColors={teamColors}
-            sport={sport}
-          />
-        );
-      });
-    case "NHL":
-      return nhlTeamsRanked.map((team, index) => {
-        return (
-          <Marker
-            key={index}
-            team={team}
-            teamColors={teamColors}
-            sport={sport}
-          />
-        );
-      });
-    case "WNBA":
-      return wnbaTeamsRanked.map((team, index) => {
-        return (
-          <Marker
-            key={index}
-            team={team}
-            teamColors={teamColors}
-            sport={sport}
-          />
-        );
-      });
-  }
-};
+export default SportsMarkers;

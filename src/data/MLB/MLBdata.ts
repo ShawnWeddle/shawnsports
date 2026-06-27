@@ -17,14 +17,146 @@ export const mlbTeamsAll = [
   "MTL", "NYG", "PHA", "SLB", "WAS", "XXX",
 ] as const;
 
+export const AAAteamsOrder = [
+  "AAA-ARI",
+  "AAA-ATL",
+  "AAA-BAL",
+  "AAA-BOS",
+  "AAA-CHC",
+  "AAA-CHW",
+  "AAA-CIN",
+  "AAA-CLE",
+  "AAA-COL",
+  "AAA-DET",
+  "AAA-HOU",
+  "AAA-KCR",
+  "AAA-LAA",
+  "AAA-LAD",
+  "AAA-MIA",
+  "AAA-MIL",
+  "AAA-MIN",
+  "AAA-NYM",
+  "AAA-NYY",
+  "AAA-OAK",
+  "AAA-PHI",
+  "AAA-PIT",
+  "AAA-SDP",
+  "AAA-SEA",
+  "AAA-SFG",
+  "AAA-STL",
+  "AAA-TBR",
+  "AAA-TEX",
+  "AAA-TOR",
+  "AAA-WSN",
+] as const;
+
+export const AAteamsOrder = [
+  "AA-ARI",
+  "AA-ATL",
+  "AA-BAL",
+  "AA-BOS",
+  "AA-CHC",
+  "AA-CHW",
+  "AA-CIN",
+  "AA-CLE",
+  "AA-COL",
+  "AA-DET",
+  "AA-HOU",
+  "AA-KCR",
+  "AA-LAA",
+  "AA-LAD",
+  "AA-MIA",
+  "AA-MIL",
+  "AA-MIN",
+  "AA-NYM",
+  "AA-NYY",
+  "AA-OAK",
+  "AA-PHI",
+  "AA-PIT",
+  "AA-SDP",
+  "AA-SEA",
+  "AA-SFG",
+  "AA-STL",
+  "AA-TBR",
+  "AA-TEX",
+  "AA-TOR",
+  "AA-WSN",
+] as const;
+
+export const HAteamsOrder = [
+  "HA-ARI",
+  "HA-ATL",
+  "HA-BAL",
+  "HA-BOS",
+  "HA-CHC",
+  "HA-CHW",
+  "HA-CIN",
+  "HA-CLE",
+  "HA-COL",
+  "HA-DET",
+  "HA-HOU",
+  "HA-KCR",
+  "HA-LAA",
+  "HA-LAD",
+  "HA-MIA",
+  "HA-MIL",
+  "HA-MIN",
+  "HA-NYM",
+  "HA-NYY",
+  "HA-OAK",
+  "HA-PHI",
+  "HA-PIT",
+  "HA-SDP",
+  "HA-SEA",
+  "HA-SFG",
+  "HA-STL",
+  "HA-TBR",
+  "HA-TEX",
+  "HA-TOR",
+  "HA-WSN",
+] as const;
+
+export const SAteamsOrder = [
+  "SA-ARI",
+  "SA-ATL",
+  "SA-BAL",
+  "SA-BOS",
+  "SA-CHC",
+  "SA-CHW",
+  "SA-CIN",
+  "SA-CLE",
+  "SA-COL",
+  "SA-DET",
+  "SA-HOU",
+  "SA-KCR",
+  "SA-LAA",
+  "SA-LAD",
+  "SA-MIA",
+  "SA-MIL",
+  "SA-MIN",
+  "SA-NYM",
+  "SA-NYY",
+  "SA-OAK",
+  "SA-PHI",
+  "SA-PIT",
+  "SA-SDP",
+  "SA-SEA",
+  "SA-SFG",
+  "SA-STL",
+  "SA-TBR",
+  "SA-TEX",
+  "SA-TOR",
+  "SA-WSN",
+] as const;
+
 export type MLBTeamType = typeof mlbTeamsRanked[number];
 
 export type AllMLBTeamType = typeof mlbTeamsAll[number];
 
-export type AAATeamType = `AAA-${MLBTeamType}`
-export type AATeamType = `AA-${MLBTeamType}`
-export type HATeamType = `HA-${MLBTeamType}`
-export type SATeamType = `SA-${MLBTeamType}`
+export type AAATeamType = typeof AAAteamsOrder[number];
+export type AATeamType = typeof AAteamsOrder[number];
+export type HATeamType = typeof HAteamsOrder[number];
+export type SATeamType = typeof SAteamsOrder[number];
 
 export type teamInfoType = {location: string, name: string };
 

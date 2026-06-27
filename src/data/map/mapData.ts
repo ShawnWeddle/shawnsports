@@ -39,3 +39,42 @@ export const convertLeagueToSport = (league: LeagueType): SportType => {
 
 export type LeagueType = typeof FullLeagueList[number];
 export type SportType = typeof SportList[number];
+
+export const initialLeagueList = (
+  sport: SportType | "All"
+): Set<LeagueType> => {
+  switch (sport) {
+    case "Football":
+      return new Set<LeagueType>(["NFL", "CFL", "IFL", "UFL"]);
+    case "Basketball":
+      return new Set<LeagueType>(["NBA", "NGL", "WNBA"]);
+    case "Baseball":
+      return new Set<LeagueType>(["MLB", "AAA", "AA", "HA", "SA"]);
+    case "Hockey":
+      return new Set<LeagueType>(["NHL", "AHL", "ECHL", "PWHL"]);
+    case "Soccer":
+      return new Set<LeagueType>(["MLS"]);
+    case "All":
+      return new Set<LeagueType>([
+        "NFL",
+        "CFL",
+        "IFL",
+        "UFL",
+        "NBA",
+        "NGL",
+        "WNBA",
+        "MLB",
+        "AAA",
+        "AA",
+        "HA",
+        "SA",
+        "NHL",
+        "AHL",
+        "ECHL",
+        "PWHL",
+        "MLS",
+      ]);
+    default:
+      return new Set<LeagueType>();
+  }
+};

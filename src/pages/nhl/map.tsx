@@ -1,7 +1,6 @@
 import MainPage from "~/components/Page/MainPage";
-import { NHLMapContextProvider } from "~/context/NHLmapContext";
-import MapNHL from "~/components/map/NHL/NHLmap";
-
+import { MapContextProvider } from "~/context/MapContext";
+import FullMap from "~/components/map/FullMap";
 const Map = () => {
   return (
     <MainPage
@@ -11,9 +10,9 @@ const Map = () => {
       pageMode="NHL"
       underPageMode="NHL_Map"
     >
-      <NHLMapContextProvider>
-        <MapNHL />
-      </NHLMapContextProvider>
+      <MapContextProvider sport="Hockey">
+        <FullMap />
+      </MapContextProvider>
     </MainPage>
   );
 };

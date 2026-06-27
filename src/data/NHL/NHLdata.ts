@@ -13,15 +13,76 @@ export const nhlTeamsAll = [
   "MMR", "MNS", "QUE", "ARI"
 ] as const;
 
-export const echlParentTeams = [
-  "VEG", "FLA", "CAR", "DAL", "BOS", "COL", "NJD", "TOR", 
-  "EDM", "NYR", "LAK", "MIN", "SEA", "TBL", "WIN", "NYI", 
-  "CGY", "NSH", "PIT", "BUF", "OTT", "VAN", "STL", "DET", 
-  "WAS", "PHI", "MTL", "SJS", "ANA", "CHI", 
+export const ahlTeamsOrder = [
+  "AHL-ANA",
+  "AHL-BOS",
+  "AHL-BUF",
+  "AHL-CAR",
+  "AHL-CBJ",
+  "AHL-CGY",
+  "AHL-CHI",
+  "AHL-COL",
+  "AHL-DAL",
+  "AHL-DET",
+  "AHL-EDM",
+  "AHL-FLA",
+  "AHL-LAK",
+  "AHL-MIN",
+  "AHL-MTL",
+  "AHL-NJD",
+  "AHL-NSH",
+  "AHL-NYI",
+  "AHL-NYR",
+  "AHL-OTT",
+  "AHL-PHI",
+  "AHL-PIT",
+  "AHL-SEA",
+  "AHL-SJS",
+  "AHL-STL",
+  "AHL-TBL",
+  "AHL-TOR",
+  "AHL-UTA",
+  "AHL-VAN",
+  "AHL-VEG",
+  "AHL-WAS",
+  "AHL-WIN",
+] as const;
+
+export const echlTeamsOrder = [
+  "ECHL-ANA",
+  "ECHL-BOS",
+  "ECHL-BUF",
+  "ECHL-CAR",
+  "ECHL-CGY",
+  "ECHL-CHI",
+  "ECHL-COL",
+  "ECHL-DAL",
+  "ECHL-DET",
+  "ECHL-EDM",
+  "ECHL-FLA",
+  "ECHL-LAK",
+  "ECHL-MIN",
+  "ECHL-MTL",
+  "ECHL-NJD",
+  "ECHL-NSH",
+  "ECHL-NYI",
+  "ECHL-NYR",
+  "ECHL-OTT",
+  "ECHL-PHI",
+  "ECHL-PIT",
+  "ECHL-SEA",
+  "ECHL-SJS",
+  "ECHL-STL",
+  "ECHL-TBL",
+  "ECHL-TOR",
+  "ECHL-VAN",
+  "ECHL-VEG",
+  "ECHL-WAS",
+  "ECHL-WIN",
 ] as const;
 
 export const pwhlTeamsAll = [
-  "BOS", "DET", "HAM", "MIN", "MTL","NYS", 
+  "BOS", "DET", "HAM", "MIN", "MTL", "NYS", 
   "OTT", "SEA", "SJS", "TOR", "VAN", "VEG",
 ] as const;
 
@@ -30,8 +91,8 @@ export type LeagueType = "NHL" | "AHL" | "ECHL" | "PWHL";
 export const leagueMapList: Set<LeagueType> = new Set(["NHL", "AHL", "ECHL", "PWHL"]);
 
 export type NHLTeamType = typeof nhlTeamsRanked[number];
-export type AHLTeamType = `AHL-${NHLTeamType}`;
-export type ECHLTeamType = `ECHL-${typeof echlParentTeams[number]}`
+export type AHLTeamType = typeof ahlTeamsOrder[number];
+export type ECHLTeamType = typeof echlTeamsOrder[number];
 export type PWHLTeamType = typeof pwhlTeamsAll[number];
 
 export type AllNHLTeamType = typeof nhlTeamsAll[number];

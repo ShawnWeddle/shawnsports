@@ -3,6 +3,7 @@ import { MapMarker, MarkerContent, MarkerLabel } from "~/components/ui/map";
 
 const CityData = [
   { name: "New York", lat: 40.6943, long: -73.9249, div: "E" },
+  { name: "Anaheim", lat: 33.8346, long: -117.9124, div: "T" },
   { name: "Los Angeles", lat: 34.1141, long: -118.4068, div: "W" },
   { name: "Chicago", lat: 41.8375, long: -87.6866, div: "M" },
   { name: "Miami", lat: 25.784, long: -80.2101, div: "S" },
@@ -28,6 +29,8 @@ const CityData = [
   { name: "San Antonio", lat: 29.4632, long: -98.5238, div: "S" },
   { name: "Sacramento", lat: 38.5677, long: -121.4685, div: "W" },
   { name: "Orlando", lat: 28.4773, long: -81.337, div: "S" },
+  { name: "Austin", lat: 30.3005, long: -97.7522, div: "T" },
+  { name: "San Jose", lat: 37.3012, long: -121.848, div: "T" },
   { name: "Indianapolis", lat: 39.7771, long: -86.1458, div: "M" },
   { name: "Pittsburgh", lat: 40.4397, long: -79.9763, div: "M" },
   { name: "Cincinnati", lat: 39.1413, long: -84.506, div: "M" },
@@ -48,8 +51,12 @@ const CityData = [
   { name: "Louisville", lat: 38.1663, long: -85.6485, div: "M" },
   { name: "Buffalo", lat: 42.9018, long: -78.8487, div: "E" },
   { name: "New Orleans", lat: 30.0687, long: -89.9288, div: "S" },
+  { name: "El Paso", lat: 31.8476, long: -106.43, div: "T" },
+  { name: "Omaha", lat: 41.2627, long: -96.0529, div: "T" },
+  { name: "Birmingham", lat: 33.5279, long: -86.7971, div: "T" },
   { name: "Albuquerque", lat: 35.1054, long: -106.6465, div: "W" },
   { name: "Newark", lat: 40.7245, long: -74.1725, div: "E" },
+  { name: "Des Moines", lat: 41.5725, long: -93.6105, div: "T" },
 ];
 
 type MarkerProps = {
@@ -70,6 +77,7 @@ const CityMarker: React.FC<MarkerProps> = (props: MarkerProps) => {
             "bg-yellow-400": division === "M",
             "bg-green-600": division === "S",
             "bg-blue-600": division === "E",
+            "bg-black": division === "T",
           })}
         ></div>
         <MarkerLabel position="bottom">{name}</MarkerLabel>

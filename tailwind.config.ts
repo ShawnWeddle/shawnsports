@@ -57,6 +57,10 @@ const config = {
         singlea: "#800080",
         ahl: "#D000D0",
         echl: "#BF3030",
+        pwhl: "#000060",
+        ifl: "#008000",
+        ufl: "#000080",
+        ngl: "#BF9900",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

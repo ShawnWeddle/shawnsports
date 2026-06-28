@@ -235,19 +235,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     2029: [{
         nativeTeam: "CHO",
         year: 2029
-      },{
-        nativeTeam: "NBA",
-        year: 2029,
-        conditions: {
-          rank: "LF",
-          teams: [
-            "CLE",
-            "MIN",
-            "UTA"
-          ],
-          owner: "CHO"
-        }
-    }],
+      },],
     2030: [{
         nativeTeam: "CHO",
         year: 2030,
@@ -267,6 +255,11 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     },{
         nativeTeam: "MIN",
         year: 2033,
+        history: ["MIN", "CHO"],
+    },{
+        nativeTeam: "PHO",
+        year: 2033,
+        history: ["PHO", "CHO"],
     }],
   },
   CLE: {
@@ -945,7 +938,19 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
           owner: "PHO"
         }
     }],
-    2029: [],
+    2029: [{
+        nativeTeam: "NBA",
+        year: 2029,
+        conditions: {
+          rank: "LF",
+          teams: [
+            "CLE",
+            "MIN",
+            "UTA"
+          ],
+          owner: "PHO"
+        }
+    }],
     2030: [{
         nativeTeam: "PHO",
         year: 2030,
@@ -959,10 +964,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
         nativeTeam: "PHO",
         year: 2032
     }],
-    2033: [{
-        nativeTeam: "PHO",
-        year: 2033
-    }],
+    2033: [],
   },
   POR: {
     2027: [{

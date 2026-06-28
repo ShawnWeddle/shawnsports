@@ -38,7 +38,7 @@ export const F1TitlesDesc: {[Key in F1TitlesType] : string} = {
   "F1_Tables": "See the results for every race this season",
   "F1_Standings": "See the current standings for each driver and constructor",
   "F1_Compare": "Compare cumulative points totals for every driver and constructor in the 2026 F1 season",
-  "F1_Rank": "Rank all 20 drivers for the 2026 season",
+  "F1_Rank": "Rank all 22 drivers for the 2026 season",
 };
 export const NFLTitlesDesc: {[Key in NFLTitlesType] : string} = {
   "NFL_Super_Losers": "A list of certain special players in NFL history",
@@ -47,10 +47,10 @@ export const NFLTitlesDesc: {[Key in NFLTitlesType] : string} = {
   "NFL_Map": "See a map of all NFL, CFL, UFL, and IFL teams"
 };
 export const NBATitlesDesc: {[Key in NBATitlesType] : string} = {
-  "NBA_Future_Picks": "See which team owns each first round pick through 2032",
+  "NBA_Future_Picks": "See which team owns each first round pick through 2033",
   "NBA_Finals": "See all NBA Finals since 1947",
   "NBA_Rank": "Rank all 30 NBA teams",
-  "NBA_Map": "See a map of all NBA and G-League teams",
+  "NBA_Map": "See a map of all NBA, WNBA, and G League teams",
 };
 export const MLBTitlesDesc: {[Key in MLBTitlesType] : string} = {
   "MLB_World_Series": "See all World Series since 1903",
@@ -64,7 +64,7 @@ export const MLSTitlesDesc: {[Key in MLSTitlesType] : string} = {
 export const NHLTitlesDesc: {[Key in NHLTitlesType] : string} = {
   "NHL_Stanley_Cups": "See all Stanley Cup Finals since 1927",
   "NHL_Rank": "Rank all 32 NHL teams",
-  "NHL_Map": "See a map of all NHL, AHL, and ECHL teams"
+  "NHL_Map": "See a map of all NHL, AHL, ECHL, and PWHL teams"
 };
 export const WNBATitlesDesc: {[Key in WNBATitlesType] : string} = {
   "WNBA_Finals": "See all WNBA Finals since 1997",

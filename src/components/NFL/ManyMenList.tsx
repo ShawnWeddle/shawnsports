@@ -18,8 +18,11 @@ import {
   TableRow,
   TableRowNoHover,
 } from "~/components/ui/table";
+import { findDuos } from "~/data/NFL/SuperManWork";
 
 const SuperMenList: React.FC = () => {
+  console.log(findDuos());
+
   const manyMenList = (game: SuperBowlType | null, inModal: boolean) =>
     manyMen.map((player, index) => {
       const { name, wins, losses } = player;

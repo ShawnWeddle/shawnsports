@@ -1,4 +1,4 @@
-export const findSuperLoser = (arr: PlayerGameType[]) => {
+export const findDoubleLosers = (arr: PlayerGameType[]) => {
   const SuperLoserList: [PlayerGameType, PlayerGameType][] = [];
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
@@ -6,14 +6,16 @@ export const findSuperLoser = (arr: PlayerGameType[]) => {
       const ap2 = arr[j];
       if(ap1 && ap2){
         if (ap1.player === ap2.player) {
-          if (ap1.team !== ap2.team) {
-            SuperLoserList.push([ap1, ap2])
+          if(ap1.birthDate === ap2.birthDate){
+            if (ap1.team !== ap2.team) {
+              SuperLoserList.push([ap1, ap2])
+            }
           }
         }
       }
     }
   }
-  console.log(SuperLoserList);
+  return SuperLoserList;
 }
 
 export type PlayerGameType = {
@@ -3360,4 +3362,74 @@ export const allLosers: PlayerGameType[] = [
 {year:2024, team:"KAN", player:"James Winchester", birthDate:"8/6/1989",},
 {year:2024, team:"KAN", player:"Xavier Worthy", birthDate:"4/27/2003",},
 {year:2024, team:"KAN", player:"Matthew Wright", birthDate:"3/22/1996",},
+{ year:2025, team: "NWE", player: "Julian Ashby", birthDate: "7/8/2002",},
+{ year:2025, team: "NWE", player: "Alex Austin", birthDate: "5/22/2001",},
+{ year:2025, team: "NWE", player: "Corey Ballentine", birthDate: "4/13/1996",},
+{ year:2025, team: "NWE", player: "Bryce Baringer", birthDate: "4/26/1999",},
+{ year:2025, team: "NWE", player: "Christian Barmore", birthDate: "7/28/1999",},
+{ year:2025, team: "NWE", player: "Miles Battle", birthDate: "1/4/2000",},
+{ year:2025, team: "NWE", player: "Andres Borregales", birthDate: "1/2/2003",},
+{ year:2025, team: "NWE", player: "Kayshon Boutte", birthDate: "5/7/2002",},
+{ year:2025, team: "NWE", player: "Garrett Bradbury", birthDate: "6/20/1995",},
+{ year:2025, team: "NWE", player: "Ben Brown", birthDate: "5/19/1998",},
+{ year:2025, team: "NWE", player: "Marcus Bryant", birthDate: "6/22/2002",},
+{ year:2025, team: "NWE", player: "Will Campbell", birthDate: "1/6/2004",},
+{ year:2025, team: "NWE", player: "K'Lavon Chaisson", birthDate: "7/25/1999",},
+{ year:2025, team: "NWE", player: "Efton Chism", birthDate: "10/26/2001",},
+{ year:2025, team: "NWE", player: "Carlton Davis", birthDate: "12/31/1996",},
+{ year:2025, team: "NWE", player: "Stefon Diggs", birthDate: "11/29/1993",},
+{ year:2025, team: "NWE", player: "CJ Dippre", birthDate: "4/29/2002",},
+{ year:2025, team: "NWE", player: "Joshua Dobbs", birthDate: "1/26/1995",},
+{ year:2025, team: "NWE", player: "DeMario Douglas", birthDate: "12/8/2000",},
+{ year:2025, team: "NWE", player: "Kyle Dugger", birthDate: "3/22/1996",},
+{ year:2025, team: "NWE", player: "Cory Durden", birthDate: "1/26/1999",},
+{ year:2025, team: "NWE", player: "Christian Elliss", birthDate: "1/2/1999",},
+{ year:2025, team: "NWE", player: "Joshua Farmer", birthDate: "1/17/2003",},
+{ year:2025, team: "NWE", player: "Jack Gibbens", birthDate: "11/24/1998",},
+{ year:2025, team: "NWE", player: "Antonio Gibson", birthDate: "6/23/1998",},
+{ year:2025, team: "NWE", player: "Christian Gonzalez", birthDate: "6/28/2002",},
+{ year:2025, team: "NWE", player: "Richie Grant", birthDate: "11/9/1997",},
+{ year:2025, team: "NWE", player: "Eric Gregory", birthDate: "9/13/2000",},
+{ year:2025, team: "NWE", player: "Darius Harris", birthDate: "1/17/1996",},
+{ year:2025, team: "NWE", player: "Jaylinn Hawkins", birthDate: "8/25/1997",},
+{ year:2025, team: "NWE", player: "TreVeyon Henderson", birthDate: "10/22/2002",},
+{ year:2025, team: "NWE", player: "Hunter Henry", birthDate: "12/7/1994",},
+{ year:2025, team: "NWE", player: "Mack Hollins", birthDate: "9/16/1993",},
+{ year:2025, team: "NWE", player: "Austin Hooper", birthDate: "10/29/1994",},
+{ year:2025, team: "NWE", player: "Brenden Jaimes", birthDate: "5/28/1999",},
+{ year:2025, team: "NWE", player: "D.J. James", birthDate: "3/5/2001",},
+{ year:2025, team: "NWE", player: "Anfernee Jennings", birthDate: "9/1/1997",},
+{ year:2025, team: "NWE", player: "Terrell Jennings", birthDate: "3/1/2001",},
+{ year:2025, team: "NWE", player: "D'Ernest Johnson", birthDate: "2/27/1996",},
+{ year:2025, team: "NWE", player: "Marcus Jones", birthDate: "10/22/1998",},
+{ year:2025, team: "NWE", player: "Truman Jones", birthDate: "5/13/2000",},
+{ year:2025, team: "NWE", player: "Harold Landry", birthDate: "6/5/1996",},
+{ year:2025, team: "NWE", player: "Vederian Lowe", birthDate: "4/17/1999",},
+{ year:2025, team: "NWE", player: "Marte Mapu", birthDate: "11/8/1999",},
+{ year:2025, team: "NWE", player: "Drake Maye", birthDate: "8/30/2002",},
+{ year:2025, team: "NWE", player: "Kobee Minor", birthDate: "7/8/2002",},
+{ year:2025, team: "NWE", player: "Morgan Moses", birthDate: "3/3/1991",},
+{ year:2025, team: "NWE", player: "Chad Muma", birthDate: "8/18/1999",},
+{ year:2025, team: "NWE", player: "Thayer Munford", birthDate: "9/18/1999",},
+{ year:2025, team: "NWE", player: "Caleb Murphy", birthDate: "12/15/1999",},
+{ year:2025, team: "NWE", player: "Michael Onwenu", birthDate: "12/10/1997",},
+{ year:2025, team: "NWE", player: "Dell Pettus", birthDate: "6/2/2001",},
+{ year:2025, team: "NWE", player: "Jeremiah Pharms", birthDate: "10/16/1996",},
+{ year:2025, team: "NWE", player: "Elijah Ponder", birthDate: "8/24/2002",},
+{ year:2025, team: "NWE", player: "Mark Robinson", birthDate: "8/14/1999",},
+{ year:2025, team: "NWE", player: "Brenden Schooler", birthDate: "5/30/1997",},
+{ year:2025, team: "NWE", player: "Robert Spillane", birthDate: "12/14/1995",},
+{ year:2025, team: "NWE", player: "Rhamondre Stevenson", birthDate: "2/23/1998",},
+{ year:2025, team: "NWE", player: "Bradyn Swinson", birthDate: "7/4/2002",},
+{ year:2025, team: "NWE", player: "Jahlani Tavai", birthDate: "9/28/1996",},
+{ year:2025, team: "NWE", player: "Leonard Taylor", birthDate: "8/26/1999",},
+{ year:2025, team: "NWE", player: "Khyiris Tonga", birthDate: "7/7/1996",},
+{ year:2025, team: "NWE", player: "Caedan Wallace", birthDate: "4/18/2000",},
+{ year:2025, team: "NWE", player: "Jack Westover", birthDate: "6/9/1999",},
+{ year:2025, team: "NWE", player: "Keion White", birthDate: "1/20/1999",},
+{ year:2025, team: "NWE", player: "Kyle Williams", birthDate: "11/13/2002",},
+{ year:2025, team: "NWE", player: "Milton Williams", birthDate: "4/6/1999",},
+{ year:2025, team: "NWE", player: "Jared Wilson", birthDate: "6/5/2003",},
+{ year:2025, team: "NWE", player: "Charles Woods", birthDate: "6/17/2000",},
+{ year:2025, team: "NWE", player: "Craig Woodson", birthDate: "2/20/2001",},
 ];

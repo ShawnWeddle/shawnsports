@@ -32,6 +32,26 @@ export const findWinner = (arr: PlayerGameType[]) => {
   console.log(WinnerList);
 }
 
+export const findDoubleWinners = (arr: PlayerGameType[]) => {
+  const SuperWinnerList: [PlayerGameType, PlayerGameType][] = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      const ap1 = arr[i];
+      const ap2 = arr[j];
+      if(ap1 && ap2){
+        if (ap1.player === ap2.player) {
+          if(ap1.birthDate === ap2.birthDate){
+            if (ap1.team !== ap2.team) {
+              SuperWinnerList.push([ap1, ap2])
+            }
+          }
+        }
+      }
+    }
+  }
+  return SuperWinnerList;
+}
+
 export type PlayerGameType = {
   year: number;
   team: string;
@@ -20115,5 +20135,77 @@ export const allWinners: PlayerGameType[] = [
         "team": "PHI",
         "player": "Johnny Wilson",
         "birthDate": "4/3/2001"
-    }
+    },
+    { year: 2025, team: "SEA", player: "Cam Akers", birthDate: "6/22/1999",},
+{ year: 2025, team: "SEA", player: "Elijah Arroyo", birthDate: "4/5/2003",},
+{ year: 2025, team: "SEA", player: "AJ Barner", birthDate: "5/3/2002",},
+{ year: 2025, team: "SEA", player: "DAnthony Bell", birthDate: "10/17/1996",},
+{ year: 2025, team: "SEA", player: "Jake Bobo", birthDate: "8/4/1998",},
+{ year: 2025, team: "SEA", player: "Quinton Bohanna", birthDate: "3/16/1999",},
+{ year: 2025, team: "SEA", player: "Anthony Bradford", birthDate: "4/28/2001",},
+{ year: 2025, team: "SEA", player: "Coby Bryant", birthDate: "3/29/1999",},
+{ year: 2025, team: "SEA", player: "Bryce Cabeldue", birthDate: "9/4/2001",},
+{ year: 2025, team: "SEA", player: "Zach Charbonnet", birthDate: "1/8/2001",},
+{ year: 2025, team: "SEA", player: "Charles Cross", birthDate: "11/25/2000",},
+{ year: 2025, team: "SEA", player: "Sam Darnold", birthDate: "6/5/1997",},
+{ year: 2025, team: "SEA", player: "Michael Dickson", birthDate: "1/4/1996",},
+{ year: 2025, team: "SEA", player: "Quandre Diggs", birthDate: "1/22/1993",},
+{ year: 2025, team: "SEA", player: "Nick Emmanwori", birthDate: "2/7/2004",},
+{ year: 2025, team: "SEA", player: "Myles Gaskin", birthDate: "2/15/1997",},
+{ year: 2025, team: "SEA", player: "Shaquill Griffin", birthDate: "7/20/1995",},
+{ year: 2025, team: "SEA", player: "Derick Hall", birthDate: "3/19/2001",},
+{ year: 2025, team: "SEA", player: "Tyler Hall", birthDate: "10/31/1998",},
+{ year: 2025, team: "SEA", player: "Christian Haynes", birthDate: "4/13/2000",},
+{ year: 2025, team: "SEA", player: "George Holani", birthDate: "12/16/1999",},
+{ year: 2025, team: "SEA", player: "Tory Horton", birthDate: "11/29/2002",},
+{ year: 2025, team: "SEA", player: "Jared Ivey", birthDate: "12/5/2001",},
+{ year: 2025, team: "SEA", player: "Josh Jobe", birthDate: "4/9/1998",},
+{ year: 2025, team: "SEA", player: "Ernest Jones", birthDate: "11/22/1999",},
+{ year: 2025, team: "SEA", player: "Josh Jones", birthDate: "6/22/1997",},
+{ year: 2025, team: "SEA", player: "Velus Jones Jr.", birthDate: "5/11/1997",},
+{ year: 2025, team: "SEA", player: "Nick Kallerup", birthDate: "3/27/2001",},
+{ year: 2025, team: "SEA", player: "Derion Kendrick", birthDate: "8/24/2000",},
+{ year: 2025, team: "SEA", player: "Amari Kight", birthDate: "12/21/2000",},
+{ year: 2025, team: "SEA", player: "Tyrice Knight", birthDate: "12/20/2000",},
+{ year: 2025, team: "SEA", player: "Cooper Kupp", birthDate: "6/15/1993",},
+{ year: 2025, team: "SEA", player: "DeMarcus Lawrence", birthDate: "4/28/1992",},
+{ year: 2025, team: "SEA", player: "Drew Lock", birthDate: "11/10/1996",},
+{ year: 2025, team: "SEA", player: "Julian Love", birthDate: "3/19/1998",},
+{ year: 2025, team: "SEA", player: "Abraham Lucas", birthDate: "10/25/1998",},
+{ year: 2025, team: "SEA", player: "Boye Mafe", birthDate: "11/30/1998",},
+{ year: 2025, team: "SEA", player: "Rylie Mills", birthDate: "8/20/2001",},
+{ year: 2025, team: "SEA", player: "Jalen Milroe", birthDate: "12/13/2002",},
+{ year: 2025, team: "SEA", player: "Mike Morris", birthDate: "4/22/2001",},
+{ year: 2025, team: "SEA", player: "Byron Murphy", birthDate: "9/8/2002",},
+{ year: 2025, team: "SEA", player: "Jason Myers", birthDate: "5/12/1991",},
+{ year: 2025, team: "SEA", player: "Uchenna Nwosu", birthDate: "12/28/1996",},
+{ year: 2025, team: "SEA", player: "Patrick OConnell", birthDate: "12/31/1998",},
+{ year: 2025, team: "SEA", player: "Connor OToole", birthDate: "8/27/2002",},
+{ year: 2025, team: "SEA", player: "Ty Okada", birthDate: "6/4/1999",},
+{ year: 2025, team: "SEA", player: "Olusegun Oluwatimi", birthDate: "8/5/1999",},
+{ year: 2025, team: "SEA", player: "Robbie Ouzts", birthDate: "9/6/2002",},
+{ year: 2025, team: "SEA", player: "Brandon Pili", birthDate: "4/2/1999",},
+{ year: 2025, team: "SEA", player: "Nehemiah Pritchett", birthDate: "2/11/2001",},
+{ year: 2025, team: "SEA", player: "Jarran Reed", birthDate: "12/16/1992",},
+{ year: 2025, team: "SEA", player: "Jerrick Reed", birthDate: "8/7/2000",},
+{ year: 2025, team: "SEA", player: "Mason Richman", birthDate: "5/7/2002",},
+{ year: 2025, team: "SEA", player: "Brady Russell", birthDate: "8/31/1998",},
+{ year: 2025, team: "SEA", player: "Eric Saubert", birthDate: "5/1/1994",},
+{ year: 2025, team: "SEA", player: "Rashid Shaheed", birthDate: "8/31/1998",},
+{ year: 2025, team: "SEA", player: "Jamie Sheriff", birthDate: "8/18/2000",},
+{ year: 2025, team: "SEA", player: "Jaxon Smith-Njigba", birthDate: "2/14/2002",},
+{ year: 2025, team: "SEA", player: "Chris Stoll", birthDate: "8/3/1998",},
+{ year: 2025, team: "SEA", player: "Jalen Sundell", birthDate: "10/18/1999",},
+{ year: 2025, team: "SEA", player: "Chazz Surratt", birthDate: "2/16/1997",},
+{ year: 2025, team: "SEA", player: "Drake Thomas", birthDate: "2/25/2000",},
+{ year: 2025, team: "SEA", player: "Kenneth Walker III", birthDate: "10/20/2000",},
+{ year: 2025, team: "SEA", player: "Cody White", birthDate: "11/28/1998",},
+{ year: 2025, team: "SEA", player: "Ricky White", birthDate: "2/6/2002",},
+{ year: 2025, team: "SEA", player: "Leonard Williams", birthDate: "6/20/1994",},
+{ year: 2025, team: "SEA", player: "Devon Witherspoon", birthDate: "12/11/2000",},
+{ year: 2025, team: "SEA", player: "Riq Woolen", birthDate: "5/2/1999",},
+{ year: 2025, team: "SEA", player: "Jacardia Wright", birthDate: "9/26/2000",},
+{ year: 2025, team: "SEA", player: "Dareke Young", birthDate: "6/4/1999",},
+{ year: 2025, team: "SEA", player: "Grey Zabel", birthDate: "3/30/2002",},
+
 ]

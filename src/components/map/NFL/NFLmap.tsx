@@ -6,7 +6,6 @@ import { Field } from "../../ui/field";
 import { Label } from "../../ui/label";
 import { Checkbox } from "../../ui/checkbox";
 import { Map, MapControls } from "~/components/ui/map";
-import { FootballMarkers } from "./FootballMarkers";
 
 const MapNFL: React.FC = () => {
   const { nflMapState, nflMapDispatch } = useNFLMapContext();
@@ -53,7 +52,6 @@ const MapNFL: React.FC = () => {
             showLocate
             showFullscreen
           />
-          <FootballMarkers />
         </Map>
       </Card>
     </div>

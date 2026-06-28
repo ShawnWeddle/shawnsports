@@ -86,5 +86,5 @@ export type TeamInfoType = {
   };
   location: string;
   name: string;
-  reverse: boolean;
+  reverse?: boolean;
 };

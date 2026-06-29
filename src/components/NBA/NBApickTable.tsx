@@ -26,7 +26,7 @@ const NBApickTable: React.FC = () => {
     const NBAcells = Object.values(activeTeamPicks).map((picks, cellIndex) => {
       const activePicks = picks.map((pick, pickIndex) => {
         const activeTeam = pick.nativeTeam;
-        const { swap } = pick;
+        const { swap, conditions } = pick;
         return (
           <button
             key={`pick-${rowIndex}-${cellIndex}-${pickIndex}`}
@@ -37,8 +37,12 @@ const NBApickTable: React.FC = () => {
               NBAstyleDataFull[activeTeam]?.secondaryBorder,
               {
                 "font-bold":
-                  (swap && swap[0] === "positive") || activeTeam === "NBA",
-                lowercase: swap && swap[0] === "negative",
+                  (swap && swap[0] === "positive") ||
+                  activeTeam === "NBA" ||
+                  (conditions && conditions.rank === "MF"),
+                lowercase:
+                  (swap && swap[0] === "negative") ||
+                  (conditions && conditions.rank === "LF"),
               }
             )}
             onClick={() => {

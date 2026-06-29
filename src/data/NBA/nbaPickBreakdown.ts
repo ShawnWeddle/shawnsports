@@ -10,9 +10,9 @@ export type PickType = {
   protection?: ProtectionValueType, 
   swap?: [SwapRightType, NBATeamType],
   conditions?: {
-  rank: "MF" | "SMF" | "SLF" | "LF", 
-  teams: NBATeamType[],
-  owner: NBATeamType,
+    rank: "MF" | "SMF" | "SLF" | "LF", 
+    teams: NBATeamType[],
+    owner: NBATeamType,
   }
 };
 
@@ -433,7 +433,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
         year: 2028
     }],
     2029: [{
-        nativeTeam: "NBA",
+        nativeTeam: "HOU",
         year: 2029,
         conditions: {
           rank: "MF",
@@ -445,7 +445,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
           owner: "HOU"
         }
       },{
-        nativeTeam: "NBA",
+        nativeTeam: "HOU",
         year: 2029,
         conditions: {
           rank: "SMF",
@@ -503,7 +503,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   },
   LAC: {
     2027: [{
-        nativeTeam: "NBA",
+        nativeTeam: "LAC",
         year: 2027,
         conditions: {
           rank: "LF",
@@ -779,16 +779,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   },
   OKC: {
     2027: [{
-        nativeTeam: "SAS",
-        year: 2027,
-        history: [
-          "SAS",
-          "SAC",
-          "OKC"
-        ],
-        protection: "FS"
-      },{
-        nativeTeam: "NBA",
+        nativeTeam: "OKC",
         year: 2027,
         conditions: {
           rank: "MF",
@@ -800,7 +791,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
           owner: "OKC"
         }
       },{
-        nativeTeam: "NBA",
+        nativeTeam: "OKC",
         year: 2027,
         conditions: {
           rank: "SMF",
@@ -811,7 +802,16 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
           ],
           owner: "OKC"
         }
-    }],
+      },{
+        nativeTeam: "SAS",
+        year: 2027,
+        history: [
+          "SAS",
+          "SAC",
+          "OKC"
+        ],
+        protection: "FS"
+      },],
     2028: [{
         nativeTeam: "OKC",
         year: 2028,
@@ -926,7 +926,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
         }
     }],
     2028: [{
-        nativeTeam: "NBA",
+        nativeTeam: "PHO",
         year: 2028,
         conditions: {
           rank: "LF",
@@ -988,7 +988,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
         ]
     }],
     2029: [{
-        nativeTeam: "NBA",
+        nativeTeam: "POR",
         year: 2029,
         conditions: {
           rank: "MF",
@@ -1000,7 +1000,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
           owner: "POR"
         }
       },{
-        nativeTeam: "NBA",
+        nativeTeam: "POR",
         year: 2029,
         conditions: {
           rank: "LF",
@@ -1153,7 +1153,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   },
   UTA: {
     2027: [{
-        nativeTeam: "NBA",
+        nativeTeam: "UTA",
         year: 2027,
         conditions: {
           rank: "SMF",
@@ -1174,7 +1174,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
         ]
     }],
     2029: [{
-        nativeTeam: "NBA",
+        nativeTeam: "UTA",
         year: 2029,
         conditions: {
           rank: "MF",
@@ -1186,7 +1186,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
           owner: "UTA"
         }
       },{
-        nativeTeam: "NBA",
+        nativeTeam: "UTA",
         year: 2029,
         conditions: {
           rank: "SMF",

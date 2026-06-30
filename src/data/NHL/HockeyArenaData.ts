@@ -538,11 +538,11 @@ export const ECHLArenaData: {[Key in ECHLTeamType] : TeamInfoType} = {
         },
         "ECHL-BUF": {
             coordinates: {
-              latitude: 42.265,
-              longitude: -71.799
+              latitude: 40.065,
+              longitude: -80.725
             },
-            location: "Worcester",
-            name: "Railers",
+            location: "Wheeling",
+            name: "Nailers",
         },
         "ECHL-CAR": {
             coordinates: {
@@ -682,11 +682,11 @@ export const ECHLArenaData: {[Key in ECHLTeamType] : TeamInfoType} = {
         },
         "ECHL-PIT": {
             coordinates: {
-              latitude: 40.065,
-              longitude: -80.725
+              latitude: 26.44,
+              longitude: -81.779
             },
-            location: "Wheeling",
-            name: "Nailers",
+            location: "Florida",
+            name: "Everblades",
         },
         "ECHL-SEA": {
             coordinates: {
@@ -705,12 +705,12 @@ export const ECHLArenaData: {[Key in ECHLTeamType] : TeamInfoType} = {
             name: "Thunder",
         },
         "ECHL-STL": {
-            coordinates: {
-              latitude: 26.44,
-              longitude: -81.779
+          coordinates: {
+              latitude: 42.265,
+              longitude: -71.799
             },
-            location: "Florida",
-            name: "Everblades",
+            location: "Worcester",
+            name: "Railers",
         },
         "ECHL-TBL": {
             coordinates: {

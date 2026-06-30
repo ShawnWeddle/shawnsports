@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const titlesArray = [
-  "Home", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", "NFL_Map"
+  "Home", "Home_Map", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", "NFL_Map"
 ] as const;
 
 export const TitlesEnum = z.enum(titlesArray);
@@ -10,7 +10,7 @@ export const sportsNames = ["CFL", "F1", "MLB", "MLS", "NBA", "NFL", "NHL", "WNB
 export type SportType = typeof sportsNames[number];
 
 export const allNavHeads = {
-  "Home": ["Home",], 
+  "Home": ["Home", "Home_Map"], 
   "NBA": ["NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", ], 
   "NFL": ["NFL_Super_Losers", "NFL_Super_Bowls", "NFL_Rank",  "NFL_Map", ], 
   "F1": ["F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", ], 
@@ -33,6 +33,7 @@ export type CFLTitlesType = typeof allNavHeads["CFL"][number];
 
 export const HomeTitlesDesc: {[Key in HomeTitlesType] : string} = {
   "Home": "",
+  "Home_Map": "",
 };
 export const F1TitlesDesc: {[Key in F1TitlesType] : string} = {
   "F1_Tables": "See the results for every race this season",
@@ -130,6 +131,7 @@ export const underPageTitles = [
 
 export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, urlName: PageURLType}} = {
   Home: { navTitle: "Home", urlName: "/",},
+  Home_Map: { navTitle: "Map", urlName: "//map" },
   F1_Tables: { navTitle: "Tables", urlName: "/f1/tables",},
   F1_Standings: { navTitle: "Standings", urlName: "/f1/standings",},
   F1_Compare: { navTitle: "Compare", urlName: "/f1/compare",},

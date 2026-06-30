@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa6";
 import { markerData } from "~/data/map/allMapData";
 import type { MapDataInputType } from "~/types/MapTypes";
+import { MapTag } from "./MapTag";
 
 type IconProps = {
   sport: SportType;
@@ -34,7 +35,7 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
 };
 
 const Marker: React.FC<MapDataInputType> = (props: MapDataInputType) => {
-  const { league } = props;
+  const { league, team } = props;
   const { coordinates, name, location } = markerData(props);
   return (
     <MapMarker
@@ -52,9 +53,7 @@ const Marker: React.FC<MapDataInputType> = (props: MapDataInputType) => {
         </div>
       </MarkerContent>
       <MarkerPopup>
-        <div className="rounded bg-white p-1">
-          {location} {name}
-        </div>
+        <MapTag data={[props]} />
       </MarkerPopup>
     </MapMarker>
   );

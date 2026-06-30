@@ -1,5 +1,4 @@
 import type { MapDataInputType } from "~/types/MapTypes";
-
 import { NFLStadiumData, CFLStadiumData, IFLStadiumData, UFLStadiumData } from "../NFL/FootballStadiumData";
 import { NBAArenaData, NGLArenaData, WNBAArenaData } from "../NBA/BasketballArenaData";
 import { MLBFieldData, AAAFieldData, AAFieldData, HAFieldData, SAFieldData } from "../MLB/BaseballStadiumData";
@@ -11,6 +10,7 @@ export const markerData = (input: MapDataInputType) => {
   let code;
   let location = "";
   let name = "";
+  let reverse;
   const coordinates = { latitude: 0, longitude: 0 };
 
   switch(league){
@@ -130,6 +130,7 @@ export const markerData = (input: MapDataInputType) => {
       code = team;
       location = MLSStadiumData[team].location;
       name = MLSStadiumData[team].name;
+      reverse = MLSStadiumData[team].reverse;
       coordinates.latitude = MLSStadiumData[team].coordinates.latitude;
       coordinates.longitude = MLSStadiumData[team].coordinates.longitude;
       break;
@@ -140,5 +141,6 @@ export const markerData = (input: MapDataInputType) => {
     coordinates,
     location,
     name,
+    reverse,
   }
 }

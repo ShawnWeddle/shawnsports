@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa6";
 import { markerData } from "~/data/map/allMapData";
 import type { MapDataInputType } from "~/types/MapTypes";
+import { MapTag } from "./MapTag";
 
 type IconProps = {
   sport: SportType;
@@ -70,12 +71,7 @@ const MultiMarker: React.FC<MultiMarkerProps> = (props: MultiMarkerProps) => {
         </div>
       </MarkerContent>
       <MarkerPopup>
-        {names.map((text, index) => (
-          <div className="rounded bg-white p-1" key={index}>
-            {" "}
-            {text}{" "}
-          </div>
-        ))}
+        <MapTag data={data} />
       </MarkerPopup>
     </MapMarker>
   );

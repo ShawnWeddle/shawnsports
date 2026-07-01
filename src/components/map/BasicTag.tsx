@@ -5,6 +5,7 @@ import { CFLstyleData } from "~/data/CFL/CFLstyleData";
 import { MLSstyleData } from "~/data/MLS/MLSstyleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
+import { PWHLstyleData } from "~/styles/PWHLstyleData";
 
 export const BasicTag: React.FC<MapDataInputType> = (
   props: MapDataInputType
@@ -41,11 +42,7 @@ export const BasicTag: React.FC<MapDataInputType> = (
       );
     case "IFL":
       return (
-        <p
-          className={cn(
-            "rounded border-2 border-ifl bg-white px-1 py-1 text-gray-800"
-          )}
-        >
+        <p className={cn("rounded bg-white px-1 py-1 text-gray-800")}>
           <span className="font-bold">IFL: </span>
           {location} {name}
         </p>
@@ -77,9 +74,11 @@ export const BasicTag: React.FC<MapDataInputType> = (
     case "PWHL":
       return (
         <p
-          className={cn(
-            "rounded border-2 border-pwhl bg-white px-1 py-1 text-gray-800"
-          )}
+          className={cn("rounded border-2 px-1 py-1", {
+            [PWHLstyleData[team].primaryBackground]: true,
+            [PWHLstyleData[team].secondaryBorder]: true,
+            [PWHLstyleData[team].simpleText]: true,
+          })}
         >
           <span className="font-bold">PWHL: </span>
           {location} {name}

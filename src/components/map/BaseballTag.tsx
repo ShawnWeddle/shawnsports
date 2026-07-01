@@ -17,7 +17,8 @@ export const BaseballTag: React.FC<MLBTeamLeagueParent> = (
     return (
       <>
         <p
-          className={cn("rounded border-2 border-transparent px-1 py-1", {
+          className={cn("rounded px-1 py-0.5", {
+            "border-2 py-1": league === "MLB",
             [MLBstyleData[parentTeam].primaryBackground]: league === "MLB",
             [MLBstyleData[parentTeam].secondaryBorder]: league === "MLB",
             [MLBstyleData[parentTeam].simpleText]: league === "MLB",
@@ -27,7 +28,8 @@ export const BaseballTag: React.FC<MLBTeamLeagueParent> = (
           {MLBFieldData[parentTeam].location} {MLBFieldData[parentTeam].name}
         </p>
         <p
-          className={cn("rounded border-2 border-transparent px-1 py-1", {
+          className={cn("rounded px-1 py-0.5", {
+            "border-2 py-1": league === "AAA",
             [MLBstyleData[parentTeam].primaryBackground]: league === "AAA",
             [MLBstyleData[parentTeam].secondaryBorder]: league === "AAA",
             [MLBstyleData[parentTeam].simpleText]: league === "AAA",
@@ -38,7 +40,8 @@ export const BaseballTag: React.FC<MLBTeamLeagueParent> = (
           {AAAFieldData[`AAA-${parentTeam}`].name}
         </p>
         <p
-          className={cn("rounded border-2 border-transparent px-1 py-1", {
+          className={cn("rounded px-1 py-0.5", {
+            "border-2 py-1": league === "AA",
             [MLBstyleData[parentTeam].primaryBackground]: league === "AA",
             [MLBstyleData[parentTeam].secondaryBorder]: league === "AA",
             [MLBstyleData[parentTeam].simpleText]: league === "AA",
@@ -49,7 +52,8 @@ export const BaseballTag: React.FC<MLBTeamLeagueParent> = (
           {AAFieldData[`AA-${parentTeam}`].name}
         </p>
         <p
-          className={cn("rounded border-2 border-transparent px-1 py-1", {
+          className={cn("rounded px-1 py-0.5", {
+            "border-2 py-1": league === "HA",
             [MLBstyleData[parentTeam].primaryBackground]: league === "HA",
             [MLBstyleData[parentTeam].secondaryBorder]: league === "HA",
             [MLBstyleData[parentTeam].simpleText]: league === "HA",
@@ -60,7 +64,8 @@ export const BaseballTag: React.FC<MLBTeamLeagueParent> = (
           {HAFieldData[`HA-${parentTeam}`].name}
         </p>
         <p
-          className={cn("rounded border-2 border-transparent px-1 py-1", {
+          className={cn("rounded px-1 py-0.5", {
+            "border-2 py-1": league === "SA",
             [MLBstyleData[parentTeam].primaryBackground]: league === "SA",
             [MLBstyleData[parentTeam].secondaryBorder]: league === "SA",
             [MLBstyleData[parentTeam].simpleText]: league === "SA",

@@ -15,7 +15,8 @@ export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
     return (
       <>
         <p
-          className={cn("rounded border-2 border-transparent px-1 py-1", {
+          className={cn("rounded px-1 py-0.5", {
+            "border-2 py-1": league === "NHL",
             [NHLstyleData[parentTeam].primaryBackground]: league === "NHL",
             [NHLstyleData[parentTeam].secondaryBorder]: league === "NHL",
             [NHLstyleData[parentTeam].simpleText]: league === "NHL",
@@ -25,7 +26,8 @@ export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
           {NHLArenaData[parentTeam].location} {NHLArenaData[parentTeam].name}
         </p>
         <p
-          className={cn("rounded border-2 border-transparent px-1 py-1", {
+          className={cn("rounded px-1 py-0.5", {
+            "border-2 py-1": league === "AHL",
             [NHLstyleData[parentTeam].primaryBackground]: league === "AHL",
             [NHLstyleData[parentTeam].secondaryBorder]: league === "AHL",
             [NHLstyleData[parentTeam].simpleText]: league === "AHL",
@@ -37,7 +39,8 @@ export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
         </p>
         {parentTeam !== "CBJ" && parentTeam !== "UTA" && (
           <p
-            className={cn("rounded border-2 border-transparent px-1 py-1", {
+            className={cn("rounded px-1 py-0.5", {
+              "border-2 py-1": league === "ECHL",
               [NHLstyleData[parentTeam].primaryBackground]: league === "ECHL",
               [NHLstyleData[parentTeam].secondaryBorder]: league === "ECHL",
               [NHLstyleData[parentTeam].simpleText]: league === "ECHL",

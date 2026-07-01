@@ -505,16 +505,8 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     2027: [{
         nativeTeam: "LAC",
         year: 2027,
-        conditions: {
-          rank: "LF",
-          teams: [
-            "DEN",
-            "LAC",
-            "OKC"
-          ],
-          owner: "LAC"
-        }
-    }],
+        swap: ["positive", "TOR"]
+    },],
     2028: [],
     2029: [{
         nativeTeam: "LAC",
@@ -530,14 +522,21 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
           "IND",
           "LAC"
         ]
-    }],
+    },],
     2030: [{
         nativeTeam: "LAC",
-        year: 2030
+        year: 2030,
     }],
     2031: [{
         nativeTeam: "LAC",
         year: 2031
+    },{
+        nativeTeam: "TOR",
+        year: 2031,
+        history: [
+          "TOR",
+          "LAC"
+        ]
     }],
     2032: [{
         nativeTeam: "LAC",
@@ -546,6 +545,13 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     2033: [{
         nativeTeam: "LAC",
         year: 2033
+    },{
+        nativeTeam: "TOR",
+        year: 2033,
+        history: [
+          "TOR",
+          "LAC"
+        ]
     }],
   },
   LAL: {
@@ -1124,7 +1130,17 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
   TOR: {
     2027: [{
         nativeTeam: "TOR",
-        year: 2027
+        year: 2027,
+        conditions: {
+          rank: "LF",
+          teams: [
+            "DEN",
+            "LAC",
+            "OKC",
+            "TOR"
+          ],
+          owner: "TOR"
+        }
     }],
     2028: [{
         nativeTeam: "TOR",
@@ -1136,20 +1152,14 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     }],
     2030: [{
         nativeTeam: "TOR",
-        year: 2030
+        year: 2030,
     }],
-    2031: [{
-        nativeTeam: "TOR",
-        year: 2031
-    }],
+    2031: [],
     2032: [{
         nativeTeam: "TOR",
         year: 2032
     }],
-    2033: [{
-        nativeTeam: "TOR",
-        year: 2033
-    }],
+    2033: [],
   },
   UTA: {
     2027: [{

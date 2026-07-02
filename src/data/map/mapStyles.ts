@@ -37,5 +37,7 @@ export const leagueStyles = (league: LeagueType) => {
       return "text-singlea border-singlea"
     case "MLS":
       return "text-mls border-mls"
+    case "MLV":
+      return "text-mlv border-mlv"
   }
 }

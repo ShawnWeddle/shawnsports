@@ -1,10 +1,11 @@
-import type { CFLTeamType, IFLTeamType, UFLTeamType } from "~/data/CFL/CFLdata"
-import type { AAATeamType, AATeamType, HATeamType, MLBTeamType, SATeamType } from "~/data/MLB/MLBdata"
-import type { MLSTeamType } from "~/data/MLS/MLSdata"
-import type { NBATeamType, NGLTeamType } from "~/data/NBA/NBAdata"
-import type { NFLTeamType } from "~/data/NFL/NFLdata"
-import type { AHLTeamType, ECHLTeamType, NHLTeamType, PWHLTeamType } from "~/data/NHL/NHLdata"
-import type { WNBATeamType } from "~/data/WNBA/WNBAdata"
+import type { CFLTeamType, IFLTeamType, UFLTeamType } from "~/data/CFL/CFLdata";
+import type { AAATeamType, AATeamType, HATeamType, MLBTeamType, SATeamType } from "~/data/MLB/MLBdata";
+import type { MLSTeamType } from "~/data/MLS/MLSdata";
+import type { NBATeamType, NGLTeamType } from "~/data/NBA/NBAdata";
+import type { NFLTeamType } from "~/data/NFL/NFLdata";
+import type { AHLTeamType, ECHLTeamType, NHLTeamType, PWHLTeamType } from "~/data/NHL/NHLdata";
+import type { WNBATeamType } from "~/data/WNBA/WNBAdata";
+import type { MLVTeamType } from "~/data/MLV/MLVdata";
 
 export type MapDataInputType = {
   league: "NFL",
@@ -57,6 +58,9 @@ export type MapDataInputType = {
 } | {
   league: "MLS",
   team: MLSTeamType
+} | {
+  league: "MLV",
+  team: MLVTeamType
 };
 
 export type LeagueTeamListType = {
@@ -77,6 +81,7 @@ export type LeagueTeamListType = {
   "ECHL": ECHLTeamType[];
   "PWHL": PWHLTeamType[];
   "MLS": MLSTeamType[];
+  "MLV": MLVTeamType[];
 };
 
 export type TeamInfoType = {

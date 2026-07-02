@@ -9,6 +9,7 @@ import {
   FaFootball,
   FaHockeyPuck,
   FaFutbol,
+  FaVolleyball,
 } from "react-icons/fa6";
 import { markerData } from "~/data/map/allMapData";
 import type { MapDataInputType } from "~/types/MapTypes";
@@ -31,12 +32,14 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
       return <FaHockeyPuck />;
     case "Soccer":
       return <FaFutbol />;
+    case "Volleyball":
+      return <FaVolleyball />;
   }
 };
 
 const Marker: React.FC<MapDataInputType> = (props: MapDataInputType) => {
-  const { league, team } = props;
-  const { coordinates, name, location } = markerData(props);
+  const { league } = props;
+  const { coordinates } = markerData(props);
   return (
     <MapMarker
       latitude={coordinates.latitude}

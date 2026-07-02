@@ -61,6 +61,7 @@ const config = {
         ifl: "#008000",
         ufl: "#220066",
         ngl: "#BF9900",
+        mlv: "#646464",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

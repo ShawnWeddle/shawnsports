@@ -16,6 +16,7 @@ import {
   pwhlTeamsAll,
 } from "~/data/NHL/NHLdata";
 import { allMLSteams } from "~/data/MLS/MLSdata";
+import { mlvTeamsList } from "~/data/MLV/MLVdata";
 import { useMapContext } from "~/hooks/useMap";
 import { getSharedLocations } from "~/utils/sharedLocations";
 import Marker from "./MapMarker";
@@ -216,6 +217,18 @@ const SportsMarkers = () => {
     .map((team, index) => {
       return <Marker key={"MLS" + index.toString()} league="MLS" team={team} />;
     });
+  //Volleyball
+  const MLVMarkers = mlvTeamsList
+    .filter((team) => {
+      return (
+        removedLocations.find((X) => {
+          return X.team === team && X.league === "MLV";
+        }) === undefined
+      );
+    })
+    .map((team, index) => {
+      return <Marker key={"MLV" + index.toString()} league="MLV" team={team} />;
+    });
   //Shared
   const SharedMarkers = sharedActiveLocations.map((teams, index) => {
     return <MultiMarker key={"SMW" + index.toString()} data={teams} />;
@@ -257,6 +270,8 @@ const SportsMarkers = () => {
         return SAMarkers;
       case "MLS":
         return MLSMarkers;
+      case "MLV":
+        return MLVMarkers;
     }
   });
   return [...leagueList.flat(), ...SharedMarkers];

@@ -6,6 +6,7 @@ import { MLSstyleData } from "~/data/MLS/MLSstyleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
 import { PWHLstyleData } from "~/styles/PWHLstyleData";
+import { MLVstyleData } from "~/data/MLV/MLVstyleData";
 
 export const BasicTag: React.FC<MapDataInputType> = (
   props: MapDataInputType
@@ -95,6 +96,19 @@ export const BasicTag: React.FC<MapDataInputType> = (
         >
           <span className="font-bold">MLS: </span>
           {reverseName && name} {location} {!reverseName && name}
+        </p>
+      );
+    case "MLV":
+      return (
+        <p
+          className={cn("rounded border-2 px-1 py-1", {
+            [MLVstyleData[team].primaryBackground]: true,
+            [MLVstyleData[team].secondaryBorder]: true,
+            [MLVstyleData[team].simpleText]: true,
+          })}
+        >
+          <span className="font-bold">MLV: </span>
+          {location} {name}
         </p>
       );
     case "NGL":

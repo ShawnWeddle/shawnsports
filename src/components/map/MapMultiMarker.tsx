@@ -9,6 +9,7 @@ import {
   FaFootball,
   FaHockeyPuck,
   FaFutbol,
+  FaVolleyball,
 } from "react-icons/fa6";
 import { markerData } from "~/data/map/allMapData";
 import type { MapDataInputType } from "~/types/MapTypes";
@@ -31,6 +32,8 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
       return <FaHockeyPuck />;
     case "Soccer":
       return <FaFutbol />;
+    case "Volleyball":
+      return <FaVolleyball />;
   }
 };
 

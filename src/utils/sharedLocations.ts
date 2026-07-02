@@ -126,7 +126,11 @@ const sharedLocations: MapDataInputType[][] = [
     {
       "league": "ECHL",
       "team": "ECHL-CHI"
-    }
+    },
+    {
+      "league": "MLV",
+      "team": "IND"
+    },
   ],
   [
     {
@@ -471,7 +475,11 @@ const sharedLocations: MapDataInputType[][] = [
     {
       "league": "AHL",
       "team": "AHL-DET"
-    }
+    },
+    {
+      "league": "MLV",
+      "team": "GRR"
+    },
   ],
   [
     {
@@ -641,4 +649,38 @@ const sharedLocations: MapDataInputType[][] = [
       "team": "HAM"
     }
   ],
+  [
+    {
+      "league": "ECHL",
+      "team": "ECHL-NSH"
+    },
+    {
+      "league": "MLV",
+      "team": "ATL"
+    }
+  ],
+  [
+    {
+      "league": "NHL",
+      "team": "CBJ"
+    },
+    {
+      "league": "MLV",
+      "team": "CLF"
+    }
+  ],
+  [
+    {
+      "league": "NGL",
+      "team": "NGL-DAL"
+    },
+    {
+      "league": "MLV",
+      "team": "DAL"
+    }
+  ],
 ]
+
+/*
+
+*/

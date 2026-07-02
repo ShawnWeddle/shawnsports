@@ -691,7 +691,7 @@ export const AAFieldData: {[Key in AATeamType] : TeamInfoType} = {
   "AA-STL": {
     coordinates: {
       latitude: 37.216,
-      longitude: -93.291
+      longitude: -93.292
     },
     location: "Springfield",
     name: "Cardinals",

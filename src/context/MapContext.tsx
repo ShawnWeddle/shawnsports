@@ -24,7 +24,7 @@ type MapPayloadType = {
 };
 
 type MapReducerAction = {
-  type: "CHANGE_LEAGUES";
+  type: "CHANGE_LEAGUES" | "ALL_LEAGUES" | "NO_LEAGUES";
   payload: MapPayloadType;
 };
 
@@ -44,6 +44,10 @@ export const mapReducer = (
         }
       }
       return { ...state, activeLeagues: newLeagues };
+    case "ALL_LEAGUES":
+      return { ...state, activeLeagues: initialLeagueList("All").options };
+    case "NO_LEAGUES":
+      return { ...state, activeLeagues: new Set<LeagueType>([]) };
     default:
       return state;
   }
@@ -52,7 +56,7 @@ export const mapReducer = (
 export const MapContextProvider = (props: MapContextProviderProps) => {
   const { sport, children } = props;
   const [mapState, mapDispatch] = useReducer(mapReducer, {
-    activeLeagues: initialLeagueList(sport),
+    activeLeagues: initialLeagueList(sport).start,
     sport,
   });
 

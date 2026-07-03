@@ -1,7 +1,6 @@
 import MainPage from "~/components/Page/MainPage";
 import { RankContextProvider } from "~/context/RankContext";
 import Ranker from "~/components/rank/Ranker";
-import RankF1 from "~/components/F1/Rank/rank";
 
 const Rank = () => {
   return (

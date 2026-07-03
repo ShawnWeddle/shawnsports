@@ -1,11 +1,11 @@
 import { z } from "zod";
-import type { TeamInfoType, MapDataInputType } from "~/types/MapTypes";
+import type { TeamInfoType, LeagueTeamType } from "~/types/MapTypes";
 import { nhlTeamsRanked, type NHLTeamType } from "~/data/NHL/NHLdata";
 import { NHLArenaData, AHLArenaData, ECHLArenaData } from "~/data/NHL/HockeyArenaData";
 
-export type NHLTeamLeagueParent = MapDataInputType & { parentTeam: NHLTeamType | undefined};
+export type NHLTeamLeagueParent = LeagueTeamType & { parentTeam: NHLTeamType | undefined};
 
-export const getNHLParentTeam = (props: MapDataInputType): NHLTeamLeagueParent => {
+export const getNHLParentTeam = (props: LeagueTeamType): NHLTeamLeagueParent => {
   const { league, team } = props;
   let parentTeam: NHLTeamType | undefined;
   const NHLenum = z.enum(nhlTeamsRanked);

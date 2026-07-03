@@ -17,7 +17,7 @@ export const mlbTeamsAll = [
   "MTL", "NYG", "PHA", "SLB", "WAS", "XXX",
 ] as const;
 
-export const AAAteamsOrder = [
+export const AAAteamsList = [
   "AAA-ARI",
   "AAA-ATL",
   "AAA-BAL",
@@ -50,7 +50,7 @@ export const AAAteamsOrder = [
   "AAA-WSN",
 ] as const;
 
-export const AAteamsOrder = [
+export const AAteamsList = [
   "AA-ARI",
   "AA-ATL",
   "AA-BAL",
@@ -83,7 +83,7 @@ export const AAteamsOrder = [
   "AA-WSN",
 ] as const;
 
-export const HAteamsOrder = [
+export const HAteamsList = [
   "HA-ARI",
   "HA-ATL",
   "HA-BAL",
@@ -116,7 +116,7 @@ export const HAteamsOrder = [
   "HA-WSN",
 ] as const;
 
-export const SAteamsOrder = [
+export const SAteamsList = [
   "SA-ARI",
   "SA-ATL",
   "SA-BAL",
@@ -153,10 +153,10 @@ export type MLBTeamType = typeof mlbTeamsRanked[number];
 
 export type AllMLBTeamType = typeof mlbTeamsAll[number];
 
-export type AAATeamType = typeof AAAteamsOrder[number];
-export type AATeamType = typeof AAteamsOrder[number];
-export type HATeamType = typeof HAteamsOrder[number];
-export type SATeamType = typeof SAteamsOrder[number];
+export type AAATeamType = typeof AAAteamsList[number];
+export type AATeamType = typeof AAteamsList[number];
+export type HATeamType = typeof HAteamsList[number];
+export type SATeamType = typeof SAteamsList[number];
 
 export type teamInfoType = {location: string, name: string };
 

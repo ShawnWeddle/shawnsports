@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { type SportType } from "~/data/SiteData";
-import { NullBook } from "~/types/StyleBook";
+import type { TeamInfoRankType } from "~/types/RankTypes";
+import { NullBook } from "~/styles/NullBook";
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
 import { F1styleData } from "~/data/F1/2026/F1styleData";
 import { MLBstyleData } from "~/data/MLB/MLBstyleData";
@@ -16,34 +17,25 @@ import {
   driverToConstructor2026,
 } from "~/data/F1/2026/F1data";
 import { MLBteamData, mlbTeamsRanked } from "~/data/MLB/MLBdata";
-import { MLSteamData, allMLSteams } from "~/data/MLS/MLSdata";
+import { MLSteamData, mlsTeamsList } from "~/data/MLS/MLSdata";
 import { NBAteamData, nbaTeamsRanked } from "~/data/NBA/NBAdata";
 import { NFLteamData, nflTeamsRanked } from "~/data/NFL/NFLdata";
 import { NHLteamData, nhlTeamsRanked } from "~/data/NHL/NHLdata";
 import { WNBAteamData, wnbaTeamsRanked } from "~/data/WNBA/WNBAdata";
 
-import { CFLstadiumCoordinates } from "~/data/CFL/CFLstadiumData";
-import { MLBstadiumCoordinates } from "~/data/MLB/MLBstadiumData";
-import { MLSstadiumCoordinates } from "~/data/MLS/MLSstadiumData";
-import { NBAstadiumCoordinates } from "~/data/NBA/NBAstadiumData";
-import { NFLstadiumCoordinates } from "~/data/NFL/NFLstadiumData";
-import { NHLstadiumCoordinates } from "~/data/NHL/NHLstadiumData";
-import { WNBAstadiumCoordinates } from "~/data/WNBA/WNBAstadiumData";
-
 const CFLenum = z.enum(cflTeamsRanked);
 const F1enum = z.enum(driverCodes2026);
 const MLBenum = z.enum(mlbTeamsRanked);
-const MLSenum = z.enum(allMLSteams);
+const MLSenum = z.enum(mlsTeamsList);
 const NBAenum = z.enum(nbaTeamsRanked);
 const NFLenum = z.enum(nflTeamsRanked);
 const NHLenum = z.enum(nhlTeamsRanked);
 const WNBAenum = z.enum(wnbaTeamsRanked);
 
-export const markerData = (input: string, sport: SportType) => {
+export const rankData = (input: string, sport: SportType): TeamInfoRankType => {
   let code;
   let style = NullBook;
   const text = { short: "", long: "" };
-  const coordinates = { latitude: 0, longitude: 0 };
   if(input){
     switch (sport) {
       case "F1":
@@ -58,56 +50,42 @@ export const markerData = (input: string, sport: SportType) => {
         style = CFLstyleData[code];
         text.long = CFLteamData[code].location + " " + CFLteamData[code].name
         text.short = CFLteamData[code].name;
-        coordinates.latitude = CFLstadiumCoordinates[code].latitude;
-        coordinates.longitude = CFLstadiumCoordinates[code].longitude;
         break;
       case "MLB":
         code = MLBenum.parse(input);
         style = MLBstyleData[code];
         text.long = MLBteamData[code].location + " " + MLBteamData[code].name;
         text.short = MLBteamData[code].name;
-        coordinates.latitude = MLBstadiumCoordinates[code].latitude;
-        coordinates.longitude = MLBstadiumCoordinates[code].longitude;
         break;
       case "MLS":
         code = MLSenum.parse(input);
         style = MLSstyleData[code];
         text.long = MLSteamData[code].reverse ? MLSteamData[code].name + " " + MLSteamData[code].location : MLSteamData[code].location + " " + MLSteamData[code].name;
         text.short = MLSteamData[code].location;
-        coordinates.latitude = MLSstadiumCoordinates[code].latitude;
-        coordinates.longitude = MLSstadiumCoordinates[code].longitude;
         break;
       case "NBA":
         code = NBAenum.parse(input);
         style = NBAstyleData[code];
         text.long = NBAteamData[code].location + " " + NBAteamData[code].name;
         text.short = NBAteamData[code].name;
-        coordinates.latitude = NBAstadiumCoordinates[code].latitude;
-        coordinates.longitude = NBAstadiumCoordinates[code].longitude;
         break;
       case "NFL":
         code = NFLenum.parse(input);
         style = NFLstyleData[code];
         text.long = NFLteamData[code].location + " " + NFLteamData[code].name;
         text.short = NFLteamData[code].name;
-        coordinates.latitude = NFLstadiumCoordinates[code].latitude;
-        coordinates.longitude = NFLstadiumCoordinates[code].longitude;
         break;
       case "NHL":
         code = NHLenum.parse(input);
         style = NHLstyleData[code];
         text.long = NHLteamData[code].location + " " + NHLteamData[code].name;
         text.short = NHLteamData[code].name;
-        coordinates.latitude = NHLstadiumCoordinates[code].latitude;
-        coordinates.longitude = NHLstadiumCoordinates[code].longitude;
         break;
       case "WNBA":
         code = WNBAenum.parse(input);
         style = WNBAstyleData[code];
         text.long = WNBAteamData[code].location + " " + WNBAteamData[code].name;
         text.short = WNBAteamData[code].name;
-        coordinates.latitude = WNBAstadiumCoordinates[code].latitude;
-        coordinates.longitude = WNBAstadiumCoordinates[code].longitude;
         break;
     }
   }
@@ -118,7 +96,6 @@ export const markerData = (input: string, sport: SportType) => {
 
   return {
     code,
-    coordinates,
     style,
     text,
   }
@@ -149,7 +126,7 @@ export const GlobalSportData: {
   "MLS": {
     title: "MLS Teams",
     variant: "mls",
-    totalNum: 29,
+    totalNum: 30,
   },
   "NBA": {
     title: "NBA Teams",

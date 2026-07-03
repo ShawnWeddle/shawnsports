@@ -1,16 +1,15 @@
 import { cn } from "~/lib/utils";
-import type { MapDataInputType } from "~/types/MapTypes";
+import type { LeagueTeamType } from "~/types/MapTypes";
 import { markerData } from "~/data/map/allMapData";
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
+import { IFLstyleData } from "~/styles/IFLstyleData";
 import { MLSstyleData } from "~/data/MLS/MLSstyleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
 import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
 import { PWHLstyleData } from "~/styles/PWHLstyleData";
 import { MLVstyleData } from "~/data/MLV/MLVstyleData";
 
-export const BasicTag: React.FC<MapDataInputType> = (
-  props: MapDataInputType
-) => {
+export const BasicTag: React.FC<LeagueTeamType> = (props: LeagueTeamType) => {
   const { league, team } = props;
   const { location, name } = markerData(props);
   const reverseName = markerData(props).reverse === true;
@@ -43,7 +42,13 @@ export const BasicTag: React.FC<MapDataInputType> = (
       );
     case "IFL":
       return (
-        <p className={cn("rounded bg-white px-1 py-1 text-gray-800")}>
+        <p
+          className={cn("rounded border-2 px-1 py-1", {
+            [IFLstyleData[team].primaryBackground]: true,
+            [IFLstyleData[team].secondaryBorder]: true,
+            [IFLstyleData[team].simpleText]: true,
+          })}
+        >
           <span className="font-bold">IFL: </span>
           {location} {name}
         </p>

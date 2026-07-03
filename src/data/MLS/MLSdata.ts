@@ -1,4 +1,4 @@
-export const allMLSteams = [
+export const mlsTeamsList = [
   "ATL", "ATX", "CLT", "CHI", "COL", 
   "CLB", "DCU", "CIN", "DAL", "HOU", "MIA", 
   "LAF", "LAG", "MIN", "MTL", "NSH", "NER", "NYC", 
@@ -6,7 +6,7 @@ export const allMLSteams = [
   "SEA", "SDF", "SKC", "STL", "TOR", "VAN", 
 ] as const;
 
-export type MLSTeamType = typeof allMLSteams[number];
+export type MLSTeamType = typeof mlsTeamsList[number];
 
 export type teamInfoType = {location: string, name: string, reverse: boolean };
 

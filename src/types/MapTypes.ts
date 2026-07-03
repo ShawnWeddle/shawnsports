@@ -6,8 +6,9 @@ import type { NFLTeamType } from "~/data/NFL/NFLdata";
 import type { AHLTeamType, ECHLTeamType, NHLTeamType, PWHLTeamType } from "~/data/NHL/NHLdata";
 import type { WNBATeamType } from "~/data/WNBA/WNBAdata";
 import type { MLVTeamType } from "~/data/MLV/MLVdata";
+import type { StyleBookType } from "./StyleBook";
 
-export type MapDataInputType = {
+export type LeagueTeamType = {
   league: "NFL",
   team: NFLTeamType
 } | {
@@ -91,5 +92,20 @@ export type TeamInfoType = {
   };
   location: string;
   name: string;
+  reverse?: boolean;
+};
+export type FullTeamInfoType = {
+  code: string;
+  coordinates: {
+    latitude: number,
+    longitude: number,
+  };
+  location: string;
+  name: string;
+  style: StyleBookType;
+  text: {
+    long: string;
+    short: string;
+  };
   reverse?: boolean;
 };

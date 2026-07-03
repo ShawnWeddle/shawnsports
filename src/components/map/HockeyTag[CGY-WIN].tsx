@@ -1,0 +1,51 @@
+import { cn } from "~/lib/utils";
+import type { NHLTeamType } from "~/data/NHL/NHLdata";
+import {
+  NHLArenaData,
+  AHLArenaData,
+  ECHLArenaData,
+} from "~/data/NHL/HockeyArenaData";
+import { NHLstyleData } from "~/data/NHL/NHLstyleData";
+
+export const CGYWINTag: React.FC<{ team: NHLTeamType }> = (props: {
+  team: NHLTeamType;
+}) => {
+  const { team } = props;
+  if (team === "CGY" || team === "WIN") {
+    return (
+      <>
+        <div
+          className={cn("rounded border-2 py-0.5", {
+            [NHLstyleData[team].primaryBackground]: true,
+            [NHLstyleData[team].secondaryBorder]: true,
+          })}
+        >
+          <p
+            className={cn("px-1 py-0.5", {
+              [NHLstyleData[team].simpleText]: true,
+            })}
+          >
+            <span className="font-bold">NHL: </span>
+            {NHLArenaData[team].location} {NHLArenaData[team].name}
+          </p>
+          <p
+            className={cn("px-1 py-0.5", {
+              [NHLstyleData[team].simpleText]: true,
+            })}
+          >
+            <span className="font-bold">AHL: </span>
+            {AHLArenaData[`AHL-${team}`].location}{" "}
+            {AHLArenaData[`AHL-${team}`].name}
+          </p>
+        </div>
+        <p className={cn("rounded px-1 py-0.5")}>
+          <span className="font-bold">ECHL: </span>
+          {ECHLArenaData[`ECHL-${team}`].location}{" "}
+          {ECHLArenaData[`ECHL-${team}`].name}
+        </p>
+      </>
+    );
+  } else {
+    return <></>;
+  }
+};

@@ -1,11 +1,11 @@
 import { z } from "zod";
-import type { MapDataInputType } from "~/types/MapTypes";
+import type { LeagueTeamType } from "~/types/MapTypes";
 import { nbaTeamsRanked, type NBATeamType } from "~/data/NBA/NBAdata";
 import { NBAArenaData, NGLArenaData } from "~/data/NBA/BasketballArenaData";
 
-export type NBATeamLeagueParent = MapDataInputType & { parentTeam: NBATeamType | undefined};
+export type NBATeamLeagueParent = LeagueTeamType & { parentTeam: NBATeamType | undefined};
 
-export const getNBAParentTeam = (props: MapDataInputType): NBATeamLeagueParent => {
+export const getNBAParentTeam = (props: LeagueTeamType): NBATeamLeagueParent => {
   const { league, team } = props;
   let parentTeam: NBATeamType | undefined;
   const NBAenum = z.enum(nbaTeamsRanked);

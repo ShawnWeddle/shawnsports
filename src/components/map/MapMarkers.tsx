@@ -4,18 +4,18 @@ import { nbaTeamsRanked, nglTeamsOrder } from "~/data/NBA/NBAdata";
 import { wnbaTeamsRanked } from "~/data/WNBA/WNBAdata";
 import {
   mlbTeamsRanked,
-  AAAteamsOrder,
-  AAteamsOrder,
-  HAteamsOrder,
-  SAteamsOrder,
+  AAAteamsList,
+  AAteamsList,
+  HAteamsList,
+  SAteamsList,
 } from "~/data/MLB/MLBdata";
 import {
   nhlTeamsRanked,
-  ahlTeamsOrder,
-  echlTeamsOrder,
+  ahlTeamsList,
+  echlTeamsList,
   pwhlTeamsAll,
 } from "~/data/NHL/NHLdata";
-import { allMLSteams } from "~/data/MLS/MLSdata";
+import { mlsTeamsList } from "~/data/MLS/MLSdata";
 import { mlvTeamsList } from "~/data/MLV/MLVdata";
 import { useMapContext } from "~/hooks/useMap";
 import { getSharedLocations } from "~/utils/sharedLocations";
@@ -120,7 +120,7 @@ const SportsMarkers = () => {
     .map((team, index) => {
       return <Marker key={"MLB" + index.toString()} league="MLB" team={team} />;
     });
-  const AAAMarkers = AAAteamsOrder.filter((team) => {
+  const AAAMarkers = AAAteamsList.filter((team) => {
     return (
       removedLocations.find((X) => {
         return X.team === team && X.league === "AAA";
@@ -129,7 +129,7 @@ const SportsMarkers = () => {
   }).map((team, index) => {
     return <Marker key={"AAA" + index.toString()} league="AAA" team={team} />;
   });
-  const AAMarkers = AAteamsOrder.filter((team) => {
+  const AAMarkers = AAteamsList.filter((team) => {
     return (
       removedLocations.find((X) => {
         return X.team === team && X.league === "AA";
@@ -138,7 +138,7 @@ const SportsMarkers = () => {
   }).map((team, index) => {
     return <Marker key={"AA" + index.toString()} league="AA" team={team} />;
   });
-  const HAMarkers = HAteamsOrder.filter((team) => {
+  const HAMarkers = HAteamsList.filter((team) => {
     return (
       removedLocations.find((X) => {
         return X.team === team && X.league === "HA";
@@ -147,7 +147,7 @@ const SportsMarkers = () => {
   }).map((team, index) => {
     return <Marker key={"HA" + index.toString()} league="HA" team={team} />;
   });
-  const SAMarkers = SAteamsOrder.filter((team) => {
+  const SAMarkers = SAteamsList.filter((team) => {
     return (
       removedLocations.find((X) => {
         return X.team === team && X.league === "SA";
@@ -168,7 +168,7 @@ const SportsMarkers = () => {
     .map((team, index) => {
       return <Marker key={"NHL" + index.toString()} league="NHL" team={team} />;
     });
-  const AHLMarkers = ahlTeamsOrder
+  const AHLMarkers = ahlTeamsList
     .filter((team) => {
       return (
         removedLocations.find((X) => {
@@ -179,7 +179,7 @@ const SportsMarkers = () => {
     .map((team, index) => {
       return <Marker key={"AHL" + index.toString()} league="AHL" team={team} />;
     });
-  const ECHLMarkers = echlTeamsOrder
+  const ECHLMarkers = echlTeamsList
     .filter((team) => {
       return (
         removedLocations.find((X) => {
@@ -206,7 +206,7 @@ const SportsMarkers = () => {
       );
     });
   //Soccer
-  const MLSMarkers = allMLSteams
+  const MLSMarkers = mlsTeamsList
     .filter((team) => {
       return (
         removedLocations.find((X) => {

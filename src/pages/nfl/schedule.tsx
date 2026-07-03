@@ -1,6 +1,4 @@
 import MainPage from "~/components/Page/MainPage";
-import { NFLScheduleContextProvider } from "~/context/NFLscheduleContext";
-import NFLSchedule from "~/components/NFL/Schedule";
 import NoteFromDev from "~/components/Home/NoteFromDev";
 
 const Schedule = () => {

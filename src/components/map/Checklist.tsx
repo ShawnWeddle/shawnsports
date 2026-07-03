@@ -8,7 +8,7 @@ import { Checkbox } from "../ui/checkbox";
 const CheckList: React.FC = () => {
   const { mapState, mapDispatch } = useMapContext();
   const { sport } = mapState;
-  const checkList: JSX.Element[] = [...initialLeagueList(sport)].map(
+  const checkList: JSX.Element[] = [...initialLeagueList(sport).options].map(
     (league, index) => {
       return (
         <Field

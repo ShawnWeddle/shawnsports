@@ -69,6 +69,15 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
           "negative",
           "SAS"
         ]
+    },{
+        nativeTeam: "LAC",
+        year: 2028,
+        history: [
+          "LAC",
+          "PHI",
+          "BOS"
+        ],
+        protection: "UP"
     }],
     2029: [],
     2030: [{
@@ -78,6 +87,10 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     2031: [{
         nativeTeam: "BOS",
         year: 2031
+    },{
+        nativeTeam: "PHI",
+        year: 2031,
+        history: ["PHI", "BOS"]
     }],
     2032: [{
         nativeTeam: "BOS",
@@ -558,25 +571,21 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     2027: [],
     2028: [{
         nativeTeam: "LAL",
-        year: 2028
+        year: 2028,
+        swap: ["negative", "UTA"]
     }],
     2029: [],
     2030: [{
         nativeTeam: "LAL",
-        year: 2030
+        year: 2030,
+        swap: ["negative", "UTA"]
     }],
-    2031: [{
-        nativeTeam: "LAL",
-        year: 2031
-    }],
+    2031: [],
     2032: [{
         nativeTeam: "LAL",
         year: 2032
     }],
-    2033: [{
-        nativeTeam: "LAL",
-        year: 2033
-    }],
+    2033: [],
   },
   MEM: {
     2027: [{
@@ -883,15 +892,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
         nativeTeam: "PHI",
         year: 2027
     }],
-    2028: [{
-        nativeTeam: "LAC",
-        year: 2028,
-        history: [
-          "LAC",
-          "PHI"
-        ],
-        protection: "UP"
-    }],
+    2028: [],
     2029: [{
         nativeTeam: "PHI",
         year: 2029,
@@ -904,10 +905,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
         nativeTeam: "PHI",
         year: 2030
     }],
-    2031: [{
-        nativeTeam: "PHI",
-        year: 2031
-    }],
+    2031: [],
     2032: [{
         nativeTeam: "PHI",
         year: 2032
@@ -1178,10 +1176,15 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     2028: [{
         nativeTeam: "UTA",
         year: 2028,
-        swap: [
-          "positive",
-          "CLE"
-        ]
+        conditions: {
+          rank: "MF",
+          teams: [
+            "CLE",
+            "LAL",
+            "UTA"
+          ],
+          owner: "UTA"
+        }
     }],
     2029: [{
         nativeTeam: "UTA",
@@ -1210,11 +1213,16 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     }],
     2030: [{
         nativeTeam: "UTA",
-        year: 2030
+        year: 2030,
+        swap: ["positive", "LAL"]
     }],
     2031: [{
         nativeTeam: "UTA",
         year: 2031
+    },{
+        nativeTeam: "LAL",
+        year: 2031,
+        history: ["LAL", "UTA"]
     }],
     2032: [{
         nativeTeam: "UTA",
@@ -1223,6 +1231,10 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     2033: [{
         nativeTeam: "UTA",
         year: 2033
+    },{
+        nativeTeam: "LAL",
+        year: 2033,
+        history: ["LAL", "UTA"]
     }],
   },
   WAS: {

@@ -1,11 +1,11 @@
 import { z } from "zod";
-import type { TeamInfoType, MapDataInputType } from "~/types/MapTypes";
+import type { TeamInfoType, LeagueTeamType } from "~/types/MapTypes";
 import { mlbTeamsRanked, type MLBTeamType } from "~/data/MLB/MLBdata";
 import { MLBFieldData, AAAFieldData, AAFieldData, HAFieldData, SAFieldData } from "~/data/MLB/BaseballStadiumData";
 
-export type MLBTeamLeagueParent = MapDataInputType & { parentTeam: MLBTeamType | undefined};
+export type MLBTeamLeagueParent = LeagueTeamType & { parentTeam: MLBTeamType | undefined};
 
-export const getMLBParentTeam = (props: MapDataInputType): MLBTeamLeagueParent => {
+export const getMLBParentTeam = (props: LeagueTeamType): MLBTeamLeagueParent => {
   const { league, team } = props;
   let parentTeam: MLBTeamType | undefined;
   const MLBenum = z.enum(mlbTeamsRanked);

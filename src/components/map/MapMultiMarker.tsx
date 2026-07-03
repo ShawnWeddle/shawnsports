@@ -12,7 +12,7 @@ import {
   FaVolleyball,
 } from "react-icons/fa6";
 import { markerData } from "~/data/map/allMapData";
-import type { MapDataInputType } from "~/types/MapTypes";
+import type { LeagueTeamType } from "~/types/MapTypes";
 import { MapTag } from "./MapTag";
 
 type IconProps = {
@@ -38,7 +38,7 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
 };
 
 type MultiMarkerProps = {
-  data: MapDataInputType[];
+  data: LeagueTeamType[];
 };
 
 const MultiMarker: React.FC<MultiMarkerProps> = (props: MultiMarkerProps) => {

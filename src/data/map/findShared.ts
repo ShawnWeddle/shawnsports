@@ -1,4 +1,4 @@
-import type { MapDataInputType } from "~/types/MapTypes"; 
+import type { LeagueTeamType } from "~/types/MapTypes"; 
 
 export function findShared() {
   const shared = [];

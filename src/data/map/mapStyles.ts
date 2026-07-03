@@ -1,5 +1,5 @@
 import type { SportType, LeagueType } from "~/data/map/mapData";
-import { SportList, FullLeagueList, convertLeagueToSport } from "~/data/map/mapData";
+import { sportList, FullLeagueList, convertLeagueToSport } from "~/data/map/mapData";
 
 export const leagueStyles = (league: LeagueType) => {
   switch(league){

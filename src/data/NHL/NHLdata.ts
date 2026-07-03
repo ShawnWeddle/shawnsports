@@ -13,7 +13,7 @@ export const nhlTeamsAll = [
   "MMR", "MNS", "QUE", "ARI"
 ] as const;
 
-export const ahlTeamsOrder = [
+export const ahlTeamsList = [
   "AHL-ANA",
   "AHL-BOS",
   "AHL-BUF",
@@ -48,7 +48,7 @@ export const ahlTeamsOrder = [
   "AHL-WIN",
 ] as const;
 
-export const echlTeamsOrder = [
+export const echlTeamsList = [
   "ECHL-ANA",
   "ECHL-BOS",
   "ECHL-BUF",
@@ -91,8 +91,8 @@ export type LeagueType = "NHL" | "AHL" | "ECHL" | "PWHL";
 export const leagueMapList: Set<LeagueType> = new Set(["NHL", "AHL", "ECHL", "PWHL"]);
 
 export type NHLTeamType = typeof nhlTeamsRanked[number];
-export type AHLTeamType = typeof ahlTeamsOrder[number];
-export type ECHLTeamType = typeof echlTeamsOrder[number];
+export type AHLTeamType = typeof ahlTeamsList[number];
+export type ECHLTeamType = typeof echlTeamsList[number];
 export type PWHLTeamType = typeof pwhlTeamsAll[number];
 
 export type AllNHLTeamType = typeof nhlTeamsAll[number];

@@ -1,15 +1,17 @@
-import type { MapDataInputType } from "~/types/MapTypes";
+import type { LeagueTeamType } from "~/types/MapTypes";
 import { Fragment } from "react";
 import { BaseballTag } from "./BaseballTag";
 import { HockeyTag } from "./HockeyTag";
+import { CGYWINTag } from "./HockeyTag[CGY-WIN]";
 import { BasketballTag } from "./BasketballTag";
+import { OKCTag } from "./BasketballTag[OKC]";
 import { BasicTag } from "./BasicTag";
 import { getMLBParentTeam } from "~/utils/getBaseballArc";
 import { getNBAParentTeam } from "~/utils/getBasketballArc";
 import { getNHLParentTeam } from "~/utils/getHockeyArc";
 
 type MapTagProps = {
-  data: MapDataInputType[];
+  data: LeagueTeamType[];
 };
 
 const Break: React.FC = () => {
@@ -22,6 +24,46 @@ const Break: React.FC = () => {
 
 export const MapTag: React.FC<MapTagProps> = (props: MapTagProps) => {
   const { data } = props;
+
+  //Special Marker for Calgary, Winnipeg, and Oklahoma City
+  if (
+    data[0]?.league === "NHL" &&
+    data[0].team === "CGY" &&
+    data[1]?.league === "AHL" &&
+    data[1].team === "AHL-CGY"
+  ) {
+    return (
+      <div className="rounded-lg bg-white p-1 shadow-lg">
+        <CGYWINTag team="CGY" />
+      </div>
+    );
+  }
+  if (
+    data[0]?.league === "NHL" &&
+    data[0].team === "WIN" &&
+    data[1]?.league === "AHL" &&
+    data[1].team === "AHL-WIN"
+  ) {
+    return (
+      <div className="rounded-lg bg-white p-1 shadow-lg">
+        <CGYWINTag team="WIN" />
+      </div>
+    );
+  }
+
+  if (
+    data[0]?.league === "NBA" &&
+    data[0].team === "OKC" &&
+    data[1]?.league === "NGL" &&
+    data[1].team === "NGL-OKC"
+  ) {
+    return (
+      <div className="rounded-lg bg-white p-1 shadow-lg">
+        <OKCTag team="OKC" />
+      </div>
+    );
+  }
+
   const teamInfoList = data.map((d, index) => {
     const { league, team } = d;
     switch (league) {

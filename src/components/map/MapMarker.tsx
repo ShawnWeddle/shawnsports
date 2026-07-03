@@ -1,43 +1,13 @@
 import { cn } from "~/lib/utils";
 import { MapMarker, MarkerContent, MarkerPopup } from "~/components/ui/map";
-import type { SportType } from "~/data/map/mapData";
 import { convertLeagueToSport } from "~/data/map/mapData";
 import { leagueStyles } from "~/data/map/mapStyles";
-import {
-  FaBaseball,
-  FaBasketball,
-  FaFootball,
-  FaHockeyPuck,
-  FaFutbol,
-  FaVolleyball,
-} from "react-icons/fa6";
 import { markerData } from "~/data/map/allMapData";
-import type { MapDataInputType } from "~/types/MapTypes";
+import type { LeagueTeamType } from "~/types/MapTypes";
+import Icon from "./MapIcon";
 import { MapTag } from "./MapTag";
 
-type IconProps = {
-  sport: SportType;
-};
-
-const Icon: React.FC<IconProps> = (props: IconProps) => {
-  const { sport } = props;
-  switch (sport) {
-    case "Baseball":
-      return <FaBaseball />;
-    case "Basketball":
-      return <FaBasketball />;
-    case "Football":
-      return <FaFootball />;
-    case "Hockey":
-      return <FaHockeyPuck />;
-    case "Soccer":
-      return <FaFutbol />;
-    case "Volleyball":
-      return <FaVolleyball />;
-  }
-};
-
-const Marker: React.FC<MapDataInputType> = (props: MapDataInputType) => {
+const Marker: React.FC<LeagueTeamType> = (props: LeagueTeamType) => {
   const { league } = props;
   const { coordinates } = markerData(props);
   return (

@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
 import type { LeagueType, SportType } from "~/data/map/mapData";
+import type { LeagueTeamType } from "~/types/MapTypes";
 import { initialLeagueList } from "~/data/map/mapData";
 
 export const MapContext = createContext<ContextType | null>(null);
@@ -16,15 +17,22 @@ type MapContextProviderProps = {
 
 type MapReducerState = {
   activeLeagues: Set<LeagueType>;
+  activeTeam: LeagueTeamType | undefined;
   sport: SportType | "All";
 };
 
 type MapPayloadType = {
-  league: LeagueType;
+  league?: LeagueType;
+  team?: LeagueTeamType;
 };
 
 type MapReducerAction = {
-  type: "CHANGE_LEAGUES" | "ALL_LEAGUES" | "NO_LEAGUES";
+  type:
+    | "CHANGE_LEAGUES"
+    | "CHANGE_MAP_MODE"
+    | "ALL_LEAGUES"
+    | "NO_LEAGUES"
+    | "SET_ACTIVE_TEAM";
   payload: MapPayloadType;
 };
 
@@ -48,6 +56,8 @@ export const mapReducer = (
       return { ...state, activeLeagues: initialLeagueList("All").options };
     case "NO_LEAGUES":
       return { ...state, activeLeagues: new Set<LeagueType>([]) };
+    case "SET_ACTIVE_TEAM":
+      return { ...state, activeTeam: action.payload.team };
     default:
       return state;
   }
@@ -57,6 +67,7 @@ export const MapContextProvider = (props: MapContextProviderProps) => {
   const { sport, children } = props;
   const [mapState, mapDispatch] = useReducer(mapReducer, {
     activeLeagues: initialLeagueList(sport).start,
+    activeTeam: undefined,
     sport,
   });
 

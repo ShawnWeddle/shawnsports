@@ -1,4 +1,5 @@
 import { cn } from "~/lib/utils";
+import { useMapContext } from "~/hooks/useMap";
 import type { NBATeamLeagueParent } from "~/utils/getBasketballArc";
 import { NBAArenaData, NGLArenaData } from "~/data/NBA/BasketballArenaData";
 import { NBAstyleData } from "~/data/NBA/NBAstyleData";
@@ -6,7 +7,10 @@ import { NBAstyleData } from "~/data/NBA/NBAstyleData";
 export const BasketballTag: React.FC<NBATeamLeagueParent> = (
   props: NBATeamLeagueParent
 ) => {
-  const { league, parentTeam } = props;
+  const { team, parentTeam } = props;
+  const { league } = team;
+  const { mapState, mapDispatch } = useMapContext();
+  const { sport } = mapState;
   if (parentTeam) {
     return (
       <>
@@ -33,6 +37,20 @@ export const BasketballTag: React.FC<NBATeamLeagueParent> = (
           {NGLArenaData[`NGL-${parentTeam}`].location}{" "}
           {NGLArenaData[`NGL-${parentTeam}`].name}
         </p>
+        {sport == "Basketball" && (
+          <div className="flex w-full justify-center">
+            <button
+              onClick={() => {
+                mapDispatch({
+                  type: "SET_ACTIVE_TEAM",
+                  payload: { team: team },
+                });
+              }}
+            >
+              Show Path
+            </button>
+          </div>
+        )}
       </>
     );
   } else {

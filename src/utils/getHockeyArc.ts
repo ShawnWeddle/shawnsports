@@ -3,12 +3,17 @@ import type { TeamInfoType, LeagueTeamType } from "~/types/MapTypes";
 import { nhlTeamsRanked, type NHLTeamType } from "~/data/NHL/NHLdata";
 import { NHLArenaData, AHLArenaData, ECHLArenaData } from "~/data/NHL/HockeyArenaData";
 
-export type NHLTeamLeagueParent = LeagueTeamType & { parentTeam: NHLTeamType | undefined};
+export type NHLTeamLeagueParent = { 
+  team: LeagueTeamType;
+  parentTeam: NHLTeamType | undefined;
+  affiliates: LeagueTeamType[];
+};
 
 export const getNHLParentTeam = (props: LeagueTeamType): NHLTeamLeagueParent => {
   const { league, team } = props;
   let parentTeam: NHLTeamType | undefined;
   const NHLenum = z.enum(nhlTeamsRanked);
+  const affiliates: LeagueTeamType[] = [];
   switch(league){
     case "NFL":
     case "CFL":
@@ -33,7 +38,14 @@ export const getNHLParentTeam = (props: LeagueTeamType): NHLTeamLeagueParent => 
       parentTeam = NHLenum.parse(team.split("-")[1]);
       break;
   }
-  return { ...props, parentTeam };
+  if(parentTeam){
+    affiliates.push({league: "NHL", team: parentTeam});
+    affiliates.push({league: "AHL", team: `AHL-${parentTeam}`});
+    if(parentTeam !== "CBJ" && parentTeam !== "UTA"){
+      affiliates.push({league: "ECHL", team: `ECHL-${parentTeam}`});
+    }
+  }
+  return { team: props, parentTeam, affiliates };
 }
 
 type ArcData = {

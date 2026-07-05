@@ -3,12 +3,17 @@ import type { TeamInfoType, LeagueTeamType } from "~/types/MapTypes";
 import { mlbTeamsRanked, type MLBTeamType } from "~/data/MLB/MLBdata";
 import { MLBFieldData, AAAFieldData, AAFieldData, HAFieldData, SAFieldData } from "~/data/MLB/BaseballStadiumData";
 
-export type MLBTeamLeagueParent = LeagueTeamType & { parentTeam: MLBTeamType | undefined};
+export type MLBTeamLeagueParent = { 
+  team: LeagueTeamType;
+  parentTeam: MLBTeamType | undefined;
+  affiliates: LeagueTeamType[];
+};
 
-export const getMLBParentTeam = (props: LeagueTeamType): MLBTeamLeagueParent => {
-  const { league, team } = props;
+export const getMLBParentTeam = (input: LeagueTeamType): MLBTeamLeagueParent => {
+  const { league, team } = input;
   let parentTeam: MLBTeamType | undefined;
   const MLBenum = z.enum(mlbTeamsRanked);
+  const affiliates: LeagueTeamType[] = [];
   switch(league){
     case "NFL":
     case "CFL":
@@ -33,7 +38,14 @@ export const getMLBParentTeam = (props: LeagueTeamType): MLBTeamLeagueParent => 
       parentTeam = MLBenum.parse(team.split("-")[1]);
       break;
   }
-  return { ...props, parentTeam };
+  if(parentTeam){
+    affiliates.push({league: "MLB", team: parentTeam});
+    affiliates.push({league: "AAA", team: `AAA-${parentTeam}`});
+    affiliates.push({league: "AA", team: `AA-${parentTeam}`});
+    affiliates.push({league: "HA", team: `HA-${parentTeam}`});
+    affiliates.push({league: "SA", team: `SA-${parentTeam}`});
+  }
+  return { team: input, parentTeam, affiliates };
 }
 
 type ArcData = {

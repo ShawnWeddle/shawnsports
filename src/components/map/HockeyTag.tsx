@@ -1,4 +1,5 @@
 import { cn } from "~/lib/utils";
+import { useMapContext } from "~/hooks/useMap";
 import type { NHLTeamLeagueParent } from "~/utils/getHockeyArc";
 import {
   NHLArenaData,
@@ -10,7 +11,10 @@ import { NHLstyleData } from "~/data/NHL/NHLstyleData";
 export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
   props: NHLTeamLeagueParent
 ) => {
-  const { league, parentTeam } = props;
+  const { team, parentTeam } = props;
+  const { league } = team;
+  const { mapState, mapDispatch } = useMapContext();
+  const { sport } = mapState;
   if (parentTeam) {
     return (
       <>
@@ -50,6 +54,20 @@ export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
             {ECHLArenaData[`ECHL-${parentTeam}`].location}{" "}
             {ECHLArenaData[`ECHL-${parentTeam}`].name}
           </p>
+        )}
+        {sport == "Hockey" && (
+          <div className="flex w-full justify-center">
+            <button
+              onClick={() => {
+                mapDispatch({
+                  type: "SET_ACTIVE_TEAM",
+                  payload: { team: team },
+                });
+              }}
+            >
+              Show Path
+            </button>
+          </div>
         )}
       </>
     );

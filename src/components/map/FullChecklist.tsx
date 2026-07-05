@@ -20,7 +20,7 @@ import Icon from "./MapIcon";
 
 const FullCheckList: React.FC = () => {
   const { mapState, mapDispatch } = useMapContext();
-  const { sport: littleSport, activeLeagues } = mapState;
+  const { sport: littleSport, activeLeagues, activeTeam } = mapState;
 
   const checkListAll = sportList.map((sport, index) => {
     const checks = sportLeagueList[sport].map((league, index) => {
@@ -59,7 +59,7 @@ const FullCheckList: React.FC = () => {
     );
   });
 
-  const checkList: JSX.Element[] = [
+  const checkListSingle: JSX.Element[] = [
     ...initialLeagueList(littleSport).options,
   ].map((league, index) => {
     return (
@@ -80,51 +80,68 @@ const FullCheckList: React.FC = () => {
     );
   });
 
-  switch (littleSport) {
-    case "Football":
-    case "Basketball":
-    case "Baseball":
-    case "Hockey":
-    case "Soccer":
-    case "Volleyball":
-      return (
-        <div className="absolute left-3 top-3 rounded bg-white p-1">
-          {checkList}
+  const HidePathButton = () => {
+    return (
+      <Button
+        size="default"
+        variant="destructive"
+        onClick={() => {
+          mapDispatch({
+            type: "SET_ACTIVE_TEAM",
+            payload: { team: undefined },
+          });
+        }}
+      >
+        Hide Path
+      </Button>
+    );
+  };
+
+  if (activeTeam) {
+    return (
+      <div className="absolute left-3 top-3 rounded bg-white p-1">
+        <HidePathButton />
+      </div>
+    );
+  } else if (littleSport === "All") {
+    return (
+      <div className="absolute left-3 top-3 rounded bg-white p-1">
+        <Accordion type="multiple">{checkListAll}</Accordion>
+        <div className="flex flex-col">
+          <Button
+            className="text-xs"
+            variant="ghost"
+            size="xs"
+            onClick={() => {
+              mapDispatch({
+                type: "ALL_LEAGUES",
+                payload: { league: "MLV" },
+              });
+            }}
+            disabled={activeLeagues.size === 18}
+          >
+            Select All
+          </Button>
+          <Button
+            className="text-xs"
+            variant="ghost"
+            size="xs"
+            onClick={() => {
+              mapDispatch({ type: "NO_LEAGUES", payload: { league: "MLV" } });
+            }}
+            disabled={activeLeagues.size === 0}
+          >
+            Deselect All
+          </Button>
         </div>
-      );
-    case "All":
-      return (
-        <div className="absolute left-3 top-3 rounded bg-white p-1">
-          <Accordion type="multiple">{checkListAll}</Accordion>
-          <div className="flex flex-col">
-            <Button
-              className="text-xs"
-              variant="ghost"
-              size="xs"
-              onClick={() => {
-                mapDispatch({
-                  type: "ALL_LEAGUES",
-                  payload: { league: "MLV" },
-                });
-              }}
-              disabled={activeLeagues.size === 18}
-            >
-              Select All
-            </Button>
-            <Button
-              className="text-xs"
-              variant="ghost"
-              size="xs"
-              onClick={() => {
-                mapDispatch({ type: "NO_LEAGUES", payload: { league: "MLV" } });
-              }}
-              disabled={activeLeagues.size === 0}
-            >
-              Deselect All
-            </Button>
-          </div>
-        </div>
-      );
+      </div>
+    );
+  } else {
+    return (
+      <div className="absolute left-3 top-3 rounded bg-white p-1">
+        {checkListSingle}
+      </div>
+    );
   }
 };
 

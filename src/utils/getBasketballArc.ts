@@ -3,12 +3,17 @@ import type { LeagueTeamType } from "~/types/MapTypes";
 import { nbaTeamsRanked, type NBATeamType } from "~/data/NBA/NBAdata";
 import { NBAArenaData, NGLArenaData } from "~/data/NBA/BasketballArenaData";
 
-export type NBATeamLeagueParent = LeagueTeamType & { parentTeam: NBATeamType | undefined};
+export type NBATeamLeagueParent = { 
+  team: LeagueTeamType;
+  parentTeam: NBATeamType | undefined;
+  affiliates: LeagueTeamType[];
+};
 
 export const getNBAParentTeam = (props: LeagueTeamType): NBATeamLeagueParent => {
   const { league, team } = props;
   let parentTeam: NBATeamType | undefined;
   const NBAenum = z.enum(nbaTeamsRanked);
+  const affiliates: LeagueTeamType[] = [];
   switch(league){
     case "NFL":
     case "CFL":
@@ -35,7 +40,11 @@ export const getNBAParentTeam = (props: LeagueTeamType): NBATeamLeagueParent => 
       }
       break;
   }
-  return { ...props, parentTeam };
+  if(parentTeam){
+    affiliates.push({league: "NBA", team: parentTeam});
+    affiliates.push({league: "NGL", team: `NGL-${parentTeam}`});
+  }
+  return { team: props, parentTeam, affiliates };
 }
 
 type ArcData = {

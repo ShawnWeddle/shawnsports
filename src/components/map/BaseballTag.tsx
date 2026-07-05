@@ -1,3 +1,5 @@
+import { cn } from "~/lib/utils";
+import { useMapContext } from "~/hooks/useMap";
 import type { MLBTeamLeagueParent } from "~/utils/getBaseballArc";
 import {
   MLBFieldData,
@@ -7,12 +9,15 @@ import {
   SAFieldData,
 } from "~/data/MLB/BaseballStadiumData";
 import { MLBstyleData } from "~/data/MLB/MLBstyleData";
-import { cn } from "~/lib/utils";
+import { Button } from "../ui/button";
 
 export const BaseballTag: React.FC<MLBTeamLeagueParent> = (
   props: MLBTeamLeagueParent
 ) => {
-  const { league, parentTeam } = props;
+  const { team, parentTeam } = props;
+  const { league } = team;
+  const { mapState, mapDispatch } = useMapContext();
+  const { sport, activeTeam } = mapState;
   if (parentTeam) {
     return (
       <>
@@ -75,6 +80,23 @@ export const BaseballTag: React.FC<MLBTeamLeagueParent> = (
           {SAFieldData[`SA-${parentTeam}`].location}{" "}
           {SAFieldData[`SA-${parentTeam}`].name}
         </p>
+        {sport == "Baseball" && (
+          <div className="flex w-full justify-center">
+            <Button
+              variant="ghost"
+              size="xs"
+              disabled={activeTeam !== undefined}
+              onClick={() => {
+                mapDispatch({
+                  type: "SET_ACTIVE_TEAM",
+                  payload: { team: team },
+                });
+              }}
+            >
+              Show Path
+            </Button>
+          </div>
+        )}
       </>
     );
   } else {

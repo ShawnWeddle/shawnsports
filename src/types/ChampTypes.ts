@@ -6,6 +6,20 @@ import { type AllMLBTeamType } from "~/data/MLB/MLBdata";
 import { type MLSTeamType } from "~/data/MLS/MLSdata";
 import { type AllCFLTeamType } from "~/data/CFL/CFLdata";
 
+export type F1ChampionType = {
+  year: number;
+  driver: {
+    country: string;
+    countryCode: string;
+    name: string;
+  };
+  constructor: {
+    country: string;
+    countryCode: string;
+    name: string;
+  };
+}
+
 export type UniversalFinalsType = {
   winningTeam: string;
   losingTeam: string;

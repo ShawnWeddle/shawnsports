@@ -15,11 +15,12 @@ export const nbaTeamsAlpha = [
   "POR", "SAC", "SAS", "TOR", "UTA", "WAS",
 ] as const;
 
-export const nbaTeamsRanked = [
-  "BOS", "OKC", "DEN", "MIN", "DAL", "NYK", "PHI", "MEM", 
-  "MIL", "MIA", "IND", "NOP", "CLE", "ORL", "SAC", "HOU", 
-  "LAC", "PHO", "GSW", "LAL", "ATL", "SAS", "UTA", "TOR", 
-  "CHI", "POR", "CHO", "DET", "WAS", "BRK"
+export const nbaTeamsRanked = [ 
+  "POR", "GSW", "SAC", "LAC", "LAL", "PHO", 
+  "UTA", "DEN", "SAS", "OKC", "DAL", "HOU", 
+  "MIN", "NOP", "MEM", "MIL", "CHI", "IND", 
+  "ATL", "DET", "CLE", "ORL", "CHO", "MIA", 
+  "TOR", "WAS", "PHI", "NYK", "BRK", "BOS",
 ] as const;
 
 export const nbaTeamsRankedWorst: NBATeamType[] = [

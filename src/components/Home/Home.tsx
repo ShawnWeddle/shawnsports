@@ -1,3 +1,4 @@
+import Link from "next/link";
 import HomeNav from "./HomeNav";
 import NoteFromDev from "./NoteFromDev";
 import {
@@ -6,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
+import { Button } from "../ui/button";
 
 const HomeComp: React.FC = () => {
   return (
@@ -22,6 +24,11 @@ const HomeComp: React.FC = () => {
       </Card>
       <HomeNav />
       <NoteFromDev />
+      <div className="flex justify-center">
+        <Button variant="ghost" className="text-home hover:bg-home/30">
+          <Link href="/map">Map of all leagues</Link>
+        </Button>
+      </div>
     </>
   );
 };

@@ -19,14 +19,14 @@ export const getSharedLocations = (activeLeagues: Set<LeagueType>) => {
 
 const sharedLocations: LeagueTeamType[][] = [
   [
-    { "league": "NFL", "team": "LAR" },
     { "league": "NFL", "team": "LAC" },
+    { "league": "NFL", "team": "LAR" },
   ],[
     { "league": "NFL", "team": "SEA" },
     { "league": "MLS", "team": "SEA" },
   ],[
-    { "league": "NFL", "team": "NYJ" },
     { "league": "NFL", "team": "NYG" },
+    { "league": "NFL", "team": "NYJ" },
   ],[
     { "league": "NFL", "team": "CHI" },
     { "league": "MLS", "team": "CHI" },

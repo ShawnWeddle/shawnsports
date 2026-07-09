@@ -85,15 +85,14 @@ export const BaseballTag: React.FC<MLBTeamLeagueParent> = (
             <Button
               variant="ghost"
               size="xs"
-              disabled={activeTeam !== undefined}
               onClick={() => {
                 mapDispatch({
                   type: "SET_ACTIVE_TEAM",
-                  payload: { team: team },
+                  payload: { team: activeTeam ? undefined : team },
                 });
               }}
             >
-              Show Path
+              {activeTeam === undefined ? "Show Path" : "Hide Path"}
             </Button>
           </div>
         )}

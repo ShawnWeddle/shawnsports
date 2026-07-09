@@ -7,6 +7,7 @@ import {
   ECHLArenaData,
 } from "~/data/NHL/HockeyArenaData";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
+import { Button } from "../ui/button";
 
 export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
   props: NHLTeamLeagueParent
@@ -14,7 +15,7 @@ export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
   const { team, parentTeam } = props;
   const { league } = team;
   const { mapState, mapDispatch } = useMapContext();
-  const { sport } = mapState;
+  const { sport, activeTeam } = mapState;
   if (parentTeam) {
     return (
       <>
@@ -57,16 +58,18 @@ export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
         )}
         {sport == "Hockey" && (
           <div className="flex w-full justify-center">
-            <button
+            <Button
+              variant="ghost"
+              size="xs"
               onClick={() => {
                 mapDispatch({
                   type: "SET_ACTIVE_TEAM",
-                  payload: { team: team },
+                  payload: { team: activeTeam ? undefined : team },
                 });
               }}
             >
-              Show Path
-            </button>
+              {activeTeam === undefined ? "Show Path" : "Hide Path"}
+            </Button>
           </div>
         )}
       </>

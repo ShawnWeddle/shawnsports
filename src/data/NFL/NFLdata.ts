@@ -1,8 +1,8 @@
-export const nflTeamsRanked = [
-  "KAN", "SFO", "BAL", "DET", "BUF", "HOU", "TAM", "GNB",
-  "DAL", "CLE", "PHI", "MIA", "PIT", "LAR", "CIN", "JAX",
-  "SEA", "IND", "NOR", "LVR", "DEN", "MIN", "NYJ", "CHI",
-  "ATL", "TEN", "NYG", "LAC", "ARI", "NWE", "WAS", "CAR",
+export const nflTeamsRanked = [ 
+  "SEA", "SFO", "LAR", "LAC", "LVR", "ARI", "DEN", "DAL", 
+  "HOU", "KAN", "MIN", "NOR", "GNB", "CHI", "TEN", "IND", 
+  "CIN", "ATL", "DET", "TAM", "CLE", "JAX", "CAR", "MIA", 
+  "PIT", "BUF", "WAS", "BAL", "PHI", "NYJ", "NYG", "NWE", 
 ] as const;
 
 export const nflTeamsAll = [

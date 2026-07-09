@@ -1,10 +1,9 @@
 export const mlbTeamsRanked = [ 
-  "COL", "CHC", "ATL", "MIL", "NYM", 
-  "TBR", "TEX", "SEA", "NYY", "DET", "TOR", 
-  "MIN", "KCR", "LAD", "CLE", "MIA", "OAK", 
-  "CHW", "PIT", "SDP", "HOU", "BAL", "SFG",
-  "WSN", "BOS", "PHI", "CIN", "ARI", "STL", 
-  "LAA", 
+  "SFG", "SEA", "OAK", "LAD", "LAA", "SDP", 
+  "ARI", "COL", "TEX", "HOU", "KCR", "MIN", 
+  "STL", "MIL", "CHC", "CHW", "CIN", "ATL", 
+  "DET", "TBR", "CLE", "MIA", "PIT", "TOR", 
+  "WSN", "BAL", "PHI", "NYY", "NYM", "BOS",
 ] as const;
 
 export const mlbTeamsAll = [

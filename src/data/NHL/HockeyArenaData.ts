@@ -658,11 +658,11 @@ export const ECHLArenaData: {[Key in ECHLTeamType] : TeamInfoType} = {
         },
         "ECHL-NYR": {
             coordinates: {
-              latitude: 40.478,
-              longitude: -88.996
+              latitude: 36.853,
+              longitude: -76.287
             },
-            location: "Bloomington",
-            name: "Bison",
+            location: "Norfolk",
+            name: "Admirals",
         },
         "ECHL-OTT": {
             coordinates: {
@@ -754,12 +754,12 @@ export const ECHLArenaData: {[Key in ECHLTeamType] : TeamInfoType} = {
         },
         "ECHL-WIN": {
             coordinates: {
-              latitude: 36.853,
-              longitude: -76.287
+              latitude: 40.478,
+              longitude: -88.996
             },
-            location: "Norfolk",
-            name: "Admirals",
-        }
+            location: "Bloomington",
+            name: "Bison",
+        },
     }
 
 export const PWHLArenaData: {[Key in PWHLTeamType] : TeamInfoType} = {

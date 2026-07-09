@@ -1,4 +1,5 @@
 import { cn } from "~/lib/utils";
+import { useMapContext } from "~/hooks/useMap";
 import type { NHLTeamType } from "~/data/NHL/NHLdata";
 import {
   NHLArenaData,
@@ -6,11 +7,14 @@ import {
   ECHLArenaData,
 } from "~/data/NHL/HockeyArenaData";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
+import { Button } from "../ui/button";
 
 export const CGYWINTag: React.FC<{ team: NHLTeamType }> = (props: {
   team: NHLTeamType;
 }) => {
   const { team } = props;
+  const { mapState, mapDispatch } = useMapContext();
+  const { sport, activeTeam } = mapState;
   if (team === "CGY" || team === "WIN") {
     return (
       <>
@@ -43,6 +47,26 @@ export const CGYWINTag: React.FC<{ team: NHLTeamType }> = (props: {
           {ECHLArenaData[`ECHL-${team}`].location}{" "}
           {ECHLArenaData[`ECHL-${team}`].name}
         </p>
+        {sport == "Hockey" && (
+          <div className="flex w-full justify-center">
+            <Button
+              variant="ghost"
+              size="xs"
+              onClick={() => {
+                mapDispatch({
+                  type: "SET_ACTIVE_TEAM",
+                  payload: {
+                    team: activeTeam
+                      ? undefined
+                      : { league: "NHL", team: team },
+                  },
+                });
+              }}
+            >
+              {activeTeam === undefined ? "Show Path" : "Hide Path"}
+            </Button>
+          </div>
+        )}
       </>
     );
   } else {

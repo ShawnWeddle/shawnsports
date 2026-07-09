@@ -1,13 +1,13 @@
 export const cflTeamsRanked = [
-  "TOR", 
-  "WPG", 
-  "MTL", 
-  "SSK", 
-  "OTT", 
   "BCL", 
-  "EDM", 
-  "HAM", 
   "CGY", 
+  "EDM", 
+  "SSK", 
+  "WPG", 
+  "HAM", 
+  "TOR", 
+  "OTT", 
+  "MTL", 
 ] as const;
 
 export const cflTeamsAll = [

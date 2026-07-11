@@ -4,6 +4,7 @@ import SportsMarkers from "./MapMarkers";
 import FullCheckList from "./FullChecklist";
 import { useMapContext } from "~/hooks/useMap";
 import MapArc from "./MapArc";
+// import CityMarkers from "./CityMarkers";
 
 const FullMap: React.FC = () => {
   const { mapState } = useMapContext();

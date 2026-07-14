@@ -7,6 +7,8 @@ import {
   ECHLArenaData,
 } from "~/data/NHL/HockeyArenaData";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
+import { AHLstyleData } from "~/styles/AHLstyleData";
+import { getHockeyAfils } from "~/utils/getHockeyAfils";
 import { Button } from "../ui/button";
 
 export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
@@ -33,9 +35,12 @@ export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
         <p
           className={cn("rounded px-1 py-0.5", {
             "border-2 py-1": league === "AHL",
-            [NHLstyleData[parentTeam].primaryBackground]: league === "AHL",
-            [NHLstyleData[parentTeam].secondaryBorder]: league === "AHL",
-            [NHLstyleData[parentTeam].simpleText]: league === "AHL",
+            [AHLstyleData[getHockeyAfils(`AHL-${parentTeam}`)]
+              .primaryBackground]: league === "AHL",
+            [AHLstyleData[getHockeyAfils(`AHL-${parentTeam}`)].secondaryBorder]:
+              league === "AHL",
+            [AHLstyleData[getHockeyAfils(`AHL-${parentTeam}`)].simpleText]:
+              league === "AHL",
           })}
         >
           <span className="font-bold">AHL: </span>

@@ -110,7 +110,7 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
                 type: "RANK_ENTRY",
                 payload: {
                   entry: unRankedEntry,
-                  rank: parseInt(newRank),
+                  rank: newRank === "" ? -99 : parseInt(newRank),
                 },
               });
               setNewRank("");

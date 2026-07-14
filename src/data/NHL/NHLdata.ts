@@ -81,6 +81,74 @@ export const echlTeamsList = [
   "ECHL-WIN",
 ] as const;
 
+export const ahlTeamsListReal = [
+  "ABB",
+  "BAK",
+  "BEL",
+  "CGY",
+  "CHI",
+  "CLE",
+  "CLT",
+  "COL",
+  "CVF",
+  "GRG",
+  "HAM",
+  "HER",
+  "HFD",
+  "HSK",
+  "IOW",
+  "LAV",
+  "LVP",
+  "MBM",
+  "MIL",
+  "ONT",
+  "PRO",
+  "RFD",
+  "ROC",
+  "SDG",
+  "SJB",
+  "SPR",
+  "SYR",
+  "TEX",
+  "TOR",
+  "TUC",
+  "UTI",
+  "WBS", 
+] as const;
+
+export const echlTeamsListReal = [
+  "ADK",
+  "ALN",
+  "ATL",
+  "BLM",
+  "CIN",
+  "FLA",
+  "FWK",
+  "GSO",
+  "GVL",
+  "IDH",
+  "IND",
+  "JAX",
+  "KAL",
+  "KCM",
+  "MNE",
+  "NMG",
+  "NOR",
+  "ORL",
+  "RCR",
+  "REA",
+  "SAV",
+  "SCS",
+  "TAH",
+  "TOL",
+  "TRE",
+  "TRL",
+  "TUL",
+  "WHL",
+  "WIC",
+  "WOR",
+] as const;
+
 export const pwhlTeamsAll = [
   "BOS", "DET", "HAM", "MIN", "MTL", "NYS", 
   "OTT", "SEA", "SJS", "TOR", "VAN", "VEG",
@@ -94,6 +162,7 @@ export type NHLTeamType = typeof nhlTeamsRanked[number];
 export type AHLTeamType = typeof ahlTeamsList[number];
 export type ECHLTeamType = typeof echlTeamsList[number];
 export type PWHLTeamType = typeof pwhlTeamsAll[number];
+export type AHLTeamTypeReal = typeof ahlTeamsListReal[number];
 
 export type AllNHLTeamType = typeof nhlTeamsAll[number];
 

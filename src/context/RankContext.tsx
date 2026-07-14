@@ -87,6 +87,35 @@ export const RankReducer = (
           sport,
         };
         return newState;
+      } else if (newRank === -100 && entry !== null) {
+        // Remove from Unranked
+        const newUnRankedEntries = [...unRankedEntries];
+        const eRank = fullRank.get(entry) ?? 100;
+        newUnRankedEntries[eRank] = null;
+
+        // Add to Ranked
+        const indexToPlace = rankedEntries.findIndex((item) => {
+          return item === null;
+        });
+        console.log(indexToPlace);
+        if (indexToPlace > -1) {
+          console.log("MF we good");
+          const newRankedEntries = [...rankedEntries];
+          newRankedEntries[indexToPlace] = entry;
+          const newState = {
+            unRankedEntries: newUnRankedEntries,
+            rankedEntries: newRankedEntries,
+            sport,
+          };
+          return newState;
+        } else {
+          console.log("MF we bad");
+          return {
+            unRankedEntries: [...unRankedEntries],
+            rankedEntries: [...rankedEntries],
+            sport,
+          };
+        }
       } else {
         return {
           unRankedEntries: [...unRankedEntries],

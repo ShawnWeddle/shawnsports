@@ -8,7 +8,8 @@ import {
 } from "~/data/NHL/HockeyArenaData";
 import { NHLstyleData } from "~/data/NHL/NHLstyleData";
 import { AHLstyleData } from "~/styles/AHLstyleData";
-import { getHockeyAfils } from "~/utils/getHockeyAfils";
+import { ECHLstyleData } from "~/styles/ECHLstyleData";
+import { getAHLafils, getECHLafils } from "~/utils/getHockeyAfils";
 import { Button } from "../ui/button";
 
 export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
@@ -35,11 +36,11 @@ export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
         <p
           className={cn("rounded px-1 py-0.5", {
             "border-2 py-1": league === "AHL",
-            [AHLstyleData[getHockeyAfils(`AHL-${parentTeam}`)]
-              .primaryBackground]: league === "AHL",
-            [AHLstyleData[getHockeyAfils(`AHL-${parentTeam}`)].secondaryBorder]:
+            [AHLstyleData[getAHLafils(`AHL-${parentTeam}`)].primaryBackground]:
               league === "AHL",
-            [AHLstyleData[getHockeyAfils(`AHL-${parentTeam}`)].simpleText]:
+            [AHLstyleData[getAHLafils(`AHL-${parentTeam}`)].secondaryBorder]:
+              league === "AHL",
+            [AHLstyleData[getAHLafils(`AHL-${parentTeam}`)].simpleText]:
               league === "AHL",
           })}
         >
@@ -51,9 +52,12 @@ export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
           <p
             className={cn("rounded px-1 py-0.5", {
               "border-2 py-1": league === "ECHL",
-              [NHLstyleData[parentTeam].primaryBackground]: league === "ECHL",
-              [NHLstyleData[parentTeam].secondaryBorder]: league === "ECHL",
-              [NHLstyleData[parentTeam].simpleText]: league === "ECHL",
+              [ECHLstyleData[getECHLafils(`ECHL-${parentTeam}`)]
+                .primaryBackground]: league === "ECHL",
+              [ECHLstyleData[getECHLafils(`ECHL-${parentTeam}`)]
+                .secondaryBorder]: league === "ECHL",
+              [ECHLstyleData[getECHLafils(`ECHL-${parentTeam}`)].simpleText]:
+                league === "ECHL",
             })}
           >
             <span className="font-bold">ECHL: </span>

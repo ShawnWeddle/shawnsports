@@ -1,6 +1,6 @@
-import type { NHLTeamType, AHLTeamType, AHLTeamTypeReal } from "~/data/NHL/NHLdata";
+import type { NHLTeamType, AHLTeamType, AHLTeamTypeReal, ECHLTeamType, ECHLTeamTypeReal } from "~/data/NHL/NHLdata";
 
-export const getHockeyAfils = (inputTeam: AHLTeamType): AHLTeamTypeReal => {
+export const getAHLafils = (inputTeam: AHLTeamType): AHLTeamTypeReal => {
   switch(inputTeam){
     case "AHL-ANA": return "SDG";
     case "AHL-BOS": return "PRO";
@@ -34,5 +34,40 @@ export const getHockeyAfils = (inputTeam: AHLTeamType): AHLTeamTypeReal => {
     case "AHL-VEG": return "HSK";
     case "AHL-WAS": return "HER";
     case "AHL-WIN": return "MBM";
+  }
+};
+
+export const getECHLafils = (inputTeam: ECHLTeamType): ECHLTeamTypeReal => {
+  switch(inputTeam){
+    case "ECHL-ANA": return "TUL";
+    case "ECHL-BOS": return "MNE";
+    case "ECHL-BUF": return "WHL";
+    case "ECHL-CAR": return "GSO";
+    case "ECHL-CGY": return "RCR";
+    case "ECHL-CHI": return "IND";
+    case "ECHL-COL": return "NMG";
+    case "ECHL-DAL": return "IDH";
+    case "ECHL-DET": return "TOL";
+    case "ECHL-EDM": return "FWK";
+    case "ECHL-FLA": return "SAV";
+    case "ECHL-LAK": return "GVL";
+    case "ECHL-MIN": return "JAX";
+    case "ECHL-MTL": return "TRL";
+    case "ECHL-NJD": return "ADK";
+    case "ECHL-NSH": return "ATL";
+    case "ECHL-NYI": return "TRE";
+    case "ECHL-NYR": return "NOR";
+    case "ECHL-OTT": return "ALN";
+    case "ECHL-PHI": return "REA";
+    case "ECHL-PIT": return "FLA";
+    case "ECHL-SEA": return "KCM";
+    case "ECHL-SJS": return "WIC";
+    case "ECHL-STL": return "WOR";
+    case "ECHL-TBL": return "ORL";
+    case "ECHL-TOR": return "CIN";
+    case "ECHL-VAN": return "KAL";
+    case "ECHL-VEG": return "TAH";
+    case "ECHL-WAS": return "SCS";
+    case "ECHL-WIN": return "BLM";
   }
 }

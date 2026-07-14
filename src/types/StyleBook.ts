@@ -2,13 +2,13 @@ export type StyleBookType = {
   primary: string;
   secondary: string;
   primaryBackground: string;
-  primaryBackgroundHover: string;
+  primaryBackgroundHover?: string;
   secondaryBorder: string;
-  secondaryBorderHover: string;
+  secondaryBorderHover?: string;
   secondaryText: string;
-  secondaryTextHover: string;
+  secondaryTextHover?: string;
   simpleText: string;
-  simpleTextHover: string;
+  simpleTextHover?: string;
 };
 
 /*

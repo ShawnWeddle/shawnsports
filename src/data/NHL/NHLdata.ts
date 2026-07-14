@@ -163,6 +163,8 @@ export type AHLTeamType = typeof ahlTeamsList[number];
 export type ECHLTeamType = typeof echlTeamsList[number];
 export type PWHLTeamType = typeof pwhlTeamsAll[number];
 export type AHLTeamTypeReal = typeof ahlTeamsListReal[number];
+export type ECHLTeamTypeReal = typeof echlTeamsListReal[number];
+
 
 export type AllNHLTeamType = typeof nhlTeamsAll[number];
 

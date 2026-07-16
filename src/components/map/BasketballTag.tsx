@@ -2,7 +2,7 @@ import { cn } from "~/lib/utils";
 import { useMapContext } from "~/hooks/useMap";
 import type { NBATeamLeagueParent } from "~/utils/getBasketballArc";
 import { NBAArenaData, NGLArenaData } from "~/data/NBA/BasketballArenaData";
-import { NBAstyleData } from "~/data/NBA/NBAstyleData";
+import { NBAstyleData } from "~/styles/NBAstyleData";
 import { Button } from "../ui/button";
 
 export const BasketballTag: React.FC<NBATeamLeagueParent> = (

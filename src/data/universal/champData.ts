@@ -3,14 +3,14 @@ import { type SportType } from "../SiteData";
 import { NullBook } from "~/styles/NullBook";
 import type { NBAFinalsSeriesType, StanleyCupSeriesType, SuperBowlType, WorldSeriesType, UniversalFinalsType } from "~/types/ChampTypes";
 
-import { CFLstyleData } from "~/data/CFL/CFLstyleData";
+import { CFLstyleData } from "~/styles/CFLstyleData";
 import { F1styleData } from "~/data/F1/2026/F1styleData";
-import { MLBstyleData } from "~/data/MLB/MLBstyleData";
-import { MLSstyleData } from "~/data/MLS/MLSstyleData";
-import { NBAstyleData } from "~/data/NBA/NBAstyleData";
-import { NFLstyleData } from "~/data/NFL/NFLstyleData";
-import { NHLstyleData } from "~/data/NHL/NHLstyleData";
-import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
+import { MLBstyleData } from "~/styles/MLBstyleData";
+import { MLSstyleData } from "~/styles/MLSstyleData";
+import { NBAstyleData } from "~/styles/NBAstyleData";
+import { NFLstyleData } from "~/styles/NFLstyleData";
+import { NHLstyleData } from "~/styles/NHLstyleData";
+import { WNBAstyleData } from "~/styles/WNBAstyleData";
 
 import { CFLteamData, cflTeamsAll, type AllCFLTeamType } from "~/data/CFL/CFLdata";
 import {

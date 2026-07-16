@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const titlesArray = [
-  "Home", "Home_Map", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "F1_Champions", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", "NFL_Map"
+  "Home", "Home_Map", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "F1_Champions", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLB_Minors", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "NHL_Minors", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", "NFL_Map"
 ] as const;
 
 export const TitlesEnum = z.enum(titlesArray);
@@ -14,9 +14,9 @@ export const allNavHeads = {
   "NBA": ["NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", ], 
   "NFL": ["NFL_Super_Losers", "NFL_Super_Bowls", "NFL_Rank",  "NFL_Map", ], 
   "F1": ["F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "F1_Champions", ], 
-  "MLB": ["MLB_World_Series", "MLB_Rank", "MLB_Map", ], 
+  "MLB": ["MLB_World_Series", "MLB_Rank", "MLB_Map", "MLB_Minors", ], 
   "MLS": [ "MLS_Cups", "MLS_Rank", ],
-  "NHL": ["NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", ], 
+  "NHL": ["NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "NHL_Minors", ], 
   "WNBA": ["WNBA_Finals", "WNBA_Rank", ],
   "CFL": ["CFL_Grey_Cups", "CFL_Rank", ],
 } as const;
@@ -57,7 +57,8 @@ export const NBATitlesDesc: {[Key in NBATitlesType] : string} = {
 export const MLBTitlesDesc: {[Key in MLBTitlesType] : string} = {
   "MLB_World_Series": "See all World Series since 1903",
   "MLB_Rank": "Rank all 30 MLB teams",
-  "MLB_Map": "See a map of all MLB minor league affiliates"
+  "MLB_Map": "See a map of all MLB minor league affiliates",
+  "MLB_Minors": "See a list of all MLB minor league affiliates",
 };
 export const MLSTitlesDesc: {[Key in MLSTitlesType] : string} = {
   "MLS_Cups": "See all MLS Cups since 1996",
@@ -66,7 +67,8 @@ export const MLSTitlesDesc: {[Key in MLSTitlesType] : string} = {
 export const NHLTitlesDesc: {[Key in NHLTitlesType] : string} = {
   "NHL_Stanley_Cups": "See all Stanley Cup Finals since 1927",
   "NHL_Rank": "Rank all 32 NHL teams",
-  "NHL_Map": "See a map of all NHL, AHL, ECHL, and PWHL teams"
+  "NHL_Map": "See a map of all NHL, AHL, ECHL, and PWHL teams",
+  "NHL_Minors": "See a list of all NHL, AHL, and ECHL teams",
 };
 export const WNBATitlesDesc: {[Key in WNBATitlesType] : string} = {
   "WNBA_Finals": "See all WNBA Finals since 1997",
@@ -120,6 +122,7 @@ export const underPageTitles = [
 "rank",
 "map",
 "future-picks",
+"minors",
 "finals",
 "champions",
 "super-bowls",
@@ -150,11 +153,13 @@ export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, url
   MLB_World_Series: { navTitle: "World Series", urlName: "/mlb/world-series",},
   MLB_Rank: { navTitle: "Rank", urlName: "/mlb/rank",},
   MLB_Map: { navTitle: "Map", urlName: "/mlb/map",},
+  MLB_Minors: { navTitle: "Minors", urlName: "/mlb/minors",},
   MLS_Cups: { navTitle: "MLS Cups", urlName: "/mls/mls-cups", },
   MLS_Rank: { navTitle: "Rank", urlName: "/mls/rank", },
   NHL_Stanley_Cups: { navTitle: "Stanley Cups", urlName: "/nhl/stanley-cups",},
   NHL_Rank: { navTitle: "Rank", urlName: "/nhl/rank",},
   NHL_Map: { navTitle: "Map", urlName: "/nhl/map",},
+  NHL_Minors: { navTitle: "Minors", urlName: "/nhl/minors",},
   WNBA_Finals: { navTitle: "Finals", urlName: "/wnba/finals",},
   WNBA_Rank: { navTitle: "Rank", urlName: "/wnba/rank",},
   CFL_Grey_Cups: { navTitle: "Grey Cups", urlName: "/cfl/grey-cups"},

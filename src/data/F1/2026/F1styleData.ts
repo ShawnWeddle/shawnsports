@@ -1,8 +1,8 @@
 import type { ConstructorName26Type } from "./F1data";
-import { type StyleBookType } from "~/types/StyleBook";
+import type { StyleBookType, HoverStyleType } from "~/types/StyleBook";
 
 export const F1styleData: {
-  [Key in ConstructorName26Type]: StyleBookType
+  [Key in ConstructorName26Type]: StyleBookType & HoverStyleType
 } = {
   Alpine: { 
     primary: "#FD4BC7", 

@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { cn } from "~/lib/utils";
 import { NBAteamData, TeamNameEnum } from "~/data/NBA/NBAdata";
-import { NBAstyleDataFull } from "~/data/NBA/NBAstyleData";
+import { NBAstyleDataFull } from "~/styles/NBAstyleData";
 import { AllNBAPicks, type PickType } from "~/data/NBA/nbaPickBreakdown";
 import { pickNoteCreator } from "~/utils/nba";
-// import type { PickType } from "~/data/NBA/AllNBApicks";
 import { Dialog, DialogTitle, DialogContent, DialogHeader } from "../ui/dialog";
 import {
   Table,

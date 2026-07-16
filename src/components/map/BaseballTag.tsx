@@ -8,7 +8,7 @@ import {
   HAFieldData,
   SAFieldData,
 } from "~/data/MLB/BaseballStadiumData";
-import { MLBstyleData } from "~/data/MLB/MLBstyleData";
+import { MLBstyleData } from "~/styles/MLBstyleData";
 import { Button } from "../ui/button";
 
 export const BaseballTag: React.FC<MLBTeamLeagueParent> = (

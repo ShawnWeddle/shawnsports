@@ -1,7 +1,7 @@
 import type { AllNBATeamType } from "~/data/NBA/NBAdata";
-import { type StyleBookType } from "~/types/StyleBook";
+import type { StyleBookType, HoverStyleType } from "~/types/StyleBook";
 
-export const NBAstyleData: {[Key in AllNBATeamType] : StyleBookType
+export const NBAstyleData: {[Key in AllNBATeamType] : StyleBookType & HoverStyleType
 } = {
   ATL:{
     primary: "#E03A3E",

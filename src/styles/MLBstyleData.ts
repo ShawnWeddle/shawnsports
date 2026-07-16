@@ -1,7 +1,7 @@
-import type { AllMLBTeamType } from "./MLBdata";
-import { type StyleBookType } from "~/types/StyleBook";
+import type { AllMLBTeamType } from "~/data/MLB/MLBdata";
+import type { StyleBookType, HoverStyleType } from "~/types/StyleBook";
 
-export const MLBstyleData: { [Key in AllMLBTeamType] : StyleBookType} = {
+export const MLBstyleData: { [Key in AllMLBTeamType] : StyleBookType & HoverStyleType} = {
   ARI:{
     primary: "#A71930",
     secondary: "#E3D4AD",

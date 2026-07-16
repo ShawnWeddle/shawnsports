@@ -8,16 +8,16 @@ import { NHLArenaData, AHLArenaData, ECHLArenaData, PWHLArenaData } from "../NHL
 import { MLSStadiumData } from "../MLS/SoccerStadiumData";
 import { MLVArenaData } from "../MLV/VolleyballArenaData";
 
-import { CFLstyleData } from "~/data/CFL/CFLstyleData";
+import { CFLstyleData } from "~/styles/CFLstyleData";
 import { IFLstyleData } from "~/styles/IFLstyleData";
-import { MLBstyleData } from "~/data/MLB/MLBstyleData";
-import { MLSstyleData } from "~/data/MLS/MLSstyleData";
-import { NBAstyleData } from "~/data/NBA/NBAstyleData";
-import { NFLstyleData } from "~/data/NFL/NFLstyleData";
-import { NHLstyleData } from "~/data/NHL/NHLstyleData";
-import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
+import { MLBstyleData } from "~/styles/MLBstyleData";
+import { MLSstyleData } from "~/styles/MLSstyleData";
+import { NBAstyleData } from "~/styles/NBAstyleData";
+import { NFLstyleData } from "~/styles/NFLstyleData";
+import { NHLstyleData } from "~/styles/NHLstyleData";
+import { MLVstyleData } from "~/styles/MLVstyleData";
+import { WNBAstyleData } from "~/styles/WNBAstyleData";
 import { PWHLstyleData } from "~/styles/PWHLstyleData";
-import { MLVstyleData } from "../MLV/MLVstyleData";
 
 export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
   const { league, team } = input;

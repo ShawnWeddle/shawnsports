@@ -1,7 +1,7 @@
 import { cn } from "~/lib/utils";
 import type { NBATeamType } from "~/data/NBA/NBAdata";
 import { NBAArenaData, NGLArenaData } from "~/data/NBA/BasketballArenaData";
-import { NBAstyleData } from "~/data/NBA/NBAstyleData";
+import { NBAstyleData } from "~/styles/NBAstyleData";
 
 export const OKCTag: React.FC<{ team: NBATeamType }> = (props: {
   team: NBATeamType;

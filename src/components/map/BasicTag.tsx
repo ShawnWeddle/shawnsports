@@ -1,13 +1,13 @@
 import { cn } from "~/lib/utils";
 import type { LeagueTeamType } from "~/types/MapTypes";
 import { markerData } from "~/data/map/allMapData";
-import { CFLstyleData } from "~/data/CFL/CFLstyleData";
+import { CFLstyleData } from "~/styles/CFLstyleData";
 import { IFLstyleData } from "~/styles/IFLstyleData";
-import { MLSstyleData } from "~/data/MLS/MLSstyleData";
-import { NFLstyleData } from "~/data/NFL/NFLstyleData";
-import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
+import { MLSstyleData } from "~/styles/MLSstyleData";
+import { NFLstyleData } from "~/styles/NFLstyleData";
+import { WNBAstyleData } from "~/styles/WNBAstyleData";
 import { PWHLstyleData } from "~/styles/PWHLstyleData";
-import { MLVstyleData } from "~/data/MLV/MLVstyleData";
+import { MLVstyleData } from "~/styles/MLVstyleData";
 
 export const BasicTag: React.FC<LeagueTeamType> = (props: LeagueTeamType) => {
   const { league, team } = props;

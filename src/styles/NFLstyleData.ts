@@ -1,7 +1,7 @@
-import type { AllNFLTeamType } from "./NFLdata";
-import { type StyleBookType } from "~/types/StyleBook";
+import type { AllNFLTeamType } from "~/data/NFL/NFLdata";
+import type { StyleBookType, HoverStyleType } from "~/types/StyleBook";
 
-export const NFLstyleData: { [Key in AllNFLTeamType] : StyleBookType} = {
+export const NFLstyleData: { [Key in AllNFLTeamType] : StyleBookType & HoverStyleType} = {
   "ARI":{
     primary: "#97233F",
     secondary: "#FFB612",

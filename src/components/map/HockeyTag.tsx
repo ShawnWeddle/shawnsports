@@ -6,7 +6,7 @@ import {
   AHLArenaData,
   ECHLArenaData,
 } from "~/data/NHL/HockeyArenaData";
-import { NHLstyleData } from "~/data/NHL/NHLstyleData";
+import { NHLstyleData } from "~/styles/NHLstyleData";
 import { AHLstyleData } from "~/styles/AHLstyleData";
 import { ECHLstyleData } from "~/styles/ECHLstyleData";
 import { getAHLafils, getECHLafils } from "~/utils/getHockeyAfils";

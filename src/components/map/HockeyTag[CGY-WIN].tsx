@@ -6,7 +6,7 @@ import {
   AHLArenaData,
   ECHLArenaData,
 } from "~/data/NHL/HockeyArenaData";
-import { NHLstyleData } from "~/data/NHL/NHLstyleData";
+import { NHLstyleData } from "~/styles/NHLstyleData";
 import { Button } from "../ui/button";
 
 export const CGYWINTag: React.FC<{ team: NHLTeamType }> = (props: {

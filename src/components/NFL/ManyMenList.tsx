@@ -4,7 +4,7 @@ import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
 import { Card, CardHeader, CardDescription, CardTitle } from "../ui/card";
 import { NFLteamData } from "~/data/NFL/NFLdata";
-import { NFLstyleData } from "~/data/NFL/NFLstyleData";
+import { NFLstyleData } from "~/styles/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";
 import { SuperLoserData } from "~/data/NFL/SuperLoserData";
 import { manyMen } from "~/data/NFL/ManyMen";

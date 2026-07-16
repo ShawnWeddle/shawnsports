@@ -1,6 +1,6 @@
 import { MapArc } from "~/components/ui/map";
 import { type MLBTeamType } from "~/data/MLB/MLBdata";
-import { MLBstyleData } from "~/data/MLB/MLBstyleData";
+import { MLBstyleData } from "~/styles/MLBstyleData";
 import { getBaseballArcData } from "~/utils/getBaseballArc";
 
 type ArcProps = {

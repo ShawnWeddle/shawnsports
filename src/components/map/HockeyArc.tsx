@@ -1,6 +1,6 @@
 import { MapArc } from "~/components/ui/map";
 import { type NHLTeamType } from "~/data/NHL/NHLdata";
-import { NHLstyleData } from "~/data/NHL/NHLstyleData";
+import { NHLstyleData } from "~/styles/NHLstyleData";
 import { getHockeyArcData } from "~/utils/getHockeyArc";
 
 type ArcProps = {

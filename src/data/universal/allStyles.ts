@@ -1,11 +1,11 @@
 import { CFLstyleData } from "~/data/CFL/CFLstyleData";
 import { F1styleData } from "~/data/F1/2026/F1styleData";
-import { MLBstyleData } from "~/data/MLB/MLBstyleData";
+import { MLBstyleData } from "~/styles/MLBstyleData";
 import { MLSstyleData } from "../MLS/MLSstyleData";
-import { NBAstyleData } from "~/data/NBA/NBAstyleData";
+import { NBAstyleData } from "~/styles/NBAstyleData";
 import { NFLstyleData } from "~/data/NFL/NFLstyleData";
-import { NHLstyleData } from "~/data/NHL/NHLstyleData";
-import { WNBAstyleData } from "~/data/WNBA/WNBAstyleData";
+import { NHLstyleData } from "~/styles/NHLstyleData";
+import { WNBAstyleData } from "~/styles/WNBAstyleData";
 
 export const StyleBook = {
   CFL: CFLstyleData,

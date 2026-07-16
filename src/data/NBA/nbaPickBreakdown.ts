@@ -328,16 +328,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
           "negative",
           "SAS"
         ]
-      },{
-        nativeTeam: "GSW",
-        year: 2030,
-        history: [
-          "GSW",
-          "WAS",
-          "DAL"
-        ],
-        protection: "FS"
-    }],
+      }],
     2031: [{
         nativeTeam: "DAL",
         year: 2031
@@ -632,6 +623,16 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
           "MEM"
         ],
         protection: "UP"
+      },{
+        nativeTeam: "GSW",
+        year: 2030,
+        history: [
+          "GSW",
+          "WAS",
+          "DAL",
+          "MEM"
+        ],
+        protection: "FS"
     }],
     2031: [{
         nativeTeam: "MEM",

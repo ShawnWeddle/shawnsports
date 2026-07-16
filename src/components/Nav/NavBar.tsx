@@ -153,6 +153,9 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
               <MenubarItem asChild>
                 <Link href="/nhl/map">Map</Link>
               </MenubarItem>
+              <MenubarItem asChild>
+                <Link href="/nhl/minors">Affiliates</Link>
+              </MenubarItem>
             </MenubarSubContent>
           </MenubarSub>
           <MenubarSub>

@@ -1,4 +1,4 @@
-import type { AllNHLTeamType } from "./NHLdata";
+import type { AllNHLTeamType } from "~/data/NHL/NHLdata";
 import { type StyleBookType } from "~/types/StyleBook";
 
 export const NHLstyleData: { [Key in AllNHLTeamType] : StyleBookType} = {

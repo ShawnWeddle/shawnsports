@@ -5,332 +5,379 @@ export const SuperLoserData: SuperLoserType[] = [
     firstName: "David",
     lastName: "Akers",
     losses: [ 39, 47 ],
+    position: "K",
   },
   {
     firstName: "Ricardo",
     lastName: "Allen",
     losses: [ 51, 56 ],
+    position: "DB",
   },
   {
     firstName: "Mark",
     lastName: "Anderson",
     losses: [ 41, 46 ],
+    position: "DL",
   },
   {
     firstName: "Mike",
     lastName: "Bartrum",
     losses: [ 31, 39 ],
+    position: "LS",
   },
   {
     firstName: "Cornelius",
     lastName: "Bennett",
     losses: [ 25, 26, 27, 28, 33 ],
+    position: "LB",
   },
   {
     firstName: "Bob",
     lastName: "Brudzinski",
     losses: [ 14, 17, 19 ],
+    position: "LB",
   },
   {
     firstName: "Brentson",
     lastName: "Buckner",
     losses: [ 30, 38 ],
+    position: "DL",
   },
   {
     firstName: "Darren",
     lastName: "Carrington",
     losses: [ 24, 29 ],
+    position: "DB",
   },
   {
     firstName: "Terry",
     lastName: "Cole",
     losses: [ 3, 6 ],
+    position: "RB",
   },
   {
     firstName: "Tevin",
     lastName: "Coleman",
     losses: [ 51, 54 ],
+    position: "RB",
   },
   {
     firstName: "Brandin",
     lastName: "Cooks",
     losses: [ 52, 53 ],
+    position: "WR",
   },
   {
     firstName: "Brad",
     lastName: "Dalusio",
     losses: [ 26, 35 ],
+    position: "K",
   },
   {
     firstName: "Anthony",
     lastName: "Dorsett",
     losses: [ 34, 37 ],
+    position: "DB",
   },
   {
     firstName: "Kevin",
     lastName: "Dyson",
     losses: [ 34, 38 ],
+    position: "WR",
   },
   {
     firstName: "Mike",
     lastName: "Eischeid",
     losses: [ 2, 8, 9 ],
+    position: "P",
   },
   {
     firstName: "Christian",
     lastName: "Ellis",
     losses: [ 57, 60 ],
+    position: "LB",
   },
   {
     firstName: "Greg",
     lastName: "Favors",
     losses: [ 34, 38 ],
+    position: "LB",
   },
   {
     firstName: "Aaron",
     lastName: "Francisco",
     losses: [ 43, 44 ],
+    position: "DB",
   },
   {
     firstName: "Tony",
     lastName: "Franklin",
     losses: [ 15, 20 ],
+    position: "K",
   },
   {
     firstName: "Randy",
     lastName: "Fuller",
     losses: [ 30, 33 ],
+    position: "DB",
   },
   {
     firstName: "Ben",
     lastName: "Garland",
     losses: [ 51, 54 ],
+    position: "OL",
   },
   {
     firstName: "Ted",
     lastName: "Ginn",
     losses: [ 47, 50 ],
+    position: "WR",
   },
   {
     firstName: "Robbie",
     lastName: "Gould",
     losses: [ 41, 54 ],
+    position: "K",
   },
   {
     firstName: "Javon",
     lastName: "Hargrave",
     losses: [ 57, 58 ],
+    position: "DL",
   },
   {
     firstName: "Jerome",
     lastName: "Henderson",
     losses: [ 28, 31 ],
+    position: "DB",
   },
   {
     firstName: "Eddie",
     lastName: "Hill",
     losses: [ 14, 17, 19 ],
+    position: "RB",
   },
   {
     firstName: "Roderick",
     lastName: "Hood",
     losses: [ 39, 43 ],
+    position: "DB",
   },
   {
     firstName: "Austin",
     lastName: "Hooper",
     losses: [ 51, 60 ],
+    position: "TE",
   },
   {
     firstName: "Ricky",
     lastName: "Jean-Francois",
     losses: [ 47, 52 ],
+    position: "DL",
   },
   {
     firstName: "Shawn",
     lastName: "Jefferson",
     losses: [ 29, 31 ],
+    position: "WR",
   },
   {
     firstName: "Mike",
     lastName: "Jones",
     losses: [ 31, 34 ],
+    position: "DL",
   },
   {
     firstName: "Jevon",
     lastName: "Kearse",
     losses: [ 34, 39 ],
+    position: "DL",
   },
   {
     firstName: "Daniel",
     lastName: "Kilgore",
     losses: [ 47, 55 ],
+    position: "OL",
   },
   {
     firstName: "Niko",
     lastName: "Koutouvides",
     losses: [ 40, 46 ],
+    position: "LB",
   },
   {
     firstName: "Kyle",
     lastName: "Love",
     losses: [ 46, 50 ],
+    position: "DL",
   },
   {
     firstName: "Ricky",
     lastName: "Manning",
     losses: [ 38, 41 ],
+    position: "DB",
   },
   {
     firstName: "Tony",
     lastName: "Martin",
     losses: [ 29, 33 ],
+    position: "WR",
   },
   {
     firstName: "Andy",
     lastName: "Maurer",
     losses: [ 9, 12 ],
+    position: "OL",
   },
   {
     firstName: "Brad",
     lastName: "Maynard",
     losses: [ 35, 41 ],
+    position: "P",
   },
   {
     firstName: "Guy",
     lastName: "Morriss",
     losses: [ 15, 20 ],
-},
+    position: "OL",
+  },
   {
     firstName: "Randy",
     lastName: "Moss",
     losses: [ 42, 47 ],
+    position: "WR",
   },
   {
     firstName: "Muhsin",
     lastName: "Muhammed",
     losses: [ 38, 41 ],
+    position: "WR",
   },
   {
     firstName: "Glenn",
     lastName: "Parker",
     losses: [ 25, 26, 27, 28, 35 ],
+    position: "OL",
   },
   {
     firstName: "John",
     lastName: "Parrella",
     losses: [ 29, 37 ],
+    position: "DL",
   },
   {
     firstName: "Samaje",
     lastName: "Perine",
     losses: [ 56, 59 ],
+    position: "RB",
   },
   {
     firstName: "Randy",
     lastName: "Poltl",
     losses: [ 9, 12 ],
+    position: "DB",
   },
   {
     firstName: "Ron",
     lastName: "Porter",
     losses: [ 3, 8 ],
+    position: "LB",
   },
   {
     firstName: "Mike",
     lastName: "Remmers",
     losses: [ 50, 55 ],
+    position: "OL",
   },
   {
     firstName: "Dominique",
     lastName: "Rodgers-Cromartie",
     losses: [ 43, 48 ],
+    position: "DB",
   },
   {
     firstName: "Jon",
     lastName: "Runyan",
     losses: [ 34, 39 ],
+    position: "OL",
   },
   {
     firstName: "Junior",
     lastName: "Seau",
     losses: [ 29, 42 ],
+    position: "LB",
   },
   {
     firstName: "Jacob",
     lastName: "Tamme",
     losses: [ 44, 48 ],
+    position: "TE",
   },
   {
     firstName: "Yancey",
     lastName: "Thigpen",
     losses: [ 30, 34 ],
+    position: "WR",
   },
   {
     firstName: "Robbie",
     lastName: "Tobeck",
     losses: [ 33, 40 ],
+    position: "OL",
   },
   {
     firstName: "Levine",
     lastName: "Toilolo",
     losses: [ 51, 54 ],
+    position: "TE",
   },
   {
     firstName: "Will",
     lastName: "Tukuafu",
     losses: [ 47, 49 ],
+    position: "DL",
   },
   {
     firstName: "Jackie",
     lastName: "Wallace",
     losses: [ 9, 14 ],
+    position: "DB",
   },
   {
     firstName: "Matt",
     lastName: "Ware",
     losses: [ 39, 43 ],
+    position: "DB",
   },
   {
     firstName: "Wes",
     lastName: "Welker",
     losses: [ 42, 46, 48 ],
+    position: "WR",
   },
   {
     firstName: "Dante",
     lastName: "Wesley",
     losses: [ 38, 41 ],
+    position: "DB",
   },
   {
     firstName: "Philip",
     lastName: "Wheeler",
     losses: [ 44, 51 ],
+    position: "LB",
   },
 ]
 
 /*
-      .toSorted((a, b) => {
-        if (a.losses.length > b.losses.length) {
-          return -1;
-        }
-
-        if (a.losses.length < b.losses.length) {
-          return 1;
-        }
-
-        const aL = a.losses;
-        const bL = b.losses;
-        let rv = 0;
-
-        for (let i = 0; i < aL.length; i++) {
-          if (aL[i]! > bL[i]!) {
-            rv = 1;
-            break;
-          } else {
-            rv = -1;
-            break;
-          }
-        }
-        return rv;
-      })
+[
+  ["Preston Pearson 1/17/1945"],
+  ["Bill Romanowski 4/2/1966"],
+  ["Darrien Gordon 11/14/1970"],
+  ["Harry Swayne 2/2/1965"],
+  ["Rod Woodson 3/10/1965"],
+  ["Joe Jurevicius 12/23/1974"],
+  ["Emmanuel Sanders 3/17/1987"],
+  ["Ndamukong Suh 1/6/1987"],
+]
 */

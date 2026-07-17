@@ -87,4 +87,5 @@ export type SuperLoserType = {
   firstName: string;
   lastName: string;
   losses: number[];
+  position: string;
 }

@@ -1,7 +1,7 @@
 import { cn } from "~/lib/utils";
 import { useNFLScheduleContext } from "~/hooks/useNFLSchedule";
 import { NFLscheduleData, type GameType } from "~/data/NFL/NFLscheduleData";
-import { NFLstyleData } from "~/data/NFL/NFLstyleData";
+import { NFLstyleData } from "~/styles/NFLstyleData";
 import { type NFLTeamType, NFLteamData, nullArray18 } from "~/data/NFL/NFLdata";
 import {
   Table,

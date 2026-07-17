@@ -1,7 +1,7 @@
 import { cn } from "~/lib/utils";
 import { type NFLTeamType } from "~/data/NFL/NFLdata";
 import { NFLteamData } from "~/data/NFL/NFLdata";
-import { NFLstyleData } from "~/data/NFL/NFLstyleData";
+import { NFLstyleData } from "~/styles/NFLstyleData";
 
 const NFLPlayoffs: React.FC = () => {
   const TeamCard = (

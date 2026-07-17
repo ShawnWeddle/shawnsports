@@ -9,7 +9,7 @@ import {
   NFLteamData,
 } from "~/data/NFL/NFLdata";
 import { NFLscheduleData, GameCheck } from "~/data/NFL/NFLscheduleData";
-import { NFLstyleData } from "~/data/NFL/NFLstyleData";
+import { NFLstyleData } from "~/styles/NFLstyleData";
 import ScheduleForTeam from "./ScheduleByTeam";
 import { recordForTeam } from "~/data/NFL/NFLscheduleRecord";
 import {

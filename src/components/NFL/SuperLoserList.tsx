@@ -4,9 +4,9 @@ import { Dialog } from "../ui/dialog";
 import DialogModalContent from "../Page/DialogModal";
 import { Card, CardHeader, CardDescription } from "../ui/card";
 import { NFLteamData } from "~/data/NFL/NFLdata";
-import { NFLstyleData } from "~/data/NFL/NFLstyleData";
+import { NFLstyleData } from "~/styles/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";
-import { SuperLoserData } from "~/data/NFL/SuperLoserData";
+import { SuperLoserSort } from "~/utils/SuperLoserSort";
 import { type SuperBowlType } from "~/types/ChampTypes";
 import {
   Table,
@@ -17,9 +17,21 @@ import {
   TableRow,
   TableRowNoHover,
 } from "~/components/ui/table";
+import {
+  ChevronDown,
+  ChevronUp,
+  ChevronsUpDown,
+  X,
+  Circle,
+  ArrowDownAZ,
+  ArrowUpAZ,
+} from "lucide-react";
 
 const SuperLoserList: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [tableSort, setTableSort] = useState<
+    "Name_A-Z" | "Name_Z-A" | "Position_A-Z" | "Position_Z-A" | "Losses"
+  >("Name_A-Z");
   const [activeSuperBowl, setActiveSuperBowl] = useState<SuperBowlType | null>(
     null
   );
@@ -48,71 +60,76 @@ const SuperLoserList: React.FC = () => {
   }).reverse();
 
   const superLosers = (game: SuperBowlType | null, inModal: boolean) =>
-    SuperLoserData.filter((player) => {
-      if (!game) {
-        return true;
-      }
-      let didPlay = false;
-      player.losses.forEach((loss) => {
-        if (
-          game?.romanNumeral ===
-          SuperBowlData[SuperBowlData.length - loss]?.romanNumeral
-        ) {
-          didPlay = true;
-        }
-      });
-      return didPlay;
-    }).map((player, index) => {
-      const { firstName, lastName, losses } = player;
-      const lossList = losses.map((loss, lIndex) => {
-        const game = SuperBowlData[SuperBowlData.length - loss];
+    SuperLoserSort(tableSort)
+      .filter((player) => {
         if (!game) {
-          return <></>;
+          return true;
         }
-        const { losingTeam, romanNumeral } = game;
+        let didPlay = false;
+        player.losses.forEach((loss) => {
+          if (
+            game?.romanNumeral ===
+            SuperBowlData[SuperBowlData.length - loss]?.romanNumeral
+          ) {
+            didPlay = true;
+          }
+        });
+        return didPlay;
+      })
+      .map((player, index) => {
+        const { firstName, lastName, losses, position } = player;
+        const lossList = losses.map((loss, lIndex) => {
+          const game = SuperBowlData[SuperBowlData.length - loss];
+          if (!game) {
+            return <></>;
+          }
+          const { losingTeam, romanNumeral } = game;
+          return (
+            <button
+              key={lIndex}
+              onClick={() => {
+                setActiveSuperBowl(game);
+                setDialogOpen(true);
+              }}
+              className={cn(
+                "w-full border-x-2 px-1 text-center font-semibold first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2",
+                {
+                  [NFLstyleData[losingTeam].primaryBackground]: true,
+                  [NFLstyleData[losingTeam].secondaryBorder]: true,
+                  [NFLstyleData[losingTeam].simpleText]: true,
+                  "sm:rounded-lg sm:border-y-2": !inModal,
+                }
+              )}
+            >
+              {romanNumeral} - {NFLteamData[losingTeam].name}
+            </button>
+          );
+        });
         return (
-          <button
-            key={lIndex}
-            onClick={() => {
-              setActiveSuperBowl(game);
-              setDialogOpen(true);
-            }}
-            className={cn(
-              "w-full border-x-2 px-1 text-center font-semibold first:rounded-t-lg first:border-t-2 last:rounded-b-lg last:border-b-2",
-              {
-                [NFLstyleData[losingTeam].primaryBackground]: true,
-                [NFLstyleData[losingTeam].secondaryBorder]: true,
-                [NFLstyleData[losingTeam].simpleText]: true,
-                "sm:rounded-lg sm:border-y-2": !inModal,
-              }
-            )}
+          <TableRow
+            key={index}
+            className={cn("odd:bg-nfl/10 hover:bg-nfl/20", {
+              "text-sm": inModal,
+            })}
           >
-            {romanNumeral} - {NFLteamData[losingTeam].name}
-          </button>
+            <TableCell className="px-1 text-center font-semibold">
+              {firstName} {lastName}
+            </TableCell>
+            <TableCell className="px-1 text-center font-semibold">
+              {position}
+            </TableCell>
+            <TableCell>
+              <div
+                className={cn("p-0.5", {
+                  "sm:grid sm:grid-cols-3 sm:gap-1": !inModal,
+                })}
+              >
+                {lossList}
+              </div>
+            </TableCell>
+          </TableRow>
         );
       });
-      return (
-        <TableRow
-          key={index}
-          className={cn("odd:bg-nfl/10 hover:bg-nfl/20", {
-            "text-sm": inModal,
-          })}
-        >
-          <TableCell className="px-1 text-center font-semibold">
-            {firstName} {lastName}
-          </TableCell>
-          <TableCell>
-            <div
-              className={cn("p-0.5", {
-                "sm:grid sm:grid-cols-3 sm:gap-1": !inModal,
-              })}
-            >
-              {lossList}
-            </div>
-          </TableCell>
-        </TableRow>
-      );
-    });
 
   const modalNamer = (game: SuperBowlType | null) => {
     if (game && game.romanNumeral) {
@@ -182,8 +199,50 @@ const SuperLoserList: React.FC = () => {
         <Table className="w-full sm:w-auto">
           <TableHeader>
             <TableRowNoHover>
-              <TableHead>Player</TableHead>
-              <TableHead>Losses</TableHead>
+              <TableHead>
+                <button
+                  onClick={() => {
+                    setTableSort(
+                      tableSort === "Name_A-Z" ? "Name_Z-A" : "Name_A-Z"
+                    );
+                  }}
+                >
+                  <div className="flex">
+                    Player
+                    {tableSort === "Name_A-Z" && <ChevronDown />}
+                    {tableSort === "Name_Z-A" && <ChevronUp />}
+                  </div>
+                </button>
+              </TableHead>
+              <TableHead>
+                <button
+                  onClick={() => {
+                    setTableSort(
+                      tableSort === "Position_A-Z"
+                        ? "Position_Z-A"
+                        : "Position_A-Z"
+                    );
+                  }}
+                >
+                  <div className="flex">
+                    Pos
+                    {tableSort === "Position_A-Z" && <ChevronDown />}
+                    {tableSort === "Position_Z-A" && <ChevronUp />}
+                  </div>
+                </button>
+              </TableHead>
+              <TableHead>
+                <button
+                  onClick={() => {
+                    setTableSort("Losses");
+                  }}
+                >
+                  <div className="flex">
+                    Losses
+                    {tableSort === "Losses" && <ChevronDown />}
+                  </div>
+                </button>
+              </TableHead>
             </TableRowNoHover>
           </TableHeader>
           <TableBody>{superLosers(null, false)}</TableBody>
@@ -197,3 +256,39 @@ const SuperLoserList: React.FC = () => {
 };
 
 export default SuperLoserList;
+
+// const ThreeTeamers = [];
+// const allAppearances = [...allWinners, ...allLosers];
+// for (let i = 0; i < allAppearances.length; i++) {
+//   const First = allAppearances[i];
+//   for (let j = i + 1; j < allAppearances.length; j++) {
+//     const Second = allAppearances[j];
+//     for (let k = j + 1; k < allAppearances.length; k++) {
+//       const Third = allAppearances[k];
+//       if (First && Second && Third) {
+//         if (
+//           First.player === Second.player &&
+//           Second.player === Third.player
+//         ) {
+//           if (
+//             First.birthDate === Second.birthDate &&
+//             Second.birthDate === Third.birthDate
+//           ) {
+//             const uniqueTeams = new Set([First.team, Second.team, Third.team])
+//               .size;
+//             if (uniqueTeams === 3) {
+//               const ThreeTeamer = {
+//                 name: First.player,
+//                 birthDate: First.birthDate,
+//                 teams: [First.team, Second.team, Third.team],
+//                 years: [First.year, Second.year, Third.year],
+//               };
+//               ThreeTeamers.push(ThreeTeamer);
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// console.log(ThreeTeamers);

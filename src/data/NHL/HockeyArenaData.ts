@@ -434,7 +434,7 @@ export const AHLArenaData: {[Key in AHLTeamType] : TeamInfoType} = {
           latitude: 41.241,
           longitude: -75.849
         },
-        location: "Wilkes-Barre",
+        location: "W-B/Scranton",
         name: "Penguins",
     },
     "AHL-SEA": {

@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { cn } from "~/lib/utils";
 import { type F1ChampionType } from "~/types/ChampTypes";
-import { driverChampionsData } from "~/data/F1/championData";
+import {
+  driverChampionsData,
+  constructorChampionsData,
+} from "~/data/F1/championData";
 import ReactCountryFlag from "react-country-flag";
 import { Dialog } from "~/components/ui/dialog";
 import DialogModalContent from "~/components/Page/DialogModal";
@@ -28,7 +31,6 @@ const ChampionshipList: React.FC = () => {
 
   const ChampRow: React.FC<ChampRowProps> = (props: ChampRowProps) => {
     const { driver, constructor, year, index, inModal } = props;
-
     return (
       <TableRow
         key={index}

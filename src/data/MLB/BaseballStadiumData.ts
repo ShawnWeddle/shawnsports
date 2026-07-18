@@ -394,7 +394,7 @@ export const AAAFieldData: {[Key in AAATeamType] : TeamInfoType} = {
       latitude: 41.360,
       longitude: -75.684
     },
-    location: "Scranton/Wilkes-Barre",
+    location: "Scranton/W-B",
     name: "RailRiders",
   },
   "AAA-OAK": {

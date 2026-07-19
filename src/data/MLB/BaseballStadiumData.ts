@@ -490,8 +490,8 @@ export const AAAFieldData: {[Key in AAATeamType] : TeamInfoType} = {
 export const AAFieldData: {[Key in AATeamType] : TeamInfoType} = {
   "AA-ARI": {
     coordinates: {
-      latitude: 35.22,
-      longitude: -101.821
+      latitude: 35.206,
+      longitude: -101.831
     },
     location: "Amarillo",
     name: "Sod Poodles",
@@ -506,32 +506,32 @@ export const AAFieldData: {[Key in AATeamType] : TeamInfoType} = {
   },
   "AA-BAL": {
     coordinates: {
-      latitude: 38.906,
-      longitude: -76.725
+      latitude: 38.946,
+      longitude: -76.709
     },
     location: "Chesapeake",
     name: "Baysox",
   },
   "AA-BOS": {
     coordinates: {
-      latitude: 43.649,
-      longitude: -70.277
+      latitude: 43.657,
+      longitude: -70.278
     },
     location: "Portland",
     name: "Sea Dogs",
   },
   "AA-CHC": {
     coordinates: {
-      latitude: 35.97,
-      longitude: -83.606
+      latitude: 35.972,
+      longitude: -83.915
     },
     location: "Knoxville",
     name: "Smokies",
   },
   "AA-CHW": {
     coordinates: {
-      latitude: 33.501,
-      longitude: -86.797
+      latitude: 33.507,
+      longitude: -86.811
     },
     location: "Birmingham",
     name: "Barons",
@@ -546,72 +546,72 @@ export const AAFieldData: {[Key in AATeamType] : TeamInfoType} = {
   },
   "AA-CLE": {
     coordinates: {
-      latitude: 41.081,
-      longitude: -81.509
+      latitude: 41.219,
+      longitude: -80.755
     },
     location: "Akron",
     name: "RubberDucks",
   },
   "AA-COL": {
     coordinates: {
-      latitude: 41.768,
-      longitude: -72.676
+      latitude: 41.772,
+      longitude: -72.674
     },
     location: "Hartford",
     name: "Yard Goats",
   },
   "AA-DET": {
     coordinates: {
-      latitude: 42.13,
-      longitude: -80.086
+      latitude: 42.127,
+      longitude: -80.080
     },
     location: "Erie",
     name: "SeaWolves",
   },
   "AA-HOU": {
     coordinates: {
-      latitude: 27.813,
-      longitude: -97.384
+      latitude: 27.809,
+      longitude: -97.399
     },
     location: "Corpus Christi",
     name: "Hooks",
   },
   "AA-KCR": {
     coordinates: {
-      latitude: 36.195,
-      longitude: -94.136
+      latitude: 36.160,
+      longitude: -94.194
     },
     location: "Northwest Arkansas",
     name: "Naturals",
   },
   "AA-LAA": {
     coordinates: {
-      latitude: 34.629,
-      longitude: -86.777
+      latitude: 34.684,
+      longitude: -86.725
     },
     location: "Rocket City",
     name: "Trash Pandas",
   },
   "AA-LAD": {
     coordinates: {
-      latitude: 36.154,
-      longitude: -95.984
+      latitude: 36.160,
+      longitude: -95.988
     },
     location: "Tulsa",
     name: "Drillers",
   },
   "AA-MIA": {
     coordinates: {
-      latitude: 30.406,
-      longitude: -87.229
+      latitude: 30.404,
+      longitude: -87.218
     },
     location: "Pensacola",
     name: "Blue Wahoos",
   },
   "AA-MIL": {
     coordinates: {
-      latitude: 30.393,
-      longitude: -88.882
+      latitude: 30.396,
+      longitude: -88.893
     },
     location: "Biloxi",
     name: "Shuckers",
@@ -626,47 +626,47 @@ export const AAFieldData: {[Key in AATeamType] : TeamInfoType} = {
   },
   "AA-NYM": {
     coordinates: {
-      latitude: 42.091,
-      longitude: -75.914
+      latitude: 42.103,
+      longitude: -75.905
     },
     location: "Binghamton",
     name: "Rumble Ponies",
   },
   "AA-NYY": {
     coordinates: {
-      latitude: 40.571,
-      longitude: -74.545
+      latitude: 40.561,
+      longitude: -74.553
     },
     location: "Somerset",
     name: "Patriots",
   },
   "AA-OAK": {
     coordinates: {
-      latitude: 32.012,
-      longitude: -102.147
+      latitude: 31.987,
+      longitude: -102.155
     },
     location: "Midland",
     name: "RockHounds",
   },
   "AA-PHI": {
     coordinates: {
-      latitude: 40.354,
-      longitude: -75.902
+      latitude: 40.365,
+      longitude: -75.934
     },
     location: "Reading",
     name: "Fightin Phils",
   },
   "AA-PIT": {
     coordinates: {
-      latitude: 40.505,
-      longitude: -78.372
+      latitude: 40.474,
+      longitude: -78.395
     },
     location: "Altoona",
     name: "Curve",
   },
   "AA-SDP": {
     coordinates: {
-      latitude: 29.437,
+      latitude: 29.409,
       longitude: -98.601
     },
     location: "San Antonio",
@@ -674,56 +674,56 @@ export const AAFieldData: {[Key in AATeamType] : TeamInfoType} = {
   },
   "AA-SEA": {
     coordinates: {
-      latitude: 34.781,
-      longitude: -92.253
+      latitude: 34.755,
+      longitude: -92.272
     },
     location: "Arkansas",
     name: "Travelers",
   },
   "AA-SFG": {
     coordinates: {
-      latitude: 37.6,
-      longitude: -77.456
+      latitude: 37.572,
+      longitude: -77.463
     },
     location: "Richmond",
     name: "Flying Squirrels",
   },
   "AA-STL": {
     coordinates: {
-      latitude: 37.216,
-      longitude: -93.292
+      latitude: 37.212,
+      longitude: -93.280
     },
     location: "Springfield",
     name: "Cardinals",
   },
   "AA-TBR": {
     coordinates: {
-      latitude: 32.38,
-      longitude: -86.305
+      latitude: 32.382,
+      longitude: -86.311
     },
     location: "Montgomery",
     name: "Biscuits",
   },
   "AA-TEX": {
     coordinates: {
-      latitude: 33.122,
-      longitude: -96.829
+      latitude: 33.098,
+      longitude: -96.820
     },
     location: "Frisco",
     name: "RoughRiders",
   },
   "AA-TOR": {
     coordinates: {
-      latitude: 42.98,
-      longitude: -71.452
+      latitude: 42.981,
+      longitude: -71.466
     },
     location: "New Hampshire",
     name: "Fisher Cats",
   },
   "AA-WSN": {
     coordinates: {
-      latitude: 40.257,
-      longitude: -76.878
+      latitude: 40.256,
+      longitude: -76.890
     },
     location: "Harrisburg",
     name: "Senators",
@@ -733,176 +733,176 @@ export const AAFieldData: {[Key in AATeamType] : TeamInfoType} = {
 export const HAFieldData: {[Key in HATeamType] : TeamInfoType} = {
   "HA-ARI": {
     coordinates: {
-      latitude: 45.52,
-      longitude: -122.97
+      latitude: 45.554,
+      longitude: -122.909
     },
     location: "Hillsboro",
     name: "Hops",
   },
   "HA-ATL": {
     coordinates: {
-      latitude: 34.253,
-      longitude: -85.175
+      latitude: 34.286,
+      longitude: -85.167
     },
     location: "Rome",
     name: "Emperors",
   },
   "HA-BAL": {
     coordinates: {
-      latitude: 39.517,
-      longitude: -76.153
+      latitude: 39.401,
+      longitude: -77.413
     },
     location: "Frederick",
     name: "Keys",
   },
   "HA-BOS": {
     coordinates: {
-      latitude: 34.846,
-      longitude: -82.396
+      latitude: 34.842,
+      longitude: -82.408
     },
     location: "Greenville",
     name: "Drive",
   },
   "HA-CHC": {
     coordinates: {
-      latitude: 41.677,
-      longitude: -86.277
+      latitude: 41.671,
+      longitude: -86.255
     },
     location: "South Bend",
     name: "Cubs",
   },
   "HA-CHW": {
     coordinates: {
-      latitude: 36.096,
-      longitude: -80.237
+      latitude: 36.092,
+      longitude: -80.255
     },
     location: "Winston-Salem",
     name: "Dash",
   },
   "HA-CIN": {
     coordinates: {
-      latitude: 39.759,
-      longitude: -84.193
+      latitude: 39.764,
+      longitude: -84.185
     },
     location: "Dayton",
     name: "Dragons",
   },
   "HA-CLE": {
     coordinates: {
-      latitude: 41.695,
-      longitude: -81.45
+      latitude: 41.641,
+      longitude: -81.436
     },
     location: "Lake County",
     name: "Captains",
   },
   "HA-COL": {
     coordinates: {
-      latitude: 47.629,
-      longitude: -117.331
+      latitude: 47.661,
+      longitude: -117.344
     },
     location: "Spokane",
     name: "Indians",
   },
   "HA-DET": {
     coordinates: {
-      latitude: 43.036,
-      longitude: -85.676
+      latitude: 43.041,
+      longitude: -85.659
     },
     location: "West Michigan",
     name: "Whitecaps",
   },
   "HA-HOU": {
     coordinates: {
-      latitude: 35.595,
-      longitude: -82.541
+      latitude: 35.587,
+      longitude: -82.549
     },
     location: "Asheville",
     name: "Tourists",
   },
   "HA-KCR": {
     coordinates: {
-      latitude: 41.527,
-      longitude: -90.571
+      latitude: 41.518,
+      longitude: -90.582
     },
     location: "Quad Cities",
     name: "River Bandits",
   },
   "HA-LAA": {
     coordinates: {
-      latitude: 46.237,
-      longitude: -119.112
+      latitude: 46.266,
+      longitude: -119.172
     },
     location: "Tri-City",
     name: "Dust Devils",
   },
   "HA-LAD": {
     coordinates: {
-      latitude: 43.601,
-      longitude: -84.253
+      latitude: 43.609,
+      longitude: -84.237
     },
     location: "Great Lakes",
     name: "Loons",
   },
   "HA-MIA": {
     coordinates: {
-      latitude: 42.509,
-      longitude: -89.037
+      latitude: 42.497,
+      longitude: -89.040
     },
     location: "Beloit",
     name: "Sky Carp",
   },
   "HA-MIL": {
     coordinates: {
-      latitude: 44.262,
-      longitude: -88.325
+      latitude: 44.283,
+      longitude: -88.469
     },
     location: "Wisconsin",
     name: "Timber Rattlers",
   },
   "HA-MIN": {
     coordinates: {
-      latitude: 41.986,
-      longitude: -91.674
+      latitude: 41.968,
+      longitude: -91.686
     },
     location: "Cedar Rapids",
     name: "Kernels",
   },
   "HA-NYM": {
     coordinates: {
-      latitude: 40.572,
-      longitude: -73.981
+      latitude: 40.574,
+      longitude: -73.984
     },
     location: "Brooklyn",
     name: "Cyclones",
   },
   "HA-NYY": {
     coordinates: {
-      latitude: 41.584,
-      longitude: -73.935
+      latitude: 41.528,
+      longitude: -73.961
     },
     location: "Hudson Valley",
     name: "Renegades",
   },
   "HA-OAK": {
     coordinates: {
-      latitude: 42.734,
-      longitude: -84.545
+      latitude: 42.735,
+      longitude: -84.546
     },
     location: "Lansing",
     name: "Lugnuts",
   },
   "HA-PHI": {
     coordinates: {
-      latitude: 40.102,
-      longitude: -74.195
+      latitude: 40.075,
+      longitude: -74.187
     },
     location: "Jersey Shore",
     name: "BlueClaws",
   },
   "HA-PIT": {
     coordinates: {
-      latitude: 36.074,
-      longitude: -79.789
+      latitude: 36.077,
+      longitude: -79.795
     },
     location: "Greensboro",
     name: "Grasshoppers",
@@ -910,23 +910,23 @@ export const HAFieldData: {[Key in HATeamType] : TeamInfoType} = {
   "HA-SDP": {
     coordinates: {
       latitude: 41.074,
-      longitude: -85.146
+      longitude: -85.143
     },
     location: "Fort Wayne",
     name: "TinCaps",
   },
   "HA-SEA": {
     coordinates: {
-      latitude: 47.986,
-      longitude: -122.217
+      latitude: 47.967,
+      longitude: -122.203
     },
     location: "Everett",
     name: "AquaSox",
   },
   "HA-SFG": {
     coordinates: {
-      latitude: 44.064,
-      longitude: -123.041
+      latitude: 44.059,
+      longitude: -123.066
     },
     location: "Eugene",
     name: "Emeralds",
@@ -934,39 +934,39 @@ export const HAFieldData: {[Key in HATeamType] : TeamInfoType} = {
   "HA-STL": {
     coordinates: {
       latitude: 40.687,
-      longitude: -89.593
+      longitude: -89.598
     },
     location: "Peoria",
     name: "Chiefs",
   },
   "HA-TBR": {
     coordinates: {
-      latitude: 36.986,
-      longitude: -86.452
+      latitude: 36.997,
+      longitude: -86.441
     },
     location: "Bowling Green",
     name: "Hot Rods",
   },
   "HA-TEX": {
     coordinates: {
-      latitude: 34.947,
-      longitude: -81.919
+      latitude: 34.946,
+      longitude: -81.935
     },
     location: "Hub City",
     name: "Spartanburgers",
   },
   "HA-TOR": {
     coordinates: {
-      latitude: 49.24,
-      longitude: -123.108
+      latitude: 49.243,
+      longitude: -123.107
     },
     location: "Vancouver",
     name: "Canadians",
   },
   "HA-WSN": {
     coordinates: {
-      latitude: 39.745,
-      longitude: -75.555
+      latitude: 39.733,
+      longitude: -75.564
     },
     location: "Wilmington",
     name: "Blue Rocks",

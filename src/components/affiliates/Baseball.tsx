@@ -157,7 +157,7 @@ export default BaseballMinorList;
         <TableCell className="px-1">
           <button
             className={cn(
-              "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block"
+              "m-0.5 w-full rounded-lg border-2 px-1 text-center ignore font-semibold sm:inline-block"
             )}
           >
             <div className={cn("flex flex-col justify-center gap-1")}>

@@ -29,7 +29,7 @@ export const OKCTag: React.FC<{ team: NBATeamType }> = (props: {
               [NBAstyleData[team].simpleText]: true,
             })}
           >
-            <span className="font-bold">G Leaguen: </span>
+            <span className="font-bold">G League: </span>
             {NGLArenaData[`NGL-${team}`].location}{" "}
             {NGLArenaData[`NGL-${team}`].name}
           </p>

@@ -28,7 +28,10 @@ const HockeyMinorList: React.FC = () => {
   const AfilRow: React.FC<AfilRowProps> = (props: AfilRowProps) => {
     const { team, key } = props;
     return (
-      <TableRow key={key} className={cn("odd:bg-nhl/10 hover:bg-nhl/20")}>
+      <TableRowNoHover
+        key={key}
+        className={cn("odd:bg-nhl/10 hover:bg-nhl/20")}
+      >
         <TableCell className="px-1">
           <button
             className={cn(
@@ -112,7 +115,7 @@ const HockeyMinorList: React.FC = () => {
             <div className="text-center font-semibold">None</div>
           )}
         </TableCell>
-      </TableRow>
+      </TableRowNoHover>
     );
   };
 

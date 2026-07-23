@@ -92,6 +92,9 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
         <MenubarTrigger>NFL</MenubarTrigger>
         <MenubarContent>
           <MenubarItem asChild>
+            <Link href="/nfl/schedule">Schedule</Link>
+          </MenubarItem>
+          <MenubarItem asChild>
             <Link href="/nfl/super-losers">Super Losers</Link>
           </MenubarItem>
           <MenubarItem asChild>
@@ -138,6 +141,9 @@ const NavBar: React.FC<NavProps> = (props: NavProps) => {
               </MenubarItem>
               <MenubarItem asChild>
                 <Link href="/mlb/map">Map</Link>
+              </MenubarItem>
+              <MenubarItem asChild>
+                <Link href="/mlb/minors">Affiliates</Link>
               </MenubarItem>
             </MenubarSubContent>
           </MenubarSub>

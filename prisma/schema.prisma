@@ -37,10 +37,9 @@ model Schedule {
 }
 
 type NFLGame {
-  Away     String
-  Home     String
-  Week     Int
-  Winner   String
-  Code     String
-  readOnly Boolean
+  Away   String
+  Home   String
+  Week   Int
+  Winner String
+  Code   String
 }

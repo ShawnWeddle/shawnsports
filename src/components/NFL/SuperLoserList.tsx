@@ -17,15 +17,7 @@ import {
   TableRow,
   TableRowNoHover,
 } from "~/components/ui/table";
-import {
-  ChevronDown,
-  ChevronUp,
-  ChevronsUpDown,
-  X,
-  Circle,
-  ArrowDownAZ,
-  ArrowUpAZ,
-} from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const SuperLoserList: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);

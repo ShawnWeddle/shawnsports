@@ -18,7 +18,7 @@ import {
   TableRow,
   TableRowNoHover,
 } from "~/components/ui/table";
-import { findDuos } from "~/data/NFL/SuperManWork";
+import { findDuos } from "~/data/NFL/Unused/SuperManWork";
 
 const SuperMenList: React.FC = () => {
   console.log(findDuos());

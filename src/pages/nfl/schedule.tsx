@@ -1,5 +1,6 @@
 import MainPage from "~/components/Page/MainPage";
-import NoteFromDev from "~/components/Home/NoteFromDev";
+import { NFLScheduleContextProvider } from "~/context/NFLscheduleContext";
+import NFLSchedule from "~/components/NFL/Schedule";
 
 const Schedule = () => {
   return (
@@ -8,9 +9,11 @@ const Schedule = () => {
       description="NFL SportsMegaWorld"
       favicon="/nflfavicon.ico"
       pageMode="NFL"
-      underPageMode="NFL_Super_Bowls"
+      underPageMode="NFL_Schedule"
     >
-      <NoteFromDev />
+      <NFLScheduleContextProvider>
+        <NFLSchedule />
+      </NFLScheduleContextProvider>
     </MainPage>
   );
 };

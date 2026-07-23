@@ -1,6 +1,6 @@
 import { cn } from "~/lib/utils";
 import { useNFLScheduleContext } from "~/hooks/useNFLSchedule";
-import { NFLscheduleData, type GameType } from "~/data/NFL/NFLscheduleData";
+import { NFLscheduleData, type GameType } from "~/data/NFL/NFLscheduleData2026";
 import { NFLstyleData } from "~/styles/NFLstyleData";
 import { type NFLTeamType, NFLteamData, nullArray18 } from "~/data/NFL/NFLdata";
 import {
@@ -36,7 +36,7 @@ const ScheduleForTeam: React.FC<ScheduleForTeamProps> = (
   });
 
   const allVariableGames = allGamesNoBye.filter((game) => {
-    if (game && !game.readOnly) {
+    if (game) {
       return game;
     }
   });

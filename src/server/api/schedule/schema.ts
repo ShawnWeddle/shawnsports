@@ -1,4 +1,4 @@
-import { z, object, string, array, number, boolean, literal } from "zod";
+import { z, object, string, array, number, literal } from "zod";
 import type { TypeOf } from "zod";
 import { nflTeamsRanked } from "~/data/NFL/NFLdata";
 
@@ -10,7 +10,6 @@ export const createScheduleSchema = object({
     Week: number(), 
     Winner: z.enum(nflTeamsRanked), 
     Code: string(), 
-    readOnly: boolean(),
   })),
   client: object({
     userId: string(),

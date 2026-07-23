@@ -8,7 +8,11 @@ import {
   type NFLTeamType,
   NFLteamData,
 } from "~/data/NFL/NFLdata";
-import { NFLscheduleData, GameCheck } from "~/data/NFL/NFLscheduleData";
+import {
+  checkAllGamesPicked,
+  fullPickedSchedule,
+  NFLscheduleData,
+} from "~/data/NFL/NFLscheduleData2026";
 import { NFLstyleData } from "~/styles/NFLstyleData";
 import ScheduleForTeam from "./ScheduleByTeam";
 import { recordForTeam } from "~/data/NFL/NFLscheduleRecord";
@@ -48,12 +52,12 @@ const NFLSchedule: React.FC = () => {
   const postSchedule = api.schedule.createSchedule.useMutation();
 
   const handleSubmit = () => {
-    const newSchedule = GameCheck([...nflScheduleState.schedule]);
-    if (user && newSchedule.schedule) {
+    const scheduleCheck = checkAllGamesPicked([...nflScheduleState.schedule]);
+    if (user && scheduleCheck) {
       const { userId, username, email } = user;
       const schedulePost: CreateScheduleInput = {
         sport: "NFL",
-        schedule: newSchedule.schedule,
+        schedule: fullPickedSchedule([...nflScheduleState.schedule]),
         client: {
           userId,
           username,
@@ -62,14 +66,7 @@ const NFLSchedule: React.FC = () => {
       };
       const scheduleValidation = createScheduleSchema.safeParse(schedulePost);
       if (scheduleValidation) {
-        postSchedule.mutate(
-          { ...schedulePost },
-          {
-            onSuccess() {
-              console.log("Success");
-            },
-          }
-        );
+        postSchedule.mutate({ ...schedulePost });
       }
     }
   };
@@ -113,7 +110,7 @@ const NFLSchedule: React.FC = () => {
                         {NFLteamData[team].name}
                       </div>
                       <div className={cn("sm:hidden")}>
-                        2024 Record: {wins}-{losses}
+                        2026 Record: {wins}-{losses}
                       </div>
                     </button>
                   </div>
@@ -154,7 +151,7 @@ const NFLSchedule: React.FC = () => {
   return (
     <>
       <h1 className="mx-2 mt-4 text-2xl font-semibold sm:text-4xl">
-        2024 {activeTeam} Schedule
+        2026 {activeTeam} Schedule
       </h1>
 
       {scheduleMode === "Menu" && (
@@ -218,6 +215,25 @@ const NFLSchedule: React.FC = () => {
             >
               SAVE
             </Button>
+            {false && (
+              <Button
+                className="m-1"
+                variant={"nfl"}
+                onClick={() => {
+                  nflScheduleState.schedule.forEach((game) => {
+                    const { Home, Away, Code } = game;
+                    nflScheduleDispatch({
+                      type: "PICK",
+                      payload: [
+                        { Winner: Math.random() > 0.5 ? Home : Away, Code },
+                      ],
+                    });
+                  });
+                }}
+              >
+                RANDOM
+              </Button>
+            )}
           </div>
         </>
       )}

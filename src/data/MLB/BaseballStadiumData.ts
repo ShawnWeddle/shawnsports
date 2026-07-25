@@ -247,7 +247,7 @@ export const MLBFieldData: {[Key in MLBTeamType] : TeamInfoType} = {
 export const AAAFieldData: {[Key in AAATeamType] : TeamInfoType} = {
   "AAA-ARI": {
     coordinates: {
-      latitude: 39.528,
+      latitude: 39.529,
       longitude: -119.808
     },
     location: "Reno",
@@ -976,47 +976,47 @@ export const HAFieldData: {[Key in HATeamType] : TeamInfoType} = {
 export const SAFieldData: {[Key in SATeamType] : TeamInfoType} = {
   "SA-ARI": {
     coordinates: {
-      latitude: 36.336,
-      longitude: -119.294
+      latitude: 36.332,
+      longitude: -119.305
     },
     location: "Visalia",
     name: "Rawhide",
   },
   "SA-ATL": {
     coordinates: {
-      latitude: 33.501,
-      longitude: -81.968
+      latitude: 33.484,
+      longitude: -81.974
     },
     location: "Augusta",
     name: "GreenJackets",
   },
   "SA-BAL": {
     coordinates: {
-      latitude: 38.367,
-      longitude: -75.555
+      latitude: 38.370,
+      longitude: -75.530
     },
     location: "Delmarva",
     name: "Shorebirds",
   },
   "SA-BOS": {
     coordinates: {
-      latitude: 37.274,
-      longitude: -80.036
+      latitude: 37.285,
+      longitude: -80.037
     },
     location: "Salem",
     name: "RidgeYaks",
   },
   "SA-CHC": {
     coordinates: {
-      latitude: 33.703,
-      longitude: -78.869
+      latitude: 33.711,
+      longitude: -78.884
     },
     location: "Myrtle Beach",
     name: "Pelicans",
   },
   "SA-CHW": {
     coordinates: {
-      latitude: 35.469,
+      latitude: 35.498,
       longitude: -80.627
     },
     location: "Kannapolis",
@@ -1024,56 +1024,56 @@ export const SAFieldData: {[Key in SATeamType] : TeamInfoType} = {
   },
   "SA-CIN": {
     coordinates: {
-      latitude: 29.228,
-      longitude: -81.02
+      latitude: 29.210,
+      longitude: -81.016
     },
     location: "Daytona",
     name: "Tortugas",
   },
   "SA-CLE": {
     coordinates: {
-      latitude: 37.403,
-      longitude: -79.154
+      latitude: 37.393,
+      longitude: -79.166
     },
     location: "Hill City",
     name: "Howlers",
   },
   "SA-COL": {
     coordinates: {
-      latitude: 36.731,
-      longitude: -119.791
+      latitude: 36.732,
+      longitude: -119.790
     },
     location: "Fresno",
     name: "Grizzlies",
   },
   "SA-DET": {
     coordinates: {
-      latitude: 28.047,
-      longitude: -81.954
+      latitude: 28.075,
+      longitude: -81.951
     },
     location: "Lakeland",
     name: "Flying Tigers",
   },
   "SA-HOU": {
     coordinates: {
-      latitude: 35.053,
-      longitude: -78.884
+      latitude: 35.056,
+      longitude: -78.883
     },
     location: "Fayetteville",
     name: "Woodpeckers",
   },
   "SA-KCR": {
     coordinates: {
-      latitude: 34.012,
-      longitude: -81.035
+      latitude: 34.018,
+      longitude: -81.031
     },
     location: "Columbia",
     name: "Fireflies",
   },
   "SA-LAA": {
     coordinates: {
-      latitude: 34.112,
-      longitude: -117.584
+      latitude: 34.103,
+      longitude: -117.548
     },
     location: "Rancho Cucamonga",
     name: "Quakes",
@@ -1089,15 +1089,15 @@ export const SAFieldData: {[Key in SATeamType] : TeamInfoType} = {
   "SA-MIA": {
     coordinates: {
       latitude: 26.891,
-      longitude: -80.12
+      longitude: -80.116
     },
     location: "Jupiter",
     name: "Hammerheads",
   },
   "SA-MIN": {
     coordinates: {
-      latitude: 26.555,
-      longitude: -81.914
+      latitude: 26.538,
+      longitude: -81.842
     },
     location: "Fort Myers",
     name: "Mighty Mussels",
@@ -1105,22 +1105,22 @@ export const SAFieldData: {[Key in SATeamType] : TeamInfoType} = {
   "SA-MIL": {
     coordinates: {
       latitude: 35.721,
-      longitude: -77.915
+      longitude: -77.914
     },
     location: "Wilson",
     name: "Warbirds",
   },
   "SA-NYM": {
     coordinates: {
-      latitude: 27.277,
-      longitude: -80.337
+      latitude: 27.325,
+      longitude: -80.405
     },
     location: "St. Lucie",
     name: "Mets",
   },
   "SA-NYY": {
     coordinates: {
-      latitude: 27.98,
+      latitude: 27.980,
       longitude: -82.507
     },
     location: "Tampa",
@@ -1128,48 +1128,48 @@ export const SAFieldData: {[Key in SATeamType] : TeamInfoType} = {
   },
   "SA-OAK": {
     coordinates: {
-      latitude: 37.951,
-      longitude: -121.291
+      latitude: 37.955,
+      longitude: -121.298
     },
     location: "Stockton",
     name: "Ports",
   },
   "SA-PHI": {
     coordinates: {
-      latitude: 27.944,
-      longitude: -82.758
+      latitude: 27.972,
+      longitude: -82.732
     },
     location: "Clearwater",
     name: "Threshers",
   },
   "SA-PIT": {
     coordinates: {
-      latitude: 27.49,
-      longitude: -82.563
+      latitude: 27.486,
+      longitude: -82.570
     },
     location: "Bradenton",
     name: "Marauders",
   },
   "SA-SDP": {
     coordinates: {
-      latitude: 33.653,
-      longitude: -117.33
+      latitude: 33.654,
+      longitude: -117.302
     },
     location: "Lake Elsinore",
     name: "Storm",
   },
   "SA-SEA": {
     coordinates: {
-      latitude: 34.09,
-      longitude: -117.29
+      latitude: 34.098,
+      longitude: -117.295
     },
     location: "Inland Empire",
     name: "66ers",
   },
   "SA-SFG": {
     coordinates: {
-      latitude: 37.328,
-      longitude: -121.869
+      latitude: 37.320,
+      longitude: -121.862
     },
     location: "San Jose",
     name: "Giants",
@@ -1177,7 +1177,7 @@ export const SAFieldData: {[Key in SATeamType] : TeamInfoType} = {
   "SA-STL": {
     coordinates: {
       latitude: 26.891,
-      longitude: -80.12
+      longitude: -80.116
     },
     location: "Palm Beach",
     name: "Cardinals",
@@ -1192,24 +1192,24 @@ export const SAFieldData: {[Key in SATeamType] : TeamInfoType} = {
   },
   "SA-TBR": {
     coordinates: {
-      latitude: 32.768,
-      longitude: -79.986
+      latitude: 32.780,
+      longitude: -79.961
     },
     location: "Charleston",
     name: "RiverDogs",
   },
   "SA-TEX": {
     coordinates: {
-      latitude: 35.735,
-      longitude: -81.372
+      latitude: 35.749,
+      longitude: -81.379
     },
     location: "Hickory",
     name: "Crawdads",
   },
   "SA-WSN": {
     coordinates: {
-      latitude: 38.277,
-      longitude: -77.45
+      latitude: 38.319,
+      longitude: -77.509
     },
     location: "Fredericksburg",
     name: "Nationals",

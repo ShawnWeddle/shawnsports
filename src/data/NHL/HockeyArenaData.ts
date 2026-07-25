@@ -765,8 +765,8 @@ export const ECHLArenaData: {[Key in ECHLTeamType] : TeamInfoType} = {
 export const PWHLArenaData: {[Key in PWHLTeamType] : TeamInfoType} = {
   "BOS": {
     coordinates: {
-      latitude: 42.650,
-      longitude: -71.313,
+      latitude: 42.352,
+      longitude: -71.118,
     },
     location: "Boston",
     name: "Fleet",

@@ -2,80 +2,81 @@ import { cn } from "~/lib/utils";
 import { MapMarker, MarkerContent, MarkerLabel } from "~/components/ui/map";
 
 const CityData = [
-  // { name: "Toronto", lat: 43.6539, long: -79.3839, div: "E" },
-  // { name: "Montreal", lat: 45.4972, long: -73.6104, div: "E" },
-  // { name: "Vancouver", lat: 49.2609, long: -123.1139, div: "W" },
-  // { name: "New York", lat: 40.6943, long: -73.9249, div: "E" },
-  // { name: "Newark", lat: 40.7245, long: -74.1725, div: "E" },
-  // { name: "Los Angeles", lat: 34.1141, long: -118.4068, div: "W" },
-  // { name: "Riverside", lat: 33.9381, long: -117.3949, div: "W" },
-  // { name: "Chicago", lat: 41.8375, long: -87.6866, div: "M" },
-  // { name: "Miami", lat: 25.784, long: -80.2101, div: "S" },
-  // { name: "Houston", lat: 29.786, long: -95.3885, div: "S" },
-  // { name: "Dallas", lat: 32.7935, long: -96.7667, div: "S" },
-  // { name: "Philadelphia", lat: 40.0077, long: -75.1339, div: "E" },
-  // { name: "Atlanta", lat: 33.7628, long: -84.422, div: "S" },
-  // { name: "Washington", lat: 38.9047, long: -77.0163, div: "E" },
-  // { name: "Boston", lat: 42.3188, long: -71.0852, div: "E" },
-  // { name: "Phoenix", lat: 33.5722, long: -112.0892, div: "W" },
-  // { name: "Detroit", lat: 42.3834, long: -83.1024, div: "M" },
-  // { name: "Seattle", lat: 47.6211, long: -122.3244, div: "W" },
-  // { name: "San Francisco", lat: 37.7558, long: -122.4449, div: "W" },
-  // { name: "San Diego", lat: 32.8313, long: -117.1222, div: "W" },
-  // { name: "Tampa", lat: 27.9945, long: -82.4447, div: "S" },
-  // { name: "Minneapolis", lat: 44.9635, long: -93.2678, div: "M" },
-  // { name: "Denver", lat: 39.762, long: -104.8758, div: "W" },
-  // { name: "Baltimore", lat: 39.3051, long: -76.6144, div: "E" },
-  // { name: "St. Louis", lat: 38.6359, long: -90.2451, div: "M" },
-  // { name: "Portland", lat: 45.5371, long: -122.65, div: "W" },
-  // { name: "San Antonio", lat: 29.4632, long: -98.5238, div: "S" },
-  // { name: "Orlando", lat: 28.4773, long: -81.337, div: "S" },
-  // { name: "Indianapolis", lat: 39.7771, long: -86.1458, div: "M" },
-  // { name: "Pittsburgh", lat: 40.4397, long: -79.9763, div: "E" },
-  // { name: "Cincinnati", lat: 39.1413, long: -84.506, div: "M" },
-  // { name: "Kansas City", lat: 39.1238, long: -94.5541, div: "M" },
-  // { name: "Cleveland", lat: 41.4764, long: -81.6805, div: "M" },
-  // { name: "Columbus", lat: 39.9862, long: -82.9855, div: "M" },
-  // { name: "Charlotte", lat: 35.2083, long: -80.8303, div: "S" },
-  // { name: "Nashville", lat: 36.1715, long: -86.7842, div: "S" },
-  //
-  // { name: "Ottawa", lat: 45.4247, long: -75.695, div: "BN" },
-  // { name: "Anaheim", lat: 33.8346, long: -117.9124, div: "BW" },
-  // { name: "Las Vegas", lat: 36.2333, long: -115.2654, div: "BW" },
-  // { name: "Austin", lat: 30.3005, long: -97.7522, div: "BS" },
-  // { name: "San Jose", lat: 37.3012, long: -121.848, div: "BW" },
-  // { name: "Sacramento", lat: 38.5677, long: -121.4685, div: "BW" },
-  // { name: "Virginia Beach", lat: 36.7335, long: -76.0435, div: "BE" },
-  // { name: "Jacksonville", lat: 30.3322, long: -81.6749, div: "BE" },
-  // { name: "Providence", lat: 41.823, long: -71.4187, div: "BN" },
-  // { name: "Milwaukee", lat: 43.0642, long: -87.9675, div: "BN" },
-  // { name: "Salt Lake City", lat: 40.7776, long: -111.9311, div: "BW" },
-  // { name: "Raleigh", lat: 35.8324, long: -78.6429, div: "BE" },
-  // { name: "Rochester", lat: 43.166, long: -77.616, div: "BN" },
-  // { name: "Memphis", lat: 35.1087, long: -89.9663, div: "BS" },
-  // { name: "Oklahoma City", lat: 35.4676, long: -97.5136, div: "BS" },
-  // { name: "Louisville", lat: 38.1663, long: -85.6485, div: "BE" },
-  // { name: "Buffalo", lat: 42.9018, long: -78.8487, div: "BN" },
-  // { name: "New Orleans", lat: 30.0687, long: -89.9288, div: "BS" },
-  // { name: "El Paso", lat: 31.8476, long: -106.43, div: "BW" },
-  // { name: "Omaha", lat: 41.2627, long: -96.0529, div: "BS" },
-  // { name: "Birmingham", lat: 33.5279, long: -86.7971, div: "BS" },
-  // { name: "Albuquerque", lat: 35.1054, long: -106.6465, div: "BW" },
-  // { name: "Des Moines", lat: 41.5725, long: -93.6105, div: "BS" },
-  // { name: "Tulsa", lat: 36.1283, long: -95.9042, div: "BS" },
-  // { name: "Hartford", lat: 41.7661, long: -72.6834, div: "BN" },
-  // { name: "Grand Rapids", lat: 42.9619, long: -85.6562, div: "BN" },
-  // { name: "Allentown", lat: 40.5961, long: -75.4756, div: "BE" },
-  // { name: "Tucson", lat: 32.1541, long: -110.8787, div: "BW" },
-  // { name: "Fort Myers", lat: 26.6443, long: -81.9957, div: "BE" },
-  // { name: "Richmond", lat: 37.5295, long: -77.4756, div: "BE" },
-  // { name: "Fresno", lat: 36.783, long: -119.7939, div: "BW" },
-  // { name: "Dayton", lat: 39.7805, long: -84.2003, div: "BE" },
-  // { name: "McAllen", lat: 26.2252, long: -98.2467, div: "BS" },
-  // { name: "Akron", lat: 41.0798, long: -81.5219, div: "BE" },
-  // { name: "Chicago", lat: 41.6168, long: -87.4909, div: "BN" },
-  // { name: "Hamilton", lat: 43.2567, long: -79.8692, div: "BN" },
+  { name: "Toronto", lat: 43.6539, long: -79.3839, div: "E" },
+  { name: "Montreal", lat: 45.4972, long: -73.6104, div: "E" },
+  { name: "Vancouver", lat: 49.2609, long: -123.1139, div: "W" },
+  { name: "New York", lat: 40.6943, long: -73.9249, div: "E" },
+  { name: "Newark", lat: 40.7245, long: -74.1725, div: "E" },
+  { name: "Los Angeles", lat: 34.1141, long: -118.4068, div: "W" },
+  { name: "Riverside", lat: 33.9381, long: -117.3949, div: "W" },
+  { name: "Chicago", lat: 41.8375, long: -87.6866, div: "M" },
+  { name: "Miami", lat: 25.784, long: -80.2101, div: "S" },
+  { name: "Houston", lat: 29.786, long: -95.3885, div: "S" },
+  { name: "Dallas", lat: 32.7935, long: -96.7667, div: "S" },
+  { name: "Philadelphia", lat: 40.0077, long: -75.1339, div: "E" },
+  { name: "Atlanta", lat: 33.7628, long: -84.422, div: "S" },
+  { name: "Washington", lat: 38.9047, long: -77.0163, div: "E" },
+  { name: "Boston", lat: 42.3188, long: -71.0852, div: "E" },
+  { name: "Phoenix", lat: 33.5722, long: -112.0892, div: "W" },
+  { name: "Detroit", lat: 42.3834, long: -83.1024, div: "M" },
+  { name: "Seattle", lat: 47.6211, long: -122.3244, div: "W" },
+  { name: "San Francisco", lat: 37.7558, long: -122.4449, div: "W" },
+  { name: "San Diego", lat: 32.8313, long: -117.1222, div: "W" },
+  { name: "Tampa", lat: 27.9945, long: -82.4447, div: "S" },
+  { name: "Minneapolis", lat: 44.9635, long: -93.2678, div: "M" },
+  { name: "Denver", lat: 39.762, long: -104.8758, div: "W" },
+  { name: "Baltimore", lat: 39.3051, long: -76.6144, div: "E" },
+  { name: "St. Louis", lat: 38.6359, long: -90.2451, div: "M" },
+  { name: "Portland", lat: 45.5371, long: -122.65, div: "W" },
+  { name: "San Antonio", lat: 29.4632, long: -98.5238, div: "S" },
+  { name: "Orlando", lat: 28.4773, long: -81.337, div: "S" },
+  { name: "Indianapolis", lat: 39.7771, long: -86.1458, div: "M" },
+  { name: "Pittsburgh", lat: 40.4397, long: -79.9763, div: "E" },
+  { name: "Cincinnati", lat: 39.1413, long: -84.506, div: "M" },
+  { name: "Kansas City", lat: 39.1238, long: -94.5541, div: "M" },
+  { name: "Cleveland", lat: 41.4764, long: -81.6805, div: "M" },
+  { name: "Columbus", lat: 39.9862, long: -82.9855, div: "M" },
+  { name: "Charlotte", lat: 35.2083, long: -80.8303, div: "S" },
+  { name: "Nashville", lat: 36.1715, long: -86.7842, div: "S" },
 
+  { name: "Ottawa", lat: 45.4247, long: -75.695, div: "BN" },
+  { name: "Anaheim", lat: 33.8346, long: -117.9124, div: "BW" },
+  { name: "Las Vegas", lat: 36.2333, long: -115.2654, div: "BW" },
+  { name: "Austin", lat: 30.3005, long: -97.7522, div: "BS" },
+  { name: "San Jose", lat: 37.3012, long: -121.848, div: "BW" },
+  { name: "Sacramento", lat: 38.5677, long: -121.4685, div: "BW" },
+  { name: "Virginia Beach", lat: 36.7335, long: -76.0435, div: "BE" },
+  { name: "Jacksonville", lat: 30.3322, long: -81.6749, div: "BE" },
+  { name: "Providence", lat: 41.823, long: -71.4187, div: "BN" },
+  { name: "Milwaukee", lat: 43.0642, long: -87.9675, div: "BN" },
+  { name: "Salt Lake City", lat: 40.7776, long: -111.9311, div: "BW" },
+  { name: "Raleigh", lat: 35.8324, long: -78.6429, div: "BE" },
+  { name: "Rochester", lat: 43.166, long: -77.616, div: "BN" },
+  { name: "Memphis", lat: 35.1087, long: -89.9663, div: "BS" },
+  { name: "Oklahoma City", lat: 35.4676, long: -97.5136, div: "BS" },
+  { name: "Louisville", lat: 38.1663, long: -85.6485, div: "BE" },
+  { name: "Buffalo", lat: 42.9018, long: -78.8487, div: "BN" },
+  { name: "New Orleans", lat: 30.0687, long: -89.9288, div: "BS" },
+  { name: "El Paso", lat: 31.8476, long: -106.43, div: "BW" },
+  { name: "Omaha", lat: 41.2627, long: -96.0529, div: "BS" },
+  { name: "Birmingham", lat: 33.5279, long: -86.7971, div: "BS" },
+  { name: "Albuquerque", lat: 35.1054, long: -106.6465, div: "BW" },
+  { name: "Des Moines", lat: 41.5725, long: -93.6105, div: "BS" },
+  { name: "Tulsa", lat: 36.1283, long: -95.9042, div: "BS" },
+  { name: "Hartford", lat: 41.7661, long: -72.6834, div: "BN" },
+  { name: "Grand Rapids", lat: 42.9619, long: -85.6562, div: "BN" },
+  { name: "Allentown", lat: 40.5961, long: -75.4756, div: "BE" },
+  { name: "Tucson", lat: 32.1541, long: -110.8787, div: "BW" },
+  { name: "Fort Myers", lat: 26.6443, long: -81.9957, div: "BE" },
+  { name: "Richmond", lat: 37.5295, long: -77.4756, div: "BE" },
+  { name: "Fresno", lat: 36.783, long: -119.7939, div: "BW" },
+  { name: "Dayton", lat: 39.7805, long: -84.2003, div: "BE" },
+  { name: "McAllen", lat: 26.2252, long: -98.2467, div: "BS" },
+  { name: "Akron", lat: 41.0798, long: -81.5219, div: "BE" },
+  { name: "Chicago", lat: 41.6168, long: -87.4909, div: "BN" },
+  { name: "Hamilton", lat: 43.2567, long: -79.8692, div: "BN" },
+
+  { name: "Bridgeport", lat: 41.1918, long: -73.1954, div: "T" },
   { name: "Albany", lat: 42.6664, long: -73.7987, div: "T" },
   { name: "Charleston", lat: 32.8168, long: -79.9687, div: "T" },
   { name: "Knoxville", lat: 35.9692, long: -83.9496, div: "T" },
@@ -93,7 +94,6 @@ const CityData = [
   { name: "Madison", lat: 43.0822, long: -89.393, div: "T" },
   { name: "Reno", lat: 39.5497, long: -119.848, div: "T" },
   { name: "Little Rock", lat: 34.7256, long: -92.3577, div: "T" },
-  { name: "Spokane", lat: 47.6671, long: -117.433, div: "T" },
   { name: "Springfield", lat: 42.1155, long: -72.5395, div: "T" },
   { name: "Chattanooga", lat: 35.066, long: -85.2481, div: "T" },
   { name: "Stockton", lat: 37.9765, long: -121.311, div: "T" },
@@ -107,11 +107,11 @@ const CityData = [
   { name: "Mobile", lat: 30.6782, long: -88.1162, div: "T" },
   { name: "Springfield", lat: 37.1943, long: -93.2916, div: "T" },
   { name: "South Bend", lat: 41.6767, long: -86.2696, div: "T" },
-  { name: "Evansville", lat: 37.9881, long: -87.5341, div: "T" },
-  { name: "Winston-Salem", lat: 36.1029, long: -80.261, div: "T" },
   { name: "Quad Cities", lat: 41.5565, long: -90.6053, div: "T" },
   { name: "Lansing", lat: 42.7142, long: -84.5601, div: "T" },
   { name: "Brooklyn", lat: 40.6501, long: -73.9496, div: "T" },
+  { name: "Lubbock", lat: 33.5657, long: -101.8879, div: "T" },
+  { name: "Peoria", lat: 40.752, long: -89.6154, div: "T" },
 ];
 
 type MarkerProps = {
@@ -160,42 +160,9 @@ const CityMarkers = CityData.map((city, index) => {
 
 export default CityMarkers;
 
-//2 Wilmington
-
-// Stockton
-// Spokane
-// Bakersfield
-// Reno
-// Modesto
-// Colorado springs
-// Visalia
-// Ontario
-// Oceanside
-// Provo
-// Corpus Christi
-// Wichita KAN
-// Springfield MO
-// Fort Worth DAL
-// Des Moines MIN
-// Lansing DET
-// Fort Wayne IND
-// Madison CHI
-// Toledo CLE
-// Jackson ATL
-// Baton Rouge ORL
-// Lexington CIN
-// Little Rock NSH
-// Greensboro CHO
-// Chattanooga
-// Greenville
-// Columbia
-// Savannah
-// Harrisburg
-// Syracuse
-// Scranton Wilkes-Berre
-// Worcester BOS
-// Springfield MA MON
-// Portland
+// { name: "Spokane", lat: 47.6671, long: -117.433, div: "T" },
+// { name: "Evansville", lat: 37.9881, long: -87.5341, div: "T" },
+// { name: "Winston-Salem", lat: 36.1029, long: -80.261, div: "T" },
 
 /*
   { name: "Calgary", lat: 51.05, long: -114.067, div: "T" },

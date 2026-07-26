@@ -4,14 +4,10 @@ import { Button } from "~/components/ui/button";
 import { Map, MapControls } from "~/components/ui/map";
 import F1raceArcs from "./F1RaceArcs";
 import F1RaceMarkers from "./F1RaceMarkers";
-import {
-  FormulaOneRaceResults,
-  type F1RaceType,
-} from "~/data/F1/2026/raceData";
+import { type F1RaceType } from "~/data/F1/2026/raceData";
 import SingleRaceTable from "../Tables/DialogTable";
 import { Dialog } from "~/components/ui/dialog";
 import DialogModalContent from "~/components/Page/DialogModal";
-import { TableHead } from "~/components/ui/table";
 import { raceCoordinates } from "~/data/F1/2026/F1data";
 
 const FormulaOneMap: React.FC = () => {

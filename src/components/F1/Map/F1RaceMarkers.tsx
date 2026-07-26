@@ -1,23 +1,15 @@
 import { useMapContext } from "~/hooks/useF1MapContext";
-import {
-  MapMarker,
-  MarkerContent,
-  MarkerLabel,
-  MarkerPopup,
-} from "~/components/ui/map";
+import { MapMarker, MarkerContent, MarkerLabel } from "~/components/ui/map";
 import { ReactCountryFlag } from "react-country-flag";
 import {
   raceCoordinates,
   raceCountryCodes,
   raceLocations2026,
 } from "~/data/F1/2026/F1data";
-import {
-  FormulaOneRaceResults,
-  type F1RaceType,
-} from "~/data/F1/2026/raceData";
+import { FormulaOneRaceResults } from "~/data/F1/2026/raceData";
 
 const F1RaceMarkers = () => {
-  const { mapDispatch, mapState } = useMapContext();
+  const { mapDispatch } = useMapContext();
 
   return raceLocations2026.map((location, index) => {
     if (raceCoordinates[location]) {

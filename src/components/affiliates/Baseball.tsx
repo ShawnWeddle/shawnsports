@@ -6,14 +6,10 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
   TableRowNoHover,
 } from "~/components/ui/table";
-import { mlbTeamsRanked, type MLBTeamType } from "~/data/MLB/MLBdata";
-import {
-  sortedBaseballTeams,
-  type BaseballDirectionType,
-} from "~/utils/sortBaseballMinors";
+import { type MLBTeamType } from "~/data/MLB/MLBdata";
+import { sortedBaseballTeams, type SortType } from "~/utils/sortBaseballMinors";
 import { MLBstyleData } from "~/styles/MLBstyleData";
 import {
   MLBFieldData,
@@ -23,6 +19,7 @@ import {
   SAFieldData,
 } from "~/data/MLB/BaseballStadiumData";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { Card } from "../ui/card";
 
 type AfilRowProps = {
   team: MLBTeamType;
@@ -30,7 +27,11 @@ type AfilRowProps = {
 };
 
 const BaseballMinorList: React.FC = () => {
-  const [tableSort, setTableSort] = useState<BaseballDirectionType>("MLB_A-Z");
+  const [tableSort, setTableSort] = useState<SortType>({
+    league: "MLB",
+    field: "Alphabet",
+    down: true,
+  });
 
   const AfilRow: React.FC<AfilRowProps> = (props: AfilRowProps) => {
     const { team, key } = props;
@@ -174,67 +175,129 @@ const BaseballMinorList: React.FC = () => {
       <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
         MLB Affiliates
       </h1>
+      <Card className="hidden justify-center gap-2 p-2 sm:flex">
+        <div className="font-semibold">Sort by: </div>
+        <fieldset className="flex gap-2">
+          <div>
+            <input
+              type="radio"
+              id="Alphabet"
+              checked={tableSort.field === "Alphabet"}
+              onClick={() => {
+                setTableSort({ ...tableSort, field: "Alphabet" });
+              }}
+            />
+            <label htmlFor="Alphabet">Alphabetically</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="Latitude"
+              checked={tableSort.field === "Latitude"}
+              onClick={() => {
+                setTableSort({ ...tableSort, field: "Latitude" });
+              }}
+            />
+            <label htmlFor="Latitude">Latitude</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="Longitude"
+              checked={tableSort.field === "Longitude"}
+              onClick={() => {
+                setTableSort({ ...tableSort, field: "Longitude" });
+              }}
+            />
+            <label htmlFor="Longitude">Longitude</label>
+          </div>
+        </fieldset>
+      </Card>
       <Table>
         <TableHeader>
           <TableRowNoHover>
             <TableHead className="hidden sm:table-cell">
               <button
                 onClick={() => {
-                  setTableSort(tableSort === "MLB_A-Z" ? "MLB_Z-A" : "MLB_A-Z");
+                  if (tableSort.league === "MLB") {
+                    setTableSort({ ...tableSort, down: !tableSort.down });
+                  } else {
+                    setTableSort({ ...tableSort, league: "MLB" });
+                  }
                 }}
                 className="flex w-full justify-center"
               >
                 MLB
-                {tableSort === "MLB_A-Z" && <ChevronDown />}
-                {tableSort === "MLB_Z-A" && <ChevronUp />}
+                {tableSort.league === "MLB" && tableSort.down && (
+                  <ChevronDown />
+                )}
+                {tableSort.league === "MLB" && !tableSort.down && <ChevronUp />}
               </button>
             </TableHead>
             <TableHead className="hidden sm:table-cell">
               <button
                 onClick={() => {
-                  setTableSort(tableSort === "AAA_A-Z" ? "AAA_Z-A" : "AAA_A-Z");
+                  if (tableSort.league === "AAA") {
+                    setTableSort({ ...tableSort, down: !tableSort.down });
+                  } else {
+                    setTableSort({ ...tableSort, league: "AAA" });
+                  }
                 }}
                 className="flex w-full justify-center"
               >
                 AAA
-                {tableSort === "AAA_A-Z" && <ChevronDown />}
-                {tableSort === "AAA_Z-A" && <ChevronUp />}
+                {tableSort.league === "AAA" && tableSort.down && (
+                  <ChevronDown />
+                )}
+                {tableSort.league === "AAA" && !tableSort.down && <ChevronUp />}
               </button>
             </TableHead>
             <TableHead className="hidden sm:table-cell">
               <button
                 onClick={() => {
-                  setTableSort(tableSort === "AA_A-Z" ? "AA_Z-A" : "AA_A-Z");
+                  if (tableSort.league === "AA") {
+                    setTableSort({ ...tableSort, down: !tableSort.down });
+                  } else {
+                    setTableSort({ ...tableSort, league: "AA" });
+                  }
                 }}
                 className="flex w-full justify-center"
               >
                 AA
-                {tableSort === "AA_A-Z" && <ChevronDown />}
-                {tableSort === "AA_Z-A" && <ChevronUp />}
+                {tableSort.league === "AA" && tableSort.down && <ChevronDown />}
+                {tableSort.league === "AA" && !tableSort.down && <ChevronUp />}
               </button>
             </TableHead>
             <TableHead className="hidden sm:table-cell">
               <button
                 onClick={() => {
-                  setTableSort(tableSort === "HA_A-Z" ? "HA_Z-A" : "HA_A-Z");
+                  if (tableSort.league === "HA") {
+                    setTableSort({ ...tableSort, down: !tableSort.down });
+                  } else {
+                    setTableSort({ ...tableSort, league: "HA" });
+                  }
                 }}
                 className="flex w-full justify-center"
               >
                 High-A
-                {tableSort === "HA_A-Z" && <ChevronDown />}
-                {tableSort === "HA_Z-A" && <ChevronUp />}
+                {tableSort.league === "HA" && tableSort.down && <ChevronDown />}
+                {tableSort.league === "HA" && !tableSort.down && <ChevronUp />}
               </button>
             </TableHead>
             <TableHead className="hidden sm:table-cell">
               <button
                 onClick={() => {
-                  setTableSort(tableSort === "SA_A-Z" ? "SA_Z-A" : "SA_A-Z");
+                  if (tableSort.league === "SA") {
+                    setTableSort({ ...tableSort, down: !tableSort.down });
+                  } else {
+                    setTableSort({ ...tableSort, league: "SA" });
+                  }
                 }}
                 className="flex w-full justify-center"
               >
                 Single-A
-                {tableSort === "SA_A-Z" && <ChevronDown />}
-                {tableSort === "SA_Z-A" && <ChevronUp />}
+                {tableSort.league === "SA" && tableSort.down && <ChevronDown />}
+                {tableSort.league === "SA" && !tableSort.down && <ChevronUp />}
               </button>
             </TableHead>
             <TableHead className="sm:hidden">Parent Team</TableHead>

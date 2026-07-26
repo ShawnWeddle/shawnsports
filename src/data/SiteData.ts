@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const titlesArray = [
-  "Home", "Home_Map", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Schedule", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "F1_Champions", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLB_Minors", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "NHL_Minors", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", "NFL_Map"
+  "Home", "Home_Map", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Schedule", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "F1_Champions", "F1_Map", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLB_Minors", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "NHL_Minors", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", "NFL_Map"
 ] as const;
 
 export const TitlesEnum = z.enum(titlesArray);
@@ -13,7 +13,7 @@ export const allNavHeads = {
   "Home": ["Home", "Home_Map"], 
   "NBA": ["NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", ], 
   "NFL": ["NFL_Schedule", "NFL_Super_Losers", "NFL_Super_Bowls", "NFL_Rank",  "NFL_Map", ], 
-  "F1": ["F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "F1_Champions", ], 
+  "F1": ["F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "F1_Champions", "F1_Map", ], 
   "MLB": ["MLB_World_Series", "MLB_Rank", "MLB_Map", "MLB_Minors", ], 
   "MLS": [ "MLS_Cups", "MLS_Rank", ],
   "NHL": ["NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "NHL_Minors", ], 
@@ -39,8 +39,9 @@ export const F1TitlesDesc: {[Key in F1TitlesType] : string} = {
   "F1_Tables": "See the results for every race this season",
   "F1_Standings": "See the current standings for each driver and constructor",
   "F1_Compare": "Compare cumulative points totals for every driver and constructor in the 2026 F1 season",
-  "F1_Rank": "Rank all 22 drivers for the 2026 season",
   "F1_Champions": "See all Drivers Champions since 1950",
+  "F1_Rank": "Rank all 22 drivers for the 2026 season",
+  "F1_Map": "See a map of all 22 races for the 2026 season",
 };
 export const NFLTitlesDesc: {[Key in NFLTitlesType] : string} = {
   "NFL_Schedule" : "Pick the outcome of all 272 NFL games in 2026",
@@ -58,7 +59,7 @@ export const NBATitlesDesc: {[Key in NBATitlesType] : string} = {
 export const MLBTitlesDesc: {[Key in MLBTitlesType] : string} = {
   "MLB_World_Series": "See all World Series since 1903",
   "MLB_Rank": "Rank all 30 MLB teams",
-  "MLB_Map": "See a map of all MLB minor league affiliates",
+  "MLB_Map": "See a map of all MLB teams and their minor league affiliates",
   "MLB_Minors": "See a list of all MLB minor league affiliates",
 };
 export const MLSTitlesDesc: {[Key in MLSTitlesType] : string} = {
@@ -144,6 +145,7 @@ export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, url
   F1_Compare: { navTitle: "Compare", urlName: "/f1/compare",},
   F1_Rank: { navTitle: "Rank", urlName: "/f1/rank",},
   F1_Champions: { navTitle: "Champions", urlName: "/f1/champions"},
+  F1_Map: { navTitle: "Map", urlName: "/f1/map"},
   NBA_Future_Picks: { navTitle: "Future Picks", urlName: "/nba/future-picks",},
   NBA_Finals: { navTitle: "Finals", urlName: "/nba/finals",},
   NBA_Rank: { navTitle: "Rank", urlName: "/nba/rank",},

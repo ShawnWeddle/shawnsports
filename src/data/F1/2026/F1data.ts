@@ -79,6 +79,7 @@ export const raceCoordinates: {
         };
         circuitName: string;
         raceDate: string;
+        sprintDate?: string;
     };
 } = {
   "Australia": {
@@ -96,6 +97,7 @@ export const raceCoordinates: {
     },
     circuitName: "Shanghai International Circuit",
     raceDate: "March 15",
+    sprintDate: "March 14",
   },
   "Japan": {
     coordinates: {
@@ -112,6 +114,7 @@ export const raceCoordinates: {
     },
     circuitName: "Miami Internation Autodrome",
     raceDate: "May 3",
+    sprintDate: "May 2",
   },
   "Canada": {
     coordinates: {
@@ -120,6 +123,7 @@ export const raceCoordinates: {
     },
     circuitName: "Circuit Gilles Villeneuve",
     raceDate: "May 24",
+    sprintDate: "May 23",
   },
   "Monaco": {
     coordinates: {
@@ -136,6 +140,129 @@ export const raceCoordinates: {
     },
     circuitName: "Circuit de Barcelona-Catalunya",
     raceDate: "June 14",
+  },
+  "Austria": {
+    coordinates: {
+      latitude: 47.220,
+      longitude: 14.765,
+    },
+    circuitName: "Red Bull Ring",
+    raceDate: "June 28",
+  },
+  "Great Britain": {
+    coordinates: {
+      latitude: 52.069,
+      longitude: -1.022,
+    },
+    circuitName: "Silverstone Circuit",
+    raceDate: "July 5",
+    sprintDate: "July 4",
+  },
+  "Belgium": {
+    coordinates: {
+      latitude: 50.444,
+      longitude: 5.966,
+    },
+    circuitName: "Circuit de Spa-Francorchamps",
+    raceDate: "July 19",
+  },
+  "Hungary": {
+    coordinates: {
+      latitude: 47.580,
+      longitude: 19.247,
+    },
+    circuitName: "Hungaroring",
+    raceDate: "July 26",
+  },
+  "Netherlands": {
+    coordinates: {
+      latitude: 52.389,
+      longitude: 4.541,
+    },
+    circuitName: "Circuit Zandvoort",
+    raceDate: "August 23",
+    sprintDate: "August 22",
+  },
+  "Monza": {
+    coordinates: {
+      latitude: 45.618,
+      longitude: 9.281,
+    },
+    circuitName: "Monza Circuit",
+    raceDate: "September 6",
+  },
+  "Madrid": {
+    coordinates: {
+      latitude: 40.465,
+      longitude: -3.617,
+    },
+    circuitName: "Madring",
+    raceDate: "September 13",
+  },
+  "Azerbaijan": {
+    coordinates: {
+      latitude: 40.373,
+      longitude: 49.853,
+    },
+    circuitName: "Baku City Circuit",
+    raceDate: "September 26",
+  },
+  "Singapore": {
+    coordinates: {
+      latitude: 1.291,
+      longitude: 103.864,
+    },
+    circuitName: "Marina Bay Street Circuit",
+    raceDate: "October 11",
+    sprintDate: "October 10",
+  },
+  "Austin": {
+    coordinates: {
+      latitude: 30.132,
+      longitude: -97.641,
+    },
+    circuitName: "Circuit of the Americas",
+    raceDate: "October 25",
+  },
+  "Mexico": {
+    coordinates: {
+      latitude: 19.406,
+      longitude: -99.094,
+    },
+    circuitName: "Autódromo Hermanos Rodríguez",
+    raceDate: "November 1",
+  },
+  "Brazil": {
+    coordinates: {
+      latitude: -23.705,
+      longitude: -46.700,
+    },
+    circuitName: "Interlagos Circuit",
+    raceDate: "November 8",
+  },
+  "Las Vegas": {
+    coordinates: {
+      latitude: 36.110,
+      longitude: -115.162,
+    },
+    circuitName: "Las Vegas Strip Circuit",
+    raceDate: "November 21",
+  },
+  "Qatar": {
+    coordinates: {
+      latitude: 25.488,
+      longitude: 51.450,
+    },
+    circuitName: "Lusail International Circuit",
+    raceDate: "November 29",
+  },
+  "Abu Dhabi": {
+    coordinates: {
+      latitude: 24.477,
+      longitude: 54.606,
+    },
+    circuitName: "Yas Marina Circuit",
+    raceDate: "December 6",
   },
 };
 

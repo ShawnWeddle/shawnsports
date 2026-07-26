@@ -6,6 +6,7 @@ import { Card, CardHeader, CardDescription } from "../ui/card";
 import { NFLteamData } from "~/data/NFL/NFLdata";
 import { NFLstyleData } from "~/styles/NFLstyleData";
 import { SuperBowlData } from "~/data/NFL/SuperBowlData";
+import { SuperLoserData } from "~/data/NFL/SuperLoserData";
 import { SuperLoserSort } from "~/utils/SuperLoserSort";
 import { type SuperBowlType } from "~/types/ChampTypes";
 import {
@@ -248,39 +249,3 @@ const SuperLoserList: React.FC = () => {
 };
 
 export default SuperLoserList;
-
-// const ThreeTeamers = [];
-// const allAppearances = [...allWinners, ...allLosers];
-// for (let i = 0; i < allAppearances.length; i++) {
-//   const First = allAppearances[i];
-//   for (let j = i + 1; j < allAppearances.length; j++) {
-//     const Second = allAppearances[j];
-//     for (let k = j + 1; k < allAppearances.length; k++) {
-//       const Third = allAppearances[k];
-//       if (First && Second && Third) {
-//         if (
-//           First.player === Second.player &&
-//           Second.player === Third.player
-//         ) {
-//           if (
-//             First.birthDate === Second.birthDate &&
-//             Second.birthDate === Third.birthDate
-//           ) {
-//             const uniqueTeams = new Set([First.team, Second.team, Third.team])
-//               .size;
-//             if (uniqueTeams === 3) {
-//               const ThreeTeamer = {
-//                 name: First.player,
-//                 birthDate: First.birthDate,
-//                 teams: [First.team, Second.team, Third.team],
-//                 years: [First.year, Second.year, Third.year],
-//               };
-//               ThreeTeamers.push(ThreeTeamer);
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-// console.log(ThreeTeamers);

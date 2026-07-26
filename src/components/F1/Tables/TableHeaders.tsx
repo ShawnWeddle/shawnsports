@@ -5,9 +5,12 @@ import {
   FormulaOneRaceResults,
   type F1RaceType,
 } from "~/data/F1/2026/raceData";
-import { type RaceModeProps } from "~/data/F1/2026/F1data";
+import {
+  type RaceModeProps,
+  raceCountryCodes,
+  raceCoordinates,
+} from "~/data/F1/2026/F1data";
 import { ReactCountryFlag } from "react-country-flag";
-import { raceCountryCodes } from "~/data/F1/2026/F1data";
 import { Dialog } from "~/components/ui/dialog";
 import DialogModalContent from "~/components/Page/DialogModal";
 import { TableHead } from "~/components/ui/table";
@@ -18,6 +21,12 @@ const { headers } = locationHeaders(FormulaOneRaceResults);
 const F1TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [activeRace, setActiveRace] = useState<F1RaceType | null>(null);
+
+  const date = activeRace?.location
+    ? activeRace?.sprint
+      ? raceCoordinates[activeRace?.location]?.sprintDate ?? ""
+      : raceCoordinates[activeRace?.location]?.raceDate ?? ""
+    : "";
 
   const tableHeaders = headers.map((location, index) => {
     const { locationName, sprint } = location;
@@ -90,7 +99,10 @@ const F1TableHeaders: React.FC<RaceModeProps> = (props: RaceModeProps) => {
             setDialogOpen(false);
           }}
         >
-          <DialogModalContent title={modalNamer(activeRace)} description={""}>
+          <DialogModalContent
+            title={modalNamer(activeRace)}
+            description={date + ", 2026"}
+          >
             {activeRace?.completed ? (
               <SingleRaceTable race={activeRace} />
             ) : (

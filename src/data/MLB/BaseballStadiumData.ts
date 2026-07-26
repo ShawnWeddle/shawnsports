@@ -546,8 +546,8 @@ export const AAFieldData: {[Key in AATeamType] : TeamInfoType} = {
   },
   "AA-CLE": {
     coordinates: {
-      latitude: 41.219,
-      longitude: -80.755
+      latitude: 41.078,
+      longitude: -81.522
     },
     location: "Akron",
     name: "RubberDucks",

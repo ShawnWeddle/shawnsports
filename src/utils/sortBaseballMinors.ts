@@ -3,75 +3,205 @@ import {
   AAAFieldData,
   AAFieldData,
   HAFieldData,
+  MLBFieldData,
   SAFieldData,
 } from "~/data/MLB/BaseballStadiumData";
 
 type BaseballLeagueType = "MLB" | "AAA" | "AA" | "HA" | "SA";
-type DirectionType = "A-Z" | "Z-A";
+type SortFieldType = "Alphabet" | "Latitude" | "Longitude";
 
-export type BaseballDirectionType = `${BaseballLeagueType}_${DirectionType}`;
+export type SortType = {
+  league: BaseballLeagueType;
+  field: SortFieldType;
+  down: boolean;
+};
 
-export const sortedBaseballTeams = (order: BaseballDirectionType): MLBTeamType[] => {
-  switch(order){
-    case "MLB_A-Z": {
-      const newOrder = mlbTeamsRanked.toSorted((a,b) => {
-        return a > b ? 1 : -1;
-      })
-      return newOrder;
+export const sortedBaseballTeams = (order: SortType): MLBTeamType[] => {
+  switch(order.league){
+    case "MLB": {
+      switch(order.field){
+        case "Alphabet": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return a > b ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return a < b ? 1 : -1;
+            })
+          }
+        }
+        case "Latitude": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return MLBFieldData[a].coordinates.latitude < MLBFieldData[b].coordinates.latitude ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return MLBFieldData[a].coordinates.latitude > MLBFieldData[b].coordinates.latitude ? 1 : -1;
+            })
+          }
+        }
+        case "Longitude": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return MLBFieldData[a].coordinates.longitude > MLBFieldData[b].coordinates.longitude ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return MLBFieldData[a].coordinates.longitude < MLBFieldData[b].coordinates.longitude ? 1 : -1;
+            })
+          }
+        }
+      }
     }
-    case "MLB_Z-A": {
-      const newOrder = mlbTeamsRanked.toSorted((a,b) => {
-        return a < b ? 1 : -1;
-      })
-      return newOrder;
+    case "AAA": {
+      switch(order.field){
+        case "Alphabet": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return AAAFieldData[`AAA-${a}`].location > AAAFieldData[`AAA-${b}`].location ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return AAAFieldData[`AAA-${a}`].location < AAAFieldData[`AAA-${b}`].location ? 1 : -1;
+            })
+          }
+        }
+        case "Latitude": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return AAAFieldData[`AAA-${a}`].coordinates.latitude < AAAFieldData[`AAA-${b}`].coordinates.latitude ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return AAAFieldData[`AAA-${a}`].coordinates.latitude > AAAFieldData[`AAA-${b}`].coordinates.latitude ? 1 : -1;
+            })
+          }
+        }
+        case "Longitude": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return AAAFieldData[`AAA-${a}`].coordinates.longitude > AAAFieldData[`AAA-${b}`].coordinates.longitude ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return AAAFieldData[`AAA-${a}`].coordinates.longitude < AAAFieldData[`AAA-${b}`].coordinates.longitude ? 1 : -1;
+            })
+          }
+        }
+      }
     }
-    case "AAA_A-Z": {
-      const newOrder = mlbTeamsRanked.toSorted((a,b) => {
-        return AAAFieldData[`AAA-${a}`].location > AAAFieldData[`AAA-${b}`].location ? 1 : -1;
-      })
-      return newOrder;
+    case "AA": {
+      switch(order.field){
+        case "Alphabet": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return AAFieldData[`AA-${a}`].location > AAFieldData[`AA-${b}`].location ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return AAFieldData[`AA-${a}`].location < AAFieldData[`AA-${b}`].location ? 1 : -1;
+            })
+          }
+        }
+        case "Latitude": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return AAFieldData[`AA-${a}`].coordinates.latitude < AAFieldData[`AA-${b}`].coordinates.latitude ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return AAFieldData[`AA-${a}`].coordinates.latitude > AAFieldData[`AA-${b}`].coordinates.latitude ? 1 : -1;
+            })
+          }
+        }
+        case "Longitude": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return AAFieldData[`AA-${a}`].coordinates.longitude > AAFieldData[`AA-${b}`].coordinates.longitude ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return AAFieldData[`AA-${a}`].coordinates.longitude < AAFieldData[`AA-${b}`].coordinates.longitude ? 1 : -1;
+            })
+          }
+        }
+      }
     }
-    case "AAA_Z-A": {
-      const newOrder = mlbTeamsRanked.toSorted((a,b) => {
-        return AAAFieldData[`AAA-${a}`].location < AAAFieldData[`AAA-${b}`].location ? 1 : -1;
-      })
-      return newOrder;
+    case "HA": {
+      switch(order.field){
+        case "Alphabet": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return HAFieldData[`HA-${a}`].location > HAFieldData[`HA-${b}`].location ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return HAFieldData[`HA-${a}`].location < HAFieldData[`HA-${b}`].location ? 1 : -1;
+            })
+          }
+        }
+        case "Latitude": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return HAFieldData[`HA-${a}`].coordinates.latitude < HAFieldData[`HA-${b}`].coordinates.latitude ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return HAFieldData[`HA-${a}`].coordinates.latitude > HAFieldData[`HA-${b}`].coordinates.latitude ? 1 : -1;
+            })
+          }
+        }
+        case "Longitude": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return HAFieldData[`HA-${a}`].coordinates.longitude > HAFieldData[`HA-${b}`].coordinates.longitude ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return HAFieldData[`HA-${a}`].coordinates.longitude < HAFieldData[`HA-${b}`].coordinates.longitude ? 1 : -1;
+            })
+          }
+        }
+      }
     }
-    case "AA_A-Z": {
-      const newOrder = mlbTeamsRanked.toSorted((a,b) => {
-        return AAFieldData[`AA-${a}`].location > AAFieldData[`AA-${b}`].location ? 1 : -1;
-      })
-      return newOrder;
-    }
-    case "AA_Z-A": {
-      const newOrder = mlbTeamsRanked.toSorted((a,b) => {
-        return AAFieldData[`AA-${a}`].location < AAFieldData[`AA-${b}`].location ? 1 : -1;
-      })
-      return newOrder;
-    }
-    case "HA_A-Z": {
-      const newOrder = mlbTeamsRanked.toSorted((a,b) => {
-        return HAFieldData[`HA-${a}`].location > HAFieldData[`HA-${b}`].location ? 1 : -1;
-      })
-      return newOrder;
-    }
-    case "HA_Z-A": {
-      const newOrder = mlbTeamsRanked.toSorted((a,b) => {
-        return HAFieldData[`HA-${a}`].location < HAFieldData[`HA-${b}`].location ? 1 : -1;
-      })
-      return newOrder;
-    }
-    case "SA_A-Z": {
-      const newOrder = mlbTeamsRanked.toSorted((a,b) => {
-        return SAFieldData[`SA-${a}`].location > SAFieldData[`SA-${b}`].location ? 1 : -1;
-      })
-      return newOrder;
-    }
-    case "SA_Z-A": {
-      const newOrder = mlbTeamsRanked.toSorted((a,b) => {
-        return SAFieldData[`SA-${a}`].location < SAFieldData[`SA-${b}`].location ? 1 : -1;
-      })
-      return newOrder;
+    case "SA": {
+      switch(order.field){
+        case "Alphabet": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return SAFieldData[`SA-${a}`].location > SAFieldData[`SA-${b}`].location ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return SAFieldData[`SA-${a}`].location < SAFieldData[`SA-${b}`].location ? 1 : -1;
+            })
+          }
+        }
+        case "Latitude": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return SAFieldData[`SA-${a}`].coordinates.latitude < SAFieldData[`SA-${b}`].coordinates.latitude ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return SAFieldData[`SA-${a}`].coordinates.latitude > SAFieldData[`SA-${b}`].coordinates.latitude ? 1 : -1;
+            })
+          }
+        }
+        case "Longitude": {
+          if(order.down){
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return SAFieldData[`SA-${a}`].coordinates.longitude > SAFieldData[`SA-${b}`].coordinates.longitude ? 1 : -1;
+            })
+          } else {
+            return mlbTeamsRanked.toSorted((a,b) => {
+              return SAFieldData[`SA-${a}`].coordinates.longitude < SAFieldData[`SA-${b}`].coordinates.longitude ? 1 : -1;
+            })
+          }
+        }
+      }
     }
   }
 }

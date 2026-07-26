@@ -1,4 +1,4 @@
-import type { NFLTeamType } from "./NFLdata";
+import type { NFLTeamType } from "~/data/NFL/NFLdata";
 
 export type GameType = {
   Away: NFLTeamType,

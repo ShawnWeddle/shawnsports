@@ -1,5 +1,6 @@
 import MainPage from "~/components/Page/MainPage";
 import SuperLoserList from "~/components/NFL/SuperLoserList";
+import Canvas from "~/components/NFL/SuperLoserChart";
 
 const SuperLosers = () => {
   return (
@@ -10,6 +11,7 @@ const SuperLosers = () => {
       pageMode="NFL"
       underPageMode="NFL_Super_Losers"
     >
+      <Canvas />
       <SuperLoserList />
     </MainPage>
   );

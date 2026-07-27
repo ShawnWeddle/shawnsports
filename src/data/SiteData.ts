@@ -41,7 +41,7 @@ export const F1TitlesDesc: {[Key in F1TitlesType] : string} = {
   "F1_Compare": "Compare cumulative points totals for every driver and constructor in the 2026 F1 season",
   "F1_Champions": "See all Drivers Champions since 1950",
   "F1_Rank": "Rank all 22 drivers for the 2026 season",
-  "F1_Map": "See a map of all 22 races for the 2026 season",
+  "F1_Map": "See a map of all 23 races for the 2026 season",
 };
 export const NFLTitlesDesc: {[Key in NFLTitlesType] : string} = {
   "NFL_Schedule" : "Pick the outcome of all 272 NFL games in 2026",

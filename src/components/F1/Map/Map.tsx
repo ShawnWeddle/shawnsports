@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useMapContext } from "~/hooks/useF1MapContext";
+import { type F1RaceType } from "~/data/F1/2026/raceData";
 import { Button } from "~/components/ui/button";
+import { Card } from "~/components/ui/card";
 import { Map, MapControls } from "~/components/ui/map";
 import F1raceArcs from "./F1RaceArcs";
 import F1RaceMarkers from "./F1RaceMarkers";
-import { type F1RaceType } from "~/data/F1/2026/raceData";
 import SingleRaceTable from "../Tables/DialogTable";
 import { Dialog } from "~/components/ui/dialog";
 import DialogModalContent from "~/components/Page/DialogModal";
@@ -80,7 +81,7 @@ const FormulaOneMap: React.FC = () => {
           </div>
         </DialogModalContent>
       </Dialog>
-      <div className="h-96 w-full">
+      <Card className="relative flex h-128 w-full p-0">
         <Map center={[0, 0]} zoom={0.8}>
           <MapControls
             position="top-right"
@@ -88,7 +89,7 @@ const FormulaOneMap: React.FC = () => {
             showLocate
             showFullscreen
           />
-          <div className="absolute left-3 top-3 rounded bg-white p-1">
+          <div className="absolute bottom-3 left-3 rounded bg-white p-1">
             {!showPath && (
               <Button
                 size="sm"
@@ -115,7 +116,7 @@ const FormulaOneMap: React.FC = () => {
           {showPath && <F1raceArcs />}
           <F1RaceMarkers />
         </Map>
-      </div>
+      </Card>
     </div>
   );
 };

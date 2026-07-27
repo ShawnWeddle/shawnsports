@@ -508,14 +508,38 @@ export const FormulaOneRaceResults : F1RaceType[] = [
   },
   {
     location: "Hungary",
-    finalOrder: [],
-    DNFs: [],
+    finalOrder: [
+      { driver: "NOR", constructor: "McLaren" },
+      { driver: "VER", constructor: "Red Bull" },
+      { driver: "ANT", constructor: "Mercedes" },
+      { driver: "LEC", constructor: "Ferrari" },
+      { driver: "HAM", constructor: "Ferrari" },
+      { driver: "HAD", constructor: "Red Bull" },
+      { driver: "RUS", constructor: "Mercedes" },
+      { driver: "LAW", constructor: "RB" },
+      { driver: "HUL", constructor: "Audi" },
+      { driver: "LIN", constructor: "RB" },
+      { driver: "BOR", constructor: "Audi" },
+      { driver: "GAS", constructor: "Alpine" },
+      { driver: "STR", constructor: "Aston Martin" },
+      { driver: "ALO", constructor: "Aston Martin" },
+      { driver: "COL", constructor: "Alpine" },
+      { driver: "OCO", constructor: "Haas" },
+      { driver: "ALB", constructor: "Williams" },
+      { driver: "SAI", constructor: "Williams" },
+      { driver: "BEA", constructor: "Haas" },
+    ],
+    DNFs: [
+      { driver: "PIA", constructor: "McLaren" },
+      { driver: "PER", constructor: "Cadillac" },
+      { driver: "BOT", constructor: "Cadillac" },
+    ],
     polePosition: {
-      driver: "VER",
-      constructor: "Red Bull"
+      driver: "NOR",
+      constructor: "McLaren"
     },
     sprint: false,
-    completed: false,
+    completed: true,
   },
   {
     location: "Netherlands",
@@ -563,6 +587,17 @@ export const FormulaOneRaceResults : F1RaceType[] = [
   },
   {
     location: "Azerbaijan",
+    finalOrder: [],
+    DNFs: [],
+    polePosition: {
+      driver: "VER",
+      constructor: "Red Bull"
+    },
+    sprint: false,
+    completed: false,
+  },
+    {
+    location: "Bahrain / Malaysia",
     finalOrder: [],
     DNFs: [],
     polePosition: {

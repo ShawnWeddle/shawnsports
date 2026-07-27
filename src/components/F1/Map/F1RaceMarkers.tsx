@@ -50,6 +50,16 @@ const F1RaceMarkers = () => {
                 countryCode={raceCountryCodes[location]}
                 svg
               />
+              {location === "Bahrain / Malaysia" && (
+                <ReactCountryFlag
+                  style={{
+                    width: "2em",
+                    height: "2em",
+                  }}
+                  countryCode="MY"
+                  svg
+                />
+              )}
             </button>
             <MarkerLabel position="bottom" className="rounded bg-white/20 px-1">
               {location}

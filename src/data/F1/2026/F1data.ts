@@ -35,6 +35,7 @@ export const raceLocations2026 = [
   "Monza",
   "Madrid",
   "Azerbaijan",
+  "Bahrain / Malaysia",
   "Singapore",
   "Austin",
   "Mexico",
@@ -43,7 +44,7 @@ export const raceLocations2026 = [
   "Qatar",
   "Abu Dhabi",
 ] as const;
-//  "Bahrain",
+//  ,
 //"Saudi Arabia",
 
 export const raceCountryCodes: { [Key in RaceLocation26Type] : string} = {
@@ -53,6 +54,7 @@ export const raceCountryCodes: { [Key in RaceLocation26Type] : string} = {
   Austria: "AT",
   Azerbaijan: "AZ",
   Barcelona: "ES",
+  "Bahrain / Malaysia": "BH",
   Belgium: "BE",
   Brazil: "BR",
   Canada: "CA",
@@ -206,6 +208,14 @@ export const raceCoordinates: {
     },
     circuitName: "Baku City Circuit",
     raceDate: "September 26",
+  },
+  "Bahrain / Malaysia": {
+    coordinates: {
+      latitude: 2.761,
+      longitude: 101.737,
+    },
+    circuitName: "Sepang Circuit (Malaysia)",
+    raceDate: "October 4",
   },
   "Singapore": {
     coordinates: {

@@ -1,6 +1,7 @@
 import MainPage from "~/components/Page/MainPage";
 import { MapContextProvider } from "~/context/MapContext";
 import FullMap from "~/components/map/Map";
+// import LotteryModule from "~/components/NBA/Lottery";
 
 const Map = () => {
   return (

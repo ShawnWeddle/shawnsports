@@ -38,13 +38,16 @@ const Canvas = () => {
     }
 
     SuperLoserData.forEach((loser) => {
-      const { losses } = loser;
+      const { losses, firstName, lastName } = loser;
 
       const drawArc = (loss1: number, loss2: number) => {
         const p1 = loss1 * 15 + 16;
         const p2 = loss2 * 15 + 16;
 
-        const radius = (loss2 - loss1) * 15;
+        const distance = loss2 - loss1;
+        console.log(firstName + " " + lastName, distance);
+
+        const radius = distance * 15;
         const y = (p1 + p2) / 2;
 
         ctx.beginPath(); // Start a new path

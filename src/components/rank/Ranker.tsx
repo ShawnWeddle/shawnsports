@@ -352,7 +352,7 @@ const Ranker: React.FC<RankerProps> = (props: RankerProps) => {
         </Button>
         <Button
           className="m-1"
-          disabled={rankedEntries.includes(null)}
+          disabled={!authState.user || rankedEntries.includes(null)}
           variant={gsd.variant}
           onClick={() => {
             handleSubmit();

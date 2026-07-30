@@ -41,3 +41,44 @@ export const leagueStyles = (league: LeagueType) => {
       return "text-mlv border-mlv"
   }
 }
+
+export const leagueBackgrounds = (league: LeagueType) => {
+  switch(league){
+    case "NFL":
+      return "bg-nfl";
+    case "CFL":
+      return "bg-cfl";
+    case "UFL":
+      return "bg-ufl";
+    case "IFL":
+      return "bg-ifl";
+    case "NBA":
+      return "bg-nba";
+    case "NGL":
+      return "bg-ngl";
+    case "WNBA":
+      return "bg-wnba";
+    case "NHL":
+      return "bg-nhl";
+    case "AHL":
+      return "bg-ahl";
+    case "ECHL":
+      return "bg-echl";
+    case "PWHL":
+      return "bg-pwhl";
+    case "MLB":
+      return "bg-mlb";
+    case "AAA":
+      return "bg-aaa";
+    case "AA":
+      return "bg-aa";
+    case "HA":
+      return "bg-higha";
+    case "SA":
+      return "bg-singlea";
+    case "MLS":
+      return "bg-mls";
+    case "MLV":
+      return "bg-mlv";
+  }
+}

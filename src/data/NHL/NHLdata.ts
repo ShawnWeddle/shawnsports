@@ -149,7 +149,7 @@ export const echlTeamsListReal = [
   "WOR",
 ] as const;
 
-export const pwhlTeamsAll = [
+export const pwhlTeamsList = [
   "BOS", "DET", "HAM", "MIN", "MTL", "NYS", 
   "OTT", "SEA", "SJS", "TOR", "VAN", "VEG",
 ] as const;
@@ -161,7 +161,7 @@ export const leagueMapList: Set<LeagueType> = new Set(["NHL", "AHL", "ECHL", "PW
 export type NHLTeamType = typeof nhlTeamsRanked[number];
 export type AHLTeamType = typeof ahlTeamsList[number];
 export type ECHLTeamType = typeof echlTeamsList[number];
-export type PWHLTeamType = typeof pwhlTeamsAll[number];
+export type PWHLTeamType = typeof pwhlTeamsList[number];
 export type AHLTeamTypeReal = typeof ahlTeamsListReal[number];
 export type ECHLTeamTypeReal = typeof echlTeamsListReal[number];
 

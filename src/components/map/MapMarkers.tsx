@@ -1,6 +1,6 @@
 import { nflTeamsRanked } from "~/data/NFL/NFLdata";
 import { cflTeamsRanked, iflTeamsList, uflTeamsList } from "~/data/CFL/CFLdata";
-import { nbaTeamsRanked, nglTeamsOrder } from "~/data/NBA/NBAdata";
+import { nbaTeamsRanked, nglTeamsList } from "~/data/NBA/NBAdata";
 import { wnbaTeamsRanked } from "~/data/WNBA/WNBAdata";
 import {
   mlbTeamsRanked,
@@ -13,7 +13,7 @@ import {
   nhlTeamsRanked,
   ahlTeamsList,
   echlTeamsList,
-  pwhlTeamsAll,
+  pwhlTeamsList,
 } from "~/data/NHL/NHLdata";
 import { mlsTeamsList } from "~/data/MLS/MLSdata";
 import { mlvTeamsList } from "~/data/MLV/MLVdata";
@@ -85,7 +85,7 @@ const SportsMarkers = () => {
     .map((team, index) => {
       return <Marker key={"NBA" + index.toString()} league="NBA" team={team} />;
     });
-  const NGLMarkers = nglTeamsOrder
+  const NGLMarkers = nglTeamsList
     .filter((team) =>
       filterMarkers({
         leagueAndTeam: { league: "NGL", team: team },
@@ -193,7 +193,7 @@ const SportsMarkers = () => {
         <Marker key={"ECHL" + index.toString()} league="ECHL" team={team} />
       );
     });
-  const PWHLMarkers = pwhlTeamsAll
+  const PWHLMarkers = pwhlTeamsList
     .filter((team) => {
       return (
         removedLocations.find((X) => {

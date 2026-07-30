@@ -23,6 +23,8 @@ interface RankerRowProps {
 const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   const { unRankedEntry, rankedEntry, index, sport } = props;
   const { rankDispatch } = useRankContext();
+  const { authState } = useAuthContext();
+  const { user } = authState;
   const [newRank, setNewRank] = useState<string>("");
   const [reRank, setReRank] = useState<string>("");
 
@@ -350,16 +352,30 @@ const Ranker: React.FC<RankerProps> = (props: RankerProps) => {
         >
           RESET
         </Button>
-        <Button
-          className="m-1"
-          disabled={!authState.user || rankedEntries.includes(null)}
-          variant={gsd.variant}
-          onClick={() => {
-            handleSubmit();
-          }}
-        >
-          SAVE
-        </Button>
+        {user && (
+          <Button
+            className="m-1"
+            disabled={!user || rankedEntries.includes(null)}
+            variant={gsd.variant}
+            onClick={() => {
+              handleSubmit();
+            }}
+          >
+            SAVE
+          </Button>
+        )}
+        {!user && (
+          <Button
+            className="m-1"
+            disabled={user || rankedEntries.includes(null)}
+            variant={gsd.variant}
+            onClick={() => {
+              handleSubmit();
+            }}
+          >
+            LOG IN
+          </Button>
+        )}
       </div>
     </div>
   );

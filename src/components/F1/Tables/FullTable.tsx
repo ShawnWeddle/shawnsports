@@ -114,6 +114,9 @@ const FormulaOneTable: React.FC = () => {
 
   return (
     <>
+      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
+        2026 F1 Results
+      </h1>
       <Card className="flex justify-center gap-2 p-2">
         <div>
           <TableModeInputs />

@@ -1,12 +1,12 @@
 import type { LeagueTeamType as LeagueTeamMapType, FullTeamInfoType } from "~/types/MapTypes";
 import { NullBook } from "~/styles/NullBook";
 
-import { NFLStadiumData, CFLStadiumData, IFLStadiumData, UFLStadiumData } from "../NFL/FootballStadiumData";
-import { NBAArenaData, NGLArenaData, WNBAArenaData } from "../NBA/BasketballArenaData";
-import { MLBFieldData, AAAFieldData, AAFieldData, HAFieldData, SAFieldData } from "../MLB/BaseballStadiumData";
-import { NHLArenaData, AHLArenaData, ECHLArenaData, PWHLArenaData } from "../NHL/HockeyArenaData";
-import { MLSStadiumData } from "../MLS/SoccerStadiumData";
-import { MLVArenaData } from "../MLV/VolleyballArenaData";
+import { NFLStadiumData, CFLStadiumData, IFLStadiumData, UFLStadiumData } from "~/data/NFL/FootballStadiumData";
+import { NBAArenaData, NGLArenaData, WNBAArenaData } from "~/data/NBA/BasketballArenaData";
+import { MLBFieldData, AAAFieldData, AAFieldData, HAFieldData, SAFieldData } from "~/data/MLB/BaseballStadiumData";
+import { NHLArenaData, AHLArenaData, ECHLArenaData, PWHLArenaData } from "~/data/NHL/HockeyArenaData";
+import { MLSStadiumData } from "~/data/MLS/SoccerStadiumData";
+import { MLVArenaData } from "~/data/MLV/VolleyballArenaData";
 
 import { CFLstyleData } from "~/styles/CFLstyleData";
 import { IFLstyleData } from "~/styles/IFLstyleData";

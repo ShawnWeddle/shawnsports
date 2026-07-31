@@ -22,7 +22,7 @@ export const logInUserSchema = object({
   username: string({ required_error: "Username is required" }),
   password: string({ required_error: "Password is required" }).min(
     8,
-    "Invalid email or password"
+    "Password must be at least 8 characters"
   ),
 });
 

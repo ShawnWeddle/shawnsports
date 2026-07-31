@@ -6,6 +6,7 @@ import type { NFLTeamType } from "~/data/NFL/NFLdata";
 import type { AHLTeamType, ECHLTeamType, NHLTeamType, PWHLTeamType } from "~/data/NHL/NHLdata";
 import type { WNBATeamType } from "~/data/WNBA/WNBAdata";
 import type { MLVTeamType } from "~/data/MLV/MLVdata";
+import type { DriverCode26Type } from "~/data/F1/2026/F1data";
 import type { StyleBookType } from "./StyleBook";
 
 export type LeagueTeamType = {
@@ -62,6 +63,9 @@ export type LeagueTeamType = {
 } | {
   league: "MLV",
   team: MLVTeamType
+} | {
+  league: "F1",
+  team: DriverCode26Type
 };
 
 export type LeagueTeamListType = {
@@ -83,6 +87,7 @@ export type LeagueTeamListType = {
   "PWHL": PWHLTeamType[];
   "MLS": MLSTeamType[];
   "MLV": MLVTeamType[];
+  "F1": DriverCode26Type[];
 };
 
 export type TeamInfoType = {

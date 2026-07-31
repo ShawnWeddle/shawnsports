@@ -265,6 +265,8 @@ const SportsMarkers = () => {
         case "AHL":
         case "ECHL":
           return ["ECHL", "AHL", "NHL"];
+        case "F1":
+          return ["F1"];
       }
     } else {
       return [...activeLeagues];
@@ -309,6 +311,8 @@ const SportsMarkers = () => {
         return MLSMarkers;
       case "MLV":
         return MLVMarkers;
+      case "F1":
+        return [];
     }
   });
   return [...leagueList.flat(), ...SharedMarkers];

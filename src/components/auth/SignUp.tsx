@@ -1,6 +1,8 @@
 import { type z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useAuthContext } from "~/hooks/useAuthContext";
 import { createUserSchema } from "~/server/api/auth/schema";
 import { api } from "~/utils/api";
 import {
@@ -26,7 +28,11 @@ const SignUp: React.FC = () => {
     },
   });
 
+  const [signUpError, setSignUpError] = useState<string>("");
+
   const registerUser = api.user.registerUser.useMutation();
+  const logInUser = api.user.logInUser.useMutation();
+  const { authDispatch } = useAuthContext();
 
   function onRegisterSubmit(values: z.infer<typeof createUserSchema>) {
     const { username, email, password, passwordConfirm } = values;
@@ -39,10 +45,30 @@ const SignUp: React.FC = () => {
       },
       {
         onSuccess() {
-          console.log("SIGNED IN");
+          logInUser.mutate(
+            {
+              username,
+              password,
+            },
+            {
+              onSuccess(data) {
+                const { user, token } = data;
+                const { userId, email, username } = user;
+                authDispatch({
+                  type: "LOGIN",
+                  payload: {
+                    token,
+                    userId,
+                    email,
+                    username,
+                  },
+                });
+              },
+            }
+          );
         },
         onError(error) {
-          console.log(error);
+          setSignUpError(error.message);
         },
       }
     );
@@ -110,8 +136,18 @@ const SignUp: React.FC = () => {
             </FormItem>
           )}
         />
+        {signUpError.length > 0 && (
+          <div className="font-semibold text-destructive">{signUpError}</div>
+        )}
         <div className="flex justify-center">
-          <Button type="submit" variant="home">
+          <Button
+            type="submit"
+            variant="home"
+            disabled={
+              registerUser.status === "loading" ||
+              logInUser.status === "loading"
+            }
+          >
             Submit
           </Button>
         </div>

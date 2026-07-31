@@ -14,7 +14,7 @@ export const registerHandler = async ({
     if(emailAlreadyInUse){
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: 'This email is already in use',
+        message: 'This email is unavailable',
       });
     }
 
@@ -23,7 +23,7 @@ export const registerHandler = async ({
     if(usernameAlreadyInUse){
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: 'This username is already in use',
+        message: 'This username is unavailable',
       });
     }
 
@@ -56,7 +56,7 @@ export const loginHandler = async ({
     if (!user || !(await bcrypt.compare(input.password, user.password))) {
       throw new TRPCError({
         code: 'BAD_REQUEST',
-        message: 'Invalid email or password',
+        message: 'Invalid username or password',
       });
     }
 

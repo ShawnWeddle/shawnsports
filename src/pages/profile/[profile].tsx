@@ -29,6 +29,7 @@ const ProfilePage = () => {
       <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
         {pageUsername}
       </h1>
+      {/* <UserProfile name="" /> */}
     </MainPage>
   );
 };

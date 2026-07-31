@@ -5,11 +5,11 @@ export const FullLeagueList = [
   "NBA", "NGL", "WNBA",
   "NHL", "AHL", "ECHL", "PWHL",
   "MLB", "AAA", "AA", "HA", "SA",
-  "MLS", "MLV",
+  "MLS", "MLV", "F1",
 ] as const;
 
 export const sportList = [
-  "Football", "Basketball", "Baseball", "Hockey", "Soccer", "Volleyball",
+  "Football", "Basketball", "Baseball", "Hockey", "Soccer", "Volleyball", "FormulaOne"
 ] as const;
 
 export const sportLeagueList: {
@@ -21,6 +21,7 @@ export const sportLeagueList: {
   "Hockey": ["NHL", "AHL", "ECHL", "PWHL"],
   "Soccer": ["MLS"],
   "Volleyball": ["MLV"],
+  "FormulaOne": ["F1"],
 }
 
 export const convertLeagueToSport = (league: LeagueType): SportType => {
@@ -49,6 +50,8 @@ export const convertLeagueToSport = (league: LeagueType): SportType => {
       return "Soccer";
     case "MLV":
       return "Volleyball";
+    case "F1":
+      return "FormulaOne";
   }
 }
 
@@ -78,11 +81,21 @@ export const lengthenLeagueName = (league: LeagueType): string => {
       return "Single-A";
     case "NGL":
       return "G League";
+    case "F1":
+      return "Formula One";
   }
 }
 
 export type LeagueType = typeof FullLeagueList[number];
 export type SportType = typeof sportList[number];
+
+export const FavTeamLeagueOrder: LeagueType[] = [
+  "F1", "NFL", "NBA", "MLB", "NHL", "MLS", "WNBA", "CFL", 
+  "UFL", "IFL", "NGL", 
+  "AHL", "ECHL", "PWHL",
+  "AAA", "AA", "HA", "SA",
+  "MLV",
+];
 
 export const initialLeagueList = (
   sport: SportType | "All"
@@ -120,6 +133,11 @@ export const initialLeagueList = (
       return { 
         options: new Set<LeagueType>(sportLeagueList["Volleyball"]),
         start: new Set<LeagueType>(["MLV"])
+      }
+    case "FormulaOne":
+      return { 
+        options: new Set<LeagueType>(sportLeagueList["FormulaOne"]),
+        start: new Set<LeagueType>(["F1"])
       }
     case "All":
       return { options: new Set<LeagueType>([
@@ -170,4 +188,5 @@ export const LeagueTeamList: LeagueTeamListType = {
   "PWHL": [],
   "MLS": [],
   "MLV": [],
+  "F1": [],
 };

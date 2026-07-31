@@ -7,6 +7,7 @@ import { MLBFieldData, AAAFieldData, AAFieldData, HAFieldData, SAFieldData } fro
 import { NHLArenaData, AHLArenaData, ECHLArenaData, PWHLArenaData } from "~/data/NHL/HockeyArenaData";
 import { MLSStadiumData } from "~/data/MLS/SoccerStadiumData";
 import { MLVArenaData } from "~/data/MLV/VolleyballArenaData";
+import { driverNames2026 } from "../F1/2026/F1data";
 
 import { CFLstyleData } from "~/styles/CFLstyleData";
 import { IFLstyleData } from "~/styles/IFLstyleData";
@@ -18,6 +19,13 @@ import { NHLstyleData } from "~/styles/NHLstyleData";
 import { MLVstyleData } from "~/styles/MLVstyleData";
 import { WNBAstyleData } from "~/styles/WNBAstyleData";
 import { PWHLstyleData } from "~/styles/PWHLstyleData";
+import { F1styleData } from "~/data/F1/2026/F1styleData";
+
+import { AHLstyleData } from "~/styles/AHLstyleData";
+import { ECHLstyleData } from "~/styles/ECHLstyleData";
+
+import { getAHLafils, getECHLafils } from "~/utils/getHockeyAfils";
+import { driverToConstructor2026 } from "../F1/2026/F1data";
 
 export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
   const { league, team } = input;
@@ -166,7 +174,7 @@ export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
       name = AHLArenaData[team].name;
       coordinates.latitude = AHLArenaData[team].coordinates.latitude;
       coordinates.longitude = AHLArenaData[team].coordinates.longitude;
-      // style = NHLstyleData[team];
+      style = AHLstyleData[getAHLafils(team)];
       text.long = location + " " + name;
       text.short = name;
       break;
@@ -176,7 +184,7 @@ export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
       name = ECHLArenaData[team].name;
       coordinates.latitude = ECHLArenaData[team].coordinates.latitude;
       coordinates.longitude = ECHLArenaData[team].coordinates.longitude;
-      // style = NHLstyleData[team];
+      style = ECHLstyleData[getECHLafils(team)];
       text.long = location + " " + name;
       text.short = name;
       break;
@@ -211,7 +219,13 @@ export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
       text.long = location + " " + name;
       text.short = name;
       break;
-  }
+    case "F1":
+      code = team;
+      style = F1styleData[driverToConstructor2026(team)];
+      text.long = driverNames2026[team].first + " " + driverNames2026[team].last;
+      text.short = driverNames2026[team].last;
+      break;
+    }
 
   return {
     code,

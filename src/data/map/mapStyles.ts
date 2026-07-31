@@ -1,5 +1,4 @@
-import type { SportType, LeagueType } from "~/data/map/mapData";
-import { sportList, FullLeagueList, convertLeagueToSport } from "~/data/map/mapData";
+import type { LeagueType } from "~/data/map/mapData";
 
 export const leagueStyles = (league: LeagueType) => {
   switch(league){
@@ -39,6 +38,10 @@ export const leagueStyles = (league: LeagueType) => {
       return "text-mls border-mls"
     case "MLV":
       return "text-mlv border-mlv"
+    case "F1":
+      return "text-formulaOne border-formulaOne"
+    default:
+      return ""
   }
 }
 
@@ -80,5 +83,9 @@ export const leagueBackgrounds = (league: LeagueType) => {
       return "bg-mls";
     case "MLV":
       return "bg-mlv";
+    case "F1":
+      return "bg-formulaOne";
+    default:
+      return "";
   }
 }

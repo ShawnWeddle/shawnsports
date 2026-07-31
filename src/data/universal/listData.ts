@@ -17,8 +17,9 @@ import {
 } from "~/data/NHL/NHLdata";
 import { type MLSTeamType, mlsTeamsList } from "~/data/MLS/MLSdata";
 import { type MLVTeamType, mlvTeamsList } from "~/data/MLV/MLVdata";
+import { type DriverCode26Type, driverCodes2026, } from "../F1/2026/F1data";
 import type { LeagueTeamType } from "~/types/MapTypes";
-import { LeagueType } from "../map/mapData";
+import type { LeagueType } from "../map/mapData";
 
 export const LeagueTeamFullList = () => {
   const nfl: LeagueTeamType[] = nflTeamsRanked.map((team) => {
@@ -129,6 +130,12 @@ export const LeagueTeamFullList = () => {
       team
     }
   });
+    const f1: LeagueTeamType[] = driverCodes2026.map((driver) => {
+    return {
+      league: "F1",
+      team: driver
+    }
+  });
 
   return {
     NFL: nfl,
@@ -149,29 +156,33 @@ export const LeagueTeamFullList = () => {
     PWHL: pwhl,
     MLS: mls,
     MLV: mlv,
+    F1: f1,
   }
 }
 
-export type FavoriteTeamType = {
-  NFL?: NFLTeamType;
-  CFL?: CFLTeamType;
-  IFL?: IFLTeamType;
-  UFL?: UFLTeamType;
-  NBA?: NBATeamType;
-  WNBA?: WNBATeamType;
-  NGL?: NGLTeamType;
-  MLB?: MLBTeamType;
-  AAA?: AAATeamType;
-  AA?: AATeamType;
-  HA?: HATeamType;
-  SA?: SATeamType;
-  NHL?: NHLTeamType;
-  AHL?: AHLTeamType;
-  ECHL?: ECHLTeamType;
-  PWHL?: PWHLTeamType;
-  MLS?: MLSTeamType;
-  MLV?: MLVTeamType;
-}
+export type FavoriteTeamType = {[Key in LeagueType]? : LeagueTeamType};
+
+// export type FavoriteTeamType = {
+//   NFL?: NFLTeamType;
+//   CFL?: CFLTeamType;
+//   IFL?: IFLTeamType;
+//   UFL?: UFLTeamType;
+//   NBA?: NBATeamType;
+//   WNBA?: WNBATeamType;
+//   NGL?: NGLTeamType;
+//   MLB?: MLBTeamType;
+//   AAA?: AAATeamType;
+//   AA?: AATeamType;
+//   HA?: HATeamType;
+//   SA?: SATeamType;
+//   NHL?: NHLTeamType;
+//   AHL?: AHLTeamType;
+//   ECHL?: ECHLTeamType;
+//   PWHL?: PWHLTeamType;
+//   MLS?: MLSTeamType;
+//   MLV?: MLVTeamType;
+//   F1?: DriverCode26Type;
+// }
 
 export const LeagueFullNames : {[Key in LeagueType] : string} = {
   NFL: "National Football League",
@@ -192,4 +203,5 @@ export const LeagueFullNames : {[Key in LeagueType] : string} = {
   PWHL: "Professional Women's Hockey League",
   MLS: "Major League Soccer",
   MLV: "Major League Volleyball",
+  F1: "Formula One",
 }

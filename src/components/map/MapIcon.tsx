@@ -6,6 +6,7 @@ import {
   FaHockeyPuck,
   FaFutbol,
   FaVolleyball,
+  FaTrophy,
 } from "react-icons/fa6";
 
 type IconProps = {
@@ -27,6 +28,8 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
       return <FaFutbol />;
     case "Volleyball":
       return <FaVolleyball />;
+    case "FormulaOne":
+      return <FaTrophy />;
   }
 };
 

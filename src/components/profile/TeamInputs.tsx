@@ -1,15 +1,15 @@
 import { useState } from "react";
+import { cn } from "~/lib/utils";
 import type { LeagueType } from "~/data/map/mapData";
+import type { FavoriteTeamType } from "~/data/universal/listData";
 import { LeagueTeamFullList } from "~/data/universal/listData";
 import { markerData } from "~/data/map/allMapData";
-import type { FavoriteTeamType } from "~/data/universal/listData";
-import { FullLeagueList } from "~/data/map/mapData";
+import { FavTeamLeagueOrder, convertLeagueToSport } from "~/data/map/mapData";
 import { LeagueFullNames } from "~/data/universal/listData";
 import { leagueBackgrounds } from "~/data/map/mapStyles";
-import { cn } from "~/lib/utils";
-import { convertLeagueToSport } from "~/data/map/mapData";
 import Icon from "../map/MapIcon";
 import { Button } from "../ui/button";
+import { Card } from "../ui/card";
 
 interface UserProfileProps {
   name: string;
@@ -27,7 +27,11 @@ const UserProfile: React.FC<UserProfileProps> = () => {
     const teams = LeagueTeamFullList()[league];
     const teamInputs = teams
       .sort((a, b) => {
-        return markerData(a).location > markerData(b).location ? 1 : -1;
+        return league === "F1"
+          ? 1
+          : markerData(a).location > markerData(b).location
+          ? 1
+          : -1;
       })
       .map((team, index) => {
         const teamInfo = markerData({ ...team });
@@ -36,11 +40,11 @@ const UserProfile: React.FC<UserProfileProps> = () => {
             <input
               type="radio"
               id={league + teamInfo.code}
-              checked={favoriteTeams[league] === team.team}
+              checked={favoriteTeams[league]?.team === team.team}
               onChange={() => {
                 setFavoriteTeams({
                   ...favoriteTeams,
-                  [league]: team.team,
+                  [league]: team,
                 });
               }}
             />
@@ -52,7 +56,7 @@ const UserProfile: React.FC<UserProfileProps> = () => {
       });
 
     return (
-      <fieldset className="my-1 rounded-lg shadow">
+      <fieldset className="m-1 rounded-lg shadow">
         <h1
           className={cn(
             "flex items-center justify-center gap-2 rounded-t-lg text-center text-lg font-semibold text-white",
@@ -64,12 +68,12 @@ const UserProfile: React.FC<UserProfileProps> = () => {
           {LeagueFullNames[league]}
           <Icon sport={convertLeagueToSport(league)} />
         </h1>
-        <div className="grid-cols-3 rounded-b-lg border-2 border-t-0 sm:grid">
+        <div className="flex flex-col items-center rounded-b-lg border-2 border-t-0 sm:grid sm:grid-cols-2 md:grid-cols-3">
           <div key="NO" className="flex justify-start px-1">
             <input
               type="radio"
               id={league + "NO"}
-              checked={favoriteTeams[league] === undefined}
+              checked={favoriteTeams[league]?.team === undefined}
               onChange={() => {
                 setFavoriteTeams({
                   ...favoriteTeams,
@@ -87,9 +91,30 @@ const UserProfile: React.FC<UserProfileProps> = () => {
     );
   };
 
+  const FavoriteTeamCards = Object.values(favoriteTeams).map((item, index) => {
+    if (item !== undefined) {
+      const { text, style } = markerData({ ...item });
+      return (
+        <span
+          key={index}
+          className={cn("whitespace-nowrap rounded border-2 p-1", {
+            [style.primaryBackground]: true,
+            [style.secondaryBorder]: true,
+            [style.simpleText]: true,
+          })}
+        >
+          {text.long}
+        </span>
+      );
+    }
+  });
+
   return (
-    <section className="">
-      {FullLeagueList.map((league, index) => {
+    <div>
+      <div className="m-2 flex flex-wrap gap-1 sm:mx-0 md:max-w-screen-sm lg:max-w-screen-md">
+        {FavoriteTeamCards}
+      </div>
+      {FavTeamLeagueOrder.map((league, index) => {
         return <TeamInputs key={index} league={league} />;
       })}
       <div className="flex justify-center">
@@ -102,7 +127,7 @@ const UserProfile: React.FC<UserProfileProps> = () => {
           SAVE
         </Button>
       </div>
-    </section>
+    </div>
   );
 };
 

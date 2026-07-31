@@ -1,5 +1,6 @@
 import { type z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthContext } from "~/hooks/useAuthContext";
 import { logInUserSchema } from "~/server/api/auth/schema";
@@ -25,6 +26,8 @@ const LogIn: React.FC = () => {
     },
   });
 
+  const [logInError, setLogInError] = useState<string>("");
+
   const logInUser = api.user.logInUser.useMutation();
   const { authDispatch } = useAuthContext();
 
@@ -48,6 +51,9 @@ const LogIn: React.FC = () => {
               username,
             },
           });
+        },
+        onError(error) {
+          setLogInError(error.message);
         },
       }
     );
@@ -87,8 +93,15 @@ const LogIn: React.FC = () => {
             </FormItem>
           )}
         />
+        {logInError.length > 0 && (
+          <div className="font-semibold text-destructive">{logInError}</div>
+        )}
         <div className="flex justify-center">
-          <Button type="submit" variant="home">
+          <Button
+            type="submit"
+            variant="home"
+            disabled={logInUser.status === "loading"}
+          >
             Submit
           </Button>
         </div>

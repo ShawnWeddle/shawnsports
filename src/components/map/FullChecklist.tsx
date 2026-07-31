@@ -23,40 +23,42 @@ const FullCheckList: React.FC = () => {
   const { sport: littleSport, activeLeagues, activeTeam } = mapState;
 
   const checkListAll = sportList.map((sport, index) => {
-    const checks = sportLeagueList[sport].map((league, index) => {
-      return (
-        <Field
-          key={league + index.toString()}
-          orientation="horizontal"
-          className={cn("rounded p-1")}
-        >
-          <Checkbox
-            id={league}
-            name={league}
-            checked={mapState.activeLeagues.has(league)}
-            onCheckedChange={() => {
-              mapDispatch({
-                type: "CHANGE_LEAGUES",
-                payload: { league: league },
-              });
-            }}
-          ></Checkbox>
-          <Label htmlFor={league}>{lengthenLeagueName(league)}</Label>
-        </Field>
-      );
-    });
+    if (sport !== "FormulaOne") {
+      const checks = sportLeagueList[sport].map((league, index) => {
+        return (
+          <Field
+            key={league + index.toString()}
+            orientation="horizontal"
+            className={cn("rounded p-1")}
+          >
+            <Checkbox
+              id={league}
+              name={league}
+              checked={mapState.activeLeagues.has(league)}
+              onCheckedChange={() => {
+                mapDispatch({
+                  type: "CHANGE_LEAGUES",
+                  payload: { league: league },
+                });
+              }}
+            ></Checkbox>
+            <Label htmlFor={league}>{lengthenLeagueName(league)}</Label>
+          </Field>
+        );
+      });
 
-    return (
-      <AccordionItem key={sport + index.toString()} value={sport}>
-        <AccordionTrigger className="text-md min-w-28 p-1 hover:no-underline">
-          <div className="flex items-center gap-2">
-            {sport}
-            <Icon sport={sport} />
-          </div>
-        </AccordionTrigger>
-        <AccordionContent>{checks}</AccordionContent>
-      </AccordionItem>
-    );
+      return (
+        <AccordionItem key={sport + index.toString()} value={sport}>
+          <AccordionTrigger className="text-md min-w-28 p-1 hover:no-underline">
+            <div className="flex items-center gap-2">
+              {sport}
+              <Icon sport={sport} />
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>{checks}</AccordionContent>
+        </AccordionItem>
+      );
+    }
   });
 
   const checkListSingle: JSX.Element[] = [

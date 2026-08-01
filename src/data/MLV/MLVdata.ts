@@ -4,8 +4,12 @@ export const mlvTeamsList = [
   "DAL",
   "GRR",
   "IND",
+  "MIN",
   "OMA",
   "ORL",
+  "SAC",
+  "VEG",
+  "WAS",
 ] as const;
 
 export type MLVTeamType = typeof mlvTeamsList[number];

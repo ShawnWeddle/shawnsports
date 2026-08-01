@@ -20,6 +20,7 @@ const filterMarkers = (input: {
     case "PWHL":
     case "MLS":
     case "MLV":
+    case "F1":
       return false;
     case "MLB":
     case "AAA":

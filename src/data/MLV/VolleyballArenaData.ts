@@ -42,6 +42,14 @@ export const MLVArenaData: {[Key in MLVTeamType] : TeamInfoType} = {
     location: "Indy",
     name: "Ignite",
   },
+  MIN: {
+    coordinates: {
+      latitude: 44.945,
+      longitude: -93.101
+    },
+    location: "Minnesota",
+    name: "MLV",
+  },
   OMA: {
     coordinates: {
       latitude: 41.263,
@@ -57,5 +65,29 @@ export const MLVArenaData: {[Key in MLVTeamType] : TeamInfoType} = {
     },
     location: "Orlando",
     name: "Valkyries",
+  },
+  SAC: {
+    coordinates: {
+      latitude: 38.58,
+      longitude: -121.499
+    },
+    location: "Northern California",
+    name: "MLV",
+  },
+  VEG: {
+    coordinates: {
+      latitude: 36.019,
+      longitude: -115.081
+    },
+    location: "Vegas",
+    name: "Thrill",
+  },
+  WAS: {
+    coordinates: {
+      latitude: 38.847,
+      longitude: -76.991
+    },
+    location: "D.C.",
+    name: "MLV",
   },
 }

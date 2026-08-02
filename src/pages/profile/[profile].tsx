@@ -4,6 +4,7 @@ import { useAuthContext } from "~/hooks/useAuthContext";
 import MainPage from "~/components/Page/MainPage";
 import NoteFromDev from "~/components/Home/NoteFromDev";
 import UserProfile from "~/components/profile/TeamInputs";
+import MainProfile from "~/components/profile/MainProfile";
 
 const ProfilePage = () => {
   const router = useRouter();
@@ -26,10 +27,8 @@ const ProfilePage = () => {
       pageMode="Home"
       underPageMode="Home"
     >
-      <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
-        {pageUsername}
-      </h1>
-      {/* <UserProfile name="" /> */}
+      {/* <MainProfile name={pageUsername ?? ""} /> */}
+      <div></div>
     </MainPage>
   );
 };

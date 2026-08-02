@@ -92,8 +92,8 @@ export type SportType = typeof sportList[number];
 export const FavTeamLeagueOrder: LeagueType[] = [
   "F1", "NFL", "NBA", "MLB", "NHL", "MLS", "WNBA", "CFL", 
   "UFL", "IFL", "NGL", 
-  "AHL", "ECHL", "PWHL",
   "AAA", "AA", "HA", "SA",
+  "AHL", "ECHL", "PWHL",
   "MLV",
 ];
 

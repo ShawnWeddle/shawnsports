@@ -24,8 +24,10 @@ import { F1styleData } from "~/data/F1/2026/F1styleData";
 import { AHLstyleData } from "~/styles/AHLstyleData";
 import { ECHLstyleData } from "~/styles/ECHLstyleData";
 
-import { getAHLafils, getECHLafils } from "~/utils/getHockeyAfils";
 import { driverToConstructor2026 } from "../F1/2026/F1data";
+import { getAHLafils, getECHLafils } from "~/utils/getHockeyAfils";
+import { getMLBParentTeam } from "~/utils/getBaseballArc";
+import { getNBAParentTeam } from "~/utils/getBasketballArc";
 
 export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
   const { league, team } = input;
@@ -104,7 +106,7 @@ export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
       name = NGLArenaData[team].name;
       coordinates.latitude = NGLArenaData[team].coordinates.latitude;
       coordinates.longitude = NGLArenaData[team].coordinates.longitude;
-      // style = NGLstyleData[team];
+      style = NBAstyleData[getNBAParentTeam(input).parentTeam ?? "BRK"];
       text.long = location + " " + name;
       text.short = name;
       break;
@@ -124,7 +126,7 @@ export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
       name = AAAFieldData[team].name;
       coordinates.latitude = AAAFieldData[team].coordinates.latitude;
       coordinates.longitude = AAAFieldData[team].coordinates.longitude;
-      // style = MLBstyleData[team]
+      style = MLBstyleData[getMLBParentTeam(input).parentTeam ?? "ARI"];
       text.long = location + " " + name;
       text.short = name;
       break;
@@ -134,7 +136,7 @@ export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
       name = AAFieldData[team].name;
       coordinates.latitude = AAFieldData[team].coordinates.latitude;
       coordinates.longitude = AAFieldData[team].coordinates.longitude;
-      // style = MLBstyleData[team];
+      style = MLBstyleData[getMLBParentTeam(input).parentTeam ?? "ARI"];
       text.long = location + " " + name;
       text.short = name;
       break;
@@ -144,7 +146,7 @@ export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
       name = HAFieldData[team].name;
       coordinates.latitude = HAFieldData[team].coordinates.latitude;
       coordinates.longitude = HAFieldData[team].coordinates.longitude;
-      // style = MLBstyleData[team];
+      style = MLBstyleData[getMLBParentTeam(input).parentTeam ?? "ARI"];
       text.long = location + " " + name;
       text.short = name;
       break;
@@ -154,7 +156,7 @@ export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
       name = SAFieldData[team].name;
       coordinates.latitude = SAFieldData[team].coordinates.latitude;
       coordinates.longitude = SAFieldData[team].coordinates.longitude;
-      // style = MLBstyleData[team];
+      style = MLBstyleData[getMLBParentTeam(input).parentTeam ?? "ARI"];
       text.long = location + " " + name;
       text.short = name;
       break;

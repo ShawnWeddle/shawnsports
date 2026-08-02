@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { cn } from "~/lib/utils";
 import type { LeagueType } from "~/data/map/mapData";
+import type { LeagueTeamType } from "~/types/MapTypes";
 import type { FavoriteTeamType } from "~/data/universal/listData";
 import { LeagueTeamFullList } from "~/data/universal/listData";
 import { markerData } from "~/data/map/allMapData";
 import { FavTeamLeagueOrder, convertLeagueToSport } from "~/data/map/mapData";
 import { LeagueFullNames } from "~/data/universal/listData";
 import { leagueBackgrounds } from "~/data/map/mapStyles";
+import { favTeamCleanup } from "~/utils/favTeamCleanup";
 import Icon from "../map/MapIcon";
 import { Button } from "../ui/button";
-import { Card } from "../ui/card";
 
-interface UserProfileProps {
+interface FavoriteTeamInputsProps {
   name: string;
 }
 
@@ -19,7 +20,7 @@ interface InputProps {
   league: LeagueType;
 }
 
-const UserProfile: React.FC<UserProfileProps> = () => {
+const FavoriteTeamInputs: React.FC<FavoriteTeamInputsProps> = () => {
   const [favoriteTeams, setFavoriteTeams] = useState<FavoriteTeamType>({});
 
   const TeamInputs: React.FC<InputProps> = (props: InputProps) => {
@@ -42,13 +43,23 @@ const UserProfile: React.FC<UserProfileProps> = () => {
               id={league + teamInfo.code}
               checked={favoriteTeams[league]?.team === team.team}
               onChange={() => {
-                setFavoriteTeams({
-                  ...favoriteTeams,
-                  [league]: team,
-                });
+                setFavoriteTeams(
+                  favTeamCleanup({
+                    ...favoriteTeams,
+                    [league]: team,
+                  })
+                );
               }}
             />
-            <label htmlFor={league + teamInfo.code} className="pl-1">
+            <label
+              htmlFor={league + teamInfo.code}
+              className={cn("rounded px-1", {
+                [teamInfo.style.primaryBackground]:
+                  favoriteTeams[league]?.team === team.team,
+                [teamInfo.style.simpleText]:
+                  favoriteTeams[league]?.team === team.team,
+              })}
+            >
               {teamInfo.text.long}
             </label>
           </div>
@@ -75,14 +86,16 @@ const UserProfile: React.FC<UserProfileProps> = () => {
               id={league + "NO"}
               checked={favoriteTeams[league]?.team === undefined}
               onChange={() => {
-                setFavoriteTeams({
-                  ...favoriteTeams,
-                  [league]: undefined,
-                });
+                setFavoriteTeams(
+                  favTeamCleanup({
+                    ...favoriteTeams,
+                    [league]: undefined,
+                  })
+                );
               }}
             />
             <label htmlFor={league + "NO"} className="pl-1">
-              No Selection
+              No Favorite
             </label>
           </div>
           {teamInputs}
@@ -91,29 +104,8 @@ const UserProfile: React.FC<UserProfileProps> = () => {
     );
   };
 
-  const FavoriteTeamCards = Object.values(favoriteTeams).map((item, index) => {
-    if (item !== undefined) {
-      const { text, style } = markerData({ ...item });
-      return (
-        <span
-          key={index}
-          className={cn("whitespace-nowrap rounded border-2 p-1", {
-            [style.primaryBackground]: true,
-            [style.secondaryBorder]: true,
-            [style.simpleText]: true,
-          })}
-        >
-          {text.long}
-        </span>
-      );
-    }
-  });
-
   return (
     <div>
-      <div className="m-2 flex flex-wrap gap-1 sm:mx-0 md:max-w-screen-sm lg:max-w-screen-md">
-        {FavoriteTeamCards}
-      </div>
       {FavTeamLeagueOrder.map((league, index) => {
         return <TeamInputs key={index} league={league} />;
       })}
@@ -131,25 +123,72 @@ const UserProfile: React.FC<UserProfileProps> = () => {
   );
 };
 
-export default UserProfile;
+export default FavoriteTeamInputs;
+
+export const exampleTeams: { [Key in LeagueType]?: LeagueTeamType } = {
+  F1: {
+    league: "F1",
+    team: "VER",
+  },
+  NFL: {
+    league: "NFL",
+    team: "IND",
+  },
+  NBA: {
+    league: "NBA",
+    team: "IND",
+  },
+  MLB: {
+    league: "MLB",
+    team: "CIN",
+  },
+  NHL: {
+    league: "NHL",
+    team: "STL",
+  },
+  WNBA: {
+    league: "WNBA",
+    team: "IND",
+  },
+  AHL: {
+    league: "AHL",
+    team: "AHL-CAR",
+  },
+  UFL: {
+    league: "UFL",
+    team: "BHM",
+  },
+  IFL: {
+    league: "IFL",
+    team: "FSH",
+  },
+  NGL: {
+    league: "NGL",
+    team: "MEX",
+  },
+  ECHL: {
+    league: "ECHL",
+    team: "ECHL-CHI",
+  },
+  AAA: {
+    league: "AAA",
+    team: "AAA-PIT",
+  },
+  AA: {
+    league: "AA",
+    team: "AA-ARI",
+  },
+  HA: {
+    league: "HA",
+    team: "HA-SDP",
+  },
+  MLV: {
+    league: "MLV",
+    team: "IND",
+  },
+};
 
 /**
- * 
- * {
-  "NFL": "IND",
-  "IFL": "FSH",
-  "NBA": "IND",
-  "NGL": "NGL-IND",
-  "WNBA": "IND",
-  "NHL": "STL",
-  "ECHL": "ECHL-CHI",
-  "AHL": "AHL-CAR",
-  "PWHL": "VAN",
-  "MLB": "CIN",
-  "AAA": "AAA-PIT",
-  "HA": "HA-SDP",
-  "AA": "AA-ARI",
-  "SA": "SA-MIA",
-  "MLV": "IND",
-}
+ *
+ *
  */

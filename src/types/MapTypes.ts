@@ -114,3 +114,24 @@ export type FullTeamInfoType = {
   };
   reverse?: boolean;
 };
+export type FavoritePostType = {
+  NFL: NFLTeamType | null,
+  CFL: CFLTeamType | null,
+  IFL: IFLTeamType | null,
+  UFL: UFLTeamType | null,
+  NBA: NBATeamType | null,
+  WNBA: WNBATeamType | null,
+  NGL: NGLTeamType | null,
+  MLB: MLBTeamType | null,
+  AAA: AAATeamType | null,
+  AA: AATeamType | null,
+  HA: HATeamType | null,
+  SA: SATeamType | null,
+  NHL: NHLTeamType | null,
+  AHL: AHLTeamType | null,
+  ECHL: ECHLTeamType | null,
+  PWHL: PWHLTeamType | null,
+  MLS: MLSTeamType | null,
+  MLV: MLVTeamType | null,
+  F1: DriverCode26Type | null,
+}

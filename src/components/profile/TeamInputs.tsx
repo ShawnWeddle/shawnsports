@@ -5,12 +5,14 @@ import type { LeagueTeamType } from "~/types/MapTypes";
 import type { FavoriteTeamType } from "~/data/universal/listData";
 import { LeagueTeamFullList } from "~/data/universal/listData";
 import { markerData } from "~/data/map/allMapData";
-import { FavTeamLeagueOrder, convertLeagueToSport } from "~/data/map/mapData";
+import { FavoriteLeagueOrder, convertLeagueToSport } from "~/data/map/mapData";
 import { LeagueFullNames } from "~/data/universal/listData";
 import { leagueBackgrounds } from "~/data/map/mapStyles";
-import { favTeamCleanup } from "~/utils/favTeamCleanup";
+import { favoriteCleanup, favoriteCleanPost } from "~/utils/favTeamCleanup";
 import Icon from "../map/MapIcon";
 import { Button } from "../ui/button";
+import { api } from "~/utils/api";
+import { useAuthContext } from "~/hooks/useAuthContext";
 
 interface FavoriteTeamInputsProps {
   name: string;
@@ -22,6 +24,9 @@ interface InputProps {
 
 const FavoriteTeamInputs: React.FC<FavoriteTeamInputsProps> = () => {
   const [favoriteTeams, setFavoriteTeams] = useState<FavoriteTeamType>({});
+  const { authState, authDispatch } = useAuthContext();
+
+  const postFavorite = api.favorite.createFavorite.useMutation();
 
   const TeamInputs: React.FC<InputProps> = (props: InputProps) => {
     const { league } = props;
@@ -44,7 +49,7 @@ const FavoriteTeamInputs: React.FC<FavoriteTeamInputsProps> = () => {
               checked={favoriteTeams[league]?.team === team.team}
               onChange={() => {
                 setFavoriteTeams(
-                  favTeamCleanup({
+                  favoriteCleanup({
                     ...favoriteTeams,
                     [league]: team,
                   })
@@ -87,7 +92,7 @@ const FavoriteTeamInputs: React.FC<FavoriteTeamInputsProps> = () => {
               checked={favoriteTeams[league]?.team === undefined}
               onChange={() => {
                 setFavoriteTeams(
-                  favTeamCleanup({
+                  favoriteCleanup({
                     ...favoriteTeams,
                     [league]: undefined,
                   })
@@ -106,7 +111,7 @@ const FavoriteTeamInputs: React.FC<FavoriteTeamInputsProps> = () => {
 
   return (
     <div>
-      {FavTeamLeagueOrder.map((league, index) => {
+      {FavoriteLeagueOrder.map((league, index) => {
         return <TeamInputs key={index} league={league} />;
       })}
       <div className="flex justify-center">
@@ -114,6 +119,12 @@ const FavoriteTeamInputs: React.FC<FavoriteTeamInputsProps> = () => {
           variant="home"
           onClick={() => {
             console.log(favoriteTeams);
+            const newFavorite = favoriteCleanPost(
+              favoriteCleanup(favoriteTeams)
+            );
+            postFavorite.mutate({
+              favorite: newFavorite,
+            });
           }}
         >
           SAVE

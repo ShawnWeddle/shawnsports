@@ -27,8 +27,7 @@ const ProfilePage = () => {
       pageMode="Home"
       underPageMode="Home"
     >
-      {/* <MainProfile name={pageUsername ?? ""} /> */}
-      <div></div>
+      <MainProfile name={pageUsername ?? ""} />
     </MainPage>
   );
 };

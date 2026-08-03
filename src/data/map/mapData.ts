@@ -1,4 +1,4 @@
-import type { LeagueTeamListType } from "~/types/MapTypes";
+import type { FavoritePostType, LeagueTeamListType } from "~/types/MapTypes";
 
 export const FullLeagueList = [
   "NFL", "CFL", "UFL", "IFL",
@@ -89,7 +89,7 @@ export const lengthenLeagueName = (league: LeagueType): string => {
 export type LeagueType = typeof FullLeagueList[number];
 export type SportType = typeof sportList[number];
 
-export const FavTeamLeagueOrder: LeagueType[] = [
+export const FavoriteLeagueOrder: LeagueType[] = [
   "F1", "NFL", "NBA", "MLB", "NHL", "MLS", "WNBA", "CFL", 
   "UFL", "IFL", "NGL", 
   "AAA", "AA", "HA", "SA",
@@ -189,4 +189,26 @@ export const LeagueTeamList: LeagueTeamListType = {
   "MLS": [],
   "MLV": [],
   "F1": [],
+};
+
+export const FavoritePost: FavoritePostType = {
+  "NFL": null,
+  "CFL": null,
+  "IFL": null,
+  "UFL": null,
+  "NBA": null,
+  "WNBA": null,
+  "NGL": null,
+  "MLB": null,
+  "AAA": null,
+  "AA": null,
+  "HA": null,
+  "SA": null,
+  "NHL": null,
+  "AHL": null,
+  "ECHL": null,
+  "PWHL": null,
+  "MLS": null,
+  "MLV": null,
+  "F1": null,
 };

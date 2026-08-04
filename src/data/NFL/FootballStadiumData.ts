@@ -379,7 +379,7 @@ export const IFLStadiumData: {[Key in IFLTeamType] : TeamInfoType} = {
   },
   NAW: {
     coordinates: {
-      latitude: 34.590,
+      latitude: 34.589,
       longitude: -112.336,
     },
     location: "Northern Arizona",

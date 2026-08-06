@@ -13,6 +13,10 @@ import Icon from "../map/MapIcon";
 import { Button } from "../ui/button";
 import { api } from "~/utils/api";
 import { useAuthContext } from "~/hooks/useAuthContext";
+import {
+  createFavoriteSchema,
+  type CreateFavoriteInput,
+} from "~/server/api/favorite/schema";
 
 interface FavoriteTeamInputsProps {
   name: string;
@@ -24,7 +28,8 @@ interface InputProps {
 
 const FavoriteTeamInputs: React.FC<FavoriteTeamInputsProps> = () => {
   const [favoriteTeams, setFavoriteTeams] = useState<FavoriteTeamType>({});
-  const { authState, authDispatch } = useAuthContext();
+  const { authState } = useAuthContext();
+  const { user } = authState;
 
   const postFavorite = api.favorite.createFavorite.useMutation();
 
@@ -122,9 +127,22 @@ const FavoriteTeamInputs: React.FC<FavoriteTeamInputsProps> = () => {
             const newFavorite = favoriteCleanPost(
               favoriteCleanup(favoriteTeams)
             );
-            postFavorite.mutate({
-              favorite: newFavorite,
-            });
+            if (user) {
+              const { userId, username, email } = user;
+              const favoritePost: CreateFavoriteInput = {
+                favorite: newFavorite,
+                client: {
+                  userId,
+                  username,
+                  email,
+                },
+              };
+              const favoritePostValidation =
+                createFavoriteSchema.safeParse(favoritePost);
+              if (favoritePostValidation) {
+                postFavorite.mutate(favoritePost);
+              }
+            }
           }}
         >
           SAVE

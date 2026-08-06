@@ -23,8 +23,7 @@ interface RankerRowProps {
 const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
   const { unRankedEntry, rankedEntry, index, sport } = props;
   const { rankDispatch } = useRankContext();
-  const { authState } = useAuthContext();
-  const { user } = authState;
+
   const [newRank, setNewRank] = useState<string>("");
   const [reRank, setReRank] = useState<string>("");
 

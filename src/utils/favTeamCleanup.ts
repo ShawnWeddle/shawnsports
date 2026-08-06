@@ -14,12 +14,6 @@ export const favoriteCleanPost = (input: FavoriteTeamType): FavoritePostType => 
   const newFavorite = {...FavoritePost};
 
   FavoriteLeagueOrder.forEach((activeLeague) => {
-    // const newLT = input[activeLeague];
-    // if(newLT && newLT.league === activeLeague){
-    //   const {league, team} = newLT;
-    //   newFavorite[league] = team;
-    // }
-
     const newLT = input[activeLeague];
     if(newLT && newLT.league === activeLeague){
       const {team} = newLT;

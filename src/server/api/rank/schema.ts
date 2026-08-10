@@ -12,4 +12,10 @@ export const createRankSchema = object({
   }),
 });
 
+export const findRankSchema = object({
+  sport: z.enum(sportsNames),
+  userId: string(),
+});
+
 export type CreateRankInput = TypeOf<typeof createRankSchema>;
+export type FindRankInput = TypeOf<typeof findRankSchema>;

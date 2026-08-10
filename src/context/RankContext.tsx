@@ -24,6 +24,7 @@ type RankPayloadType = {
   entry: string | null;
   rank: number;
   prevRank?: number;
+  postEntries?: string[];
 };
 
 type RankReducerAction = {
@@ -32,7 +33,8 @@ type RankReducerAction = {
     | "UNRANK_ENTRY"
     | "RERANK_ENTRY"
     | "MOVE_UP"
-    | "MOVE_DOWN";
+    | "MOVE_DOWN"
+    | "RANK_SET";
   payload: RankPayloadType;
 };
 
@@ -41,7 +43,7 @@ export const RankReducer = (
   action: RankReducerAction
 ) => {
   const { unRankedEntries, rankedEntries, sport } = state;
-  const { entry, rank, prevRank } = action.payload;
+  const { entry, rank, prevRank, postEntries } = action.payload;
   const numOfEntries = initialValues[sport].length;
   const fullRank = new Map<string, number>();
   initialValues[sport].forEach((team, index) => {
@@ -99,7 +101,6 @@ export const RankReducer = (
         });
         console.log(indexToPlace);
         if (indexToPlace > -1) {
-          console.log("MF we good");
           const newRankedEntries = [...rankedEntries];
           newRankedEntries[indexToPlace] = entry;
           const newState = {
@@ -109,7 +110,6 @@ export const RankReducer = (
           };
           return newState;
         } else {
-          console.log("MF we bad");
           return {
             unRankedEntries: [...unRankedEntries],
             rankedEntries: [...rankedEntries],
@@ -242,6 +242,16 @@ export const RankReducer = (
         };
       }
     }
+    case "RANK_SET":
+      if (postEntries) {
+        return {
+          unRankedEntries: nullArray[sport],
+          rankedEntries: postEntries,
+          sport,
+        };
+      } else {
+        return state;
+      }
     default:
       return state;
   }

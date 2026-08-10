@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import type { Rank } from "@prisma/client";
+import type { SportType } from "~/data/SiteData";
+import { rankData, GlobalSportData } from "~/data/universal/rankData";
 import { api } from "~/utils/api";
 import { cn } from "~/lib/utils";
 import { useRankContext } from "~/hooks/useRanker";
@@ -6,8 +9,16 @@ import { useAuthContext } from "~/hooks/useAuthContext";
 import { MoveRight, MoveLeft, MoveUp, MoveDown } from "lucide-react";
 import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
 import { Button } from "../ui/button";
-import { type SportType } from "~/data/SiteData";
-import { rankData, GlobalSportData } from "~/data/universal/rankData";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "~/components/ui/dialog";
 import {
   createRankSchema,
   type CreateRankInput,
@@ -289,8 +300,24 @@ const Ranker: React.FC<RankerProps> = (props: RankerProps) => {
   const { user } = authState;
 
   const postRank = api.rank.createRank.useMutation();
+  const updaterRank = api.rank.updateRank.useMutation();
+  const getRank = api.rank.findRank.useQuery({
+    userId: user?.userId ?? "",
+    sport,
+  });
 
   const gsd = GlobalSportData[sport];
+
+  const [userRank, setUserRank] = useState<Rank>();
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+    getRank;
+    setUserRank(getRank.data?.data.rank);
+  }, [getRank, user, userRank]);
 
   const handleSubmit = () => {
     const order = rankedEntries as string[];
@@ -307,7 +334,7 @@ const Ranker: React.FC<RankerProps> = (props: RankerProps) => {
       };
       const rankValidation = createRankSchema.safeParse(rankPost);
       if (rankValidation) {
-        postRank.mutate({ ...rankPost });
+        updaterRank.mutate({ ...rankPost });
       }
     }
   };
@@ -328,6 +355,21 @@ const Ranker: React.FC<RankerProps> = (props: RankerProps) => {
 
   return (
     <div className="flex w-full flex-col items-center justify-center">
+      <Dialog open={isOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Update your saved ranking?</DialogTitle>
+            <DialogDescription>
+              Your previous ranking will not be deleted unless you save a new
+              one.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline">Start new</Button>
+            <Button>Update saved</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">
         Rank {gsd.title}
       </h1>
@@ -375,6 +417,22 @@ const Ranker: React.FC<RankerProps> = (props: RankerProps) => {
             LOG IN
           </Button>
         )}
+        <Button
+          className="m-1"
+          variant={gsd.variant}
+          onClick={() => {
+            rankDispatch({
+              type: "RANK_SET",
+              payload: {
+                entry: "",
+                rank: -1000,
+                postEntries: userRank?.order,
+              },
+            });
+          }}
+        >
+          LOAD
+        </Button>
       </div>
     </div>
   );

@@ -23,14 +23,14 @@ import { NFLteamData, nflTeamsRanked } from "~/data/NFL/NFLdata";
 import { NHLteamData, nhlTeamsRanked } from "~/data/NHL/NHLdata";
 import { WNBAteamData, wnbaTeamsRanked } from "~/data/WNBA/WNBAdata";
 
-const CFLenum = z.enum(cflTeamsRanked);
-const F1enum = z.enum(driverCodes2026);
-const MLBenum = z.enum(mlbTeamsRanked);
-const MLSenum = z.enum(mlsTeamsList);
-const NBAenum = z.enum(nbaTeamsRanked);
-const NFLenum = z.enum(nflTeamsRanked);
-const NHLenum = z.enum(nhlTeamsRanked);
-const WNBAenum = z.enum(wnbaTeamsRanked);
+export const CFLenum = z.enum(cflTeamsRanked);
+export const F1enum = z.enum(driverCodes2026);
+export const MLBenum = z.enum(mlbTeamsRanked);
+export const MLSenum = z.enum(mlsTeamsList);
+export const NBAenum = z.enum(nbaTeamsRanked);
+export const NFLenum = z.enum(nflTeamsRanked);
+export const NHLenum = z.enum(nhlTeamsRanked);
+export const WNBAenum = z.enum(wnbaTeamsRanked);
 
 export const rankData = (input: string, sport: SportType): TeamInfoRankType => {
   let code;

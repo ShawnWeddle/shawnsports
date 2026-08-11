@@ -227,11 +227,11 @@ export const ECHLstyleData: { [Key in ECHLTeamTypeReal] : StyleBookType} = {
     simpleText: "text-[#FFFFFF]",
   },
   WIC: {
-    primary: "#000000",
-    secondary: "#0057B7",
-    primaryBackground: "bg-[#000000]",
-    secondaryBorder: "border-[#0057B7]",
-    secondaryText: "text-[#0057B7]",
+    primary: "#005CA8",
+    secondary: "#979A9D",
+    primaryBackground: "bg-[#005CA8]",
+    secondaryBorder: "border-[#979A9D]",
+    secondaryText: "text-[#979A9D]",
     simpleText: "text-[#FFFFFF]",
   },
   WOR: {

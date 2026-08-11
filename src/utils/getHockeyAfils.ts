@@ -41,8 +41,8 @@ export const getECHLafils = (inputTeam: ECHLTeamType): ECHLTeamTypeReal => {
   switch(inputTeam){
     case "ECHL-ANA": return "TUL";
     case "ECHL-BOS": return "MNE";
-    case "ECHL-BUF": return "WHL";
     case "ECHL-CAR": return "GSO";
+    case "ECHL-CBJ": return "WHL";
     case "ECHL-CGY": return "RCR";
     case "ECHL-CHI": return "IND";
     case "ECHL-COL": return "NMG";

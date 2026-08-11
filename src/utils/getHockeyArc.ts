@@ -41,7 +41,7 @@ export const getNHLParentTeam = (props: LeagueTeamType): NHLTeamLeagueParent => 
   if(parentTeam){
     affiliates.push({league: "NHL", team: parentTeam});
     affiliates.push({league: "AHL", team: `AHL-${parentTeam}`});
-    if(parentTeam !== "CBJ" && parentTeam !== "UTA"){
+    if(parentTeam !== "BUF" && parentTeam !== "UTA"){
       affiliates.push({league: "ECHL", team: `ECHL-${parentTeam}`});
     }
   }
@@ -57,7 +57,7 @@ type ArcData = {
 export const getHockeyArcData = (parentTeam: NHLTeamType): ArcData[] => {
   let teamsInfo: TeamInfoType[] = [];
   let numOfAffs = 0;
-  if(parentTeam === "CBJ" || parentTeam === "UTA"){
+  if(parentTeam === "BUF" || parentTeam === "UTA"){
     numOfAffs = 1;
     teamsInfo = [
       NHLArenaData[parentTeam],

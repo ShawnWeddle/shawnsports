@@ -536,21 +536,21 @@ export const ECHLArenaData: {[Key in ECHLTeamType] : TeamInfoType} = {
             location: "Maine",
             name: "Mariners",
         },
-        "ECHL-BUF": {
+        "ECHL-CAR": {
+          coordinates: {
+            latitude: 36.06,
+            longitude: -79.826
+          },
+          location: "Greensboro",
+          name: "Gargoyles",
+        },
+        "ECHL-CBJ": {
             coordinates: {
               latitude: 40.065,
               longitude: -80.725
             },
             location: "Wheeling",
             name: "Nailers",
-        },
-        "ECHL-CAR": {
-            coordinates: {
-              latitude: 36.06,
-              longitude: -79.826
-            },
-            location: "Greensboro",
-            name: "Gargoyles",
         },
         "ECHL-CGY": {
             coordinates: {

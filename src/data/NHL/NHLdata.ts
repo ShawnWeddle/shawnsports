@@ -51,8 +51,8 @@ export const ahlTeamsList = [
 export const echlTeamsList = [
   "ECHL-ANA",
   "ECHL-BOS",
-  "ECHL-BUF",
   "ECHL-CAR",
+  "ECHL-CBJ",
   "ECHL-CGY",
   "ECHL-CHI",
   "ECHL-COL",

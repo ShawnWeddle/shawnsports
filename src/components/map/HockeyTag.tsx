@@ -48,7 +48,7 @@ export const HockeyTag: React.FC<NHLTeamLeagueParent> = (
           {AHLArenaData[`AHL-${parentTeam}`].location}{" "}
           {AHLArenaData[`AHL-${parentTeam}`].name}
         </p>
-        {parentTeam !== "CBJ" && parentTeam !== "UTA" && (
+        {parentTeam !== "BUF" && parentTeam !== "UTA" && (
           <p
             className={cn("rounded px-1 py-0.5", {
               "border-2 py-1": league === "ECHL",

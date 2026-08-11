@@ -21,15 +21,14 @@ import { getAHLafils, getECHLafils } from "~/utils/getHockeyAfils";
 
 type AfilRowProps = {
   team: NHLTeamType;
-  key: number;
 };
 
 const HockeyMinorList: React.FC = () => {
   const AfilRow: React.FC<AfilRowProps> = (props: AfilRowProps) => {
-    const { team, key } = props;
+    const { team } = props;
     return (
       <TableRowNoHover
-        key={key}
+        key={Math.random()}
         className={cn("odd:bg-nhl/10 hover:bg-nhl/20")}
       >
         <TableCell className="px-1">
@@ -83,7 +82,7 @@ const HockeyMinorList: React.FC = () => {
           </button>
         </TableCell>
         <TableCell className="px-1">
-          {team !== "CBJ" && team !== "UTA" && (
+          {team !== "BUF" && team !== "UTA" && (
             <button
               className={cn(
                 "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
@@ -111,7 +110,7 @@ const HockeyMinorList: React.FC = () => {
               </div>
             </button>
           )}
-          {(team === "CBJ" || team === "UTA") && (
+          {(team === "BUF" || team === "UTA") && (
             <div className="text-center font-semibold">None</div>
           )}
         </TableCell>

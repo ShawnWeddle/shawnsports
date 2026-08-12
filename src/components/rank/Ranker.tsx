@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import type { Rank } from "@prisma/client";
+import { useState } from "react";
 import type { SportType } from "~/data/SiteData";
 import { rankData, GlobalSportData } from "~/data/universal/rankData";
 import { api } from "~/utils/api";
@@ -11,13 +10,11 @@ import { Table, TableBody, TableCell, TableRow } from "~/components/ui/table";
 import { Button } from "../ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "~/components/ui/dialog";
 import {
   createRankSchema,
@@ -140,9 +137,10 @@ const RankerRow: React.FC<RankerRowProps> = (props: RankerRowProps) => {
               "text-formulaOne": sport === "F1",
               "text-mlb": sport === "MLB",
               "text-mls": sport === "MLS",
-              "text-nba": sport === "NBA" || sport === "WNBA",
+              "text-nba": sport === "NBA",
               "text-nfl": sport === "NFL",
               "text-nhl": sport === "NHL",
+              "text-wnba": sport === "WNBA",
             })}
             onClick={() => {
               rankDispatch({
@@ -299,25 +297,25 @@ const Ranker: React.FC<RankerProps> = (props: RankerProps) => {
   const { authState } = useAuthContext();
   const { user } = authState;
 
-  const postRank = api.rank.createRank.useMutation();
   const updaterRank = api.rank.updateRank.useMutation();
-  const getRank = api.rank.findRank.useQuery({
-    userId: user?.userId ?? "",
-    sport,
-  });
+  const rank = api.rank.findRank.useQuery(
+    {
+      userId: user?.userId ?? "",
+      sport,
+    },
+    {
+      onSuccess(data) {
+        console.log(data);
+      },
+      onError(error) {
+        console.log(error);
+      },
+    }
+  );
 
   const gsd = GlobalSportData[sport];
 
-  const [userRank, setUserRank] = useState<Rank>();
-  const [isOpen, setIsOpen] = useState<boolean>(true);
-
-  useEffect(() => {
-    if (!user) {
-      return;
-    }
-    getRank;
-    setUserRank(getRank.data?.data.rank);
-  }, [getRank, user, userRank]);
+  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
   const handleSubmit = () => {
     const order = rankedEntries as string[];
@@ -339,6 +337,20 @@ const Ranker: React.FC<RankerProps> = (props: RankerProps) => {
     }
   };
 
+  const handleLoad = () => {
+    if (user) {
+      const loadedRank = rank.data?.data.rank;
+      rankDispatch({
+        type: "RANK_SET",
+        payload: {
+          entry: "",
+          rank: -1000,
+          postEntries: loadedRank?.order,
+        },
+      });
+    }
+  };
+
   const rows = unRankedEntries.map((unRankedEntry, index) => {
     const rankedEntry: string | null = rankedEntries[index] ?? null;
 
@@ -355,7 +367,13 @@ const Ranker: React.FC<RankerProps> = (props: RankerProps) => {
 
   return (
     <div className="flex w-full flex-col items-center justify-center">
-      <Dialog open={isOpen}>
+      <Dialog
+        open={dialogOpen}
+        onOpenChange={(isOpen) => {
+          if (isOpen === true) return;
+          setDialogOpen(false);
+        }}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Update your saved ranking?</DialogTitle>
@@ -365,8 +383,22 @@ const Ranker: React.FC<RankerProps> = (props: RankerProps) => {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline">Start new</Button>
-            <Button>Update saved</Button>
+            <Button
+              variant="outline"
+              onClick={() => {
+                setDialogOpen(false);
+              }}
+            >
+              Go Back
+            </Button>
+            <Button
+              onClick={() => {
+                handleLoad();
+                setDialogOpen(false);
+              }}
+            >
+              Update saved
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -411,28 +443,23 @@ const Ranker: React.FC<RankerProps> = (props: RankerProps) => {
             disabled={user || rankedEntries.includes(null)}
             variant={gsd.variant}
             onClick={() => {
-              handleSubmit();
+              console.log("BRUH");
             }}
           >
             LOG IN
           </Button>
         )}
-        <Button
-          className="m-1"
-          variant={gsd.variant}
-          onClick={() => {
-            rankDispatch({
-              type: "RANK_SET",
-              payload: {
-                entry: "",
-                rank: -1000,
-                postEntries: userRank?.order,
-              },
-            });
-          }}
-        >
-          LOAD
-        </Button>
+        {user && (
+          <Button
+            className="m-1"
+            variant={gsd.variant}
+            onClick={() => {
+              setDialogOpen(true);
+            }}
+          >
+            LOAD
+          </Button>
+        )}
       </div>
     </div>
   );

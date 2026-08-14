@@ -440,10 +440,10 @@ const Ranker: React.FC<RankerProps> = (props: RankerProps) => {
         {!user && (
           <Button
             className="m-1"
-            disabled={user || rankedEntries.includes(null)}
+            disabled={!!user}
             variant={gsd.variant}
             onClick={() => {
-              console.log("BRUH");
+              setDialogOpen(dialogOpen);
             }}
           >
             LOG IN

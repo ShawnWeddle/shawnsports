@@ -3,7 +3,8 @@ import { cn } from "~/lib/utils";
 import { resultsSortedByPlace } from "~/data/F1/2026/convert";
 import {
   type DriverCode26Type,
-  driverCodes2026,
+  driverTcamColors2026,
+  driverTeammates,
   driverToConstructor2026,
 } from "~/data/F1/2026/F1data";
 import { FormulaOneRaceResults } from "~/data/F1/2026/raceData";
@@ -68,7 +69,17 @@ export const RaceResultTable: React.FC<RaceModeProps> = (
                 "border-b-2 border-black": !sprint && finishPosition === 9,
               },
               { hidden: sprint && raceMode === "Grands Prix Only" },
-              { hidden: !sprint && raceMode === "Sprint Races Only" }
+              { hidden: !sprint && raceMode === "Sprint Races Only" },
+              {
+                "bg-[#DFFF00]":
+                  activeDrivers.has(driverName) &&
+                  activeDrivers.has(driverTeammates[driverName]) &&
+                  driverTcamColors2026[driverName] === "Yellow",
+                "bg-[#333333] text-white":
+                  activeDrivers.has(driverName) &&
+                  activeDrivers.has(driverTeammates[driverName]) &&
+                  driverTcamColors2026[driverName] === "Black",
+              }
             )}
           >
             <button

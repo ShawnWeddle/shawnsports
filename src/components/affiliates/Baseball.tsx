@@ -39,6 +39,7 @@ const BaseballMinorList: React.FC = () => {
       <TableRowNoHover key={key} className={cn("odd:bg-mlb/10")}>
         <TableCell className="px-1">
           <button
+            disabled
             className={cn(
               "m-0.5 w-full rounded-lg border-2 px-1 text-center font-semibold sm:inline-block",
               {
@@ -58,6 +59,7 @@ const BaseballMinorList: React.FC = () => {
         </TableCell>
         <TableCell className="hidden px-1 sm:table-cell">
           <button
+            disabled
             className={cn(
               "w-full px-1 text-center font-semibold sm:inline-block"
             )}
@@ -74,6 +76,7 @@ const BaseballMinorList: React.FC = () => {
         </TableCell>
         <TableCell className="hidden px-1 sm:table-cell">
           <button
+            disabled
             className={cn(
               "w-full px-1 text-center font-semibold sm:inline-block"
             )}
@@ -90,6 +93,7 @@ const BaseballMinorList: React.FC = () => {
         </TableCell>
         <TableCell className="hidden px-1 sm:table-cell">
           <button
+            disabled
             className={cn(
               "w-full px-1 text-center font-semibold sm:inline-block"
             )}
@@ -106,6 +110,7 @@ const BaseballMinorList: React.FC = () => {
         </TableCell>
         <TableCell className="hidden px-1 sm:table-cell">
           <button
+            disabled
             className={cn(
               "w-full px-1 text-center font-semibold sm:inline-block"
             )}

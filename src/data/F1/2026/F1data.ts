@@ -343,13 +343,55 @@ export const driverNames2026: { [Key in DriverCode26Type] : { first: string, las
   VER : { first: "Max", last: "Verstappen"},
 }
 
-// export const driverTcamColors2026: { [Key in DriverCode26Type] : "Black" | "Yellow" | "Cyan"} = {
-//   ALB: "Black", ALO: "Yellow", BOT: "Black", GAS: "Yellow", HAM: "Yellow", 
-//   HUL: "Yellow", LEC: "Black", MAG: "Black", NOR: "Yellow", OCO: "Black", 
-//   PIA: "Black", PER: "Yellow", RIC: "Black", RUS: "Black", SAI: "Yellow", 
-//   SAR: "Yellow", STR: "Black", TSU: "Yellow", VER: "Black", ZHO: "Yellow", 
-//   BEA: "Cyan", COL: "Cyan", LAW: "Cyan", DOO: "Cyan",
-// }
+export const driverTcamColors2026: { [Key in DriverCode26Type] : "Black" | "Yellow"} = {
+  ALB : "Black",
+  ALO : "Yellow",
+  ANT : "Yellow",
+  BEA : "Yellow",
+  BOR : "Yellow",
+  BOT : "Yellow",
+  COL : "Yellow",
+  GAS : "Black",
+  HAD : "Yellow",
+  HAM : "Yellow",
+  HUL : "Black",
+  LAW : "Yellow",
+  LEC : "Black",
+  LIN : "Black",
+  NOR : "Yellow",
+  OCO : "Black",
+  PER : "Black",
+  PIA : "Black",
+  RUS : "Black",
+  SAI : "Yellow",
+  STR : "Black",
+  VER : "Black",
+}
+
+export const driverTeammates: { [Key in DriverCode26Type] : DriverCode26Type} = {
+  ALB : "SAI",
+  ALO : "STR",
+  ANT : "RUS",
+  BEA : "OCO",
+  BOR : "HUL",
+  BOT : "PER",
+  COL : "GAS",
+  GAS : "COL",
+  HAD : "VER",
+  HAM : "LEC",
+  HUL : "BOR",
+  LAW : "LIN",
+  LEC : "HAM",
+  LIN : "LAW",
+  NOR : "PIA",
+  OCO : "BEA",
+  PER : "BOT",
+  PIA : "NOR",
+  RUS : "ANT",
+  SAI : "ALB",
+  STR : "ALO",
+  VER : "HAD",
+}
 
 export const allToConstructor2026 = (driver: DriverCode26Type | ConstructorName26Type ) : ConstructorName26Type => {
   switch(driver){

@@ -2,6 +2,7 @@ import { Card } from "~/components/ui/card";
 import { Map, MapControls } from "~/components/ui/map";
 import { useMapContext } from "~/hooks/useMap";
 import CityMarkers from "./CityMarkers";
+import CityArc, { teamMinors } from "./CityArc";
 
 const FullMap: React.FC = () => {
   const { mapState } = useMapContext();
@@ -19,6 +20,9 @@ const FullMap: React.FC = () => {
             showLocate
             showFullscreen
           />
+          {teamMinors.map((list, index) => {
+            return CityArc(list);
+          })}
           {CityMarkers}
         </Map>
       </Card>

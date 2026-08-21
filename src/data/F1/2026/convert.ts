@@ -320,7 +320,9 @@ export const createStandings = (results: RaceResultsType) => {
   });
 
   const runningConstructorResults = constructorOrder.map((constructor) => {
-    const teamPoints = FormulaOneRaceResults.map((race) => {
+    const teamPoints = FormulaOneRaceResults.filter((race) => {
+      return race.completed
+    }).map((race) => {
       const teamResult = race.finalOrder.map((dac, index) => {
         return {
           keep: dac.constructor === constructor,

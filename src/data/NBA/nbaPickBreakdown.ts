@@ -1,4 +1,4 @@
-import type { NBATeamType, PickYearType, PickCodeType } from "./NBAdata";
+import type { NBATeamType, PickYearType } from "./NBAdata";
 
 type ProtectionValueType = "UP" | "FUP" | "FS"; 
 type SwapRightType = "positive" | "negative" | "neutral";
@@ -290,10 +290,7 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
         nativeTeam: "CLE",
         year: 2030
     }],
-    2031: [{
-        nativeTeam: "CLE",
-        year: 2031
-    }],
+    2031: [],
     2032: [{
         nativeTeam: "CLE",
         year: 2032
@@ -356,6 +353,10 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     2031: [{
         nativeTeam: "DEN",
         year: 2031
+    },{
+        nativeTeam: "CLE",
+        year: 2031,
+        history: [ "CLE", "DEN"],
     }],
     2032: [],
     2033: [{

@@ -16,13 +16,13 @@ export const cflTeamsAll = [
 ] as const;
 
 export const uflTeamsList = [
-  "BHM", "CBA", "DAL", "DCD", "HOU", "LOU", "ORL", "STL",
+  "CBA", "DAL", "DCD", "LOU", "ORL", "STL",
 ] as const;
 
 export const iflTeamsList = [
-  "ARI", "FSH", "GBB", "IBS", "JAX", 
-  "NMC", "NAW", "ORL", "QCS", "SAG",
-  "SDS", "TSS", "TUL", "VEG", 
+  "ATH", "ATX", "ARI", "ARK", "FSH", "GBB", 
+  "IBS", "JAX", "NMC", "NAW", "ORL", "QCS", 
+  "SAG", "SAV", "SDS", "TSS", "TUL", "VEG", 
 ] as const;
 
 export type CFLTeamType = typeof cflTeamsRanked[number];

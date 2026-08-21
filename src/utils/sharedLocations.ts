@@ -77,14 +77,15 @@ const sharedLocations: LeagueTeamType[][] = [
     { "league": "AHL", "team": "AHL-VEG" },
     { "league": "MLV", "team": "VEG" },
   ],[
+    { "league": "NGL", "team": "NGL-SAS" },
+    { "league": "IFL", "team": "ATX" },
+    { "league": "AHL", "team": "AHL-DAL" },
+  ],[
     { "league": "MLS", "team": "DAL" },
     { "league": "UFL", "team": "DAL" },
   ],[
     { "league": "MLS", "team": "DCU" },
     { "league": "UFL", "team": "DCD" },
-  ],[
-    { "league": "MLS", "team": "HOU" },
-    { "league": "UFL", "team": "HOU" },
   ],[
     { "league": "MLS", "team": "ORL" },
     { "league": "UFL", "team": "ORL" },
@@ -164,9 +165,6 @@ const sharedLocations: LeagueTeamType[][] = [
     { "league": "NGL", "team": "NGL-LAL" },
     { "league": "AHL", "team": "AHL-SEA" },
   ],[
-    { "league": "NGL", "team": "NGL-SAS" },
-    { "league": "AHL", "team": "AHL-DAL" },
-  ],[
     { "league": "WNBA", "team": "WAS" },
     { "league": "NGL", "team": "NGL-WAS" },
     { "league": "MLV", "team": "WAS" },
@@ -193,6 +191,9 @@ const sharedLocations: LeagueTeamType[][] = [
   ],[
     { "league": "NHL", "team": "NJD" },
     { "league": "PWHL", "team": "NYS" },
+  ],[
+    { "league": "NHL", "team": "OTT" },
+    { "league": "PWHL", "team": "OTT" },
   ],[
     { "league": "NHL", "team": "MIN" },
     { "league": "PWHL", "team": "MIN" },
@@ -221,6 +222,9 @@ const sharedLocations: LeagueTeamType[][] = [
   ],[
     { "league": "NGL", "team": "NGL-DAL" },
     { "league": "MLV", "team": "DAL" },
+  ],[
+    { "league": "IFL", "team": "SAV" },
+    { "league": "ECHL", "team": "ECHL-FLA" },
   ],
 ]
 

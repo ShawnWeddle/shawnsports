@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import MainPage from "~/components/Page/MainPage";
 import NoteFromDev from "~/components/Home/NoteFromDev";
-// import UserProfile from "~/components/profile/TeamInputs";
-// import MainProfile from "~/components/profile/MainProfile";
+import UserProfile from "~/components/profile/TeamInputs";
+import MainProfile from "~/components/profile/MainProfile";
 
 const ProfilePage = () => {
   const router = useRouter();

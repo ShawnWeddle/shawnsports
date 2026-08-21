@@ -23,6 +23,7 @@ import {
   constructorNames2026,
   driverToConstructor2026,
   allToConstructor2026,
+  driverTcamColors2026,
 } from "~/data/F1/2026/F1data";
 import { cn } from "~/lib/utils";
 
@@ -103,7 +104,7 @@ const LineChart: React.FC = () => {
     doc("HAM")
   );
   const [pointsHolder3, setPointsHolder3] = useState<PointsHolderType>(
-    doc("NOR")
+    doc("Red Bull")
   );
   const [pointsHolder4, setPointsHolder4] = useState<PointsHolderType>(
     doc("No Selection")
@@ -125,6 +126,8 @@ const LineChart: React.FC = () => {
           label: driver,
           data: driverStandings[driver].runTotal,
           borderColor: F1styleData[driverToConstructor2026(driver)].primary,
+          backgroundColor:
+            driverTcamColors2026[driver] === "Black" ? "#333333" : "#DFFF00",
         };
       } else if (pointsHolder.type === "Constructor") {
         const constructor = constructorEnum.parse(pointsHolder.name);
@@ -150,7 +153,7 @@ const LineChart: React.FC = () => {
   };
 
   useEffect(() => {
-    setActiveDrivers([doc("ANT"), doc("HAM"), doc("NOR")]);
+    setActiveDrivers([doc("ANT"), doc("HAM"), doc("Red Bull")]);
   }, []);
 
   return (
@@ -182,6 +185,12 @@ const LineChart: React.FC = () => {
           <div
             className={cn("m-auto h-3 w-3 rounded-full", {
               "bg-white": pointsHolder1.constructor,
+              "bg-[#DFFF00]":
+                pointsHolder1.driver &&
+                driverTcamColors2026[pointsHolder1.driver] === "Yellow",
+              "bg-[#333333]":
+                pointsHolder1.driver &&
+                driverTcamColors2026[pointsHolder1.driver] === "Black",
             })}
           ></div>
           <select
@@ -219,15 +228,16 @@ const LineChart: React.FC = () => {
           )}
         >
           <div
-            className={cn(
-              "m-auto h-3 w-3 rounded-full",
-              {
-                "bg-white": pointsHolder2.constructor,
-              },
-              {
-                "bg-gray-300": pointsHolder2.name === "No Selection",
-              }
-            )}
+            className={cn("m-auto h-3 w-3 rounded-full", {
+              "bg-white": pointsHolder2.constructor,
+              "bg-gray-300": pointsHolder2.name === "No Selection",
+              "bg-[#DFFF00]":
+                pointsHolder2.driver &&
+                driverTcamColors2026[pointsHolder2.driver] === "Yellow",
+              "bg-[#333333]":
+                pointsHolder2.driver &&
+                driverTcamColors2026[pointsHolder2.driver] === "Black",
+            })}
           ></div>
           <select
             onChange={(e) => {
@@ -265,15 +275,16 @@ const LineChart: React.FC = () => {
           )}
         >
           <div
-            className={cn(
-              "m-auto h-3 w-3 rounded-full",
-              {
-                "bg-white": pointsHolder3.constructor,
-              },
-              {
-                "bg-gray-300": pointsHolder3.name === "No Selection",
-              }
-            )}
+            className={cn("m-auto h-3 w-3 rounded-full", {
+              "bg-white": pointsHolder3.constructor,
+              "bg-gray-300": pointsHolder3.name === "No Selection",
+              "bg-[#DFFF00]":
+                pointsHolder3.driver &&
+                driverTcamColors2026[pointsHolder3.driver] === "Yellow",
+              "bg-[#333333]":
+                pointsHolder3.driver &&
+                driverTcamColors2026[pointsHolder3.driver] === "Black",
+            })}
           ></div>
           <select
             onChange={(e) => {
@@ -311,15 +322,16 @@ const LineChart: React.FC = () => {
           )}
         >
           <div
-            className={cn(
-              "m-auto h-3 w-3 rounded-full",
-              {
-                "bg-white": pointsHolder4.constructor,
-              },
-              {
-                "bg-gray-300": pointsHolder4.name === "No Selection",
-              }
-            )}
+            className={cn("m-auto h-3 w-3 rounded-full", {
+              "bg-white": pointsHolder4.constructor,
+              "bg-gray-300": pointsHolder4.name === "No Selection",
+              "bg-[#DFFF00]":
+                pointsHolder4.driver &&
+                driverTcamColors2026[pointsHolder4.driver] === "Yellow",
+              "bg-[#333333]":
+                pointsHolder4.driver &&
+                driverTcamColors2026[pointsHolder4.driver] === "Black",
+            })}
           ></div>
           <select
             onChange={(e) => {

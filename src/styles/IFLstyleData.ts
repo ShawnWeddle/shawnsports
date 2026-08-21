@@ -2,6 +2,38 @@ import type { IFLTeamType } from "~/data/CFL/CFLdata";
 import type { StyleBookType } from "~/types/StyleBook";
 
 export const IFLstyleData: { [Key in IFLTeamType] : StyleBookType} = {
+  ATH: {
+    primary: "#FFFFFF",
+    secondary: "#00A854",
+    primaryBackground: "bg-[#FFFFFF]",
+    secondaryText: "text-[#00A854]",
+    secondaryBorder: "border-[#00A854]",
+    simpleText: "text-[#00A854]",
+  },
+  ATX: {
+    primary: "#000000",
+    secondary: "#FFE354",
+    primaryBackground: "bg-[#000000]",
+    secondaryText: "text-[#FFE354]",
+    secondaryBorder: "border-[#FFE354]",
+    simpleText: "text-[#FFFFFF]",
+  },
+  ARK: {
+    primary: "#000000",
+    secondary: "#B30838",
+    primaryBackground: "bg-[#000000]",
+    secondaryText: "text-[#B30838]",
+    secondaryBorder: "border-[#B30838]",
+    simpleText: "text-[#FFFFFF]",
+  },
+  SAV: {
+    primary: "#FFFFFF",
+    secondary: "#00A854",
+    primaryBackground: "bg-[#FFFFFF]",
+    secondaryText: "text-[#00A854]",
+    secondaryBorder: "border-[#00A854]",
+    simpleText: "text-[#00A854]",
+  },
   ARI: {
     primary: "#000000",
     secondary: "#E97C3A",

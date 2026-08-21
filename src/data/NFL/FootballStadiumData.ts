@@ -337,6 +337,22 @@ export const CFLStadiumData: {[Key in CFLTeamType] : TeamInfoType} = {
 };
 
 export const IFLStadiumData: {[Key in IFLTeamType] : TeamInfoType} = {
+  ATH: {
+    coordinates: {
+      latitude: 33.961,
+      longitude: -83.371,
+    },
+    location: "Athens",
+    name: "IFL",
+  },
+  ATX: {
+    coordinates: {
+      latitude: 30.541,
+      longitude: -97.82,
+    },
+    location: "ATX",
+    name: "Draft",
+  },
   ARI: {
     coordinates: {
       latitude: 33.532,
@@ -344,6 +360,14 @@ export const IFLStadiumData: {[Key in IFLTeamType] : TeamInfoType} = {
     },
     location: "Arizona",
     name: "Rattlers",
+  },
+  ARK: {
+    coordinates: {
+      latitude: 34.510,
+      longitude: -93.049,
+    },
+    location: "Arkansas",
+    name: "Diamonds",
   },
   FSH: {
     coordinates: {
@@ -417,6 +441,14 @@ export const IFLStadiumData: {[Key in IFLTeamType] : TeamInfoType} = {
     location: "San Antonio",
     name: "Gunslingers",
   },
+  SAV: {
+    coordinates: {
+      latitude: 32.074,
+      longitude: -81.112,
+    },
+    location: "Savannah",
+    name: "IFL",
+  },
   SDS: {
     coordinates: {
       latitude: 33.207,
@@ -452,14 +484,6 @@ export const IFLStadiumData: {[Key in IFLTeamType] : TeamInfoType} = {
 };
 
 export const UFLStadiumData: {[Key in UFLTeamType] : TeamInfoType} = {
-  BHM: {
-    coordinates: {
-      latitude: 33.529,
-      longitude: -86.809,
-    },
-    location: "Birmingham",
-    name: "Stallions",
-  },
   CBA: {
     coordinates: {
       latitude: 40.010,
@@ -483,14 +507,6 @@ export const UFLStadiumData: {[Key in UFLTeamType] : TeamInfoType} = {
     },
     location: "DC",
     name: "Defenders",
-  },
-  HOU: {
-    coordinates: {
-      latitude: 29.752,
-      longitude: -95.352,
-    },
-    location: "Houston",
-    name: "Gamblers",
   },
   LOU: {
     coordinates: {
@@ -517,3 +533,23 @@ export const UFLStadiumData: {[Key in UFLTeamType] : TeamInfoType} = {
     name: "Battlehawks",
   },
 };
+
+/*
+  BHM: {
+    coordinates: {
+      latitude: 33.529,
+      longitude: -86.809,
+    },
+    location: "Birmingham",
+    name: "Stallions",
+  },
+
+  HOU: {
+    coordinates: {
+      latitude: 29.752,
+      longitude: -95.352,
+    },
+    location: "Houston",
+    name: "Gamblers",
+  },
+*/

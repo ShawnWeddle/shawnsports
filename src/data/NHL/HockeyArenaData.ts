@@ -813,8 +813,8 @@ export const PWHLArenaData: {[Key in PWHLTeamType] : TeamInfoType} = {
   },
   "OTT": {
     coordinates: {
-      latitude: 45.399,
-      longitude: -75.684,
+      latitude: 45.297,
+      longitude: -75.927
     },
     location: "Ottawa",
     name: "Charge",

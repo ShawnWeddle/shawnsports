@@ -350,7 +350,7 @@ export const IFLStadiumData: {[Key in IFLTeamType] : TeamInfoType} = {
       latitude: 30.541,
       longitude: -97.82,
     },
-    location: "ATX",
+    location: "Texas",
     name: "Draft",
   },
   ARI: {

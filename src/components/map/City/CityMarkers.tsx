@@ -6,7 +6,6 @@ import {
   MarkerPopup,
 } from "~/components/ui/map";
 import { FaBowlingBall } from "react-icons/fa6";
-import { getList } from "~/data/NBA/delete";
 
 export const CityData = [
   { name: "Toronto", lat: 43.6539, long: -79.3839, div: "Q" },

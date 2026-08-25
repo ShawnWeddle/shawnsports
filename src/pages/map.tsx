@@ -1,6 +1,7 @@
 import MainPage from "~/components/Page/MainPage";
 import { MapContextProvider } from "~/context/MapContext";
-import FullMap from "~/components/map/Map";
+// import FullMap from "~/components/map/Map";
+import FullMap from "~/components/map/City/CityMap";
 
 const Home = () => {
   return (

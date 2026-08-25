@@ -123,7 +123,6 @@ const FavoriteTeamInputs: React.FC<FavoriteTeamInputsProps> = () => {
         <Button
           variant="home"
           onClick={() => {
-            console.log(favoriteTeams);
             const newFavorite = favoriteCleanPost(
               favoriteCleanup(favoriteTeams)
             );
@@ -185,7 +184,7 @@ export const exampleTeams: { [Key in LeagueType]?: LeagueTeamType } = {
   },
   UFL: {
     league: "UFL",
-    team: "BHM",
+    team: "CBA",
   },
   IFL: {
     league: "IFL",

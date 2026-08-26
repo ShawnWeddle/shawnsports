@@ -20,7 +20,7 @@ const FullMap: React.FC = () => {
             showLocate
             showFullscreen
           />
-          {teamMinors.map((list, index) => {
+          {teamMinors.map((list) => {
             return CityArc(list);
           })}
           {CityMarkers}

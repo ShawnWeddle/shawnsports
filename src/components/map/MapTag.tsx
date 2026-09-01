@@ -74,6 +74,7 @@ export const MapTag: React.FC<MapTagProps> = (props: MapTagProps) => {
       case "WNBA":
       case "PWHL":
       case "MLS":
+      case "USL":
       case "MLV":
         return (
           <Fragment key={d.league + index.toString()}>

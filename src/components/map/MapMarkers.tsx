@@ -15,7 +15,7 @@ import {
   echlTeamsList,
   pwhlTeamsList,
 } from "~/data/NHL/NHLdata";
-import { mlsTeamsList } from "~/data/MLS/MLSdata";
+import { mlsTeamsList, uslTeamsList } from "~/data/MLS/MLSdata";
 import { mlvTeamsList } from "~/data/MLV/MLVdata";
 import { useMapContext } from "~/hooks/useMap";
 import { getSharedLocations } from "~/utils/sharedLocations";
@@ -218,6 +218,17 @@ const SportsMarkers = () => {
     .map((team, index) => {
       return <Marker key={"MLS" + index.toString()} league="MLS" team={team} />;
     });
+  const USLMarkers = uslTeamsList
+    .filter((team) => {
+      return (
+        removedLocations.find((X) => {
+          return X.team === team && X.league === "USL";
+        }) === undefined
+      );
+    })
+    .map((team, index) => {
+      return <Marker key={"USL" + index.toString()} league="USL" team={team} />;
+    });
   //Volleyball
   const MLVMarkers = mlvTeamsList
     .filter((team) => {
@@ -241,7 +252,7 @@ const SportsMarkers = () => {
 
   const getLeagues = () => {
     if (activeTeam) {
-      const { team, league } = activeTeam;
+      const { league } = activeTeam;
       switch (league) {
         case "NFL":
         case "CFL":
@@ -250,6 +261,7 @@ const SportsMarkers = () => {
         case "WNBA":
         case "PWHL":
         case "MLS":
+        case "USL":
         case "MLV":
           return [];
         case "NBA":
@@ -309,6 +321,8 @@ const SportsMarkers = () => {
         return SAMarkers;
       case "MLS":
         return MLSMarkers;
+      case "USL":
+        return USLMarkers;
       case "MLV":
         return MLVMarkers;
       case "F1":

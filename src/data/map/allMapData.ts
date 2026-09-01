@@ -5,7 +5,7 @@ import { NFLStadiumData, CFLStadiumData, IFLStadiumData, UFLStadiumData } from "
 import { NBAArenaData, NGLArenaData, WNBAArenaData } from "~/data/NBA/BasketballArenaData";
 import { MLBFieldData, AAAFieldData, AAFieldData, HAFieldData, SAFieldData } from "~/data/MLB/BaseballStadiumData";
 import { NHLArenaData, AHLArenaData, ECHLArenaData, PWHLArenaData } from "~/data/NHL/HockeyArenaData";
-import { MLSStadiumData } from "~/data/MLS/SoccerStadiumData";
+import { MLSStadiumData, USLStadiumData } from "~/data/MLS/SoccerStadiumData";
 import { MLVArenaData } from "~/data/MLV/VolleyballArenaData";
 import { driverNames2026 } from "../F1/2026/F1data";
 
@@ -208,6 +208,17 @@ export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
       coordinates.latitude = MLSStadiumData[team].coordinates.latitude;
       style = MLSstyleData[team];
       coordinates.longitude = MLSStadiumData[team].coordinates.longitude;
+      text.long = reverse ? name + " " + location : location + " " + name;
+      text.short = location;
+      break;
+    case "USL":
+      code = team;
+      location = USLStadiumData[team].location;
+      name = USLStadiumData[team].name;
+      reverse = USLStadiumData[team].reverse === true;
+      coordinates.latitude = USLStadiumData[team].coordinates.latitude;
+      // style = USLstyleData[team];
+      coordinates.longitude = USLStadiumData[team].coordinates.longitude;
       text.long = reverse ? name + " " + location : location + " " + name;
       text.short = location;
       break;

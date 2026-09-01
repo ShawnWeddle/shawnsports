@@ -19,11 +19,11 @@ export const ECHLstyleData: { [Key in ECHLTeamTypeReal] : StyleBookType} = {
     simpleText: "text-[#FFFFFF]",
   },
   ATL: {
-    primary: "#0C2340",
-    secondary: "#FF9E1B",
-    primaryBackground: "bg-[#0C2340]",
-    secondaryBorder: "border-[#FF9E1B]",
-    secondaryText: "text-[#FF9E1B]",
+    primary: "#611F21",
+    secondary: "#231E22",
+    primaryBackground: "bg-[#611F21]",
+    secondaryBorder: "border-[#231E22]",
+    secondaryText: "text-[#231E22]",
     simpleText: "text-[#FFFFFF]",
   },
   BLM: {

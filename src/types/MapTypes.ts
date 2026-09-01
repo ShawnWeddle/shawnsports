@@ -1,6 +1,6 @@
 import type { CFLTeamType, IFLTeamType, UFLTeamType } from "~/data/CFL/CFLdata";
 import type { AAATeamType, AATeamType, HATeamType, MLBTeamType, SATeamType } from "~/data/MLB/MLBdata";
-import type { MLSTeamType } from "~/data/MLS/MLSdata";
+import type { MLSTeamType, USLTeamType } from "~/data/MLS/MLSdata";
 import type { NBATeamType, NGLTeamType } from "~/data/NBA/NBAdata";
 import type { NFLTeamType } from "~/data/NFL/NFLdata";
 import type { AHLTeamType, ECHLTeamType, NHLTeamType, PWHLTeamType } from "~/data/NHL/NHLdata";
@@ -61,6 +61,9 @@ export type LeagueTeamType = {
   league: "MLS",
   team: MLSTeamType
 } | {
+  league: "USL",
+  team: USLTeamType
+} | {
   league: "MLV",
   team: MLVTeamType
 } | {
@@ -86,6 +89,7 @@ export type LeagueTeamListType = {
   "ECHL": ECHLTeamType[];
   "PWHL": PWHLTeamType[];
   "MLS": MLSTeamType[];
+  "USL": USLTeamType[];
   "MLV": MLVTeamType[];
   "F1": DriverCode26Type[];
 };
@@ -132,6 +136,7 @@ export type FavoritePostType = {
   ECHL: string | null,
   PWHL: string | null,
   MLS: string | null,
+  USL: string | null,
   MLV: string | null,
   F1: string | null,
 }

@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const titlesArray = [
-  "Home", "Home_Map", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Schedule", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "F1_Champions", "F1_Map", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLB_Minors", "MLS_Cups", "MLS_Rank", "NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "NHL_Minors", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", "NFL_Map"
+  "Home", "Home_Map", "NBA_Future_Picks", "NBA_Finals", "NBA_Rank", "NBA_Map", "NFL_Super_Bowls", "NFL_Super_Losers", "NFL_Schedule", "NFL_Rank", "F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "F1_Champions", "F1_Map", "MLB_World_Series", "MLB_Rank", "MLB_Map", "MLB_Minors", "MLS_Cups", "MLS_Rank", "MLS_Map", "NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "NHL_Minors", "WNBA_Finals", "WNBA_Rank", "CFL_Grey_Cups", "CFL_Rank", "NFL_Map"
 ] as const;
 
 export const TitlesEnum = z.enum(titlesArray);
@@ -15,7 +15,7 @@ export const allNavHeads = {
   "NFL": ["NFL_Schedule", "NFL_Super_Losers", "NFL_Super_Bowls", "NFL_Rank",  "NFL_Map", ], 
   "F1": ["F1_Tables", "F1_Standings", "F1_Compare", "F1_Rank", "F1_Champions", "F1_Map", ], 
   "MLB": ["MLB_World_Series", "MLB_Rank", "MLB_Map", "MLB_Minors", ], 
-  "MLS": [ "MLS_Cups", "MLS_Rank", ],
+  "MLS": [ "MLS_Cups", "MLS_Rank", "MLS_Map", ],
   "NHL": ["NHL_Stanley_Cups", "NHL_Rank", "NHL_Map", "NHL_Minors", ], 
   "WNBA": ["WNBA_Finals", "WNBA_Rank", ],
   "CFL": ["CFL_Grey_Cups", "CFL_Rank", ],
@@ -65,6 +65,7 @@ export const MLBTitlesDesc: {[Key in MLBTitlesType] : string} = {
 export const MLSTitlesDesc: {[Key in MLSTitlesType] : string} = {
   "MLS_Cups": "See all MLS Cups since 1996",
   "MLS_Rank": "Rank all 30 MLS teams",
+  "MLS_Map": "See a map of all MLS and USL teams",
 };
 export const NHLTitlesDesc: {[Key in NHLTitlesType] : string} = {
   "NHL_Stanley_Cups": "See all Stanley Cup Finals since 1927",
@@ -161,6 +162,7 @@ export const underPageData: {[Key in UnderPageHeadsType]: {navTitle: string, url
   MLB_Minors: { navTitle: "Minors", urlName: "/mlb/minors",},
   MLS_Cups: { navTitle: "MLS Cups", urlName: "/mls/mls-cups", },
   MLS_Rank: { navTitle: "Rank", urlName: "/mls/rank", },
+  MLS_Map: { navTitle: "Map", urlName: "/mls/map"},
   NHL_Stanley_Cups: { navTitle: "Stanley Cups", urlName: "/nhl/stanley-cups",},
   NHL_Rank: { navTitle: "Rank", urlName: "/nhl/rank",},
   NHL_Map: { navTitle: "Map", urlName: "/nhl/map",},

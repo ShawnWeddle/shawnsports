@@ -70,6 +70,7 @@ type Favorite {
   AA   String?
   HA   String?
   SA   String?
+  USL  String?
   AHL  String?
   ECHL String?
   PWHL String?

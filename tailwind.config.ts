@@ -55,6 +55,7 @@ const config = {
         ifl: "#00A854",
         ufl: "#A80054",
         ngl: "#805500",
+        usl: "#404040",
         mlv: "#00A8A8",
         ylo: "#E0E000",
         gold: "#FFCC00",

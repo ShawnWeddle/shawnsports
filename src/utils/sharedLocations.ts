@@ -149,9 +149,6 @@ const sharedLocations: LeagueTeamType[][] = [
     { "league": "NBA", "team": "BRK" },
     { "league": "WNBA", "team": "NYL" },
   ],[
-    { "league": "NBA", "team": "SAC" },
-    { "league": "MLV", "team": "SAC" },
-  ],[
     { "league": "WNBA", "team": "ATL" },
     { "league": "NGL", "team": "NGL-ATL" },
   ],[
@@ -223,8 +220,26 @@ const sharedLocations: LeagueTeamType[][] = [
     { "league": "NGL", "team": "NGL-DAL" },
     { "league": "MLV", "team": "DAL" },
   ],[
+    { "league": "AHL", "team": "AHL-SJS" },
+    { "league": "MLV", "team": "SJC" },
+  ],[
+    { "league": "NHL", "team": "ANA" },
+    { "league": "MLV", "team": "LAC" },
+  ],[
     { "league": "IFL", "team": "SAV" },
     { "league": "ECHL", "team": "ECHL-FLA" },
+  ],[
+    { "league": "HA", "team": "HA-NYM" },
+    { "league": "USL", "team": "BKN" },
+  ],[
+    { "league": "AAA", "team": "AAA-SDP" },
+    { "league": "USL", "team": "EPL" },
+  ],[
+    { "league": "AAA", "team": "AAA-COL" },
+    { "league": "USL", "team": "NMU" },
+  ],[
+    { "league": "AA", "team": "AA-LAD" },
+    { "league": "USL", "team": "TUL" },
   ],
 ]
 

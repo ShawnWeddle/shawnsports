@@ -1,4 +1,4 @@
-import type {  MLVTeamType } from "./MLVdata";
+import type { MLVTeamType } from "./MLVdata";
 import type { TeamInfoType } from "~/types/MapTypes";
 
 export const MLVArenaData: {[Key in MLVTeamType] : TeamInfoType} = {
@@ -42,13 +42,21 @@ export const MLVArenaData: {[Key in MLVTeamType] : TeamInfoType} = {
     location: "Indy",
     name: "Ignite",
   },
+  LAC: {
+    coordinates: {
+      latitude: 33.808,
+      longitude: -117.877,
+    },
+    location: "Los Angeles",
+    name: "MLV",
+  },
   MIN: {
     coordinates: {
       latitude: 44.945,
       longitude: -93.101
     },
     location: "Minnesota",
-    name: "MLV",
+    name: "Forge",
   },
   OMA: {
     coordinates: {
@@ -66,10 +74,10 @@ export const MLVArenaData: {[Key in MLVTeamType] : TeamInfoType} = {
     location: "Orlando",
     name: "Valkyries",
   },
-  SAC: {
+  SJC: {
     coordinates: {
-      latitude: 38.58,
-      longitude: -121.499
+      latitude: 37.319,
+      longitude: -121.864,
     },
     location: "Northern California",
     name: "MLV",

@@ -36,6 +36,8 @@ export const leagueStyles = (league: LeagueType) => {
       return "text-singlea border-singlea"
     case "MLS":
       return "text-mls border-mls"
+    case "USL":
+      return "text-usl border-usl"
     case "MLV":
       return "text-mlv border-mlv"
     case "F1":
@@ -81,6 +83,8 @@ export const leagueBackgrounds = (league: LeagueType) => {
       return "bg-singlea";
     case "MLS":
       return "bg-mls";
+    case "USL":
+      return "bg-usl";
     case "MLV":
       return "bg-mlv";
     case "F1":

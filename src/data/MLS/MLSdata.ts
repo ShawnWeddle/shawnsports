@@ -1,12 +1,21 @@
 export const mlsTeamsList = [
-  "ATL", "ATX", "CLT", "CHI", "COL", 
-  "CLB", "DCU", "CIN", "DAL", "HOU", "MIA", 
-  "LAF", "LAG", "MIN", "MTL", "NSH", "NER", "NYC", 
+  "ATL", "ATX", "CLT", "CHI", "COL", "CLB", 
+  "DCU", "CIN", "DAL", "HOU", "MIA", "LAF", 
+  "LAG", "MIN", "MTL", "NSH", "NER", "NYC", 
   "NYR", "ORL", "PHI", "POR", "RSL", "SJE", 
   "SEA", "SDF", "SKC", "STL", "TOR", "VAN", 
 ] as const;
 
+export const uslTeamsList = [
+  "BHM", "BKN", "CHS", "CSS", "DET", 
+  "EPL", "HAR", "IND", "JAX", "LDN", 
+  "LEX", "LOU", "LVL", "MIA", "MRY", 
+  "NMU", "OAK", "OCS", "PHX", "PIT", 
+  "RHO", "SAC", "SAN", "TAM", "TUL",
+] as const;
+
 export type MLSTeamType = typeof mlsTeamsList[number];
+export type USLTeamType = typeof uslTeamsList[number];
 
 export type teamInfoType = {location: string, name: string, reverse: boolean };
 

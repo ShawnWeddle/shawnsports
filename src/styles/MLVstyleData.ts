@@ -42,6 +42,14 @@ export const MLVstyleData: {[Key in MLVTeamType] : StyleBookType} = {
     secondaryText: "text-[#FA4B0A]",
     simpleText: "text-[#FFFFFF]",
   },
+  LAC: {
+    primary: "#FFFFFF",
+    secondary: "#00A8A8",
+    primaryBackground: "bg-[#FFFFFF]",
+    secondaryBorder: "border-[#00A8A8]",
+    secondaryText: "text-[#00A8A8]",
+    simpleText: "text-[#000000]",
+  },
   MIN: {
     primary: "#FFFFFF",
     secondary: "#00A8A8",
@@ -66,7 +74,7 @@ export const MLVstyleData: {[Key in MLVTeamType] : StyleBookType} = {
     secondaryText: "text-[#41B6E6]",
     simpleText: "text-[#FFFFFF]",
   },
-  SAC: {
+  SJC: {
     primary: "#FFFFFF",
     secondary: "#00A8A8",
     primaryBackground: "bg-[#FFFFFF]",

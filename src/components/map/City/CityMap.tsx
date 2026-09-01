@@ -6,7 +6,7 @@ import CityArc, { teamMinors } from "./CityArc";
 
 const FullMap: React.FC = () => {
   const { mapState } = useMapContext();
-  const { sport, activeTeam } = mapState;
+  const { sport } = mapState;
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <h1 className="mx-2 my-4 text-2xl font-semibold sm:text-4xl">

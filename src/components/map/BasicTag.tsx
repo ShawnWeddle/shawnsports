@@ -45,6 +45,19 @@ export const BasicTag: React.FC<LeagueTeamType> = (props: LeagueTeamType) => {
           {reverseName && name} {location} {!reverseName && name}
         </p>
       );
+    case "USL":
+      return (
+        <p
+          className={cn("whitespace-nowrap rounded border-2 px-1 py-1", {
+            [style.primaryBackground]: true,
+            [style.secondaryBorder]: true,
+            [style.simpleText]: true,
+          })}
+        >
+          <span className="font-bold">USL: </span>
+          {reverseName && name} {location} {!reverseName && name}
+        </p>
+      );
     case "NGL":
       if (team === "MEX") {
         return (

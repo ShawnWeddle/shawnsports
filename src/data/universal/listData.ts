@@ -15,7 +15,7 @@ import {
   type ECHLTeamType, echlTeamsList,
   type PWHLTeamType, pwhlTeamsList,
 } from "~/data/NHL/NHLdata";
-import { type MLSTeamType, mlsTeamsList } from "~/data/MLS/MLSdata";
+import { type MLSTeamType, mlsTeamsList, uslTeamsList } from "~/data/MLS/MLSdata";
 import { type MLVTeamType, mlvTeamsList } from "~/data/MLV/MLVdata";
 import { type DriverCode26Type, driverCodes2026, } from "../F1/2026/F1data";
 import type { LeagueTeamType } from "~/types/MapTypes";
@@ -124,6 +124,12 @@ export const LeagueTeamFullList = () => {
       team
     }
   });
+  const usl: LeagueTeamType[] = uslTeamsList.map((team) => {
+    return {
+      league: "USL",
+      team
+    }
+  });
   const mlv: LeagueTeamType[] = mlvTeamsList.map((team) => {
     return {
       league: "MLV",
@@ -155,6 +161,7 @@ export const LeagueTeamFullList = () => {
     ECHL: echl,
     PWHL: pwhl,
     MLS: mls,
+    USL: usl,
     MLV: mlv,
     F1: f1,
   }
@@ -202,6 +209,7 @@ export const LeagueFullNames : {[Key in LeagueType] : string} = {
   ECHL: "ECHL",
   PWHL: "Professional Women's Hockey League",
   MLS: "Major League Soccer",
+  USL: "United Soccer League",
   MLV: "Major League Volleyball",
   F1: "Formula One",
 }

@@ -8,11 +8,11 @@ type ArcData = {
 };
 
 export const teamMinors: [string, string, string][] = [
-  ["Toronto", "Hamilton", "Quad Cities"],
+  ["Toronto", "Hamilton", "Worcester"],
   ["Montreal", "Ottawa", "Springfield MA"],
   ["Vancouver", "Fresno", "Boise"],
-  ["New York City", "Albany", "Bridgeport"],
-  ["Newark", "Hartford", "Worcester"],
+  ["New York City", "Albany", ""],
+  ["Newark", "Hartford", "Bridgeport"],
   ["Los Angeles", "Bakersfield", "Anaheim"],
   ["Riverside", "Las Vegas", "Anchorage"],
   ["Chicago", "Milwaukee", "Madison"],
@@ -37,11 +37,11 @@ export const teamMinors: [string, string, string][] = [
   ["San Antonio", "Baton Rouge", "Little Rock"],
   ["Orlando", "Jacksonville", "Savannah"],
   ["Indianapolis", "Hammond", "Fort Wayne"],
-  ["Pittsburgh", "Rochester", "Syracuse"],
-  ["Cincinnati", "Louisville", "Peoria"],
+  ["Pittsburgh", "Buffalo", "Harrisburg"],
+  ["Cincinnati", "Louisville", "Toledo"],
   ["Kansas City", "Omaha", "Wichita"],
-  ["Cleveland", "Buffalo", "Toledo"],
-  ["Columbus", "Dayton", "South Bend"],
+  ["Cleveland", "Rochester", "Syracuse"],
+  ["Columbus", "Dayton", "Youngstown"],
   ["Charlotte", "Raleigh", "Greensboro"],
   ["Nashville", "Memphis", "Knoxville"],
 ];
@@ -49,7 +49,6 @@ export const teamMinors: [string, string, string][] = [
 export const getArcData = (input: [string, string, string]): ArcData[] => {
   const arcData: ArcData[] = [];
   const T1 = CityData.find((info) => {
-    console.log(info.name, input[0]);
     return info.name === input[0];
   });
   const T2 = CityData.find((info) => {

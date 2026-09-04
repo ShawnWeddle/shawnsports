@@ -16,7 +16,7 @@ export const driverCodes2026 = [
   "ALB", "ALO", "ANT", "BEA", "BOR", "BOT", 
   "COL", "GAS", "HAD", "HAM", "HUL", "LAW", 
   "LEC", "LIN", "NOR", "OCO", "PER", 
-  "PIA", "RUS", "SAI", "STR", "VER", 
+  "PIA", "RUS", "SAI", "STR", "VER", "TSU"
 ] as const;
 
 export const raceLocations2026 = [
@@ -308,6 +308,7 @@ export const driverToConstructor2026 = (driver: DriverCode26Type ) : Constructor
       return "Mercedes";
     case "LAW":
     case "LIN":
+    case "TSU":
       return "RB";
     case "HAD":
     case "VER":
@@ -340,10 +341,11 @@ export const driverNames2026: { [Key in DriverCode26Type] : { first: string, las
   RUS : { first: "George", last: "Russell"},
   SAI : { first: "Carlos", last: "Sainz"},
   STR : { first: "Lance", last: "Stroll"},
+  TSU : { first: "Yuki", last: "Tsunoda"},
   VER : { first: "Max", last: "Verstappen"},
 }
 
-export const driverTcamColors2026: { [Key in DriverCode26Type] : "Black" | "Yellow"} = {
+export const driverTcamColors2026: { [Key in DriverCode26Type] : "Black" | "Yellow" | "Cyan"} = {
   ALB : "Black",
   ALO : "Yellow",
   ANT : "Yellow",
@@ -365,6 +367,7 @@ export const driverTcamColors2026: { [Key in DriverCode26Type] : "Black" | "Yell
   RUS : "Black",
   SAI : "Yellow",
   STR : "Black",
+  TSU : "Cyan",
   VER : "Black",
 }
 
@@ -390,6 +393,7 @@ export const driverTeammates: { [Key in DriverCode26Type] : DriverCode26Type} = 
   RUS : "ANT",
   SAI : "ALB",
   STR : "ALO",
+  TSU : "TSU",
   VER : "HAD",
 }
 
@@ -401,6 +405,7 @@ export const allToConstructor2026 = (driver: DriverCode26Type | ConstructorName2
       return "Alpine";
     case "LAW":
     case "LIN":
+    case "TSU":
     case "RB":
       return "RB";
     case "BOR":

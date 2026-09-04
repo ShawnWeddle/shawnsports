@@ -129,7 +129,7 @@ export const resultsSortedByPlace = (results: RaceResultsType) => {
 
   const fullFinishOrder = () => {
     const fullArray: FullDriverResultType[][] = [];
-    for (let i=0; i<20; i++){
+    for (let i=0; i<22; i++){
       fullArray[i] = findPlaceArray(i);
     }
     return fullArray;
@@ -189,6 +189,7 @@ export const createStandings = (results: RaceResultsType) => {
     RUS : {total: 0, runTotal: [0]}, 
     SAI : {total: 0, runTotal: [0]}, 
     STR : {total: 0, runTotal: [0]}, 
+    TSU : {total: 0, runTotal: [0]}, 
     VER : {total: 0, runTotal: [0]}, 
   }
 

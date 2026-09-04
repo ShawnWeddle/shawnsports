@@ -221,7 +221,7 @@ const sharedLocations: LeagueTeamType[][] = [
     { "league": "MLV", "team": "DAL" },
   ],[
     { "league": "AHL", "team": "AHL-SJS" },
-    { "league": "MLV", "team": "SJC" },
+    { "league": "MLV", "team": "NCR" },
   ],[
     { "league": "NHL", "team": "ANA" },
     { "league": "MLV", "team": "LAC" },

@@ -6,9 +6,9 @@ export const mlvTeamsList = [
   "IND",
   "LAC",
   "MIN",
+  "NCR",
   "OMA",
   "ORL",
-  "SJC",
   "VEG",
   "WAS",
 ] as const;

@@ -58,6 +58,14 @@ export const MLVArenaData: {[Key in MLVTeamType] : TeamInfoType} = {
     location: "Minnesota",
     name: "Forge",
   },
+  NCR: {
+    coordinates: {
+      latitude: 37.319,
+      longitude: -121.864,
+    },
+    location: "NorCal",
+    name: "Rumble",
+  },
   OMA: {
     coordinates: {
       latitude: 41.263,
@@ -73,14 +81,6 @@ export const MLVArenaData: {[Key in MLVTeamType] : TeamInfoType} = {
     },
     location: "Orlando",
     name: "Valkyries",
-  },
-  SJC: {
-    coordinates: {
-      latitude: 37.319,
-      longitude: -121.864,
-    },
-    location: "Northern California",
-    name: "MLV",
   },
   VEG: {
     coordinates: {

@@ -151,6 +151,9 @@ export const CityData = [
   // { name: "Atlantic City", lat: 39.3797, long: -74.4527, div: "K" },
   // { name: "Montgomery", lat: 32.3482, long: -86.2668, div: "K" },
   // { name: "Hunstville", lat: 34.5731, long: -86.9905, div: "K" },
+  // { name: "South Bend", lat: 41.6767, long: -86.2696, div: "K" },
+  // { name: "Peoria", lat: 40.752, long: -89.6154, div: "K" },
+  // { name: "Quad Cities", lat: 41.5565, long: -90.6053, div: "K" },
 ];
 
 type MarkerProps = {
@@ -207,7 +210,5 @@ export default CityMarkers;
   { name: "Edmonton", lat: 53.5344, long: -113.49, div: "T" },
   { name: "Winnipeg", lat: 49.8844, long: -97.1464, div: "T" },
   { name: "Quebec City", lat: 46.8139, long: -71.2081, div: "T" },
-  { name: "South Bend", lat: 41.6767, long: -86.2696, div: "T" },
-  { name: "Peoria", lat: 40.752, long: -89.6154, div: "T" },
-  { name: "Quad Cities", lat: 41.5565, long: -90.6053, div: "T" },
+
 */

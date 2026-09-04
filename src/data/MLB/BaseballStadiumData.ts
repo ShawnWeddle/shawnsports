@@ -1192,7 +1192,7 @@ export const SAFieldData: {[Key in SATeamType] : TeamInfoType} = {
   },
   "SA-TBR": {
     coordinates: {
-      latitude: 32.780,
+      latitude: 32.790,
       longitude: -79.961
     },
     location: "Charleston",

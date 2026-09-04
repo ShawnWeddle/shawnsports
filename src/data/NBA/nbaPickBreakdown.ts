@@ -520,22 +520,9 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
           "negative",
           "PHI"
         ]
-      },{
-        nativeTeam: "IND",
-        year: 2029,
-        history: [
-          "IND",
-          "LAC"
-        ]
-    },],
-    2030: [{
-        nativeTeam: "LAC",
-        year: 2030,
-    }],
+      }],
+    2030: [],
     2031: [{
-        nativeTeam: "LAC",
-        year: 2031
-    },{
         nativeTeam: "TOR",
         year: 2031,
         history: [
@@ -543,14 +530,8 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
           "LAC"
         ]
     }],
-    2032: [{
-        nativeTeam: "LAC",
-        year: 2032
-    }],
+    2032: [],
     2033: [{
-        nativeTeam: "LAC",
-        year: 2033
-    },{
         nativeTeam: "TOR",
         year: 2033,
         history: [
@@ -1286,3 +1267,27 @@ export const AllNBAPicks: {[Key in NBATeamType] : {[Key in PickYearType] : PickT
     }],
   }
 }
+
+/**
+ * 
+ * {
+        nativeTeam: "IND",
+        year: 2029,
+        history: [
+          "IND",
+          "LAC"
+        ]
+    },{
+        nativeTeam: "LAC",
+        year: 2030,
+    },{
+        nativeTeam: "LAC",
+        year: 2031
+    },{
+        nativeTeam: "LAC",
+        year: 2032
+    },{
+        nativeTeam: "LAC",
+        year: 2033
+    },
+ */

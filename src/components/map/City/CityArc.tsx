@@ -11,7 +11,7 @@ export const teamMinors: [string, string, string][] = [
   ["Toronto", "Hamilton", "Worcester"],
   ["Montreal", "Ottawa", "Springfield MA"],
   ["Vancouver", "Fresno", "Boise"],
-  ["New York City", "Albany", ""],
+  ["New York City", "Albany", "Brooklyn"],
   ["Newark", "Hartford", "Bridgeport"],
   ["Los Angeles", "Bakersfield", "Anaheim"],
   ["Riverside", "Las Vegas", "Anchorage"],

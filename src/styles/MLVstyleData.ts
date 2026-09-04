@@ -58,6 +58,14 @@ export const MLVstyleData: {[Key in MLVTeamType] : StyleBookType} = {
     secondaryText: "text-[#00A8A8]",
     simpleText: "text-[#000000]",
   },
+  NCR: {
+    primary: "#FFFFFF",
+    secondary: "#00A8A8",
+    primaryBackground: "bg-[#FFFFFF]",
+    secondaryBorder: "border-[#00A8A8]",
+    secondaryText: "text-[#00A8A8]",
+    simpleText: "text-[#000000]",
+  },
   OMA: {
     primary: "#0092BC",
     secondary: "#E0004D",
@@ -73,14 +81,6 @@ export const MLVstyleData: {[Key in MLVTeamType] : StyleBookType} = {
     secondaryBorder: "border-[#41B6E6]",
     secondaryText: "text-[#41B6E6]",
     simpleText: "text-[#FFFFFF]",
-  },
-  SJC: {
-    primary: "#FFFFFF",
-    secondary: "#00A8A8",
-    primaryBackground: "bg-[#FFFFFF]",
-    secondaryBorder: "border-[#00A8A8]",
-    secondaryText: "text-[#00A8A8]",
-    simpleText: "text-[#000000]",
   },
   VEG: {
     primary: "#002A3A",

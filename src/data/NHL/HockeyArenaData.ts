@@ -1,4 +1,4 @@
-import type {  NHLTeamType, PWHLTeamType, AHLTeamType, ECHLTeamType } from "./NHLdata";
+import type { NHLTeamType, PWHLTeamType, AHLTeamType, ECHLTeamType, SPHLTeamType } from "./NHLdata";
 import { type TeamInfoType } from "~/types/MapTypes";
 
 export const NHLArenaData: {[Key in NHLTeamType] : TeamInfoType} = {
@@ -760,7 +760,7 @@ export const ECHLArenaData: {[Key in ECHLTeamType] : TeamInfoType} = {
             location: "Bloomington",
             name: "Bison",
         },
-    }
+};
 
 export const PWHLArenaData: {[Key in PWHLTeamType] : TeamInfoType} = {
   "BOS": {
@@ -859,4 +859,103 @@ export const PWHLArenaData: {[Key in PWHLTeamType] : TeamInfoType} = {
     location: "Las Vegas",
     name: "PWHL",
   },
-}
+};
+
+export const SPHLArenaData: {[Key in SPHLTeamType] : TeamInfoType} = {
+  ATH : {
+    coordinates: {
+      latitude: 33.961,
+      longitude: -83.371,
+    },
+    location: "Athens",
+    name: "Rock Lobsters",
+  },
+  BHM : {
+    coordinates: {
+      latitude: 33.329,
+      longitude: -86.789,
+    },
+    location: "Birmingham",
+    name: "Bulls",
+  },
+  EVV : {
+    coordinates: {
+      latitude: 37.972,
+      longitude: -87.568,
+    },
+    location: "Evansville",
+    name: "Thunderbolts",
+  },
+  FAY : {
+    coordinates: {
+      latitude: 35.015,
+      longitude: -78.892,
+    },
+    location: "Fayetteville",
+    name: "Marksmen",
+  },
+  HSV : {
+    coordinates: {
+      latitude: 34.727,
+      longitude: -86.590,
+    },
+    location: "Hunstville",
+    name: "Havoc",
+  },
+  KNX : {
+    coordinates: {
+      latitude: 35.965,
+      longitude: -83.912,
+    },
+    location: "Knoxville",
+    name: "Ice Bears",
+  },
+  MAC : {
+    coordinates: {
+      latitude: 32.842,
+      longitude: -83.620,
+    },
+    location: "Macon",
+    name: "Mayhem",
+  },
+  PD : {
+    coordinates: {
+      latitude: 34.186,
+      longitude: -79.838,
+    },
+    location: "Pee Dee",
+    name: "IceCats",
+  },
+  PEN : {
+    coordinates: {
+      latitude: 30.416,
+      longitude: -87.209,
+    },
+    location: "Pensacola",
+    name: "Ice Flyers",
+  },
+  PEO : {
+    coordinates: {
+      latitude: 40.692,
+      longitude: -89.595,
+    },
+    location: "Peoria",
+    name: "Rivermen",
+  },
+  QC : {
+    coordinates: {
+      latitude: 41.508,
+      longitude: -90.520,
+    },
+    location: "Quad City",
+    name: "Storm",
+  },
+  RNK : {
+    coordinates: {
+      latitude: 37.280,
+      longitude: -79.936,
+    },
+    location: "Roanoke",
+    name: "Rail Yard Dawgs",
+  },
+};

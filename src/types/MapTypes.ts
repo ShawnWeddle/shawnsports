@@ -3,7 +3,7 @@ import type { AAATeamType, AATeamType, HATeamType, MLBTeamType, SATeamType } fro
 import type { MLSTeamType, USLTeamType } from "~/data/MLS/MLSdata";
 import type { NBATeamType, NGLTeamType } from "~/data/NBA/NBAdata";
 import type { NFLTeamType } from "~/data/NFL/NFLdata";
-import type { AHLTeamType, ECHLTeamType, NHLTeamType, PWHLTeamType } from "~/data/NHL/NHLdata";
+import type { AHLTeamType, ECHLTeamType, NHLTeamType, PWHLTeamType, SPHLTeamType } from "~/data/NHL/NHLdata";
 import type { WNBATeamType } from "~/data/WNBA/WNBAdata";
 import type { MLVTeamType } from "~/data/MLV/MLVdata";
 import type { DriverCode26Type } from "~/data/F1/2026/F1data";
@@ -55,6 +55,9 @@ export type LeagueTeamType = {
   league: "ECHL",
   team: ECHLTeamType
 } | {
+  league: "SPHL",
+  team: SPHLTeamType
+} | {
   league: "PWHL",
   team: PWHLTeamType
 } | {
@@ -87,6 +90,7 @@ export type LeagueTeamListType = {
   "NHL": NHLTeamType[];
   "AHL": AHLTeamType[];
   "ECHL": ECHLTeamType[];
+  "SPHL": SPHLTeamType[];
   "PWHL": PWHLTeamType[];
   "MLS": MLSTeamType[];
   "USL": USLTeamType[];
@@ -134,6 +138,7 @@ export type FavoritePostType = {
   NHL: string | null,
   AHL: string | null,
   ECHL: string | null,
+  SPHL: string | null,
   PWHL: string | null,
   MLS: string | null,
   USL: string | null,

@@ -3,7 +3,7 @@ import type { FavoritePostType, LeagueTeamListType } from "~/types/MapTypes";
 export const FullLeagueList = [
   "NFL", "CFL", "UFL", "IFL",
   "NBA", "NGL", "WNBA",
-  "NHL", "AHL", "ECHL", "PWHL",
+  "NHL", "AHL", "ECHL", "PWHL", "SPHL",
   "MLB", "AAA", "AA", "HA", "SA",
   "MLS", "USL", "MLV", "F1",
 ] as const;
@@ -18,7 +18,7 @@ export const sportLeagueList: {
   "Baseball": ["MLB", "AAA", "AA", "HA", "SA"],
   "Basketball": ["NBA", "NGL", "WNBA"],
   "Football": ["NFL", "CFL", "IFL", "UFL"],
-  "Hockey": ["NHL", "AHL", "ECHL", "PWHL"],
+  "Hockey": ["NHL", "AHL", "ECHL", "SPHL", "PWHL"],
   "Soccer": ["MLS", "USL"],
   "Volleyball": ["MLV"],
   "FormulaOne": ["F1"],
@@ -38,6 +38,7 @@ export const convertLeagueToSport = (league: LeagueType): SportType => {
     case "NHL":
     case "AHL":
     case "ECHL":
+    case "SPHL":
     case "PWHL":
       return "Hockey";
     case "MLB":
@@ -65,6 +66,7 @@ export const lengthenLeagueName = (league: LeagueType): string => {
     case "NHL":
     case "AHL":
     case "ECHL":
+    case "SPHL":
     case "PWHL":
     case "MLB":
     case "AAA":
@@ -96,7 +98,7 @@ export const FavoriteLeagueOrder: LeagueType[] = [
   "UFL", "IFL", "NGL", 
   "AAA", "AA", "HA", "SA",
   "USL",
-  "AHL", "ECHL", "PWHL",
+  "AHL", "ECHL", "SPHL", "PWHL",
   "MLV",
 ];
 
@@ -159,6 +161,7 @@ export const initialLeagueList = (
         "NHL",
         "AHL",
         "ECHL",
+        "SPHL",
         "PWHL",
         "MLS",
         "USL",
@@ -189,6 +192,7 @@ export const LeagueTeamList: LeagueTeamListType = {
   "NHL": [],
   "AHL": [],
   "ECHL": [],
+  "SPHL": [],
   "PWHL": [],
   "MLS": [],
   "USL": [],
@@ -212,6 +216,7 @@ export const FavoritePost: FavoritePostType = {
   "NHL": null,
   "AHL": null,
   "ECHL": null,
+  "SPHL": null,
   "PWHL": null,
   "MLS": null,
   "USL": null,

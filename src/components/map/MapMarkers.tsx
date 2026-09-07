@@ -13,6 +13,7 @@ import {
   nhlTeamsRanked,
   ahlTeamsList,
   echlTeamsList,
+  sphlTeamsList,
   pwhlTeamsList,
 } from "~/data/NHL/NHLdata";
 import { mlsTeamsList, uslTeamsList } from "~/data/MLS/MLSdata";
@@ -193,6 +194,19 @@ const SportsMarkers = () => {
         <Marker key={"ECHL" + index.toString()} league="ECHL" team={team} />
       );
     });
+  const SPHLMarkers = sphlTeamsList
+    .filter((team) =>
+      filterMarkers({
+        leagueAndTeam: { league: "SPHL", team: team },
+        removedLocations: removedLocations,
+        activeTeam: activeTeam,
+      })
+    )
+    .map((team, index) => {
+      return (
+        <Marker key={"SPHL" + index.toString()} league="SPHL" team={team} />
+      );
+    });
   const PWHLMarkers = pwhlTeamsList
     .filter((team) => {
       return (
@@ -259,6 +273,7 @@ const SportsMarkers = () => {
         case "UFL":
         case "IFL":
         case "WNBA":
+        case "SPHL":
         case "PWHL":
         case "MLS":
         case "USL":
@@ -307,6 +322,8 @@ const SportsMarkers = () => {
         return AHLMarkers;
       case "ECHL":
         return ECHLMarkers;
+      case "SPHL":
+        return SPHLMarkers;
       case "PWHL":
         return PWHLMarkers;
       case "MLB":

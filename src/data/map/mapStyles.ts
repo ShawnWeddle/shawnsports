@@ -22,6 +22,8 @@ export const leagueStyles = (league: LeagueType) => {
       return "text-ahl border-ahl"
     case "ECHL":
       return "text-echl border-echl"
+    case "SPHL":
+      return "text-sphl border-sphl"
     case "PWHL":
       return "text-pwhl border-pwhl"
     case "MLB":
@@ -69,6 +71,8 @@ export const leagueBackgrounds = (league: LeagueType) => {
       return "bg-ahl";
     case "ECHL":
       return "bg-echl";
+    case "SPHL":
+      return "bg-sphl";
     case "PWHL":
       return "bg-pwhl";
     case "MLB":

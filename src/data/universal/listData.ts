@@ -14,6 +14,7 @@ import {
   type AHLTeamType, ahlTeamsList,
   type ECHLTeamType, echlTeamsList,
   type PWHLTeamType, pwhlTeamsList,
+  sphlTeamsList
 } from "~/data/NHL/NHLdata";
 import { type MLSTeamType, mlsTeamsList, uslTeamsList } from "~/data/MLS/MLSdata";
 import { type MLVTeamType, mlvTeamsList } from "~/data/MLV/MLVdata";
@@ -112,6 +113,12 @@ export const LeagueTeamFullList = () => {
       team
     }
   });
+  const sphl: LeagueTeamType[] = sphlTeamsList.map((team) => {
+    return {
+      league: "SPHL",
+      team
+    }
+  });
   const pwhl: LeagueTeamType[] = pwhlTeamsList.map((team) => {
     return {
       league: "PWHL",
@@ -159,6 +166,7 @@ export const LeagueTeamFullList = () => {
     NHL: nhl,
     AHL: ahl,
     ECHL: echl,
+    SPHL: sphl,
     PWHL: pwhl,
     MLS: mls,
     USL: usl,
@@ -207,6 +215,7 @@ export const LeagueFullNames : {[Key in LeagueType] : string} = {
   NHL: "National Hockey League",
   AHL: "American Hockey League",
   ECHL: "ECHL",
+  SPHL: "Southern Professional Hockey League",
   PWHL: "Professional Women's Hockey League",
   MLS: "Major League Soccer",
   USL: "United Soccer League",

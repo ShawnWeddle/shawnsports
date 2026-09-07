@@ -72,6 +72,7 @@ export const MapTag: React.FC<MapTagProps> = (props: MapTagProps) => {
       case "IFL":
       case "UFL":
       case "WNBA":
+      case "SPHL":
       case "PWHL":
       case "MLS":
       case "USL":

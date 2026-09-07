@@ -154,6 +154,12 @@ export const pwhlTeamsList = [
   "OTT", "SEA", "SJS", "TOR", "VAN", "VEG",
 ] as const;
 
+export const sphlTeamsList = [
+  "ATH", "BHM", "EVV", "FAY", 
+  "HSV", "KNX", "MAC", "PD", 
+  "PEN", "PEO", "QC", "RNK", 
+] as const;
+
 export type TierType = "NHL" | "AHL" | "ECHL";
 export type LeagueType = "NHL" | "AHL" | "ECHL" | "PWHL";
 export const leagueMapList: Set<LeagueType> = new Set(["NHL", "AHL", "ECHL", "PWHL"]);
@@ -162,6 +168,7 @@ export type NHLTeamType = typeof nhlTeamsRanked[number];
 export type AHLTeamType = typeof ahlTeamsList[number];
 export type ECHLTeamType = typeof echlTeamsList[number];
 export type PWHLTeamType = typeof pwhlTeamsList[number];
+export type SPHLTeamType = typeof sphlTeamsList[number];
 export type AHLTeamTypeReal = typeof ahlTeamsListReal[number];
 export type ECHLTeamTypeReal = typeof echlTeamsListReal[number];
 

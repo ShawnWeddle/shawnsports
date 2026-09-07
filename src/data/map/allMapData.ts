@@ -4,7 +4,7 @@ import { NullBook } from "~/styles/NullBook";
 import { NFLStadiumData, CFLStadiumData, IFLStadiumData, UFLStadiumData } from "~/data/NFL/FootballStadiumData";
 import { NBAArenaData, NGLArenaData, WNBAArenaData } from "~/data/NBA/BasketballArenaData";
 import { MLBFieldData, AAAFieldData, AAFieldData, HAFieldData, SAFieldData } from "~/data/MLB/BaseballStadiumData";
-import { NHLArenaData, AHLArenaData, ECHLArenaData, PWHLArenaData } from "~/data/NHL/HockeyArenaData";
+import { NHLArenaData, AHLArenaData, ECHLArenaData, SPHLArenaData, PWHLArenaData } from "~/data/NHL/HockeyArenaData";
 import { MLSStadiumData, USLStadiumData } from "~/data/MLS/SoccerStadiumData";
 import { MLVArenaData } from "~/data/MLV/VolleyballArenaData";
 import { driverNames2026 } from "../F1/2026/F1data";
@@ -187,6 +187,15 @@ export const markerData = (input: LeagueTeamMapType): FullTeamInfoType => {
       coordinates.latitude = ECHLArenaData[team].coordinates.latitude;
       coordinates.longitude = ECHLArenaData[team].coordinates.longitude;
       style = ECHLstyleData[getECHLafils(team)];
+      text.long = location + " " + name;
+      text.short = name;
+      break;
+    case "SPHL":
+      code = team;
+      location = SPHLArenaData[team].location;
+      name = SPHLArenaData[team].name;
+      coordinates.latitude = SPHLArenaData[team].coordinates.latitude;
+      coordinates.longitude = SPHLArenaData[team].coordinates.longitude;
       text.long = location + " " + name;
       text.short = name;
       break;

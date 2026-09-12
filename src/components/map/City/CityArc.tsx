@@ -34,7 +34,7 @@ export const teamMinors: [string, string, string][] = [
   ["Baltimore", "Virginia Beach", "Greenville"],
   ["St. Louis", "Tulsa", "Springfield MO"],
   ["Portland OR", "Sacramento", "Reno"],
-  ["San Antonio", "McAllen", "Baton Rouge"],
+  ["San Antonio", "Rio Grande", "Baton Rouge"],
   ["Orlando", "Jacksonville", "Savannah"],
   ["Indianapolis", "Hammond", "Fort Wayne"],
   ["Pittsburgh", "Buffalo", "Harrisburg"],

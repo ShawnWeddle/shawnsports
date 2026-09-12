@@ -5,6 +5,7 @@ import Head from "next/head";
 import NavBar from "../Nav/NavBar";
 import Footer from "../Nav/Footer";
 import { type PageHeadsType, type UnderPageHeadsType } from "~/data/SiteData";
+import getFavicon from "~/utils/getFavicon";
 
 interface PageProps {
   title: string;
@@ -23,7 +24,12 @@ const MainPage: NextPage<PageProps> = (props: PageProps) => {
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <link rel="icon" href={favicon} />
+        <link rel="icon" href={getFavicon(pageMode)} />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        ></link>
       </Head>
       <main
         className={cn(

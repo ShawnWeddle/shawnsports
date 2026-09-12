@@ -3,12 +3,12 @@ import type { StyleBookType } from "~/types/StyleBook";
 
 export const IFLstyleData: { [Key in IFLTeamType] : StyleBookType} = {
   ATH: {
-    primary: "#FFFFFF",
-    secondary: "#00A854",
-    primaryBackground: "bg-[#FFFFFF]",
-    secondaryText: "text-[#00A854]",
-    secondaryBorder: "border-[#00A854]",
-    simpleText: "text-[#00A854]",
+    primary: "#BA0C2F",
+    secondary: "#041C2C",
+    primaryBackground: "bg-[#BA0C2F]",
+    secondaryText: "text-[#041C2C]",
+    secondaryBorder: "border-[#041C2C]",
+    simpleText: "text-[#FFFFFF]",
   },
   ATX: {
     primary: "#000000",

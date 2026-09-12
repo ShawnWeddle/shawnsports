@@ -343,7 +343,7 @@ export const IFLStadiumData: {[Key in IFLTeamType] : TeamInfoType} = {
       longitude: -83.371,
     },
     location: "Athens",
-    name: "IFL",
+    name: "Crush",
   },
   ATX: {
     coordinates: {

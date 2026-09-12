@@ -31,7 +31,3 @@ const FullMap: React.FC = () => {
 };
 
 export default FullMap;
-
-/**
- *
- */

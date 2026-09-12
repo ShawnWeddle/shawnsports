@@ -81,6 +81,12 @@ const sharedLocations: LeagueTeamType[][] = [
     { "league": "IFL", "team": "ATX" },
     { "league": "AHL", "team": "AHL-DAL" },
   ],[
+    { "league": "IFL", "team": "ATH" },
+    { "league": "SPHL", "team": "ATH" },
+  ],[
+    { "league": "IFL", "team": "QCS" },
+    { "league": "SPHL", "team": "QC" },
+  ],[
     { "league": "MLS", "team": "DAL" },
     { "league": "UFL", "team": "DAL" },
   ],[

@@ -72,7 +72,7 @@ export const CityData = [
   { name: "Richmond", lat: 37.5295, long: -77.4756, div: "S" },
   { name: "Fresno", lat: 36.783, long: -119.7939, div: "S" },
   { name: "Dayton", lat: 39.7805, long: -84.2003, div: "S" },
-  { name: "McAllen", lat: 26.2252, long: -98.2467, div: "S" },
+  { name: "Rio Grande", lat: 26.2252, long: -98.2467, div: "S" },
   { name: "Albany", lat: 42.6664, long: -73.7987, div: "S" },
   { name: "Hammond", lat: 41.6168, long: -87.4909, div: "S" },
   { name: "Hamilton", lat: 43.2567, long: -79.8692, div: "S" },

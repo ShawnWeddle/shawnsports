@@ -17,7 +17,7 @@ export const findDuos = () => {
       }
 
       if(loser[0].year === winner[0].year && loser[1].year === winner[1].year){
-        duos.push(loser, winner);
+        duos.push([...loser, ...winner]);
       }
     }
   }

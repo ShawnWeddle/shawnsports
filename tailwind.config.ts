@@ -51,7 +51,7 @@ const config = {
         singlea: "#620080",
         ahl: "#E000E0",
         echl: "#FF0000",
-        sphl: "#004080",
+        sphl: "#60BF00",
         pwhl: "#0054A8",
         ifl: "#00A854",
         ufl: "#A80054",

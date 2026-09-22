@@ -13,7 +13,7 @@ const SuperLosers = () => {
       underPageMode="NFL_Super_Losers"
     >
       {/* <Canvas /> */}
-      <SuperMenList />
+      <SuperLoserList />
     </MainPage>
   );
 };

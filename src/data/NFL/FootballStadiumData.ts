@@ -447,7 +447,7 @@ export const IFLStadiumData: {[Key in IFLTeamType] : TeamInfoType} = {
       longitude: -81.112,
     },
     location: "Savannah",
-    name: "IFL",
+    name: "Leprechauns",
   },
   SDS: {
     coordinates: {

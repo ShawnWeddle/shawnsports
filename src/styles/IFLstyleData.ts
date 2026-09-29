@@ -27,12 +27,12 @@ export const IFLstyleData: { [Key in IFLTeamType] : StyleBookType} = {
     simpleText: "text-[#FFFFFF]",
   },
   SAV: {
-    primary: "#FFFFFF",
-    secondary: "#00A854",
-    primaryBackground: "bg-[#FFFFFF]",
-    secondaryText: "text-[#00A854]",
-    secondaryBorder: "border-[#00A854]",
-    simpleText: "text-[#00A854]",
+    primary: "#91BF1F",
+    secondary: "#0A1A3B",
+    primaryBackground: "bg-[#91BF1F]",
+    secondaryText: "text-[#0A1A3B]",
+    secondaryBorder: "border-[#0A1A3B]",
+    simpleText: "text-[#FFFFFF]",
   },
   ARI: {
     primary: "#000000",
